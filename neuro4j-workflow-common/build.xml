@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<project name="neuro4j" basedir="." default="build">
+
+    <property file="build.properties" />
+
+    <property name="src.dir" value="src/main/java" />
+    <!-- temp folder for binaries -->
+    <property name="target.dir" value="target" />
+    
+    <!-- folder for distribution -->
+    <property name="dist.dir" value="dist" />
+    
+    <!-- folder with dependent libraries -->
+    <property name="dependencies.dir" value="../dependencies" />
+
+    <path id="master-classpath">
+        <fileset dir="${dependencies.dir}">
+            <include name="*.jar" />
+        </fileset>
+        
+    	<!-- neuro4j dependencies - build that proects before -->
+        <fileset dir="../neuro4j-core/${dist.dir}">
+            <include name="*.jar" />
+        </fileset>      
+    </path>
+
+    <target name="build" depends="clean" description="Compile source ">
+        
+        <mkdir dir="${target.dir}" />
+
+        <javac destdir="${target.dir}" source="1.6" target="1.6" debug="true" deprecation="false" optimize="true" failonerror="true" encoding="UTF8">
+            <classpath refid="master-classpath" />
+            <src path="${src.dir}" />
+        </javac>
+
+        <mkdir dir="${dist.dir}" />
+        
+        <jar destfile="${dist.dir}/${name}-${version}.jar"
+             basedir="${target.dir}"
+        />
+
+        <delete failonerror="true" dir="${target.dir}">
+        </delete>
+    </target>
+
+    <target name="clean" description="Clean output directories">
+        <delete failonerror="false" dir="${target.dir}" />
+        <delete failonerror="false" dir="${dist.dir}" />
+    </target>
+
+</project>
