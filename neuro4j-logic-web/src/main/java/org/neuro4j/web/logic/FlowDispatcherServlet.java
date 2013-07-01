@@ -2,6 +2,7 @@ package org.neuro4j.web.logic;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -34,6 +35,8 @@ public class FlowDispatcherServlet extends HttpServlet {
 
 	private static final String RENDER_VIEW_KEY = "VIEW_TEMPLATE";
 
+	private static final String LOCALE_KEY = "LOCALE";
+	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -42,20 +45,24 @@ public class FlowDispatcherServlet extends HttpServlet {
 		{
 			String urlStr = request.getRequestURI(); // /not-root-context/n4j/en_US/Welcome-start  /n4j/en_US/Welcome-start
 			String[] urlSplit = urlStr.split("/");
-			String flow; 
-			String localeStr;
-			if (this.getServletConfig().getServletContext().getContextPath().length() == 0 
-					|| "/".equals(this.getServletConfig().getServletContext().getContextPath()))
-			{
-				flow = urlSplit[3]; 
-				localeStr = urlSplit[2];
-			} else {
-				flow = urlSplit[4]; 
-				localeStr = urlSplit[3];
-			}
+			String flow = urlSplit[urlSplit.length - 1]; // the last part
 			
 			String view = null;
 			Map<String, Object> params = new HashMap<String, Object>();
+			
+			{ // get locale
+				String localeString = null;
+				// check if locale defined in URL
+				// locale can be right before flow (if any)
+				if (urlSplit.length > 2)
+					localeString = urlSplit[urlSplit.length - 2];
+				
+				Locale locale = getLocale(localeString);
+				if (null == locale)
+					locale = Locale.getDefault();
+				
+				params.put(LOCALE_KEY, locale);
+			}
 			
 			// put parameters from request to logicContext
 			for (Object param : request.getParameterMap().keySet())
@@ -90,6 +97,43 @@ public class FlowDispatcherServlet extends HttpServlet {
   		    getServletContext().getRequestDispatcher(ERROR_PAGE).forward(request, response);
 		}
 		return;
+	}
+	
+	private Locale getLocale(String localeString)
+	{
+		if (null == localeString)
+	        return Locale.getDefault();
+			
+        // Extract language
+        int languageIndex = localeString.indexOf('_');
+        String language = null;
+        if (languageIndex == -1)
+        {
+            // No further "_" so is "{language}" only
+            return new Locale(localeString, "");
+        }
+        else
+        {
+            language = localeString.substring(0, languageIndex);
+        }
+
+        // Extract country
+        int countryIndex = localeString.indexOf('_', languageIndex + 1);
+        String country = null;
+        if (countryIndex == -1)
+        {
+            // No further "_" so is "{language}_{country}"
+            country = localeString.substring(languageIndex+1);
+            return new Locale(language, country);
+        }
+        else
+        {
+            // Assume all remaining is the variant so is "{language}_{country}_{variant}"
+            country = localeString.substring(languageIndex+1, countryIndex);
+            String variant = localeString.substring(countryIndex+1);
+            return new Locale(language, country, variant);
+        }
+        
 	}
 	
 }
