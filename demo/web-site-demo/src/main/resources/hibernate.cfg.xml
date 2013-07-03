@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+         
+        <property name="hibernate.connection.autocommit">true</property>
+        <property name="connection.provider_class">org.hibernate.connection.C3P0ConnectionProvider</property>
+        <property name="hibernate.connection.useUnicode">true</property>
+        <property name="hibernate.connection.characterEncoding">UTF-8</property>
+
+        <!-- JDBC connection pool (use the built-in) -->
+        <property name="c3p0.min_size">5</property>
+        <property name="c3p0.max_size">20</property>
+        <property name="c3p0.timeout">1800</property>
+        <property name="c3p0.max_statements">50</property>
+        <property name="c3p0.idleConnectionTestPeriod">300</property>
+
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        
+        <!-- for BLOBs -->
+        <property name="hibernate.jdbc.use_streams_for_binary">true</property>
+        
+        <!-- Enable Hibernate's current session context -->
+        <property name="current_session_context_class">org.hibernate.context.ManagedSessionContext</property>
+
+        <!-- Disable the second-level cache  -->
+        <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">false</property>
+
+        <!-- Drop and re-create the database schema on startup {validate|update} -->
+        <property name="hbm2ddl.auto">update</property>
+        
+        <!-- 
+        <mapping resource="hibernate/User.hbm.xml"/>
+         -->
+
+    </session-factory>
+
+</hibernate-configuration>
+

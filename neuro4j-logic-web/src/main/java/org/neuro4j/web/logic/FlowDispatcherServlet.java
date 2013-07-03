@@ -77,6 +77,9 @@ public class FlowDispatcherServlet extends HttpServlet {
 			// copy data from logicContext to request attributes (for usage in views)
 			for (String key : logicContext.keySet())
 			{
+				if (key.equals(REQUEST_KEY) || key.equals(RESPONSE_KEY))
+					continue;
+				
 				request.setAttribute(key, logicContext.get(key));
 			}
 			
