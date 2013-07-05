@@ -10,14 +10,14 @@
   
 
       <title><fmt:message key="message.meta.title" /></title>
-      <link rel="StyleSheet" href="../../css/960.css" />
-      <link rel="stylesheet" href="../../css/style.css" />
+      <link rel="StyleSheet" href="../css/960.css" />
+      <link rel="stylesheet" href="../css/style.css" />
   </head>
 <body>  
   
     <div id="xHeader">
         <div>
-            <a id="uLogo" href="ViewFlow-Action">Neuro4j Web Demo</a>		
+            <a id="uLogo" href="UserAccounts-List">Neuro4j Web Demo</a>		
         </div>
     </div>
 
@@ -27,7 +27,10 @@
 <div class="container_12">
         <div class="grid_7">
 	        <div class="xContentHeader">
-               <a style="text-decoration: none;" href="ViewFlow-Action"> <h3> <fmt:message key="message.application.title" /></h3></a>
+               <a style="text-decoration: none;" href="UserAccounts-List"> <h3> <fmt:message key="message.application.title" /></h3></a>
+               	<ul>
+		            <%@ include file="/WEB-INF/jsp/inc/main_menu.jsp"%>
+		        </ul>
 	        </div>
         </div>
         <div class="grid_5">
@@ -37,7 +40,7 @@
 </div>
     </div>
 <div class="container_12">
-<div align="center"><jsp:include page="/WEB-INF/jsp/message.jsp"></jsp:include></div>
+<div align="center"><jsp:include page="/WEB-INF/jsp/inc/message.jsp"></jsp:include></div>
 <br/>
 
 <jsp:include page="/WEB-INF/${page}"></jsp:include>
