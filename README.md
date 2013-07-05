@@ -1,2 +1,3 @@
-Java workflow engine with Eclipse-based development environment.
+Neuro4j Workflow.
 ========
+Java workflow engine with Eclipse-based development environment.
