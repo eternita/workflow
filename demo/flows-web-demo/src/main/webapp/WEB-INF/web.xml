@@ -14,7 +14,7 @@
   
   <servlet-mapping>
     <servlet-name>neuro4j-webflows</servlet-name>
-    <url-pattern>/n4j/*</url-pattern>
+    <url-pattern>/f/*</url-pattern>
   </servlet-mapping>
 
   

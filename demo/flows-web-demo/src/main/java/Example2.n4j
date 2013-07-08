@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<network>
+    <entities>
+        <item name="MapperNode1" uuid="3xap_iYcXQQAAAE_fF1JYq.s">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="org.neuro4j.logic.def.node.KeyMapper" key="SWF_BLOCK_CLASS"/>
+                <item value="&quot;activeCl&quot;:example_2" key="SWF_PARAM_KEY_1"/>
+                <item value="415" key="y"/>
+                <item value="&quot;/jsp/example2/page1.jsp&quot;:page" key="SWF_PARAM_KEY_2"/>
+                <item value="341" key="x"/>
+            </properties>
+            <relations>
+                <item uuid="faip_iYc6PcAAAE_roNJYq.s"/>
+            </relations>
+        </item>
+        <item name="ViewNode1" uuid="MTKp_iYcercAAAE_uXJJYq.g">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="/jsp/application.jsp" key="SWF_PARAM_VIEW_TEMPLATE"/>
+                <item value="org.neuro4j.logic.def.node.SetViewTemplate" key="SWF_BLOCK_CLASS"/>
+                <item value="510" key="y"/>
+                <item value="309" key="x"/>
+            </properties>
+            <relations/>
+        </item>
+        <item name="Start" uuid="w6up_iYcwoQAAAE_bkJJYq.S">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <item value="org.neuro4j.logic.def.node.StartBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="124" key="y"/>
+                <item value="322" key="x"/>
+            </properties>
+            <relations>
+                <item uuid="QfGp_iYcn2AAAAE_Rm1JYq.s"/>
+            </relations>
+        </item>
+        <item name="networkConfig" uuid="hfup_iYcwPYAAAE_XoZJYq..">
+            <properties>
+                <item value="org.neuro4j.logic.def.NetConfig" key="SWF_BLOCK_CLASS"/>
+                <item key="KEY_VISIBILITY"/>
+            </properties>
+            <relations/>
+        </item>
+    </entities>
+    <relations>
+        <item name="NEXT" uuid="QfGp_iYcn2AAAAE_Rm1JYq.s">
+            <properties>
+                <item value="3xap_iYcXQQAAAE_fF1JYq.s" key="EndUUID"/>
+                <item value="0, 32, 5, -249|-5, 260, 0, -21|" key="points"/>
+                <item value="w6up_iYcwoQAAAE_bkJJYq.S" key="StartUUID"/>
+            </properties>
+            <relation_parts>
+                <item uuid="3xap_iYcXQQAAAE_fF1JYq.s"/>
+                <item uuid="w6up_iYcwoQAAAE_bkJJYq.S"/>
+            </relation_parts>
+        </item>
+        <item name="NEXT" uuid="faip_iYc6PcAAAE_roNJYq.s">
+            <properties>
+                <item value="MTKp_iYcercAAAE_uXJJYq.g" key="EndUUID"/>
+                <item value="0, 21, 0, -82|0, 74, 0, -29|" key="points"/>
+                <item value="3xap_iYcXQQAAAE_fF1JYq.s" key="StartUUID"/>
+            </properties>
+            <relation_parts>
+                <item uuid="MTKp_iYcercAAAE_uXJJYq.g"/>
+                <item uuid="3xap_iYcXQQAAAE_fF1JYq.s"/>
+            </relation_parts>
+        </item>
+    </relations>
+</network>

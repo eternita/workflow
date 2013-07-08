@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div id="account">
-<form action="ViewFlow-Action"
+<form action="UserAccounts-Create"
 	method="POST">
 	
 	<table >

@@ -57,6 +57,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>fwd</finalName>
         <outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
 
 		<resources>
