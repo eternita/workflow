@@ -10,6 +10,14 @@
     <name>Workflow System</name>
     <url>http://neuro4j.org</url>
 
+    <repositories>
+        <repository>
+            <id>neuro4j-maven-milestone</id>
+            <name>Neuro4J Maven Repository</name>
+            <url>http://static.neuro4j.org/maven2</url>
+        </repository>
+    </repositories>  
+
     <modules>
         <module>neuro4j-logic-web</module>
         <module>neuro4j-workflow-common</module>
