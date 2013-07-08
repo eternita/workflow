@@ -1,34 +1,22 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.neuro4j</groupId>
-	<artifactId>flows-web-demo</artifactId>
-	<version>1.0</version>
-	<packaging>war</packaging>
+	<parent>
+		<groupId>org.neuro4j</groupId>
+		<artifactId>workflow</artifactId>
+		<version>1.2</version>
+	</parent>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
-    
-    <repositories>
-        <repository>
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>always</updatePolicy>
-				<checksumPolicy>fail</checksumPolicy>
-			</releases>
-            <id>neuro4j-maven-milestone</id>
-            <name>Neuro4J Maven Repository</name>
-            <url>http://static.neuro4j.org/maven2</url>
-        </repository>
-    </repositories>  
-    
+	<artifactId>flows-web-demo</artifactId>
+    <packaging>war</packaging>
+
+
 	<dependencies>
 
 		<dependency>
 			<groupId>org.neuro4j</groupId>
 			<artifactId>neuro4j-logic-web</artifactId>
-			<version>1.0</version>
+			<version>${project.version}</version>
 		</dependency>
 
 		<dependency>
@@ -44,21 +32,21 @@
 			<scope>provided</scope>
 		</dependency>
 
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-            <version>1.1.2</version>
-        </dependency>
-        <dependency>
-            <groupId>taglibs</groupId>
-            <artifactId>standard</artifactId>
-            <version>1.1.2</version>
-        </dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>taglibs</groupId>
+			<artifactId>standard</artifactId>
+			<version>1.1.2</version>
+		</dependency>
 	</dependencies>
 
 	<build>
 		<finalName>fwd</finalName>
-        <outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
+		<outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
 
 		<resources>
 			<resource>
@@ -72,119 +60,59 @@
 				<includes>
 					<include>**/*.properties</include>
 				</includes>
-			</resource>			
+			</resource>
 		</resources>
 
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.0.2</version>
+				<artifactId>maven-eclipse-plugin</artifactId>
 				<configuration>
-					<source>1.5</source>
-					<target>1.5</target>
+					<buildoutputdirectory>src/main/webapp/WEB-INF/classes</buildoutputdirectory>
+					<downloadsources>true</downloadsources>
 				</configuration>
 			</plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-eclipse-plugin</artifactId>
-                <configuration>
-                    <buildoutputdirectory>src/main/webapp/WEB-INF/classes</buildoutputdirectory>
-                    <downloadsources>true</downloadsources>
-                </configuration>
-            </plugin>
 
-            <!-- delete generated libs / will be copied later -->
-            <plugin>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <version>1.6</version>
-                <executions>
-                    <execution>
-                        <phase>clean</phase>
-                        <configuration>
-                            <target>
-                                <delete>
-                                    <fileset dir="src/main/webapp/WEB-INF/lib" includes="**/*.jar"
-                                        excludes="**/antlr-2.7.6.jar" />
-                                </delete>
-                            </target>
-                        </configuration>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-dependency-plugin</artifactId>
-            <executions>
-                <execution>
-                    <id>copy-dependencies</id>
-                    <phase>process-resources</phase>
-                    <goals>
-                        <goal>copy-dependencies</goal>
-                    </goals>
-                    <configuration>
-                           <outputDirectory>src/main/webapp/WEB-INF/lib</outputDirectory>
-                           <excludeScope>provided</excludeScope>
-                    </configuration>
-                </execution>
-            </executions>
-        </plugin>
+			<!-- delete generated libs / will be copied later -->
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.6</version>
+				<executions>
+					<execution>
+						<phase>clean</phase>
+						<configuration>
+							<target>
+								<delete>
+									<fileset dir="src/main/webapp/WEB-INF/lib" includes="**/*.jar"
+										excludes="**/antlr-2.7.6.jar" />
+								</delete>
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-dependency-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>copy-dependencies</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>copy-dependencies</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>src/main/webapp/WEB-INF/lib</outputDirectory>
+							<excludeScope>provided</excludeScope>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
-
-
-
-		<pluginManagement>
-			<plugins>
-			
-
-			
-			
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>org.apache.maven.plugins</groupId>
-										<artifactId>maven-dependency-plugin</artifactId>
-										<versionRange>[1.0.0,)</versionRange>
-										<goals>
-											<goal>copy-dependencies</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore />
-									</action>
-								</pluginExecution>
-
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>org.apache.maven.plugins</groupId>
-										<artifactId>maven-resources-plugin</artifactId>
-										<versionRange>[1.0.0,)</versionRange>
-										<goals>
-											<goal>resources</goal>
-											<goal>testResources</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore />
-									</action>
-								</pluginExecution>
-
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
 
 	</build>
 
