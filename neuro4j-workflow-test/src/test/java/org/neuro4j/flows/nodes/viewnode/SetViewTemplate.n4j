@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<network>
+    <entities>
+        <item name="StartNodeSD" uuid="KF.p_lq3BH0AAAE9iObSKEcw">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="org.neuro4j.logic.def.node.StartBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="67" key="y"/>
+                <item value="970" key="x"/>
+            </properties>
+            <relations>
+                <item uuid="dOip_lq3Ep8AAAE9eiLSKEcx"/>
+            </relations>
+        </item>
+        <item name="ViewNode1" uuid="3QKp_lq3G_4AAAE9Rf7SKEcS">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="hello.jsp" key="SWF_PARAM_VIEW_TEMPLATE"/>
+                <item value="org.neuro4j.logic.def.node.SetViewTemplate" key="SWF_BLOCK_CLASS"/>
+                <item value="388" key="y"/>
+                <item value="201" key="x"/>
+            </properties>
+            <relations/>
+        </item>
+        <item name="ViewNode2" uuid="I..p_lq3A1sAAAE95jfSKEci">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="templateName" key="SWF_PARAM_VIEW_DYNAMIC_TEMPLATE"/>
+                <item value="org.neuro4j.logic.def.node.SetViewTemplate" key="SWF_BLOCK_CLASS"/>
+                <item value="383" key="y"/>
+                <item value="481" key="x"/>
+            </properties>
+            <relations/>
+        </item>
+        <item name="StartNode1Static" uuid="ckyp_lq3gH0AAAE9VvXSKEcS">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="org.neuro4j.logic.def.node.StartBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="72" key="y"/>
+                <item value="183" key="x"/>
+            </properties>
+            <relations>
+                <item uuid="8QKp_lq3K80AAAE99wzSKEcT"/>
+            </relations>
+        </item>
+        <item name="ViewNode3" uuid="VAqp_lq3rSsAAAE9f.7SKEcw">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="&quot;hello.jsp&quot;" key="SWF_PARAM_VIEW_TEMPLATE"/>
+                <item value="templateName" key="SWF_PARAM_VIEW_DYNAMIC_TEMPLATE"/>
+                <item value="org.neuro4j.logic.def.node.SetViewTemplate" key="SWF_BLOCK_CLASS"/>
+                <item value="381" key="y"/>
+                <item value="933" key="x"/>
+            </properties>
+            <relations/>
+        </item>
+        <item name="StartNodeDynamic" uuid="kByp_lq3F7gAAAE99i3SKEci">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="org.neuro4j.logic.def.node.StartBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="64" key="y"/>
+                <item value="468" key="x"/>
+            </properties>
+            <relations>
+                <item uuid="bHCp_lq3NaQAAAE9Us7SKEci"/>
+            </relations>
+        </item>
+        <item name="0c7AqG8BvKMAAAE9TsI3acOu" uuid="skPAqG8BvdwAAAE9TsL3o8Ou">
+            <properties>
+                <item value="org.neuro4j.logic.def.NetConfig" key="SWF_BLOCK_CLASS"/>
+                <item key="KEY_VISIBILITY"/>
+            </properties>
+            <relations/>
+        </item>
+        <item name="MapperNode2" uuid="m7Kp_lq3cIIAAAE9zwvSKEcx">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="org.neuro4j.logic.def.node.KeyMapper" key="SWF_BLOCK_CLASS"/>
+                <item value="&quot;hello1.jsp&quot;:templateName" key="SWF_PARAM_KEY_1"/>
+                <item value="222" key="y"/>
+                <item value="1006" key="x"/>
+            </properties>
+            <relations>
+                <item uuid="vNCp_lq3PO0AAAE9eCzSKEcx"/>
+            </relations>
+        </item>
+        <item name="MapperNode1" uuid="v4ep_lq3nwoAAAE9Q7LSKEci">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="org.neuro4j.logic.def.node.KeyMapper" key="SWF_BLOCK_CLASS"/>
+                <item value="&quot;hello1.jsp&quot;:templateName" key="SWF_PARAM_KEY_1"/>
+                <item value="222" key="y"/>
+                <item value="519" key="x"/>
+            </properties>
+            <relations>
+                <item uuid="MSup_lq3AKwAAAE9mtbSKEci"/>
+            </relations>
+        </item>
+    </entities>
+    <relations>
+        <item name="NEXT" uuid="bHCp_lq3NaQAAAE9Us7SKEci">
+            <properties>
+                <item value="v4ep_lq3nwoAAAE9Q7LSKEci" key="EndUUID"/>
+                <item value="kByp_lq3F7gAAAE99i3SKEci" key="StartUUID"/>
+            </properties>
+            <relation_parts>
+                <item uuid="kByp_lq3F7gAAAE99i3SKEci"/>
+                <item uuid="v4ep_lq3nwoAAAE9Q7LSKEci"/>
+            </relation_parts>
+        </item>
+        <item name="NEXT" uuid="MSup_lq3AKwAAAE9mtbSKEci">
+            <properties>
+                <item value="I..p_lq3A1sAAAE95jfSKEci" key="EndUUID"/>
+                <item value="v4ep_lq3nwoAAAE9Q7LSKEci" key="StartUUID"/>
+            </properties>
+            <relation_parts>
+                <item uuid="I..p_lq3A1sAAAE95jfSKEci"/>
+                <item uuid="v4ep_lq3nwoAAAE9Q7LSKEci"/>
+            </relation_parts>
+        </item>
+        <item name="NEXT" uuid="vNCp_lq3PO0AAAE9eCzSKEcx">
+            <properties>
+                <item value="VAqp_lq3rSsAAAE9f.7SKEcw" key="EndUUID"/>
+                <item value="m7Kp_lq3cIIAAAE9zwvSKEcx" key="StartUUID"/>
+            </properties>
+            <relation_parts>
+                <item uuid="VAqp_lq3rSsAAAE9f.7SKEcw"/>
+                <item uuid="m7Kp_lq3cIIAAAE9zwvSKEcx"/>
+            </relation_parts>
+        </item>
+        <item name="NEXT" uuid="dOip_lq3Ep8AAAE9eiLSKEcx">
+            <properties>
+                <item value="m7Kp_lq3cIIAAAE9zwvSKEcx" key="EndUUID"/>
+                <item value="KF.p_lq3BH0AAAE9iObSKEcw" key="StartUUID"/>
+            </properties>
+            <relation_parts>
+                <item uuid="KF.p_lq3BH0AAAE9iObSKEcw"/>
+                <item uuid="m7Kp_lq3cIIAAAE9zwvSKEcx"/>
+            </relation_parts>
+        </item>
+        <item name="NEXT" uuid="8QKp_lq3K80AAAE99wzSKEcT">
+            <properties>
+                <item value="3QKp_lq3G_4AAAE9Rf7SKEcS" key="EndUUID"/>
+                <item value="ckyp_lq3gH0AAAE9VvXSKEcS" key="StartUUID"/>
+            </properties>
+            <relation_parts>
+                <item uuid="3QKp_lq3G_4AAAE9Rf7SKEcS"/>
+                <item uuid="ckyp_lq3gH0AAAE9VvXSKEcS"/>
+            </relation_parts>
+        </item>
+    </relations>
+</network>
