@@ -30,8 +30,8 @@
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
                 <item value="PUBLIC" key="SYS_START_NODE_TYPE"/>
                 <item value="org.neuro4j.logic.def.node.StartBlock" key="SWF_BLOCK_CLASS"/>
-                <item value="117" key="y"/>
-                <item value="134" key="x"/>
+                <item value="115" key="y"/>
+                <item value="110" key="x"/>
             </properties>
             <relations>
                 <item uuid="pNUQV.0EVl0AAAE_kCweDKZr"/>
@@ -47,23 +47,16 @@
             </properties>
             <relations/>
         </item>
-        <item name="networkConfig" uuid="K2Wp_iYczb8AAAE_fYpJYrC7">
-            <properties>
-                <item value="org.neuro4j.logic.def.NetConfig" key="SWF_BLOCK_CLASS"/>
-                <item value="Public" key="KEY_VISIBILITY"/>
-            </properties>
-            <relations/>
-        </item>
         <item name="New" uuid="x7AQV.0ExFUAAAE_cLm8aabi">
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
                 <item value="PUBLIC" key="SYS_START_NODE_TYPE"/>
                 <item value="org.neuro4j.logic.def.node.StartBlock" key="SWF_BLOCK_CLASS"/>
-                <item value="124" key="y"/>
-                <item value="-7" key="x"/>
+                <item value="113" key="y"/>
+                <item value="0" key="x"/>
             </properties>
             <relations>
-                <item uuid="iPEQV.0E9esAAAE_DfO8aabi"/>
+                <item uuid="mTIQV.0EIxsAAAFAXJnat3lW"/>
             </relations>
         </item>
         <item name="Remove" uuid="Ca8QV.0E5FMAAAE_vfweDKZq">
@@ -95,8 +88,8 @@
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
                 <item value="org.neuro4j.logic.def.node.JoinBlock" key="SWF_BLOCK_CLASS"/>
-                <item value="374" key="y"/>
-                <item value="546" key="x"/>
+                <item value="396" key="y"/>
+                <item value="547" key="x"/>
             </properties>
             <relations>
                 <item uuid="9crAqG8B39cAAAE9q.y2jYXR"/>
@@ -113,7 +106,7 @@
             </properties>
             <relations>
                 <item uuid="IgsQV.0EZjgAAAE.4Fx7BoYb"/>
-                <item uuid="b5kQV.0EGSAAAAE9xE02.tb6"/>
+                <item uuid="04cQV.0EAqwAAAFAOebat3lV"/>
             </relations>
         </item>
         <item name="CallNode2" uuid="QdXAqG8BHfoAAAE9PLW2jYXP">
@@ -140,6 +133,25 @@
                 <item uuid="6PwQV.0Eyi0AAAE_DPO8aabi"/>
             </relations>
         </item>
+        <item name="networkConfig" uuid="BpIQV.0E4KoAAAFAZRjat3lX">
+            <properties>
+                <item value="org.neuro4j.logic.def.NetConfig" key="SWF_BLOCK_CLASS"/>
+                <item value="Public" key="KEY_VISIBILITY"/>
+            </properties>
+            <relations/>
+        </item>
+        <item name="List" uuid="omMQV.0EQgwAAAE9na0ql3.u">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <item value="org.neuro4j.logic.def.node.StartBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="122" key="y"/>
+                <item value="522" key="x"/>
+            </properties>
+            <relations>
+                <item uuid="W.oQV.0Esn0AAAE_VXQeDKZr"/>
+            </relations>
+        </item>
         <item name="SetPage" uuid="42nAqG8BGK0AAAE9nMsQ24Wx">
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
@@ -151,18 +163,6 @@
             </properties>
             <relations>
                 <item uuid="Q_jAqG8BTFIAAAE9u8IQ24Wy"/>
-            </relations>
-        </item>
-        <item name="List" uuid="omMQV.0EQgwAAAE9na0ql3.u">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="PUBLIC" key="SYS_START_NODE_TYPE"/>
-                <item value="org.neuro4j.logic.def.node.StartBlock" key="SWF_BLOCK_CLASS"/>
-                <item value="125" key="y"/>
-                <item value="636" key="x"/>
-            </properties>
-            <relations>
-                <item uuid="W.oQV.0Esn0AAAE_VXQeDKZr"/>
             </relations>
         </item>
     </entities>
@@ -221,6 +221,17 @@
                 <item uuid="Ca8QV.0E5FMAAAE_vfweDKZq"/>
             </relation_parts>
         </item>
+        <item name="NEXT" uuid="mTIQV.0EIxsAAAFAXJnat3lW">
+            <properties>
+                <item value="7wkQV.0EMq8AAAE_C_O8aabi" key="EndUUID"/>
+                <item value="0, 32, -86, -346|71, 378, -15, 0|" key="points"/>
+                <item value="x7AQV.0ExFUAAAE_cLm8aabi" key="StartUUID"/>
+            </properties>
+            <relation_parts>
+                <item uuid="7wkQV.0EMq8AAAE_C_O8aabi"/>
+                <item uuid="x7AQV.0ExFUAAAE_cLm8aabi"/>
+            </relation_parts>
+        </item>
         <item name="End" uuid="JlUQV.0EykcAAAE9ZJ2O6esr">
             <properties>
                 <item value="c_rAqG8BgnUAAAE9v4O2jYXR" key="EndUUID"/>
@@ -232,15 +243,15 @@
                 <item uuid="QdXAqG8BHfoAAAE9PLW2jYXP"/>
             </relation_parts>
         </item>
-        <item name="EndCreateAccount" uuid="b5kQV.0EGSAAAAE9xE02.tb6">
+        <item name="EndCreateAccount" uuid="04cQV.0EAqwAAAFAOebat3lV">
             <properties>
-                <item value="1hrAqG8BNDkAAAE96pEQ24Wv" key="EndUUID"/>
-                <item value="0, 29, -387, -173|0, 125, -387, -77|387, 125, 0, -77|387, 174, 0, -28|" key="points"/>
+                <item value="c_rAqG8BgnUAAAE9v4O2jYXR" key="EndUUID"/>
+                <item value="0, 29, -387, -65|372, 94, -15, 0|" key="points"/>
                 <item value="B8PAqG8ByIYAAAE9NHe2jYXO" key="StartUUID"/>
             </properties>
             <relation_parts>
+                <item uuid="c_rAqG8BgnUAAAE9v4O2jYXR"/>
                 <item uuid="B8PAqG8ByIYAAAE9NHe2jYXO"/>
-                <item uuid="1hrAqG8BNDkAAAE96pEQ24Wv"/>
             </relation_parts>
         </item>
         <item name="NEXT" uuid="Q_jAqG8BTFIAAAE9u8IQ24Wy">
@@ -267,7 +278,7 @@
         <item name="NEXT" uuid="LIfAqG8BUKcAAAE96cUQ24Ww">
             <properties>
                 <item value="uOvAqG8B__AAAAE9Z7AQ24Wt" key="EndUUID"/>
-                <item value="0, 21, 128, -131|0, 86, 128, -66|-128, 86, 0, -66|-128, 123, 0, -29|" key="points"/>
+                <item value="0, 21, 156, -187|0, 123, 156, -85|-156, 123, 0, -85|-156, 179, 0, -29|" key="points"/>
                 <item value="aLzAqG8BuD8AAAE9C7AQ24Ww" key="StartUUID"/>
             </properties>
             <relation_parts>
@@ -278,23 +289,12 @@
         <item name="NEXT" uuid="W.oQV.0Esn0AAAE_VXQeDKZr">
             <properties>
                 <item value="c_rAqG8BgnUAAAE9v4O2jYXR" key="EndUUID"/>
-                <item value="0, 32, 115, -201|0, 222, 115, -11|-115, 222, 0, -11|-115, 218, 0, -15|" key="points"/>
+                <item value="0, 32, 0, -220|0, 237, 0, -15|" key="points"/>
                 <item value="omMQV.0EQgwAAAE9na0ql3.u" key="StartUUID"/>
             </properties>
             <relation_parts>
                 <item uuid="c_rAqG8BgnUAAAE9v4O2jYXR"/>
                 <item uuid="omMQV.0EQgwAAAE9na0ql3.u"/>
-            </relation_parts>
-        </item>
-        <item name="NEXT" uuid="iPEQV.0E9esAAAE_DfO8aabi">
-            <properties>
-                <item value="7wkQV.0EMq8AAAE_C_O8aabi" key="EndUUID"/>
-                <item value="0, 32, -86, -346|0, 365, -86, -13|86, 365, 0, -13|86, 363, 0, -15|" key="points"/>
-                <item value="x7AQV.0ExFUAAAE_cLm8aabi" key="StartUUID"/>
-            </properties>
-            <relation_parts>
-                <item uuid="7wkQV.0EMq8AAAE_C_O8aabi"/>
-                <item uuid="x7AQV.0ExFUAAAE_cLm8aabi"/>
             </relation_parts>
         </item>
     </relations>
