@@ -16,6 +16,13 @@
     <servlet-name>neuro4j-webflows</servlet-name>
     <url-pattern>/f/*</url-pattern>
   </servlet-mapping>
-
+  <jsp-config>
+  <!-- 
+    <taglib>
+      <taglib-uri>/n4j</taglib-uri>
+      <taglib-location>/WEB-INF/tld/neuro4j.tld</taglib-location>
+    </taglib>
+     -->
+  </jsp-config>
   
 </web-app>

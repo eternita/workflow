@@ -11,6 +11,7 @@ import java.util.Map;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.neuro4j.core.Entity;
 import org.neuro4j.logic.LogicContext;
 import org.neuro4j.logic.swf.FlowExecutionException;
 import org.neuro4j.logic.swf.SimpleWorkflowException;
@@ -67,5 +68,54 @@ public class CallNodeTestCase extends BaseFlowTestCase{
 			fail(e.toString());
 		}
 	}
+	
+	
+	/**
+	 * Tests if callnode has 2 possible exits but next relation defined just for 1
+	 */
+	@Test
+	public void testCallDynamicNodeWith2Exits() {
+		try {
+			Map<String, Object> params = new HashMap<String, Object>();
+			
+			params.put("var123", "123");
+	
+			
+			Entity var2 = (Entity)executeFlowAndReturnObject("org.neuro4j.flows.nodes.callnode.CallByNameFlow-StartNode4", params, "CURRENT_NODE");
+			
+			assertEquals(var2.getName(), "EndNode5");
 
+		} catch (FlowExecutionException e) {
+			fail(e.toString());
+		}
+	}
+	@Test
+	public void testCallDynamicNodeWith2ExitsA() {
+		try {
+			Map<String, Object> params = new HashMap<String, Object>();
+			params.put("var123", "123");
+			
+			
+			Entity var2 = (Entity)executeFlowAndReturnObject("org.neuro4j.flows.nodes.callnode.CallByNameFlow-StartNode6", params, "CURRENT_NODE");
+			
+			assertEquals(var2.getName(), "EndNode8");
+
+		} catch (FlowExecutionException e) {
+			fail(e.toString());
+		}
+	}
+	
+	@Test
+	public void testCallDynamicNodeWith2ExitsB() {
+		try {
+			Map<String, Object> params = new HashMap<String, Object>();
+						
+			Entity var2 = (Entity)executeFlowAndReturnObject("org.neuro4j.flows.nodes.callnode.CallByNameFlow-StartNode6", params, "CURRENT_NODE");
+			
+			assertEquals(var2.getName(), "EndNode7");
+
+		} catch (FlowExecutionException e) {
+			fail(e.toString());
+		}
+	}
 }

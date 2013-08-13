@@ -23,7 +23,7 @@
         <module>neuro4j-workflow-common</module>
         <module>demo/flows-demo</module>
         <module>demo/flows-web-demo</module>
-        <module>demo/web-site-demo</module>
+        <module>demo/web-site-demo</module> 
     </modules>
 
     <properties>
