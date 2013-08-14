@@ -10,7 +10,7 @@ import org.neuro4j.logic.swf.FlowExecutionException;
 import org.neuro4j.logic.swf.FlowInitializationException;
 import org.neuro4j.logic.swf.ParameterDefinition;
 import org.neuro4j.logic.swf.ParameterDefinitionList;
-import org.neuro4j.storage.NeuroStorage;
+import org.neuro4j.storage.Storage;
 
 @ParameterDefinitionList(input={
                                 	@ParameterDefinition(name=IN_FILENAME, isOptional=true, type= "java.lang.String")},
@@ -26,7 +26,7 @@ public class BatchQueryStorage extends CustomBlock {
     @Override
     public int execute(LogicContext ctx) throws FlowExecutionException {
 		
-		NeuroStorage currentStorage = (NeuroStorage) ctx.get(CURRENT_STORAGE);
+		Storage currentStorage = (Storage) ctx.get(CURRENT_STORAGE);
 
 		String batchFileName = (String) ctx.get(IN_FILENAME);
         
