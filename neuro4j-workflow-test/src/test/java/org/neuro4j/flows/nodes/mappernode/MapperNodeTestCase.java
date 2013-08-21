@@ -7,6 +7,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 
 import org.junit.Test;
@@ -72,5 +73,26 @@ public class MapperNodeTestCase extends BaseFlowTestCase{
 		}
 	}
 	
+	
+	/**
+	 * This method test creation of objects in KeyMapper. like source: "(java.util.HashSet)" target:var1
+	 */
+	@Test
+	public void testDynamicObjectCreation() {
+		try {
+			Map<String, Object> params = new HashMap<String, Object>();
+			
+			Object var1 = executeFlowAndReturnObject("org.neuro4j.flows.nodes.mappernode.MapperFlow-DynamicCreation1", params, "var1");
+			if (var1 == null || !(var1 instanceof HashSet))
+			{
+				fail("HashSet has not been created.");
+			}
+
+			
+
+		} catch (FlowExecutionException e) {
+			fail(e.toString());
+		}
+	}
 	
 }
