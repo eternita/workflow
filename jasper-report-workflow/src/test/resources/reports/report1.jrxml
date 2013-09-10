@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3a184355-26ce-44d9-bbef-75ec02336138">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="slogan" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="264" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="19c1b2c4-fc49-47c7-87ef-03f66f498c9c" x="219" y="30" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Hello]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="d6d8c5ed-ed56-4c8c-a209-7e2a0a9b0e39" x="10" y="60" width="515" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["This sample uses Barcode4J Version 2.0"]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="73ae8dcb-aca2-4885-b4de-14fd0a99d665" x="188" y="143" width="285" height="11"/>
+			</line>
+			<staticText>
+				<reportElement uuid="f1225ea5-28a3-42fc-92a7-cd36abf29073" x="17" y="192" width="515" height="30"/>
+				<textElement textAlignment="Center">
+					<font size="22"/>
+				</textElement>
+				<text><![CDATA[Barcode Sample]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="31fe069c-dc53-4f5d-8d2f-6a5f1ee9016c" x="219" y="17" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Hello]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="331" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="fa4bdf8d-e826-4886-a750-0c0af52e9720" x="17" y="12" width="202" height="51"/>
+				<textElement>
+					<font fontName="Serif" size="12" isItalic="true" pdfEncoding="Cp1251"/>
+				</textElement>
+				<text><![CDATA[Static text here1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d6f7baed-de8b-4cae-a9a6-3e2e78e2514a" x="394" y="60" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Hello]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="6f0521a4-de84-4e16-97ec-a5e9771b5e72" x="0" y="129" width="515" height="20"/>
+				<textElement textAlignment="Center">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["This sample uses Barcode4J Version 2.0"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

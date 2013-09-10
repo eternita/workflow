@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.neuro4j.logic.LogicContext;
+import org.neuro4j.logic.swf.SWFConstants;
 import org.neuro4j.logic.swf.SimpleWorkflowEngine;
 import org.neuro4j.web.logic.render.ViewNodeRenderEngine;
 import org.neuro4j.web.logic.render.ViewNodeRenderEngineFactory;
@@ -37,7 +38,7 @@ public class FlowDispatcherServlet extends HttpServlet {
 
 	private static final String RENDER_VIEW_KEY = "VIEW_TEMPLATE";
 	
-	private static final String RENDER_ENGINE_KEY = "RENDER_ENGINE_KEY";
+	private static final String RENDER_ENGINE_KEY = SWFConstants.RENDER_ENGINE_KEY;
 	
 
 	private static final String LOCALE_KEY = "LOCALE";
@@ -93,21 +94,22 @@ public class FlowDispatcherServlet extends HttpServlet {
 			view = (String) logicContext.get(RENDER_VIEW_KEY);
 
 			// handle if view is not specified -> go to default page with trace
-			if (null == view)
-				view = DEFAULT_VIEW_PAGE;
-			else
+			if (null == view){
+				view = DEFAULT_VIEW_PAGE;				
+			} else if (view.startsWith("/")){
+				view = DEFAULT_VIEW_DIRECTORY + view.replaceFirst("/", "");
+			} else{
 				view = DEFAULT_VIEW_DIRECTORY + view;
+			}
 			
 			String renderEngineImpl = (String) logicContext.get(RENDER_ENGINE_KEY);
-//			renderEngineImpl = "org.neuro4j.web.logic.render.jasper.JasperViewNodeRenderEngine";
-//			renderEngineImpl = "org.neuro4j.web.logic.render.DummyViewNodeRenderEngine";
 			
-			if (null != renderEngineImpl && renderEngineImpl.trim().length() > 0)
+		    if (null != renderEngineImpl && renderEngineImpl.trim().length() > 0 && !renderEngineImpl.trim().equals("jsp"))
 			{
 				// get render engine
-				ViewNodeRenderEngine renderEngine = ViewNodeRenderEngineFactory.getViewNodeRenderEngine(renderEngineImpl);
+				ViewNodeRenderEngine renderEngine = ViewNodeRenderEngineFactory.getViewNodeRenderEngine(getServletConfig(), getServletContext(), renderEngineImpl);
 				// custom rendering
-				renderEngine.render(response, logicContext, view);
+				renderEngine.render(request, response, getServletContext(), logicContext, view);
 			
 			} else {
 				

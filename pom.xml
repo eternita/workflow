@@ -21,6 +21,9 @@
     <modules>
         <module>neuro4j-logic-web</module>
         <module>neuro4j-workflow-common</module>
+        <module>jasper-report-workflow</module>
+        <module>jasper-report-web-plugin</module>
+        <module>velocity-web-plugin</module>
         <module>demo/flows-demo</module>
         <module>demo/flows-web-demo</module>
         <module>demo/web-site-demo</module> 
