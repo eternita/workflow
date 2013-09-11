@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<network>
+    <entities>
+        <item name="networkConfig" uuid="XDkQV.0EJ9EAAAFBXQuJkg71">
+            <properties>
+                <item value="org.neuro4j.logic.def.NetConfig" key="SWF_BLOCK_CLASS"/>
+                <item value="Public" key="KEY_VISIBILITY"/>
+            </properties>
+            <relations/>
+        </item>
+        <item name="MapperNode2" uuid="wwwQV.0EqEEAAAFBhV6Jkg7T">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="org.neuro4j.logic.def.node.KeyMapper" key="SWF_BLOCK_CLASS"/>
+                <item value="&quot;/jsp/example4/jasperReport.jsp&quot;:page" key="SWF_PARAM_KEY_1"/>
+                <item value="330" key="y"/>
+                <item value="&quot;activeCl&quot;:example4" key="SWF_PARAM_KEY_2"/>
+                <item value="822" key="x"/>
+            </properties>
+            <relations>
+                <item uuid="zfkQV.0EGz0AAAFBiV6Jkg7T"/>
+            </relations>
+        </item>
+        <item name="View" uuid="XpjAqG8BaHwAAAFAGdONktGW">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <item value="org.neuro4j.logic.def.node.StartBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="48" key="y"/>
+                <item value="803" key="x"/>
+            </properties>
+            <relations>
+                <item uuid="Aj_AqG8BSioAAAFAl_6NktGW"/>
+            </relations>
+        </item>
+        <item name="Start" uuid="dnUQV.0E4rIAAAFAb7JeL8DT">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <item value="org.neuro4j.logic.def.node.StartBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="54" key="y"/>
+                <item value="516" key="x"/>
+            </properties>
+            <relations>
+                <item uuid="2RHAqG8BW78AAAFAKUGfFcH5"/>
+            </relations>
+        </item>
+        <item name="ViewNode3" uuid="QkHAqG8BlmwAAAFAZduNktGW">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="/jsp/application.jsp" key="SWF_PARAM_VIEW_TEMPLATE"/>
+                <item value="org.neuro4j.logic.def.node.SetViewTemplate" key="SWF_BLOCK_CLASS"/>
+                <item value="jsp" key="SWF_PARAM_VIEW_RENDER_TYPE"/>
+                <item value="424" key="y"/>
+                <item value="790" key="x"/>
+            </properties>
+            <relations/>
+        </item>
+        <item name="GetAccountsList" uuid="eUDAqG8BtqAAAAFAa4fFhtFQ">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="GetAccountsList" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.example.web.blocks.GetAccountsList" key="SWF_CUSTOM_CLASS"/>
+                <item value="accounts:accounts" key="Parameter1:OUT"/>
+                <item value="217" key="y"/>
+                <item value="511" key="x"/>
+            </properties>
+            <relations>
+                <item uuid="4xLAqG8Bi6EAAAFAbIfFhtFQ"/>
+            </relations>
+        </item>
+        <item name="MapperNode1" uuid="5ODAqG8B63UAAAFAglufFcH5">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="org.neuro4j.logic.def.node.KeyMapper" key="SWF_BLOCK_CLASS"/>
+                <item value="153" key="y"/>
+                <item value="535" key="x"/>
+            </properties>
+            <relations>
+                <item uuid="Kw7AqG8BA_UAAAFAhVufFcH5"/>
+            </relations>
+        </item>
+        <item name="CreateJRBeanCollectionDataSource" uuid="mR_AqG8BmbgAAAFAsfzFhtFP">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="CreateJRBeanCollectionDataSource" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.jasper.datasource.CreateJRBeanCollectionDataSource" key="SWF_CUSTOM_CLASS"/>
+                <item value="collection:accounts" key="Parameter1:IN"/>
+                <item value="316" key="y"/>
+                <item value="457" key="x"/>
+            </properties>
+            <relations>
+                <item uuid="CMXAqG8Bcp4AAAFAs_zFhtFP"/>
+            </relations>
+        </item>
+        <item name="ViewNode2" uuid="V5XAqG8BjuIAAAFA2gafFcHr">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="/reports/report1.jasper" key="SWF_PARAM_VIEW_TEMPLATE"/>
+                <item value="" key="SWF_PARAM_VIEW_DYNAMIC_TEMPLATE"/>
+                <item value="org.neuro4j.logic.def.node.SetViewTemplate" key="SWF_BLOCK_CLASS"/>
+                <item value="jasper" key="SWF_PARAM_VIEW_RENDER_TYPE"/>
+                <item value="424" key="y"/>
+                <item value="489" key="x"/>
+            </properties>
+            <relations/>
+        </item>
+    </entities>
+    <relations>
+        <item name="NEXT" uuid="Aj_AqG8BSioAAAFAl_6NktGW">
+            <properties>
+                <item value="wwwQV.0EqEEAAAFBhV6Jkg7T" key="EndUUID"/>
+                <item value="0, 32, -10, -330|10, 333, 0, -29|" key="points"/>
+                <item value="XpjAqG8BaHwAAAFAGdONktGW" key="StartUUID"/>
+            </properties>
+            <relation_parts>
+                <item uuid="wwwQV.0EqEEAAAFBhV6Jkg7T"/>
+                <item uuid="XpjAqG8BaHwAAAFAGdONktGW"/>
+            </relation_parts>
+        </item>
+        <item name="NEXT" uuid="4xLAqG8Bi6EAAAFAbIfFhtFQ">
+            <properties>
+                <item value="mR_AqG8BmbgAAAFAsfzFhtFP" key="EndUUID"/>
+                <item value="0, 0, -551, -344|551, 316, 0, -28|" key="points"/>
+                <item value="eUDAqG8BtqAAAAFAa4fFhtFQ" key="StartUUID"/>
+            </properties>
+            <relation_parts>
+                <item uuid="eUDAqG8BtqAAAAFAa4fFhtFQ"/>
+                <item uuid="mR_AqG8BmbgAAAFAsfzFhtFP"/>
+            </relation_parts>
+        </item>
+        <item name="NEXT" uuid="2RHAqG8BW78AAAFAKUGfFcH5">
+            <properties>
+                <item value="5ODAqG8B63UAAAFAglufFcH5" key="EndUUID"/>
+                <item value="0, 32, 550, 173|-550, -141, 0, 0|" key="points"/>
+                <item value="dnUQV.0E4rIAAAFAb7JeL8DT" key="StartUUID"/>
+            </properties>
+            <relation_parts>
+                <item uuid="dnUQV.0E4rIAAAFAb7JeL8DT"/>
+                <item uuid="5ODAqG8B63UAAAFAglufFcH5"/>
+            </relation_parts>
+        </item>
+        <item name="NEXT" uuid="zfkQV.0EGz0AAAFBiV6Jkg7T">
+            <properties>
+                <item value="QkHAqG8BlmwAAAFAZduNktGW" key="EndUUID"/>
+                <item value="0, 0, -859, -453|859, 424, 0, -29|" key="points"/>
+                <item value="wwwQV.0EqEEAAAFBhV6Jkg7T" key="StartUUID"/>
+            </properties>
+            <relation_parts>
+                <item uuid="wwwQV.0EqEEAAAFBhV6Jkg7T"/>
+                <item uuid="QkHAqG8BlmwAAAFAZduNktGW"/>
+            </relation_parts>
+        </item>
+        <item name="NEXT" uuid="CMXAqG8Bcp4AAAFAs_zFhtFP">
+            <properties>
+                <item value="V5XAqG8BjuIAAAFA2gafFcHr" key="EndUUID"/>
+                <item value="0, 0, -553, -453|553, 424, 0, -29|" key="points"/>
+                <item value="mR_AqG8BmbgAAAFAsfzFhtFP" key="StartUUID"/>
+            </properties>
+            <relation_parts>
+                <item uuid="V5XAqG8BjuIAAAFA2gafFcHr"/>
+                <item uuid="mR_AqG8BmbgAAAFAsfzFhtFP"/>
+            </relation_parts>
+        </item>
+        <item name="NEXT" uuid="Kw7AqG8BA_UAAAFAhVufFcH5">
+            <properties>
+                <item value="eUDAqG8BtqAAAAFAa4fFhtFQ" key="EndUUID"/>
+                <item value="0, 0, -550, -372|550, 343, 0, -29|" key="points"/>
+                <item value="5ODAqG8B63UAAAFAglufFcH5" key="StartUUID"/>
+            </properties>
+            <relation_parts>
+                <item uuid="eUDAqG8BtqAAAAFAa4fFhtFQ"/>
+                <item uuid="5ODAqG8B63UAAAFAglufFcH5"/>
+            </relation_parts>
+        </item>
+    </relations>
+</network>

@@ -28,6 +28,7 @@ public class AccountMngImpl implements AccountMng {
 		init();
 	}
 	
+	
 	private static void init() {
 		
 		for (int i = 1; i < 6; i++)
@@ -69,6 +70,8 @@ public class AccountMngImpl implements AccountMng {
 		accounts.put(acount.getUuid(), acount);
 		return acount;
 	}
+	
+	
 	
 	private static  String getRandomFromArray(Random rand, String[] array)
 	{

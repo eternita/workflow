@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<network>
+    <entities>
+        <item name="networkConfig" uuid="ST4QV.0E9vEAAAFBtL.Jkg8A">
+            <properties>
+                <item value="org.neuro4j.logic.def.NetConfig" key="SWF_BLOCK_CLASS"/>
+                <item value="Public" key="KEY_VISIBILITY"/>
+            </properties>
+            <relations/>
+        </item>
+        <item name="MapperNode1" uuid="LOcQV.0Et_8AAAFBUdaJkg78">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="org.neuro4j.logic.def.node.KeyMapper" key="SWF_BLOCK_CLASS"/>
+                <item value="&quot;/jsp/example3/include_velocity.jsp&quot;:page" key="SWF_PARAM_KEY_1"/>
+                <item value="230" key="y"/>
+                <item value="&quot;activeCl&quot;:example3" key="SWF_PARAM_KEY_2"/>
+                <item value="529" key="x"/>
+            </properties>
+            <relations>
+                <item uuid="RqIQV.0EuAAAAAFBUdaJkg78"/>
+            </relations>
+        </item>
+        <item name="ViewNode2" uuid=".r_AqG8BCe0AAAFAvSyNktF2">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="/jsp/application.jsp" key="SWF_PARAM_VIEW_TEMPLATE"/>
+                <item value="org.neuro4j.logic.def.node.SetViewTemplate" key="SWF_BLOCK_CLASS"/>
+                <item value="jsp" key="SWF_PARAM_VIEW_RENDER_TYPE"/>
+                <item value="336" key="y"/>
+                <item value="497" key="x"/>
+            </properties>
+            <relations/>
+        </item>
+        <item name="View" uuid="5hfAqG8BeWIAAAFARSKNktF2">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <item value="org.neuro4j.logic.def.node.StartBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="10" key="y"/>
+                <item value="510" key="x"/>
+            </properties>
+            <relations>
+                <item uuid="wKnAqG8BupMAAAFAaxqNktF3"/>
+            </relations>
+        </item>
+        <item name="Include" uuid="vA8QV.0E0rUAAAFAMPUtpMvZ">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <item value="org.neuro4j.logic.def.node.StartBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="10" key="y"/>
+                <item value="310" key="x"/>
+            </properties>
+            <relations>
+                <item uuid="_lQQV.0EWvQAAAFAeQctpMva"/>
+            </relations>
+        </item>
+        <item name="GetAccountsList" uuid="7SoQV.0EsVAAAAFAQ_QracwE">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="GetAccountsList" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.example.web.blocks.GetAccountsList" key="SWF_CUSTOM_CLASS"/>
+                <item value="217" key="y"/>
+                <item value="305" key="x"/>
+            </properties>
+            <relations>
+                <item uuid="YokQV.0E_IcAAAFAUPQracwE"/>
+            </relations>
+        </item>
+        <item name="ViewNode1" uuid="xBUQV.0EJGcAAAFA9_stpMvZ">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="/velotemplates/template.vm" key="SWF_PARAM_VIEW_TEMPLATE"/>
+                <item value="org.neuro4j.logic.def.node.SetViewTemplate" key="SWF_BLOCK_CLASS"/>
+                <item value="velocity" key="SWF_PARAM_VIEW_RENDER_TYPE"/>
+                <item value="339" key="y"/>
+                <item value="267" key="x"/>
+            </properties>
+            <relations/>
+        </item>
+    </entities>
+    <relations>
+        <item name="NEXT" uuid="wKnAqG8BupMAAAFAaxqNktF3">
+            <properties>
+                <item value="LOcQV.0Et_8AAAFBUdaJkg78" key="EndUUID"/>
+                <item value="0, 32, -22, -298|22, 301, 0, -29|" key="points"/>
+                <item value="5hfAqG8BeWIAAAFARSKNktF2" key="StartUUID"/>
+            </properties>
+            <relation_parts>
+                <item uuid="LOcQV.0Et_8AAAFBUdaJkg78"/>
+                <item uuid="5hfAqG8BeWIAAAFARSKNktF2"/>
+            </relation_parts>
+        </item>
+        <item name="NEXT" uuid="RqIQV.0EuAAAAAFBUdaJkg78">
+            <properties>
+                <item value=".r_AqG8BCe0AAAFAvSyNktF2" key="EndUUID"/>
+                <item value="0, 0, -565, -367|565, 338, 0, -29|" key="points"/>
+                <item value="LOcQV.0Et_8AAAFBUdaJkg78" key="StartUUID"/>
+            </properties>
+            <relation_parts>
+                <item uuid="LOcQV.0Et_8AAAFBUdaJkg78"/>
+                <item uuid=".r_AqG8BCe0AAAFAvSyNktF2"/>
+            </relation_parts>
+        </item>
+        <item name="NEXT" uuid="YokQV.0E_IcAAAFAUPQracwE">
+            <properties>
+                <item value="xBUQV.0EJGcAAAFA9_stpMvZ" key="EndUUID"/>
+                <item value="0, 0, -350, -368|350, 339, 0, -29|" key="points"/>
+                <item value="7SoQV.0EsVAAAAFAQ_QracwE" key="StartUUID"/>
+            </properties>
+            <relation_parts>
+                <item uuid="7SoQV.0EsVAAAAFAQ_QracwE"/>
+                <item uuid="xBUQV.0EJGcAAAFA9_stpMvZ"/>
+            </relation_parts>
+        </item>
+        <item name="NEXT" uuid="_lQQV.0EWvQAAAFAeQctpMva">
+            <properties>
+                <item value="7SoQV.0EsVAAAAFAQ_QracwE" key="EndUUID"/>
+                <item value="0, 32, 0, -296|0, 299, 0, -29|" key="points"/>
+                <item value="vA8QV.0E0rUAAAFAMPUtpMvZ" key="StartUUID"/>
+            </properties>
+            <relation_parts>
+                <item uuid="vA8QV.0E0rUAAAFAMPUtpMvZ"/>
+                <item uuid="7SoQV.0EsVAAAAFAQ_QracwE"/>
+            </relation_parts>
+        </item>
+    </relations>
+</network>

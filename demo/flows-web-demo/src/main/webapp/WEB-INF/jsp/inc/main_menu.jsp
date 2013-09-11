@@ -4,11 +4,15 @@
 
 
         <!-- Home -->
-        <li><a  class="${example_1}" href="UserAccounts-List">Example 1</a>
+        <li><a  class="${example_1}" href="UserAccounts-List">Example1</a>
+        </li>
+        <li><a  class="${example_2}" href="Example2-Start">RemoteInclude</a>
         </li>
     
         <!--  -->
-        <li><a class="${example_2}" href="Example2-Start">Example 2</a>
+        <li><a class="${example3}" href="ViewVelocity-View">Velocity</a>
 
         </li>
 
+        <li><a class="${example4}" href="GenerateJasperReport-View">JasperReports</a>
+        </li>

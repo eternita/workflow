@@ -10,7 +10,6 @@
 				<th scope="col" abbr="Premium">Remove</th>
 			</tr>
 		</thead>
-		<tfoot>
 		<tbody>
 			<c:forEach items="${accountList}" var="account">
 				<tr>
@@ -23,6 +22,7 @@
 							src="../images/delete.gif" alt="remove"></a></td>
 				</tr>
 			</c:forEach>
+			</tbody>	
 		<tfoot>
 			<tr class="odd">
 				<td class="column1">&nbsp;</td>
@@ -36,3 +36,9 @@
 		</tfoot>
 	</table>
 </div>
+
+<hr>
+<b>Source:</b>
+
+<p><img alt="" src="../images/example1.jpg"> 
+
