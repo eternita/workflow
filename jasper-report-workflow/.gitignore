@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 /bin
 /target
 /.externalToolBuilders
 /.settings
+=======
+/target
+/bin
+>>>>>>> refs/remotes/origin/master
