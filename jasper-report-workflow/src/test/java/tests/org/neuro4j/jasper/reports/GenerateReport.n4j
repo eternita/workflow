@@ -6,7 +6,7 @@
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
                 <item value="PUBLIC" key="SYS_START_NODE_TYPE"/>
                 <item value="org.neuro4j.logic.def.node.StartBlock" key="SWF_BLOCK_CLASS"/>
-                <item value="10" key="y"/>
+                <item value="98" key="y"/>
                 <item value="310" key="x"/>
             </properties>
             <relations>
@@ -16,12 +16,12 @@
         <item name="GenerateReport" uuid="IyMQV.0EgS0AAAFAgP8XwXn9">
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="format:&quot;pdf&quot;" key="Parameter4:IN"/>
+                <item value="inputStream:inputStream" key="Parameter4:IN"/>
                 <item value="GenerateReport" key="SWF_BLOCK_CLASS"/>
                 <item value="org.neuro4j.jasper.report.GenerateReport" key="SWF_CUSTOM_CLASS"/>
                 <item value="parameters:parameters" key="Parameter2:IN"/>
-                <item value="outputStream:outputStream" key="Parameter1:IN"/>
-                <item value="inputStream:inputStream" key="Parameter3:IN"/>
+                <item value="format:&quot;pdf&quot;" key="Parameter1:IN"/>
+                <item value="outputStream:outputStream" key="Parameter3:IN"/>
                 <item value="555" key="y"/>
                 <item value="304" key="x"/>
             </properties>
@@ -38,7 +38,7 @@
             </properties>
             <relations/>
         </item>
-        <item name="networkConfig" uuid="WJKp_iYcjHIAAAFBRRDiAhL7">
+        <item name="networkConfig" uuid="44mp_iYcDvQAAAFBjArg5xPF">
             <properties>
                 <item value="org.neuro4j.logic.def.NetConfig" key="SWF_BLOCK_CLASS"/>
                 <item value="Public" key="KEY_VISIBILITY"/>
@@ -88,8 +88,8 @@
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
                 <item value="CreateFileOutputStream" key="SWF_BLOCK_CLASS"/>
                 <item value="org.neuro4j.jasper.output.CreateFileOutputStream" key="SWF_CUSTOM_CLASS"/>
-                <item value="filePath:&quot;target/test1.pdf&quot;" key="Parameter2:IN"/>
-                <item value="createFile:&quot;true&quot;" key="Parameter1:IN"/>
+                <item value="createFile:&quot;true&quot;" key="Parameter2:IN"/>
+                <item value="filePath:&quot;target/test1.pdf&quot;" key="Parameter1:IN"/>
                 <item value="outputStream:jasperOutputStream" key="Parameter1:OUT"/>
                 <item value="217" key="y"/>
                 <item value="282" key="x"/>

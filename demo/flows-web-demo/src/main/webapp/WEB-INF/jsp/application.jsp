@@ -17,7 +17,7 @@
   
     <div id="xHeader">
         <div>
-            <a id="uLogo" href="UserAccounts-List">Neuro4j Web Demo</a>		
+            <a id="uLogo" href="http://neuro4j.org/projects/java-workflow-engine">Neuro4j Web Demo</a>		
         </div>
     </div>
 
@@ -27,7 +27,7 @@
 <div class="container_12">
         <div class="grid_7">
 	        <div class="xContentHeader">
-               <a style="text-decoration: none;" href="UserAccounts-List"> <h3> <fmt:message key="message.application.title" /></h3></a>
+               <a style="text-decoration: none;" href="http://neuro4j.org/projects/java-workflow-engine"> <h3> <fmt:message key="message.application.title" /></h3></a>
                	<ul>
 		            <%@ include file="/WEB-INF/jsp/inc/main_menu.jsp"%>
 		        </ul>
