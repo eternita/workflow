@@ -48,7 +48,8 @@ public class FlowDispatcherServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		try
-		{
+		{			
+			request.setCharacterEncoding("utf-8");
 			String urlStr = request.getRequestURI(); // /not-root-context/n4j/en_US/Welcome-start  /n4j/en_US/Welcome-start
 			String[] urlSplit = urlStr.split("/");
 			String flow = urlSplit[urlSplit.length - 1]; // the last part

@@ -1,8 +1,9 @@
 package org.neuro4j.example.web.blocks;
 
-import static org.neuro4j.example.web.blocks.CreateAccount.IN_FIRSTNAME;
-import static org.neuro4j.example.web.blocks.CreateAccount.IN_LASTNAME;
-import static org.neuro4j.example.web.blocks.CreateAccount.OUT_ACCOUNT;
+import static org.neuro4j.example.web.blocks.CreateAccount.*;
+
+import java.util.Map;
+
 
 import org.neuro4j.example.web.common.CreateException;
 import org.neuro4j.example.web.mng.Account;
@@ -16,12 +17,15 @@ import org.neuro4j.logic.swf.ParameterDefinition;
 import org.neuro4j.logic.swf.ParameterDefinitionList;
 
 @ParameterDefinitionList(input={
-		                        @ParameterDefinition(name=IN_FIRSTNAME, isOptional=false, type= "java.lang.String"),@ParameterDefinition(name=IN_LASTNAME, isOptional=false, type= "java.lang.String")},
+		                        @ParameterDefinition(name=IN_FIRSTNAME, isOptional=false, type= "java.lang.String"),
+		                        @ParameterDefinition(name=IN_LASTNAME, isOptional=false, type= "java.lang.String"), 
+		                        @ParameterDefinition(name=IN_ACCOUNTS, isOptional=false, type= "java.util.Map")},
                          output={
 		                        @ParameterDefinition(name=OUT_ACCOUNT, isOptional=false, type= "org.neuro4j.example.web.mng.Account")})	
 public class CreateAccount extends CustomBlock {
     
     static final String IN_FIRSTNAME = "firstName";
+    static final String IN_ACCOUNTS = "accounts";
     static final String IN_LASTNAME = "lastName";
       
     static final String OUT_ACCOUNT = "account"; 
@@ -34,11 +38,11 @@ public class CreateAccount extends CustomBlock {
 		
 		String firstName = (String) ctx.get(IN_FIRSTNAME);
 		String lastName = (String)  ctx.get(IN_LASTNAME);
-
+		Map accounts = (Map) ctx.get(IN_ACCOUNTS);
 		
 		Account account = null;
 		try {
-			account = accountMng.createAccount(firstName, lastName);
+			account = accountMng.createAccount(accounts, firstName, lastName);
 		} catch (CreateException e) {
 			e.printStackTrace();
 			

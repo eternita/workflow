@@ -23,11 +23,11 @@
 			</staticText>
 			<image>
 				<reportElement uuid="5ee446a9-d430-479c-9d33-ef2eb635a001" x="0" y="0" width="89" height="74"/>
-				<imageExpression><![CDATA["..\\reports\\neuro4j_logo.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["../reports/neuro4j_logo.jpg"]]></imageExpression>
 			</image>
 			<image>
 				<reportElement uuid="c0a24815-d458-4ab2-a85b-39e3cb6f2a72" x="166" y="6" width="64" height="58"/>
-				<imageExpression><![CDATA["..\\reports\\js_reports-library_1_rg2.jpg"]]></imageExpression>
+				<imageExpression><![CDATA["../reports/js_reports-library_1_rg2.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</title>

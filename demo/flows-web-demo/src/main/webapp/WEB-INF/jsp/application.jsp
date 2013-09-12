@@ -1,4 +1,4 @@
-<%@page contentType="text/html; charset=utf-8" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
@@ -7,8 +7,9 @@
         <fmt:setBundle basename="languages/messages"/>
   <html lang="en_US">
   <head>
-  
-
+       <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+       <meta name="ROBOTS" content="noindex, nofollow"/>
+       
       <title><fmt:message key="message.meta.title" /></title>
       <link rel="StyleSheet" href="../css/960.css" />
       <link rel="stylesheet" href="../css/style.css" />

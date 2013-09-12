@@ -17,7 +17,5 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.neuro4j.studio.core.NEURO4J_CONTAINER/0.8"/>
-	<classpathentry kind="lib" path="E:/dev/local/neuro4j/workflow/velocity-web-plugin/target/velocity-web-plugin-1.2.2-SNAPSHOT.jar"/>
 	<classpathentry kind="output" path="src/main/webapp/WEB-INF/classes"/>
 </classpath>

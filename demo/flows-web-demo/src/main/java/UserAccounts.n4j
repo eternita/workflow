@@ -30,8 +30,8 @@
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
                 <item value="PUBLIC" key="SYS_START_NODE_TYPE"/>
                 <item value="org.neuro4j.logic.def.node.StartBlock" key="SWF_BLOCK_CLASS"/>
-                <item value="115" key="y"/>
-                <item value="110" key="x"/>
+                <item value="26" key="y"/>
+                <item value="105" key="x"/>
             </properties>
             <relations>
                 <item uuid="pNUQV.0EVl0AAAE_kCweDKZr"/>
@@ -52,8 +52,8 @@
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
                 <item value="PUBLIC" key="SYS_START_NODE_TYPE"/>
                 <item value="org.neuro4j.logic.def.node.StartBlock" key="SWF_BLOCK_CLASS"/>
-                <item value="113" key="y"/>
-                <item value="0" key="x"/>
+                <item value="20" key="y"/>
+                <item value="-1" key="x"/>
             </properties>
             <relations>
                 <item uuid="mTIQV.0EIxsAAAFAXJnat3lW"/>
@@ -64,7 +64,7 @@
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
                 <item value="PUBLIC" key="SYS_START_NODE_TYPE"/>
                 <item value="org.neuro4j.logic.def.node.StartBlock" key="SWF_BLOCK_CLASS"/>
-                <item value="119" key="y"/>
+                <item value="28" key="y"/>
                 <item value="317" key="x"/>
             </properties>
             <relations>
@@ -82,6 +82,30 @@
             </properties>
             <relations>
                 <item uuid="kE_AqG8BAR8AAAE9SPe2jYXR"/>
+            </relations>
+        </item>
+        <item name="GetAccountsFromSession" uuid="Asap_iYclYEAAAFBVJvg5xRK">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="GetAccountsFromSession" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.example.web.blocks.GetAccountsFromSession" key="SWF_CUSTOM_CLASS"/>
+                <item value="117" key="y"/>
+                <item value="11" key="x"/>
+            </properties>
+            <relations>
+                <item uuid="XN.p_iYclYIAAAFBVJvg5xRK"/>
+            </relations>
+        </item>
+        <item name="GetAccountsFromSession" uuid="uS2p_iYcXeQAAAFB4uPg5xRJ">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="GetAccountsFromSession" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.example.web.blocks.GetAccountsFromSession" key="SWF_CUSTOM_CLASS"/>
+                <item value="117" key="y"/>
+                <item value="511" key="x"/>
+            </properties>
+            <relations>
+                <item uuid="Ynyp_iYcB9kAAAFB5OPg5xRJ"/>
             </relations>
         </item>
         <item name="JoinNode2" uuid="c_rAqG8BgnUAAAE9v4O2jYXR">
@@ -122,6 +146,13 @@
                 <item uuid="JlUQV.0EykcAAAE9ZJ2O6esr"/>
             </relations>
         </item>
+        <item name="networkConfig" uuid="LP.p_iYcXXkAAAFB4LTg5xRK">
+            <properties>
+                <item value="org.neuro4j.logic.def.NetConfig" key="SWF_BLOCK_CLASS"/>
+                <item value="Public" key="KEY_VISIBILITY"/>
+            </properties>
+            <relations/>
+        </item>
         <item name="JoinNode2" uuid="7wkQV.0EMq8AAAE_C_O8aabi">
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
@@ -133,23 +164,16 @@
                 <item uuid="6PwQV.0Eyi0AAAE_DPO8aabi"/>
             </relations>
         </item>
-        <item name="networkConfig" uuid="BpIQV.0E4KoAAAFAZRjat3lX">
-            <properties>
-                <item value="org.neuro4j.logic.def.NetConfig" key="SWF_BLOCK_CLASS"/>
-                <item value="Public" key="KEY_VISIBILITY"/>
-            </properties>
-            <relations/>
-        </item>
-        <item name="List" uuid="omMQV.0EQgwAAAE9na0ql3.u">
+        <item name="GetAccountsFromSession" uuid="xJyp_iYczNMAAAFBTXbg5xRK">
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="PUBLIC" key="SYS_START_NODE_TYPE"/>
-                <item value="org.neuro4j.logic.def.node.StartBlock" key="SWF_BLOCK_CLASS"/>
-                <item value="122" key="y"/>
-                <item value="522" key="x"/>
+                <item value="GetAccountsFromSession" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.example.web.blocks.GetAccountsFromSession" key="SWF_CUSTOM_CLASS"/>
+                <item value="117" key="y"/>
+                <item value="111" key="x"/>
             </properties>
             <relations>
-                <item uuid="W.oQV.0Esn0AAAE_VXQeDKZr"/>
+                <item uuid="tyqp_iYcBjkAAAFBTnbg5xRK"/>
             </relations>
         </item>
         <item name="SetPage" uuid="42nAqG8BGK0AAAE9nMsQ24Wx">
@@ -165,8 +189,43 @@
                 <item uuid="Q_jAqG8BTFIAAAE9u8IQ24Wy"/>
             </relations>
         </item>
+        <item name="List" uuid="omMQV.0EQgwAAAE9na0ql3.u">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <item value="org.neuro4j.logic.def.node.StartBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="18" key="y"/>
+                <item value="511" key="x"/>
+            </properties>
+            <relations>
+                <item uuid="W.oQV.0Esn0AAAE_VXQeDKZr"/>
+            </relations>
+        </item>
+        <item name="GetAccountsFromSession" uuid="FEWp_iYc3HoAAAFBXUHg5xRK">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="GetAccountsFromSession" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.example.web.blocks.GetAccountsFromSession" key="SWF_CUSTOM_CLASS"/>
+                <item value="117" key="y"/>
+                <item value="286" key="x"/>
+            </properties>
+            <relations>
+                <item uuid="PMep_iYcWSsAAAFBXkHg5xRK"/>
+            </relations>
+        </item>
     </entities>
     <relations>
+        <item name="NEXT" uuid="tyqp_iYcBjkAAAFBTnbg5xRK">
+            <properties>
+                <item value="B8PAqG8ByIYAAAE9NHe2jYXO" key="EndUUID"/>
+                <item value="0, 0, -174, -295|174, 267, 0, -28|" key="points"/>
+                <item value="xJyp_iYczNMAAAFBTXbg5xRK" key="StartUUID"/>
+            </properties>
+            <relation_parts>
+                <item uuid="B8PAqG8ByIYAAAE9NHe2jYXO"/>
+                <item uuid="xJyp_iYczNMAAAFBTXbg5xRK"/>
+            </relation_parts>
+        </item>
         <item name="NEXT" uuid="6PwQV.0Eyi0AAAE_DPO8aabi">
             <properties>
                 <item value="42nAqG8BGK0AAAE9nMsQ24Wx" key="EndUUID"/>
@@ -176,6 +235,82 @@
             <relation_parts>
                 <item uuid="7wkQV.0EMq8AAAE_C_O8aabi"/>
                 <item uuid="42nAqG8BGK0AAAE9nMsQ24Wx"/>
+            </relation_parts>
+        </item>
+        <item name="NEXT" uuid="XN.p_iYclYIAAAFBVJvg5xRK">
+            <properties>
+                <item value="7wkQV.0EMq8AAAE_C_O8aabi" key="EndUUID"/>
+                <item value="0, 0, -119, -533|119, 518, 0, -15|" key="points"/>
+                <item value="Asap_iYclYEAAAFBVJvg5xRK" key="StartUUID"/>
+            </properties>
+            <relation_parts>
+                <item uuid="Asap_iYclYEAAAFBVJvg5xRK"/>
+                <item uuid="7wkQV.0EMq8AAAE_C_O8aabi"/>
+            </relation_parts>
+        </item>
+        <item name="NEXT" uuid="kE_AqG8BAR8AAAE9SPe2jYXR">
+            <properties>
+                <item value="aLzAqG8BuD8AAAE9C7AQ24Ww" key="EndUUID"/>
+                <item value="1hrAqG8BNDkAAAE96pEQ24Wv" key="StartUUID"/>
+            </properties>
+            <relation_parts>
+                <item uuid="aLzAqG8BuD8AAAE9C7AQ24Ww"/>
+                <item uuid="1hrAqG8BNDkAAAE96pEQ24Wv"/>
+            </relation_parts>
+        </item>
+        <item name="NEXT" uuid="PMep_iYcWSsAAAFBXkHg5xRK">
+            <properties>
+                <item value="QdXAqG8BHfoAAAE9PLW2jYXP" key="EndUUID"/>
+                <item value="0, 0, -363, -287|363, 259, 0, -28|" key="points"/>
+                <item value="FEWp_iYc3HoAAAFBXUHg5xRK" key="StartUUID"/>
+            </properties>
+            <relation_parts>
+                <item uuid="QdXAqG8BHfoAAAE9PLW2jYXP"/>
+                <item uuid="FEWp_iYc3HoAAAFBXUHg5xRK"/>
+            </relation_parts>
+        </item>
+        <item name="End" uuid="JlUQV.0EykcAAAE9ZJ2O6esr">
+            <properties>
+                <item value="c_rAqG8BgnUAAAE9v4O2jYXR" key="EndUUID"/>
+                <item value="0, 29, -198, -73|198, 87, 0, -15|" key="points"/>
+                <item value="QdXAqG8BHfoAAAE9PLW2jYXP" key="StartUUID"/>
+            </properties>
+            <relation_parts>
+                <item uuid="c_rAqG8BgnUAAAE9v4O2jYXR"/>
+                <item uuid="QdXAqG8BHfoAAAE9PLW2jYXP"/>
+            </relation_parts>
+        </item>
+        <item name="NEXT" uuid="LIfAqG8BUKcAAAE96cUQ24Ww">
+            <properties>
+                <item value="uOvAqG8B__AAAAE9Z7AQ24Wt" key="EndUUID"/>
+                <item value="0, 21, 156, -187|0, 123, 156, -85|-156, 123, 0, -85|-156, 179, 0, -29|" key="points"/>
+                <item value="aLzAqG8BuD8AAAE9C7AQ24Ww" key="StartUUID"/>
+            </properties>
+            <relation_parts>
+                <item uuid="uOvAqG8B__AAAAE9Z7AQ24Wt"/>
+                <item uuid="aLzAqG8BuD8AAAE9C7AQ24Ww"/>
+            </relation_parts>
+        </item>
+        <item name="NEXT" uuid="Q_jAqG8BTFIAAAE9u8IQ24Wy">
+            <properties>
+                <item value="uOvAqG8B__AAAAE9Z7AQ24Wt" key="EndUUID"/>
+                <item value="0, 21, -176, -145|0, 100, -176, -66|176, 100, 0, -66|176, 137, 0, -29|" key="points"/>
+                <item value="42nAqG8BGK0AAAE9nMsQ24Wx" key="StartUUID"/>
+            </properties>
+            <relation_parts>
+                <item uuid="uOvAqG8B__AAAAE9Z7AQ24Wt"/>
+                <item uuid="42nAqG8BGK0AAAE9nMsQ24Wx"/>
+            </relation_parts>
+        </item>
+        <item name="NEXT" uuid="W.oQV.0Esn0AAAE_VXQeDKZr">
+            <properties>
+                <item value="uS2p_iYcXeQAAAFB4uPg5xRJ" key="EndUUID"/>
+                <item value="0, 32, 0, -220|0, 237, 0, -15|" key="points"/>
+                <item value="omMQV.0EQgwAAAE9na0ql3.u" key="StartUUID"/>
+            </properties>
+            <relation_parts>
+                <item uuid="uS2p_iYcXeQAAAFB4uPg5xRJ"/>
+                <item uuid="omMQV.0EQgwAAAE9na0ql3.u"/>
             </relation_parts>
         </item>
         <item name="EndErrorNode" uuid="IgsQV.0EZjgAAAE.4Fx7BoYb">
@@ -191,56 +326,46 @@
         </item>
         <item name="NEXT" uuid="pNUQV.0EVl0AAAE_kCweDKZr">
             <properties>
-                <item value="B8PAqG8ByIYAAAE9NHe2jYXO" key="EndUUID"/>
+                <item value="xJyp_iYczNMAAAFBTXbg5xRK" key="EndUUID"/>
                 <item value="0, 32, 7, -188|-7, 192, 0, -28|" key="points"/>
                 <item value="e2EQV.0EbLcAAAE_VpseDKZq" key="StartUUID"/>
             </properties>
             <relation_parts>
-                <item uuid="B8PAqG8ByIYAAAE9NHe2jYXO"/>
                 <item uuid="e2EQV.0EbLcAAAE_VpseDKZq"/>
-            </relation_parts>
-        </item>
-        <item name="NEXT" uuid="kE_AqG8BAR8AAAE9SPe2jYXR">
-            <properties>
-                <item value="aLzAqG8BuD8AAAE9C7AQ24Ww" key="EndUUID"/>
-                <item value="1hrAqG8BNDkAAAE96pEQ24Wv" key="StartUUID"/>
-            </properties>
-            <relation_parts>
-                <item uuid="aLzAqG8BuD8AAAE9C7AQ24Ww"/>
-                <item uuid="1hrAqG8BNDkAAAE96pEQ24Wv"/>
-            </relation_parts>
-        </item>
-        <item name="NEXT" uuid="AxIQV.0Egx0AAAE_aE8eDKZr">
-            <properties>
-                <item value="QdXAqG8BHfoAAAE9PLW2jYXP" key="EndUUID"/>
-                <item value="0, 32, 1, -183|-1, 187, 0, -28|" key="points"/>
-                <item value="Ca8QV.0E5FMAAAE_vfweDKZq" key="StartUUID"/>
-            </properties>
-            <relation_parts>
-                <item uuid="QdXAqG8BHfoAAAE9PLW2jYXP"/>
-                <item uuid="Ca8QV.0E5FMAAAE_vfweDKZq"/>
+                <item uuid="xJyp_iYczNMAAAFBTXbg5xRK"/>
             </relation_parts>
         </item>
         <item name="NEXT" uuid="mTIQV.0EIxsAAAFAXJnat3lW">
             <properties>
-                <item value="7wkQV.0EMq8AAAE_C_O8aabi" key="EndUUID"/>
+                <item value="Asap_iYclYEAAAFBVJvg5xRK" key="EndUUID"/>
                 <item value="0, 32, -86, -346|71, 378, -15, 0|" key="points"/>
                 <item value="x7AQV.0ExFUAAAE_cLm8aabi" key="StartUUID"/>
             </properties>
             <relation_parts>
-                <item uuid="7wkQV.0EMq8AAAE_C_O8aabi"/>
+                <item uuid="Asap_iYclYEAAAFBVJvg5xRK"/>
                 <item uuid="x7AQV.0ExFUAAAE_cLm8aabi"/>
             </relation_parts>
         </item>
-        <item name="End" uuid="JlUQV.0EykcAAAE9ZJ2O6esr">
+        <item name="NEXT" uuid="AxIQV.0Egx0AAAE_aE8eDKZr">
+            <properties>
+                <item value="FEWp_iYc3HoAAAFBXUHg5xRK" key="EndUUID"/>
+                <item value="0, 32, 1, -183|-1, 187, 0, -28|" key="points"/>
+                <item value="Ca8QV.0E5FMAAAE_vfweDKZq" key="StartUUID"/>
+            </properties>
+            <relation_parts>
+                <item uuid="Ca8QV.0E5FMAAAE_vfweDKZq"/>
+                <item uuid="FEWp_iYc3HoAAAFBXUHg5xRK"/>
+            </relation_parts>
+        </item>
+        <item name="NEXT" uuid="Ynyp_iYcB9kAAAFB5OPg5xRJ">
             <properties>
                 <item value="c_rAqG8BgnUAAAE9v4O2jYXR" key="EndUUID"/>
-                <item value="0, 29, -198, -73|198, 87, 0, -15|" key="points"/>
-                <item value="QdXAqG8BHfoAAAE9PLW2jYXP" key="StartUUID"/>
+                <item value="0, 0, -562, -411|562, 396, 0, -15|" key="points"/>
+                <item value="uS2p_iYcXeQAAAFB4uPg5xRJ" key="StartUUID"/>
             </properties>
             <relation_parts>
                 <item uuid="c_rAqG8BgnUAAAE9v4O2jYXR"/>
-                <item uuid="QdXAqG8BHfoAAAE9PLW2jYXP"/>
+                <item uuid="uS2p_iYcXeQAAAFB4uPg5xRJ"/>
             </relation_parts>
         </item>
         <item name="EndCreateAccount" uuid="04cQV.0EAqwAAAFAOebat3lV">
@@ -254,17 +379,6 @@
                 <item uuid="B8PAqG8ByIYAAAE9NHe2jYXO"/>
             </relation_parts>
         </item>
-        <item name="NEXT" uuid="Q_jAqG8BTFIAAAE9u8IQ24Wy">
-            <properties>
-                <item value="uOvAqG8B__AAAAE9Z7AQ24Wt" key="EndUUID"/>
-                <item value="0, 21, -176, -145|0, 100, -176, -66|176, 100, 0, -66|176, 137, 0, -29|" key="points"/>
-                <item value="42nAqG8BGK0AAAE9nMsQ24Wx" key="StartUUID"/>
-            </properties>
-            <relation_parts>
-                <item uuid="uOvAqG8B__AAAAE9Z7AQ24Wt"/>
-                <item uuid="42nAqG8BGK0AAAE9nMsQ24Wx"/>
-            </relation_parts>
-        </item>
         <item name="NEXT" uuid="9crAqG8B39cAAAE9q.y2jYXR">
             <properties>
                 <item value="1hrAqG8BNDkAAAE96pEQ24Wv" key="EndUUID"/>
@@ -273,28 +387,6 @@
             <relation_parts>
                 <item uuid="c_rAqG8BgnUAAAE9v4O2jYXR"/>
                 <item uuid="1hrAqG8BNDkAAAE96pEQ24Wv"/>
-            </relation_parts>
-        </item>
-        <item name="NEXT" uuid="LIfAqG8BUKcAAAE96cUQ24Ww">
-            <properties>
-                <item value="uOvAqG8B__AAAAE9Z7AQ24Wt" key="EndUUID"/>
-                <item value="0, 21, 156, -187|0, 123, 156, -85|-156, 123, 0, -85|-156, 179, 0, -29|" key="points"/>
-                <item value="aLzAqG8BuD8AAAE9C7AQ24Ww" key="StartUUID"/>
-            </properties>
-            <relation_parts>
-                <item uuid="uOvAqG8B__AAAAE9Z7AQ24Wt"/>
-                <item uuid="aLzAqG8BuD8AAAE9C7AQ24Ww"/>
-            </relation_parts>
-        </item>
-        <item name="NEXT" uuid="W.oQV.0Esn0AAAE_VXQeDKZr">
-            <properties>
-                <item value="c_rAqG8BgnUAAAE9v4O2jYXR" key="EndUUID"/>
-                <item value="0, 32, 0, -220|0, 237, 0, -15|" key="points"/>
-                <item value="omMQV.0EQgwAAAE9na0ql3.u" key="StartUUID"/>
-            </properties>
-            <relation_parts>
-                <item uuid="c_rAqG8BgnUAAAE9v4O2jYXR"/>
-                <item uuid="omMQV.0EQgwAAAE9na0ql3.u"/>
             </relation_parts>
         </item>
     </relations>

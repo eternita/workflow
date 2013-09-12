@@ -1,5 +1,6 @@
 package org.neuro4j.web.render.jasper;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -67,18 +68,20 @@ public class JasperViewNodeRenderEngine implements ViewNodeRenderEngine {
 	    	dataSource = new JREmptyDataSource();
 	    }
 	    
-		OutputStream output = null;
-		try {
-			output = response.getOutputStream();
-		} catch (IOException e1) {
-			throw new ViewNodeRenderExecutionException(e1.getMessage());
-		}
 	    
+	    if (viewTemplate == null)
+	    {
+	    	throw new ViewNodeRenderExecutionException("JasperReports template is null");
+	    }
 		
 	    InputStream inputStream = servletContext.getResourceAsStream(viewTemplate);
 
-	    if (inputStream != null)
+	    if (inputStream == null)
 	    {
+	    	throw new ViewNodeRenderExecutionException("JasperReports template has not been loaded. Template path:" + viewTemplate);
+	    }
+	    
+
 	    	response.setContentType(getContentType(format));
 			
 			String fileName = (String)logicContext.get(IN_JASPER_FILE_NAME);
@@ -104,23 +107,16 @@ public class JasperViewNodeRenderEngine implements ViewNodeRenderEngine {
 			}
 				
 			exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
+			OutputStream output = response.getOutputStream();
+			
 			exporter.setParameter(JRExporterParameter.OUTPUT_STREAM, output);
 			exporter.exportReport();
-
+			
+			output.close();
 				
 			} catch (Exception e) {
 				throw new ViewNodeRenderExecutionException(e.getMessage());
 			}	    	
-	    }
-
-
-	
-		
-		try {
-			output.close();
-		} catch (IOException e) {
-			throw new ViewNodeRenderExecutionException(e.getMessage());
-		}
 
 		return;
 	}

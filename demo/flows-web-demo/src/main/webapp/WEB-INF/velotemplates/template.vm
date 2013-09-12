@@ -10,7 +10,7 @@
 			</tr>
 		</thead>		  
 		<tbody>
-			#foreach( $account in $accounts )
+			#foreach( $account in $accountList )
 				<tr>
 					<td class="column1"><img src="../images/ch.png" alt="included"
 						width="16" height="16"></td>

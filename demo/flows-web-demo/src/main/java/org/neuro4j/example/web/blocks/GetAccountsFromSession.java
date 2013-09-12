@@ -1,12 +1,11 @@
 package org.neuro4j.example.web.blocks;
 
-import static org.neuro4j.example.web.blocks.GetAccountsList.IN_ACCOUNTS;
-import static org.neuro4j.example.web.blocks.GetAccountsList.OUT_ACCOUNT_LIST;
+import static org.neuro4j.example.web.blocks.GetAccountsFromSession.OUT_ACCOUNTS;
 
-import java.util.List;
 import java.util.Map;
 
-import org.neuro4j.example.web.mng.Account;
+import javax.servlet.http.HttpServletRequest;
+
 import org.neuro4j.example.web.mng.AccountMng;
 import org.neuro4j.example.web.mng.impl.AccountMngImpl;
 import org.neuro4j.logic.LogicContext;
@@ -16,15 +15,13 @@ import org.neuro4j.logic.swf.FlowInitializationException;
 import org.neuro4j.logic.swf.ParameterDefinition;
 import org.neuro4j.logic.swf.ParameterDefinitionList;
 
-@ParameterDefinitionList(input={@ParameterDefinition(name=IN_ACCOUNTS, isOptional=false, type= "java.util.Map")},
+@ParameterDefinitionList(input={},
                          output={ 
-		                         @ParameterDefinition(name=OUT_ACCOUNT_LIST, isOptional=false, type= "java.util.List")})	
-public class GetAccountsList extends CustomBlock {
+		                         @ParameterDefinition(name=OUT_ACCOUNTS, isOptional=false, type= "java.util.Map")})	
+public class GetAccountsFromSession extends CustomBlock {
     
       
-    static final String IN_ACCOUNTS = "accounts"; 
-    static final String OUT_ACCOUNT_LIST = "accountList"; 
-    
+    static final String OUT_ACCOUNTS = "accounts"; 
     
     private AccountMng accountMng = null;
     
@@ -32,11 +29,17 @@ public class GetAccountsList extends CustomBlock {
 	public int execute(LogicContext ctx)
 			throws FlowExecutionException {
 		
-		Map accounts = (Map) ctx.get(IN_ACCOUNTS);
+		HttpServletRequest request = (HttpServletRequest)ctx.get("REQUEST");
+		Map accountsMap = (Map)request.getSession().getAttribute("accounts");
+		if (accountsMap == null)
+		{
+			accountsMap = accountMng.init();
+			request.getSession().setAttribute("accounts", accountsMap);
+		}
 		
-		List<Account> accountsList = accountMng.getAccountList(accounts);
+
 				
-		ctx.put(OUT_ACCOUNT_LIST, accountsList); 
+		ctx.put(OUT_ACCOUNTS, accountsMap); 
     
 		return NEXT;
 	}

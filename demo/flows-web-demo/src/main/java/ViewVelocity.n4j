@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <network>
     <entities>
-        <item name="networkConfig" uuid="ST4QV.0E9vEAAAFBtL.Jkg8A">
-            <properties>
-                <item value="org.neuro4j.logic.def.NetConfig" key="SWF_BLOCK_CLASS"/>
-                <item value="Public" key="KEY_VISIBILITY"/>
-            </properties>
-            <relations/>
-        </item>
         <item name="MapperNode1" uuid="LOcQV.0Et_8AAAFBUdaJkg78">
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
@@ -44,6 +37,13 @@
                 <item uuid="wKnAqG8BupMAAAFAaxqNktF3"/>
             </relations>
         </item>
+        <item name="networkConfig" uuid=".8Op_iYcd10AAAFB543g5xRL">
+            <properties>
+                <item value="org.neuro4j.logic.def.NetConfig" key="SWF_BLOCK_CLASS"/>
+                <item value="Public" key="KEY_VISIBILITY"/>
+            </properties>
+            <relations/>
+        </item>
         <item name="Include" uuid="vA8QV.0E0rUAAAFAMPUtpMvZ">
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
@@ -66,6 +66,18 @@
             </properties>
             <relations>
                 <item uuid="YokQV.0E_IcAAAFAUPQracwE"/>
+            </relations>
+        </item>
+        <item name="GetAccountsFromSession" uuid="LEap_iYcj7kAAAFBlFvg5xRL">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="GetAccountsFromSession" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.example.web.blocks.GetAccountsFromSession" key="SWF_CUSTOM_CLASS"/>
+                <item value="117" key="y"/>
+                <item value="279" key="x"/>
+            </properties>
+            <relations>
+                <item uuid="3xap_iYcZ.AAAAFBolvg5xRL"/>
             </relations>
         </item>
         <item name="ViewNode1" uuid="xBUQV.0EJGcAAAFA9_stpMvZ">
@@ -116,13 +128,24 @@
         </item>
         <item name="NEXT" uuid="_lQQV.0EWvQAAAFAeQctpMva">
             <properties>
-                <item value="7SoQV.0EsVAAAAFAQ_QracwE" key="EndUUID"/>
+                <item value="LEap_iYcj7kAAAFBlFvg5xRL" key="EndUUID"/>
                 <item value="0, 32, 0, -296|0, 299, 0, -29|" key="points"/>
                 <item value="vA8QV.0E0rUAAAFAMPUtpMvZ" key="StartUUID"/>
             </properties>
             <relation_parts>
                 <item uuid="vA8QV.0E0rUAAAFAMPUtpMvZ"/>
+                <item uuid="LEap_iYcj7kAAAFBlFvg5xRL"/>
+            </relation_parts>
+        </item>
+        <item name="NEXT" uuid="3xap_iYcZ.AAAAFBolvg5xRL">
+            <properties>
+                <item value="7SoQV.0EsVAAAAFAQ_QracwE" key="EndUUID"/>
+                <item value="0, 0, -350, -245|350, 217, 0, -28|" key="points"/>
+                <item value="LEap_iYcj7kAAAFBlFvg5xRL" key="StartUUID"/>
+            </properties>
+            <relation_parts>
                 <item uuid="7SoQV.0EsVAAAAFAQ_QracwE"/>
+                <item uuid="LEap_iYcj7kAAAFBlFvg5xRL"/>
             </relation_parts>
         </item>
     </relations>
