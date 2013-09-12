@@ -14,12 +14,12 @@ import static org.neuro4j.jasper.input.LoadTemplate.*;
 @ParameterDefinitionList(input={
                                 	@ParameterDefinition(name=IN_TEMPLATEPATH, isOptional=false, type= "java.lang.String")},
                          output={
-                         	        @ParameterDefinition(name=OUT_INPUTSTREAM, isOptional=true, type= "java.io.InputStream")})	
+                         	        @ParameterDefinition(name=OUT_JASPER_INPUTSTREAM, isOptional=true, type= "java.io.InputStream")})	
 public class LoadTemplate extends CustomBlock {
     
     static final String IN_TEMPLATEPATH = "templatePath";
       
-    static final String OUT_INPUTSTREAM = "inputStream"; 
+    static final String OUT_JASPER_INPUTSTREAM = "jasperInputStream"; 
     
     
     @Override
@@ -37,7 +37,7 @@ public class LoadTemplate extends CustomBlock {
         	return ERROR;
         }
 		
-		ctx.put(OUT_INPUTSTREAM, inputStream); 
+		ctx.put(OUT_JASPER_INPUTSTREAM, inputStream); 
     
 		
 		return NEXT;

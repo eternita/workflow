@@ -1,6 +1,10 @@
 package org.neuro4j.jasper.output;
 
 
+import static org.neuro4j.jasper.output.CreateFileOutputStream.IN_CREATEFILE;
+import static org.neuro4j.jasper.output.CreateFileOutputStream.IN_FILEPATH;
+import static org.neuro4j.jasper.output.CreateFileOutputStream.OUT_JASPER_OUTPUTSTREAM;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -13,20 +17,18 @@ import org.neuro4j.logic.swf.FlowInitializationException;
 import org.neuro4j.logic.swf.ParameterDefinition;
 import org.neuro4j.logic.swf.ParameterDefinitionList;
 
-import static org.neuro4j.jasper.output.CreateFileOutputStream.*;
-
 @ParameterDefinitionList(input={
                                 	@ParameterDefinition(name=IN_FILEPATH, isOptional=false, type= "java.lang.String"),
                                 	@ParameterDefinition(name=IN_CREATEFILE, isOptional=false, type= "java.lang.String")},
                                 	
                          output={
-                         	        @ParameterDefinition(name=OUT_OUTPUTSTREAM, isOptional=false, type= "java.io.OutputStream")})	
+                         	        @ParameterDefinition(name=OUT_JASPER_OUTPUTSTREAM, isOptional=false, type= "java.io.OutputStream")})	
 public class CreateFileOutputStream extends CustomBlock {
     
     static final String IN_FILEPATH = "filePath";
     static final String IN_CREATEFILE = "createFile";
       
-    static final String OUT_OUTPUTSTREAM = "outputStream"; 
+    static final String OUT_JASPER_OUTPUTSTREAM = "jasperOutputStream"; 
     
     
     @Override
@@ -55,7 +57,7 @@ public class CreateFileOutputStream extends CustomBlock {
 				}
 			}
 			FileOutputStream fileOutputStream = new FileOutputStream(file);
-			ctx.put(OUT_OUTPUTSTREAM, fileOutputStream); 
+			ctx.put(OUT_JASPER_OUTPUTSTREAM, fileOutputStream); 
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
