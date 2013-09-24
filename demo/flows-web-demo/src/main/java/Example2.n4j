@@ -10,9 +10,9 @@
                 <item value="&quot;/jsp/example2/page1.jsp&quot;:page" key="SWF_PARAM_KEY_2"/>
                 <item value="341" key="x"/>
             </properties>
-            <relations>
+            <connected>
                 <item uuid="faip_iYc6PcAAAE_roNJYq.s"/>
-            </relations>
+            </connected>
         </item>
         <item name="ViewNode1" uuid="MTKp_iYcercAAAE_uXJJYq.g">
             <properties>
@@ -22,7 +22,7 @@
                 <item value="510" key="y"/>
                 <item value="309" key="x"/>
             </properties>
-            <relations/>
+            <connected/>
         </item>
         <item name="Start" uuid="w6up_iYcwoQAAAE_bkJJYq.S">
             <properties>
@@ -32,29 +32,27 @@
                 <item value="124" key="y"/>
                 <item value="322" key="x"/>
             </properties>
-            <relations>
+            <connected>
                 <item uuid="QfGp_iYcn2AAAAE_Rm1JYq.s"/>
-            </relations>
+            </connected>
         </item>
         <item name="networkConfig" uuid="hfup_iYcwPYAAAE_XoZJYq..">
             <properties>
                 <item value="org.neuro4j.logic.def.NetConfig" key="SWF_BLOCK_CLASS"/>
                 <item key="KEY_VISIBILITY"/>
             </properties>
-            <relations/>
+            <connected/>
         </item>
-    </entities>
-    <relations>
         <item name="NEXT" uuid="QfGp_iYcn2AAAAE_Rm1JYq.s">
             <properties>
                 <item value="3xap_iYcXQQAAAE_fF1JYq.s" key="EndUUID"/>
                 <item value="0, 32, 5, -249|-5, 260, 0, -21|" key="points"/>
                 <item value="w6up_iYcwoQAAAE_bkJJYq.S" key="StartUUID"/>
             </properties>
-            <relation_parts>
+            <connected>
                 <item uuid="3xap_iYcXQQAAAE_fF1JYq.s"/>
                 <item uuid="w6up_iYcwoQAAAE_bkJJYq.S"/>
-            </relation_parts>
+            </connected>
         </item>
         <item name="NEXT" uuid="faip_iYc6PcAAAE_roNJYq.s">
             <properties>
@@ -62,10 +60,10 @@
                 <item value="0, 21, 0, -82|0, 74, 0, -29|" key="points"/>
                 <item value="3xap_iYcXQQAAAE_fF1JYq.s" key="StartUUID"/>
             </properties>
-            <relation_parts>
+            <connected>
                 <item uuid="MTKp_iYcercAAAE_uXJJYq.g"/>
                 <item uuid="3xap_iYcXQQAAAE_fF1JYq.s"/>
-            </relation_parts>
-        </item>
-    </relations>
+            </connected>
+        </item>        
+    </entities>
 </network>

@@ -18,23 +18,28 @@ public class AccountMngImpl implements AccountMng {
 	private static final  String[] FIRST_NAMES = new String[]{"Jonn", "Jason", "Anna", "Katrin", "Charlotte"};
 	private static final String[] LAST_NAMES = new String[]{"Richmond", "Hanson", "Berhoff", "Black", "Branson"};
 	
-	private static Map<String, Account> accounts = new HashMap<String, Account>();
+
 	
 	
 	private static AccountMng instance = new AccountMngImpl();
 	
 	private AccountMngImpl()
 	{
-		init();
+		//init();
 	}
 	
-	private static void init() {
+	
+	public  Map<String, Account> init() {
 		
+		Map<String, Account> accounts = new HashMap<String, Account>();		
 		for (int i = 1; i < 6; i++)
 		{
 			Account acount =  new Account(getRandomFromArray(randomFirstName, FIRST_NAMES), getRandomFromArray(randomLastName, LAST_NAMES));
+
 			accounts.put(acount.getUuid(), acount);
 		}
+		
+		return accounts;
 		
 	}
 
@@ -42,7 +47,7 @@ public class AccountMngImpl implements AccountMng {
 		return instance;
 	}
 
-	public List<Account> getAccountList() {
+	public List<Account> getAccountList(Map<String, Account> accounts) {		
 		List<Account> list = new ArrayList<Account>(accounts.size());
 		Collection<Account> values = accounts.values();
 		list.addAll(values);
@@ -50,15 +55,15 @@ public class AccountMngImpl implements AccountMng {
 	}
 	
 
-	public void removeAccount(String uuid) {
+	public void removeAccount(Map<String, Account> accounts, String uuid) {
 		accounts.remove(uuid);	
 	}
 
-	public void updateAccount(Account account) {
+	public void updateAccount(Map<String, Account> accounts, Account account) {
 		accounts.put(account.getUuid(), account);	
 	}
 
-	public Account createAccount(String firstName, String lastName)
+	public Account createAccount(Map<String, Account> accounts, String firstName, String lastName)
 			throws CreateException {
 		
 		if (firstName == null || lastName == null)
@@ -69,6 +74,8 @@ public class AccountMngImpl implements AccountMng {
 		accounts.put(acount.getUuid(), acount);
 		return acount;
 	}
+	
+	
 	
 	private static  String getRandomFromArray(Random rand, String[] array)
 	{

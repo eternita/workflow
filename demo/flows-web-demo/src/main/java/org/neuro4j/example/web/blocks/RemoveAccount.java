@@ -1,6 +1,9 @@
 package org.neuro4j.example.web.blocks;
 
-import static org.neuro4j.example.web.blocks.RemoveAccount.IN_UUID;
+
+import static org.neuro4j.example.web.blocks.RemoveAccount.*;
+
+import java.util.Map;
 
 import org.neuro4j.example.web.mng.AccountMng;
 import org.neuro4j.example.web.mng.impl.AccountMngImpl;
@@ -12,11 +15,12 @@ import org.neuro4j.logic.swf.ParameterDefinition;
 import org.neuro4j.logic.swf.ParameterDefinitionList;
 
 @ParameterDefinitionList(input={
-		                         @ParameterDefinition(name=IN_UUID, isOptional=false, type= "java.lang.String")},
+		                         @ParameterDefinition(name=IN_UUID, isOptional=false, type= "java.lang.String"), @ParameterDefinition(name=IN_ACCOUNTS, isOptional=false, type= "java.util.Map")},
                          output={ })	
 public class RemoveAccount extends CustomBlock {
     
     static final String IN_UUID = "uuid";
+    static final String IN_ACCOUNTS = "accounts";
       
     private AccountMng accountMng = null;
 
@@ -24,8 +28,9 @@ public class RemoveAccount extends CustomBlock {
 			throws FlowExecutionException {
 		
 		String uuid = (String)ctx.get(IN_UUID);
-        
-		accountMng.removeAccount(uuid);
+		Map accounts = (Map) ctx.get(IN_ACCOUNTS);
+		
+		accountMng.removeAccount(accounts, uuid);
 			
 		return NEXT;
 	}
