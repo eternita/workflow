@@ -11,7 +11,7 @@ import java.util.Map;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.neuro4j.core.Entity;
+import org.neuro4j.core.Connected;
 import org.neuro4j.logic.LogicContext;
 import org.neuro4j.logic.swf.FlowExecutionException;
 import org.neuro4j.logic.swf.SimpleWorkflowException;
@@ -81,7 +81,7 @@ public class CallNodeTestCase extends BaseFlowTestCase{
 			params.put("var123", "123");
 	
 			
-			Entity var2 = (Entity)executeFlowAndReturnObject("org.neuro4j.flows.nodes.callnode.CallByNameFlow-StartNode4", params, "CURRENT_NODE");
+			Connected  var2 = (Connected )executeFlowAndReturnObject("org.neuro4j.flows.nodes.callnode.CallByNameFlow-StartNode4", params, "CURRENT_NODE");
 			
 			assertEquals(var2.getName(), "EndNode5");
 
@@ -96,7 +96,7 @@ public class CallNodeTestCase extends BaseFlowTestCase{
 			params.put("var123", "123");
 			
 			
-			Entity var2 = (Entity)executeFlowAndReturnObject("org.neuro4j.flows.nodes.callnode.CallByNameFlow-StartNode6", params, "CURRENT_NODE");
+			Connected  var2 = (Connected )executeFlowAndReturnObject("org.neuro4j.flows.nodes.callnode.CallByNameFlow-StartNode6", params, "CURRENT_NODE");
 			
 			assertEquals(var2.getName(), "EndNode8");
 
@@ -110,7 +110,7 @@ public class CallNodeTestCase extends BaseFlowTestCase{
 		try {
 			Map<String, Object> params = new HashMap<String, Object>();
 						
-			Entity var2 = (Entity)executeFlowAndReturnObject("org.neuro4j.flows.nodes.callnode.CallByNameFlow-StartNode6", params, "CURRENT_NODE");
+			Connected  var2 = (Connected )executeFlowAndReturnObject("org.neuro4j.flows.nodes.callnode.CallByNameFlow-StartNode6", params, "CURRENT_NODE");
 			
 			assertEquals(var2.getName(), "EndNode7");
 

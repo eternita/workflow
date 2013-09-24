@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.Test;
-import org.neuro4j.core.Entity;
+import org.neuro4j.core.Connected;
 import org.neuro4j.logic.swf.FlowExecutionException;
 import org.neuro4j.tests.base.BaseFlowTestCase;
 
@@ -32,7 +32,7 @@ public class DecisionNodeTestCase extends BaseFlowTestCase{
 			params.put("var1", "123");
 			params.put("var2", "123");
 			
-			Entity lastValue = (Entity) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeEqStr", params, "CURRENT_NODE");
+			Connected lastValue = (Connected) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeEqStr", params, "CURRENT_NODE");
 
 			assertEquals(lastValue.getName(), "EndNode1");
 			
@@ -50,7 +50,7 @@ public class DecisionNodeTestCase extends BaseFlowTestCase{
 			params.put("var1", "123");
 			params.put("var2", "1234");
 			
-			Entity lastValue = (Entity) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeEqStr", params, "CURRENT_NODE");
+			Connected lastValue = (Connected) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeEqStr", params, "CURRENT_NODE");
 
 			assertEquals(lastValue.getName(), "EndNode2");
 			
@@ -68,7 +68,7 @@ public class DecisionNodeTestCase extends BaseFlowTestCase{
 			params.put("var1", "123");
 			params.put("var2",  new Integer("123"));
 			
-			Entity lastValue = (Entity) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeEqStr", params, "CURRENT_NODE");
+			Connected lastValue = (Connected) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeEqStr", params, "CURRENT_NODE");
 
 			assertEquals(lastValue.getName(), "EndNode2");
 			
@@ -84,7 +84,7 @@ public class DecisionNodeTestCase extends BaseFlowTestCase{
 			
 			params.put("var1", "123");
 			
-			Entity lastValue = (Entity) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeDefined", params, "CURRENT_NODE");
+			Connected lastValue = (Connected) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeDefined", params, "CURRENT_NODE");
 
 			assertEquals(lastValue.getName(), "EndNode3");
 			
@@ -99,7 +99,7 @@ public class DecisionNodeTestCase extends BaseFlowTestCase{
 			Map<String, Object> params = new HashMap<String, Object>();
 			
 			
-			Entity lastValue = (Entity) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeDefined", params, "CURRENT_NODE");
+			Connected lastValue = (Connected) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeDefined", params, "CURRENT_NODE");
 
 			assertEquals(lastValue.getName(), "EndNode4");
 			
@@ -114,7 +114,7 @@ public class DecisionNodeTestCase extends BaseFlowTestCase{
 			Map<String, Object> params = new HashMap<String, Object>();
 			
 			
-			Entity lastValue = (Entity) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeUndefined", params, "CURRENT_NODE");
+			Connected lastValue = (Connected) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeUndefined", params, "CURRENT_NODE");
 
 			assertEquals(lastValue.getName(), "EndNode5");
 			
@@ -130,7 +130,7 @@ public class DecisionNodeTestCase extends BaseFlowTestCase{
 			
 			params.put("var1", "123");
 			
-			Entity lastValue = (Entity) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeUndefined", params, "CURRENT_NODE");
+			Connected lastValue = (Connected) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeUndefined", params, "CURRENT_NODE");
 
 			assertEquals(lastValue.getName(), "EndNode6");
 			
@@ -146,7 +146,7 @@ public class DecisionNodeTestCase extends BaseFlowTestCase{
 			
 			params.put("var1", "");
 			
-			Entity lastValue = (Entity) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeEmptyString", params, "CURRENT_NODE");
+			Connected lastValue = (Connected) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeEmptyString", params, "CURRENT_NODE");
 
 			assertEquals(lastValue.getName(), "EndNode7");
 			
@@ -162,7 +162,7 @@ public class DecisionNodeTestCase extends BaseFlowTestCase{
 			
 			params.put("var1", "123");
 			
-			Entity lastValue = (Entity) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeEmptyString", params, "CURRENT_NODE");
+			Connected lastValue = (Connected) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeEmptyString", params, "CURRENT_NODE");
 
 			assertEquals(lastValue.getName(), "EndNode8");
 			
@@ -178,7 +178,7 @@ public class DecisionNodeTestCase extends BaseFlowTestCase{
 			
 			params.put("var1", null);
 			
-			Entity lastValue = (Entity) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeEmptyString", params, "CURRENT_NODE");
+			Connected  lastValue = (Connected ) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeEmptyString", params, "CURRENT_NODE");
 
 			assertEquals(lastValue.getName(), "EndNode8");
 			
@@ -194,7 +194,7 @@ public class DecisionNodeTestCase extends BaseFlowTestCase{
 			
 			params.put("var1", new Integer(123));
 			
-			Entity lastValue = (Entity) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeEmptyString", params, "CURRENT_NODE");
+			Connected  lastValue = (Connected ) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeEmptyString", params, "CURRENT_NODE");
 
 			assertEquals(lastValue.getName(), "EndNode8");
 			
@@ -210,7 +210,7 @@ public class DecisionNodeTestCase extends BaseFlowTestCase{
 			array.add("123");
 			params.put("var1", array);
 			
-			Entity lastValue = (Entity) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeHasElements", params, "CURRENT_NODE");
+			Connected  lastValue = (Connected ) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeHasElements", params, "CURRENT_NODE");
 			assertEquals(lastValue.getName(), "EndNode9");
 			
 		} catch (FlowExecutionException e) {
@@ -224,7 +224,7 @@ public class DecisionNodeTestCase extends BaseFlowTestCase{
 			List<String> array = new ArrayList<String>();
 			params.put("var1", array);
 			
-			Entity lastValue = (Entity) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeHasElements", params, "CURRENT_NODE");
+			Connected  lastValue = (Connected ) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeHasElements", params, "CURRENT_NODE");
 
 			assertEquals(lastValue.getName(), "EndNode10");
 			
@@ -240,7 +240,7 @@ public class DecisionNodeTestCase extends BaseFlowTestCase{
 			
 			params.put("var1", array);
 			
-			Entity lastValue = (Entity) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeHasElements", params, "CURRENT_NODE");
+			Connected  lastValue = (Connected ) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeHasElements", params, "CURRENT_NODE");
 
 			assertEquals(lastValue.getName(), "EndNode9");
 			
@@ -257,7 +257,7 @@ public class DecisionNodeTestCase extends BaseFlowTestCase{
 			
 			params.put("var1", array);
 			
-			Entity lastValue = (Entity) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeHasElements", params, "CURRENT_NODE");
+			Connected  lastValue = (Connected ) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeHasElements", params, "CURRENT_NODE");
 
 			assertEquals(lastValue.getName(), "EndNode10");
 			

@@ -8,9 +8,9 @@
                 <item value="24" key="y"/>
                 <item value="102" key="x"/>
             </properties>
-            <relations>
+            <connected>
                 <item uuid="4lWp_lq3zpgAAAE9zcSDXBaB"/>
-            </relations>
+            </connected>
         </item>
         <item name="BlockWithStaticInputName" uuid="qTYQV.0EUcwAAAE9d89O7LNY">
             <properties>
@@ -20,9 +20,9 @@
                 <item value="158" key="y"/>
                 <item value="650" key="x"/>
             </properties>
-            <relations>
+            <connected>
                 <item uuid="QIsQV.0E644AAAE9Dk5O7LNZ"/>
-            </relations>
+            </connected>
         </item>
         <item name="StartNode3" uuid="iIoQV.0EbL4AAAE9p7lO7LNY">
             <properties>
@@ -31,9 +31,9 @@
                 <item value="35" key="y"/>
                 <item value="678" key="x"/>
             </properties>
-            <relations>
+            <connected>
                 <item uuid="N0IQV.0EWG8AAAE9PERO7LNZ"/>
-            </relations>
+            </connected>
         </item>
         <item name="BlockWithMandatoryInputParameter" uuid="FCup_lq3D6gAAAE9hz6DXBaW">
             <properties>
@@ -43,9 +43,9 @@
                 <item value="153" key="y"/>
                 <item value="297" key="x"/>
             </properties>
-            <relations>
+            <connected>
                 <item uuid="Kn6p_lq3yEQAAAE9kFGDXBaW"/>
-            </relations>
+            </connected>
         </item>
         <item name="BlockWithMandatoryInputParameter" uuid="17qp_lq3rSoAAAE935CDXBaB">
             <properties>
@@ -56,16 +56,16 @@
                 <item value="153" key="y"/>
                 <item value="30" key="x"/>
             </properties>
-            <relations>
+            <connected>
                 <item uuid="f8Sp_lq3r48AAAE959GDXBaB"/>
-            </relations>
+            </connected>
         </item>
         <item name="Ekyp_iYcU18AAAE0fKJP6g0D" uuid="4eep_iYcm8QAAAE.fKJK4A.D">
             <properties>
                 <item value="org.neuro4j.logic.def.NetConfig" key="SWF_BLOCK_CLASS"/>
                 <item value="Public" key="KEY_VISIBILITY"/>
             </properties>
-            <relations/>
+            <connected/>
         </item>
         <item name="EndNode3" uuid="Y1oQV.0EhCAAAAE99cFO7LNY">
             <properties>
@@ -74,7 +74,7 @@
                 <item value="279" key="y"/>
                 <item value="686" key="x"/>
             </properties>
-            <relations/>
+            <connected/>
         </item>
         <item name="EndNode2" uuid="b5ap_lq3Tv4AAAE9BzaDXBaW">
             <properties>
@@ -83,7 +83,7 @@
                 <item value="270" key="y"/>
                 <item value="360" key="x"/>
             </properties>
-            <relations/>
+            <connected/>
         </item>
         <item name="StartNode2" uuid="VROp_lq3TdoAAAE9vyiDXBaW">
             <properties>
@@ -92,9 +92,9 @@
                 <item value="30" key="y"/>
                 <item value="360" key="x"/>
             </properties>
-            <relations>
+            <connected>
                 <item uuid="Euup_lq38coAAAE9kEiDXBaW"/>
-            </relations>
+            </connected>
         </item>
         <item name="EndNode1" uuid="G4ip_lq3ZQkAAAE9knyDXBaB">
             <properties>
@@ -103,20 +103,18 @@
                 <item value="270" key="y"/>
                 <item value="93" key="x"/>
             </properties>
-            <relations/>
+            <connected/>
         </item>
-    </entities>
-    <relations>
-        <item name="NEXT" uuid="4lWp_lq3zpgAAAE9zcSDXBaB">
+                <item name="NEXT" uuid="4lWp_lq3zpgAAAE9zcSDXBaB">
             <properties>
                 <item value="17qp_lq3rSoAAAE935CDXBaB" key="EndUUID"/>
                 <item value="0, 32, 0, -88|0, 92, 0, -28|" key="points"/>
                 <item value="4TWp_lq3FEEAAAE9y2.DXBaB" key="StartUUID"/>
             </properties>
-            <relation_parts>
+            <connected>
                 <item uuid="4TWp_lq3FEEAAAE9y2.DXBaB"/>
                 <item uuid="17qp_lq3rSoAAAE935CDXBaB"/>
-            </relation_parts>
+            </connected>
         </item>
         <item name="NEXT" uuid="N0IQV.0EWG8AAAE9PERO7LNZ">
             <properties>
@@ -124,10 +122,10 @@
                 <item value="0, 32, -9, -77|9, 81, 0, -28|" key="points"/>
                 <item value="iIoQV.0EbL4AAAE9p7lO7LNY" key="StartUUID"/>
             </properties>
-            <relation_parts>
+            <connected>
                 <item uuid="qTYQV.0EUcwAAAE9d89O7LNY"/>
                 <item uuid="iIoQV.0EbL4AAAE9p7lO7LNY"/>
-            </relation_parts>
+            </connected>
         </item>
         <item name="NEXT" uuid="Kn6p_lq3yEQAAAE9kFGDXBaW">
             <properties>
@@ -135,10 +133,10 @@
                 <item value="0, 29, 0, -89|0, 89, 0, -29|" key="points"/>
                 <item value="FCup_lq3D6gAAAE9hz6DXBaW" key="StartUUID"/>
             </properties>
-            <relation_parts>
+            <connected>
                 <item uuid="FCup_lq3D6gAAAE9hz6DXBaW"/>
                 <item uuid="b5ap_lq3Tv4AAAE9BzaDXBaW"/>
-            </relation_parts>
+            </connected>
         </item>
         <item name="NEXT" uuid="QIsQV.0E644AAAE9Dk5O7LNZ">
             <properties>
@@ -146,10 +144,10 @@
                 <item value="0, 29, -7, -81|7, 81, 0, -29|" key="points"/>
                 <item value="qTYQV.0EUcwAAAE9d89O7LNY" key="StartUUID"/>
             </properties>
-            <relation_parts>
+            <connected>
                 <item uuid="qTYQV.0EUcwAAAE9d89O7LNY"/>
                 <item uuid="Y1oQV.0EhCAAAAE99cFO7LNY"/>
-            </relation_parts>
+            </connected>
         </item>
         <item name="NEXT" uuid="f8Sp_lq3r48AAAE959GDXBaB">
             <properties>
@@ -157,10 +155,10 @@
                 <item value="0, 29, 0, -89|0, 89, 0, -29|" key="points"/>
                 <item value="17qp_lq3rSoAAAE935CDXBaB" key="StartUUID"/>
             </properties>
-            <relation_parts>
+            <connected>
                 <item uuid="17qp_lq3rSoAAAE935CDXBaB"/>
                 <item uuid="G4ip_lq3ZQkAAAE9knyDXBaB"/>
-            </relation_parts>
+            </connected>
         </item>
         <item name="NEXT" uuid="Euup_lq38coAAAE9kEiDXBaW">
             <properties>
@@ -168,10 +166,10 @@
                 <item value="0, 32, 0, -88|0, 92, 0, -28|" key="points"/>
                 <item value="VROp_lq3TdoAAAE9vyiDXBaW" key="StartUUID"/>
             </properties>
-            <relation_parts>
+            <connected>
                 <item uuid="FCup_lq3D6gAAAE9hz6DXBaW"/>
                 <item uuid="VROp_lq3TdoAAAE9vyiDXBaW"/>
-            </relation_parts>
+            </connected>
         </item>
-    </relations>
+    </entities>
 </network>
