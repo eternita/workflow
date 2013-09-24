@@ -2,6 +2,9 @@ package org.neuro4j.web.logic.render;
 
 import java.io.IOException;
 
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.neuro4j.logic.LogicContext;
@@ -14,21 +17,16 @@ import org.neuro4j.logic.LogicContext;
 public interface ViewNodeRenderEngine {
 
 	/**
-	 * For Studio (design time)
-	 * 
-	 * @return
-	 */
-	public String getName();
-	
-	/**
 	 * 
 	 * 
 	 * @param response
+	 * @param servletContext 
 	 * @param logicContext
 	 * @param viewTemplate
 	 * @throws IOException
 	 */
-	public void render(HttpServletResponse response, LogicContext logicContext, String viewTemplate) throws IOException;
+	public void render(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext, LogicContext logicContext,	String viewTemplate) throws ViewNodeRenderExecutionException;
 	
+	public void init(ServletConfig config, ServletContext servletContext) throws ViewNodeRenderExecutionException;
 
 }
