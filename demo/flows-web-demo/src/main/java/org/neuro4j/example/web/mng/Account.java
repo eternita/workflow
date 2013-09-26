@@ -1,9 +1,15 @@
 package org.neuro4j.example.web.mng;
 
+import java.io.Serializable;
+
 import org.neuro4j.mgr.uuid.UUIDMgr;
 
-public class Account {
+public class Account implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3723851823201997800L;
 	private String uuid;
 	private String firstName;
 	private String lastName;

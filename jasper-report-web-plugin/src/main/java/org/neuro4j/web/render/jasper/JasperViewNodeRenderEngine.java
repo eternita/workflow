@@ -1,9 +1,7 @@
 package org.neuro4j.web.render.jasper;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -90,7 +88,6 @@ public class JasperViewNodeRenderEngine implements ViewNodeRenderEngine {
 				fileName = "report." +  format;
 			}
 
-			response.setHeader("Content-Disposition", "filename=\""+ fileName +"\";");
 
 			
 			JasperPrint jasperPrint = null;
@@ -107,12 +104,15 @@ public class JasperViewNodeRenderEngine implements ViewNodeRenderEngine {
 			}
 				
 			exporter.setParameter(JRExporterParameter.JASPER_PRINT, jasperPrint);
-			OutputStream output = response.getOutputStream();
+			ByteArrayOutputStream output = new ByteArrayOutputStream();
 			
 			exporter.setParameter(JRExporterParameter.OUTPUT_STREAM, output);
 			exporter.exportReport();
+			byte[] report = output.toByteArray();
+			response.setContentLength(report.length);
+			response.setHeader("Content-Disposition", "filename=\""+ fileName +"\";");
 			
-			output.close();
+			response.getOutputStream().write(report);
 				
 			} catch (Exception e) {
 				throw new ViewNodeRenderExecutionException(e.getMessage());
