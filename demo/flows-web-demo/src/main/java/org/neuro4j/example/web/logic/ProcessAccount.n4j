@@ -8,7 +8,7 @@
                 <item value="545" key="y"/>
                 <item value="1186" key="x"/>
             </properties>
-            <relations/>
+            <connected/>
         </item>
         <item name="CreateAccount" uuid="hGnAqG8BngIAAAE9yx4Q24XH">
             <properties>
@@ -18,16 +18,16 @@
                 <item value="23" key="y"/>
                 <item value="128" key="x"/>
             </properties>
-            <relations>
+            <connected>
                 <item uuid=".ZoQV.0EpbYAAAE.jJ6tEIYF"/>
-            </relations>
+            </connected>
         </item>
         <item name="networkConfig" uuid="GDcQV.0EwrgAAAFAKevat3ie">
             <properties>
                 <item value="org.neuro4j.logic.def.NetConfig" key="SWF_BLOCK_CLASS"/>
                 <item value="Public" key="KEY_VISIBILITY"/>
             </properties>
-            <relations/>
+            <connected/>
         </item>
         <item name="Ok" uuid="AIcQV.0E6BsAAAE.lGGtEIYB">
             <properties>
@@ -36,7 +36,7 @@
                 <item value="544" key="y"/>
                 <item value="1395" key="x"/>
             </properties>
-            <relations/>
+            <connected/>
         </item>
         <item name="EndErrorNode" uuid="0KjAqG8BEg4AAAE9gF4Q24XI">
             <properties>
@@ -45,7 +45,7 @@
                 <item value="463" key="y"/>
                 <item value="281" key="x"/>
             </properties>
-            <relations/>
+            <connected/>
         </item>
         <item name="SetMessage" uuid="gTHAqG8B54wAAAE9_r7Ih9Dq">
             <properties>
@@ -57,9 +57,9 @@
                 <item value="409" key="y"/>
                 <item value="135" key="x"/>
             </properties>
-            <relations>
+            <connected>
                 <item uuid="5h3AqG8BkHAAAAE9wijIh9FT"/>
-            </relations>
+            </connected>
         </item>
         <item name="SetErrorMessage" uuid="y8oQV.0EUaAAAAE9i9klqPHq">
             <properties>
@@ -71,9 +71,9 @@
                 <item value="279" key="y"/>
                 <item value="627" key="x"/>
             </properties>
-            <relations>
+            <connected>
                 <item uuid="Oh4QV.0EGu4AAAE9_TUlqPHr"/>
-            </relations>
+            </connected>
         </item>
         <item name="JoinNode1" uuid="9g8QV.0EIesAAAFAoEjat3ie">
             <properties>
@@ -82,9 +82,9 @@
                 <item value="315" key="y"/>
                 <item value="315" key="x"/>
             </properties>
-            <relations>
+            <connected>
                 <item uuid="h0AQV.0EfBYAAAFAoUjat3ie"/>
-            </relations>
+            </connected>
         </item>
         <item name="SetErrorMessage" uuid="T50QV.0EqUsAAAE._5etEIYD">
             <properties>
@@ -96,9 +96,9 @@
                 <item value="439" key="y"/>
                 <item value="1179" key="x"/>
             </properties>
-            <relations>
+            <connected>
                 <item uuid="UaoQV.0EK70AAAE.mqmtEIYE"/>
-            </relations>
+            </connected>
         </item>
         <item name="_cYQV00E6h8AAAFAKevBjnie" uuid="ol8QV.0EwrkAAAFAKevat3ie">
             <properties>
@@ -109,7 +109,7 @@
                 <item value="33" key="y"/>
                 <item value="622" key="x"/>
             </properties>
-            <relations/>
+            <connected/>
         </item>
         <item name="CreateAccount" uuid="noTAqG8B6S8AAAE9t4sQ24XH">
             <properties>
@@ -119,10 +119,10 @@
                 <item value="302" key="y"/>
                 <item value="127" key="x"/>
             </properties>
-            <relations>
+            <connected>
                 <item uuid="pe4QV.0EfBcAAAFAoUjat3ie"/>
                 <item uuid="q.LAqG8BEiUAAAE9vBzIh9FT"/>
-            </relations>
+            </connected>
         </item>
         <item name="DecisionNode2" uuid="8KoQV.0E3CQAAAE.9aatEIYB">
             <properties>
@@ -133,10 +133,10 @@
                 <item value="172" key="y"/>
                 <item value="1158" key="x"/>
             </properties>
-            <relations>
+            <connected>
                 <item uuid="Q7MQV.0E.NEAAAE.jKt7BoYL"/>
                 <item uuid="KWYQV.0E2XYAAAE.d8OtEIYC"/>
-            </relations>
+            </connected>
         </item>
         <item name="EndCreateAccount" uuid="vrnAqG8B8J0AAAE9TygQ24XH">
             <properties>
@@ -145,7 +145,7 @@
                 <item value="530" key="y"/>
                 <item value="118" key="x"/>
             </properties>
-            <relations/>
+            <connected/>
         </item>
         <item name="RemoveAccount" uuid="K2fAqG8BPzAAAAE9PBMQ24XJ">
             <properties>
@@ -155,9 +155,9 @@
                 <item value="30" key="y"/>
                 <item value="427" key="x"/>
             </properties>
-            <relations>
+            <connected>
                 <item uuid="M6vAqG8BUy8AAAE9fqcQ24XK"/>
-            </relations>
+            </connected>
         </item>
         <item name="SetMessage" uuid="wDsQV.0E.TcAAAE.4KStEIWz">
             <properties>
@@ -169,9 +169,9 @@
                 <item value="374" key="y"/>
                 <item value="440" key="x"/>
             </properties>
-            <relations>
+            <connected>
                 <item uuid="gQgQV.0ETg0AAAE.8eGtEIWz"/>
-            </relations>
+            </connected>
         </item>
         <item name="DecisionNode11" uuid="q8XAqG8BfF0AAAE93vYQ24XJ">
             <properties>
@@ -182,10 +182,10 @@
                 <item value="143" key="y"/>
                 <item value="431" key="x"/>
             </properties>
-            <relations>
+            <connected>
                 <item uuid="tRvAqG8BnTgAAAE96J8Q24XK"/>
                 <item uuid="evIQV.0EAeYAAAE94uglqPHq"/>
-            </relations>
+            </connected>
         </item>
         <item name="End" uuid="mjPAqG8BgSQAAAE9YzUQ24XJ">
             <properties>
@@ -194,7 +194,7 @@
                 <item value="595" key="y"/>
                 <item value="433" key="x"/>
             </properties>
-            <relations/>
+            <connected/>
         </item>
         <item name="DecisionNode3" uuid="9j4QV.0EKQ4AAAE.bUutEIYC">
             <properties>
@@ -205,10 +205,10 @@
                 <item value="333" key="y"/>
                 <item value="1157" key="x"/>
             </properties>
-            <relations>
+            <connected>
                 <item uuid="JK0QV.0E6WMAAAE.3cR7BoYL"/>
                 <item uuid="XaQQV.0EKdEAAAE.xZF7BoYL"/>
-            </relations>
+            </connected>
         </item>
         <item name="CallNode1" uuid="CUEQV.0EdR0AAAE.muWtEIYE">
             <properties>
@@ -218,10 +218,10 @@
                 <item value="110" key="y"/>
                 <item value="99" key="x"/>
             </properties>
-            <relations>
+            <connected>
                 <item uuid="UaoQV.0E2wkAAAE.0GB7BoYH"/>
                 <item uuid="wWYQV.0EzD4AAAE.k3OtEIYF"/>
-            </relations>
+            </connected>
         </item>
         <item name="RemoveAccount" uuid="frPAqG8BVcwAAAE9JFkQ24XJ">
             <properties>
@@ -231,9 +231,9 @@
                 <item value="275" key="y"/>
                 <item value="427" key="x"/>
             </properties>
-            <relations>
+            <connected>
                 <item uuid="1bMQV.0EHFoAAAE.UQGtEIW0"/>
-            </relations>
+            </connected>
         </item>
         <item name="Validate" uuid="QCUQV.0Ec2sAAAE.lD6tEIYB">
             <properties>
@@ -243,21 +243,19 @@
                 <item value="25" key="y"/>
                 <item value="1186" key="x"/>
             </properties>
-            <relations>
+            <connected>
                 <item uuid="axoQV.0E.D8AAAE.1i2tEIYC"/>
-            </relations>
+            </connected>
         </item>
-    </entities>
-    <relations>
         <item name="NEXT" uuid="tRvAqG8BnTgAAAE96J8Q24XK">
             <properties>
                 <item value="frPAqG8BVcwAAAE9JFkQ24XJ" key="EndUUID"/>
                 <item value="q8XAqG8BfF0AAAE93vYQ24XJ" key="StartUUID"/>
             </properties>
-            <relation_parts>
+            <connected>
                 <item uuid="q8XAqG8BfF0AAAE93vYQ24XJ"/>
                 <item uuid="frPAqG8BVcwAAAE9JFkQ24XJ"/>
-            </relation_parts>
+            </connected>
         </item>
         <item name="FALSE" uuid="JK0QV.0E6WMAAAE.3cR7BoYL">
             <properties>
@@ -265,10 +263,10 @@
                 <item value="70, 0, -139, -210|209, 181, 0, -29|" key="points"/>
                 <item value="9j4QV.0EKQ4AAAE.bUutEIYC" key="StartUUID"/>
             </properties>
-            <relation_parts>
+            <connected>
                 <item uuid="AIcQV.0E6BsAAAE.lGGtEIYB"/>
                 <item uuid="9j4QV.0EKQ4AAAE.bUutEIYC"/>
-            </relation_parts>
+            </connected>
         </item>
         <item name="NEXT" uuid="1bMQV.0EHFoAAAE.UQGtEIW0">
             <properties>
@@ -276,10 +274,10 @@
                 <item value="0, 29, 6, -70|-6, 71, 0, -28|" key="points"/>
                 <item value="frPAqG8BVcwAAAE9JFkQ24XJ" key="StartUUID"/>
             </properties>
-            <relation_parts>
+            <connected>
                 <item uuid="wDsQV.0E.TcAAAE.4KStEIWz"/>
                 <item uuid="frPAqG8BVcwAAAE9JFkQ24XJ"/>
-            </relation_parts>
+            </connected>
         </item>
         <item name="NEXT" uuid="KWYQV.0E2XYAAAE.d8OtEIYC">
             <properties>
@@ -287,20 +285,20 @@
                 <item value="0, 30, -1, -77|1, 77, 0, -30|" key="points"/>
                 <item value="8KoQV.0E3CQAAAE.9aatEIYB" key="StartUUID"/>
             </properties>
-            <relation_parts>
+            <connected>
                 <item uuid="8KoQV.0E3CQAAAE.9aatEIYB"/>
                 <item uuid="9j4QV.0EKQ4AAAE.bUutEIYC"/>
-            </relation_parts>
+            </connected>
         </item>
         <item name="NEXT" uuid="M6vAqG8BUy8AAAE9fqcQ24XK">
             <properties>
                 <item value="q8XAqG8BfF0AAAE93vYQ24XJ" key="EndUUID"/>
                 <item value="K2fAqG8BPzAAAAE9PBMQ24XJ" key="StartUUID"/>
             </properties>
-            <relation_parts>
+            <connected>
                 <item uuid="K2fAqG8BPzAAAAE9PBMQ24XJ"/>
                 <item uuid="q8XAqG8BfF0AAAE93vYQ24XJ"/>
-            </relation_parts>
+            </connected>
         </item>
         <item name="NEXT" uuid="gQgQV.0ETg0AAAE.8eGtEIWz">
             <properties>
@@ -308,10 +306,10 @@
                 <item value="0, 29, -3, -193|3, 193, 0, -29|" key="points"/>
                 <item value="wDsQV.0E.TcAAAE.4KStEIWz" key="StartUUID"/>
             </properties>
-            <relation_parts>
+            <connected>
                 <item uuid="wDsQV.0E.TcAAAE.4KStEIWz"/>
                 <item uuid="mjPAqG8BgSQAAAE9YzUQ24XJ"/>
-            </relation_parts>
+            </connected>
         </item>
         <item name="NEXT" uuid=".ZoQV.0EpbYAAAE.jJ6tEIYF">
             <properties>
@@ -319,10 +317,10 @@
                 <item value="0, 32, -4, -52|4, 56, 0, -28|" key="points"/>
                 <item value="hGnAqG8BngIAAAE9yx4Q24XH" key="StartUUID"/>
             </properties>
-            <relation_parts>
+            <connected>
                 <item uuid="hGnAqG8BngIAAAE9yx4Q24XH"/>
                 <item uuid="CUEQV.0EdR0AAAE.muWtEIYE"/>
-            </relation_parts>
+            </connected>
         </item>
         <item name="ERROR" uuid="pe4QV.0EfBcAAAFAoUjat3ie">
             <properties>
@@ -330,10 +328,10 @@
                 <item value="42, 0, 211, 236|-169, -236, 0, 0|" key="points"/>
                 <item value="noTAqG8B6S8AAAE9t4sQ24XH" key="StartUUID"/>
             </properties>
-            <relation_parts>
+            <connected>
                 <item uuid="noTAqG8B6S8AAAE9t4sQ24XH"/>
                 <item uuid="9g8QV.0EIesAAAFAoEjat3ie"/>
-            </relation_parts>
+            </connected>
         </item>
         <item name="NEXT" uuid="axoQV.0E.D8AAAE.1i2tEIYC">
             <properties>
@@ -341,10 +339,10 @@
                 <item value="0, 32, -3, -114|3, 116, 0, -30|" key="points"/>
                 <item value="QCUQV.0Ec2sAAAE.lD6tEIYB" key="StartUUID"/>
             </properties>
-            <relation_parts>
+            <connected>
                 <item uuid="8KoQV.0E3CQAAAE.9aatEIYB"/>
                 <item uuid="QCUQV.0Ec2sAAAE.lD6tEIYB"/>
-            </relation_parts>
+            </connected>
         </item>
         <item name="FALSE" uuid="Q7MQV.0E.NEAAAE.jKt7BoYL">
             <properties>
@@ -352,10 +350,10 @@
                 <item value="69, 0, -140, -371|209, 342, 0, -29|" key="points"/>
                 <item value="8KoQV.0E3CQAAAE.9aatEIYB" key="StartUUID"/>
             </properties>
-            <relation_parts>
+            <connected>
                 <item uuid="8KoQV.0E3CQAAAE.9aatEIYB"/>
                 <item uuid="AIcQV.0E6BsAAAE.lGGtEIYB"/>
-            </relation_parts>
+            </connected>
         </item>
         <item name="NEXT" uuid="XaQQV.0EKdEAAAE.xZF7BoYL">
             <properties>
@@ -363,10 +361,10 @@
                 <item value="0, 30, 0, -74|0, 76, 0, -28|" key="points"/>
                 <item value="9j4QV.0EKQ4AAAE.bUutEIYC" key="StartUUID"/>
             </properties>
-            <relation_parts>
+            <connected>
                 <item uuid="T50QV.0EqUsAAAE._5etEIYD"/>
                 <item uuid="9j4QV.0EKQ4AAAE.bUutEIYC"/>
-            </relation_parts>
+            </connected>
         </item>
         <item name="NEXT" uuid="5h3AqG8BkHAAAAE9wijIh9FT">
             <properties>
@@ -374,10 +372,10 @@
                 <item value="0, 29, -4, -65|4, 65, 0, -29|" key="points"/>
                 <item value="gTHAqG8B54wAAAE9_r7Ih9Dq" key="StartUUID"/>
             </properties>
-            <relation_parts>
+            <connected>
                 <item uuid="vrnAqG8B8J0AAAE9TygQ24XH"/>
                 <item uuid="gTHAqG8B54wAAAE9_r7Ih9Dq"/>
-            </relation_parts>
+            </connected>
         </item>
         <item name="NEXT" uuid="h0AQV.0EfBYAAAFAoUjat3ie">
             <properties>
@@ -385,10 +383,10 @@
                 <item value="0, 0, -321, -492|321, 463, 0, -29|" key="points"/>
                 <item value="9g8QV.0EIesAAAFAoEjat3ie" key="StartUUID"/>
             </properties>
-            <relation_parts>
+            <connected>
                 <item uuid="0KjAqG8BEg4AAAE9gF4Q24XI"/>
                 <item uuid="9g8QV.0EIesAAAFAoEjat3ie"/>
-            </relation_parts>
+            </connected>
         </item>
         <item name="FALSE" uuid="evIQV.0EAeYAAAE94uglqPHq">
             <properties>
@@ -396,10 +394,10 @@
                 <item value="42, 0, -146, -173|188, 145, 0, -28|" key="points"/>
                 <item value="q8XAqG8BfF0AAAE93vYQ24XJ" key="StartUUID"/>
             </properties>
-            <relation_parts>
+            <connected>
                 <item uuid="q8XAqG8BfF0AAAE93vYQ24XJ"/>
                 <item uuid="y8oQV.0EUaAAAAE9i9klqPHq"/>
-            </relation_parts>
+            </connected>
         </item>
         <item name="ERROR" uuid="UaoQV.0E2wkAAAE.0GB7BoYH">
             <properties>
@@ -407,10 +405,10 @@
                 <item value="0, 29, -162, -163|0, 57, -162, -135|162, 57, 0, -135|162, 177, 0, -15|" key="points"/>
                 <item value="CUEQV.0EdR0AAAE.muWtEIYE" key="StartUUID"/>
             </properties>
-            <relation_parts>
+            <connected>
                 <item uuid="CUEQV.0EdR0AAAE.muWtEIYE"/>
                 <item uuid="9g8QV.0EIesAAAFAoEjat3ie"/>
-            </relation_parts>
+            </connected>
         </item>
         <item name="NEXT" uuid="UaoQV.0EK70AAAE.mqmtEIYE">
             <properties>
@@ -418,10 +416,10 @@
                 <item value="0, 29, 0, -64|0, 64, 0, -29|" key="points"/>
                 <item value="T50QV.0EqUsAAAE._5etEIYD" key="StartUUID"/>
             </properties>
-            <relation_parts>
+            <connected>
                 <item uuid="T50QV.0EqUsAAAE._5etEIYD"/>
                 <item uuid="mnEQV.0E86wAAAE.nHmtEIYB"/>
-            </relation_parts>
+            </connected>
         </item>
         <item name="NEXT" uuid="q.LAqG8BEiUAAAE9vBzIh9FT">
             <properties>
@@ -429,10 +427,10 @@
                 <item value="0, 29, 4, -94|-4, 95, 0, -28|" key="points"/>
                 <item value="noTAqG8B6S8AAAE9t4sQ24XH" key="StartUUID"/>
             </properties>
-            <relation_parts>
+            <connected>
                 <item uuid="noTAqG8B6S8AAAE9t4sQ24XH"/>
                 <item uuid="gTHAqG8B54wAAAE9_r7Ih9Dq"/>
-            </relation_parts>
+            </connected>
         </item>
         <item name="NEXT" uuid="Oh4QV.0EGu4AAAE9_TUlqPHr">
             <properties>
@@ -440,10 +438,10 @@
                 <item value="0, 29, 185, -162|-185, 162, 0, -29|" key="points"/>
                 <item value="y8oQV.0EUaAAAAE9i9klqPHq" key="StartUUID"/>
             </properties>
-            <relation_parts>
+            <connected>
                 <item uuid="mjPAqG8BgSQAAAE9YzUQ24XJ"/>
                 <item uuid="y8oQV.0EUaAAAAE9i9klqPHq"/>
-            </relation_parts>
+            </connected>
         </item>
         <item name="Ok" uuid="wWYQV.0EzD4AAAE.k3OtEIYF">
             <properties>
@@ -451,10 +449,10 @@
                 <item value="0, 29, -3, -66|3, 67, 0, -28|" key="points"/>
                 <item value="CUEQV.0EdR0AAAE.muWtEIYE" key="StartUUID"/>
             </properties>
-            <relation_parts>
+            <connected>
                 <item uuid="noTAqG8B6S8AAAE9t4sQ24XH"/>
                 <item uuid="CUEQV.0EdR0AAAE.muWtEIYE"/>
-            </relation_parts>
-        </item>
-    </relations>
+            </connected>
+        </item>        
+    </entities>
 </network>

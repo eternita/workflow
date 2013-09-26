@@ -42,6 +42,23 @@
 			<artifactId>standard</artifactId>
 			<version>1.1.2</version>
 		</dependency>
+		<dependency>
+			<groupId>org.neuro4j</groupId>
+			<artifactId>jasper-report-web-plugin</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.neuro4j</groupId>
+			<artifactId>velocity-web-plugin</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<!-- 
+		<dependency>
+			<groupId>org.neuro4j</groupId>
+			<artifactId>richfaces-web-plugin</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		 -->
 	</dependencies>
 
 	<build>

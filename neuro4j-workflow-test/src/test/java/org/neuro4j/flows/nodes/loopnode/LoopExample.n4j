@@ -10,10 +10,10 @@
                 <item value="235" key="y"/>
                 <item value="175" key="x"/>
             </properties>
-            <relations>
+            <connected>
                 <item uuid="IGup_lq3pyUAAAE8no5_VfOF"/>
                 <item uuid="0WoQV.0EJNgAAAE9cTgTfddD"/>
-            </relations>
+            </connected>
         </item>
         <item name="StartNode1" uuid="A0qp_lq3h00AAAE8Cu5_VfOE">
             <properties>
@@ -22,16 +22,16 @@
                 <item value="97" key="y"/>
                 <item value="171" key="x"/>
             </properties>
-            <relations>
+            <connected>
                 <item uuid="1u.p_lq3qxQAAAE8JSB_VfOF"/>
-            </relations>
+            </connected>
         </item>
         <item name="JzkQV00EycgAAAE91m0cxtdF" uuid="6tUQV.0EFMoAAAE91m0TfddF">
             <properties>
                 <item value="org.neuro4j.logic.def.NetConfig" key="SWF_BLOCK_CLASS"/>
                 <item value="Public" key="KEY_VISIBILITY"/>
             </properties>
-            <relations/>
+            <connected/>
         </item>
         <item name="SystemOutBlock" uuid="Yt6p_lq3N0IAAAE9USY1VhGV">
             <properties>
@@ -42,9 +42,9 @@
                 <item value="425" key="y"/>
                 <item value="164" key="x"/>
             </properties>
-            <relations>
+            <connected>
                 <item uuid="iscQV.0Eg9cAAAE9Zo4TfddA"/>
-            </relations>
+            </connected>
         </item>
         <item name="EndNode2" uuid="VmWp_lq3sOYAAAE85X1_VfOF">
             <properties>
@@ -53,19 +53,17 @@
                 <item value="502" key="y"/>
                 <item value="485" key="x"/>
             </properties>
-            <relations/>
+            <connected/>
         </item>
-    </entities>
-    <relations>
         <item name="NEXT" uuid="1u.p_lq3qxQAAAE8JSB_VfOF">
             <properties>
                 <item value="06Gp_lq3GO8AAAE89w5_VfOF" key="EndUUID"/>
                 <item value="A0qp_lq3h00AAAE8Cu5_VfOE" key="StartUUID"/>
             </properties>
-            <relation_parts>
+            <connected>
                 <item uuid="06Gp_lq3GO8AAAE89w5_VfOF"/>
                 <item uuid="A0qp_lq3h00AAAE8Cu5_VfOE"/>
-            </relation_parts>
+            </connected>
         </item>
         <item name="NEXT" uuid="IGup_lq3pyUAAAE8no5_VfOF">
             <properties>
@@ -73,10 +71,10 @@
                 <item value="36, 0, -281, -159|316, 0, -1, -159|316, 35, -1, -124|317, 35, 0, -124|317, 130, 0, -29|" key="points"/>
                 <item value="06Gp_lq3GO8AAAE89w5_VfOF" key="StartUUID"/>
             </properties>
-            <relation_parts>
+            <connected>
                 <item uuid="06Gp_lq3GO8AAAE89w5_VfOF"/>
                 <item uuid="VmWp_lq3sOYAAAE85X1_VfOF"/>
-            </relation_parts>
+            </connected>
         </item>
         <item name="NEXT" uuid="iscQV.0Eg9cAAAE9Zo4TfddA">
             <properties>
@@ -84,10 +82,10 @@
                 <item value="0, 29, -1, 324|0, 61, -1, 356|-117, 61, -118, 356|-117, -295, -118, 0|-34, -295, -35, 0|" key="points"/>
                 <item value="Yt6p_lq3N0IAAAE9USY1VhGV" key="StartUUID"/>
             </properties>
-            <relation_parts>
+            <connected>
                 <item uuid="06Gp_lq3GO8AAAE89w5_VfOF"/>
                 <item uuid="Yt6p_lq3N0IAAAE9USY1VhGV"/>
-            </relation_parts>
+            </connected>
         </item>
         <item name="LOOP_EXIT" uuid="0WoQV.0EJNgAAAE9cTgTfddD">
             <properties>
@@ -95,10 +93,10 @@
                 <item value="0, 30, 0, -265|0, 267, 0, -28|" key="points"/>
                 <item value="06Gp_lq3GO8AAAE89w5_VfOF" key="StartUUID"/>
             </properties>
-            <relation_parts>
+            <connected>
                 <item uuid="06Gp_lq3GO8AAAE89w5_VfOF"/>
                 <item uuid="Yt6p_lq3N0IAAAE9USY1VhGV"/>
-            </relation_parts>
-        </item>
-    </relations>
+            </connected>
+        </item>        
+    </entities>
 </network>

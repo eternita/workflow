@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.junit.Test;
-import org.neuro4j.core.Entity;
+import org.neuro4j.core.Connected;
 import org.neuro4j.logic.swf.FlowExecutionException;
 import org.neuro4j.tests.base.BaseFlowTestCase;
 
@@ -28,7 +28,7 @@ public class SwitchNodeTestCase extends BaseFlowTestCase{
 			
 			params.put("relationName", "rel1");
 			
-			Entity lastNode = (Entity) executeFlowAndReturnObject("org.neuro4j.flows.nodes.switchnode.SwitchFlow-StartNodeDynamic", params, "CURRENT_NODE");
+			Connected  lastNode = (Connected ) executeFlowAndReturnObject("org.neuro4j.flows.nodes.switchnode.SwitchFlow-StartNodeDynamic", params, "CURRENT_NODE");
 			
 			assertEquals(lastNode.getName(), "EndNode1");
 
@@ -45,7 +45,7 @@ public class SwitchNodeTestCase extends BaseFlowTestCase{
 			
 			params.put("relationName", "rel2");
 			
-			Entity lastNode = (Entity) executeFlowAndReturnObject("org.neuro4j.flows.nodes.switchnode.SwitchFlow-StartNodeDynamic", params, "CURRENT_NODE");
+			Connected  lastNode = (Connected ) executeFlowAndReturnObject("org.neuro4j.flows.nodes.switchnode.SwitchFlow-StartNodeDynamic", params, "CURRENT_NODE");
 
 			assertEquals(lastNode.getName(), "EndNode2");
 
@@ -60,7 +60,7 @@ public class SwitchNodeTestCase extends BaseFlowTestCase{
 			Map<String, Object> params = new HashMap<String, Object>();
 
 			
-			Entity lastNode = (Entity) executeFlowAndReturnObject("org.neuro4j.flows.nodes.switchnode.SwitchFlow-StartNodeStatic", params, "CURRENT_NODE");
+			Connected  lastNode = (Connected ) executeFlowAndReturnObject("org.neuro4j.flows.nodes.switchnode.SwitchFlow-StartNodeStatic", params, "CURRENT_NODE");
 
 			assertEquals(lastNode.getName(), "EndNode3");
 
@@ -73,7 +73,7 @@ public class SwitchNodeTestCase extends BaseFlowTestCase{
 	public void testRelationWrongConfiguration() {
 		try {
 			
-			Entity lastNode = (Entity) executeFlowAndReturnObject("org.neuro4j.flows.nodes.switchnode.SwitchFlow-StartNodeDynamic", "CURRENT_NODE");
+			Connected  lastNode = (Connected ) executeFlowAndReturnObject("org.neuro4j.flows.nodes.switchnode.SwitchFlow-StartNodeDynamic", "CURRENT_NODE");
 
 
 			fail("Should be exception.");
@@ -87,7 +87,7 @@ public class SwitchNodeTestCase extends BaseFlowTestCase{
 	public void testRelationDefaultExit() {
 		try {
 
-			Entity lastNode = (Entity) executeFlowAndReturnObject("org.neuro4j.flows.nodes.switchnode.SwitchFlow-StartNodeDefaultExit", "CURRENT_NODE");
+			Connected  lastNode = (Connected ) executeFlowAndReturnObject("org.neuro4j.flows.nodes.switchnode.SwitchFlow-StartNodeDefaultExit", "CURRENT_NODE");
 
 			assertEquals(lastNode.getName(), "EndNode5");
 
@@ -99,7 +99,7 @@ public class SwitchNodeTestCase extends BaseFlowTestCase{
 	public void testRelationEmptyExit() {
 		try {
 		
-			Entity lastNode = (Entity) executeFlowAndReturnObject("org.neuro4j.flows.nodes.switchnode.SwitchFlow-StartNodeEmptyExit", "CURRENT_NODE");
+			Connected  lastNode = (Connected ) executeFlowAndReturnObject("org.neuro4j.flows.nodes.switchnode.SwitchFlow-StartNodeEmptyExit", "CURRENT_NODE");
 
 			assertEquals(lastNode.getName(), "EndNode7");
 

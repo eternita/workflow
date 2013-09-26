@@ -5,12 +5,14 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.neuro4j.logic.LogicContext;
+import org.neuro4j.logic.swf.SWFConstants;
 import org.neuro4j.logic.swf.SimpleWorkflowEngine;
 import org.neuro4j.web.logic.render.ViewNodeRenderEngine;
 import org.neuro4j.web.logic.render.ViewNodeRenderEngineFactory;
@@ -37,17 +39,30 @@ public class FlowDispatcherServlet extends HttpServlet {
 
 	private static final String RENDER_VIEW_KEY = "VIEW_TEMPLATE";
 	
-	private static final String RENDER_ENGINE_KEY = "RENDER_ENGINE_KEY";
+	private static final String RENDER_ENGINE_KEY = SWFConstants.RENDER_ENGINE_KEY;
 	
 
 	private static final String LOCALE_KEY = "LOCALE";
 	
+	
+	
+	@Override
+	public void init(ServletConfig config) throws ServletException {
+		super.init(config);
+	}
+
+	@Override
+	public void init() throws ServletException {
+		super.init();
+	}
+
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
 		try
-		{
+		{			
+			request.setCharacterEncoding("utf-8");
 			String urlStr = request.getRequestURI(); // /not-root-context/n4j/en_US/Welcome-start  /n4j/en_US/Welcome-start
 			String[] urlSplit = urlStr.split("/");
 			String flow = urlSplit[urlSplit.length - 1]; // the last part
@@ -93,21 +108,22 @@ public class FlowDispatcherServlet extends HttpServlet {
 			view = (String) logicContext.get(RENDER_VIEW_KEY);
 
 			// handle if view is not specified -> go to default page with trace
-			if (null == view)
-				view = DEFAULT_VIEW_PAGE;
-			else
+			if (null == view){
+				view = DEFAULT_VIEW_PAGE;				
+			} else if (view.startsWith("/")){
+				view = DEFAULT_VIEW_DIRECTORY + view.replaceFirst("/", "");
+			} else{
 				view = DEFAULT_VIEW_DIRECTORY + view;
+			}
 			
 			String renderEngineImpl = (String) logicContext.get(RENDER_ENGINE_KEY);
-//			renderEngineImpl = "org.neuro4j.web.logic.render.jasper.JasperViewNodeRenderEngine";
-//			renderEngineImpl = "org.neuro4j.web.logic.render.DummyViewNodeRenderEngine";
 			
-			if (null != renderEngineImpl && renderEngineImpl.trim().length() > 0)
+		    if (null != renderEngineImpl && renderEngineImpl.trim().length() > 0 && !renderEngineImpl.trim().equals("jsp"))
 			{
 				// get render engine
-				ViewNodeRenderEngine renderEngine = ViewNodeRenderEngineFactory.getViewNodeRenderEngine(renderEngineImpl);
+				ViewNodeRenderEngine renderEngine = ViewNodeRenderEngineFactory.getViewNodeRenderEngine(getServletConfig(), getServletContext(), renderEngineImpl);
 				// custom rendering
-				renderEngine.render(response, logicContext, view);
+				renderEngine.render(request, response, getServletContext(), logicContext, view);
 			
 			} else {
 				
