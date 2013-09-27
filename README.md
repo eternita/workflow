@@ -12,7 +12,7 @@ Flow file org\neuro4j\example\HelloWorld.n4j:
 
 HelloWorld.java
 
-![workflow-example-higlevel](https://raw.github.com/neuro4j/workflow/master/doc/images/HelloWorldCustomBlock.png "HelloWorld workflow")
+![workflow-example-higlevel](https://raw.github.com/neuro4j/workflow/1.3.0/doc/images/HelloWorldCustomBlock.png "HelloWorld workflow")
 
 Following code execute flow:
 
