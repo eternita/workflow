@@ -11,6 +11,5 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry combineaccessrules="false" kind="src" path="/neuro4j-core"/>
-	<classpathentry kind="src" path="/n4j-site"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
