@@ -3,11 +3,11 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
                              http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.neuro4j</groupId>
-    <artifactId>workflow</artifactId>
+    <groupId>org.neuro4j.examples</groupId>
+    <artifactId>wf-parent</artifactId>
     <version>1.3.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>Workflow System</name>
+    <name>Workflow Demo applications</name>
     <url>http://neuro4j.org</url>
 
     <repositories>
@@ -19,24 +19,28 @@
     </repositories>  
 
     <modules>
-        <module>neuro4j-logic-web</module>
-        <module>neuro4j-workflow-common</module>
-        <module>jasper-report-web-plugin</module>
-        <module>jasper-report-workflow</module>
-        <module>velocity-web-plugin</module>
+        <module>flows-demo</module>
+        <module>flows-web-demo</module>
+        <module>web-site-demo</module> 
     </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <org.neuro4j.version>1.3.0-SNAPSHOT</org.neuro4j.version>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.neuro4j</groupId>
-            <artifactId>neuro4j-core</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-	
+		<dependency>
+			<groupId>org.neuro4j</groupId>
+			<artifactId>neuro4j-core</artifactId>
+			<version>${org.neuro4j.version}</version>
+		</dependency>	
+		<dependency>
+			<groupId>org.neuro4j</groupId>
+			<artifactId>neuro4j-workflow-common</artifactId>
+			<version>${org.neuro4j.version}</version>
+		</dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -44,7 +48,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
 
     <build>
         <pluginManagement>
@@ -58,7 +61,6 @@
                         <target>1.6</target>
                     </configuration>
                 </plugin>
-
             </plugins>
         </pluginManagement>
 
