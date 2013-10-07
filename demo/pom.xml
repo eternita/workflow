@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.neuro4j.examples</groupId>
     <artifactId>wf-parent</artifactId>
-    <version>1.3.0-SNAPSHOT</version>
+    <version>1.3.0</version>
     <packaging>pom</packaging>
     <name>Workflow Demo applications</name>
     <url>http://neuro4j.org</url>
@@ -26,7 +26,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <org.neuro4j.version>1.3.0-SNAPSHOT</org.neuro4j.version>
+        <org.neuro4j.version>1.3.0</org.neuro4j.version>
     </properties>
 
     <dependencies>
