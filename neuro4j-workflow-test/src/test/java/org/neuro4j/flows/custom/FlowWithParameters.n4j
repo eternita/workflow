@@ -1,131 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <network>
     <entities>
-        <item name="StartNode1" uuid="4TWp_lq3FEEAAAE9y2.DXBaB">
+        <item name="NEXT" uuid="_Qep_iYc.igAAAFDzotTzrwj">
             <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.logic.def.node.StartBlock" key="SWF_BLOCK_CLASS"/>
-                <item value="24" key="y"/>
-                <item value="102" key="x"/>
+                <item value="leqp_iYcxx8AAAFDkzpTzrwj" key="EndUUID"/>
+                <item value="0, 32, 0, -72|0, 76, 0, -28|" key="points"/>
+                <item value="1.Wp_iYcfowAAAFDhrFTzrwf" key="StartUUID"/>
             </properties>
             <connected>
-                <item uuid="4lWp_lq3zpgAAAE9zcSDXBaB"/>
+                <item uuid="leqp_iYcxx8AAAFDkzpTzrwj"/>
+                <item uuid="1.Wp_iYcfowAAAFDhrFTzrwf"/>
             </connected>
         </item>
-        <item name="BlockWithStaticInputName" uuid="qTYQV.0EUcwAAAE9d89O7LNY">
+        <item name="NEXT" uuid="7rOp_iYcgnwAAAFD7pZTzrwj">
             <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="BlockWithStaticInputName" key="SWF_BLOCK_CLASS"/>
-                <item value="org.neuro4j.flows.custom.blocks.BlockWithStaticInputName" key="SWF_CUSTOM_CLASS"/>
-                <item value="158" key="y"/>
-                <item value="650" key="x"/>
+                <item value="qZyp_iYc40wAAAFDDLxTzrwf" key="EndUUID"/>
+                <item value="0, 29, 5, -95|-5, 90, 0, -34|" key="points"/>
+                <item value="leqp_iYcxx8AAAFDkzpTzrwj" key="StartUUID"/>
             </properties>
             <connected>
-                <item uuid="QIsQV.0E644AAAE9Dk5O7LNZ"/>
+                <item uuid="qZyp_iYc40wAAAFDDLxTzrwf"/>
+                <item uuid="leqp_iYcxx8AAAFDkzpTzrwj"/>
             </connected>
         </item>
-        <item name="StartNode3" uuid="iIoQV.0EbL4AAAE9p7lO7LNY">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.logic.def.node.StartBlock" key="SWF_BLOCK_CLASS"/>
-                <item value="35" key="y"/>
-                <item value="678" key="x"/>
-            </properties>
-            <connected>
-                <item uuid="N0IQV.0EWG8AAAE9PERO7LNZ"/>
-            </connected>
-        </item>
-        <item name="BlockWithMandatoryInputParameter" uuid="FCup_lq3D6gAAAE9hz6DXBaW">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="BlockWithMandatoryInputParameter" key="SWF_BLOCK_CLASS"/>
-                <item value="org.neuro4j.flows.custom.blocks.BlockWithMandatoryInputParameter" key="SWF_CUSTOM_CLASS"/>
-                <item value="153" key="y"/>
-                <item value="297" key="x"/>
-            </properties>
-            <connected>
-                <item uuid="Kn6p_lq3yEQAAAE9kFGDXBaW"/>
-            </connected>
-        </item>
-        <item name="BlockWithMandatoryInputParameter" uuid="17qp_lq3rSoAAAE935CDXBaB">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="BlockWithMandatoryInputParameter" key="SWF_BLOCK_CLASS"/>
-                <item value="org.neuro4j.flows.custom.blocks.BlockWithMandatoryInputParameter" key="SWF_CUSTOM_CLASS"/>
-                <item value="mandatoryParameter:var1" key="Parameter1:IN"/>
-                <item value="153" key="y"/>
-                <item value="30" key="x"/>
-            </properties>
-            <connected>
-                <item uuid="f8Sp_lq3r48AAAE959GDXBaB"/>
-            </connected>
-        </item>
-        <item name="Ekyp_iYcU18AAAE0fKJP6g0D" uuid="4eep_iYcm8QAAAE.fKJK4A.D">
-            <properties>
-                <item value="org.neuro4j.logic.def.NetConfig" key="SWF_BLOCK_CLASS"/>
-                <item value="Public" key="KEY_VISIBILITY"/>
-            </properties>
-            <connected/>
-        </item>
-        <item name="EndNode3" uuid="Y1oQV.0EhCAAAAE99cFO7LNY">
+        <item name="EndNode5" uuid="Kp8QV.0EczMAAAFDhw9QbMCX">
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
                 <item value="org.neuro4j.logic.def.node.EndBlock" key="SWF_BLOCK_CLASS"/>
-                <item value="279" key="y"/>
-                <item value="686" key="x"/>
+                <item value="235" key="y"/>
+                <item value="1210" key="x"/>
             </properties>
             <connected/>
-        </item>
-        <item name="EndNode2" uuid="b5ap_lq3Tv4AAAE9BzaDXBaW">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.logic.def.node.EndBlock" key="SWF_BLOCK_CLASS"/>
-                <item value="270" key="y"/>
-                <item value="360" key="x"/>
-            </properties>
-            <connected/>
-        </item>
-        <item name="StartNode2" uuid="VROp_lq3TdoAAAE9vyiDXBaW">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.logic.def.node.StartBlock" key="SWF_BLOCK_CLASS"/>
-                <item value="30" key="y"/>
-                <item value="360" key="x"/>
-            </properties>
-            <connected>
-                <item uuid="Euup_lq38coAAAE9kEiDXBaW"/>
-            </connected>
-        </item>
-        <item name="EndNode1" uuid="G4ip_lq3ZQkAAAE9knyDXBaB">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.logic.def.node.EndBlock" key="SWF_BLOCK_CLASS"/>
-                <item value="270" key="y"/>
-                <item value="93" key="x"/>
-            </properties>
-            <connected/>
-        </item>
-                <item name="NEXT" uuid="4lWp_lq3zpgAAAE9zcSDXBaB">
-            <properties>
-                <item value="17qp_lq3rSoAAAE935CDXBaB" key="EndUUID"/>
-                <item value="0, 32, 0, -88|0, 92, 0, -28|" key="points"/>
-                <item value="4TWp_lq3FEEAAAE9y2.DXBaB" key="StartUUID"/>
-            </properties>
-            <connected>
-                <item uuid="4TWp_lq3FEEAAAE9y2.DXBaB"/>
-                <item uuid="17qp_lq3rSoAAAE935CDXBaB"/>
-            </connected>
-        </item>
-        <item name="NEXT" uuid="N0IQV.0EWG8AAAE9PERO7LNZ">
-            <properties>
-                <item value="qTYQV.0EUcwAAAE9d89O7LNY" key="EndUUID"/>
-                <item value="0, 32, -9, -77|9, 81, 0, -28|" key="points"/>
-                <item value="iIoQV.0EbL4AAAE9p7lO7LNY" key="StartUUID"/>
-            </properties>
-            <connected>
-                <item uuid="qTYQV.0EUcwAAAE9d89O7LNY"/>
-                <item uuid="iIoQV.0EbL4AAAE9p7lO7LNY"/>
-            </connected>
         </item>
         <item name="NEXT" uuid="Kn6p_lq3yEQAAAE9kFGDXBaW">
             <properties>
@@ -136,6 +41,19 @@
             <connected>
                 <item uuid="FCup_lq3D6gAAAE9hz6DXBaW"/>
                 <item uuid="b5ap_lq3Tv4AAAE9BzaDXBaW"/>
+            </connected>
+        </item>
+        <item name="BlockWithStringParameter" uuid="leqp_iYcxx8AAAFDkzpTzrwj">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="BlockWithStringParameter" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.flows.custom.blocks.BlockWithStringParameter" key="SWF_CUSTOM_CLASS"/>
+                <item value="string1:&quot;value1 &quot; + &quot;value2&quot;" key="Parameter1:IN"/>
+                <item value="148" key="y"/>
+                <item value="864" key="x"/>
+            </properties>
+            <connected>
+                <item uuid="7rOp_iYcgnwAAAFD7pZTzrwj"/>
             </connected>
         </item>
         <item name="NEXT" uuid="QIsQV.0E644AAAE9Dk5O7LNZ">
@@ -160,6 +78,148 @@
                 <item uuid="G4ip_lq3ZQkAAAE9knyDXBaB"/>
             </connected>
         </item>
+        <item name="EndNode3" uuid="Y1oQV.0EhCAAAAE99cFO7LNY">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="org.neuro4j.logic.def.node.EndBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="279" key="y"/>
+                <item value="686" key="x"/>
+            </properties>
+            <connected/>
+        </item>
+        <item name="wlcQV00EdKUAAAFDXB3b9MCd" uuid="QuwQV.0EXXwAAAFDXB1QbMCd">
+            <properties>
+                <item value="168" key="w"/>
+                <item value="put &quot;value1 &quot; + &quot;value2&quot; into input parameter" key="description"/>
+                <item value="org.neuro4j.logic.def.Note" key="SWF_BLOCK_CLASS"/>
+                <item value="64" key="h"/>
+                <item value="8" key="y"/>
+                <item value="988" key="x"/>
+            </properties>
+            <connected/>
+        </item>
+        <item name="StartNode1" uuid="4TWp_lq3FEEAAAE9y2.DXBaB">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <item value="org.neuro4j.logic.def.node.StartBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="24" key="y"/>
+                <item value="102" key="x"/>
+            </properties>
+            <connected>
+                <item uuid="4lWp_lq3zpgAAAE9zcSDXBaB"/>
+            </connected>
+        </item>
+        <item name="EndNode4" uuid="qZyp_iYc40wAAAFDDLxTzrwf">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="org.neuro4j.logic.def.node.EndBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="235" key="y"/>
+                <item value="912" key="x"/>
+            </properties>
+            <connected/>
+        </item>
+        <item name="BlockWithMandatoryInputParameter" uuid="FCup_lq3D6gAAAE9hz6DXBaW">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="BlockWithMandatoryInputParameter" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.flows.custom.blocks.BlockWithMandatoryInputParameter" key="SWF_CUSTOM_CLASS"/>
+                <item value="153" key="y"/>
+                <item value="297" key="x"/>
+            </properties>
+            <connected>
+                <item uuid="Kn6p_lq3yEQAAAE9kFGDXBaW"/>
+            </connected>
+        </item>
+        <item name="NEXT" uuid="K5UQV.0ERMQAAAFDuUhQbMCX">
+            <properties>
+                <item value="CIwQV.0EHfoAAAFDiC1QbMCX" key="EndUUID"/>
+                <item value="0, 32, 6, -80|-6, 84, 0, -28|" key="points"/>
+                <item value="OPYQV.0EMTkAAAFDAAVQbMCX" key="StartUUID"/>
+            </properties>
+            <connected>
+                <item uuid="CIwQV.0EHfoAAAFDiC1QbMCX"/>
+                <item uuid="OPYQV.0EMTkAAAFDAAVQbMCX"/>
+            </connected>
+        </item>
+        <item name="BlockWithStringParameter" uuid="CIwQV.0EHfoAAAFDiC1QbMCX">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="BlockWithStringParameter" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.flows.custom.blocks.BlockWithStringParameter" key="SWF_CUSTOM_CLASS"/>
+                <item value="string1:&quot;value1 &quot; + var1.stringVar" key="Parameter1:IN"/>
+                <item value="125" key="y"/>
+                <item value="1161" key="x"/>
+            </properties>
+            <connected>
+                <item uuid="nC0QV.0Ep7UAAAFDeFFQbMCX"/>
+            </connected>
+        </item>
+        <item name="StartNode2" uuid="VROp_lq3TdoAAAE9vyiDXBaW">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <item value="org.neuro4j.logic.def.node.StartBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="30" key="y"/>
+                <item value="360" key="x"/>
+            </properties>
+            <connected>
+                <item uuid="Euup_lq38coAAAE9kEiDXBaW"/>
+            </connected>
+        </item>
+        <item name="networkConfig" uuid="_m0QV.0EXXsAAAFDXB1QbMCd">
+            <properties>
+                <item value="org.neuro4j.logic.def.NetConfig" key="SWF_BLOCK_CLASS"/>
+                <item value="Public" key="KEY_VISIBILITY"/>
+            </properties>
+            <connected/>
+        </item>
+        <item name="NEXT" uuid="nC0QV.0Ep7UAAAFDeFFQbMCX">
+            <properties>
+                <item value="Kp8QV.0EczMAAAFDhw9QbMCX" key="EndUUID"/>
+                <item value="0, 29, -1, -87|1, 82, 0, -34|" key="points"/>
+                <item value="CIwQV.0EHfoAAAFDiC1QbMCX" key="StartUUID"/>
+            </properties>
+            <connected>
+                <item uuid="Kp8QV.0EczMAAAFDhw9QbMCX"/>
+                <item uuid="CIwQV.0EHfoAAAFDiC1QbMCX"/>
+            </connected>
+        </item>
+        <item name="BlockWithStaticInputName" uuid="qTYQV.0EUcwAAAE9d89O7LNY">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="BlockWithStaticInputName" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.flows.custom.blocks.BlockWithStaticInputName" key="SWF_CUSTOM_CLASS"/>
+                <item value="158" key="y"/>
+                <item value="650" key="x"/>
+            </properties>
+            <connected>
+                <item uuid="QIsQV.0E644AAAE9Dk5O7LNZ"/>
+            </connected>
+        </item>
+        <item name="NEXT" uuid="N0IQV.0EWG8AAAE9PERO7LNZ">
+            <properties>
+                <item value="qTYQV.0EUcwAAAE9d89O7LNY" key="EndUUID"/>
+                <item value="0, 32, -9, -77|9, 81, 0, -28|" key="points"/>
+                <item value="iIoQV.0EbL4AAAE9p7lO7LNY" key="StartUUID"/>
+            </properties>
+            <connected>
+                <item uuid="qTYQV.0EUcwAAAE9d89O7LNY"/>
+                <item uuid="iIoQV.0EbL4AAAE9p7lO7LNY"/>
+            </connected>
+        </item>
+        <item name="StartNode3" uuid="iIoQV.0EbL4AAAE9p7lO7LNY">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <item value="org.neuro4j.logic.def.node.StartBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="35" key="y"/>
+                <item value="678" key="x"/>
+            </properties>
+            <connected>
+                <item uuid="N0IQV.0EWG8AAAE9PERO7LNZ"/>
+            </connected>
+        </item>
         <item name="NEXT" uuid="Euup_lq38coAAAE9kEiDXBaW">
             <properties>
                 <item value="FCup_lq3D6gAAAE9hz6DXBaW" key="EndUUID"/>
@@ -170,6 +230,72 @@
                 <item uuid="FCup_lq3D6gAAAE9hz6DXBaW"/>
                 <item uuid="VROp_lq3TdoAAAE9vyiDXBaW"/>
             </connected>
+        </item>
+        <item name="EndNode1" uuid="G4ip_lq3ZQkAAAE9knyDXBaB">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="org.neuro4j.logic.def.node.EndBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="270" key="y"/>
+                <item value="93" key="x"/>
+            </properties>
+            <connected/>
+        </item>
+        <item name="StartNode5" uuid="OPYQV.0EMTkAAAFDAAVQbMCX">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <item value="org.neuro4j.logic.def.node.StartBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="10" key="y"/>
+                <item value="1210" key="x"/>
+            </properties>
+            <connected>
+                <item uuid="K5UQV.0ERMQAAAFDuUhQbMCX"/>
+            </connected>
+        </item>
+        <item name="NEXT" uuid="4lWp_lq3zpgAAAE9zcSDXBaB">
+            <properties>
+                <item value="17qp_lq3rSoAAAE935CDXBaB" key="EndUUID"/>
+                <item value="0, 32, 0, -88|0, 92, 0, -28|" key="points"/>
+                <item value="4TWp_lq3FEEAAAE9y2.DXBaB" key="StartUUID"/>
+            </properties>
+            <connected>
+                <item uuid="4TWp_lq3FEEAAAE9y2.DXBaB"/>
+                <item uuid="17qp_lq3rSoAAAE935CDXBaB"/>
+            </connected>
+        </item>
+        <item name="BlockWithMandatoryInputParameter" uuid="17qp_lq3rSoAAAE935CDXBaB">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="BlockWithMandatoryInputParameter" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.flows.custom.blocks.BlockWithMandatoryInputParameter" key="SWF_CUSTOM_CLASS"/>
+                <item value="mandatoryParameter:var1" key="Parameter1:IN"/>
+                <item value="153" key="y"/>
+                <item value="30" key="x"/>
+            </properties>
+            <connected>
+                <item uuid="f8Sp_lq3r48AAAE959GDXBaB"/>
+            </connected>
+        </item>
+        <item name="StartNode4" uuid="1.Wp_iYcfowAAAFDhrFTzrwf">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <item value="org.neuro4j.logic.def.node.StartBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="34" key="y"/>
+                <item value="906" key="x"/>
+            </properties>
+            <connected>
+                <item uuid="_Qep_iYc.igAAAFDzotTzrwj"/>
+            </connected>
+        </item>
+        <item name="EndNode2" uuid="b5ap_lq3Tv4AAAE9BzaDXBaW">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="org.neuro4j.logic.def.node.EndBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="270" key="y"/>
+                <item value="360" key="x"/>
+            </properties>
+            <connected/>
         </item>
     </entities>
 </network>

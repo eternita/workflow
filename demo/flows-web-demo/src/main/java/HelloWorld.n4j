@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<network>
+    <entities>
+        <item name="NEXT" uuid="pokQV.0EZxUAAAFCgAjrrbqb">
+            <properties>
+                <item value="ProQV.0ElRkAAAFCfPzrrbqa" key="EndUUID"/>
+                <item value="0, 32, -8, -172|8, 176, 0, -28|" key="points"/>
+                <item value="Uj0QV.0E_BoAAAFCnL3rrbqa" key="StartUUID"/>
+            </properties>
+            <connected>
+                <item uuid="Uj0QV.0E_BoAAAFCnL3rrbqa"/>
+                <item uuid="ProQV.0ElRkAAAFCfPzrrbqa"/>
+            </connected>
+        </item>
+        <item name="networkConfig" uuid="SgIQV.0EgykAAAFCsx7rrbqj">
+            <properties>
+                <item value="org.neuro4j.logic.def.NetConfig" key="SWF_BLOCK_CLASS"/>
+                <item value="Public" key="KEY_VISIBILITY"/>
+            </properties>
+            <connected/>
+        </item>
+        <item name="EndNode1" uuid="U2cQV.0EmjEAAAFCdsfrrbqa">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="org.neuro4j.logic.def.node.EndBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="328" key="y"/>
+                <item value="215" key="x"/>
+            </properties>
+            <connected/>
+        </item>
+        <item name="Start" uuid="Uj0QV.0E_BoAAAFCnL3rrbqa">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <item value="org.neuro4j.logic.def.node.StartBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="10" key="y"/>
+                <item value="215" key="x"/>
+            </properties>
+            <connected>
+                <item uuid="pokQV.0EZxUAAAFCgAjrrbqb"/>
+            </connected>
+        </item>
+        <item name="SayHello" uuid="ProQV.0ElRkAAAFCfPzrrbqa">
+            <properties>
+                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="SayHello" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.example.helloword.SayHello" key="SWF_CUSTOM_CLASS"/>
+                <item value="name:&quot;World&quot;" key="Parameter1:IN"/>
+                <item value="146" key="y"/>
+                <item value="218" key="x"/>
+            </properties>
+            <connected>
+                <item uuid="BgAQV.0Er4wAAAFC2SPrrbqb"/>
+            </connected>
+        </item>
+        <item name="NEXT" uuid="BgAQV.0Er4wAAAFC2SPrrbqb">
+            <properties>
+                <item value="U2cQV.0EmjEAAAFCdsfrrbqa" key="EndUUID"/>
+                <item value="0, 29, 5, -195|-5, 190, 0, -34|" key="points"/>
+                <item value="ProQV.0ElRkAAAFCfPzrrbqa" key="StartUUID"/>
+            </properties>
+            <connected>
+                <item uuid="U2cQV.0EmjEAAAFCdsfrrbqa"/>
+                <item uuid="ProQV.0ElRkAAAFCfPzrrbqa"/>
+            </connected>
+        </item>
+    </entities>
+</network>

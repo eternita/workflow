@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.neuro4j.core.log.Logger;
 import org.neuro4j.logic.LogicContext;
 import org.neuro4j.logic.swf.SWFConstants;
 import org.neuro4j.logic.swf.SimpleWorkflowEngine;
@@ -25,19 +26,7 @@ public class FlowDispatcherServlet extends HttpServlet {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private static final String DEFAULT_VIEW_DIRECTORY = "/WEB-INF/"; 
 
-	private static final String DEFAULT_VIEW_PAGE = "/WEB-INF/n4j-default-view.jsp";
-	
-	private static final String ERROR_PAGE = "/WEB-INF/error.jsp";
-	
-	private static final String LOGIC_CONTEXT_KEY = "LOGIC_CONTEXT";
-
-	private static final String REQUEST_KEY = "REQUEST";
-
-	private static final String RESPONSE_KEY = "RESPONSE";
-
-	private static final String RENDER_VIEW_KEY = "VIEW_TEMPLATE";
 	
 	private static final String RENDER_ENGINE_KEY = SWFConstants.RENDER_ENGINE_KEY;
 	
@@ -81,6 +70,8 @@ public class FlowDispatcherServlet extends HttpServlet {
 				if (null == locale)
 					locale = Locale.getDefault();
 				
+				Logger.debug(this, "Using '{}' locale", locale);
+				
 				params.put(LOCALE_KEY, locale);
 			}
 			
@@ -88,8 +79,8 @@ public class FlowDispatcherServlet extends HttpServlet {
 			for (Object param : request.getParameterMap().keySet())
 				params.put((String) param, request.getParameter((String) param));
 			
-			params.put(REQUEST_KEY, request);
-			params.put(RESPONSE_KEY, response);
+			params.put(WebFlowConstants.REQUEST_KEY, request);
+			params.put(WebFlowConstants.RESPONSE_KEY, response);
 
 			LogicContext logicContext = SimpleWorkflowEngine.run(flow, params);
 
@@ -97,26 +88,28 @@ public class FlowDispatcherServlet extends HttpServlet {
 			// copy data from logicContext to request attributes (for usage in views)
 			for (String key : logicContext.keySet())
 			{
-				if (key.equals(REQUEST_KEY) || key.equals(RESPONSE_KEY))
+				if (key.equals(WebFlowConstants.REQUEST_KEY) || key.equals(WebFlowConstants.RESPONSE_KEY))
 					continue;
 				
 				request.setAttribute(key, logicContext.get(key));
 			}
 			
-			request.setAttribute(LOGIC_CONTEXT_KEY, logicContext);
+			request.setAttribute(WebFlowConstants.LOGIC_CONTEXT_KEY, logicContext);
 				
-			view = (String) logicContext.get(RENDER_VIEW_KEY);
+			view = (String) logicContext.get(WebFlowConstants.RENDER_VIEW_KEY);
 
 			// handle if view is not specified -> go to default page with trace
 			if (null == view){
-				view = DEFAULT_VIEW_PAGE;				
+				view = WebFlowConstants.DEFAULT_VIEW_PAGE;				
 			} else if (view.startsWith("/")){
-				view = DEFAULT_VIEW_DIRECTORY + view.replaceFirst("/", "");
+				view = WebFlowConstants.DEFAULT_VIEW_DIRECTORY + view.replaceFirst("/", "");
 			} else{
-				view = DEFAULT_VIEW_DIRECTORY + view;
+				view = WebFlowConstants.DEFAULT_VIEW_DIRECTORY + view;
 			}
 			
 			String renderEngineImpl = (String) logicContext.get(RENDER_ENGINE_KEY);
+			
+			Logger.debug(this, "Using '{}' web render", renderEngineImpl);
 			
 		    if (null != renderEngineImpl && renderEngineImpl.trim().length() > 0 && !renderEngineImpl.trim().equals("jsp"))
 			{
@@ -133,7 +126,8 @@ public class FlowDispatcherServlet extends HttpServlet {
 				
 		} catch (Exception e) {
 			request.setAttribute("exception", e);
-  		    getServletContext().getRequestDispatcher(ERROR_PAGE).forward(request, response);
+			Logger.error(this, e.getMessage(), e);
+  		    getServletContext().getRequestDispatcher(WebFlowConstants.ERROR_PAGE).forward(request, response);
 		}
 		return;
 	}

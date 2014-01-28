@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="n4j" uri="http://neuro4j.org/jsp/jstl/core"%>
 <div>
-     This example shows how <b>Neuro4j Flows</b> can be integrated with  <a href="http://community.jaspersoft.com/project/jasperreports-library"><b>JasperReport library.</b></a>
+     This example shows how <b>Neuro4j Flows</b> can be integrated with  <a href="http://community.jaspersoft.com/project/jasperreports-library"><b>JasperReports library.</b></a>
      
      <p>Click on icon to generate report in specific format.
      
