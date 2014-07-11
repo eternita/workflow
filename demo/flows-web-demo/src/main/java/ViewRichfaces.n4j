@@ -4,7 +4,7 @@
         <item name="MapperNode1" uuid="dKQQV.0ERzkAAAFBd88MsjK3">
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.logic.def.node.KeyMapper" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.workflow.node.KeyMapper" key="SWF_BLOCK_CLASS"/>
                 <item value="&quot;/jsp/example5/include_richfaces.jsp&quot;:page" key="SWF_PARAM_KEY_1"/>
                 <item value="430" key="y"/>
                 <item value="929" key="x"/>
@@ -17,7 +17,7 @@
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
                 <item value="PUBLIC" key="SYS_START_NODE_TYPE"/>
-                <item value="org.neuro4j.logic.def.node.StartBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.workflow.node.StartBlock" key="SWF_BLOCK_CLASS"/>
                 <item value="10" key="y"/>
                 <item value="910" key="x"/>
             </properties>
@@ -29,7 +29,7 @@
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
                 <item value="/jsp/example5/main.xhtml" key="SWF_PARAM_VIEW_TEMPLATE"/>
-                <item value="org.neuro4j.logic.def.node.SetViewTemplate" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.workflow.node.SetViewTemplate" key="SWF_BLOCK_CLASS"/>
                 <item value="richfaces" key="SWF_PARAM_VIEW_RENDER_TYPE"/>
                 <item value="540" key="y"/>
                 <item value="374" key="x"/>
@@ -47,7 +47,7 @@
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
                 <item value="/jsp/application.jsp" key="SWF_PARAM_VIEW_TEMPLATE"/>
-                <item value="org.neuro4j.logic.def.node.SetViewTemplate" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.workflow.node.SetViewTemplate" key="SWF_BLOCK_CLASS"/>
                 <item value="jsp" key="SWF_PARAM_VIEW_RENDER_TYPE"/>
                 <item value="539" key="y"/>
                 <item value="901" key="x"/>
@@ -58,7 +58,7 @@
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
                 <item value="PUBLIC" key="SYS_START_NODE_TYPE"/>
-                <item value="org.neuro4j.logic.def.node.StartBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.workflow.node.StartBlock" key="SWF_BLOCK_CLASS"/>
                 <item value="10" key="y"/>
                 <item value="410" key="x"/>
             </properties>

@@ -2,7 +2,9 @@ package org.neuro4j.example.web.mng;
 
 import java.io.Serializable;
 
-import org.neuro4j.mgr.uuid.UUIDMgr;
+import org.neuro4j.workflow.UUIDMgr;
+
+
 
 public class Account implements Serializable{
 	

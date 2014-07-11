@@ -24,5 +24,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="con" path="org.neuro4j.studio.core.NEURO4J_CONTAINER/0.9"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

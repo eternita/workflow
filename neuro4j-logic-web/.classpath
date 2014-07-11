@@ -16,6 +16,5 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.neuro4j.studio.core.NEURO4J_CONTAINER/0.8"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

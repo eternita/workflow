@@ -1,12 +1,13 @@
 package org.neuro4j.example.helloword;
 
 
-import org.neuro4j.logic.LogicContext;
-import org.neuro4j.logic.def.CustomBlock;
-import org.neuro4j.logic.swf.FlowExecutionException;
-import org.neuro4j.logic.swf.FlowInitializationException;
-import org.neuro4j.logic.swf.ParameterDefinition;
-import org.neuro4j.logic.swf.ParameterDefinitionList;
+import org.neuro4j.workflow.FlowContext;
+import org.neuro4j.workflow.common.FlowExecutionException;
+import org.neuro4j.workflow.common.FlowInitializationException;
+import org.neuro4j.workflow.common.ParameterDefinition;
+import org.neuro4j.workflow.common.ParameterDefinitionList;
+import org.neuro4j.workflow.node.CustomBlock;
+
 import static org.neuro4j.example.helloword.SayHello.*;
 
 @ParameterDefinitionList(input={
@@ -21,7 +22,7 @@ public class SayHello extends CustomBlock {
     
     
     @Override
-    public int execute(LogicContext ctx) throws FlowExecutionException {
+    public int execute(FlowContext ctx) throws FlowExecutionException {
 		
 		Object name = ctx.get(IN_NAME);
         

@@ -9,12 +9,12 @@ import java.util.Map;
 import org.neuro4j.example.web.mng.Account;
 import org.neuro4j.example.web.mng.AccountMng;
 import org.neuro4j.example.web.mng.impl.AccountMngImpl;
-import org.neuro4j.logic.LogicContext;
-import org.neuro4j.logic.def.CustomBlock;
-import org.neuro4j.logic.swf.FlowExecutionException;
-import org.neuro4j.logic.swf.FlowInitializationException;
-import org.neuro4j.logic.swf.ParameterDefinition;
-import org.neuro4j.logic.swf.ParameterDefinitionList;
+import org.neuro4j.workflow.FlowContext;
+import org.neuro4j.workflow.common.FlowExecutionException;
+import org.neuro4j.workflow.common.FlowInitializationException;
+import org.neuro4j.workflow.common.ParameterDefinition;
+import org.neuro4j.workflow.common.ParameterDefinitionList;
+import org.neuro4j.workflow.node.CustomBlock;
 
 @ParameterDefinitionList(input={@ParameterDefinition(name=IN_ACCOUNTS, isOptional=false, type= "java.util.Map")},
                          output={ 
@@ -29,7 +29,7 @@ public class GetAccountsList extends CustomBlock {
     private AccountMng accountMng = null;
     
 
-	public int execute(LogicContext ctx)
+	public int execute(FlowContext ctx)
 			throws FlowExecutionException {
 		
 		Map accounts = (Map) ctx.get(IN_ACCOUNTS);

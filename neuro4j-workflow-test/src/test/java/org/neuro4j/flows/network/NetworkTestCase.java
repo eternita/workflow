@@ -1,82 +1,71 @@
+/*
+ * Copyright (c) 2013-2014, Neuro4j
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package org.neuro4j.flows.network;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 import org.junit.Test;
-import org.neuro4j.logic.LogicContext;
-import org.neuro4j.logic.swf.FlowExecutionException;
 import org.neuro4j.tests.base.BaseFlowTestCase;
+import org.neuro4j.workflow.FlowContext;
 
 public class NetworkTestCase extends BaseFlowTestCase {
-	
-	@Test
-	public void testPublicNetworkPublicNode() {
-		try {
-			
-			LogicContext logicContext = executeFlow("org.neuro4j.flows.network.NetworkTestFlow-StartNode1");
-			String var1 = (String)logicContext.get("value1");
 
-			assertEquals(var1, "test");
+    @Test
+    public void testPublicNetworkPublicNode() {
 
-		} catch (FlowExecutionException e) {
-			fail(e.toString());
-		}
-	}
+        FlowContext logicContext = executeFlow("org.neuro4j.flows.network.NetworkTestFlow-StartNode1");
+        String var1 = (String) logicContext.get("value1");
 
-	
-	@Test
-	public void testPublicNetworkPrivateNode() {
-		try {
-			
-			LogicContext logicContext = executeFlow("org.neuro4j.flows.network.NetworkTestFlow-StartNode2");
+        assertEquals(var1, "test");
 
-			fail("StartNode2 is private node");
+    }
 
-		} catch (FlowExecutionException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	@Test
-	public void testCallPrivateNodeByCallNode() {
-		try {
-			
-			LogicContext logicContext = executeFlow("org.neuro4j.flows.network.NetworkTestFlow-StartNode3");
-			String var1 = (String)logicContext.get("var1");
+    @Test
+    public void testPublicNetworkPrivateNode() {
 
-			assertEquals(var1, "test");
+        executeFlowAndCheckExceptioMessage(
+                "org.neuro4j.flows.network.NetworkTestFlow-StartNode2", null,
+                "Node 'StartNode2' is not public");
+    }
 
-		} catch (FlowExecutionException e) {
-			fail(e.toString());
-		}
-	}
+    @Test
+    public void testCallPrivateNodeByCallNode() {
 
-	
-	@Test
-	public void testCallPrivateNodeByCallNodeInOtherPackage() {
-		try {
-			
-			executeFlow("org.neuro4j.flows.network.NetworkTestFlow-StartNode4");
+        FlowContext logicContext = executeFlow("org.neuro4j.flows.network.NetworkTestFlow-StartNode3");
+        String var1 = (String) logicContext.get("var1");
 
+        assertEquals(var1, "test");
 
-			fail("Called private node has different package");
+    }
 
-		} catch (FlowExecutionException e) {
-			e.printStackTrace();
-		}
-	}
-	
-	@Test
-	public void testCallPublicNodeByCallNodeInOtherPackage() {
-		try {
-		
-			LogicContext logicContext = executeFlow("org.neuro4j.flows.network.NetworkTestFlow-StartNode5");
-			String var1 = (String)logicContext.get("var1");
-			assertEquals(var1, "test value");
-			
-		} catch (FlowExecutionException e) {
-			fail(e.toString());
-		}
-	}
+    @Test
+    public void testCallPrivateNodeByCallNodeInOtherPackage() {
+        executeFlowAndCheckExceptioMessage(
+                "org.neuro4j.flows.network.NetworkTestFlow-StartNode4",
+                null,
+                "Node StartNode1 in package org/neuro4j/flows/network/p2 is private and can be used just inside package.");
+    }
+
+    @Test
+    public void testCallPublicNodeByCallNodeInOtherPackage() {
+
+        FlowContext logicContext = executeFlow("org.neuro4j.flows.network.NetworkTestFlow-StartNode5");
+        String var1 = (String) logicContext.get("var1");
+        assertEquals(var1, "test value");
+
+    }
 }

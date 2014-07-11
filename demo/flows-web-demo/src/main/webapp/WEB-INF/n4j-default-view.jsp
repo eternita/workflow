@@ -2,12 +2,12 @@
 
 <%@ page import="org.neuro4j.core.*" %>
 <%@ page import="java.util.*" %>
-<%@ page import="org.neuro4j.logic.*" %>
-<%@ page import="org.neuro4j.logic.swf.SWFConstants" %>
+<%@ page import="org.neuro4j.workflow.*" %>
+<%@ page import="org.neuro4j.workflow.SWFConstants" %>
 
 
 <%
-	LogicContext logicContext = (LogicContext) request.getAttribute("LOGIC_CONTEXT");
+	FlowContext logicContext = (FlowContext) request.getAttribute("LOGIC_CONTEXT");
 %>
 <table style="margin-bottom: 3px;" width="100%"  border="0" cellspacing="0" cellpadding="0" class="l r t b">
     <tr>

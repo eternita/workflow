@@ -6,12 +6,12 @@ import static org.neuro4j.example.web.blocks.msg.SetMessage.OUT_MESSAGE;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
-import org.neuro4j.logic.LogicContext;
-import org.neuro4j.logic.def.CustomBlock;
-import org.neuro4j.logic.swf.FlowExecutionException;
-import org.neuro4j.logic.swf.FlowInitializationException;
-import org.neuro4j.logic.swf.ParameterDefinition;
-import org.neuro4j.logic.swf.ParameterDefinitionList;
+import org.neuro4j.workflow.FlowContext;
+import org.neuro4j.workflow.common.FlowExecutionException;
+import org.neuro4j.workflow.common.FlowInitializationException;
+import org.neuro4j.workflow.common.ParameterDefinition;
+import org.neuro4j.workflow.common.ParameterDefinitionList;
+import org.neuro4j.workflow.node.CustomBlock;
 
 @ParameterDefinitionList(input = { @ParameterDefinition(name = IN_TEXTKEY, isOptional = true, type = "java.lang.String") }, output = { @ParameterDefinition(name = OUT_MESSAGE, isOptional = true, type = "java.lang.String") })
 public class SetMessage extends CustomBlock {
@@ -24,7 +24,7 @@ public class SetMessage extends CustomBlock {
 
 	static final String OUT_MESSAGE = "message";
 
-	public int execute(LogicContext ctx) throws FlowExecutionException {
+	public int execute(FlowContext ctx) throws FlowExecutionException {
 
 		String textKey = (String) ctx.get(IN_TEXTKEY);
 		String message = textKey;

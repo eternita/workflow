@@ -9,12 +9,12 @@ import org.neuro4j.example.web.common.CreateException;
 import org.neuro4j.example.web.mng.Account;
 import org.neuro4j.example.web.mng.AccountMng;
 import org.neuro4j.example.web.mng.impl.AccountMngImpl;
-import org.neuro4j.logic.LogicContext;
-import org.neuro4j.logic.def.CustomBlock;
-import org.neuro4j.logic.swf.FlowExecutionException;
-import org.neuro4j.logic.swf.FlowInitializationException;
-import org.neuro4j.logic.swf.ParameterDefinition;
-import org.neuro4j.logic.swf.ParameterDefinitionList;
+import org.neuro4j.workflow.FlowContext;
+import org.neuro4j.workflow.common.FlowExecutionException;
+import org.neuro4j.workflow.common.FlowInitializationException;
+import org.neuro4j.workflow.common.ParameterDefinition;
+import org.neuro4j.workflow.common.ParameterDefinitionList;
+import org.neuro4j.workflow.node.CustomBlock;
 
 @ParameterDefinitionList(input={
 		                        @ParameterDefinition(name=IN_FIRSTNAME, isOptional=false, type= "java.lang.String"),
@@ -33,7 +33,7 @@ public class CreateAccount extends CustomBlock {
     
     private AccountMng accountMng = null;
 
-	public int execute(LogicContext ctx)
+	public int execute(FlowContext ctx)
 			throws FlowExecutionException {
 		
 		String firstName = (String) ctx.get(IN_FIRSTNAME);

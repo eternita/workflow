@@ -33,7 +33,7 @@
         <item name="setListPage" uuid="aLzAqG8BuD8AAAE9C7AQ24Ww">
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.logic.def.node.KeyMapper" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.workflow.node.KeyMapper" key="SWF_BLOCK_CLASS"/>
                 <item value="&quot;/jsp/example1/accounts.jsp&quot;:page" key="SWF_PARAM_KEY_1"/>
                 <item value="698" key="y"/>
                 <item value="&quot;activeCl&quot;:example_1" key="SWF_PARAM_KEY_2"/>
@@ -48,7 +48,7 @@
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
                 <item value="/jsp/application.jsp" key="SWF_PARAM_VIEW_TEMPLATE"/>
                 <item value="" key="SWF_PARAM_VIEW_DYNAMIC_TEMPLATE"/>
-                <item value="org.neuro4j.logic.def.node.SetViewTemplate" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.workflow.node.SetViewTemplate" key="SWF_BLOCK_CLASS"/>
                 <item value="898" key="y"/>
                 <item value="352" key="x"/>
             </properties>
@@ -127,7 +127,7 @@
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
                 <item value="org.neuro4j.example.web.logic.ProcessAccount-RemoveAccount" key="SYS_FLOW_NAME"/>
-                <item value="org.neuro4j.logic.def.node.CallByFlowNameBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.workflow.node.CallBlock" key="SWF_BLOCK_CLASS"/>
                 <item value="" key="SYS_DYNAMIC_FLOW_NAME"/>
                 <item value="259" key="y"/>
                 <item value="269" key="x"/>
@@ -173,7 +173,7 @@
         <item name="SetPage" uuid="42nAqG8BGK0AAAE9nMsQ24Wx">
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.logic.def.node.KeyMapper" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.workflow.node.KeyMapper" key="SWF_BLOCK_CLASS"/>
                 <item value="&quot;/jsp/example1/new_account.jsp&quot;:page" key="SWF_PARAM_KEY_1"/>
                 <item value="686" key="y"/>
                 <item value="&quot;activeCl&quot;:example_1" key="SWF_PARAM_KEY_2"/>
@@ -187,7 +187,7 @@
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
                 <item value="PUBLIC" key="SYS_START_NODE_TYPE"/>
-                <item value="org.neuro4j.logic.def.node.StartBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.workflow.node.StartBlock" key="SWF_BLOCK_CLASS"/>
                 <item value="18" key="y"/>
                 <item value="555" key="x"/>
             </properties>
@@ -210,7 +210,7 @@
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
                 <item value="PUBLIC" key="SYS_START_NODE_TYPE"/>
-                <item value="org.neuro4j.logic.def.node.StartBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.workflow.node.StartBlock" key="SWF_BLOCK_CLASS"/>
                 <item value="26" key="y"/>
                 <item value="136" key="x"/>
             </properties>
@@ -222,7 +222,7 @@
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
                 <item value="PUBLIC" key="SYS_START_NODE_TYPE"/>
-                <item value="org.neuro4j.logic.def.node.StartBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.workflow.node.StartBlock" key="SWF_BLOCK_CLASS"/>
                 <item value="23" key="y"/>
                 <item value="-9" key="x"/>
             </properties>
@@ -244,7 +244,7 @@
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
                 <item value="PUBLIC" key="SYS_START_NODE_TYPE"/>
-                <item value="org.neuro4j.logic.def.node.StartBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.workflow.node.StartBlock" key="SWF_BLOCK_CLASS"/>
                 <item value="28" key="y"/>
                 <item value="330" key="x"/>
             </properties>
@@ -277,7 +277,7 @@
         <item name="JoinNode2" uuid="c_rAqG8BgnUAAAE9v4O2jYXR">
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.logic.def.node.JoinBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.workflow.node.JoinBlock" key="SWF_BLOCK_CLASS"/>
                 <item value="396" key="y"/>
                 <item value="547" key="x"/>
             </properties>
@@ -301,7 +301,7 @@
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
                 <item value="org.neuro4j.example.web.logic.ProcessAccount-CreateAccount" key="SYS_FLOW_NAME"/>
-                <item value="org.neuro4j.logic.def.node.CallByFlowNameBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.workflow.node.CallBlock" key="SWF_BLOCK_CLASS"/>
                 <item value="" key="SYS_DYNAMIC_FLOW_NAME"/>
                 <item value="267" key="y"/>
                 <item value="85" key="x"/>
@@ -325,7 +325,7 @@
         <item name="JoinNode2" uuid="7wkQV.0EMq8AAAE_C_O8aabi">
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.logic.def.node.JoinBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.workflow.node.JoinBlock" key="SWF_BLOCK_CLASS"/>
                 <item value="518" key="y"/>
                 <item value="104" key="x"/>
             </properties>

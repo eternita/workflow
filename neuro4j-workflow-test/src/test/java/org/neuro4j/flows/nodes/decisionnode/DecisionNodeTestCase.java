@@ -1,10 +1,22 @@
-/**
- * 
+/*
+ * Copyright (c) 2013-2014, Neuro4j
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
+
 package org.neuro4j.flows.nodes.decisionnode;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,257 +24,206 @@ import java.util.List;
 import java.util.Map;
 
 import org.junit.Test;
-import org.neuro4j.core.Connected;
-import org.neuro4j.logic.swf.FlowExecutionException;
 import org.neuro4j.tests.base.BaseFlowTestCase;
 
 /**
  * TODO: add tests
  */
-public class DecisionNodeTestCase extends BaseFlowTestCase{
+public class DecisionNodeTestCase extends BaseFlowTestCase {
 
+    @Test
+    public void testStringEqualsTrue() {
 
+        Map<String, Object> params = new HashMap<String, Object>();
 
-	@Test
-	public void testStringEqualsTrue() {
-		try {
-			Map<String, Object> params = new HashMap<String, Object>();
+        params.put("var1", "123");
+        params.put("var2", "123");
 
-			
-			params.put("var1", "123");
-			params.put("var2", "123");
-			
-			Connected lastValue = (Connected) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeEqStr", params, "CURRENT_NODE");
+        String lastValue = (String) executeFlowAndReturnLastNode("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeEqStr", params);
 
-			assertEquals(lastValue.getName(), "EndNode1");
-			
-		} catch (FlowExecutionException e) {
-			fail(e.toString());
-		}
-	}
-	
-	@Test
-	public void testStringEqualsFalse() {
-		try {
-			Map<String, Object> params = new HashMap<String, Object>();
+        assertEquals(lastValue, "EndNode1");
 
-			
-			params.put("var1", "123");
-			params.put("var2", "1234");
-			
-			Connected lastValue = (Connected) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeEqStr", params, "CURRENT_NODE");
+    }
 
-			assertEquals(lastValue.getName(), "EndNode2");
-			
-		} catch (FlowExecutionException e) {
-			fail(e.toString());
-		}
-	}
-	
-	@Test
-	public void testStringEqualsWithInteger() {
-		try {
-			Map<String, Object> params = new HashMap<String, Object>();
+    @Test
+    public void testStringEqualsFalse() {
 
-			
-			params.put("var1", "123");
-			params.put("var2",  new Integer("123"));
-			
-			Connected lastValue = (Connected) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeEqStr", params, "CURRENT_NODE");
+        Map<String, Object> params = new HashMap<String, Object>();
 
-			assertEquals(lastValue.getName(), "EndNode2");
-			
-		} catch (FlowExecutionException e) {
-			fail(e.toString());
-		}
-	}
-	
-	@Test
-	public void testDefinedTrue() {
-		try {
-			Map<String, Object> params = new HashMap<String, Object>();
-			
-			params.put("var1", "123");
-			
-			Connected lastValue = (Connected) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeDefined", params, "CURRENT_NODE");
+        params.put("var1", "123");
+        params.put("var2", "1234");
 
-			assertEquals(lastValue.getName(), "EndNode3");
-			
-		} catch (FlowExecutionException e) {
-			fail(e.toString());
-		}
-	}
-	
-	@Test
-	public void testDefinedFalse() {
-		try {
-			Map<String, Object> params = new HashMap<String, Object>();
-			
-			
-			Connected lastValue = (Connected) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeDefined", params, "CURRENT_NODE");
+        String lastValue = (String) executeFlowAndReturnLastNode("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeEqStr", params);
 
-			assertEquals(lastValue.getName(), "EndNode4");
-			
-		} catch (FlowExecutionException e) {
-			fail(e.toString());
-		}
-	}
+        assertEquals(lastValue, "EndNode2");
 
-	@Test
-	public void testUndefinedTrue() {
-		try {
-			Map<String, Object> params = new HashMap<String, Object>();
-			
-			
-			Connected lastValue = (Connected) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeUndefined", params, "CURRENT_NODE");
+    }
 
-			assertEquals(lastValue.getName(), "EndNode5");
-			
-		} catch (FlowExecutionException e) {
-			fail(e.toString());
-		}
-	}
-	
-	@Test
-	public void testUndefinedFalse() {
-		try {
-			Map<String, Object> params = new HashMap<String, Object>();
-			
-			params.put("var1", "123");
-			
-			Connected lastValue = (Connected) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeUndefined", params, "CURRENT_NODE");
+    @Test
+    public void testStringEqualsWithInteger() {
 
-			assertEquals(lastValue.getName(), "EndNode6");
-			
-		} catch (FlowExecutionException e) {
-			fail(e.toString());
-		}
-	}
-	
-	@Test
-	public void testEmptyStringTrue() {
-		try {
-			Map<String, Object> params = new HashMap<String, Object>();
-			
-			params.put("var1", "");
-			
-			Connected lastValue = (Connected) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeEmptyString", params, "CURRENT_NODE");
+        Map<String, Object> params = new HashMap<String, Object>();
 
-			assertEquals(lastValue.getName(), "EndNode7");
-			
-		} catch (FlowExecutionException e) {
-			fail(e.toString());
-		}
-	}
-	
-	@Test
-	public void testEmptyStringFalse() {
-		try {
-			Map<String, Object> params = new HashMap<String, Object>();
-			
-			params.put("var1", "123");
-			
-			Connected lastValue = (Connected) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeEmptyString", params, "CURRENT_NODE");
+        params.put("var1", "123");
+        params.put("var2", new Integer("123"));
 
-			assertEquals(lastValue.getName(), "EndNode8");
-			
-		} catch (FlowExecutionException e) {
-			fail(e.toString());
-		}
-	}
-	
-	@Test
-	public void testEmptyStringNull() {
-		try {
-			Map<String, Object> params = new HashMap<String, Object>();
-			
-			params.put("var1", null);
-			
-			Connected  lastValue = (Connected ) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeEmptyString", params, "CURRENT_NODE");
+        String lastValue = (String) executeFlowAndReturnLastNode("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeEqStr", params);
 
-			assertEquals(lastValue.getName(), "EndNode8");
-			
-		} catch (FlowExecutionException e) {
-			fail(e.toString());
-		}
-	}
-	
-	@Test
-	public void testEmptyStringNotString() {
-		try {
-			Map<String, Object> params = new HashMap<String, Object>();
-			
-			params.put("var1", new Integer(123));
-			
-			Connected  lastValue = (Connected ) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeEmptyString", params, "CURRENT_NODE");
+        assertEquals(lastValue, "EndNode2");
 
-			assertEquals(lastValue.getName(), "EndNode8");
-			
-		} catch (FlowExecutionException e) {
-			fail(e.toString());
-		}
-	}
-	@Test
-	public void testHasElementsArrayList() {
-		try {
-			Map<String, Object> params = new HashMap<String, Object>();
-			List<String> array = new ArrayList<String>();
-			array.add("123");
-			params.put("var1", array);
-			
-			Connected  lastValue = (Connected ) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeHasElements", params, "CURRENT_NODE");
-			assertEquals(lastValue.getName(), "EndNode9");
-			
-		} catch (FlowExecutionException e) {
-			fail(e.toString());
-		}
-	}
-	@Test
-	public void testHasElementsArrayListEmpty() {
-		try {
-			Map<String, Object> params = new HashMap<String, Object>();
-			List<String> array = new ArrayList<String>();
-			params.put("var1", array);
-			
-			Connected  lastValue = (Connected ) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeHasElements", params, "CURRENT_NODE");
+    }
 
-			assertEquals(lastValue.getName(), "EndNode10");
-			
-		} catch (FlowExecutionException e) {
-			fail(e.toString());
-		}
-	}
-	@Test
-	public void testHasElementsStringArray() {
-		try {
-			Map<String, Object> params = new HashMap<String, Object>();
-			String[] array = new String[]{"123", "12"};
-			
-			params.put("var1", array);
-			
-			Connected  lastValue = (Connected ) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeHasElements", params, "CURRENT_NODE");
+    @Test
+    public void testDefinedTrue() {
 
-			assertEquals(lastValue.getName(), "EndNode9");
-			
-		} catch (FlowExecutionException e) {
-			fail(e.toString());
-		}
-	}
-	
-	@Test
-	public void testHasElementsStringArrayEmpty() {
-		try {
-			Map<String, Object> params = new HashMap<String, Object>();
-			String[] array = new String[]{};
-			
-			params.put("var1", array);
-			
-			Connected  lastValue = (Connected ) executeFlowAndReturnObject("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeHasElements", params, "CURRENT_NODE");
+        Map<String, Object> params = new HashMap<String, Object>();
 
-			assertEquals(lastValue.getName(), "EndNode10");
-			
-		} catch (FlowExecutionException e) {
-			fail(e.toString());
-		}
-	}
+        params.put("var1", "123");
+
+        String lastValue = (String) executeFlowAndReturnLastNode("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeDefined", params);
+
+        assertEquals(lastValue, "EndNode3");
+
+    }
+
+    @Test
+    public void testDefinedFalse() {
+
+        Map<String, Object> params = new HashMap<String, Object>();
+
+        String lastValue = (String) executeFlowAndReturnLastNode("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeDefined", params);
+
+        assertEquals(lastValue, "EndNode4");
+
+    }
+
+    @Test
+    public void testUndefinedTrue() {
+
+        Map<String, Object> params = new HashMap<String, Object>();
+
+        String lastValue = (String) executeFlowAndReturnLastNode("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeUndefined", params);
+
+        assertEquals(lastValue, "EndNode5");
+
+    }
+
+    @Test
+    public void testUndefinedFalse() {
+
+        Map<String, Object> params = new HashMap<String, Object>();
+
+        params.put("var1", "123");
+
+        String lastValue = (String) executeFlowAndReturnLastNode("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeUndefined", params);
+
+        assertEquals(lastValue, "EndNode6");
+
+    }
+
+    @Test
+    public void testEmptyStringTrue() {
+
+        Map<String, Object> params = new HashMap<String, Object>();
+
+        params.put("var1", "");
+
+        String lastValue = (String) executeFlowAndReturnLastNode("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeEmptyString", params);
+
+        assertEquals(lastValue, "EndNode7");
+
+    }
+
+    @Test
+    public void testEmptyStringFalse() {
+
+        Map<String, Object> params = new HashMap<String, Object>();
+
+        params.put("var1", "123");
+
+        String lastValue = (String) executeFlowAndReturnLastNode("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeEmptyString", params);
+
+        assertEquals(lastValue, "EndNode8");
+
+    }
+
+    @Test
+    public void testEmptyStringNull() {
+
+        Map<String, Object> params = new HashMap<String, Object>();
+
+        params.put("var1", null);
+
+        String lastValue = (String) executeFlowAndReturnLastNode("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeEmptyString", params);
+
+        assertEquals(lastValue, "EndNode8");
+
+    }
+
+    @Test
+    public void testEmptyStringNotString() {
+
+        Map<String, Object> params = new HashMap<String, Object>();
+
+        params.put("var1", new Integer(123));
+
+        String lastValue = (String) executeFlowAndReturnLastNode("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeEmptyString", params);
+
+        assertEquals(lastValue, "EndNode8");
+
+    }
+
+    @Test
+    public void testHasElementsArrayList() {
+
+        Map<String, Object> params = new HashMap<String, Object>();
+        List<String> array = new ArrayList<String>();
+        array.add("123");
+        params.put("var1", array);
+
+        String lastValue = (String) executeFlowAndReturnLastNode("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeHasElements", params);
+        assertEquals(lastValue, "EndNode9");
+
+    }
+
+    @Test
+    public void testHasElementsArrayListEmpty() {
+
+        Map<String, Object> params = new HashMap<String, Object>();
+        List<String> array = new ArrayList<String>();
+        params.put("var1", array);
+
+        String lastValue = (String) executeFlowAndReturnLastNode("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeHasElements", params);
+
+        assertEquals(lastValue, "EndNode10");
+
+    }
+
+    @Test
+    public void testHasElementsStringArray() {
+
+        Map<String, Object> params = new HashMap<String, Object>();
+        String[] array = new String[] { "123", "12" };
+
+        params.put("var1", array);
+
+        String lastValue = (String) executeFlowAndReturnLastNode("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeHasElements", params);
+
+        assertEquals(lastValue, "EndNode9");
+
+    }
+
+    @Test
+    public void testHasElementsStringArrayEmpty() {
+
+        Map<String, Object> params = new HashMap<String, Object>();
+        String[] array = new String[] { };
+
+        params.put("var1", array);
+
+        String lastValue = (String) executeFlowAndReturnLastNode("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNodeHasElements", params);
+
+        assertEquals(lastValue, "EndNode10");
+
+    }
 }

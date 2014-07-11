@@ -10,6 +10,5 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry combineaccessrules="false" kind="src" path="/neuro4j-core"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

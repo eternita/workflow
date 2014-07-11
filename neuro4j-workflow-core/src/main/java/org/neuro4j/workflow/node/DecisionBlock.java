@@ -1,0 +1,321 @@
+/*
+ * Copyright (c) 2013-2014, Neuro4j
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package org.neuro4j.workflow.node;
+
+import java.util.Collection;
+import java.util.Enumeration;
+import java.util.Iterator;
+
+import org.neuro4j.workflow.FlowContext;
+import org.neuro4j.workflow.WorkflowRequest;
+import org.neuro4j.workflow.common.FlowExecutionException;
+import org.neuro4j.workflow.common.FlowInitializationException;
+import org.neuro4j.workflow.enums.DecisionCompTypes;
+import org.neuro4j.workflow.enums.DecisionOperators;
+import org.neuro4j.workflow.loader.n4j.SWFConstants;
+import org.neuro4j.workflow.xml.DecisionNode;
+import org.neuro4j.workflow.xml.Transition;
+import org.neuro4j.workflow.xml.WorkflowNode;
+
+/**
+ * DecisionBlock provides functionality to compare 2 parameters from flow context.
+ *
+ */
+public class DecisionBlock extends LogicBlock {
+
+    private static final String NEXT_EXIT_RELATION = SWFConstants.NEXT_RELATION_NAME;
+    private static final String FALSE_EXIT_RELATION = "FALSE";
+
+    /**
+     * Selected operator like "= (string)", != (string)...
+     */
+    private DecisionOperators operator = null;
+    /**
+     * Selected comparison type like "constant value" or "value from context".
+     */
+    private DecisionCompTypes compTypes = null;
+    /**
+     * 
+     */
+    private String decisionKey = null;
+    /**
+     * 
+     */
+    private String comparisonKey = null;
+    /**
+     * 
+     */
+    private Transition trueExit = null;
+    /**
+     * 
+     */
+    private Transition falseExit = null;
+
+    /**
+     * Default constructor.
+     */
+    public DecisionBlock() {
+        super();
+    }
+
+    /* (non-Javadoc)
+     * @see org.neuro4j.workflow.node.LogicBlock#execute(org.neuro4j.workflow.WorkflowRequest)
+     */
+    public final Transition execute(WorkflowRequest request)
+            throws FlowExecutionException {
+        FlowContext fctx = request.getLogicContext();
+        switch (operator) {
+            case DEFINED:
+                Object decisionValue = fctx.get(decisionKey);
+                if (decisionValue == null)
+                {
+                    request.setNextRelation(falseExit);
+                } else {
+                    request.setNextRelation(trueExit);
+                }
+                break;
+            case UNDEFINED:
+                decisionValue = fctx.get(decisionKey);
+                if (decisionValue == null)
+                {
+                    request.setNextRelation(trueExit);
+                } else {
+                    request.setNextRelation(falseExit);
+                }
+                break;
+            case EMPTY_STR:
+                decisionValue = fctx.get(decisionKey);
+                if (decisionValue != null && decisionValue instanceof String && "".equals(decisionValue.toString().trim()))
+                {
+                    request.setNextRelation(trueExit);
+                } else {
+                    request.setNextRelation(falseExit);
+                }
+                break;
+            case EQ_STR:
+                decisionValue = fctx.get(decisionKey);
+
+                Object compValue = getComparisonValue(fctx);
+
+                if (decisionValue != null && compValue != null && decisionValue instanceof String && compValue instanceof String && decisionValue.toString().equals(compValue.toString()))
+                {
+                    request.setNextRelation(trueExit);
+                } else {
+                    request.setNextRelation(falseExit);
+                }
+                break;
+            case NEQ_STR:
+                decisionValue = fctx.get(decisionKey);
+                compValue = getComparisonValue(fctx);
+
+                if (decisionValue != null && compValue != null && !decisionValue.toString().equals(compValue.toString()))
+                {
+                    request.setNextRelation(falseExit);
+                } else {
+                    request.setNextRelation(trueExit);
+                }
+                break;
+            case NEQ:
+                decisionValue = fctx.get(decisionKey);
+                compValue = getComparisonValue(fctx);
+
+                double numberValue = ((Number) decisionValue).doubleValue();
+                double numberCompareValue = new Double((String) compValue).doubleValue();
+
+                if (numberValue == numberCompareValue)
+                {
+                    request.setNextRelation(falseExit);
+                } else {
+                    request.setNextRelation(trueExit);
+                }
+                break;
+            case LESS:
+                decisionValue = fctx.get(decisionKey);
+                compValue = getComparisonValue(fctx);
+
+                if (compValue == null) {
+                    request.setNextRelation(falseExit);
+                    break;
+                }
+
+                numberValue = ((Number) decisionValue).doubleValue();
+                numberCompareValue = new Double((String) compValue).doubleValue();
+
+                if (numberValue < numberCompareValue)
+                {
+                    request.setNextRelation(trueExit);
+                } else {
+                    request.setNextRelation(falseExit);
+                }
+                break;
+            case GREATER:
+                decisionValue = fctx.get(decisionKey);
+                compValue = getComparisonValue(fctx);
+                if (compValue == null) {
+                    request.setNextRelation(falseExit);
+                    break;
+                }
+                numberValue = ((Number) decisionValue).doubleValue();
+                numberCompareValue = new Double((String) compValue).doubleValue();
+
+                if (numberValue > numberCompareValue)
+                {
+                    request.setNextRelation(trueExit);
+                } else {
+                    request.setNextRelation(falseExit);
+                }
+                break;
+            case EQ:
+                decisionValue = fctx.get(decisionKey);
+
+                compValue = getComparisonValue(fctx);
+
+                numberValue = ((Number) decisionValue).doubleValue();
+                numberCompareValue = new Double((String) compValue).doubleValue();
+
+                if (numberValue == numberCompareValue)
+                {
+                    request.setNextRelation(trueExit);
+                } else {
+                    request.setNextRelation(falseExit);
+                }
+                break;
+            case HAS_EL:
+
+                Object value = fctx.get(decisionKey);
+                boolean result = false;
+                if (value != null)
+                {
+                    if ((value instanceof Iterator))
+                    {
+                        result = ((Iterator) value).hasNext();
+                    }
+                    else if ((value instanceof Enumeration))
+                    {
+                        result = ((Enumeration) value).hasMoreElements();
+                    }
+                    else if ((value instanceof Collection))
+                    {
+                        result = !((Collection) value).isEmpty();
+                    }
+                    else if ((value instanceof Object[]))
+                    {
+                        result = ((Object[]) value).length > 0;
+                    }
+                }
+
+                if (result)
+                {
+                    request.setNextRelation(trueExit);
+                } else {
+                    request.setNextRelation(falseExit);
+                }
+                break;
+            default:
+                throw new FlowExecutionException("Decision node: Wrong configuration");
+        }
+        return request.getNextWorkflowNode();
+    }
+
+    /**
+     * @param fctx flow context
+     * @return object from context
+     */
+    private Object getComparisonValue(FlowContext fctx)
+    {
+        Object compValue = null;
+        switch (compTypes) {
+            case context:
+                compValue = fctx.get(comparisonKey);
+                break;
+            default:
+                compValue = comparisonKey;
+                break;
+        }
+        return compValue;
+    }
+
+    /* (non-Javadoc)
+     * @see org.neuro4j.workflow.node.LogicBlock#load(org.neuro4j.workflow.xml.WorkflowNode)
+     */
+    public final void load(WorkflowNode entity) throws FlowInitializationException
+    {
+        DecisionNode node = (DecisionNode) entity;
+
+        operator = node.getOperator();
+
+        compTypes = node.getCompTypes();
+
+        decisionKey = node.getDecisionKey();
+
+        comparisonKey = node.getComparisonKey();
+
+        trueExit = entity.getExitByName(NEXT_EXIT_RELATION);
+        falseExit = entity.getExitByName(FALSE_EXIT_RELATION);
+
+        if (operator == null) {
+            throw new FlowInitializationException(
+                    "Decision node: Opearator not defined");
+        }
+        if (compTypes == null) {
+            throw new FlowInitializationException(
+                    "Decision node: CompTypes not defined");
+        }
+
+    }
+
+    /* (non-Javadoc)
+     * @see org.neuro4j.workflow.node.LogicBlock#validate(org.neuro4j.workflow.FlowContext)
+     */
+    @Override
+    public void validate(FlowContext ctx) throws FlowExecutionException {
+        super.validate(ctx);
+
+        if (trueExit == null || falseExit == null)
+        {
+            throw new FlowExecutionException("Decision node: Connector not defined.");
+        }
+
+        switch (operator) {
+            case DEFINED:
+            case UNDEFINED:
+            case HAS_EL:
+            case EMPTY_STR:
+
+                if (decisionKey == null)
+                {
+                    throw new FlowExecutionException("Decision node: decisionKey is not defined");
+                }
+                break;
+
+            case EQ_STR:
+            case EQ:
+            case LESS:
+            case GREATER:
+            case NEQ:
+            case NEQ_STR:
+                if (decisionKey == null || comparisonKey == null)
+                {
+                    throw new FlowExecutionException("Decision node: decisionKey and comparisonKey are mandatory");
+                }
+                break;
+            default:
+
+        }
+    }
+
+}
