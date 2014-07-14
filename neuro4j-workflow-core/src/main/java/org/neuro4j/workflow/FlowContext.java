@@ -29,11 +29,30 @@ import org.apache.commons.beanutils.PropertyUtils;
 import org.neuro4j.workflow.loader.n4j.SWFConstants;
 import org.neuro4j.workflow.log.Logger;
 
+/**
+ * Keeps all in/out variables during flow execution. 
+ *
+ */
 public class FlowContext {
 
+    /**
+     * 
+     */
     private HashMap<String, Object> parameters = new HashMap<String, Object>();
+    /**
+     * Name of template which should be rendered after flow execution.
+     * Can be used in web application.
+     */
     private String viewTemplate;
+    
+    /**
+     *  For web application holds render type. Ex. jsp, jasper. velocity
+     */
     private String renderType;
+    
+    /**
+     * Holds request locale.
+     */
     private Locale locale;
 
     public FlowContext() {

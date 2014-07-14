@@ -16,16 +16,31 @@
 
 package org.neuro4j.workflow;
 
+/**
+ * Class holds information regarding execution result. 
+ *
+ */
 public class ExecutionResult {
 
     int errorCode = -1;
+    
+    /**
+     *  Keeps exception if flow finished with error.
+     */
     Exception exception = null;
-    FlowContext logicContext = null;
+    
+    /**
+     *  Keeps context after execution.
+     */
+    FlowContext flowContext = null;
 
+    /**
+     * Keeps name of last node which was executed.
+     */
     String lastSuccessfulNodeName = null;
 
     public ExecutionResult(FlowContext logicContext) {
-        this.logicContext = logicContext;
+        this.flowContext = logicContext;
     }
 
     public void setExecutionExeption(Exception ex) {
@@ -36,8 +51,12 @@ public class ExecutionResult {
         return exception;
     }
 
+    /**
+     * Returns flowContext with output parameters.
+     * @return flow context.
+     */
     public FlowContext getFlowContext() {
-        return logicContext;
+        return flowContext;
     }
 
     public void print() {
@@ -48,6 +67,10 @@ public class ExecutionResult {
 
     }
 
+    /**
+     * Returns last executed node.
+     * @return node name
+     */
     public String getLastSuccessfulNodeName() {
         return lastSuccessfulNodeName;
     }

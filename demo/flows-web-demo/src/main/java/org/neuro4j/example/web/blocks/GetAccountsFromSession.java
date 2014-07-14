@@ -18,6 +18,7 @@ import org.neuro4j.workflow.common.ParameterDefinitionList;
 import org.neuro4j.workflow.node.CustomBlock;
 
 
+
 @ParameterDefinitionList(input={},
                          output={ 
 		                         @ParameterDefinition(name=OUT_ACCOUNTS, isOptional=false, type= "java.util.Map")})	
