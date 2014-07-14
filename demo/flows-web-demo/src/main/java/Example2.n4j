@@ -70,7 +70,7 @@
         </item>
         <item name="networkConfig" uuid="p9MQV.0E29AAAAFBC42HjaR4">
             <properties>
-                <item value="org.neuro4j.logic.def.NetConfig" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.workflow.node.NetConfig" key="SWF_BLOCK_CLASS"/>
                 <item value="Public" key="KEY_VISIBILITY"/>
             </properties>
             <connected/>
