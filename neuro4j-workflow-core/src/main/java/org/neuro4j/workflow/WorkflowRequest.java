@@ -21,8 +21,8 @@ import java.util.Iterator;
 import java.util.Locale;
 import java.util.Stack;
 
-import org.neuro4j.workflow.xml.Transition;
-import org.neuro4j.workflow.xml.WorkflowNode;
+import org.neuro4j.workflow.node.Transition;
+import org.neuro4j.workflow.node.WorkflowNode;
 
 public class WorkflowRequest {
 

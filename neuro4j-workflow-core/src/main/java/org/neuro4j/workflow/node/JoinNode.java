@@ -17,36 +17,37 @@
 package org.neuro4j.workflow.node;
 
 import org.neuro4j.workflow.FlowContext;
+import org.neuro4j.workflow.Workflow;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.loader.n4j.SWFConstants;
-import org.neuro4j.workflow.xml.Transition;
-import org.neuro4j.workflow.xml.WorkflowNode;
+import org.neuro4j.workflow.node.Transition;
+import org.neuro4j.workflow.node.WorkflowNode;
 
 /**
  * JoinBlock links different blocks. Block has many 'input' transitions and one 'output' transition.
  */
-public class JoinBlock extends LogicBlock {
+public class JoinNode extends WorkflowNode {
 
     private Transition next = null;
 
-    /**
-     * Constructor.
-     * 
-     * @param entity
-     */
-    public JoinBlock(WorkflowNode entity)
-    {
-        this();
-    }
 
     /**
      * Default constructor.
      */
-    public JoinBlock()
+    public JoinNode()
     {
         super();
+    }
+
+    /**
+     * @param name
+     * @param uuid
+     * @param workflow
+     */
+    public JoinNode(String name, String uuid, Workflow workflow) {
+       super(name, uuid, workflow);
     }
 
     /*
@@ -65,8 +66,9 @@ public class JoinBlock extends LogicBlock {
      * 
      * @see org.neuro4j.workflow.node.LogicBlock#load(org.neuro4j.workflow.xml.WorkflowNode)
      */
-    public final void load(WorkflowNode entity) throws FlowInitializationException {
-        next = entity.getExitByName(SWFConstants.NEXT_RELATION_NAME);
+    @Override
+    public final void init() throws FlowInitializationException {
+        next = getExitByName(SWFConstants.NEXT_RELATION_NAME);
         return;
     }
 

@@ -17,53 +17,51 @@
 package org.neuro4j.workflow.node;
 
 import org.neuro4j.workflow.FlowContext;
+import org.neuro4j.workflow.Workflow;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
-import org.neuro4j.workflow.common.FlowInitializationException;
-import org.neuro4j.workflow.xml.Transition;
-import org.neuro4j.workflow.xml.ViewNode;
-import org.neuro4j.workflow.xml.WorkflowNode;
 
-/**
- * SetViewTemplate can be used in web application to set view. It can be jsp page, velocity template and etc.
- *
- */
-public class SetViewTemplate extends LogicBlock {
+public class ViewNode extends WorkflowNode {
 
-    /**
-     * 
-     */
     private String staticTemplateName = null;
 
-    /**
-     * 
-     */
     private String dynamicTemplateName = null;
 
-    /**
-     * 
-     */
     private String renderType = null;
 
-    /**
-     *  Default constructor.
-     */
-    public SetViewTemplate() {
-        super();
+    public ViewNode(String name, String uuid, Workflow workflow)
+    {
+        super(name, uuid, workflow);
     }
 
-    /**
-     * Constructor.
-     * @param name
-     */
-    public SetViewTemplate(String name) {
-        super();
-        setName(name);
+    public String getStaticTemplateName() {
+        return staticTemplateName;
+    }
+
+    public void setStaticTemplateName(String staticTemplateName) {
+        this.staticTemplateName = staticTemplateName;
+    }
+
+    public String getDynamicTemplateName() {
+        return dynamicTemplateName;
+    }
+
+    public void setDynamicTemplateName(String dynamicTemplateName) {
+        this.dynamicTemplateName = dynamicTemplateName;
+    }
+
+    public String getRenderType() {
+        return renderType;
+    }
+
+    public void setRenderType(String renderType) {
+        this.renderType = renderType;
     }
 
     /* (non-Javadoc)
-     * @see org.neuro4j.workflow.node.LogicBlock#execute(org.neuro4j.workflow.WorkflowRequest)
+     * @see org.neuro4j.workflow.xml.WorkflowNode#execute(org.neuro4j.workflow.WorkflowRequest)
      */
+    @Override
     public Transition execute(WorkflowRequest request) throws FlowExecutionException
     {
         FlowContext ctx = request.getLogicContext();
@@ -84,18 +82,7 @@ public class SetViewTemplate extends LogicBlock {
 
         return null;
     }
-
-    /* (non-Javadoc)
-     * @see org.neuro4j.workflow.node.LogicBlock#load(org.neuro4j.workflow.xml.WorkflowNode)
-     */
-    public final void load(WorkflowNode workflowNode) throws FlowInitializationException
-    {
-        ViewNode node = (ViewNode) workflowNode;
-        staticTemplateName = node.getStaticTemplateName();
-        dynamicTemplateName = node.getDynamicTemplateName();
-        renderType = node.getRenderType();
-    }
-
+    
     /* (non-Javadoc)
      * @see org.neuro4j.workflow.node.LogicBlock#validate(org.neuro4j.workflow.FlowContext)
      */
@@ -107,4 +94,5 @@ public class SetViewTemplate extends LogicBlock {
         }
 
     }
+
 }

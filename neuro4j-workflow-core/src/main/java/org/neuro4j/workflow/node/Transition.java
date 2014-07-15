@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.neuro4j.workflow.xml;
+package org.neuro4j.workflow.node;
 
 import org.neuro4j.workflow.Workflow;
 

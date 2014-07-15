@@ -17,9 +17,6 @@
 package org.neuro4j.workflow;
 
 import org.neuro4j.workflow.common.FlowExecutionException;
-import org.neuro4j.workflow.common.FlowInitializationException;
-import org.neuro4j.workflow.xml.Transition;
-import org.neuro4j.workflow.xml.WorkflowNode;
 
 /**
  * Base interface for executable blocks
@@ -27,17 +24,12 @@ import org.neuro4j.workflow.xml.WorkflowNode;
  */
 public interface ActionBlock {
 
-    /**
-     * @param entity
-     * @throws FlowInitializationException
-     */
-    void load(WorkflowNode entity) throws FlowInitializationException;
 
     /**
-     * @param request
+     * @param context
      * @return
      * @throws FlowExecutionException
      */
-    public Transition execute(WorkflowRequest request) throws FlowExecutionException;
+    public int execute(FlowContext context) throws FlowExecutionException;
 
 }

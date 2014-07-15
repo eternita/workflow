@@ -26,9 +26,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.neuro4j.workflow.common.FlowExecutionException;
-import org.neuro4j.workflow.node.LogicBlock;
-import org.neuro4j.workflow.xml.WorkflowNode;
+import org.neuro4j.workflow.common.FlowInitializationException;
+import org.neuro4j.workflow.node.CustomBlock;
+import org.neuro4j.workflow.node.CustomNode;
 
 @SuppressWarnings("rawtypes")
 public class ExecutableEntityFactory {
@@ -36,7 +36,7 @@ public class ExecutableEntityFactory {
     private static Map<String, Class> entities = new HashMap<String, Class>();
     private static Map<String, String> shortNames = new HashMap<String, String>();
 
-    public static ActionBlock getActionEntity(WorkflowNode node) throws ExecutableEntityNotFoundException, FlowExecutionException
+    public static CustomBlock getActionEntity(CustomNode node) throws FlowInitializationException
     {
         String executableClass = node.getExecutableClass();
         try {
@@ -58,9 +58,9 @@ public class ExecutableEntityFactory {
                     entities.put(executableClass, clazz);
             }
             Object bObj = clazz.newInstance();
-            if (bObj instanceof LogicBlock){
-                LogicBlock ab = (LogicBlock)bObj;
-                ab.setUuid(node.getUuid());
+            if (bObj instanceof CustomBlock){
+                CustomBlock ab = (CustomBlock)bObj;
+            //    ab.setUuid(node.getUuid());
                 return ab;                
             }
 
@@ -74,7 +74,7 @@ public class ExecutableEntityFactory {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        throw new ExecutableEntityNotFoundException("Block " + executableClass + " not found");
+        throw new FlowInitializationException("Block " + executableClass + " not found");
     }
 
     @SuppressWarnings("rawtypes")

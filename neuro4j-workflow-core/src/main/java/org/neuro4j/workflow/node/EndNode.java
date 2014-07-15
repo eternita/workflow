@@ -16,51 +16,39 @@
 
 package org.neuro4j.workflow.node;
 
+import org.neuro4j.workflow.Workflow;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
-import org.neuro4j.workflow.common.FlowInitializationException;
-import org.neuro4j.workflow.xml.Transition;
-import org.neuro4j.workflow.xml.WorkflowNode;
+import org.neuro4j.workflow.node.Transition;
 
 /**
- * StartBlock starts flow execution.
+ * EndBlock stops flow execution.
  *
  */
-public final class StartBlock extends LogicBlock {
-
-    Transition nextNode = null;
-
-    private static final String NEXT = "NEXT";
+public class EndNode extends WorkflowNode {
 
     /**
      * Default constructor.
      */
-    public StartBlock() {
+    public EndNode() {
         super();
     }
 
     /**
      * Constructor.
+     * 
      * @param name
      */
-    public StartBlock(String name) {
-        super();
-        setName(name);
-    }
+    public EndNode(String name, String uuid, Workflow workflow) {
+        super(name, uuid, workflow);
 
-    /* (non-Javadoc)
-     * @see org.neuro4j.workflow.node.LogicBlock#load(org.neuro4j.workflow.xml.WorkflowNode)
-     */
-    public final void load(WorkflowNode descriptor) throws FlowInitializationException {
-        nextNode = descriptor.getExitByName(NEXT);
     }
 
     /* (non-Javadoc)
      * @see org.neuro4j.workflow.node.LogicBlock#execute(org.neuro4j.workflow.WorkflowRequest)
      */
     public final Transition execute(WorkflowRequest request) throws FlowExecutionException {
-        request.setNextRelation(nextNode);
-        return nextNode;
+        return null;
     }
 
 }

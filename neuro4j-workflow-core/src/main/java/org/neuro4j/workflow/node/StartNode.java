@@ -14,15 +14,21 @@
  * limitations under the License.
  */
 
-package org.neuro4j.workflow.xml;
+package org.neuro4j.workflow.node;
 
 import org.neuro4j.workflow.Workflow;
+import org.neuro4j.workflow.WorkflowRequest;
+import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.enums.StartNodeTypes;
 
 public class StartNode extends WorkflowNode {
 
     StartNodeTypes type;
     String flowPackage;
+    
+    Transition nextNode = null;
+
+    private static final String NEXT = "NEXT";
 
     public StartNode(String name, String uuid, Workflow workflow)
     {
@@ -48,5 +54,19 @@ public class StartNode extends WorkflowNode {
         workflow.registerNode(this);
         workflow.registerStartNode(this);
     }
+    
+    @Override
+    public Transition execute(WorkflowRequest request){
+        request.setNextRelation(nextNode);
+        return nextNode;
+    }
+
+    @Override
+    public void init() throws FlowInitializationException {
+        super.init();
+        nextNode = getExitByName(NEXT);
+    }
+    
+    
 
 }

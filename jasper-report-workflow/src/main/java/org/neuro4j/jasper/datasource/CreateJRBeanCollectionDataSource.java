@@ -60,7 +60,7 @@ public class CreateJRBeanCollectionDataSource extends CustomBlock {
     }
 
     @Override
-    protected void init() throws FlowInitializationException {
+    public void init() throws FlowInitializationException {
         super.init();
     }
 

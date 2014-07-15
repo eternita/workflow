@@ -24,8 +24,8 @@ import org.neuro4j.workflow.Workflow;
 import org.neuro4j.workflow.WorkflowMngImpl;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.log.Logger;
-import org.neuro4j.workflow.xml.StartNode;
-import org.neuro4j.workflow.xml.WorkflowNode;
+import org.neuro4j.workflow.node.StartNode;
+import org.neuro4j.workflow.node.WorkflowNode;
 
 /**
  * 

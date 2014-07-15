@@ -24,37 +24,52 @@ import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.common.WorkflowEngine;
 import org.neuro4j.workflow.log.Logger;
-import org.neuro4j.workflow.xml.CallNode;
-import org.neuro4j.workflow.xml.StartNode;
-import org.neuro4j.workflow.xml.Transition;
-import org.neuro4j.workflow.xml.WorkflowNode;
 
 /**
- * CallBlock calls other flow and returns result of execution.
- * 
+ * XML representation of CallNode.
+ *
  */
-public class CallBlock extends LogicBlock {
+public class CallNode extends WorkflowNode {
 
-    private String flownName = null;
-    private String dynamicFlownName = null;
-    private CallNode node = null;
+    private String callFlow;
+    private String dynamicFlownName;
 
     /**
-     * Default constructor
+     * @param name
+     * @param uuid
+     * @param workflow
      */
-    public CallBlock() {
-        super();
+    public CallNode(String name, String uuid, Workflow workflow)
+    {
+        super(name, uuid, workflow);
     }
 
     /**
-     * Constructor
-     * 
-     * @param name
-     *        the node's name
+     * @return
      */
-    public CallBlock(String name) {
-        super();
-        setName(name);
+    public String getCallFlow() {
+        return callFlow;
+    }
+
+    /**
+     * @param callFlow
+     */
+    public void setCallFlow(String callFlow) {
+        this.callFlow = callFlow;
+    }
+
+    /**
+     * @return
+     */
+    public String getDynamicFlownName() {
+        return dynamicFlownName;
+    }
+
+    /**
+     * @param dynamicFlownName
+     */
+    public void setDynamicFlownName(String dynamicFlownName) {
+        this.dynamicFlownName = dynamicFlownName;
     }
 
     /*
@@ -65,7 +80,7 @@ public class CallBlock extends LogicBlock {
     final public void validate(FlowContext ctx) throws FlowExecutionException
     {
 
-        if (dynamicFlownName == null && flownName == null)
+        if (dynamicFlownName == null && callFlow == null)
         {
             throw new FlowExecutionException("CallByFlowName node: Flow not defined.");
         }
@@ -84,7 +99,7 @@ public class CallBlock extends LogicBlock {
         {
             flow = (String) ctx.get(dynamicFlownName);
         } else {
-            flow = flownName;
+            flow = callFlow;
         }
 
         if (flow == null)
@@ -124,12 +139,12 @@ public class CallBlock extends LogicBlock {
 
         WorkflowNode endNode = request.getLastSuccessfulNode();
 
-        Transition nextNode = node.getExitByName(endNode.getName());
+        Transition nextNode = getExitByName(endNode.getName());
 
         if (nextNode == null)
         {
-            if (node.getExits().size() == 1) {
-                nextNode = node.getExits().iterator().next();
+            if (getExits().size() == 1) {
+                nextNode = getExits().iterator().next();
 
             }
         }
@@ -162,11 +177,8 @@ public class CallBlock extends LogicBlock {
      * 
      * @see org.neuro4j.workflow.node.LogicBlock#load(org.neuro4j.workflow.xml.WorkflowNode)
      */
-    public final void load(WorkflowNode entity) throws FlowInitializationException
+    public final void init() throws FlowInitializationException
     {
-        node = (CallNode) entity;
-        flownName = node.getCallFlow();
-        dynamicFlownName = node.getDynamicFlownName();
 
     }
 
@@ -185,4 +197,5 @@ public class CallBlock extends LogicBlock {
         return null;
     }
 
+    
 }

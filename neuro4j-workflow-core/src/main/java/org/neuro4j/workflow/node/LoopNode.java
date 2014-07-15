@@ -21,42 +21,42 @@ import java.util.Collection;
 import java.util.Iterator;
 
 import org.neuro4j.workflow.FlowContext;
+import org.neuro4j.workflow.Workflow;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.loader.n4j.SWFConstants;
-import org.neuro4j.workflow.xml.LoopNode;
-import org.neuro4j.workflow.xml.Transition;
-import org.neuro4j.workflow.xml.WorkflowNode;
 
-/**
- * LoopBlock provides functionality to iterate over arrays, collection ans etc.
- * 
- */
-public class LoopBlock extends LogicBlock {
+public class LoopNode extends WorkflowNode {
 
     private static final String NEXT_EXIT_RELATION = SWFConstants.NEXT_RELATION_NAME;
     private static final String DO_EXIT_RELATION = "LOOP_EXIT";
-
-    /**
-     * Name of iterator in flow context.
-     */
+    
     private String iteratorKey = null;
-
-    /**
-     * Name of object after each iteration..
-     */
     private String elementKey = null;
-
+    
     private Transition doExit = null;
     private Transition loopExit = null;
 
-    /**
-     * Default constructor.
-     */
+    public LoopNode(String name, String uuid, Workflow workflow)
+    {
+        super(name, uuid, workflow);
+    }
 
-    public LoopBlock() {
-        super();
+    public String getIteratorKey() {
+        return iteratorKey;
+    }
+
+    public void setIteratorKey(String iteratorKey) {
+        this.iteratorKey = iteratorKey;
+    }
+
+    public String getElementKey() {
+        return elementKey;
+    }
+
+    public void setElementKey(String elementKey) {
+        this.elementKey = elementKey;
     }
 
     /*
@@ -115,17 +115,12 @@ public class LoopBlock extends LogicBlock {
      * 
      * @see org.neuro4j.workflow.node.LogicBlock#load(org.neuro4j.workflow.xml.WorkflowNode)
      */
-    public final void load(WorkflowNode workflowNode)
+    public final void init()
             throws FlowInitializationException {
 
-        LoopNode node = (LoopNode) workflowNode;
+        doExit = getExitByName(DO_EXIT_RELATION);
 
-        iteratorKey = node.getIteratorKey();
-        elementKey = node.getElementKey();
-
-        doExit = node.getExitByName(DO_EXIT_RELATION);
-
-        loopExit = node.getExitByName(NEXT_EXIT_RELATION);
+        loopExit = getExitByName(NEXT_EXIT_RELATION);
 
         return;
     }
@@ -145,5 +140,5 @@ public class LoopBlock extends LogicBlock {
         }
 
     }
-
+    
 }

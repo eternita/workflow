@@ -4,7 +4,7 @@
         <item name="StartNodeSD" uuid="KF.p_lq3BH0AAAE9iObSKEcw">
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.node.StartBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.workflow.node.StartNode" key="SWF_BLOCK_CLASS"/>
                 <item value="67" key="y"/>
                 <item value="970" key="x"/>
             </properties>
@@ -35,7 +35,7 @@
         <item name="StartNode1Static" uuid="ckyp_lq3gH0AAAE9VvXSKEcS">
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.node.StartBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.workflow.node.StartNode" key="SWF_BLOCK_CLASS"/>
                 <item value="72" key="y"/>
                 <item value="183" key="x"/>
             </properties>
@@ -57,7 +57,7 @@
         <item name="StartNodeDynamic" uuid="kByp_lq3F7gAAAE99i3SKEci">
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.node.StartBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.workflow.node.StartNode" key="SWF_BLOCK_CLASS"/>
                 <item value="64" key="y"/>
                 <item value="468" key="x"/>
             </properties>

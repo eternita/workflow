@@ -17,41 +17,32 @@
 package org.neuro4j.workflow.node;
 
 import org.neuro4j.workflow.FlowContext;
+import org.neuro4j.workflow.Workflow;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.common.SWFParametersConstants;
 import org.neuro4j.workflow.loader.n4j.SWFConstants;
-import org.neuro4j.workflow.xml.SwitchNode;
-import org.neuro4j.workflow.xml.Transition;
-import org.neuro4j.workflow.xml.WorkflowNode;
 
-/**
- * SwitchNode dispatches flow execution according to value in flow context.
- *
- */
-public final class SwitchBlock extends LogicBlock {
+public class SwitchNode extends WorkflowNode {
 
     private String relationName = null;
     private Transition defaultRelation = null;
-    private SwitchNode node = null;
-
-    /* (non-Javadoc)
-     * @see org.neuro4j.workflow.node.LogicBlock#validate(org.neuro4j.workflow.FlowContext)
-     */
-    public final void validate(FlowContext fctx) throws FlowExecutionException
+    
+    public SwitchNode(String name, String uuid, Workflow workflow)
     {
-        if (relationName == null && defaultRelation == null)
-        {
-            throw new FlowExecutionException("Switch node has wrong configuration.");
-        }
-
+        super(name, uuid, workflow);
     }
 
-    /* (non-Javadoc)
-     * @see org.neuro4j.workflow.node.LogicBlock#execute(org.neuro4j.workflow.WorkflowRequest)
-     */
+    public String getRelationName() {
+        return relationName;
+    }
+
+    public void setRelationName(String relationName) {
+        this.relationName = relationName;
+    }
     public Transition execute(WorkflowRequest request)
+    
             throws FlowExecutionException {
         FlowContext ctx = request.getLogicContext();
         Transition nextStepUUID = null;
@@ -67,7 +58,7 @@ public final class SwitchBlock extends LogicBlock {
         if (null == relation)
             relation = "null";
 
-        nextStepUUID = node.getExitByName(relation);
+        nextStepUUID = getExitByName(relation);
 
         if (nextStepUUID == null && defaultRelation != null)
         {
@@ -84,19 +75,20 @@ public final class SwitchBlock extends LogicBlock {
 
         return nextStepUUID;
     }
-
+    
     /* (non-Javadoc)
      * @see org.neuro4j.workflow.node.LogicBlock#load(org.neuro4j.workflow.xml.WorkflowNode)
      */
-    public final void load(WorkflowNode workflowNode) throws FlowInitializationException
+    @Override
+    public final void init() throws FlowInitializationException
     {
-        node = (SwitchNode) workflowNode;
-        relationName = node.getRelationName();
 
-        defaultRelation = node.getExitByName(SWFParametersConstants.SWITCH_NODE_DEFAULT_ACTION_NAME_2);
+        relationName = getRelationName();
+
+        defaultRelation = getExitByName(SWFParametersConstants.SWITCH_NODE_DEFAULT_ACTION_NAME_2);
         if (defaultRelation == null)
         {
-            defaultRelation = node.getExitByName(SWFParametersConstants.SWITCH_NODE_DEFAULT_ACTION_NAME);
+            defaultRelation = getExitByName(SWFParametersConstants.SWITCH_NODE_DEFAULT_ACTION_NAME);
         }
         return;
     }

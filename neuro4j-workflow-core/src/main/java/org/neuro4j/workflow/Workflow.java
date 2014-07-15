@@ -20,13 +20,10 @@ import java.util.Collection;
 import java.util.HashMap;
 
 import org.neuro4j.workflow.common.FlowExecutionException;
-import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.enums.NetworkVisibility;
-import org.neuro4j.workflow.loader.LogicBlockLoader;
 import org.neuro4j.workflow.log.Logger;
-import org.neuro4j.workflow.node.LogicBlock;
-import org.neuro4j.workflow.xml.StartNode;
-import org.neuro4j.workflow.xml.WorkflowNode;
+import org.neuro4j.workflow.node.StartNode;
+import org.neuro4j.workflow.node.WorkflowNode;
 
 public class Workflow {
 
@@ -81,31 +78,16 @@ public class Workflow {
 
         while (null != step)
         {
-            try {
-                LogicBlock logicNode = LogicBlockLoader.getInstance().lookupBlock(step);
+            long startTime = System.currentTimeMillis();
 
-                // Set<Connected> stack = getExecutionStack(logicContext);
-                // stack.add(currentStep);
-                //
-                // logicContext.put(SWFConstants.AC_CURRENT_NODE, workflowNode);
+         //     Logger.debug(Workflow.class, "		Running: {} ({})", logicNode.getClass().getSimpleName(), logicNode.getClass().getCanonicalName());
 
-                long startTime = System.currentTimeMillis();
+            WorkflowNode lastNode = step;
 
-                Logger.debug(Workflow.class, "		Running: {} ({})", logicNode.getClass().getSimpleName(), logicNode.getClass().getCanonicalName());
+            step = step.executeNode(request);
+           //  step = logicNode.process(request);
 
-                WorkflowNode lastNode = step;
-
-                step = logicNode.process(request);
-
-                request.setLastSuccessfulNode(lastNode);
-
-                Logger.debug(Workflow.class, "		Finished: ({}ms) {}", System.currentTimeMillis() - startTime, logicNode.getClass().getSimpleName());
-
-            } catch (ExecutableEntityNotFoundException e1) {
-                throw new FlowExecutionException(e1.getCause());
-            } catch (FlowInitializationException e) {
-                throw new FlowExecutionException(e.getCause());
-            }
+            request.setLastSuccessfulNode(lastNode);
 
             if (step != null)
             {

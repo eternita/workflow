@@ -32,21 +32,18 @@ import org.neuro4j.workflow.common.SWFParametersConstants;
 import org.neuro4j.workflow.enums.DecisionCompTypes;
 import org.neuro4j.workflow.enums.DecisionOperators;
 import org.neuro4j.workflow.enums.StartNodeTypes;
-import org.neuro4j.workflow.node.CallBlock;
-import org.neuro4j.workflow.node.DecisionBlock;
-import org.neuro4j.workflow.node.LoopBlock;
-import org.neuro4j.workflow.node.SetViewTemplate;
-import org.neuro4j.workflow.node.StartBlock;
-import org.neuro4j.workflow.node.SwitchBlock;
-import org.neuro4j.workflow.xml.CallNode;
-import org.neuro4j.workflow.xml.CustomNode;
-import org.neuro4j.workflow.xml.DecisionNode;
-import org.neuro4j.workflow.xml.LoopNode;
-import org.neuro4j.workflow.xml.StartNode;
-import org.neuro4j.workflow.xml.SwitchNode;
-import org.neuro4j.workflow.xml.Transition;
-import org.neuro4j.workflow.xml.ViewNode;
-import org.neuro4j.workflow.xml.WorkflowNode;
+import org.neuro4j.workflow.node.CallNode;
+import org.neuro4j.workflow.node.CustomNode;
+import org.neuro4j.workflow.node.DecisionNode;
+import org.neuro4j.workflow.node.EndNode;
+import org.neuro4j.workflow.node.JoinNode;
+import org.neuro4j.workflow.node.KeyMapper;
+import org.neuro4j.workflow.node.LoopNode;
+import org.neuro4j.workflow.node.StartNode;
+import org.neuro4j.workflow.node.SwitchNode;
+import org.neuro4j.workflow.node.Transition;
+import org.neuro4j.workflow.node.ViewNode;
+import org.neuro4j.workflow.node.WorkflowNode;
 
 public class NetworkConverter {
 
@@ -108,8 +105,11 @@ public class NetworkConverter {
 
             if (parameters.get(SWFConstants.SWF_BLOCK_CLASS) != null) {
                 WorkflowNode entity = createNode(network, e, parameters);
+                if (entity != null)
+                {
+                    entity.registerNodeInWorkflow();                    
+                }
 
-                entity.registerNodeInWorkflow();
             }
 
         }
@@ -139,6 +139,7 @@ public class NetworkConverter {
 
                 }
             }
+            entity.init();
         }
 
         return network;
@@ -150,18 +151,26 @@ public class NetworkConverter {
 
         WorkflowNode node = null;
 
-        if (blockClass.equals(StartBlock.class.getCanonicalName())) {
+        if (blockClass.equals(StartNode.class.getCanonicalName())) {
             node = createStartNode(workflow, e, parameters);
-        } else if (blockClass.equals(CallBlock.class.getCanonicalName())) {
+        } else if (blockClass.equals(CallNode.class.getCanonicalName())) {
             node = createCallNode(workflow, e, parameters);
-        } else if (blockClass.equals(DecisionBlock.class.getCanonicalName())) {
+        } else if (blockClass.equals(DecisionNode.class.getCanonicalName())) {
             node = createDecisionNode(workflow, e, parameters);
-        } else if (blockClass.equals(LoopBlock.class.getCanonicalName())) {
+        } else if (blockClass.equals(LoopNode.class.getCanonicalName())) {
             node = createLoopNode(workflow, e, parameters);
-        } else if (blockClass.equals(SetViewTemplate.class.getCanonicalName())) {
+        } else if (blockClass.equals(ViewNode.class.getCanonicalName())) {
             node = createViewNode(workflow, e, parameters);
-        } else if (blockClass.equals(SwitchBlock.class.getCanonicalName())) {
+        } else if (blockClass.equals(SwitchNode.class.getCanonicalName())) {
             node = createSwitchNode(workflow, e, parameters);
+        } else if (blockClass.equals(EndNode.class.getCanonicalName())) {
+            node = createEndNode(workflow, e, parameters);
+        } else if (blockClass.equals(JoinNode.class.getCanonicalName())) {
+            node = createJoinNode(workflow, e, parameters);
+        }else if (blockClass.equals(KeyMapper.class.getCanonicalName())) {
+            node = createKeyMapperNode(workflow, e, parameters);
+        }else if (blockClass.equals("org.neuro4j.workflow.node.NetConfig")){
+            loadFlowConfiguration(workflow, e, parameters);
         }
 
         String className = parameters.get("SWF_CUSTOM_CLASS");
@@ -174,19 +183,12 @@ public class NetworkConverter {
         if (className == null) {
             throw new FlowInitializationException("Executable node is unknown");
         }
-
-        if (node == null) {
-            node = new WorkflowNode(e.getName(), e.getUuid(), workflow);
-            Set<String> keys = parameters.keySet();
-            for (String key : keys)
-            {
-                node.addParameter(key, parameters.get(key));
-            }
-        }
-
-        node.setExecutableClass(className);
-
         return node;
+    }
+    
+    private static void loadFlowConfiguration(Workflow workflow, EntityXML e, Map<String, String> parameters)
+    {
+        
     }
 
     private static StartNode createStartNode(Workflow workflow, EntityXML e, Map<String, String> parameters) {
@@ -216,6 +218,11 @@ public class NetworkConverter {
 
         node.setRelationName(relationName);
 
+        return node;
+    }
+    
+    private static WorkflowNode createEndNode(Workflow workflow, EntityXML e, Map<String, String> parameters) {
+        EndNode node = new EndNode(e.getName(), e.getUuid(), workflow);
         return node;
     }
 
@@ -272,6 +279,16 @@ public class NetworkConverter {
         return node;
     }
 
+    private static WorkflowNode createJoinNode(Workflow workflow, EntityXML e, Map<String, String> parameters) {
+        JoinNode node = new JoinNode(e.getName(), e.getUuid(), workflow);
+        return node;
+    }
+    
+    private static WorkflowNode createKeyMapperNode(Workflow workflow, EntityXML e, Map<String, String> parameters) {
+        KeyMapper node = new KeyMapper(e.getName(), e.getUuid(), workflow);
+        return node;
+    }
+    
     private static WorkflowNode createCustomNode(Workflow workflow, EntityXML e, Map<String, String> parameters) {
         CustomNode node = new CustomNode(e.getName(), e.getUuid(), workflow);
         Set<String> keys = parameters.keySet();
@@ -287,6 +304,8 @@ public class NetworkConverter {
             }
 
         }
+        String className = parameters.get("SWF_CUSTOM_CLASS");
+        node.setExecutableClass(className);
 
         return node;
     }

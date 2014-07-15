@@ -4,7 +4,7 @@
         <item name="EndNode1" uuid="_0UQV.0E8D4AAAFAfvnat3jF">
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.node.EndBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.workflow.node.EndNode" key="SWF_BLOCK_CLASS"/>
                 <item value="335" key="y"/>
                 <item value="210" key="x"/>
             </properties>
@@ -14,7 +14,7 @@
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
                 <item value="org.neuro4j.flows.nodes.callnode.Flow1-CalledFlow" key="SYS_FLOW_NAME"/>
-                <item value="org.neuro4j.workflow.node.CallBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.workflow.node.CallNode" key="SWF_BLOCK_CLASS"/>
                 <item value="117" key="y"/>
                 <item value="202" key="x"/>
             </properties>
@@ -26,7 +26,7 @@
         <item name="EndNode2" uuid="fa4QV.0EJGgAAAFAeT3at3jG">
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.node.EndBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.workflow.node.EndNode" key="SWF_BLOCK_CLASS"/>
                 <item value="334" key="y"/>
                 <item value="417" key="x"/>
             </properties>
@@ -35,7 +35,7 @@
         <item name="EndNode4" uuid="DLkQV.0EeOsAAAFAIzPat3jM">
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.node.EndBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.workflow.node.EndNode" key="SWF_BLOCK_CLASS"/>
                 <item value="335" key="y"/>
                 <item value="310" key="x"/>
             </properties>
@@ -51,7 +51,7 @@
         <item name="EndNode3" uuid="PusQV.0Eb70AAAFAGb3at3jG">
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.node.EndBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.workflow.node.EndNode" key="SWF_BLOCK_CLASS"/>
                 <item value="333" key="y"/>
                 <item value="526" key="x"/>
             </properties>
@@ -61,7 +61,7 @@
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
                 <item value="PUBLIC" key="SYS_START_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.node.StartBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.workflow.node.StartNode" key="SWF_BLOCK_CLASS"/>
                 <item value="10" key="y"/>
                 <item value="419" key="x"/>
             </properties>
@@ -73,7 +73,7 @@
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
                 <item value="PUBLIC" key="SYS_START_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.node.StartBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.workflow.node.StartNode" key="SWF_BLOCK_CLASS"/>
                 <item value="10" key="y"/>
                 <item value="210" key="x"/>
             </properties>
@@ -85,7 +85,7 @@
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
                 <item value="DEFINED" key="SYS_OPERATOR"/>
-                <item value="org.neuro4j.workflow.node.DecisionBlock" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.workflow.node.DecisionNode" key="SWF_BLOCK_CLASS"/>
                 <item value="var1" key="SYS_DECISION_KEY"/>
                 <item value="120" key="y"/>
                 <item value="416" key="x"/>

@@ -21,41 +21,24 @@ import java.util.Enumeration;
 import java.util.Iterator;
 
 import org.neuro4j.workflow.FlowContext;
+import org.neuro4j.workflow.Workflow;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.enums.DecisionCompTypes;
 import org.neuro4j.workflow.enums.DecisionOperators;
 import org.neuro4j.workflow.loader.n4j.SWFConstants;
-import org.neuro4j.workflow.xml.DecisionNode;
-import org.neuro4j.workflow.xml.Transition;
-import org.neuro4j.workflow.xml.WorkflowNode;
 
-/**
- * DecisionBlock provides functionality to compare 2 parameters from flow context.
- *
- */
-public class DecisionBlock extends LogicBlock {
+public class DecisionNode extends WorkflowNode {
 
     private static final String NEXT_EXIT_RELATION = SWFConstants.NEXT_RELATION_NAME;
     private static final String FALSE_EXIT_RELATION = "FALSE";
-
-    /**
-     * Selected operator like "= (string)", != (string)...
-     */
+    
     private DecisionOperators operator = null;
-    /**
-     * Selected comparison type like "constant value" or "value from context".
-     */
     private DecisionCompTypes compTypes = null;
-    /**
-     * 
-     */
     private String decisionKey = null;
-    /**
-     * 
-     */
     private String comparisonKey = null;
+    
     /**
      * 
      */
@@ -65,13 +48,44 @@ public class DecisionBlock extends LogicBlock {
      */
     private Transition falseExit = null;
 
-    /**
-     * Default constructor.
-     */
-    public DecisionBlock() {
-        super();
+    public DecisionNode(String name, String uuid, Workflow workflow)
+    {
+        super(name, uuid, workflow);
     }
 
+    public DecisionOperators getOperator() {
+        return operator;
+    }
+
+    public void setOperator(DecisionOperators operator) {
+        this.operator = operator;
+    }
+
+    public DecisionCompTypes getCompTypes() {
+        return compTypes;
+    }
+
+    public void setCompTypes(DecisionCompTypes compTypes) {
+        this.compTypes = compTypes;
+    }
+
+    public String getDecisionKey() {
+        return decisionKey;
+    }
+
+    public void setDecisionKey(String decisionKey) {
+        this.decisionKey = decisionKey;
+    }
+
+    public String getComparisonKey() {
+        return comparisonKey;
+    }
+
+    public void setComparisonKey(String comparisonKey) {
+        this.comparisonKey = comparisonKey;
+    }
+
+    
     /* (non-Javadoc)
      * @see org.neuro4j.workflow.node.LogicBlock#execute(org.neuro4j.workflow.WorkflowRequest)
      */
@@ -252,29 +266,10 @@ public class DecisionBlock extends LogicBlock {
     /* (non-Javadoc)
      * @see org.neuro4j.workflow.node.LogicBlock#load(org.neuro4j.workflow.xml.WorkflowNode)
      */
-    public final void load(WorkflowNode entity) throws FlowInitializationException
+    public final void init() throws FlowInitializationException
     {
-        DecisionNode node = (DecisionNode) entity;
-
-        operator = node.getOperator();
-
-        compTypes = node.getCompTypes();
-
-        decisionKey = node.getDecisionKey();
-
-        comparisonKey = node.getComparisonKey();
-
-        trueExit = entity.getExitByName(NEXT_EXIT_RELATION);
-        falseExit = entity.getExitByName(FALSE_EXIT_RELATION);
-
-        if (operator == null) {
-            throw new FlowInitializationException(
-                    "Decision node: Opearator not defined");
-        }
-        if (compTypes == null) {
-            throw new FlowInitializationException(
-                    "Decision node: CompTypes not defined");
-        }
+        trueExit = getExitByName(NEXT_EXIT_RELATION);
+        falseExit = getExitByName(FALSE_EXIT_RELATION);
 
     }
 
@@ -284,7 +279,15 @@ public class DecisionBlock extends LogicBlock {
     @Override
     public void validate(FlowContext ctx) throws FlowExecutionException {
         super.validate(ctx);
-
+        
+        if (operator == null) {
+            throw new FlowExecutionException(
+                    "Decision node: Opearator not defined");
+        }
+        if (compTypes == null) {
+            throw new FlowExecutionException(
+                    "Decision node: CompTypes not defined");
+        }
         if (trueExit == null || falseExit == null)
         {
             throw new FlowExecutionException("Decision node: Connector not defined.");
@@ -317,5 +320,4 @@ public class DecisionBlock extends LogicBlock {
 
         }
     }
-
 }

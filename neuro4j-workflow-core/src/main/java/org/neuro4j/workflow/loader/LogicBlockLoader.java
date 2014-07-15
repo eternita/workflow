@@ -17,11 +17,9 @@
 package org.neuro4j.workflow.loader;
 
 import org.neuro4j.workflow.ExecutableEntityFactory;
-import org.neuro4j.workflow.ExecutableEntityNotFoundException;
-import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.FlowInitializationException;
-import org.neuro4j.workflow.node.LogicBlock;
-import org.neuro4j.workflow.xml.WorkflowNode;
+import org.neuro4j.workflow.node.CustomBlock;
+import org.neuro4j.workflow.node.CustomNode;
 
 public class LogicBlockLoader {
 
@@ -35,10 +33,10 @@ public class LogicBlockLoader {
         return INSTANCE;
     }
 
-    public LogicBlock lookupBlock(WorkflowNode entity) throws ExecutableEntityNotFoundException, FlowInitializationException, FlowExecutionException
+    public CustomBlock lookupBlock(CustomNode entity) throws FlowInitializationException
     {
-        LogicBlock block = (LogicBlock) ExecutableEntityFactory.getActionEntity(entity);
-        block.load(entity);
+        CustomBlock block = (CustomBlock) ExecutableEntityFactory.getActionEntity(entity);
+        block.init();
         return block;
     }
 }

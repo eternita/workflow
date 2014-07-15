@@ -19,22 +19,34 @@ package org.neuro4j.workflow.node;
 import java.util.Set;
 
 import org.neuro4j.workflow.FlowContext;
+import org.neuro4j.workflow.Workflow;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.common.SWEUtils;
 import org.neuro4j.workflow.common.SWFParametersConstants;
 import org.neuro4j.workflow.loader.n4j.SWFConstants;
-import org.neuro4j.workflow.xml.Transition;
-import org.neuro4j.workflow.xml.WorkflowNode;
+import org.neuro4j.workflow.node.Transition;
+import org.neuro4j.workflow.node.WorkflowNode;
 
 /**
  * KeyMapper maps value from flow context to different name.
  *
  */
-public class KeyMapper extends LogicBlock {
-    WorkflowNode node = null;
+public class KeyMapper extends WorkflowNode {
+
     private Transition nextNode = null;
+
+    
+    
+    /**
+     * @param name
+     * @param uuid
+     * @param workflow
+     */
+    public KeyMapper(String name, String uuid, Workflow workflow) {
+        super(name, uuid, workflow);
+    }
 
     /* (non-Javadoc)
      * @see org.neuro4j.workflow.node.LogicBlock#execute(org.neuro4j.workflow.WorkflowRequest)
@@ -42,13 +54,13 @@ public class KeyMapper extends LogicBlock {
     public final Transition execute(WorkflowRequest request)
             throws FlowExecutionException {
         FlowContext ctx = request.getLogicContext();
-        Set<String> parameterKeys = node.getParameters().keySet();
+        Set<String> parameterKeys = getParameters().keySet();
 
         for (String key : parameterKeys)
         {
             if (key.startsWith(SWFParametersConstants.MAPPER_NODE_KEY_PREFIX))
             {
-                String mappedValue = node.getParameter(key);
+                String mappedValue = getParameter(key);
                 if (mappedValue != null)
                 {
                     String[] splittedValue = SWEUtils.getMappedParameters(mappedValue);
@@ -66,9 +78,8 @@ public class KeyMapper extends LogicBlock {
     /* (non-Javadoc)
      * @see org.neuro4j.workflow.node.LogicBlock#load(org.neuro4j.workflow.xml.WorkflowNode)
      */
-    public final void load(WorkflowNode node) throws FlowInitializationException {
-        this.node = node;
-        nextNode = node.getExitByName(SWFConstants.NEXT_RELATION_NAME);
+    public final void init() throws FlowInitializationException {
+        nextNode = getExitByName(SWFConstants.NEXT_RELATION_NAME);
     }
 
 }
