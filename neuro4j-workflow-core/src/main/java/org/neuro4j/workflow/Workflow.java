@@ -29,8 +29,8 @@ public class Workflow {
 
     private long loadtime = -1;
 
-    HashMap<String, StartNode> startNodes = null;
-    HashMap<String, WorkflowNode> nodes = null;
+    private HashMap<String, StartNode> startNodes = null;
+    protected HashMap<String, WorkflowNode> nodes = null;
 
     FlowVisibility visibility = FlowVisibility.Public;
 

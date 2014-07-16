@@ -1,116 +1,115 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <network>
     <entities>
-        <item uuid="xh4QV.0EW2QAAAE.XCgEg4pJ">
+        <item name="CallNode1" uuid="xh4QV.0EW2QAAAE.XCgEg4pJ">
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
                 <item value="org.neuro4j.workflow.demo.lesson4.OtherFlow-StartNode1" key="SYS_FLOW_NAME"/>
-                <item value="org.neuro4j.workflow.node.CallNode" key="SWF_BLOCK_CLASS"/>
                 <item value="353" key="y"/>
-                <item value="203" key="x"/>
+                <item value="206" key="x"/>
+                <item value="org.neuro4j.workflow.node.CallNode" key="SWF_BLOCK_CLASS"/>
             </properties>
-            <relations>
-                <item uuid="hPoQV.0ESgYAAAE.j.oEg4pJ"/>
-            </relations>
+            <connected>
+                <item uuid="oWsQV.0EhgUAAAFHVVBs00Eo"/>
+            </connected>
+        </item>
+        <item name="EndNode1" uuid="oWsQV.0EhgUAAAFHVVBs00Eo">
+            <properties>
+                <item value="xh4QV.0EW2QAAAE.XCgEg4pJ" key="StartUUID"/>
+                <item value="HJkQV.0EBH0AAAE.7bUEg4pJ" key="EndUUID"/>
+                <item key="points"/>
+            </properties>
+            <connected>
+                <item uuid="xh4QV.0EW2QAAAE.XCgEg4pJ"/>
+                <item uuid="HJkQV.0EBH0AAAE.7bUEg4pJ"/>
+            </connected>
+        </item>
+        <item name="networkConfig" uuid="KzAQV.0EbogAAAFHRpjRKEFQ">
+            <properties>
+                <item value="Public" key="KEY_VISIBILITY"/>
+                <item value="org.neuro4j.workflow.node.NetConfig" key="SWF_BLOCK_CLASS"/>
+            </properties>
+            <connected/>
         </item>
         <item name="SystemOutBlock" uuid="BmMQV.0EBqYAAAE.ZeYEg4pI">
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="SystemOutBlock" key="SWF_BLOCK_CLASS"/>
                 <item value="org.neuro4j.workflow.core.SystemOutBlock" key="SWF_CUSTOM_CLASS"/>
                 <item value="varToPrint:&quot;Call.n4j - before call&quot;" key="Parameter1:IN"/>
-                <item value="248" key="y"/>
-                <item value="219" key="x"/>
+                <item value="258" key="y"/>
+                <item value="211" key="x"/>
+                <item value="SystemOutBlock" key="SWF_BLOCK_CLASS"/>
             </properties>
-            <relations>
-                <item uuid="wtYQV.0Eos0AAAE.fnwEg4pJ"/>
-            </relations>
+            <connected>
+                <item uuid="WfcQV.0EhqoAAAFHAi9s00Eo"/>
+            </connected>
+        </item>
+        <item name="NEXT" uuid="WfcQV.0EhqoAAAFHAi9s00Eo">
+            <properties>
+                <item value="BmMQV.0EBqYAAAE.ZeYEg4pI" key="StartUUID"/>
+                <item value="xh4QV.0EW2QAAAE.XCgEg4pJ" key="EndUUID"/>
+                <item value="0, 29, 3, -71|-3, 67, 0, -33|" key="points"/>
+            </properties>
+            <connected>
+                <item uuid="BmMQV.0EBqYAAAE.ZeYEg4pI"/>
+                <item uuid="xh4QV.0EW2QAAAE.XCgEg4pJ"/>
+            </connected>
         </item>
         <item name="Start" uuid="6QQQV.0EA2UAAAE.hLYEg4pI">
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.node.StartNode" key="SWF_BLOCK_CLASS"/>
+                <item value="PUBLIC" key="SYS_START_NODE_TYPE"/>
                 <item value="116" key="y"/>
-                <item value="227" key="x"/>
+                <item value="230" key="x"/>
+                <item value="org.neuro4j.workflow.node.StartNode" key="SWF_BLOCK_CLASS"/>
             </properties>
-            <relations>
-                <item uuid="SUcQV.0EkBkAAAE.vYYEg4pJ"/>
-            </relations>
+            <connected>
+                <item uuid="ZRcQV.0EspIAAAFHfBts00Eo"/>
+            </connected>
         </item>
-        <item name="networkConfig" uuid="TCYQV.0Eg9oAAAE.CO8Eg4pS">
+        <item name="NEXT" uuid="ZRcQV.0EspIAAAFHfBts00Eo">
             <properties>
-                <item value="org.neuro4j.logic.def.NetConfig" key="SWF_BLOCK_CLASS"/>
-                <item key="KEY_VISIBILITY"/>
+                <item value="6QQQV.0EA2UAAAE.hLYEg4pI" key="StartUUID"/>
+                <item value="BmMQV.0EBqYAAAE.ZeYEg4pI" key="EndUUID"/>
+                <item value="0, 32, -11, -97|11, 101, 0, -28|" key="points"/>
             </properties>
-            <relations/>
+            <connected>
+                <item uuid="6QQQV.0EA2UAAAE.hLYEg4pI"/>
+                <item uuid="BmMQV.0EBqYAAAE.ZeYEg4pI"/>
+            </connected>
         </item>
         <item name="SystemOutBlock" uuid="HJkQV.0EBH0AAAE.7bUEg4pJ">
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="SystemOutBlock" key="SWF_BLOCK_CLASS"/>
                 <item value="org.neuro4j.workflow.core.SystemOutBlock" key="SWF_CUSTOM_CLASS"/>
                 <item value="varToPrint:&quot;Call.n4j - after call&quot;" key="Parameter1:IN"/>
-                <item value="513" key="y"/>
-                <item value="221" key="x"/>
+                <item value="516" key="y"/>
+                <item value="211" key="x"/>
+                <item value="SystemOutBlock" key="SWF_BLOCK_CLASS"/>
             </properties>
-            <relations>
-                <item uuid="DJwQV.0ELegAAAE.VvcEg4pJ"/>
-            </relations>
+            <connected>
+                <item uuid="6CIQV.0EgycAAAFH3d_RKEFP"/>
+            </connected>
+        </item>
+        <item name="NEXT" uuid="6CIQV.0EgycAAAFH3d_RKEFP">
+            <properties>
+                <item value="HJkQV.0EBH0AAAE.7bUEg4pJ" key="StartUUID"/>
+                <item value="cVgQV.0EZU0AAAE.jMsEg4pI" key="EndUUID"/>
+                <item value="0, 29, 13, -135|-13, 130, 0, -34|" key="points"/>
+            </properties>
+            <connected>
+                <item uuid="HJkQV.0EBH0AAAE.7bUEg4pJ"/>
+                <item uuid="cVgQV.0EZU0AAAE.jMsEg4pI"/>
+            </connected>
         </item>
         <item name="EndNode2" uuid="cVgQV.0EZU0AAAE.jMsEg4pI">
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
+                <item value="694" key="y"/>
+                <item value="230" key="x"/>
                 <item value="org.neuro4j.workflow.node.EndNode" key="SWF_BLOCK_CLASS"/>
-                <item value="671" key="y"/>
-                <item value="227" key="x"/>
             </properties>
-            <relations/>
+            <connected/>
         </item>
     </entities>
-    <relations>
-        <item name="EndNode1" uuid="hPoQV.0ESgYAAAE.j.oEg4pJ">
-            <properties>
-                <item value="HJkQV.0EBH0AAAE.7bUEg4pJ" key="EndUUID"/>
-                <item value="0, 29, -13, -84|13, 85, 0, -28|" key="points"/>
-                <item value="xh4QV.0EW2QAAAE.XCgEg4pJ" key="StartUUID"/>
-            </properties>
-            <relation_parts>
-                <item uuid="xh4QV.0EW2QAAAE.XCgEg4pJ"/>
-                <item uuid="HJkQV.0EBH0AAAE.7bUEg4pJ"/>
-            </relation_parts>
-        </item>
-        <item name="NEXT" uuid="wtYQV.0Eos0AAAE.fnwEg4pJ">
-            <properties>
-                <item value="xh4QV.0EW2QAAAE.XCgEg4pJ" key="EndUUID"/>
-                <item value="0, 29, 0, -72|0, 73, 0, -28|" key="points"/>
-                <item value="BmMQV.0EBqYAAAE.ZeYEg4pI" key="StartUUID"/>
-            </properties>
-            <relation_parts>
-                <item uuid="xh4QV.0EW2QAAAE.XCgEg4pJ"/>
-                <item uuid="BmMQV.0EBqYAAAE.ZeYEg4pI"/>
-            </relation_parts>
-        </item>
-        <item name="NEXT" uuid="SUcQV.0EkBkAAAE.vYYEg4pJ">
-            <properties>
-                <item value="BmMQV.0EBqYAAAE.ZeYEg4pI" key="EndUUID"/>
-                <item value="0, 32, 2, -101|-2, 105, 0, -28|" key="points"/>
-                <item value="6QQQV.0EA2UAAAE.hLYEg4pI" key="StartUUID"/>
-            </properties>
-            <relation_parts>
-                <item uuid="BmMQV.0EBqYAAAE.ZeYEg4pI"/>
-                <item uuid="6QQQV.0EA2UAAAE.hLYEg4pI"/>
-            </relation_parts>
-        </item>
-        <item name="NEXT" uuid="DJwQV.0ELegAAAE.VvcEg4pJ">
-            <properties>
-                <item value="cVgQV.0EZU0AAAE.jMsEg4pI" key="EndUUID"/>
-                <item value="0, 29, 13, -62|-13, 62, 0, -29|" key="points"/>
-                <item value="HJkQV.0EBH0AAAE.7bUEg4pJ" key="StartUUID"/>
-            </properties>
-            <relation_parts>
-                <item uuid="cVgQV.0EZU0AAAE.jMsEg4pI"/>
-                <item uuid="HJkQV.0EBH0AAAE.7bUEg4pJ"/>
-            </relation_parts>
-        </item>
-    </relations>
 </network>
