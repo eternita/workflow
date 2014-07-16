@@ -16,18 +16,36 @@
 
 package org.neuro4j.workflow.enums;
 
-public enum NetworkVisibility {
-    Public, Private;
+/**
+ *  Flow can be public or private.
+ *  Public flow can be called by from outside.
+ *  Private flow can be called just by other flow.
+ */
+public enum FlowVisibility {
+    Public,
+    Private;
 
     private static String[] opNames = new String[] { Public.name(), Private.name() };
 
-    public static NetworkVisibility getDefault()
+    public static FlowVisibility getDefault()
     {
         return Public;
     }
 
     public static String[] types() {
         return opNames;
+    }
+    
+    public static FlowVisibility getByName(String name)
+    {
+        for (FlowVisibility d : values())
+        {
+            if (d.name().equalsIgnoreCase(name))
+            {
+                return d;
+            }
+        }
+        return null;
     }
 
 }

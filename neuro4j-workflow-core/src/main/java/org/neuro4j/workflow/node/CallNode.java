@@ -27,7 +27,7 @@ import org.neuro4j.workflow.log.Logger;
 
 /**
  * XML representation of CallNode.
- *
+ * 
  */
 public class CallNode extends WorkflowNode {
 
@@ -197,5 +197,4 @@ public class CallNode extends WorkflowNode {
         return null;
     }
 
-    
 }

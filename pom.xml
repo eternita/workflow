@@ -22,6 +22,7 @@
         <module>neuro4j-workflow-core</module>
         <module>neuro4j-logic-web</module>
         <module>neuro4j-workflow-common</module>
+        <module>neuro4j-workflow-test</module>
         <module>jasper-report-web-plugin</module>
         <module>jasper-report-workflow</module>
         <module>velocity-web-plugin</module>

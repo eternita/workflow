@@ -31,6 +31,7 @@ import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.common.SWFParametersConstants;
 import org.neuro4j.workflow.enums.DecisionCompTypes;
 import org.neuro4j.workflow.enums.DecisionOperators;
+import org.neuro4j.workflow.enums.FlowVisibility;
 import org.neuro4j.workflow.enums.StartNodeTypes;
 import org.neuro4j.workflow.node.CallNode;
 import org.neuro4j.workflow.node.CustomNode;
@@ -83,7 +84,7 @@ public class NetworkConverter {
         if (index > 0)
         {
             flowPackage = flow.substring(0, index);
-        } else if (flow.contains(".")){
+        } else if (flow.contains(".")) {
             flowPackage = flow;
         }
         return flowPackage;
@@ -107,7 +108,7 @@ public class NetworkConverter {
                 WorkflowNode entity = createNode(network, e, parameters);
                 if (entity != null)
                 {
-                    entity.registerNodeInWorkflow();                    
+                    entity.registerNodeInWorkflow();
                 }
 
             }
@@ -167,9 +168,9 @@ public class NetworkConverter {
             node = createEndNode(workflow, e, parameters);
         } else if (blockClass.equals(JoinNode.class.getCanonicalName())) {
             node = createJoinNode(workflow, e, parameters);
-        }else if (blockClass.equals(KeyMapper.class.getCanonicalName())) {
+        } else if (blockClass.equals(KeyMapper.class.getCanonicalName())) {
             node = createKeyMapperNode(workflow, e, parameters);
-        }else if (blockClass.equals("org.neuro4j.workflow.node.NetConfig")){
+        } else if (blockClass.equals("org.neuro4j.workflow.node.NetConfig")) {
             loadFlowConfiguration(workflow, e, parameters);
         }
 
@@ -185,12 +186,28 @@ public class NetworkConverter {
         }
         return node;
     }
-    
+
+    /**
+     * Loads flow configuration (like visibility).
+     *
+     * @param workflow
+     * @param e
+     * @param parameters
+     */
     private static void loadFlowConfiguration(Workflow workflow, EntityXML e, Map<String, String> parameters)
     {
-        
+        String visibility =  parameters.get(SWFParametersConstants.NETWORK_VISIBILITY);
+        workflow.setVisibility(FlowVisibility.getByName(visibility));
     }
 
+    /**
+     * Creates StartNode.
+     * 
+     * @param workflow
+     * @param e
+     * @param parameters
+     * @return
+     */
     private static StartNode createStartNode(Workflow workflow, EntityXML e, Map<String, String> parameters) {
         StartNode startNode = new StartNode(e.getName(), e.getUuid(), workflow);
 
@@ -200,6 +217,14 @@ public class NetworkConverter {
         return startNode;
     }
 
+    /**
+     * Creates CallNode.
+     * 
+     * @param workflow
+     * @param e
+     * @param parameters
+     * @return
+     */
     private static WorkflowNode createCallNode(Workflow workflow, EntityXML e, Map<String, String> parameters) {
         CallNode node = new CallNode(e.getName(), e.getUuid(), workflow);
         node.setCallFlow(parameters.get(SWFParametersConstants.CAll_NODE_FLOW_NAME));
@@ -207,6 +232,14 @@ public class NetworkConverter {
         return node;
     }
 
+    /**
+     * Creates SwitchNode.
+     * 
+     * @param workflow
+     * @param e
+     * @param parameters
+     * @return
+     */
     private static WorkflowNode createSwitchNode(Workflow workflow, EntityXML e, Map<String, String> parameters) {
         SwitchNode node = new SwitchNode(e.getName(), e.getUuid(), workflow);
 
@@ -220,12 +253,27 @@ public class NetworkConverter {
 
         return node;
     }
-    
+
+    /**
+     * Creates EndNode.
+     * @param workflow
+     * @param e
+     * @param parameters
+     * @return
+     */
     private static WorkflowNode createEndNode(Workflow workflow, EntityXML e, Map<String, String> parameters) {
         EndNode node = new EndNode(e.getName(), e.getUuid(), workflow);
         return node;
     }
 
+    /**
+     * Creates ViewNode
+     * 
+     * @param workflow
+     * @param e
+     * @param parameters
+     * @return
+     */
     private static WorkflowNode createViewNode(Workflow workflow, EntityXML e, Map<String, String> parameters) {
         ViewNode node = new ViewNode(e.getName(), e.getUuid(), workflow);
 
@@ -243,6 +291,14 @@ public class NetworkConverter {
         return node;
     }
 
+    /**
+     * Creates DecisionNode.
+     * 
+     * @param workflow
+     * @param e
+     * @param parameters
+     * @return
+     */
     private static WorkflowNode createDecisionNode(Workflow workflow,
             EntityXML e, Map<String, String> parameters) {
         DecisionNode node = new DecisionNode(e.getName(), e.getUuid(), workflow);
@@ -271,6 +327,14 @@ public class NetworkConverter {
         return node;
     }
 
+    /**
+     * Creates LoopNode.
+     * 
+     * @param workflow
+     * @param e
+     * @param parameters
+     * @return
+     */
     private static WorkflowNode createLoopNode(Workflow workflow, EntityXML e, Map<String, String> parameters) {
         LoopNode node = new LoopNode(e.getName(), e.getUuid(), workflow);
 
@@ -279,16 +343,49 @@ public class NetworkConverter {
         return node;
     }
 
+    /**
+     * Creates JoinNode.
+     * 
+     * @param workflow
+     * @param e
+     * @param parameters
+     * @return
+     */
     private static WorkflowNode createJoinNode(Workflow workflow, EntityXML e, Map<String, String> parameters) {
         JoinNode node = new JoinNode(e.getName(), e.getUuid(), workflow);
         return node;
     }
-    
+
+    /**
+     * 
+     * Creates and loads KeyMapper node.
+     * 
+     * @param workflow
+     * @param e
+     * @param parameters
+     * @return
+     */
     private static WorkflowNode createKeyMapperNode(Workflow workflow, EntityXML e, Map<String, String> parameters) {
         KeyMapper node = new KeyMapper(e.getName(), e.getUuid(), workflow);
+        Set<String> keys = parameters.keySet();
+        for (String key : keys)
+        {
+            if (key.startsWith(SWFParametersConstants.MAPPER_NODE_KEY_PREFIX))
+            {
+                node.addParameter(key, parameters.get(key));
+            }
+        }
         return node;
     }
-    
+
+    /**
+     * Creates and loads CustomNode and parameters.
+     * 
+     * @param workflow
+     * @param e
+     * @param parameters
+     * @return
+     */
     private static WorkflowNode createCustomNode(Workflow workflow, EntityXML e, Map<String, String> parameters) {
         CustomNode node = new CustomNode(e.getName(), e.getUuid(), workflow);
         Set<String> keys = parameters.keySet();

@@ -16,15 +16,26 @@
 
 package org.neuro4j.workflow.loader;
 
+import java.util.Hashtable;
+
 import org.neuro4j.workflow.ExecutableEntityFactory;
 import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.node.CustomBlock;
 import org.neuro4j.workflow.node.CustomNode;
 
+/**
+ * Loads and initializes custom (user's defined) blocks.
+ * 
+ */
 public class LogicBlockLoader {
 
     private static LogicBlockLoader INSTANCE = new LogicBlockLoader();
 
+    private Hashtable<String, CustomBlock> cache = new Hashtable<String, CustomBlock>();
+
+    /**
+     * Constructor.
+     */
     private LogicBlockLoader() {
         super();
     }
@@ -33,10 +44,25 @@ public class LogicBlockLoader {
         return INSTANCE;
     }
 
+    /**
+     * Lookups customBlock by executable class.
+     * If block does not exist in cache - creates instance and init. it.
+     * 
+     * @param entity
+     * @return
+     * @throws FlowInitializationException
+     */
     public CustomBlock lookupBlock(CustomNode entity) throws FlowInitializationException
     {
-        CustomBlock block = (CustomBlock) ExecutableEntityFactory.getActionEntity(entity);
-        block.init();
+        CustomBlock block = cache.get(entity.getExecutableClass());
+
+        if (block == null)
+        {
+            block = (CustomBlock) ExecutableEntityFactory.getActionEntity(entity);
+            block.init();
+            cache.put(entity.getExecutableClass(), block);
+        }
+
         return block;
     }
 }

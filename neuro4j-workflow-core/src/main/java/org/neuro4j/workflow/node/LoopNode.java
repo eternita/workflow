@@ -31,10 +31,10 @@ public class LoopNode extends WorkflowNode {
 
     private static final String NEXT_EXIT_RELATION = SWFConstants.NEXT_RELATION_NAME;
     private static final String DO_EXIT_RELATION = "LOOP_EXIT";
-    
+
     private String iteratorKey = null;
     private String elementKey = null;
-    
+
     private Transition doExit = null;
     private Transition loopExit = null;
 
@@ -140,5 +140,5 @@ public class LoopNode extends WorkflowNode {
         }
 
     }
-    
+
 }

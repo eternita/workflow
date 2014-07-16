@@ -25,7 +25,7 @@ public class StartNode extends WorkflowNode {
 
     StartNodeTypes type;
     String flowPackage;
-    
+
     Transition nextNode = null;
 
     private static final String NEXT = "NEXT";
@@ -54,9 +54,9 @@ public class StartNode extends WorkflowNode {
         workflow.registerNode(this);
         workflow.registerStartNode(this);
     }
-    
+
     @Override
-    public Transition execute(WorkflowRequest request){
+    public Transition execute(WorkflowRequest request) {
         request.setNextRelation(nextNode);
         return nextNode;
     }
@@ -66,7 +66,5 @@ public class StartNode extends WorkflowNode {
         super.init();
         nextNode = getExitByName(NEXT);
     }
-    
-    
 
 }

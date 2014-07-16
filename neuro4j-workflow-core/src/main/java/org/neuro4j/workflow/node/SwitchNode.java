@@ -28,7 +28,7 @@ public class SwitchNode extends WorkflowNode {
 
     private String relationName = null;
     private Transition defaultRelation = null;
-    
+
     public SwitchNode(String name, String uuid, Workflow workflow)
     {
         super(name, uuid, workflow);
@@ -41,8 +41,9 @@ public class SwitchNode extends WorkflowNode {
     public void setRelationName(String relationName) {
         this.relationName = relationName;
     }
+
     public Transition execute(WorkflowRequest request)
-    
+
             throws FlowExecutionException {
         FlowContext ctx = request.getLogicContext();
         Transition nextStepUUID = null;
@@ -75,8 +76,10 @@ public class SwitchNode extends WorkflowNode {
 
         return nextStepUUID;
     }
-    
-    /* (non-Javadoc)
+
+    /*
+     * (non-Javadoc)
+     * 
      * @see org.neuro4j.workflow.node.LogicBlock#load(org.neuro4j.workflow.xml.WorkflowNode)
      */
     @Override

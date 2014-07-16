@@ -22,7 +22,7 @@ import org.neuro4j.workflow.common.FlowInitializationException;
 /**
  * 
  * CustomBlock provides base implementation for user's blocks.
- * Uasers should extend this class during developing own blocks.
+ * Users should extend this class during developing own blocks.
  * 
  */
 public abstract class CustomBlock implements ActionBlock {

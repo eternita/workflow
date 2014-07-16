@@ -58,7 +58,9 @@ public class ViewNode extends WorkflowNode {
         this.renderType = renderType;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see org.neuro4j.workflow.xml.WorkflowNode#execute(org.neuro4j.workflow.WorkflowRequest)
      */
     @Override
@@ -82,8 +84,10 @@ public class ViewNode extends WorkflowNode {
 
         return null;
     }
-    
-    /* (non-Javadoc)
+
+    /*
+     * (non-Javadoc)
+     * 
      * @see org.neuro4j.workflow.node.LogicBlock#validate(org.neuro4j.workflow.FlowContext)
      */
     public final void validate(FlowContext fctx) throws FlowExecutionException

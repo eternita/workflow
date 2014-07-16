@@ -20,7 +20,7 @@ import java.util.Collection;
 import java.util.HashMap;
 
 import org.neuro4j.workflow.common.FlowExecutionException;
-import org.neuro4j.workflow.enums.NetworkVisibility;
+import org.neuro4j.workflow.enums.FlowVisibility;
 import org.neuro4j.workflow.log.Logger;
 import org.neuro4j.workflow.node.StartNode;
 import org.neuro4j.workflow.node.WorkflowNode;
@@ -32,7 +32,7 @@ public class Workflow {
     HashMap<String, StartNode> startNodes = null;
     HashMap<String, WorkflowNode> nodes = null;
 
-    NetworkVisibility visibility = NetworkVisibility.Public;
+    FlowVisibility visibility = FlowVisibility.Public;
 
     private String flowPackage;
 
@@ -59,14 +59,13 @@ public class Workflow {
         return startNodes.get(name);
 
     }
-    
+
     public Collection<StartNode> getStartNodes() {
         return startNodes.values();
     }
-    
 
     public boolean isPublic() {
-        return visibility == NetworkVisibility.Public;
+        return visibility == FlowVisibility.Public;
     }
 
     public void executeWorkflow(StartNode startNode, WorkflowRequest request) throws FlowExecutionException {
@@ -78,14 +77,9 @@ public class Workflow {
 
         while (null != step)
         {
-            long startTime = System.currentTimeMillis();
-
-         //     Logger.debug(Workflow.class, "		Running: {} ({})", logicNode.getClass().getSimpleName(), logicNode.getClass().getCanonicalName());
-
             WorkflowNode lastNode = step;
 
             step = step.executeNode(request);
-           //  step = logicNode.process(request);
 
             request.setLastSuccessfulNode(lastNode);
 
@@ -112,6 +106,18 @@ public class Workflow {
 
     public void registerStartNode(StartNode entity) {
         startNodes.put(entity.getName(), entity);
+    }
+
+    public void setVisibility(FlowVisibility visibility) {
+        if (visibility == null)
+        {
+            visibility = FlowVisibility.Public;
+        }
+        this.visibility = visibility;
+    }
+
+    public String getFlowName() {
+        return flowName;
     }
 
 }

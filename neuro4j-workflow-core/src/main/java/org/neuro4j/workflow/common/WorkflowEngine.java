@@ -80,17 +80,14 @@ public class WorkflowEngine {
 
             StartNode startNodeAdapter = workflow.getStartNode(startNode);
             if (null == startNodeAdapter)
-                throw new FlowExecutionException("StartNode '" + startNode
-                        + "' not found in flow " + flowName);
+                throw new FlowExecutionException("StartNode '" + startNode  + "' not found in flow " + flowName);
 
             if (!workflow.isPublic()) {
-                throw new FlowExecutionException("Flow '" + flow
-                        + "' is not public");
+                throw new FlowExecutionException("Flow '" + flow + "' is not public");
             }
 
             if (!startNodeAdapter.isPublic()) {
-                throw new FlowExecutionException("Node '"
-                        + startNodeAdapter.getName() + "' is not public");
+                throw new FlowExecutionException("Node '" + startNodeAdapter.getName() + "' is not public");
             }
 
             request.pushPackage(workflow.getPackage());

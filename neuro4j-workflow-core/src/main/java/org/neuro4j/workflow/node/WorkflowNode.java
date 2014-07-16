@@ -55,7 +55,6 @@ public class WorkflowNode {
         return workflow;
     }
 
-
     public Map<String, String> getParameters() {
         return parameters;
     }
@@ -68,8 +67,6 @@ public class WorkflowNode {
 
         return this.parameters.get(key);
     }
-
-
 
     public String getName() {
         return name;
@@ -113,15 +110,21 @@ public class WorkflowNode {
     {
         return;
     }
+
     /**
+     * 
      * @param request
      * @return
      * @throws FlowExecutionException
      */
     public final WorkflowNode executeNode(WorkflowRequest request) throws FlowExecutionException {
+        long startTime = System.currentTimeMillis();
+        Logger.debug(this, "      Running: {} ({})", this.getName(), this.getClass().getCanonicalName());
+
         validate(request.getLogicContext());
         Transition transition = execute(request);
 
+        Logger.debug(this, "      Finished: {} in ({} ms.)", this.getName(), (System.currentTimeMillis() - startTime));
         if (transition != null)
         {
             return transition.getToNode();
@@ -134,12 +137,12 @@ public class WorkflowNode {
     {
         return null;
     }
-    
+
     public void init() throws FlowInitializationException
     {
-        
+
     }
-    
+
     protected final void evaluateParameterValue(String source, String target, FlowContext ctx)
     {
         Object obj = null;
@@ -181,7 +184,7 @@ public class WorkflowNode {
         ctx.put(target, obj);
 
     }
-    
+
     private static Object createNewInstance(String clazzName) {
         Class<?> beanClass = null;
         Object beanInstance = null;

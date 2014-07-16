@@ -33,12 +33,12 @@ public class DecisionNode extends WorkflowNode {
 
     private static final String NEXT_EXIT_RELATION = SWFConstants.NEXT_RELATION_NAME;
     private static final String FALSE_EXIT_RELATION = "FALSE";
-    
+
     private DecisionOperators operator = null;
     private DecisionCompTypes compTypes = null;
     private String decisionKey = null;
     private String comparisonKey = null;
-    
+
     /**
      * 
      */
@@ -85,8 +85,9 @@ public class DecisionNode extends WorkflowNode {
         this.comparisonKey = comparisonKey;
     }
 
-    
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see org.neuro4j.workflow.node.LogicBlock#execute(org.neuro4j.workflow.WorkflowRequest)
      */
     public final Transition execute(WorkflowRequest request)
@@ -246,7 +247,8 @@ public class DecisionNode extends WorkflowNode {
     }
 
     /**
-     * @param fctx flow context
+     * @param fctx
+     *        flow context
      * @return object from context
      */
     private Object getComparisonValue(FlowContext fctx)
@@ -263,7 +265,9 @@ public class DecisionNode extends WorkflowNode {
         return compValue;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see org.neuro4j.workflow.node.LogicBlock#load(org.neuro4j.workflow.xml.WorkflowNode)
      */
     public final void init() throws FlowInitializationException
@@ -273,13 +277,15 @@ public class DecisionNode extends WorkflowNode {
 
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see org.neuro4j.workflow.node.LogicBlock#validate(org.neuro4j.workflow.FlowContext)
      */
     @Override
     public void validate(FlowContext ctx) throws FlowExecutionException {
         super.validate(ctx);
-        
+
         if (operator == null) {
             throw new FlowExecutionException(
                     "Decision node: Opearator not defined");

@@ -31,14 +31,12 @@ import org.neuro4j.workflow.node.WorkflowNode;
 
 /**
  * KeyMapper maps value from flow context to different name.
- *
+ * 
  */
 public class KeyMapper extends WorkflowNode {
 
     private Transition nextNode = null;
 
-    
-    
     /**
      * @param name
      * @param uuid
@@ -48,7 +46,9 @@ public class KeyMapper extends WorkflowNode {
         super(name, uuid, workflow);
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see org.neuro4j.workflow.node.LogicBlock#execute(org.neuro4j.workflow.WorkflowRequest)
      */
     public final Transition execute(WorkflowRequest request)
@@ -75,7 +75,9 @@ public class KeyMapper extends WorkflowNode {
         return nextNode;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see org.neuro4j.workflow.node.LogicBlock#load(org.neuro4j.workflow.xml.WorkflowNode)
      */
     public final void init() throws FlowInitializationException {

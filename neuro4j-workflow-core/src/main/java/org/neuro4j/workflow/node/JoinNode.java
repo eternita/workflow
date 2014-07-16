@@ -32,7 +32,6 @@ public class JoinNode extends WorkflowNode {
 
     private Transition next = null;
 
-
     /**
      * Default constructor.
      */
@@ -47,7 +46,7 @@ public class JoinNode extends WorkflowNode {
      * @param workflow
      */
     public JoinNode(String name, String uuid, Workflow workflow) {
-       super(name, uuid, workflow);
+        super(name, uuid, workflow);
     }
 
     /*

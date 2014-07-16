@@ -23,7 +23,7 @@ import org.neuro4j.workflow.node.Transition;
 
 /**
  * EndBlock stops flow execution.
- *
+ * 
  */
 public class EndNode extends WorkflowNode {
 
@@ -44,7 +44,9 @@ public class EndNode extends WorkflowNode {
 
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     * 
      * @see org.neuro4j.workflow.node.LogicBlock#execute(org.neuro4j.workflow.WorkflowRequest)
      */
     public final Transition execute(WorkflowRequest request) throws FlowExecutionException {
