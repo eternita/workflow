@@ -36,7 +36,7 @@
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
                 <item value="/jsp/welcome.jsp" key="SWF_PARAM_VIEW_TEMPLATE"/>
                 <item value="" key="SWF_PARAM_VIEW_DYNAMIC_TEMPLATE"/>
-                <item value="org.neuro4j.workflow.node.SetViewTemplate" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.workflow.node.ViewNode" key="SWF_BLOCK_CLASS"/>
                 <item value="jsp" key="SWF_PARAM_VIEW_RENDER_TYPE"/>
                 <item value="393" key="y"/>
                 <item value="142" key="x"/>
@@ -139,7 +139,7 @@
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
                 <item value="/jsp/contacts.jsp" key="SWF_PARAM_VIEW_TEMPLATE"/>
-                <item value="org.neuro4j.workflow.node.SetViewTemplate" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.workflow.node.ViewNode" key="SWF_BLOCK_CLASS"/>
                 <item value="jsp" key="SWF_PARAM_VIEW_RENDER_TYPE"/>
                 <item value="407" key="y"/>
                 <item value="630" key="x"/>
@@ -162,7 +162,7 @@
             <properties>
                 <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
                 <item value="/jsp/sitemap.jsp" key="SWF_PARAM_VIEW_TEMPLATE"/>
-                <item value="org.neuro4j.workflow.node.SetViewTemplate" key="SWF_BLOCK_CLASS"/>
+                <item value="org.neuro4j.workflow.node.ViewNode" key="SWF_BLOCK_CLASS"/>
                 <item value="jsp" key="SWF_PARAM_VIEW_RENDER_TYPE"/>
                 <item value="433" key="y"/>
                 <item value="949" key="x"/>
