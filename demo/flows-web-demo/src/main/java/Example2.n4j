@@ -1,101 +1,55 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<network>
-    <entities>
-        <item name="NEXT" uuid="uEkQV.0E8MoAAAFBH_2HjaR3">
-            <properties>
-                <item value="7LEQV.0E7FQAAAFBv_OHjaR3" key="EndUUID"/>
-                <item value="0, 32, 0, -291|0, 294, 0, -29|" key="points"/>
-                <item value="3.kQV.0Epp4AAAFBH.iHjaR3" key="StartUUID"/>
-            </properties>
-            <connected>
-                <item uuid="7LEQV.0E7FQAAAFBv_OHjaR3"/>
-                <item uuid="3.kQV.0Epp4AAAFBH.iHjaR3"/>
-            </connected>
-        </item>
-        <item name="EndNode1" uuid="7LEQV.0E7FQAAAFBv_OHjaR3">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.node.EndNode" key="SWF_BLOCK_CLASS"/>
-                <item value="435" key="y"/>
-                <item value="810" key="x"/>
-            </properties>
-            <connected/>
-        </item>
-        <item name="StartNode2" uuid="3.kQV.0Epp4AAAFBH.iHjaR3">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="PUBLIC" key="SYS_START_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.node.StartNode" key="SWF_BLOCK_CLASS"/>
-                <item value="110" key="y"/>
-                <item value="810" key="x"/>
-            </properties>
-            <connected>
-                <item uuid="uEkQV.0E8MoAAAFBH_2HjaR3"/>
-            </connected>
-        </item>
-        <item name="ViewNode1" uuid="MTKp_iYcercAAAE_uXJJYq.g">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="/jsp/application.jsp" key="SWF_PARAM_VIEW_TEMPLATE"/>
-                <item value="org.neuro4j.workflow.node.ViewNode" key="SWF_BLOCK_CLASS"/>
-                <item value="510" key="y"/>
-                <item value="309" key="x"/>
-            </properties>
-            <connected/>
-        </item>
-        <item name="MapperNode1" uuid="3xap_iYcXQQAAAE_fF1JYq.s">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.node.KeyMapper" key="SWF_BLOCK_CLASS"/>
-                <item value="&quot;activeCl&quot;:example_2" key="SWF_PARAM_KEY_1"/>
-                <item value="415" key="y"/>
-                <item value="&quot;/jsp/example2/page1.jsp&quot;:page" key="SWF_PARAM_KEY_2"/>
-                <item value="341" key="x"/>
-            </properties>
-            <connected>
-                <item uuid="faip_iYc6PcAAAE_roNJYq.s"/>
-            </connected>
-        </item>
-        <item name="Start" uuid="w6up_iYcwoQAAAE_bkJJYq.S">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="PUBLIC" key="SYS_START_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.node.StartNode" key="SWF_BLOCK_CLASS"/>
-                <item value="124" key="y"/>
-                <item value="322" key="x"/>
-            </properties>
-            <connected>
-                <item uuid="QfGp_iYcn2AAAAE_Rm1JYq.s"/>
-            </connected>
-        </item>
-        <item name="networkConfig" uuid="p9MQV.0E29AAAAFBC42HjaR4">
-            <properties>
-                <item value="org.neuro4j.workflow.node.NetConfig" key="SWF_BLOCK_CLASS"/>
-                <item value="Public" key="KEY_VISIBILITY"/>
-            </properties>
-            <connected/>
-        </item>
-        <item name="NEXT" uuid="QfGp_iYcn2AAAAE_Rm1JYq.s">
-            <properties>
-                <item value="3xap_iYcXQQAAAE_fF1JYq.s" key="EndUUID"/>
-                <item value="0, 32, 5, -249|-5, 260, 0, -21|" key="points"/>
-                <item value="w6up_iYcwoQAAAE_bkJJYq.S" key="StartUUID"/>
-            </properties>
-            <connected>
-                <item uuid="3xap_iYcXQQAAAE_fF1JYq.s"/>
-                <item uuid="w6up_iYcwoQAAAE_bkJJYq.S"/>
-            </connected>
-        </item>
-        <item name="NEXT" uuid="faip_iYc6PcAAAE_roNJYq.s">
-            <properties>
-                <item value="MTKp_iYcercAAAE_uXJJYq.g" key="EndUUID"/>
-                <item value="0, 21, 0, -82|0, 74, 0, -29|" key="points"/>
-                <item value="3xap_iYcXQQAAAE_fF1JYq.s" key="StartUUID"/>
-            </properties>
-            <connected>
-                <item uuid="MTKp_iYcercAAAE_uXJJYq.g"/>
-                <item uuid="3xap_iYcXQQAAAE_fF1JYq.s"/>
-            </connected>
-        </item>
-    </entities>
-</network>
+<flow visibility="Public">
+    <nodes>
+        <node type="END" y="435" x="810" name="EndNode1" uuid="7LEQV.0E7FQAAAFBv_OHjaR3">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node type="START" y="110" x="810" name="StartNode2" uuid="3.kQV.0Epp4AAAFBH.iHjaR3">
+            <parameters/>
+            <config>
+                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+            </config>
+            <transitions>
+                <transition toNode="7LEQV.0E7FQAAAFBv_OHjaR3" name="NEXT" uuid="uEkQV.0E8MoAAAFBH_2HjaR3">
+                    <points>0, 32, 0, -291|0, 294, 0, -29|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="VIEW" y="510" x="309" name="ViewNode1" uuid="MTKp_iYcercAAAE_uXJJYq.g">
+            <parameters/>
+            <config>
+                <parameter value="/jsp/application.jsp" key="SWF_PARAM_VIEW_TEMPLATE"/>
+            </config>
+            <transitions/>
+        </node>
+        <node type="MAP" y="415" x="341" name="MapperNode1" uuid="3xap_iYcXQQAAAE_fF1JYq.s">
+            <parameters>
+                <parameter input="true" key="N4J_CONSOLE_NODE_TYPE"/>
+                <parameter input="true" key="SWF_BLOCK_CLASS"/>
+                <parameter input="true" key="y"/>
+                <parameter input="true" key="SWF_PARAM_KEY_1"/>
+                <parameter input="true" key="x"/>
+                <parameter input="true" key="SWF_PARAM_KEY_2"/>
+            </parameters>
+            <config/>
+            <transitions>
+                <transition toNode="MTKp_iYcercAAAE_uXJJYq.g" name="NEXT" uuid="faip_iYc6PcAAAE_roNJYq.s">
+                    <points>0, 21, 0, -82|0, 74, 0, -29|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="START" y="134" x="328" name="Start" uuid="w6up_iYcwoQAAAE_bkJJYq.S">
+            <parameters/>
+            <config>
+                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+            </config>
+            <transitions>
+                <transition toNode="3xap_iYcXQQAAAE_fF1JYq.s" name="NEXT" uuid="QfGp_iYcn2AAAAE_Rm1JYq.s">
+                    <points>0, 32, 5, -249|-5, 260, 0, -21|</points>
+                </transition>
+            </transitions>
+        </node>
+    </nodes>
+</flow>

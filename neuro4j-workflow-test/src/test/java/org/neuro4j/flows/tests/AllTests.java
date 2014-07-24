@@ -20,6 +20,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 import org.neuro4j.flows.custom.InputParametersTestCase;
+import org.neuro4j.flows.custom.OutParametersTestCase;
 import org.neuro4j.flows.network.NetworkTestCase;
 import org.neuro4j.flows.nodes.callnode.CallNodeTestCase;
 import org.neuro4j.flows.nodes.decisionnode.DecisionNodeTestCase;
@@ -30,7 +31,7 @@ import org.neuro4j.flows.nodes.viewnode.SetViewTemplateNodeTestCase;
 
 @RunWith(Suite.class)
 @SuiteClasses({ DecisionNodeTestCase.class, SwitchNodeTestCase.class,
-        LoopNodeTestCase.class, MapperNodeTestCase.class, CallNodeTestCase.class, SetViewTemplateNodeTestCase.class, InputParametersTestCase.class, NetworkTestCase.class })
+        LoopNodeTestCase.class, MapperNodeTestCase.class, CallNodeTestCase.class, SetViewTemplateNodeTestCase.class, InputParametersTestCase.class,OutParametersTestCase.class, NetworkTestCase.class })
 public class AllTests {
 
 }

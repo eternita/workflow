@@ -14,27 +14,37 @@
  * limitations under the License.
  */
 
-package org.neuro4j.workflow.loader.n4j;
+package org.neuro4j.workflow.loader.f4j;
 
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
 
-public class PropertyXML {
+@XmlRootElement(name = "parameter")
+public class ParameterXML {
 
     @XmlAttribute
     String key;
 
     @XmlAttribute
     String value;
+    
+    @XmlAttribute(name="input", required=false)
+    public Boolean input;
 
-    public PropertyXML() {
+    public ParameterXML() {
         super();
     }
 
-    public PropertyXML(String key, String value) {
+    public ParameterXML(String key, String value) {
         super();
         this.key = key;
         this.value = value;
 
+    }
+    
+    public ParameterXML(String key, String value, Boolean isInput) {
+      this(key, value);
+      this.input = isInput;
     }
 
     public String getKey() {
@@ -44,5 +54,9 @@ public class PropertyXML {
     public String getValue() {
         return value;
     }
+
+
+    
+    
 
 }

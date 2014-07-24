@@ -14,24 +14,42 @@
  * limitations under the License.
  */
 
-package org.neuro4j.workflow.loader.n4j;
+package org.neuro4j.workflow.loader.f4j;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-@XmlRootElement(name = "property_list")
-public class PropertyListXML {
+@XmlRootElement(name = "flow")
+public class FlowXML {
 
-    @XmlJavaTypeAdapter(PropertyListXMLAdapter.class)
-    @XmlElement(name = "properties")
-    List<PropertyXML> reps = new ArrayList<PropertyXML>();
+    @XmlAttribute
+    public String visibility;
 
-    public List<PropertyXML> getProperties() {
-        return reps;
+    @XmlElementWrapper(name = "nodes")
+    @XmlElement(name = "node")
+    List<NodeXML> nodes = new ArrayList<NodeXML>();
+
+    public FlowXML()
+    {
+
+    }
+
+    public List<NodeXML> getEntities() {
+        return nodes;
+    }
+
+    public void setVisibility(String visibility) {
+        this.visibility = visibility;
+    }
+
+    public Collection<NodeXML> getXmlNodes() {
+        return nodes;
     }
 
 }

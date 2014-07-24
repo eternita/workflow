@@ -18,7 +18,6 @@ package org.neuro4j.workflow.node;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.Workflow;
@@ -27,9 +26,8 @@ import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.common.ParameterDefinition;
 import org.neuro4j.workflow.common.ParameterDefinitionList;
-import org.neuro4j.workflow.common.SWEUtils;
 import org.neuro4j.workflow.loader.LogicBlockLoader;
-import org.neuro4j.workflow.loader.n4j.SWFConstants;
+import org.neuro4j.workflow.loader.f4j.SWFConstants;
 import org.neuro4j.workflow.log.Logger;
 
 public class CustomNode extends WorkflowNode {
@@ -168,21 +166,14 @@ public class CustomNode extends WorkflowNode {
      */
     private void doInputMapping(FlowContext ctx, String originalName)
     {
-        Set<String> parameterKeys = getParameters().keySet();
 
-        for (String key : parameterKeys)
-        {
-            String mappedValue = getParameter(key);
-            if (mappedValue != null && mappedValue.startsWith(originalName))
+            String mappedValue = getParameter(originalName);
+            if (mappedValue != null && !mappedValue.equalsIgnoreCase(originalName))
             {
-                String[] splittedValue = SWEUtils.getMappedParameters(mappedValue);
+                Logger.debug(this, "Mapping parameter: {} to  {})", mappedValue, originalName);
 
-                Logger.debug(this, "Mapping parameter: {} to  {})", splittedValue[1], originalName);
-
-                evaluateParameterValue(splittedValue[1], splittedValue[0], ctx);
-
+                evaluateParameterValue(mappedValue, originalName, ctx);
             }
-        }
 
     }
 
@@ -196,21 +187,14 @@ public class CustomNode extends WorkflowNode {
      */
     private String doOutMapping(FlowContext ctx, String originalName) {
 
-        Set<String> parameterKeys = getOutParameters().keySet();
-
-        for (String key : parameterKeys)
-        {
-            String mappedValue = getParameter(key);
-            if (mappedValue != null && mappedValue.startsWith(originalName))
+            String mappedValue = getOutParameters().get(originalName);
+            if (mappedValue != null && !mappedValue.equalsIgnoreCase(originalName))
             {
-                String[] splittedValue = SWEUtils.getMappedParameters(mappedValue);
                 Object obj = ctx.remove(originalName);
-                String newName = splittedValue[1];
-                ctx.put(newName, obj);
-                return newName;
+                ctx.put(mappedValue, obj);
+                return mappedValue;
             }
 
-        }
 
         return originalName;
 
@@ -245,7 +229,7 @@ public class CustomNode extends WorkflowNode {
         }
 
         try {
-            Class<?> cl = SWEUtils.class.getClassLoader().loadClass(className);
+            Class<?> cl = CustomBlock.class.getClassLoader().loadClass(className);
 
             if (!cl.isAssignableFrom(obj.getClass()))
             {

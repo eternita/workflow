@@ -26,7 +26,7 @@ import java.util.Locale;
 import java.util.Set;
 
 import org.apache.commons.beanutils.PropertyUtils;
-import org.neuro4j.workflow.loader.n4j.SWFConstants;
+import org.neuro4j.workflow.loader.f4j.SWFConstants;
 import org.neuro4j.workflow.log.Logger;
 
 /**

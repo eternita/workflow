@@ -1,67 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<network>
-    <entities>
-        <item name="networkConfig" uuid=".YUQV.0ECx8AAAFHHYLRKEFS">
-            <properties>
-                <item key="KEY_VISIBILITY"/>
-                <item value="org.neuro4j.workflow.node.NetConfig" key="SWF_BLOCK_CLASS"/>
-            </properties>
-            <connected/>
-        </item>
-        <item name="End" uuid="zgKp_m2vIXMAAAE7iYLgSNR0">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="255" key="y"/>
-                <item value="300" key="x"/>
-                <item value="org.neuro4j.workflow.node.EndNode" key="SWF_BLOCK_CLASS"/>
-            </properties>
-            <connected/>
-        </item>
-        <item name="HelloNode" uuid="lLoQV.0E68wAAAE.Ll7.1In9">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.demo.lesson1.HelloBlock" key="SWF_CUSTOM_CLASS"/>
-                <item value="141" key="y"/>
-                <item value="298" key="x"/>
-                <item value="HelloNode" key="SWF_BLOCK_CLASS"/>
-            </properties>
-            <connected>
-                <item uuid="cZYQV.0EfuUAAAFHHG3RKEFS"/>
-            </connected>
-        </item>
-        <item name="NEXT" uuid="cZYQV.0EfuUAAAFHHG3RKEFS">
-            <properties>
-                <item value="lLoQV.0E68wAAAE.Ll7.1In9" key="StartUUID"/>
-                <item value="zgKp_m2vIXMAAAE7iYLgSNR0" key="EndUUID"/>
-                <item value="0, 29, -9, -91|9, 86, 0, -34|" key="points"/>
-            </properties>
-            <connected>
-                <item uuid="lLoQV.0E68wAAAE.Ll7.1In9"/>
-                <item uuid="zgKp_m2vIXMAAAE7iYLgSNR0"/>
-            </connected>
-        </item>
-        <item name="Start" uuid="ISup_m2vw0MAAAE7GILgSNR0">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="PUBLIC" key="SYS_START_NODE_TYPE"/>
-                <item value="27" key="y"/>
-                <item value="300" key="x"/>
-                <item value="org.neuro4j.workflow.node.StartNode" key="SWF_BLOCK_CLASS"/>
-            </properties>
-            <connected>
-                <item uuid="v6MQV.0EfAcAAAFH81HRKEFS"/>
-            </connected>
-        </item>
-        <item name="NEXT" uuid="v6MQV.0EfAcAAAFH81HRKEFS">
-            <properties>
-                <item value="ISup_m2vw0MAAAE7GILgSNR0" key="StartUUID"/>
-                <item value="lLoQV.0E68wAAAE.Ll7.1In9" key="EndUUID"/>
-                <item value="0, 32, -11, -79|11, 83, 0, -28|" key="points"/>
-            </properties>
-            <connected>
-                <item uuid="ISup_m2vw0MAAAE7GILgSNR0"/>
-                <item uuid="lLoQV.0E68wAAAE.Ll7.1In9"/>
-            </connected>
-        </item>
-    </entities>
-</network>
+<flow visibility="Public">
+    <nodes>
+        <node type="END" y="255" x="300" name="End" uuid="zgKp_m2vIXMAAAE7iYLgSNR0">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node type="CUSTOM" y="141" x="298" name="HelloNode" uuid="lLoQV.0E68wAAAE.Ll7.1In9">
+            <parameters/>
+            <config>
+                <parameter value="HelloNode" key="SWF_BLOCK_CLASS"/>
+                <parameter value="org.neuro4j.workflow.demo.lesson1.HelloBlock" key="SWF_CUSTOM_CLASS"/>
+            </config>
+            <transitions>
+                <transition toNode="zgKp_m2vIXMAAAE7iYLgSNR0" name="NEXT" uuid="cZYQV.0EfuUAAAFHHG3RKEFS">
+                    <points>0, 29, -9, -91|9, 86, 0, -34|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="START" y="21" x="275" name="Start" uuid="ISup_m2vw0MAAAE7GILgSNR0">
+            <parameters/>
+            <config>
+                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+            </config>
+            <transitions>
+                <transition toNode="lLoQV.0E68wAAAE.Ll7.1In9" name="NEXT" uuid="v6MQV.0EfAcAAAFH81HRKEFS">
+                    <points>0, 32, -11, -79|11, 83, 0, -28|</points>
+                </transition>
+            </transitions>
+        </node>
+    </nodes>
+</flow>

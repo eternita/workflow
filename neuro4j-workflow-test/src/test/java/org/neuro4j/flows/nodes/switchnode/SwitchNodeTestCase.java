@@ -90,17 +90,5 @@ public class SwitchNodeTestCase extends BaseFlowTestCase {
             fail(e.toString());
         }
     }
-    // @Test
-    // public void testRelationEmptyExit() {
-    // try {
-    //
-    // String lastNode = (String )
-    // executeFlowAndReturnObject("org.neuro4j.flows.nodes.switchnode.SwitchFlow-StartNodeEmptyExit");
-    //
-    // assertEquals(lastNode, "EndNode7");
-    //
-    // } catch (FlowExecutionException e) {
-    // fail(e.toString());
-    // }
-    // }
+
 }

@@ -27,7 +27,6 @@ import org.neuro4j.workflow.common.WorkflowEngine;
 
 public class BaseFlowTestCase {
 
-    private static FlowContext EMPTY_CONTEXT = new FlowContext();
 
     protected FlowContext executeFlowWithoutErrors(String flowName, Map<String, Object> parameters)
     {

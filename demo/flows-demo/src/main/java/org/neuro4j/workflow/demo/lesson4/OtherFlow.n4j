@@ -1,68 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<network>
-    <entities>
-        <item name="SystemOutBlock" uuid="4toQV.0EjicAAAE.l1EEg4pF">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.core.SystemOutBlock" key="SWF_CUSTOM_CLASS"/>
-                <item value="varToPrint:&quot;Inside OtherFlow.n4j&quot;" key="Parameter1:IN"/>
-                <item value="284" key="y"/>
-                <item value="195" key="x"/>
-                <item value="SystemOutBlock" key="SWF_BLOCK_CLASS"/>
-            </properties>
-            <connected>
-                <item uuid="nVAQV.0EXJMAAAFH6_ds00Em"/>
-            </connected>
-        </item>
-        <item name="NEXT" uuid="nVAQV.0EXJMAAAFH6_ds00Em">
-            <properties>
-                <item value="4toQV.0EjicAAAE.l1EEg4pF" key="StartUUID"/>
-                <item value="2NAQV.0EcNsAAAE.90MEg4pF" key="EndUUID"/>
-                <item value="0, 29, 4, -110|-4, 105, 0, -34|" key="points"/>
-            </properties>
-            <connected>
-                <item uuid="4toQV.0EjicAAAE.l1EEg4pF"/>
-                <item uuid="2NAQV.0EcNsAAAE.90MEg4pF"/>
-            </connected>
-        </item>
-        <item name="StartNode1" uuid="UoQQV.0EMXEAAAE.ViQEg4pF">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="PUBLIC" key="SYS_START_NODE_TYPE"/>
-                <item value="102" key="y"/>
-                <item value="260" key="x"/>
-                <item value="org.neuro4j.workflow.node.StartNode" key="SWF_BLOCK_CLASS"/>
-            </properties>
-            <connected>
-                <item uuid="JIoQV.0Ed14AAAFH7t1s00Em"/>
-            </connected>
-        </item>
-        <item name="NEXT" uuid="JIoQV.0Ed14AAAFH7t1s00Em">
-            <properties>
-                <item value="UoQQV.0EMXEAAAE.ViQEg4pF" key="StartUUID"/>
-                <item value="4toQV.0EjicAAAE.l1EEg4pF" key="EndUUID"/>
-                <item value="0, 32, 12, -134|-12, 138, 0, -28|" key="points"/>
-            </properties>
-            <connected>
-                <item uuid="UoQQV.0EMXEAAAE.ViQEg4pF"/>
-                <item uuid="4toQV.0EjicAAAE.l1EEg4pF"/>
-            </connected>
-        </item>
-        <item name="EndNode1" uuid="2NAQV.0EcNsAAAE.90MEg4pF">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="447" key="y"/>
-                <item value="229" key="x"/>
-                <item value="org.neuro4j.workflow.node.EndNode" key="SWF_BLOCK_CLASS"/>
-            </properties>
-            <connected/>
-        </item>
-        <item name="networkConfig" uuid="YtIQV.0EcrYAAAFHThZs00En">
-            <properties>
-                <item value="Public" key="KEY_VISIBILITY"/>
-                <item value="org.neuro4j.workflow.node.NetConfig" key="SWF_BLOCK_CLASS"/>
-            </properties>
-            <connected/>
-        </item>
-    </entities>
-</network>
+<flow visibility="Public">
+    <nodes>
+        <node type="CUSTOM" y="284" x="195" name="SystemOutBlock" uuid="4toQV.0EjicAAAE.l1EEg4pF">
+            <parameters>
+                <parameter input="true" value="&quot;Inside OtherFlow.n4j&quot;" key="varToPrint"/>
+            </parameters>
+            <config>
+                <parameter value="SystemOutBlock" key="SWF_BLOCK_CLASS"/>
+                <parameter value="org.neuro4j.workflow.core.SystemOutBlock" key="SWF_CUSTOM_CLASS"/>
+            </config>
+            <transitions>
+                <transition toNode="2NAQV.0EcNsAAAE.90MEg4pF" name="NEXT" uuid="nVAQV.0EXJMAAAFH6_ds00Em">
+                    <points>0, 29, 4, -110|-4, 105, 0, -34|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="START" y="102" x="201" name="StartNode1" uuid="UoQQV.0EMXEAAAE.ViQEg4pF">
+            <parameters/>
+            <config>
+                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+            </config>
+            <transitions>
+                <transition toNode="4toQV.0EjicAAAE.l1EEg4pF" name="NEXT" uuid="JIoQV.0Ed14AAAFH7t1s00Em">
+                    <points>0, 32, 12, -134|-12, 138, 0, -28|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="END" y="447" x="229" name="EndNode1" uuid="2NAQV.0EcNsAAAE.90MEg4pF">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+    </nodes>
+</flow>

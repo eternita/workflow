@@ -14,26 +14,25 @@
  * limitations under the License.
  */
 
-package org.neuro4j.workflow.loader.n4j;
+package org.neuro4j.workflow.loader.f4j;
 
-import javax.xml.bind.annotation.XmlAttribute;
+import java.util.ArrayList;
+import java.util.List;
 
-public class RelationTailXML {
+import javax.xml.bind.annotation.adapters.XmlAdapter;
 
-    @XmlAttribute
-    String uuid;
+class TransitionListXMLAdapter extends XmlAdapter<TransitionXML[], List<TransitionXML>> {
 
-    public RelationTailXML() {
-        super();
+    public List<TransitionXML> unmarshal(TransitionXML[] value) {
+        List<TransitionXML> r = new ArrayList<TransitionXML>();
+        for (TransitionXML c : value)
+            r.add(c);
+        return r;
     }
 
-    public RelationTailXML(String ruuid) {
-        super();
-        this.uuid = ruuid;
+    @Override
+    public TransitionXML[] marshal(List<TransitionXML> value)
+            throws Exception {
+        return value.toArray(new TransitionXML[value.size()]);
     }
-
-    public String getUuid() {
-        return uuid;
-    }
-
 }

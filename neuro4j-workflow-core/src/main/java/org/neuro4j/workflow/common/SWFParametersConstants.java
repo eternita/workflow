@@ -16,7 +16,7 @@
 
 package org.neuro4j.workflow.common;
 
-import org.neuro4j.workflow.loader.n4j.SWFConstants;
+import org.neuro4j.workflow.loader.f4j.SWFConstants;
 
 public class SWFParametersConstants {
 

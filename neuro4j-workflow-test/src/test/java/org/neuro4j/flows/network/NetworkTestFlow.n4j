@@ -1,284 +1,140 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<network>
-    <entities>
-        <item name="StartNode1" uuid="ug8QV.0E5OAAAAE.cIS60zLR">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.node.StartNode" key="SWF_BLOCK_CLASS"/>
-                <item value="37" key="y"/>
-                <item value="196" key="x"/>
-            </properties>
-            <connected>
-                <item uuid="m1AQV.0Efj8AAAE.Ohe60zLS"/>
-            </connected>
-        </item>
-        <item name="StartNode5" uuid="wQoQV.0EeUAAAAE.8xu60zO4">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.node.StartNode" key="SWF_BLOCK_CLASS"/>
-                <item value="38" key="y"/>
-                <item value="1280" key="x"/>
-            </properties>
-            <connected>
-                <item uuid="hEQQV.0EgBUAAAE.H4O60zO4"/>
-            </connected>
-        </item>
-        <item name="EndNode3" uuid="L0kQV.0EFdMAAAE.V6O60zLW">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.node.EndNode" key="SWF_BLOCK_CLASS"/>
-                <item value="310" key="y"/>
-                <item value="783" key="x"/>
-            </properties>
-            <connected/>
-        </item>
-        <item name="MapperNode2" uuid="WtsQV.0EiaUAAAE.Bsm60zLX">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.node.KeyMapper" key="SWF_BLOCK_CLASS"/>
-                <item value="&quot;test&quot;:var1" key="SWF_PARAM_KEY_1"/>
-                <item value="192" key="y"/>
-                <item value="519" key="x"/>
-            </properties>
-            <connected>
-                <item uuid="QdIQV.0EoikAAAE.R_K60zLX"/>
-            </connected>
-        </item>
-        <item name="EndNode2" uuid="xFcQV.0EysgAAAE.IXi60zLV">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.node.EndNode" key="SWF_BLOCK_CLASS"/>
-                <item value="316" key="y"/>
-                <item value="500" key="x"/>
-            </properties>
-            <connected/>
-        </item>
-        <item uuid="S9kQV.0ELSEAAAE.gUS60zO4">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.flows.network.p2.NetworkTestFlow2-StartNode2" key="SYS_FLOW_NAME"/>
-                <item value="org.neuro4j.workflow.node.CallNode" key="SWF_BLOCK_CLASS"/>
-                <item value="159" key="y"/>
-                <item value="1232" key="x"/>
-            </properties>
-            <connected>
-                <item uuid="0UIQV.0E_okAAAE.U5i60zO4"/>
-            </connected>
-        </item>
-        <item name="networkConfig" uuid="iScQV.0EoKcAAAE.Fa660zO4">
-            <properties>
-                <item value="org.neuro4j.workflow.node.NetConfig" key="SWF_BLOCK_CLASS"/>
-                <item key="KEY_VISIBILITY"/>
-            </properties>
-            <connected/>
-        </item>
-        <item name="EndNode5" uuid="1HMQV.0Etd8AAAE.OCy60zO4">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.node.EndNode" key="SWF_BLOCK_CLASS"/>
-                <item value="308" key="y"/>
-                <item value="1280" key="x"/>
-            </properties>
-            <connected/>
-        </item>
-        <item name="EndNode1" uuid="z7sQV.0ETsUAAAE.d4260zLR">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.node.EndNode" key="SWF_BLOCK_CLASS"/>
-                <item value="322" key="y"/>
-                <item value="196" key="x"/>
-            </properties>
-            <connected/>
-        </item>
-        <item name="MapperNode1" uuid="qLoQV.0E6CIAAAE.1Au60zLS">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.node.KeyMapper" key="SWF_BLOCK_CLASS"/>
-                <item value="&quot;test&quot;:value1" key="SWF_PARAM_KEY_1"/>
-                <item value="211" key="y"/>
-                <item value="215" key="x"/>
-            </properties>
-            <connected>
-                <item uuid=".LUQV.0EgVwAAAE.AjW60zLS"/>
-            </connected>
-        </item>
-        <item name="StartNode3" uuid="buoQV.0E42wAAAE.sXe60zLW">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.node.StartNode" key="SWF_BLOCK_CLASS"/>
-                <item value="23" key="y"/>
-                <item value="783" key="x"/>
-            </properties>
-            <connected>
-                <item uuid="eA4QV.0Emn8AAAE.osi60zLW"/>
-            </connected>
-        </item>
-        <item name="EndNode4" uuid="hHcQV.0EVl8AAAE.EnW60zOt">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.node.EndNode" key="SWF_BLOCK_CLASS"/>
-                <item value="311" key="y"/>
-                <item value="1004" key="x"/>
-            </properties>
-            <connected/>
-        </item>
-        <item name="StartNode4" uuid="yZsQV.0ETkMAAAE.Wma60zOt">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.node.StartNode" key="SWF_BLOCK_CLASS"/>
-                <item value="28" key="y"/>
-                <item value="1004" key="x"/>
-            </properties>
-            <connected>
-                <item uuid="GsQQV.0Euh8AAAE.9oe60zOx"/>
-            </connected>
-        </item>
-        <item uuid="l4MQV.0EVQEAAAE.MWy60zOx">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.flows.network.p2.NetworkTestFlow2-StartNode1" key="SYS_FLOW_NAME"/>
-                <item value="org.neuro4j.workflow.node.CallNode" key="SWF_BLOCK_CLASS"/>
-                <item value="172" key="y"/>
-                <item value="956" key="x"/>
-            </properties>
-            <connected>
-                <item uuid="Qn4QV.0EB3sAAAE.kw260zOy"/>
-            </connected>
-        </item>
-        <item name="StartNode2" uuid="aacQV.0ElQEAAAE.3GO60zLV">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="PRIVATE" key="SYS_START_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.node.StartNode" key="SWF_BLOCK_CLASS"/>
-                <item value="38" key="y"/>
-                <item value="500" key="x"/>
-            </properties>
-            <connected>
-                <item uuid="8DUQV.0EQ0wAAAE.79W60zLX"/>
-            </connected>
-        </item>
-        <item uuid="DZIQV.0EimwAAAE.WY660zLW">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.flows.network.NetworkTestFlow-StartNode2" key="SYS_FLOW_NAME"/>
-                <item value="org.neuro4j.workflow.node.CallNode" key="SWF_BLOCK_CLASS"/>
-                <item value="139" key="y"/>
-                <item value="738" key="x"/>
-            </properties>
-            <connected>
-                <item uuid="mHoQV.0E5UoAAAE.USW60zLX"/>
-            </connected>
-        </item>
-                <item name="EndNode1" uuid="Qn4QV.0EB3sAAAE.kw260zOy">
-            <properties>
-                <item value="hHcQV.0EVl8AAAE.EnW60zOt" key="EndUUID"/>
-                <item value="0, 29, -5, -111|5, 111, 0, -29|" key="points"/>
-                <item value="l4MQV.0EVQEAAAE.MWy60zOx" key="StartUUID"/>
-            </properties>
-            <connected>
-                <item uuid="hHcQV.0EVl8AAAE.EnW60zOt"/>
-                <item uuid="l4MQV.0EVQEAAAE.MWy60zOx"/>
-            </connected>
-        </item>
-        <item name="NEXT" uuid="m1AQV.0Efj8AAAE.Ohe60zLS">
-            <properties>
-                <item value="qLoQV.0E6CIAAAE.1Au60zLS" key="EndUUID"/>
-                <item value="0, 32, -6, -132|6, 143, 0, -21|" key="points"/>
-                <item value="ug8QV.0E5OAAAAE.cIS60zLR" key="StartUUID"/>
-            </properties>
-            <connected>
-                <item uuid="ug8QV.0E5OAAAAE.cIS60zLR"/>
-                <item uuid="qLoQV.0E6CIAAAE.1Au60zLS"/>
-            </connected>
-        </item>
-        <item name="NEXT" uuid="8DUQV.0EQ0wAAAE.79W60zLX">
-            <properties>
-                <item value="WtsQV.0EiaUAAAE.Bsm60zLX" key="EndUUID"/>
-                <item value="0, 32, -4, -112|4, 123, 0, -21|" key="points"/>
-                <item value="aacQV.0ElQEAAAE.3GO60zLV" key="StartUUID"/>
-            </properties>
-            <connected>
-                <item uuid="WtsQV.0EiaUAAAE.Bsm60zLX"/>
-                <item uuid="aacQV.0ElQEAAAE.3GO60zLV"/>
-            </connected>
-        </item>
-        <item name="NEXT" uuid="hEQQV.0EgBUAAAE.H4O60zO4">
-            <properties>
-                <item value="S9kQV.0ELSEAAAE.gUS60zO4" key="EndUUID"/>
-                <item value="0, 32, -5, -86|5, 90, 0, -28|" key="points"/>
-                <item value="wQoQV.0EeUAAAAE.8xu60zO4" key="StartUUID"/>
-            </properties>
-            <connected>
-                <item uuid="wQoQV.0EeUAAAAE.8xu60zO4"/>
-                <item uuid="S9kQV.0ELSEAAAE.gUS60zO4"/>
-            </connected>
-        </item>
-        <item name="NEXT" uuid="GsQQV.0Euh8AAAE.9oe60zOx">
-            <properties>
-                <item value="l4MQV.0EVQEAAAE.MWy60zOx" key="EndUUID"/>
-                <item value="0, 32, 6, -109|-6, 113, 0, -28|" key="points"/>
-                <item value="yZsQV.0ETkMAAAE.Wma60zOt" key="StartUUID"/>
-            </properties>
-            <connected>
-                <item uuid="l4MQV.0EVQEAAAE.MWy60zOx"/>
-                <item uuid="yZsQV.0ETkMAAAE.Wma60zOt"/>
-            </connected>
-        </item>
-        <item name="EndNode2" uuid="mHoQV.0E5UoAAAE.USW60zLX">
-            <properties>
-                <item value="L0kQV.0EFdMAAAE.V6O60zLW" key="EndUUID"/>
-                <item value="0, 29, -11, -143|11, 143, 0, -29|" key="points"/>
-                <item value="DZIQV.0EimwAAAE.WY660zLW" key="StartUUID"/>
-            </properties>
-            <connected>
-                <item uuid="L0kQV.0EFdMAAAE.V6O60zLW"/>
-                <item uuid="DZIQV.0EimwAAAE.WY660zLW"/>
-            </connected>
-        </item>
-        <item name="NEXT" uuid=".LUQV.0EgVwAAAE.AjW60zLS">
-            <properties>
-                <item value="z7sQV.0ETsUAAAE.d4260zLR" key="EndUUID"/>
-                <item value="0, 21, 0, -98|0, 90, 0, -29|" key="points"/>
-                <item value="qLoQV.0E6CIAAAE.1Au60zLS" key="StartUUID"/>
-            </properties>
-            <connected>
-                <item uuid="z7sQV.0ETsUAAAE.d4260zLR"/>
-                <item uuid="qLoQV.0E6CIAAAE.1Au60zLS"/>
-            </connected>
-        </item>
-        <item name="NEXT" uuid="eA4QV.0Emn8AAAE.osi60zLW">
-            <properties>
-                <item value="DZIQV.0EimwAAAE.WY660zLW" key="EndUUID"/>
-                <item value="0, 32, -13, -89|13, 93, 0, -28|" key="points"/>
-                <item value="buoQV.0E42wAAAE.sXe60zLW" key="StartUUID"/>
-            </properties>
-            <connected>
-                <item uuid="buoQV.0E42wAAAE.sXe60zLW"/>
-                <item uuid="DZIQV.0EimwAAAE.WY660zLW"/>
-            </connected>
-        </item>
-        <item name="NEXT" uuid="QdIQV.0EoikAAAE.R_K60zLX">
-            <properties>
-                <item value="xFcQV.0EysgAAAE.IXi60zLV" key="EndUUID"/>
-                <item value="0, 21, 0, -111|0, 103, 0, -29|" key="points"/>
-                <item value="WtsQV.0EiaUAAAE.Bsm60zLX" key="StartUUID"/>
-            </properties>
-            <connected>
-                <item uuid="WtsQV.0EiaUAAAE.Bsm60zLX"/>
-                <item uuid="xFcQV.0EysgAAAE.IXi60zLV"/>
-            </connected>
-        </item>
-        <item name="EndNode2" uuid="0UIQV.0E_okAAAE.U5i60zO4">
-            <properties>
-                <item value="1HMQV.0Etd8AAAE.OCy60zO4" key="EndUUID"/>
-                <item value="0, 29, -10, -121|10, 121, 0, -29|" key="points"/>
-                <item value="S9kQV.0ELSEAAAE.gUS60zO4" key="StartUUID"/>
-            </properties>
-            <connected>
-                <item uuid="1HMQV.0Etd8AAAE.OCy60zO4"/>
-                <item uuid="S9kQV.0ELSEAAAE.gUS60zO4"/>
-            </connected>
-        </item>
-    </entities>
-
-</network>
+<flow visibility="Public">
+    <nodes>
+        <node type="START" y="37" x="196" name="StartNode1" uuid="ug8QV.0E5OAAAAE.cIS60zLR">
+            <parameters/>
+            <config>
+                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+            </config>
+            <transitions>
+                <transition toNode="qLoQV.0E6CIAAAE.1Au60zLS" name="NEXT" uuid="m1AQV.0Efj8AAAE.Ohe60zLS">
+                    <points>0, 32, -6, -132|6, 143, 0, -21|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="START" y="38" x="1280" name="StartNode5" uuid="wQoQV.0EeUAAAAE.8xu60zO4">
+            <parameters/>
+            <config>
+                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+            </config>
+            <transitions>
+                <transition toNode="S9kQV.0ELSEAAAE.gUS60zO4" name="NEXT" uuid="hEQQV.0EgBUAAAE.H4O60zO4">
+                    <points>0, 32, -5, -86|5, 90, 0, -28|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="END" y="310" x="783" name="EndNode3" uuid="L0kQV.0EFdMAAAE.V6O60zLW">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node type="MAP" y="192" x="519" name="MapperNode2" uuid="WtsQV.0EiaUAAAE.Bsm60zLX">
+            <parameters>
+            	<parameter value="&quot;test&quot;" key="var1"/>
+            </parameters>
+            <config/>
+            <transitions>
+                <transition toNode="xFcQV.0EysgAAAE.IXi60zLV" name="NEXT" uuid="QdIQV.0EoikAAAE.R_K60zLX">
+                    <points>0, 21, 0, -111|0, 103, 0, -29|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="END" y="337" x="482" name="EndNode2" uuid="xFcQV.0EysgAAAE.IXi60zLV">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node type="CALL" y="159" x="1232" name="CallNode1" uuid="S9kQV.0ELSEAAAE.gUS60zO4">
+            <parameters/>
+            <config>
+                <parameter value="org.neuro4j.flows.network.p2.NetworkTestFlow2-StartNode2" key="SYS_FLOW_NAME"/>
+            </config>
+            <transitions>
+                <transition toNode="1HMQV.0Etd8AAAE.OCy60zO4" name="EndNode2" uuid="0UIQV.0E_okAAAE.U5i60zO4">
+                    <points>0, 29, -10, -121|10, 121, 0, -29|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="END" y="308" x="1280" name="EndNode5" uuid="1HMQV.0Etd8AAAE.OCy60zO4">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node type="END" y="322" x="196" name="EndNode1" uuid="z7sQV.0ETsUAAAE.d4260zLR">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node type="MAP" y="211" x="215" name="MapperNode1" uuid="qLoQV.0E6CIAAAE.1Au60zLS">
+            <parameters>
+				<parameter value="&quot;test&quot;" key="value1"/>
+            </parameters>
+            <config/>
+            <transitions>
+                <transition toNode="z7sQV.0ETsUAAAE.d4260zLR" name="NEXT" uuid=".LUQV.0EgVwAAAE.AjW60zLS">
+                    <points>0, 21, 0, -98|0, 90, 0, -29|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="START" y="23" x="783" name="StartNode3" uuid="buoQV.0E42wAAAE.sXe60zLW">
+            <parameters/>
+            <config>
+                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+            </config>
+            <transitions>
+                <transition toNode="DZIQV.0EimwAAAE.WY660zLW" name="NEXT" uuid="eA4QV.0Emn8AAAE.osi60zLW">
+                    <points>0, 32, -13, -89|13, 93, 0, -28|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="END" y="311" x="1004" name="EndNode4" uuid="hHcQV.0EVl8AAAE.EnW60zOt">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node type="START" y="28" x="1004" name="StartNode4" uuid="yZsQV.0ETkMAAAE.Wma60zOt">
+            <parameters/>
+            <config>
+                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+            </config>
+            <transitions>
+                <transition toNode="l4MQV.0EVQEAAAE.MWy60zOx" name="NEXT" uuid="GsQQV.0Euh8AAAE.9oe60zOx">
+                    <points>0, 32, 6, -109|-6, 113, 0, -28|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="CALL" y="172" x="956" name="CallNode2" uuid="l4MQV.0EVQEAAAE.MWy60zOx">
+            <parameters/>
+            <config>
+                <parameter value="org.neuro4j.flows.network.p2.NetworkTestFlow2-StartNode1" key="SYS_FLOW_NAME"/>
+            </config>
+            <transitions>
+                <transition toNode="hHcQV.0EVl8AAAE.EnW60zOt" name="EndNode1" uuid="Qn4QV.0EB3sAAAE.kw260zOy">
+                    <points>0, 29, -5, -111|5, 111, 0, -29|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="START" y="38" x="500" name="StartNode2" uuid="aacQV.0ElQEAAAE.3GO60zLV">
+            <parameters/>
+            <config>
+                <parameter value="PRIVATE" key="SYS_START_NODE_TYPE"/>
+            </config>
+            <transitions>
+                <transition toNode="WtsQV.0EiaUAAAE.Bsm60zLX" name="NEXT" uuid="8DUQV.0EQ0wAAAE.79W60zLX">
+                    <points>0, 32, -4, -112|4, 123, 0, -21|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="CALL" y="139" x="738" name="CallNode3" uuid="DZIQV.0EimwAAAE.WY660zLW">
+            <parameters/>
+            <config>
+                <parameter value="org.neuro4j.flows.network.NetworkTestFlow-StartNode2" key="SYS_FLOW_NAME"/>
+            </config>
+            <transitions>
+                <transition toNode="L0kQV.0EFdMAAAE.V6O60zLW" name="EndNode2" uuid="mHoQV.0E5UoAAAE.USW60zLX">
+                    <points>0, 29, -11, -143|11, 143, 0, -29|</points>
+                </transition>
+            </transitions>
+        </node>
+    </nodes>
+</flow>

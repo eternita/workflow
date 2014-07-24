@@ -21,8 +21,8 @@ import java.io.InputStream;
 
 import org.neuro4j.workflow.Workflow;
 import org.neuro4j.workflow.common.FlowInitializationException;
-import org.neuro4j.workflow.loader.n4j.ConvertationException;
-import org.neuro4j.workflow.loader.n4j.NetworkConverter;
+import org.neuro4j.workflow.loader.f4j.FlowConverter;
+import org.neuro4j.workflow.loader.f4j.ConvertationException;
 
 public class WorkflowLoader {
 
@@ -43,7 +43,7 @@ public class WorkflowLoader {
         try {
             if (null != is)
                 try {
-                    net = NetworkConverter.xml2workflow(is, flow);
+                    net = FlowConverter.xml2workflow(is, flow);
                 } catch (ConvertationException e) {
                     e.printStackTrace();
                 }

@@ -14,25 +14,25 @@
  * limitations under the License.
  */
 
-package org.neuro4j.workflow.loader.n4j;
+package org.neuro4j.workflow.loader.f4j;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
-class RelationTailListXMLAdapter extends XmlAdapter<RelationTailXML[], List<RelationTailXML>> {
+public class NodeListXMLAdapter extends XmlAdapter<NodeXML[], List<NodeXML>> {
 
-    public List<RelationTailXML> unmarshal(RelationTailXML[] value) {
-        List<RelationTailXML> r = new ArrayList<RelationTailXML>();
-        for (RelationTailXML c : value)
+    public List<NodeXML> unmarshal(NodeXML[] value) {
+        List<NodeXML> r = new ArrayList<NodeXML>();
+        for (NodeXML c : value)
             r.add(c);
         return r;
     }
 
     @Override
-    public RelationTailXML[] marshal(List<RelationTailXML> value)
+    public NodeXML[] marshal(List<NodeXML> value)
             throws Exception {
-        return value.toArray(new RelationTailXML[value.size()]);
+        return value.toArray(new NodeXML[value.size()]);
     }
 }

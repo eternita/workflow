@@ -26,8 +26,7 @@ import org.neuro4j.workflow.Workflow;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.FlowInitializationException;
-import org.neuro4j.workflow.common.SWEUtils;
-import org.neuro4j.workflow.loader.n4j.SWFConstants;
+import org.neuro4j.workflow.loader.f4j.SWFConstants;
 import org.neuro4j.workflow.log.Logger;
 
 public class WorkflowNode {
@@ -192,7 +191,7 @@ public class WorkflowNode {
             beanClass = Class.forName(clazzName);
             beanInstance = ConstructorUtils.invokeConstructor(beanClass, null);
         } catch (Exception e) {
-            Logger.error(SWEUtils.class, e.getMessage(), e);
+            Logger.error(WorkflowNode.class, e.getMessage(), e);
         }
 
         return beanInstance;

@@ -14,25 +14,25 @@
  * limitations under the License.
  */
 
-package org.neuro4j.workflow.loader.n4j;
+package org.neuro4j.workflow.loader.f4j;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
-public class PropertyListXMLAdapter extends XmlAdapter<PropertyXML[], List<PropertyXML>> {
+public class ParameterListXMLAdapter extends XmlAdapter<ParameterXML[], List<ParameterXML>> {
 
-    public List<PropertyXML> unmarshal(PropertyXML[] array) {
-        List<PropertyXML> propList = new ArrayList<PropertyXML>();
-        for (PropertyXML p : array)
+    public List<ParameterXML> unmarshal(ParameterXML[] array) {
+        List<ParameterXML> propList = new ArrayList<ParameterXML>();
+        for (ParameterXML p : array)
             propList.add(p);
         return propList;
     }
 
     @Override
-    public PropertyXML[] marshal(List<PropertyXML> value)
+    public ParameterXML[] marshal(List<ParameterXML> value)
             throws Exception {
-        return value.toArray(new PropertyXML[value.size()]);
+        return value.toArray(new ParameterXML[value.size()]);
     }
 }

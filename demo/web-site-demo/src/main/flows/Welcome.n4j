@@ -1,184 +1,114 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<network>
-    <entities>
-        <item name="networkConfig" uuid="yeAQV.0E5JUAAAFBV_WhyVHO">
-            <properties>
-                <item value="org.neuro4j.logic.def.NetConfig" key="SWF_BLOCK_CLASS"/>
-                <item value="Public" key="KEY_VISIBILITY"/>
-            </properties>
-            <connected/>
-        </item>
-        <item name="Contacts" uuid="NcXAqFYBl6AAAAE_gvsmsZs9">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="PUBLIC" key="SYS_START_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.node.StartNode" key="SWF_BLOCK_CLASS"/>
-                <item value="106" key="y"/>
-                <item value="659" key="x"/>
-            </properties>
-            <connected>
-                <item uuid="qDPAqFYBvIgAAAE_f7AmsaVo"/>
-            </connected>
-        </item>
-        <item name="NEXT" uuid="ICzAqFYBKoMAAAE_l.YmsaVo">
-            <properties>
-                <item value="NynAqFYBV3cAAAE_WuAmsZs." key="EndUUID"/>
-                <item value="0, 21, 11, -108|-11, 98, 0, -31|" key="points"/>
-                <item value="KOfAqFYBI0sAAAE_z4wmsaVo" key="StartUUID"/>
-            </properties>
-            <connected>
-                <item uuid="KOfAqFYBI0sAAAE_z4wmsaVo"/>
-                <item uuid="NynAqFYBV3cAAAE_WuAmsZs."/>
-            </connected>
-        </item>
-        <item name="ViewNode1" uuid="rQrAqFYBvoUAAAE_XdAvh4Ia">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="/jsp/welcome.jsp" key="SWF_PARAM_VIEW_TEMPLATE"/>
-                <item value="" key="SWF_PARAM_VIEW_DYNAMIC_TEMPLATE"/>
-                <item value="org.neuro4j.workflow.node.ViewNode" key="SWF_BLOCK_CLASS"/>
-                <item value="jsp" key="SWF_PARAM_VIEW_RENDER_TYPE"/>
-                <item value="393" key="y"/>
-                <item value="142" key="x"/>
-            </properties>
-            <connected/>
-        </item>
-        <item name="MapperNode2" uuid="g4LAqFYBJg0AAAE_93MmsaVo">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.node.KeyMapper" key="SWF_BLOCK_CLASS"/>
-                <item value="&quot;activeCl&quot;:main_menu_home" key="SWF_PARAM_KEY_1"/>
-                <item value="289" key="y"/>
-                <item value="650" key="x"/>
-            </properties>
-            <connected>
-                <item uuid="G4TAqFYBKUkAAAE_57smsaVo"/>
-            </connected>
-        </item>
-        <item name="NEXT" uuid="qDPAqFYBvIgAAAE_f7AmsaVo">
-            <properties>
-                <item value="g4LAqFYBJg0AAAE_93MmsaVo" key="EndUUID"/>
-                <item value="0, 34, 28, -136|-28, 149, 0, -21|" key="points"/>
-                <item value="NcXAqFYBl6AAAAE_gvsmsZs9" key="StartUUID"/>
-            </properties>
-            <connected>
-                <item uuid="NcXAqFYBl6AAAAE_gvsmsZs9"/>
-                <item uuid="g4LAqFYBJg0AAAE_93MmsaVo"/>
-            </connected>
-        </item>
-        <item name="NEXT" uuid="G4TAqFYBKUkAAAE_57smsaVo">
-            <properties>
-                <item value="SjfAqFYBIZAAAAE_chsmsZs." key="EndUUID"/>
-                <item value="0, 21, -20, -107|20, 97, 0, -31|" key="points"/>
-                <item value="g4LAqFYBJg0AAAE_93MmsaVo" key="StartUUID"/>
-            </properties>
-            <connected>
-                <item uuid="SjfAqFYBIZAAAAE_chsmsZs."/>
-                <item uuid="g4LAqFYBJg0AAAE_93MmsaVo"/>
-            </connected>
-        </item>
-        <item name="NEXT" uuid="fhDAqFYBQDMAAAE_.0AmsaVh">
-            <properties>
-                <item value="rQrAqFYBvoUAAAE_XdAvh4Ia" key="EndUUID"/>
-                <item value="0, 21, 8, -103|-8, 93, 0, -31|" key="points"/>
-                <item value="MD7AqFYBc1YAAAE__OcmsaVg" key="StartUUID"/>
-            </properties>
-            <connected>
-                <item uuid="MD7AqFYBc1YAAAE__OcmsaVg"/>
-                <item uuid="rQrAqFYBvoUAAAE_XdAvh4Ia"/>
-            </connected>
-        </item>
-        <item name="Start" uuid="16nAqFYB1REAAAE_3sQvh4Ia">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="PUBLIC" key="SYS_START_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.node.StartNode" key="SWF_BLOCK_CLASS"/>
-                <item value="86" key="y"/>
-                <item value="164" key="x"/>
-            </properties>
-            <connected>
-                <item uuid="x.rAqFYBnPMAAAE_RBkmsaVh"/>
-            </connected>
-        </item>
-        <item name="SiteMap" uuid="aArAqFYB8ecAAAE_8romsZs.">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="PUBLIC" key="SYS_START_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.node.StartNode" key="SWF_BLOCK_CLASS"/>
-                <item value="129" key="y"/>
-                <item value="998" key="x"/>
-            </properties>
-            <connected>
-                <item uuid="YQDAqFYBV7UAAAE_8NImsaVo"/>
-            </connected>
-        </item>
-        <item name="NEXT" uuid="x.rAqFYBnPMAAAE_RBkmsaVh">
-            <properties>
-                <item value="MD7AqFYBc1YAAAE__OcmsaVg" key="EndUUID"/>
-                <item value="0, 34, -5, -143|5, 156, 0, -21|" key="points"/>
-                <item value="16nAqFYB1REAAAE_3sQvh4Ia" key="StartUUID"/>
-            </properties>
-            <connected>
-                <item uuid="MD7AqFYBc1YAAAE__OcmsaVg"/>
-                <item uuid="16nAqFYB1REAAAE_3sQvh4Ia"/>
-            </connected>
-        </item>
-        <item name="MapperNode3" uuid="KOfAqFYBI0sAAAE_z4wmsaVo">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.node.KeyMapper" key="SWF_BLOCK_CLASS"/>
-                <item value="&quot;activeCl&quot;:main_menu_home" key="SWF_PARAM_KEY_1"/>
-                <item value="314" key="y"/>
-                <item value="998" key="x"/>
-            </properties>
-            <connected>
-                <item uuid="ICzAqFYBKoMAAAE_l.YmsaVo"/>
-            </connected>
-        </item>
-        <item name="ViewNode2" uuid="SjfAqFYBIZAAAAE_chsmsZs.">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="/jsp/contacts.jsp" key="SWF_PARAM_VIEW_TEMPLATE"/>
-                <item value="org.neuro4j.workflow.node.ViewNode" key="SWF_BLOCK_CLASS"/>
-                <item value="jsp" key="SWF_PARAM_VIEW_RENDER_TYPE"/>
-                <item value="407" key="y"/>
-                <item value="630" key="x"/>
-            </properties>
-            <connected/>
-        </item>
-        <item name="MapperNode1" uuid="MD7AqFYBc1YAAAE__OcmsaVg">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.node.KeyMapper" key="SWF_BLOCK_CLASS"/>
-                <item value="&quot;activeCl&quot;:main_menu_home" key="SWF_PARAM_KEY_1"/>
-                <item value="279" key="y"/>
-                <item value="191" key="x"/>
-            </properties>
-            <connected>
-                <item uuid="fhDAqFYBQDMAAAE_.0AmsaVh"/>
-            </connected>
-        </item>
-        <item name="ViewNode3" uuid="NynAqFYBV3cAAAE_WuAmsZs.">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="/jsp/sitemap.jsp" key="SWF_PARAM_VIEW_TEMPLATE"/>
-                <item value="org.neuro4j.workflow.node.ViewNode" key="SWF_BLOCK_CLASS"/>
-                <item value="jsp" key="SWF_PARAM_VIEW_RENDER_TYPE"/>
-                <item value="433" key="y"/>
-                <item value="949" key="x"/>
-            </properties>
-            <connected/>
-        </item>
-        <item name="NEXT" uuid="YQDAqFYBV7UAAAE_8NImsaVo">
-            <properties>
-                <item value="KOfAqFYBI0sAAAE_z4wmsaVo" key="EndUUID"/>
-                <item value="0, 34, 19, -138|-19, 151, 0, -21|" key="points"/>
-                <item value="aArAqFYB8ecAAAE_8romsZs." key="StartUUID"/>
-            </properties>
-            <connected>
-                <item uuid="aArAqFYB8ecAAAE_8romsZs."/>
-                <item uuid="KOfAqFYBI0sAAAE_z4wmsaVo"/>
-            </connected>
-        </item>
-    </entities>
-</network>
+<flow>
+    <nodes>
+        <node type="CUSTOM" y="0" x="0" name="org.neuro4j.logic.def.NetConfig" uuid="yeAQV.0E5JUAAAFBV_WhyVHO">
+            <parameters/>
+            <config>
+                <parameter value="org.neuro4j.logic.def.NetConfig" key="SWF_BLOCK_CLASS"/>
+            </config>
+            <transitions/>
+        </node>
+        <node type="START" y="106" x="659" name="Contacts" uuid="NcXAqFYBl6AAAAE_gvsmsZs9">
+            <parameters/>
+            <config>
+                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+            </config>
+            <transitions>
+                <transition toNode="g4LAqFYBJg0AAAE_93MmsaVo" name="NEXT" uuid="qDPAqFYBvIgAAAE_f7AmsaVo">
+                    <points>0, 34, 28, -136|-28, 149, 0, -21|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="VIEW" y="393" x="142" name="ViewNode1" uuid="rQrAqFYBvoUAAAE_XdAvh4Ia">
+            <parameters/>
+            <config>
+                <parameter value="/jsp/welcome.jsp" key="SWF_PARAM_VIEW_TEMPLATE"/>
+                <parameter value="jsp" key="SWF_PARAM_VIEW_RENDER_TYPE"/>
+            </config>
+            <transitions/>
+        </node>
+        <node type="MAP" y="289" x="650" name="MapperNode2" uuid="g4LAqFYBJg0AAAE_93MmsaVo">
+            <parameters>
+                <parameter input="true" key="N4J_CONSOLE_NODE_TYPE"/>
+                <parameter input="true" key="SWF_BLOCK_CLASS"/>
+                <parameter input="true" key="y"/>
+                <parameter input="true" key="SWF_PARAM_KEY_1"/>
+                <parameter input="true" key="x"/>
+            </parameters>
+            <config/>
+            <transitions>
+                <transition toNode="SjfAqFYBIZAAAAE_chsmsZs." name="NEXT" uuid="G4TAqFYBKUkAAAE_57smsaVo">
+                    <points>0, 21, -20, -107|20, 97, 0, -31|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="START" y="85" x="180" name="Start" uuid="16nAqFYB1REAAAE_3sQvh4Ia">
+            <parameters/>
+            <config>
+                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+            </config>
+            <transitions>
+                <transition toNode="MD7AqFYBc1YAAAE__OcmsaVg" name="NEXT" uuid="x.rAqFYBnPMAAAE_RBkmsaVh">
+                    <points>0, 34, -5, -143|5, 156, 0, -21|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="START" y="129" x="998" name="SiteMap" uuid="aArAqFYB8ecAAAE_8romsZs.">
+            <parameters/>
+            <config>
+                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+            </config>
+            <transitions>
+                <transition toNode="KOfAqFYBI0sAAAE_z4wmsaVo" name="NEXT" uuid="YQDAqFYBV7UAAAE_8NImsaVo">
+                    <points>0, 34, 19, -138|-19, 151, 0, -21|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="MAP" y="314" x="998" name="MapperNode3" uuid="KOfAqFYBI0sAAAE_z4wmsaVo">
+            <parameters>
+                <parameter input="true" key="N4J_CONSOLE_NODE_TYPE"/>
+                <parameter input="true" key="SWF_BLOCK_CLASS"/>
+                <parameter input="true" key="y"/>
+                <parameter input="true" key="SWF_PARAM_KEY_1"/>
+                <parameter input="true" key="x"/>
+            </parameters>
+            <config/>
+            <transitions>
+                <transition toNode="NynAqFYBV3cAAAE_WuAmsZs." name="NEXT" uuid="ICzAqFYBKoMAAAE_l.YmsaVo">
+                    <points>0, 21, 11, -108|-11, 98, 0, -31|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="VIEW" y="407" x="630" name="ViewNode2" uuid="SjfAqFYBIZAAAAE_chsmsZs.">
+            <parameters/>
+            <config>
+                <parameter value="/jsp/contacts.jsp" key="SWF_PARAM_VIEW_TEMPLATE"/>
+                <parameter value="jsp" key="SWF_PARAM_VIEW_RENDER_TYPE"/>
+            </config>
+            <transitions/>
+        </node>
+        <node type="MAP" y="279" x="191" name="MapperNode1" uuid="MD7AqFYBc1YAAAE__OcmsaVg">
+            <parameters>
+                <parameter input="true" key="N4J_CONSOLE_NODE_TYPE"/>
+                <parameter input="true" key="SWF_BLOCK_CLASS"/>
+                <parameter input="true" key="y"/>
+                <parameter input="true" key="SWF_PARAM_KEY_1"/>
+                <parameter input="true" key="x"/>
+            </parameters>
+            <config/>
+            <transitions>
+                <transition toNode="rQrAqFYBvoUAAAE_XdAvh4Ia" name="NEXT" uuid="fhDAqFYBQDMAAAE_.0AmsaVh">
+                    <points>0, 21, 8, -103|-8, 93, 0, -31|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="VIEW" y="433" x="949" name="ViewNode3" uuid="NynAqFYBV3cAAAE_WuAmsZs.">
+            <parameters/>
+            <config>
+                <parameter value="/jsp/sitemap.jsp" key="SWF_PARAM_VIEW_TEMPLATE"/>
+                <parameter value="jsp" key="SWF_PARAM_VIEW_RENDER_TYPE"/>
+            </config>
+            <transitions/>
+        </node>
+    </nodes>
+</flow>

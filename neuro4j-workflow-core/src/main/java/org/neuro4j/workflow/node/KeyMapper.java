@@ -23,11 +23,7 @@ import org.neuro4j.workflow.Workflow;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.FlowInitializationException;
-import org.neuro4j.workflow.common.SWEUtils;
-import org.neuro4j.workflow.common.SWFParametersConstants;
-import org.neuro4j.workflow.loader.n4j.SWFConstants;
-import org.neuro4j.workflow.node.Transition;
-import org.neuro4j.workflow.node.WorkflowNode;
+import org.neuro4j.workflow.loader.f4j.SWFConstants;
 
 /**
  * KeyMapper maps value from flow context to different name.
@@ -58,16 +54,12 @@ public class KeyMapper extends WorkflowNode {
 
         for (String key : parameterKeys)
         {
-            if (key.startsWith(SWFParametersConstants.MAPPER_NODE_KEY_PREFIX))
-            {
                 String mappedValue = getParameter(key);
                 if (mappedValue != null)
                 {
-                    String[] splittedValue = SWEUtils.getMappedParameters(mappedValue);
-                    evaluateParameterValue(splittedValue[0], splittedValue[1], ctx);
+                    evaluateParameterValue(mappedValue, key, ctx);
                 }
 
-            }
         }
 
         request.setNextRelation(nextNode);

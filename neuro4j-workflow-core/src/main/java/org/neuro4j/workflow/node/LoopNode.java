@@ -25,7 +25,7 @@ import org.neuro4j.workflow.Workflow;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.FlowInitializationException;
-import org.neuro4j.workflow.loader.n4j.SWFConstants;
+import org.neuro4j.workflow.loader.f4j.SWFConstants;
 
 public class LoopNode extends WorkflowNode {
 

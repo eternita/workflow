@@ -14,25 +14,29 @@
  * limitations under the License.
  */
 
-package org.neuro4j.workflow.loader.n4j;
+package org.neuro4j.workflow.loader.f4j;
 
-import java.util.ArrayList;
-import java.util.List;
+public class ConvertationException extends Exception {
 
-import javax.xml.bind.annotation.adapters.XmlAdapter;
+    /**
+	 * 
+	 */
+    private static final long serialVersionUID = 8622249445842241152L;
 
-public class EntityListXMLAdapter extends XmlAdapter<EntityXML[], List<EntityXML>> {
-
-    public List<EntityXML> unmarshal(EntityXML[] value) {
-        List<EntityXML> r = new ArrayList<EntityXML>();
-        for (EntityXML c : value)
-            r.add(c);
-        return r;
+    public ConvertationException() {
+        super();
     }
 
-    @Override
-    public EntityXML[] marshal(List<EntityXML> value)
-            throws Exception {
-        return value.toArray(new EntityXML[value.size()]);
+    public ConvertationException(String message, Throwable cause) {
+        super(message, cause);
     }
+
+    public ConvertationException(String message) {
+        super(message);
+    }
+
+    public ConvertationException(Throwable cause) {
+        super(cause);
+    }
+
 }

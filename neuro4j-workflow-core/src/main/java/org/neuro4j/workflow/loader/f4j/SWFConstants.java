@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.neuro4j.workflow.loader.n4j;
+package org.neuro4j.workflow.loader.f4j;
 
 public class SWFConstants {
 
@@ -26,7 +26,7 @@ public class SWFConstants {
     public static final String SWF_BLOCK_DESCRIPTION = "SWF_BLOCK_DESCRIPTION";
 
     public static final String SWF_CUSTOM_BLOCK_CLASS = "SWF_CUSTOM_BLOCK_CLASS";
-    public static final String N4J_CONSOLE_NODE_TYPE = "N4J_CONSOLE_NODE_TYPE"; // 'circle', 'square', 'triangle',
+   // public static final String N4J_CONSOLE_NODE_TYPE = "N4J_CONSOLE_NODE_TYPE"; // 'circle', 'square', 'triangle',
                                                                                 // 'star'
     public static final String N4J_CONSOLE_NODE_COLOR = "N4J_CONSOLE_NODE_COLOR";
 

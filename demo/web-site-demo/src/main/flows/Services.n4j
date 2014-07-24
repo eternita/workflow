@@ -1,70 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<network>
-    <entities>
-        <item name="Start" uuid="viTAqFYBepUAAAE_slcmsZs9">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="PUBLIC" key="SYS_START_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.node.StartNode" key="SWF_BLOCK_CLASS"/>
-                <item value="156" key="y"/>
-                <item value="285" key="x"/>
-            </properties>
-            <connected>
-                <item uuid="kQ7AqFYBzvQAAAE_lLwmsaVr"/>
-            </connected>
-        </item>
-        <item name="NEXT" uuid="kQ7AqFYBzvQAAAE_lLwmsaVr">
-            <properties>
-                <item value="lXXAqFYB1lcAAAE_tYwmsaVr" key="EndUUID"/>
-                <item value="0, 34, 13, -107|-13, 120, 0, -21|" key="points"/>
-                <item value="viTAqFYBepUAAAE_slcmsZs9" key="StartUUID"/>
-            </properties>
-            <connected>
-                <item uuid="viTAqFYBepUAAAE_slcmsZs9"/>
-                <item uuid="lXXAqFYB1lcAAAE_tYwmsaVr"/>
-            </connected>
-        </item>
-        <item name="ViewNode1" uuid="u6TAqFYBGrsAAAE_y28msZs9">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="/jsp/services.jsp" key="SWF_PARAM_VIEW_TEMPLATE"/>
-                <item value="" key="SWF_PARAM_VIEW_DYNAMIC_TEMPLATE"/>
-                <item value="org.neuro4j.workflow.node.ViewNode" key="SWF_BLOCK_CLASS"/>
-                <item value="jsp" key="SWF_PARAM_VIEW_RENDER_TYPE"/>
-                <item value="406" key="y"/>
-                <item value="261" key="x"/>
-            </properties>
-            <connected/>
-        </item>
-        <item name="MapperNode1" uuid="lXXAqFYB1lcAAAE_tYwmsaVr">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.node.KeyMapper" key="SWF_BLOCK_CLASS"/>
-                <item value="&quot;activeCl&quot;:main_menu_services" key="SWF_PARAM_KEY_1"/>
-                <item value="294" key="y"/>
-                <item value="299" key="x"/>
-            </properties>
-            <connected>
-                <item uuid="qYvAqFYBJ0gAAAE_FcgmsaVr"/>
-            </connected>
-        </item>
-        <item name="NEXT" uuid="qYvAqFYBJ0gAAAE_FcgmsaVr">
-            <properties>
-                <item value="u6TAqFYBGrsAAAE_y28msZs9" key="EndUUID"/>
-                <item value="0, 21, -43, -112|43, 102, 0, -31|" key="points"/>
-                <item value="lXXAqFYB1lcAAAE_tYwmsaVr" key="StartUUID"/>
-            </properties>
-            <connected>
-                <item uuid="u6TAqFYBGrsAAAE_y28msZs9"/>
-                <item uuid="lXXAqFYB1lcAAAE_tYwmsaVr"/>
-            </connected>
-        </item>
-        <item name="networkConfig" uuid="bJMQV.0Eb5kAAAFBUY.hyVHP">
-            <properties>
-                <item value="org.neuro4j.logic.def.NetConfig" key="SWF_BLOCK_CLASS"/>
-                <item value="Public" key="KEY_VISIBILITY"/>
-            </properties>
-            <connected/>
-        </item>
-    </entities>
-</network>
+<flow>
+    <nodes>
+        <node type="START" y="156" x="285" name="Start" uuid="viTAqFYBepUAAAE_slcmsZs9">
+            <parameters/>
+            <config>
+                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+            </config>
+            <transitions>
+                <transition toNode="lXXAqFYB1lcAAAE_tYwmsaVr" name="NEXT" uuid="kQ7AqFYBzvQAAAE_lLwmsaVr">
+                    <points>0, 34, 13, -107|-13, 120, 0, -21|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="VIEW" y="406" x="261" name="ViewNode1" uuid="u6TAqFYBGrsAAAE_y28msZs9">
+            <parameters/>
+            <config>
+                <parameter value="/jsp/services.jsp" key="SWF_PARAM_VIEW_TEMPLATE"/>
+                <parameter value="jsp" key="SWF_PARAM_VIEW_RENDER_TYPE"/>
+            </config>
+            <transitions/>
+        </node>
+        <node type="MAP" y="294" x="299" name="MapperNode1" uuid="lXXAqFYB1lcAAAE_tYwmsaVr">
+            <parameters>
+                <parameter input="true" key="N4J_CONSOLE_NODE_TYPE"/>
+                <parameter input="true" key="SWF_BLOCK_CLASS"/>
+                <parameter input="true" key="y"/>
+                <parameter input="true" key="SWF_PARAM_KEY_1"/>
+                <parameter input="true" key="x"/>
+            </parameters>
+            <config/>
+            <transitions>
+                <transition toNode="u6TAqFYBGrsAAAE_y28msZs9" name="NEXT" uuid="qYvAqFYBJ0gAAAE_FcgmsaVr">
+                    <points>0, 21, -43, -112|43, 102, 0, -31|</points>
+                </transition>
+            </transitions>
+        </node>
+    </nodes>
+</flow>

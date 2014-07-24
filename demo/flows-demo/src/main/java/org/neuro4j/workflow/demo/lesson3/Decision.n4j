@@ -1,113 +1,55 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<network>
-    <entities>
-        <item name="SystemOutBlock" uuid="htoQV.0EbMMAAAE.uYAEg4o8">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.core.SystemOutBlock" key="SWF_CUSTOM_CLASS"/>
-                <item value="varToPrint:&quot;Var is defined. Go to EndNode1&quot;" key="Parameter1:IN"/>
-                <item value="378" key="y"/>
-                <item value="256" key="x"/>
-                <item value="SystemOutBlock" key="SWF_BLOCK_CLASS"/>
-            </properties>
-            <connected>
-                <item uuid="i.UQV.0EvZ8AAAFHthPRKEFR"/>
-                <item uuid="OOMQV.0EQLYAAAFHqgLRKEFR"/>
-            </connected>
-        </item>
-        <item name="ERROR" uuid="i.UQV.0EvZ8AAAFHthPRKEFR">
-            <properties>
-                <item value="htoQV.0EbMMAAAE.uYAEg4o8" key="StartUUID"/>
-                <item value="wssQV.0EZZkAAAE.X4oEg4o7" key="EndUUID"/>
-                <item value="59, 0, -174, -121|233, 87, 0, -34|" key="points"/>
-            </properties>
-            <connected>
-                <item uuid="htoQV.0EbMMAAAE.uYAEg4o8"/>
-                <item uuid="wssQV.0EZZkAAAE.X4oEg4o7"/>
-            </connected>
-        </item>
-        <item name="NEXT" uuid="OOMQV.0EQLYAAAFHqgLRKEFR">
-            <properties>
-                <item value="htoQV.0EbMMAAAE.uYAEg4o8" key="StartUUID"/>
-                <item value="bisQV.0E8OQAAAE.RwcEg4o7" key="EndUUID"/>
-                <item value="0, 29, -25, -82|25, 77, 0, -34|" key="points"/>
-            </properties>
-            <connected>
-                <item uuid="htoQV.0EbMMAAAE.uYAEg4o8"/>
-                <item uuid="bisQV.0E8OQAAAE.RwcEg4o7"/>
-            </connected>
-        </item>
-        <item name="EndNode2" uuid="wssQV.0EZZkAAAE.X4oEg4o7">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="493" key="y"/>
-                <item value="508" key="x"/>
-                <item value="org.neuro4j.workflow.node.EndNode" key="SWF_BLOCK_CLASS"/>
-            </properties>
-            <connected/>
-        </item>
-        <item name="DecisionNode1" uuid="ktgQV.0E_X4AAAE.z0wEg4o7">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="DEFINED" key="SYS_OPERATOR"/>
-                <item value="var" key="SYS_DECISION_KEY"/>
-                <item value="245" key="y"/>
-                <item value="285" key="x"/>
-                <item value="org.neuro4j.workflow.node.DecisionNode" key="SWF_BLOCK_CLASS"/>
-            </properties>
-            <connected>
-                <item uuid="Z5IQV.0E95MAAAFHrvXRKEFQ"/>
-            </connected>
-        </item>
-        <item name="NEXT" uuid="Z5IQV.0E95MAAAFHrvXRKEFQ">
-            <properties>
-                <item value="ktgQV.0E_X4AAAE.z0wEg4o7" key="StartUUID"/>
-                <item value="htoQV.0EbMMAAAE.uYAEg4o8" key="EndUUID"/>
-                <item value="0, 35, 14, -93|-14, 100, 0, -28|" key="points"/>
-            </properties>
-            <connected>
-                <item uuid="ktgQV.0E_X4AAAE.z0wEg4o7"/>
-                <item uuid="htoQV.0EbMMAAAE.uYAEg4o8"/>
-            </connected>
-        </item>
-        <item name="Start" uuid="aLkQV.0E96QAAAE.b.AEg4o6">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="PUBLIC" key="SYS_START_NODE_TYPE"/>
-                <item value="102" key="y"/>
-                <item value="275" key="x"/>
-                <item value="org.neuro4j.workflow.node.StartNode" key="SWF_BLOCK_CLASS"/>
-            </properties>
-            <connected>
-                <item uuid="sj8QV.0ECpgAAAFHXufRKEFQ"/>
-            </connected>
-        </item>
-        <item name="NEXT" uuid="sj8QV.0ECpgAAAFHXufRKEFQ">
-            <properties>
-                <item value="aLkQV.0E96QAAAE.b.AEg4o6" key="StartUUID"/>
-                <item value="ktgQV.0E_X4AAAE.z0wEg4o7" key="EndUUID"/>
-                <item value="0, 32, 8, -113|-8, 110, 0, -35|" key="points"/>
-            </properties>
-            <connected>
-                <item uuid="aLkQV.0E96QAAAE.b.AEg4o6"/>
-                <item uuid="ktgQV.0E_X4AAAE.z0wEg4o7"/>
-            </connected>
-        </item>
-        <item name="EndNode1" uuid="bisQV.0E8OQAAAE.RwcEg4o7">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="483" key="y"/>
-                <item value="275" key="x"/>
-                <item value="org.neuro4j.workflow.node.EndNode" key="SWF_BLOCK_CLASS"/>
-            </properties>
-            <connected/>
-        </item>
-        <item name="networkConfig" uuid="UrQQV.0E8mYAAAFHxHzRKEFR">
-            <properties>
-                <item key="KEY_VISIBILITY"/>
-                <item value="org.neuro4j.workflow.node.NetConfig" key="SWF_BLOCK_CLASS"/>
-            </properties>
-            <connected/>
-        </item>
-    </entities>
-</network>
+<flow visibility="Public">
+    <nodes>
+        <node type="CUSTOM" y="378" x="256" name="SystemOutBlock" uuid="htoQV.0EbMMAAAE.uYAEg4o8">
+            <parameters>
+                <parameter value="varToPrint:&quot;Var is defined. Go to EndNode1&quot;" key="Parameter1:IN"/>
+            </parameters>
+            <config>
+                <parameter value="SystemOutBlock" key="SWF_BLOCK_CLASS"/>
+                <parameter value="org.neuro4j.workflow.core.SystemOutBlock" key="SWF_CUSTOM_CLASS"/>
+            </config>
+            <transitions>
+                <transition toNode="wssQV.0EZZkAAAE.X4oEg4o7" name="ERROR" uuid="i.UQV.0EvZ8AAAFHthPRKEFR">
+                    <points>59, 0, -174, -121|233, 87, 0, -34|</points>
+                </transition>
+                <transition toNode="bisQV.0E8OQAAAE.RwcEg4o7" name="NEXT" uuid="OOMQV.0EQLYAAAFHqgLRKEFR">
+                    <points>0, 29, -25, -82|25, 77, 0, -34|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="END" y="493" x="508" name="EndNode2" uuid="wssQV.0EZZkAAAE.X4oEg4o7">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node type="DECISION" y="245" x="285" name="DecisionNode1" uuid="ktgQV.0E_X4AAAE.z0wEg4o7">
+            <parameters/>
+            <config>
+                <parameter value="DEFINED" key="SYS_OPERATOR"/>
+                <parameter value="var" key="SYS_DECISION_KEY"/>
+            </config>
+            <transitions>
+                <transition toNode="htoQV.0EbMMAAAE.uYAEg4o8" name="NEXT" uuid="Z5IQV.0E95MAAAFHrvXRKEFQ">
+                    <points>0, 35, 14, -93|-14, 100, 0, -28|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="START" y="102" x="275" name="Start" uuid="aLkQV.0E96QAAAE.b.AEg4o6">
+            <parameters/>
+            <config>
+                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+            </config>
+            <transitions>
+                <transition toNode="ktgQV.0E_X4AAAE.z0wEg4o7" name="NEXT" uuid="sj8QV.0ECpgAAAFHXufRKEFQ">
+                    <points>0, 32, 8, -113|-8, 110, 0, -35|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="END" y="503" x="215" name="EndNode1" uuid="bisQV.0E8OQAAAE.RwcEg4o7">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+    </nodes>
+</flow>
