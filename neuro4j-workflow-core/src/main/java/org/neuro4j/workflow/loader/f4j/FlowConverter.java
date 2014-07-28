@@ -341,7 +341,7 @@ public class FlowConverter {
     private static WorkflowNode createCustomNode(Workflow workflow, NodeXML e) {
         CustomNode node = new CustomNode(e.getName(), e.getUuid(), workflow);
         for (ParameterXML param : e.parameters) {
-            if (param.input) {
+            if (param.input == null || param.input) {
                 node.addParameter(param.key, param.value);
             } else {
                 node.addOutParameter(param.key, param.value);

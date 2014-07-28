@@ -15,9 +15,7 @@
         </node>
         <node type="VIEW" y="898" x="352" name="ViewNode1" uuid="uOvAqG8B__AAAAE9Z7AQ24Wt">
             <parameters/>
-            <config>
-                <parameter value="/jsp/application.jsp" key="SWF_PARAM_VIEW_TEMPLATE"/>
-            </config>
+            <config/>
             <transitions/>
         </node>
         <node type="CUSTOM" y="493" x="484" name="GetAccountsList" uuid="1hrAqG8BNDkAAAE96pEQ24Wv">
@@ -69,8 +67,8 @@
         </node>
         <node type="MAP" y="686" x="208" name="SetPage" uuid="42nAqG8BGK0AAAE9nMsQ24Wx">
             <parameters>
-              <parameter input="true" value="&quot;activeCl&quot;" key="example_1"/>
-              <parameter input="true" key="page" value="&quot;/jsp/example1/new_account.jsp&quot;"/>
+                <parameter input="true" value="&quot;activeCl&quot;" key="example_1"/>
+                <parameter input="true" value="&quot;/jsp/example1/new_account.jsp&quot;" key="page"/>
             </parameters>
             <config/>
             <transitions>

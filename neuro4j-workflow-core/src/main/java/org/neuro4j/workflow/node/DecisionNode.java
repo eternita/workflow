@@ -294,7 +294,7 @@ public class DecisionNode extends WorkflowNode {
             throw new FlowExecutionException(
                     "Decision node: CompTypes not defined");
         }
-        if (trueExit == null || falseExit == null)
+        if (trueExit == null && falseExit == null)
         {
             throw new FlowExecutionException("Decision node: Connector not defined.");
         }

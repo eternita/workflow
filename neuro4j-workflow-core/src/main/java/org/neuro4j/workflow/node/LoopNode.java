@@ -104,10 +104,11 @@ public class LoopNode extends WorkflowNode {
      * @param fctx
      * @param request
      */
-    private void cleanOnExit(FlowContext fctx, WorkflowRequest request)
+    private void cleanOnExit(FlowContext fctx, WorkflowRequest request) throws FlowExecutionException
     {
-        request.setNextRelation(loopExit);
         request.removeLoopIterator(this.iteratorKey);
+        request.setNextRelation(loopExit);
+
     }
 
     /*

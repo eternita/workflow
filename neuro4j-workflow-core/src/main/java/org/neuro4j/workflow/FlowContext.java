@@ -72,7 +72,7 @@ public class FlowContext {
         }
         key = key.trim();
 
-        if (key.startsWith(SWFConstants.QUOTES_SYMBOL) && key.endsWith(SWFConstants.QUOTES_SYMBOL))
+        if (key.startsWith(SWFConstants.QUOTES_SYMBOL) && key.endsWith(SWFConstants.QUOTES_SYMBOL) && key.length() > 1)
         {
             return key.substring(1, key.length() - 1);
         }

@@ -21,6 +21,7 @@ import java.util.Iterator;
 import java.util.Locale;
 import java.util.Stack;
 
+import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.node.Transition;
 import org.neuro4j.workflow.node.WorkflowNode;
 
@@ -57,7 +58,11 @@ public class WorkflowRequest {
         this.loopIterator.remove(aKey);
     }
 
-    public void setNextRelation(Transition transition) {
+    public void setNextRelation(Transition transition) throws FlowExecutionException{
+        if (transition == null)
+        {
+            throw new FlowExecutionException("Next transition can not be null");
+        }
         this.nextTransition = transition;
     }
 
