@@ -3,7 +3,7 @@
     <nodes>
         <node type="CUSTOM" y="378" x="256" name="SystemOutBlock" uuid="htoQV.0EbMMAAAE.uYAEg4o8">
             <parameters>
-                <parameter value="&quot;Var is defined. Go to EndNode1&quot;" key="varToPrint" input="true"/>
+                <parameter value="&quot;Var is defined. Go to EndNode1&quot;" key="varToPrint" />
             </parameters>
             <config>
                 <parameter value="SystemOutBlock" key="SWF_BLOCK_CLASS"/>
