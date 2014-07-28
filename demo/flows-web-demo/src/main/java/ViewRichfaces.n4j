@@ -3,11 +3,8 @@
     <nodes>
         <node type="MAP" y="430" x="929" name="MapperNode1" uuid="dKQQV.0ERzkAAAFBd88MsjK3">
             <parameters>
-                <parameter input="true" key="N4J_CONSOLE_NODE_TYPE"/>
-                <parameter input="true" key="SWF_BLOCK_CLASS"/>
-                <parameter input="true" key="y"/>
-                <parameter input="true" key="SWF_PARAM_KEY_1"/>
-                <parameter input="true" key="x"/>
+                <parameter input="true" value="&quot;/jsp/example3/include_richfaces.jsp&quot;" key="page"/>
+                <parameter input="true" value="&quot;activeCl&quot;" key="example5"/>
             </parameters>
             <config/>
             <transitions>

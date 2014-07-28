@@ -3,12 +3,8 @@
     <nodes>
         <node type="MAP" y="204" x="503" name="MapperNode1" uuid="LOcQV.0Et_8AAAFBUdaJkg78">
             <parameters>
-                <parameter input="true" key="N4J_CONSOLE_NODE_TYPE"/>
-                <parameter input="true" key="SWF_BLOCK_CLASS"/>
-                <parameter input="true" key="y"/>
-                <parameter input="true" key="SWF_PARAM_KEY_1"/>
-                <parameter input="true" key="x"/>
-                <parameter input="true" key="SWF_PARAM_KEY_2"/>
+                <parameter input="true" value="&quot;/jsp/example3/include_velocity.jsp&quot;" key="page"/>
+                <parameter input="true" value="&quot;activeCl&quot;" key="example3"/>
             </parameters>
             <config/>
             <transitions>

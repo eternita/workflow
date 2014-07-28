@@ -3,12 +3,8 @@
     <nodes>
         <node type="MAP" y="698" x="540" name="setListPage" uuid="aLzAqG8BuD8AAAE9C7AQ24Ww">
             <parameters>
-                <parameter input="true" key="N4J_CONSOLE_NODE_TYPE"/>
-                <parameter input="true" key="SWF_BLOCK_CLASS"/>
-                <parameter input="true" key="y"/>
-                <parameter input="true" key="SWF_PARAM_KEY_1"/>
-                <parameter input="true" key="x"/>
-                <parameter input="true" key="SWF_PARAM_KEY_2"/>
+                <parameter input="true" value="&quot;/jsp/example1/accounts.jsp&quot;" key="page"/>
+                <parameter input="true" value="&quot;activeCl&quot;" key="example_1"/>
             </parameters>
             <config/>
             <transitions>
@@ -73,12 +69,8 @@
         </node>
         <node type="MAP" y="686" x="208" name="SetPage" uuid="42nAqG8BGK0AAAE9nMsQ24Wx">
             <parameters>
-                <parameter input="true" key="N4J_CONSOLE_NODE_TYPE"/>
-                <parameter input="true" key="SWF_BLOCK_CLASS"/>
-                <parameter input="true" key="y"/>
-                <parameter input="true" key="SWF_PARAM_KEY_1"/>
-                <parameter input="true" key="x"/>
-                <parameter input="true" key="SWF_PARAM_KEY_2"/>
+              <parameter input="true" value="&quot;activeCl&quot;" key="example_1"/>
+              <parameter input="true" key="page" value="&quot;/jsp/example1/new_account.jsp&quot;"/>
             </parameters>
             <config/>
             <transitions>
