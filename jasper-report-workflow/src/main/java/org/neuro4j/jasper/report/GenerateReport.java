@@ -45,6 +45,7 @@ import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.common.ParameterDefinition;
 import org.neuro4j.workflow.common.ParameterDefinitionList;
+import org.neuro4j.workflow.log.Logger;
 import org.neuro4j.workflow.node.CustomBlock;
 
 @ParameterDefinitionList(input = {
@@ -105,7 +106,7 @@ public class GenerateReport extends CustomBlock {
             exporter.exportReport();
 
         } catch (Exception e) {
-            e.printStackTrace();
+            Logger.error(this, e.getMessage(), e);
         }
 
         return NEXT;

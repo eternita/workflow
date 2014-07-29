@@ -1,179 +1,88 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<network>
-    <entities>
-        <item name="Start" uuid="xZsQV.0E2aAAAAFA1H0nU3nX">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="PUBLIC" key="SYS_START_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.node.StartNode" key="SWF_BLOCK_CLASS"/>
-                <item value="98" key="y"/>
-                <item value="310" key="x"/>
-            </properties>
-            <connected>
-                <item uuid="sYUQV.0E7rgAAAFAYlCl6J2o"/>
-            </connected>
-        </item>
-        <item name="GenerateReport" uuid="IyMQV.0EgS0AAAFAgP8XwXn9">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="outputStream:outputStream" key="Parameter4:IN"/>
-                <item value="GenerateReport" key="SWF_BLOCK_CLASS"/>
-                <item value="org.neuro4j.jasper.report.GenerateReport" key="SWF_CUSTOM_CLASS"/>
-                <item value="parameters:parameters" key="Parameter2:IN"/>
-                <item value="inputStream:inputStream" key="Parameter1:IN"/>
-                <item value="format:&quot;pdf&quot;" key="Parameter3:IN"/>
-                <item value="555" key="y"/>
-                <item value="304" key="x"/>
-            </properties>
-            <connected>
-                <item uuid="v4oQV.0Egq8AAAFAkf8XwXn9"/>
-            </connected>
-        </item>
-        <item name="End" uuid="nfIQV.0EJaoAAAFAZIYnU3nX">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.node.EndNode" key="SWF_BLOCK_CLASS"/>
-                <item value="805" key="y"/>
-                <item value="310" key="x"/>
-            </properties>
-            <connected/>
-        </item>
-        <item name="networkConfig" uuid="RwEQV.0EYnYAAAFBRweOJTHC">
-            <properties>
-                <item value="org.neuro4j.logic.def.NetConfig" key="SWF_BLOCK_CLASS"/>
-                <item value="Public" key="KEY_VISIBILITY"/>
-            </properties>
-            <connected/>
-        </item>
-        <item name="JoinNode1" uuid="6kUQV.0EoQIAAAFAptVxiZ2y">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.node.JoinNode" key="SWF_BLOCK_CLASS"/>
-                <item value="676" key="y"/>
-                <item value="335" key="x"/>
-            </properties>
-            <connected>
-                <item uuid="iUwQV.0Ebo0AAAFAp9VxiZ2y"/>
-            </connected>
-        </item>
-        <item name="LoadTemplate" uuid="Q8kQV.0Eb1AAAAFAVnFxiZ2x">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="LoadTemplate" key="SWF_BLOCK_CLASS"/>
-                <item value="org.neuro4j.jasper.input.LoadTemplate" key="SWF_CUSTOM_CLASS"/>
-                <item value="templatePath:&quot;reports/report1.jasper&quot;" key="Parameter1:IN"/>
-                <item value="inputStream:jasperInputStream" key="Parameter1:OUT"/>
-                <item value="417" key="y"/>
-                <item value="311" key="x"/>
-            </properties>
-            <connected>
-                <item uuid="ZlsQV.0E1_YAAAFAWnFxiZ2x"/>
-                <item uuid="tbgQV.0EIpwAAAFBWniOJRlx"/>
-            </connected>
-        </item>
-        <item name="MapperNode2" uuid="Lz8QV.0EpuwAAAFAQXCl6J2i">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="org.neuro4j.workflow.node.KeyMapper" key="SWF_BLOCK_CLASS"/>
-                <item value="&quot;(java.util.HashMap)&quot;:jasperPrameters" key="SWF_PARAM_KEY_1"/>
-                <item value="330" key="y"/>
-                <item value="329" key="x"/>
-            </properties>
-            <connected>
-                <item uuid="FcYQV.0ENjcAAAFAQnCl6J2i"/>
-            </connected>
-        </item>
-        <item name="CreateFileOutputStream" uuid="DHAQV.0EUtQAAAFA.2Sl6J2o">
-            <properties>
-                <item value="N4J_CONSOLE_NODE_TYPE" key="N4J_CONSOLE_NODE_TYPE"/>
-                <item value="CreateFileOutputStream" key="SWF_BLOCK_CLASS"/>
-                <item value="org.neuro4j.jasper.output.CreateFileOutputStream" key="SWF_CUSTOM_CLASS"/>
-                <item value="filePath:&quot;target/test1.pdf&quot;" key="Parameter2:IN"/>
-                <item value="createFile:&quot;true&quot;" key="Parameter1:IN"/>
-                <item value="outputStream:jasperOutputStream" key="Parameter1:OUT"/>
-                <item value="217" key="y"/>
-                <item value="282" key="x"/>
-            </properties>
-            <connected>
-                <item uuid="EhIQV.0E5.0AAAFAGWWl6J2o"/>
-            </connected>
-        </item>
-        <item name="NEXT" uuid="FcYQV.0ENjcAAAFAQnCl6J2i">
-            <properties>
-                <item value="Q8kQV.0Eb1AAAAFAVnFxiZ2x" key="EndUUID"/>
-                <item value="0, 0, -342, -455|342, 427, 0, -28|" key="points"/>
-                <item value="Lz8QV.0EpuwAAAFAQXCl6J2i" key="StartUUID"/>
-            </properties>
-            <connected>
-                <item uuid="Q8kQV.0Eb1AAAAFAVnFxiZ2x"/>
-                <item uuid="Lz8QV.0EpuwAAAFAQXCl6J2i"/>
-            </connected>
-        </item>
-        <item name="NEXT" uuid="iUwQV.0Ebo0AAAFAp9VxiZ2y">
-            <properties>
-                <item value="nfIQV.0EJaoAAAFAZIYnU3nX" key="EndUUID"/>
-                <item value="0, 0, -356, -834|356, 805, 0, -29|" key="points"/>
-                <item value="6kUQV.0EoQIAAAFAptVxiZ2y" key="StartUUID"/>
-            </properties>
-            <connected>
-                <item uuid="nfIQV.0EJaoAAAFAZIYnU3nX"/>
-                <item uuid="6kUQV.0EoQIAAAFAptVxiZ2y"/>
-            </connected>
-        </item>
-        <item name="NEXT" uuid="ZlsQV.0E1_YAAAFAWnFxiZ2x">
-            <properties>
-                <item value="IyMQV.0EgS0AAAFAgP8XwXn9" key="EndUUID"/>
-                <item value="0, 0, -347, -518|347, 490, 0, -28|" key="points"/>
-                <item value="Q8kQV.0Eb1AAAAFAVnFxiZ2x" key="StartUUID"/>
-            </properties>
-            <connected>
-                <item uuid="IyMQV.0EgS0AAAFAgP8XwXn9"/>
-                <item uuid="Q8kQV.0Eb1AAAAFAVnFxiZ2x"/>
-            </connected>
-        </item>
-        <item name="NEXT" uuid="sYUQV.0E7rgAAAFAYlCl6J2o">
-            <properties>
-                <item value="DHAQV.0EUtQAAAFA.2Sl6J2o" key="EndUUID"/>
-                <item value="0, 32, 350, 73|-350, -41, 0, 0|" key="points"/>
-                <item value="xZsQV.0E2aAAAAFA1H0nU3nX" key="StartUUID"/>
-            </properties>
-            <connected>
-                <item uuid="xZsQV.0E2aAAAAFA1H0nU3nX"/>
-                <item uuid="DHAQV.0EUtQAAAFA.2Sl6J2o"/>
-            </connected>
-        </item>
-        <item name="ERROR" uuid="tbgQV.0EIpwAAAFBWniOJRlx">
-            <properties>
-                <item value="6kUQV.0EoQIAAAFAptVxiZ2y" key="EndUUID"/>
-                <item value="40, 0, 40, -277|126, 0, 126, -277|126, 277, 126, 0|15, 277, 15, 0|" key="points"/>
-                <item value="Q8kQV.0Eb1AAAAFAVnFxiZ2x" key="StartUUID"/>
-            </properties>
-            <connected>
-                <item uuid="6kUQV.0EoQIAAAFAptVxiZ2y"/>
-                <item uuid="Q8kQV.0Eb1AAAAFAVnFxiZ2x"/>
-            </connected>
-        </item>
-        <item name="NEXT" uuid="v4oQV.0Egq8AAAFAkf8XwXn9">
-            <properties>
-                <item value="6kUQV.0EoQIAAAFAptVxiZ2y" key="EndUUID"/>
-                <item value="0, 0, -350, -464|350, 435, 0, -29|" key="points"/>
-                <item value="IyMQV.0EgS0AAAFAgP8XwXn9" key="StartUUID"/>
-            </properties>
-            <connected>
-                <item uuid="IyMQV.0EgS0AAAFAgP8XwXn9"/>
-                <item uuid="6kUQV.0EoQIAAAFAptVxiZ2y"/>
-            </connected>
-        </item>
-        <item name="NEXT" uuid="EhIQV.0E5.0AAAFAGWWl6J2o">
-            <properties>
-                <item value="Lz8QV.0EpuwAAAFAQXCl6J2i" key="EndUUID"/>
-                <item value="0, 0, -350, -351|350, 330, 0, -21|" key="points"/>
-                <item value="DHAQV.0EUtQAAAFA.2Sl6J2o" key="StartUUID"/>
-            </properties>
-            <connected>
-                <item uuid="Lz8QV.0EpuwAAAFAQXCl6J2i"/>
-                <item uuid="DHAQV.0EUtQAAAFA.2Sl6J2o"/>
-            </connected>
-        </item>        
-    </entities>
-</network>
+<flow visibility="Public">
+    <nodes>
+        <node type="START" y="10" x="411" name="Start" uuid="Ab0QV.0Ev1EAAAFHPLUCu4P8">
+            <parameters/>
+            <config>
+                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+            </config>
+            <transitions>
+                <transition toNode="DjQQV.0EtIwAAAFHYxACu4P9" name="NEXT" uuid="8dIQV.0EKnQAAAFHcIoCu4QA">
+                    <points>0, 32, -5, -75|5, 79, 0, -28|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="END" y="658" x="411" name="EndNode1" uuid="0rQQV.0EzfkAAAFHM78Cu4P8">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node type="CUSTOM" y="127" x="399" name="LoadTemplate" uuid="DjQQV.0EtIwAAAFHYxACu4P9">
+            <parameters>
+                <parameter input="true" value="&quot;reports/report1.jasper&quot;" key="templatePath"/>
+                <parameter input="false" value="inputStream" key="jasperInputStream"/>
+            </parameters>
+            <config>
+                <parameter value="LoadTemplate" key="SWF_BLOCK_CLASS"/>
+                <parameter value="org.neuro4j.jasper.input.LoadTemplate" key="SWF_CUSTOM_CLASS"/>
+            </config>
+            <transitions>
+                <transition toNode="SwIQV.0EFc4AAAFH9zUCu4QA" name="NEXT" uuid="r30QV.0E6ZIAAAFHv2UCu4QB">
+                    <points>0, 29, -14, -59|14, 60, 0, -28|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="CUSTOM" y="341" x="340" name="CreateJRBeanCollectionDataSource" uuid="8McQV.0E0IEAAAFHYegCu4P.">
+            <parameters/>
+            <config>
+                <parameter value="CreateJRBeanCollectionDataSource" key="SWF_BLOCK_CLASS"/>
+                <parameter value="org.neuro4j.jasper.datasource.CreateJRBeanCollectionDataSource" key="SWF_CUSTOM_CLASS"/>
+            </config>
+            <transitions>
+                <transition toNode="OysQV.0E3ZIAAAFH5esNAYQH" name="NEXT" uuid="6UkQV.0ES4cAAAFHpvwNAYQH">
+                    <points>0, 29, 0, -78|0, 85, 0, -22|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="CUSTOM" y="215" x="370" name="CreateFileOutputStream" uuid="SwIQV.0EFc4AAAFH9zUCu4QA">
+            <parameters>
+                <parameter input="true" value="&quot;true&quot;" key="createFile"/>
+                <parameter input="true" value="&quot;target/test1.pdf&quot;" key="filePath"/>
+            </parameters>
+            <config>
+                <parameter value="CreateFileOutputStream" key="SWF_BLOCK_CLASS"/>
+                <parameter value="org.neuro4j.jasper.output.CreateFileOutputStream" key="SWF_CUSTOM_CLASS"/>
+            </config>
+            <transitions>
+                <transition toNode="8McQV.0E0IEAAAFHYegCu4P." name="NEXT" uuid="y48QV.0E1WgAAAFHeFkCu4QB">
+                    <points>0, 29, -9, -92|9, 93, 0, -28|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="CUSTOM" y="561" x="393" name="GenerateReport" uuid="YTQQV.0Ebm8AAAFH5IcNAYQH">
+            <parameters>
+                <parameter input="true" value="inputStream" key="jasperInputStream"/>
+            </parameters>
+            <config>
+                <parameter value="GenerateReport" key="SWF_BLOCK_CLASS"/>
+                <parameter value="org.neuro4j.jasper.report.GenerateReport" key="SWF_CUSTOM_CLASS"/>
+            </config>
+            <transitions>
+                <transition toNode="0rQQV.0EzfkAAAFHM78Cu4P8" name="NEXT" uuid="wkEQV.0ExKgAAAFHBxgNAYQI">
+                    <points>0, 29, -3, -79|3, 74, 0, -34|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="MAP" y="454" x="411" name="MapperNode1" uuid="OysQV.0E3ZIAAAFH5esNAYQH">
+            <parameters>
+                <parameter input="true" value="&quot;(java.util.HashMap)&quot;" key="jasperParameters"/>
+            </parameters>
+            <config/>
+            <transitions>
+                <transition toNode="YTQQV.0Ebm8AAAFH5IcNAYQH" name="NEXT" uuid="wIcQV.0Ei8wAAAFHfgwNAYQI">
+                    <points>0, 23, 3, -85|-3, 80, 0, -28|</points>
+                </transition>
+            </transitions>
+        </node>
+    </nodes>
+</flow>

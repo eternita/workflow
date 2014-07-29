@@ -28,6 +28,7 @@ import org.neuro4j.workflow.common.WorkflowEngine;
  */
 public class PdfReportTestCase extends TestCase {
 
+	
     @Test
     public void testPdfCreation() {
         ExecutionResult result = WorkflowEngine.run("tests.org.neuro4j.jasper.reports.GenerateReport-Start", Collections.EMPTY_MAP);

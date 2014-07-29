@@ -28,6 +28,10 @@ import org.neuro4j.workflow.common.ParameterDefinition;
 import org.neuro4j.workflow.common.ParameterDefinitionList;
 import org.neuro4j.workflow.node.CustomBlock;
 
+/**
+ * This block loads jasper template.
+ *
+ */
 @ParameterDefinitionList(input = {
         @ParameterDefinition(name = IN_TEMPLATEPATH, isOptional = false, type = "java.lang.String") },
         output = {

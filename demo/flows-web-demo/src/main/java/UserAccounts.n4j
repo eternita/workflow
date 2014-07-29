@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <flow visibility="Public">
     <nodes>
-        <node type="MAP" y="698" x="540" name="setListPage" uuid="aLzAqG8BuD8AAAE9C7AQ24Ww">
+        <node type="MAP" y="698" x="522" name="setListPage" uuid="aLzAqG8BuD8AAAE9C7AQ24Ww">
             <parameters>
                 <parameter input="true" value="&quot;/jsp/example1/accounts.jsp&quot;" key="page"/>
                 <parameter input="true" value="&quot;activeCl&quot;" key="example_1"/>
@@ -9,16 +9,16 @@
             <config/>
             <transitions>
                 <transition toNode="uOvAqG8B__AAAAE9Z7AQ24Wt" name="NEXT" uuid="LIfAqG8BUKcAAAE96cUQ24Ww">
-                    <points>0, 21, 156, -187|0, 123, 156, -85|-156, 123, 0, -85|-156, 179, 0, -29|</points>
+                    <points>0, 23, 261, -205|0, 136, 261, -92|-261, 136, 0, -92|-261, 194, 0, -34|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="VIEW" y="898" x="352" name="ViewNode1" uuid="uOvAqG8B__AAAAE9Z7AQ24Wt">
+        <node type="VIEW" y="914" x="261" name="ViewNode1" uuid="uOvAqG8B__AAAAE9Z7AQ24Wt">
             <parameters/>
             <config/>
             <transitions/>
         </node>
-        <node type="CUSTOM" y="493" x="484" name="GetAccountsList" uuid="1hrAqG8BNDkAAAE96pEQ24Wv">
+        <node type="CUSTOM" y="493" x="504" name="GetAccountsList" uuid="1hrAqG8BNDkAAAE96pEQ24Wv">
             <parameters>
                 <parameter input="false" value="accountList" key="accounts"/>
             </parameters>
@@ -30,7 +30,7 @@
                 <transition toNode="aLzAqG8BuD8AAAE9C7AQ24Ww" name="NEXT" uuid="kE_AqG8BAR8AAAE9SPe2jYXR"/>
             </transitions>
         </node>
-        <node type="CUSTOM" y="117" x="511" name="GetAccountsFromSession" uuid="uS2p_iYcXeQAAAFB4uPg5xRJ">
+        <node type="CUSTOM" y="149" x="510" name="GetAccountsFromSession" uuid="uS2p_iYcXeQAAAFB4uPg5xRJ">
             <parameters/>
             <config>
                 <parameter value="GetAccountsFromSession" key="SWF_BLOCK_CLASS"/>
@@ -42,7 +42,7 @@
                 </transition>
             </transitions>
         </node>
-        <node type="CALL" y="259" x="269" name="CallNode2" uuid="QdXAqG8BHfoAAAE9PLW2jYXP">
+        <node type="CALL" y="274" x="279" name="CallNode2" uuid="QdXAqG8BHfoAAAE9PLW2jYXP">
             <parameters/>
             <config>
                 <parameter value="org.neuro4j.example.web.logic.ProcessAccount-RemoveAccount" key="SYS_FLOW_NAME"/>
@@ -53,7 +53,7 @@
                 </transition>
             </transitions>
         </node>
-        <node type="CUSTOM" y="116" x="92" name="GetAccountsFromSession" uuid="xJyp_iYczNMAAAFBTXbg5xRK">
+        <node type="CUSTOM" y="140" x="101" name="GetAccountsFromSession" uuid="xJyp_iYczNMAAAFBTXbg5xRK">
             <parameters/>
             <config>
                 <parameter value="GetAccountsFromSession" key="SWF_BLOCK_CLASS"/>
@@ -65,7 +65,7 @@
                 </transition>
             </transitions>
         </node>
-        <node type="MAP" y="686" x="208" name="SetPage" uuid="42nAqG8BGK0AAAE9nMsQ24Wx">
+        <node type="MAP" y="702" x="79" name="SetPage" uuid="42nAqG8BGK0AAAE9nMsQ24Wx">
             <parameters>
                 <parameter input="true" value="&quot;activeCl&quot;" key="example_1"/>
                 <parameter input="true" value="&quot;/jsp/example1/new_account.jsp&quot;" key="page"/>
@@ -110,7 +110,7 @@
                 </transition>
             </transitions>
         </node>
-        <node type="START" y="28" x="330" name="Remove" uuid="Ca8QV.0E5FMAAAE_vfweDKZq">
+        <node type="START" y="20" x="331" name="Remove" uuid="Ca8QV.0E5FMAAAE_vfweDKZq">
             <parameters/>
             <config>
                 <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
@@ -140,7 +140,7 @@
                 </transition>
             </transitions>
         </node>
-        <node type="CALL" y="267" x="85" name="CallNode1" uuid="B8PAqG8ByIYAAAE9NHe2jYXO">
+        <node type="CALL" y="269" x="97" name="CallNode1" uuid="B8PAqG8ByIYAAAE9NHe2jYXO">
             <parameters/>
             <config>
                 <parameter value="org.neuro4j.example.web.logic.ProcessAccount-CreateAccount" key="SYS_FLOW_NAME"/>
@@ -158,12 +158,12 @@
             <parameters/>
             <config/>
             <transitions>
-                <transition toNode="42nAqG8BGK0AAAE9nMsQ24Wx" name="NEXT" uuid="6PwQV.0Eyi0AAAE_DPO8aabi">
-                    <points>0, 0, -229, -707|229, 686, 0, -21|</points>
+                <transition toNode="42nAqG8BGK0AAAE9nMsQ24Wx" name="NEXT" uuid="3zAQV.0EloEAAAFHgsYCu4NT">
+                    <points>0, 15, -129, -160|129, 153, 0, -22|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="CUSTOM" y="117" x="286" name="GetAccountsFromSession" uuid="FEWp_iYc3HoAAAFBXUHg5xRK">
+        <node type="CUSTOM" y="146" x="287" name="GetAccountsFromSession" uuid="FEWp_iYc3HoAAAFBXUHg5xRK">
             <parameters/>
             <config>
                 <parameter value="GetAccountsFromSession" key="SWF_BLOCK_CLASS"/>

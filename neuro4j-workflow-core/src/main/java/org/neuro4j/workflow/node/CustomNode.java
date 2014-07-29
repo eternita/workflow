@@ -113,7 +113,7 @@ public class CustomNode extends WorkflowNode {
             {
                 if (obj == null)
                 {
-                    throw new FlowExecutionException("Parameter " + name + " is mandatory for " + getClass().getName());
+                    throw new FlowExecutionException("Parameter " + name + " is mandatory for " + node.getClass().getName());
                 }
             }
             checkPatameterType(parameter, obj);
@@ -122,7 +122,7 @@ public class CustomNode extends WorkflowNode {
 
         if (mainExit == null)
         {
-            throw new FlowExecutionException("CustomBlock " + getName() + ": Connector not defined.");
+            throw new FlowExecutionException("CustomBlock " + node.getClass() + ": Connector not defined.");
         }
     }
 
