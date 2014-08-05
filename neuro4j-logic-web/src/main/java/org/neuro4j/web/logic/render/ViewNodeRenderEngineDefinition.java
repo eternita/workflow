@@ -16,12 +16,29 @@
 
 package org.neuro4j.web.logic.render;
 
+/**
+ * This interface allows define  render which will process View. It can be jsp, json or others formats.
+ * Current interface will be used by Studio to define render type. 
+ */
 public abstract class ViewNodeRenderEngineDefinition {
 
+    /**
+     * Returns render name. This name will be displayed for ViewNode during editing in Studio.
+     * @return
+     */
     public abstract String getName();
 
+    /**
+     * Returns file ext. for Studio. Ex. "jsp", "xhtml"
+     * @return
+     */
     public abstract String getFileExt();
 
+    /**
+     * Return filter pattern for Studio. Ex "/WEB-INF/*" for web applications.
+     * @return
+     */
     public abstract String getPathFilter();
+    
 
 }

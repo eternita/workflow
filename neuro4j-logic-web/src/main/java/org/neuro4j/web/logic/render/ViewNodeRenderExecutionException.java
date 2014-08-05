@@ -23,5 +23,9 @@ public class ViewNodeRenderExecutionException extends Exception {
     public ViewNodeRenderExecutionException(String message) {
         super(message);
     }
+    
+    public ViewNodeRenderExecutionException(Exception exception) {
+        super(exception);
+    }
 
 }

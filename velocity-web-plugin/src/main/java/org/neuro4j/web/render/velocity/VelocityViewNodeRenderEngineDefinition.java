@@ -35,4 +35,5 @@ public class VelocityViewNodeRenderEngineDefinition extends ViewNodeRenderEngine
         return "*/WEB-INF/*";
     }
 
+
 }

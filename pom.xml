@@ -26,6 +26,7 @@
         <module>jasper-report-web-plugin</module>
         <module>jasper-report-workflow</module>
         <module>velocity-web-plugin</module>
+        <module>json-web-plugin</module>
     </modules>
 
     <properties>

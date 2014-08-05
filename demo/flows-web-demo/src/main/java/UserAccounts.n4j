@@ -13,9 +13,13 @@
                 </transition>
             </transitions>
         </node>
-        <node type="VIEW" y="914" x="261" name="ViewNode1" uuid="uOvAqG8B__AAAAE9Z7AQ24Wt">
+        <node type="VIEW" y="913" x="291" name="ViewNode1" uuid="uOvAqG8B__AAAAE9Z7AQ24Wt">
             <parameters/>
-            <config/>
+            <config>
+                <parameter value="/jsp/application.jsp" key="SWF_PARAM_VIEW_TEMPLATE"/>
+                <parameter value="jsp" key="SWF_PARAM_VIEW_RENDER_TYPE"/>
+                <parameter value="org.neuro4j.web.logic.render.JspViewNodeRenderEngine" key="RENDER_IMPL"/>
+            </config>
             <transitions/>
         </node>
         <node type="CUSTOM" y="493" x="504" name="GetAccountsList" uuid="1hrAqG8BNDkAAAE96pEQ24Wv">

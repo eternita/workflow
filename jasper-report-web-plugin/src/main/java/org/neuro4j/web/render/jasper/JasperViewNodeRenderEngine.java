@@ -40,10 +40,15 @@ import net.sf.jasperreports.engine.export.ooxml.JRDocxExporter;
 import net.sf.jasperreports.engine.export.ooxml.JRPptxExporter;
 import net.sf.jasperreports.engine.util.JRLoader;
 
+import org.neuro4j.web.logic.WebFlowConstants;
 import org.neuro4j.web.logic.render.ViewNodeRenderEngine;
 import org.neuro4j.web.logic.render.ViewNodeRenderExecutionException;
 import org.neuro4j.workflow.FlowContext;
 
+/**
+ * Class generates document in different formats.
+ *
+ */
 public class JasperViewNodeRenderEngine implements ViewNodeRenderEngine {
 
     private static final String IN_JASPER_PARAMETERS = "jasperParameters";
@@ -58,8 +63,18 @@ public class JasperViewNodeRenderEngine implements ViewNodeRenderEngine {
     }
 
     @Override
-    public void render(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext, FlowContext logicContext, String viewTemplate) throws ViewNodeRenderExecutionException
+    public void render(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext, FlowContext logicContext, String view) throws ViewNodeRenderExecutionException
     {
+        
+        // handle if view is not specified -> go to default page with trace
+        if (null == view) {
+            view = WebFlowConstants.DEFAULT_VIEW_PAGE;
+        } else if (view.startsWith("/")) {
+            view = WebFlowConstants.DEFAULT_VIEW_DIRECTORY + view.replaceFirst("/", "");
+        } else {
+            view = WebFlowConstants.DEFAULT_VIEW_DIRECTORY + view;
+        }
+        
         Map<String, Object> parameters = (Map<String, Object>) logicContext.get(IN_JASPER_PARAMETERS);
 
         if (parameters == null)
@@ -79,16 +94,16 @@ public class JasperViewNodeRenderEngine implements ViewNodeRenderEngine {
             dataSource = new JREmptyDataSource();
         }
 
-        if (viewTemplate == null)
+        if (view == null)
         {
             throw new ViewNodeRenderExecutionException("JasperReports template is null");
         }
 
-        InputStream inputStream = servletContext.getResourceAsStream(viewTemplate);
+        InputStream inputStream = servletContext.getResourceAsStream(view);
 
         if (inputStream == null)
         {
-            throw new ViewNodeRenderExecutionException("JasperReports template has not been loaded. Template path:" + viewTemplate);
+            throw new ViewNodeRenderExecutionException("JasperReports template has not been loaded. Template path:" + view);
         }
 
         response.setContentType(getContentType(format));

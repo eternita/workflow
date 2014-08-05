@@ -13,11 +13,12 @@
                 </transition>
             </transitions>
         </node>
-        <node type="VIEW" y="424" x="505" name="ViewNode2" uuid=".r_AqG8BCe0AAAFAvSyNktF2">
+        <node type="VIEW" y="431" x="521" name="ViewNode2" uuid=".r_AqG8BCe0AAAFAvSyNktF2">
             <parameters/>
             <config>
                 <parameter value="/jsp/application.jsp" key="SWF_PARAM_VIEW_TEMPLATE"/>
                 <parameter value="jsp" key="SWF_PARAM_VIEW_RENDER_TYPE"/>
+                <parameter value="org.neuro4j.web.logic.render.JspViewNodeRenderEngine" key="RENDER_IMPL"/>
             </config>
             <transitions/>
         </node>
@@ -55,11 +56,12 @@
                 </transition>
             </transitions>
         </node>
-        <node type="VIEW" y="450" x="201" name="ViewNode1" uuid="xBUQV.0EJGcAAAFA9_stpMvZ">
+        <node type="VIEW" y="441" x="259" name="ViewNode1" uuid="xBUQV.0EJGcAAAFA9_stpMvZ">
             <parameters/>
             <config>
                 <parameter value="/velotemplates/template.vm" key="SWF_PARAM_VIEW_TEMPLATE"/>
                 <parameter value="velocity" key="SWF_PARAM_VIEW_RENDER_TYPE"/>
+                <parameter value="org.neuro4j.web.render.velocity.VelocityViewNodeRenderEngine" key="RENDER_IMPL"/>
             </config>
             <transitions/>
         </node>

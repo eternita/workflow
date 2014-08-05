@@ -241,7 +241,9 @@ public class FlowConverter {
         ViewNode node = new ViewNode(e.getName(), e.getUuid(), workflow);
 
         node.setStaticTemplateName(e.getConfig(SWFParametersConstants.VIEW_NODE_TEMPLATE_NAME));
-        node.setDynamicTemplateName(e.getConfig(SWFParametersConstants.VIEW_NODE_TEMPLATE_DYNAMIC_NAME));
+        node.setDynamicTemplateName(e.getParameter(SWFParametersConstants.VIEW_NODE_TEMPLATE_DYNAMIC_NAME));
+        node.setRenderImpl(e.getConfig(SWFParametersConstants.RENDER_IMP));
+        
 
         String renderType = e.getConfig(SWFParametersConstants.VIEW_NODE_RENDER_TYPE);
         if (renderType == null) {

@@ -15,6 +15,10 @@
  */
 package org.neuro4j.web.logic.render;
 
+/**
+ *
+ *
+ */
 public class JspViewNodeRenderEngineDefinition extends ViewNodeRenderEngineDefinition {
 
     @Override
@@ -31,5 +35,6 @@ public class JspViewNodeRenderEngineDefinition extends ViewNodeRenderEngineDefin
     public String getPathFilter() {
         return "*/WEB-INF/*";
     }
+
 
 }

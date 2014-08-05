@@ -25,9 +25,11 @@ public class ViewNode extends WorkflowNode {
 
     private String staticTemplateName = null;
 
-    private String dynamicTemplateName = null;
+    private String dynamicView = null;
 
     private String renderType = null;
+    
+    private String renderImpl = null;
 
     public ViewNode(String name, String uuid, Workflow workflow)
     {
@@ -43,11 +45,11 @@ public class ViewNode extends WorkflowNode {
     }
 
     public String getDynamicTemplateName() {
-        return dynamicTemplateName;
+        return dynamicView;
     }
 
     public void setDynamicTemplateName(String dynamicTemplateName) {
-        this.dynamicTemplateName = dynamicTemplateName;
+        this.dynamicView = dynamicTemplateName;
     }
 
     public String getRenderType() {
@@ -56,6 +58,16 @@ public class ViewNode extends WorkflowNode {
 
     public void setRenderType(String renderType) {
         this.renderType = renderType;
+    }
+    
+    
+
+    public String getRenderImpl() {
+        return renderImpl;
+    }
+
+    public void setRenderImpl(String renderImpl) {
+        this.renderImpl = renderImpl;
     }
 
     /*
@@ -67,16 +79,16 @@ public class ViewNode extends WorkflowNode {
     public Transition execute(WorkflowRequest request) throws FlowExecutionException
     {
         FlowContext ctx = request.getLogicContext();
-        String templateName = (String) ctx.get(dynamicTemplateName);
+        String view = (String) ctx.get(dynamicView);
 
-        if (templateName == null)
+        if (view == null)
         {
-            templateName = staticTemplateName;
+            view = staticTemplateName;
         }
 
-        if (null != templateName)
+        if (null != view)
         {
-            ctx.setViewTemplate(templateName);
+            ctx.setViewTemplate(view);
 
         }
 
@@ -92,7 +104,7 @@ public class ViewNode extends WorkflowNode {
      */
     public final void validate(FlowContext fctx) throws FlowExecutionException
     {
-        if (staticTemplateName == null && dynamicTemplateName == null)
+        if (staticTemplateName == null && dynamicView == null)
         {
             throw new FlowExecutionException("SetViewTemplate has wrong configuration.");
         }

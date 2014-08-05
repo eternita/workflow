@@ -100,7 +100,7 @@
             <parameters/>
             <config>
                 <parameter value="org.neuro4j.flows.nodes.callnode.CallByNameFlow2-StartNodeCall2" key="SYS_FLOW_NAME"/>
-                <parameter value="dynamicNodeName" key="SYS_DYNAMIC_FLOW_NAME"/>
+                <parameter value="dynamicNodeName" key="DYNAMIC_VIEW"/>
             </config>
             <transitions>
                 <transition toNode="Qp2p_lq3aUwAAAE9ea72AEYE" name="EndNode2" uuid="7Lap_lq30j0AAAE90df2AEYE"/>

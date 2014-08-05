@@ -53,6 +53,10 @@ public class Logger {
     {
         getLogger(category).error(msg, ex);
     }
+    public static void error(Object category, Throwable ex)
+    {
+        getLogger(category).error(ex.getMessage() , ex);
+    }
 
     public static void info(Object category, String msg, Throwable ex)
     {

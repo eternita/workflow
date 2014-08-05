@@ -5,6 +5,8 @@
             <parameters/>
             <config>
                 <parameter value="/jsp/example2/includePage1.jsp" key="SWF_PARAM_VIEW_TEMPLATE"/>
+                <parameter value="jsp" key="SWF_PARAM_VIEW_RENDER_TYPE"/>
+                <parameter value="org.neuro4j.web.logic.render.JspViewNodeRenderEngine" key="RENDER_IMPL"/>                
             </config>
             <transitions/>
         </node>
@@ -12,6 +14,8 @@
             <parameters/>
             <config>
                 <parameter value="/jsp/example2/includePage2.jsp" key="SWF_PARAM_VIEW_TEMPLATE"/>
+                <parameter value="jsp" key="SWF_PARAM_VIEW_RENDER_TYPE"/>
+                <parameter value="org.neuro4j.web.logic.render.JspViewNodeRenderEngine" key="RENDER_IMPL"/>                
             </config>
             <transitions/>
         </node>

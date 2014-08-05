@@ -31,7 +31,12 @@
 			<version>2.0</version>
 			<scope>provided</scope>
 		</dependency>
-
+	    <dependency>
+	      <groupId>com.google.code.gson</groupId>
+	      <artifactId>gson</artifactId>
+	      <version>2.2.4</version>
+	      <scope>compile</scope>
+	    </dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
@@ -52,13 +57,17 @@
 			<artifactId>velocity-web-plugin</artifactId>
 			<version>${org.neuro4j.version}</version>
 		</dependency>
-		<!-- 
+		
 		<dependency>
 			<groupId>org.neuro4j</groupId>
-			<artifactId>richfaces-web-plugin</artifactId>
+			<artifactId>json-web-plugin</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		 -->
+		<dependency> 	
+        		<groupId>ch.qos.logback</groupId>
+		        <artifactId>logback-classic</artifactId>
+		        <version>1.0.13</version>
+		</dependency>	
 	</dependencies>
 
 	<build>
@@ -76,6 +85,7 @@
 				<directory>src/main/resources</directory>
 				<includes>
 					<include>**/*.properties</include>
+					<include>**/*.xml</include>
 				</includes>
 			</resource>
 		</resources>

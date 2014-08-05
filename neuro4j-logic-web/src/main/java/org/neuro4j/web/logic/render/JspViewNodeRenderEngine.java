@@ -16,23 +16,46 @@
 
 package org.neuro4j.web.logic.render;
 
+import java.io.IOException;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.neuro4j.web.logic.WebFlowConstants;
 import org.neuro4j.workflow.FlowContext;
+import org.neuro4j.workflow.log.Logger;
 
 /**
  * 
- * Development demo only
+ * This render will process jsp pages if ViewNode has renderType = "jsp"
  * 
  */
 public class JspViewNodeRenderEngine implements ViewNodeRenderEngine {
 
     @Override
-    public void render(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext, FlowContext logicContext, String viewTemplate) throws ViewNodeRenderExecutionException {
-
+    public void render(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext, FlowContext logicContext, String view) throws ViewNodeRenderExecutionException {
+        
+        // handle if view is not specified -> go to default page with trace
+        if (null == view) {
+            view = WebFlowConstants.DEFAULT_VIEW_PAGE;
+        } else if (view.startsWith("/")) {
+            view = WebFlowConstants.DEFAULT_VIEW_DIRECTORY + view.replaceFirst("/", "");
+        } else {
+            view = WebFlowConstants.DEFAULT_VIEW_DIRECTORY + view;
+        }
+        
+        try {
+            servletContext.getRequestDispatcher(view).forward(request, response);
+        } catch (ServletException e) {
+            Logger.error(this, e);
+            throw new ViewNodeRenderExecutionException(e);
+        } catch (IOException e) {
+            Logger.error(this, e);
+            throw new ViewNodeRenderExecutionException(e);
+        }
     }
 
     @Override

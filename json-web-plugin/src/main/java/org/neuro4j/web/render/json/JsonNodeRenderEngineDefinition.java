@@ -14,26 +14,29 @@
  * limitations under the License.
  */
 
-package org.neuro4j.web.logic;
+package org.neuro4j.web.render.json;
 
-public class RequestUtils
-{
+import org.neuro4j.web.logic.render.ViewNodeRenderEngineDefinition;
 
-    // from jstl lib (c:redirect)
-    public static boolean isAbsoluteUrl(String url)
-    {
-        if (url == null)
-            return false;
-        int colonPos;
-        if ((colonPos = url.indexOf(":")) == -1) {
-            return false;
-        }
+/**
+ * Describes JsonRender for Neuro4j Studio. This class will allow specify json format for ViewNode. 
+ *
+ */
+public class JsonNodeRenderEngineDefinition extends ViewNodeRenderEngineDefinition {
 
-        for (int i = 0; i < colonPos; ++i) {
-            if ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+.-".indexOf(url.charAt(i)) == -1) {
-                return false;
-            }
-        }
-        return true;
+    @Override
+    public String getName() {
+        return "json";
     }
+
+    @Override
+    public String getFileExt() {
+        return null;
+    }
+
+    @Override
+    public String getPathFilter() {
+        return null;
+    }
+    
 }

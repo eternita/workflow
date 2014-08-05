@@ -17,11 +17,8 @@
 package org.neuro4j.web.logic;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Locale;
-import java.util.Map;
 
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,7 +26,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.neuro4j.web.logic.render.ViewNodeRenderEngine;
 import org.neuro4j.web.logic.render.ViewNodeRenderEngineFactory;
-import org.neuro4j.web.logic.render.ViewNodeRenderEngineNotFoundException;
 import org.neuro4j.web.logic.render.ViewNodeRenderExecutionException;
 import org.neuro4j.web.workflow.core.WebRequest;
 import org.neuro4j.workflow.ExecutionResult;
@@ -44,16 +40,10 @@ public class FlowDispatcherServlet extends HttpServlet {
 	 */
     private static final long serialVersionUID = 1L;
 
-    @Override
-    public void init(ServletConfig config) throws ServletException {
-        super.init(config);
-    }
 
-    @Override
-    public void init() throws ServletException {
-        super.init();
-    }
-
+    /* (non-Javadoc)
+     * @see javax.servlet.http.HttpServlet#service(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)
+     */
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -92,7 +82,7 @@ public class FlowDispatcherServlet extends HttpServlet {
         {
             FlowContext context = result.getFlowContext();
 
-            // copy data from logicContext to request attributes (for usage in views)
+            // copy data from context to request attributes (for usage in views)
             for (String key : context.keySet())
             {
                 request.setAttribute(key, context.get(key));
@@ -100,38 +90,20 @@ public class FlowDispatcherServlet extends HttpServlet {
 
             view = (String) context.getViewTemplate();
 
-            // handle if view is not specified -> go to default page with trace
-            if (null == view) {
-                view = WebFlowConstants.DEFAULT_VIEW_PAGE;
-            } else if (view.startsWith("/")) {
-                view = WebFlowConstants.DEFAULT_VIEW_DIRECTORY + view.replaceFirst("/", "");
-            } else {
-                view = WebFlowConstants.DEFAULT_VIEW_DIRECTORY + view;
-            }
+            String renderType = (String) context.getRenderType();
 
-            String renderEngineImpl = (String) context.getRenderType();
+            Logger.debug(this, "Using '{}' web render", renderType);
 
-            Logger.debug(this, "Using '{}' web render", renderEngineImpl);
-
-            if (null != renderEngineImpl && renderEngineImpl.trim().length() > 0 && !renderEngineImpl.trim().equals("jsp"))
+            if (null != renderType && renderType.trim().length() > 0)
             {
-                // get render engine
-                ViewNodeRenderEngine renderEngine;
                 try {
-                    renderEngine = ViewNodeRenderEngineFactory.getViewNodeRenderEngine(getServletConfig(), getServletContext(), renderEngineImpl);
+                    ViewNodeRenderEngine renderEngine = ViewNodeRenderEngineFactory.getViewNodeRenderEngine(getServletConfig(), getServletContext(), renderType);
                     renderEngine.render(request, response, getServletContext(), context, view);
-                } catch (ViewNodeRenderEngineNotFoundException e) {
-                    processFlowExeption(request, response, e);
                 } catch (ViewNodeRenderExecutionException e) {
                     processFlowExeption(request, response, e);
                 }
-                // custom rendering
-
-            } else {
-
-                // default rendering with JSP
-                getServletContext().getRequestDispatcher(view).forward(request, response);
             }
+
         } else {
             processFlowExeption(request, response, result.getException());
         }
@@ -139,12 +111,27 @@ public class FlowDispatcherServlet extends HttpServlet {
         return;
     }
 
+    /**
+     * Processes errors. Redirects to error page.
+     * 
+     * @param request
+     * @param response
+     * @param exeption
+     * @throws ServletException
+     * @throws IOException
+     */
     private void processFlowExeption(HttpServletRequest request, HttpServletResponse response, Exception exeption) throws ServletException, IOException {
         request.setAttribute("exception", exeption);
-        Logger.error(this, exeption.getMessage(), exeption);
+        Logger.error(this, exeption);
         getServletContext().getRequestDispatcher(WebFlowConstants.ERROR_PAGE).forward(request, response);
     }
 
+    /**
+     * Returns request's locale.
+     * 
+     * @param localeString
+     * @return
+     */
     private Locale getLocale(String localeString)
     {
         if (null == localeString)

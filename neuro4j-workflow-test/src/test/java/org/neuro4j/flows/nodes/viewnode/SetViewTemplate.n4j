@@ -20,7 +20,7 @@
         <node type="VIEW" y="383" x="481" name="ViewNode2" uuid="I..p_lq3A1sAAAE95jfSKEci">
             <parameters/>
             <config>
-                <parameter value="templateName" key="SWF_PARAM_VIEW_DYNAMIC_TEMPLATE"/>
+                <parameter value="templateName" key="DYNAMIC_VIEW"/>
             </config>
             <transitions/>
         </node>
@@ -37,7 +37,7 @@
             <parameters/>
             <config>
                 <parameter value="&quot;hello.jsp&quot;" key="SWF_PARAM_VIEW_TEMPLATE"/>
-                <parameter value="templateName" key="SWF_PARAM_VIEW_DYNAMIC_TEMPLATE"/>
+                <parameter value="templateName" key="DYNAMIC_VIEW"/>
             </config>
             <transitions/>
         </node>

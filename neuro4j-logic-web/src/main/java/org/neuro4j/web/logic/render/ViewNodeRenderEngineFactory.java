@@ -16,76 +16,101 @@
 
 package org.neuro4j.web.logic.render;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.logging.Logger;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Hashtable;
+import java.util.Properties;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 
+import org.neuro4j.workflow.log.Logger;
+
 /**
- * Instantiate ViewNodeRenderEngine by class name
+ * Instantiate ViewNodeRenderEngine by render type.
  * 
  */
 public class ViewNodeRenderEngineFactory {
 
-    private final static Logger logger = Logger.getLogger(ViewNodeRenderEngineFactory.class.getName());
+    private static Hashtable<String, ViewNodeRenderEngine> renders = new Hashtable<String, ViewNodeRenderEngine>();
 
-    private static Map<String, ViewNodeRenderEngine> renders = new HashMap<String, ViewNodeRenderEngine>();
-
-    public static ViewNodeRenderEngine getViewNodeRenderEngine(ServletConfig config, ServletContext servletContext, String type) throws ViewNodeRenderEngineNotFoundException, ViewNodeRenderExecutionException
+    public static ViewNodeRenderEngine getViewNodeRenderEngine(ServletConfig config, ServletContext servletContext, String renderType) throws ViewNodeRenderExecutionException
     {
-        if (renders.containsKey(type))
+
+        if (renders.containsKey(renderType))
         {
-            return renders.get(type);
+            return renders.get(renderType);
         }
 
-        String renderClass = getRenderImplByType(type);
-        try {
+        synchronized (renders) {
+            String renderClass = getRenderImpl(renderType);
+            try {
 
-            Class<?> clazz = Class.forName(renderClass);
-            Object fObj = clazz.newInstance();
+                Class<?> clazz = Class.forName(renderClass);
+                Object fObj = clazz.newInstance();
 
-            if (fObj instanceof ViewNodeRenderEngine)
-            {
-                ViewNodeRenderEngine renderEngine = (ViewNodeRenderEngine) fObj;
+                if (fObj instanceof ViewNodeRenderEngine)
+                {
+                    ViewNodeRenderEngine renderEngine = (ViewNodeRenderEngine) fObj;
 
-                renderEngine.init(config, servletContext);
+                    renderEngine.init(config, servletContext);
 
-                renders.put(type, (ViewNodeRenderEngine) fObj);
+                    renders.put(renderType, (ViewNodeRenderEngine) fObj);
 
-                return renders.get(type);
+                    return renders.get(renderType);
+                }
+            } catch (ClassNotFoundException e) {
+                Logger.error(ViewNodeRenderEngineFactory.class, e);
+            } catch (InstantiationException e) {
+                Logger.error(ViewNodeRenderEngineFactory.class, e);
+            } catch (IllegalAccessException e) {
+                Logger.error(ViewNodeRenderEngineFactory.class, e);
             }
-        } catch (ClassNotFoundException e) {
-            logger.severe("Can't create ViewNodeRenderEngine " + renderClass + " " + e);
-        } catch (InstantiationException e) {
-            logger.severe("Can't create ViewNodeRenderEngine " + renderClass + " " + e);
-        } catch (IllegalAccessException e) {
-            logger.severe("Can't create ViewNodeRenderEngine " + renderClass + " " + e);
+            throw new ViewNodeRenderExecutionException("ViewNodeRenderEngine " + renderClass + " not found");
         }
-        throw new ViewNodeRenderEngineNotFoundException("ViewNodeRenderEngine " + renderClass + " not found");
+
+        
     }
 
-    private static String getRenderImplByType(String type)
+    /**
+     * Returns class which will process vew template
+     * @param renderType
+     * @return
+     * @throws ViewNodeRenderExecutionException
+     */
+    private static String getRenderImpl(String renderType) throws ViewNodeRenderExecutionException
     {
-        String renderClass = "org.neuro4j.web.logic.render.JspViewNodeRenderEngine";
-        if ("jasper".equals(type))
-        {
-            renderClass = "org.neuro4j.web.render.jasper.JasperViewNodeRenderEngine";
+        String renderImpl = null;
+
+        String fileName =   renderType + ".properties";
+
+        InputStream input = null;
+        Properties prop = new Properties();
+
+        try {
+
+            input = ViewNodeRenderEngineFactory.class.getClassLoader().getResourceAsStream(fileName);
+            if (input == null)
+
+                throw new ViewNodeRenderExecutionException("Implementation not found for renderType: " + renderType);
+
+            prop.load(input);
+
+            renderImpl = prop.getProperty("viewRender");
+
+        } catch (IOException ex) {
+            Logger.error(ViewNodeRenderEngineFactory.class, ex);
+        } finally {
+            if (input != null) {
+                try {
+                    input.close();
+                } catch (IOException e) {
+                    Logger.error(ViewNodeRenderEngineFactory.class, e);
+                }
+            }
         }
-        if ("velocity".equals(type))
-        {
-            renderClass = "org.neuro4j.web.render.velocity.VelocityViewNodeRenderEngine";
-        }
-        if ("richfaces".equals(type))
-        {
-            renderClass = "org.neuro4j.web.render.richfaces.RichfacesViewNodeRenderEngine";
-        }
-        if ("myfaces".equals(type))
-        {
-            renderClass = "org.neuro4j.web.render.myfaces.MyfacesViewNodeRenderEngine";
-        }
-        return renderClass;
+
+        return renderImpl;
     }
 
 }

@@ -154,7 +154,9 @@ public class SWFParametersConstants {
 
     public static final String VIEW_NODE_TEMPLATE_NAME = "SWF_PARAM_VIEW_TEMPLATE";
 
-    public static final String VIEW_NODE_TEMPLATE_DYNAMIC_NAME = "SWF_PARAM_VIEW_DYNAMIC_TEMPLATE";
+    public static final String VIEW_NODE_TEMPLATE_DYNAMIC_NAME = "DYNAMIC_VIEW";
+    
+    public static final String RENDER_IMP = "RENDER_IMP";
 
     public static final String VIEW_NODE_RENDER_TYPE = "SWF_PARAM_VIEW_RENDER_TYPE";
 

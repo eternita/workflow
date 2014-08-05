@@ -23,10 +23,10 @@
     </div>
 
 
-    <div id="xContentHeaderContainer">
+    <div id="xContentHeaderContainer" style="height: 112px;">
 
 <div class="container_12">
-        <div class="grid_7">
+        <div class="grid_9" >
 	        <div class="xContentHeader">
                <a style="text-decoration: none;" href="http://neuro4j.org/projects/java-workflow-engine"> <h3> <fmt:message key="message.application.title" /></h3></a>
                	<ul>

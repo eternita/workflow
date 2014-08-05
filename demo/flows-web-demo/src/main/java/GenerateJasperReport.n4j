@@ -48,7 +48,6 @@
             </transitions>
         </node>
         <node type="VIEW" y="424" x="790" name="ViewNode3" uuid="QkHAqG8BlmwAAAFAZduNktGW">
-            <parameters/>
             <config>
                 <parameter value="/jsp/application.jsp" key="SWF_PARAM_VIEW_TEMPLATE"/>
                 <parameter value="jsp" key="SWF_PARAM_VIEW_RENDER_TYPE"/>
@@ -83,7 +82,7 @@
                 </transition>
             </transitions>
         </node>
-        <node type="VIEW" y="592" x="484" name="ViewNode2" uuid="V5XAqG8BjuIAAAFA2gafFcHr">
+        <node type="VIEW" y="605" x="501" name="ViewNode2" uuid="V5XAqG8BjuIAAAFA2gafFcHr">
             <parameters/>
             <config>
                 <parameter value="/reports/report1.jasper" key="SWF_PARAM_VIEW_TEMPLATE"/>
