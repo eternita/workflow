@@ -47,5 +47,12 @@
                 </transition>
             </transitions>
         </node>
+        <node type="START" y="810" x="510" name="StartNode3" uuid="4scQV.0EhXcAAAFHxqDsWaig">
+            <parameters/>
+            <config>
+                <parameter value="PRIVATE" key="SYS_START_NODE_TYPE"/>
+            </config>
+            <transitions/>
+        </node>
     </nodes>
 </flow>
