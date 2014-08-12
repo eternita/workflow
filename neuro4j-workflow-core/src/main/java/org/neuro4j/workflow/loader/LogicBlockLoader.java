@@ -54,6 +54,11 @@ public class LogicBlockLoader {
      */
     public CustomBlock lookupBlock(CustomNode entity) throws FlowInitializationException
     {
+        if (entity.getExecutableClass() == null)
+        {
+            throw new FlowInitializationException("ExecutableClass not defined for CustomNode " + entity.getName());
+        }
+        
         CustomBlock block = cache.get(entity.getExecutableClass());
 
         if (block == null)

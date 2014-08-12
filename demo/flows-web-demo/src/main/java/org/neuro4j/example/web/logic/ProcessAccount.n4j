@@ -1,221 +1,222 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <flow visibility="Public">
     <nodes>
-        <node type="END" y="545" x="1186" name="ERROR" uuid="mnEQV.0E86wAAAE.nHmtEIYB">
+        <node uuid="mnEQV.0E86wAAAE.nHmtEIYB" name="ERROR" x="1186" y="545" type="END">
             <parameters/>
             <config/>
             <transitions/>
         </node>
-        <node type="START" y="23" x="128" name="CreateAccount" uuid="hGnAqG8BngIAAAE9yx4Q24XH">
+        <node uuid="hGnAqG8BngIAAAE9yx4Q24XH" name="CreateAccount" x="128" y="23" type="START">
             <parameters/>
             <config>
-                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
             </config>
             <transitions>
-                <transition toNode="CUEQV.0EdR0AAAE.muWtEIYE" name="NEXT" uuid=".ZoQV.0EpbYAAAE.jJ6tEIYF">
+                <transition uuid=".ZoQV.0EpbYAAAE.jJ6tEIYF" name="NEXT" toNode="CUEQV.0EdR0AAAE.muWtEIYE">
                     <points>0, 32, -4, -52|4, 56, 0, -28|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="END" y="544" x="1395" name="Ok" uuid="AIcQV.0E6BsAAAE.lGGtEIYB">
+        <node uuid="AIcQV.0E6BsAAAE.lGGtEIYB" name="Ok" x="1395" y="544" type="END">
             <parameters/>
             <config/>
             <transitions/>
         </node>
-        <node type="END" y="463" x="281" name="EndErrorNode" uuid="0KjAqG8BEg4AAAE9gF4Q24XI">
+        <node uuid="0KjAqG8BEg4AAAE9gF4Q24XI" name="EndErrorNode" x="281" y="463" type="END">
             <parameters/>
             <config/>
             <transitions/>
         </node>
-        <node type="CUSTOM" y="409" x="135" name="SetMessage" uuid="gTHAqG8B54wAAAE9_r7Ih9Dq">
+        <node uuid="gTHAqG8B54wAAAE9_r7Ih9Dq" name="SetMessage" x="135" y="409" type="CUSTOM">
             <parameters>
-                <parameter input="true" value="&quot;message.account.created&quot;" key="textKey"/>
-                <parameter input="false" value="infoMessage" key="message"/>
+                <parameter key="textKey" value="&quot;message.account.created&quot;" input="true"/>
+                <parameter key="message" value="infoMessage" input="false"/>
             </parameters>
             <config>
-                <parameter value="SetMessage" key="SWF_BLOCK_CLASS"/>
-                <parameter value="org.neuro4j.example.web.blocks.msg.SetMessage" key="SWF_CUSTOM_CLASS"/>
+                <parameter key="SWF_BLOCK_CLASS" value="SetMessage"/>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.example.web.blocks.msg.SetMessage"/>
             </config>
             <transitions>
-                <transition toNode="vrnAqG8B8J0AAAE9TygQ24XH" name="NEXT" uuid="5h3AqG8BkHAAAAE9wijIh9FT">
+                <transition uuid="5h3AqG8BkHAAAAE9wijIh9FT" name="NEXT" toNode="vrnAqG8B8J0AAAE9TygQ24XH">
                     <points>0, 29, -4, -65|4, 65, 0, -29|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="CUSTOM" y="279" x="627" name="SetErrorMessage" uuid="y8oQV.0EUaAAAAE9i9klqPHq">
+        <node uuid="y8oQV.0EUaAAAAE9i9klqPHq" name="SetErrorMessage" x="627" y="279" type="CUSTOM">
             <parameters>
-                <parameter input="true" value="&quot;error.uuid.empty&quot;" key="textKey"/>
-                <parameter input="false" value="errorMessage" key="message"/>
+                <parameter key="textKey" value="&quot;error.uuid.empty&quot;" input="true"/>
+                <parameter key="message" value="errorMessage" input="false"/>
             </parameters>
             <config>
-                <parameter value="SetErrorMessage" key="SWF_BLOCK_CLASS"/>
-                <parameter value="org.neuro4j.example.web.blocks.msg.SetMessage" key="SWF_CUSTOM_CLASS"/>
+                <parameter key="SWF_BLOCK_CLASS" value="SetErrorMessage"/>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.example.web.blocks.msg.SetMessage"/>
             </config>
             <transitions>
-                <transition toNode="mjPAqG8BgSQAAAE9YzUQ24XJ" name="NEXT" uuid="Oh4QV.0EGu4AAAE9_TUlqPHr">
+                <transition uuid="Oh4QV.0EGu4AAAE9_TUlqPHr" name="NEXT" toNode="mjPAqG8BgSQAAAE9YzUQ24XJ">
                     <points>0, 29, 185, -162|-185, 162, 0, -29|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="JOIN" y="315" x="315" name="JoinNode1" uuid="9g8QV.0EIesAAAFAoEjat3ie">
+        <node uuid="9g8QV.0EIesAAAFAoEjat3ie" name="JoinNode1" x="315" y="315" type="JOIN">
             <parameters/>
             <config/>
             <transitions>
-                <transition toNode="0KjAqG8BEg4AAAE9gF4Q24XI" name="NEXT" uuid="h0AQV.0EfBYAAAFAoUjat3ie">
+                <transition uuid="h0AQV.0EfBYAAAFAoUjat3ie" name="NEXT" toNode="0KjAqG8BEg4AAAE9gF4Q24XI">
                     <points>0, 0, -321, -492|321, 463, 0, -29|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="CUSTOM" y="439" x="1179" name="SetErrorMessage" uuid="T50QV.0EqUsAAAE._5etEIYD">
+        <node uuid="T50QV.0EqUsAAAE._5etEIYD" name="SetErrorMessage" x="1179" y="439" type="CUSTOM">
             <parameters>
-                <parameter input="true" value="&quot;message.error.checkparam&quot;" key="textKey"/>
-                <parameter input="false" value="errorMessage" key="message"/>
+                <parameter key="textKey" value="&quot;message.error.checkparam&quot;" input="true"/>
+                <parameter key="message" value="errorMessage" input="false"/>
             </parameters>
             <config>
-                <parameter value="SetErrorMessage" key="SWF_BLOCK_CLASS"/>
-                <parameter value="org.neuro4j.example.web.blocks.msg.SetMessage" key="SWF_CUSTOM_CLASS"/>
+                <parameter key="SWF_BLOCK_CLASS" value="SetErrorMessage"/>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.example.web.blocks.msg.SetMessage"/>
             </config>
             <transitions>
-                <transition toNode="mnEQV.0E86wAAAE.nHmtEIYB" name="NEXT" uuid="UaoQV.0EK70AAAE.mqmtEIYE">
+                <transition uuid="UaoQV.0EK70AAAE.mqmtEIYE" name="NEXT" toNode="mnEQV.0E86wAAAE.nHmtEIYB">
                     <points>0, 29, 0, -64|0, 64, 0, -29|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="CUSTOM" y="33" x="622" name="org.neuro4j.logic.def.Note" uuid="ol8QV.0EwrkAAAFAKevat3ie">
+        <node uuid="noTAqG8B6S8AAAE9t4sQ24XH" name="CreateAccount" x="95" y="308" type="CUSTOM">
             <parameters/>
             <config>
-                <parameter value="org.neuro4j.logic.def.Note" key="SWF_BLOCK_CLASS"/>
-            </config>
-            <transitions/>
-        </node>
-        <node type="CUSTOM" y="308" x="95" name="CreateAccount" uuid="noTAqG8B6S8AAAE9t4sQ24XH">
-            <parameters/>
-            <config>
-                <parameter value="CreateAccount" key="SWF_BLOCK_CLASS"/>
-                <parameter value="org.neuro4j.example.web.blocks.CreateAccount" key="SWF_CUSTOM_CLASS"/>
+                <parameter key="SWF_BLOCK_CLASS" value="CreateAccount"/>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.example.web.blocks.CreateAccount"/>
             </config>
             <transitions>
-                <transition toNode="9g8QV.0EIesAAAFAoEjat3ie" name="ERROR" uuid="pe4QV.0EfBcAAAFAoUjat3ie">
+                <transition uuid="pe4QV.0EfBcAAAFAoUjat3ie" name="ERROR" toNode="9g8QV.0EIesAAAFAoEjat3ie">
                     <points>42, 0, 211, 236|-169, -236, 0, 0|</points>
                 </transition>
-                <transition toNode="gTHAqG8B54wAAAE9_r7Ih9Dq" name="NEXT" uuid="q.LAqG8BEiUAAAE9vBzIh9FT">
+                <transition uuid="q.LAqG8BEiUAAAE9vBzIh9FT" name="NEXT" toNode="gTHAqG8B54wAAAE9_r7Ih9Dq">
                     <points>0, 29, 4, -94|-4, 95, 0, -28|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="DECISION" y="172" x="1158" name="DecisionNode2" uuid="8KoQV.0E3CQAAAE.9aatEIYB">
+        <node uuid="8KoQV.0E3CQAAAE.9aatEIYB" name="DecisionNode2" x="1158" y="172" type="DECISION">
             <parameters/>
             <config>
-                <parameter value="EMPTY_STR" key="SYS_OPERATOR"/>
-                <parameter value="lastName" key="SYS_DECISION_KEY"/>
+                <parameter key="SYS_OPERATOR" value="EMPTY_STR"/>
+                <parameter key="SYS_DECISION_KEY" value="lastName"/>
             </config>
             <transitions>
-                <transition toNode="AIcQV.0E6BsAAAE.lGGtEIYB" name="FALSE" uuid="Q7MQV.0E.NEAAAE.jKt7BoYL">
+                <transition uuid="Q7MQV.0E.NEAAAE.jKt7BoYL" name="FALSE" toNode="AIcQV.0E6BsAAAE.lGGtEIYB">
                     <points>69, 0, -140, -371|209, 342, 0, -29|</points>
                 </transition>
-                <transition toNode="9j4QV.0EKQ4AAAE.bUutEIYC" name="NEXT" uuid="KWYQV.0E2XYAAAE.d8OtEIYC">
+                <transition uuid="KWYQV.0E2XYAAAE.d8OtEIYC" name="NEXT" toNode="9j4QV.0EKQ4AAAE.bUutEIYC">
                     <points>0, 30, -1, -77|1, 77, 0, -30|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="END" y="530" x="118" name="EndCreateAccount" uuid="vrnAqG8B8J0AAAE9TygQ24XH">
+        <node uuid="vrnAqG8B8J0AAAE9TygQ24XH" name="EndCreateAccount" x="118" y="530" type="END">
             <parameters/>
             <config/>
             <transitions/>
         </node>
-        <node type="START" y="30" x="427" name="RemoveAccount" uuid="K2fAqG8BPzAAAAE9PBMQ24XJ">
+        <node uuid="K2fAqG8BPzAAAAE9PBMQ24XJ" name="RemoveAccount" x="427" y="30" type="START">
             <parameters/>
             <config>
-                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
             </config>
             <transitions>
-                <transition toNode="q8XAqG8BfF0AAAE93vYQ24XJ" name="NEXT" uuid="M6vAqG8BUy8AAAE9fqcQ24XK"/>
+                <transition uuid="M6vAqG8BUy8AAAE9fqcQ24XK" name="NEXT" toNode="q8XAqG8BfF0AAAE93vYQ24XJ"/>
             </transitions>
         </node>
-        <node type="CUSTOM" y="374" x="440" name="SetMessage" uuid="wDsQV.0E.TcAAAE.4KStEIWz">
+        <node uuid="wDsQV.0E.TcAAAE.4KStEIWz" name="SetMessage" x="440" y="374" type="CUSTOM">
             <parameters>
-                <parameter input="true" value="&quot;message.account.removed&quot;" key="textKey"/>
-                <parameter input="false" value="infoMessage" key="message"/>
+                <parameter key="textKey" value="&quot;message.account.removed&quot;" input="true"/>
+                <parameter key="message" value="infoMessage" input="false"/>
             </parameters>
             <config>
-                <parameter value="SetMessage" key="SWF_BLOCK_CLASS"/>
-                <parameter value="org.neuro4j.example.web.blocks.msg.SetMessage" key="SWF_CUSTOM_CLASS"/>
+                <parameter key="SWF_BLOCK_CLASS" value="SetMessage"/>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.example.web.blocks.msg.SetMessage"/>
             </config>
             <transitions>
-                <transition toNode="mjPAqG8BgSQAAAE9YzUQ24XJ" name="NEXT" uuid="gQgQV.0ETg0AAAE.8eGtEIWz">
+                <transition uuid="gQgQV.0ETg0AAAE.8eGtEIWz" name="NEXT" toNode="mjPAqG8BgSQAAAE9YzUQ24XJ">
                     <points>0, 29, -3, -193|3, 193, 0, -29|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="DECISION" y="143" x="431" name="DecisionNode11" uuid="q8XAqG8BfF0AAAE93vYQ24XJ">
+        <node uuid="q8XAqG8BfF0AAAE93vYQ24XJ" name="DecisionNode11" x="431" y="143" type="DECISION">
             <parameters/>
             <config>
-                <parameter value="DEFINED" key="SYS_OPERATOR"/>
-                <parameter value="uuid" key="SYS_DECISION_KEY"/>
+                <parameter key="SYS_OPERATOR" value="DEFINED"/>
+                <parameter key="SYS_DECISION_KEY" value="uuid"/>
             </config>
             <transitions>
-                <transition toNode="frPAqG8BVcwAAAE9JFkQ24XJ" name="NEXT" uuid="tRvAqG8BnTgAAAE96J8Q24XK"/>
-                <transition toNode="y8oQV.0EUaAAAAE9i9klqPHq" name="FALSE" uuid="evIQV.0EAeYAAAE94uglqPHq">
+                <transition uuid="tRvAqG8BnTgAAAE96J8Q24XK" name="NEXT" toNode="frPAqG8BVcwAAAE9JFkQ24XJ"/>
+                <transition uuid="evIQV.0EAeYAAAE94uglqPHq" name="FALSE" toNode="y8oQV.0EUaAAAAE9i9klqPHq">
                     <points>42, 0, -146, -173|188, 145, 0, -28|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="END" y="595" x="433" name="End" uuid="mjPAqG8BgSQAAAE9YzUQ24XJ">
+        <node uuid="mjPAqG8BgSQAAAE9YzUQ24XJ" name="End" x="433" y="595" type="END">
             <parameters/>
             <config/>
             <transitions/>
         </node>
-        <node type="DECISION" y="333" x="1157" name="DecisionNode3" uuid="9j4QV.0EKQ4AAAE.bUutEIYC">
+        <node uuid="9j4QV.0EKQ4AAAE.bUutEIYC" name="DecisionNode3" x="1157" y="333" type="DECISION">
             <parameters/>
             <config>
-                <parameter value="EMPTY_STR" key="SYS_OPERATOR"/>
-                <parameter value="firstName" key="SYS_DECISION_KEY"/>
+                <parameter key="SYS_OPERATOR" value="EMPTY_STR"/>
+                <parameter key="SYS_DECISION_KEY" value="firstName"/>
             </config>
             <transitions>
-                <transition toNode="AIcQV.0E6BsAAAE.lGGtEIYB" name="FALSE" uuid="JK0QV.0E6WMAAAE.3cR7BoYL">
+                <transition uuid="JK0QV.0E6WMAAAE.3cR7BoYL" name="FALSE" toNode="AIcQV.0E6BsAAAE.lGGtEIYB">
                     <points>70, 0, -139, -210|209, 181, 0, -29|</points>
                 </transition>
-                <transition toNode="T50QV.0EqUsAAAE._5etEIYD" name="NEXT" uuid="XaQQV.0EKdEAAAE.xZF7BoYL">
+                <transition uuid="XaQQV.0EKdEAAAE.xZF7BoYL" name="NEXT" toNode="T50QV.0EqUsAAAE._5etEIYD">
                     <points>0, 30, 0, -74|0, 76, 0, -28|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="CALL" y="110" x="99" name="CallNode1" uuid="CUEQV.0EdR0AAAE.muWtEIYE">
+        <node uuid="CUEQV.0EdR0AAAE.muWtEIYE" name="CallNode1" x="99" y="110" type="CALL">
             <parameters/>
             <config>
-                <parameter value="org.neuro4j.example.web.logic.ProcessAccount-Validate" key="SYS_FLOW_NAME"/>
+                <parameter key="SYS_FLOW_NAME" value="org.neuro4j.example.web.logic.ProcessAccount-Validate"/>
             </config>
             <transitions>
-                <transition toNode="9g8QV.0EIesAAAFAoEjat3ie" name="ERROR" uuid="UaoQV.0E2wkAAAE.0GB7BoYH">
+                <transition uuid="UaoQV.0E2wkAAAE.0GB7BoYH" name="ERROR" toNode="9g8QV.0EIesAAAFAoEjat3ie">
                     <points>0, 29, -162, -163|0, 57, -162, -135|162, 57, 0, -135|162, 177, 0, -15|</points>
                 </transition>
-                <transition toNode="noTAqG8B6S8AAAE9t4sQ24XH" name="Ok" uuid="wWYQV.0EzD4AAAE.k3OtEIYF">
+                <transition uuid="wWYQV.0EzD4AAAE.k3OtEIYF" name="Ok" toNode="noTAqG8B6S8AAAE9t4sQ24XH">
                     <points>0, 29, -3, -66|3, 67, 0, -28|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="CUSTOM" y="275" x="427" name="RemoveAccount" uuid="frPAqG8BVcwAAAE9JFkQ24XJ">
+        <node uuid="frPAqG8BVcwAAAE9JFkQ24XJ" name="RemoveAccount" x="427" y="275" type="CUSTOM">
             <parameters/>
             <config>
-                <parameter value="RemoveAccount" key="SWF_BLOCK_CLASS"/>
-                <parameter value="org.neuro4j.example.web.blocks.RemoveAccount" key="SWF_CUSTOM_CLASS"/>
+                <parameter key="SWF_BLOCK_CLASS" value="RemoveAccount"/>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.example.web.blocks.RemoveAccount"/>
             </config>
             <transitions>
-                <transition toNode="wDsQV.0E.TcAAAE.4KStEIWz" name="NEXT" uuid="1bMQV.0EHFoAAAE.UQGtEIW0">
+                <transition uuid="1bMQV.0EHFoAAAE.UQGtEIW0" name="NEXT" toNode="wDsQV.0E.TcAAAE.4KStEIWz">
                     <points>0, 29, 6, -70|-6, 71, 0, -28|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="START" y="25" x="1186" name="Validate" uuid="QCUQV.0Ec2sAAAE.lD6tEIYB">
+        <node uuid="QCUQV.0Ec2sAAAE.lD6tEIYB" name="Validate" x="1186" y="25" type="START">
             <parameters/>
             <config>
-                <parameter value="PRIVATE" key="SYS_START_NODE_TYPE"/>
+                <parameter key="SYS_START_NODE_TYPE" value="PRIVATE"/>
             </config>
             <transitions>
-                <transition toNode="8KoQV.0E3CQAAAE.9aatEIYB" name="NEXT" uuid="axoQV.0E.D8AAAE.1i2tEIYC">
+                <transition uuid="axoQV.0E.D8AAAE.1i2tEIYC" name="NEXT" toNode="8KoQV.0E3CQAAAE.9aatEIYB">
                     <points>0, 32, -3, -114|3, 116, 0, -30|</points>
                 </transition>
             </transitions>
+        </node>
+        <node uuid="note" name="CGkQV.0E7a4AAAFHlvIZ2MYj" x="622" y="33" type="NOTE">
+            <parameters/>
+            <config>
+                <parameter key="w" value="-1"/>
+                <parameter key="h" value="-1"/>
+            </config>
+            <transitions/>
         </node>
     </nodes>
 </flow>

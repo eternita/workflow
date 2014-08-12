@@ -1,78 +1,76 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <flow visibility="Public">
     <nodes>
-        <node type="MAP" y="204" x="503" name="MapperNode1" uuid="LOcQV.0Et_8AAAFBUdaJkg78">
+        <node uuid="LOcQV.0Et_8AAAFBUdaJkg78" name="MapperNode1" x="503" y="204" type="MAP">
             <parameters>
-                <parameter input="true" value="&quot;/jsp/example3/include_velocity.jsp&quot;" key="page"/>
-                <parameter input="true" value="&quot;activeCl&quot;" key="example3"/>
+                <parameter key="page" value="&quot;/jsp/example3/include_velocity.jsp&quot;" input="true"/>
+                <parameter key="example3" value="&quot;activeCl&quot;" input="true"/>
             </parameters>
             <config/>
             <transitions>
-                <transition toNode=".r_AqG8BCe0AAAFAvSyNktF2" name="NEXT" uuid="RqIQV.0EuAAAAAFBUdaJkg78">
+                <transition uuid="RqIQV.0EuAAAAAFBUdaJkg78" name="NEXT" toNode=".r_AqG8BCe0AAAFAvSyNktF2">
                     <points>0, 0, -565, -367|565, 338, 0, -29|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="VIEW" y="431" x="521" name="ViewNode2" uuid=".r_AqG8BCe0AAAFAvSyNktF2">
+        <node uuid=".r_AqG8BCe0AAAFAvSyNktF2" name="ViewNode2" x="490" y="442" type="VIEW">
             <parameters/>
             <config>
-                <parameter value="/jsp/application.jsp" key="SWF_PARAM_VIEW_TEMPLATE"/>
-                <parameter value="jsp" key="SWF_PARAM_VIEW_RENDER_TYPE"/>
-                <parameter value="org.neuro4j.web.logic.render.JspViewNodeRenderEngine" key="RENDER_IMPL"/>
+                <parameter key="SWF_PARAM_VIEW_TEMPLATE" value="/jsp/application.jsp"/>
+                <parameter key="SWF_PARAM_VIEW_RENDER_TYPE" value="jsp"/>
             </config>
             <transitions/>
         </node>
-        <node type="START" y="9" x="294" name="Include" uuid="vA8QV.0E0rUAAAFAMPUtpMvZ">
+        <node uuid="vA8QV.0E0rUAAAFAMPUtpMvZ" name="Include" x="294" y="9" type="START">
             <parameters/>
             <config>
-                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
             </config>
             <transitions>
-                <transition toNode="LEap_iYcj7kAAAFBlFvg5xRL" name="NEXT" uuid="3QgQV.0E03YAAAFC6YKFh6UE">
+                <transition uuid="3QgQV.0E03YAAAFC6YKFh6UE" name="NEXT" toNode="LEap_iYcj7kAAAFBlFvg5xRL">
                     <points>0, 32, 7, -171|-7, 175, 0, -28|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="START" y="10" x="510" name="View" uuid="5hfAqG8BeWIAAAFARSKNktF2">
+        <node uuid="5hfAqG8BeWIAAAFARSKNktF2" name="View" x="503" y="10" type="START">
             <parameters/>
             <config>
-                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
             </config>
             <transitions>
-                <transition toNode="LOcQV.0Et_8AAAFBUdaJkg78" name="NEXT" uuid="wKnAqG8BupMAAAFAaxqNktF3">
+                <transition uuid="wKnAqG8BupMAAAFAaxqNktF3" name="NEXT" toNode="LOcQV.0Et_8AAAFBUdaJkg78">
                     <points>0, 32, -22, -298|22, 301, 0, -29|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="CUSTOM" y="313" x="276" name="GetAccountsList" uuid="7SoQV.0EsVAAAAFAQ_QracwE">
+        <node uuid="7SoQV.0EsVAAAAFAQ_QracwE" name="GetAccountsList" x="276" y="313" type="CUSTOM">
             <parameters/>
             <config>
-                <parameter value="GetAccountsList" key="SWF_BLOCK_CLASS"/>
-                <parameter value="org.neuro4j.example.web.blocks.GetAccountsList" key="SWF_CUSTOM_CLASS"/>
+                <parameter key="SWF_BLOCK_CLASS" value="GetAccountsList"/>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.example.web.blocks.GetAccountsList"/>
             </config>
             <transitions>
-                <transition toNode="xBUQV.0EJGcAAAFA9_stpMvZ" name="NEXT" uuid="YokQV.0E_IcAAAFAUPQracwE">
+                <transition uuid="YokQV.0E_IcAAAFAUPQracwE" name="NEXT" toNode="xBUQV.0EJGcAAAFA9_stpMvZ">
                     <points>0, 0, -350, -368|350, 339, 0, -29|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="VIEW" y="441" x="259" name="ViewNode1" uuid="xBUQV.0EJGcAAAFA9_stpMvZ">
+        <node uuid="xBUQV.0EJGcAAAFA9_stpMvZ" name="ViewNode1" x="251" y="439" type="VIEW">
             <parameters/>
             <config>
-                <parameter value="/velotemplates/template.vm" key="SWF_PARAM_VIEW_TEMPLATE"/>
-                <parameter value="velocity" key="SWF_PARAM_VIEW_RENDER_TYPE"/>
-                <parameter value="org.neuro4j.web.render.velocity.VelocityViewNodeRenderEngine" key="RENDER_IMPL"/>
+                <parameter key="SWF_PARAM_VIEW_TEMPLATE" value="/velotemplates/template.vm"/>
+                <parameter key="SWF_PARAM_VIEW_RENDER_TYPE" value="velocity"/>
             </config>
             <transitions/>
         </node>
-        <node type="CUSTOM" y="214" x="250" name="GetAccountsFromSession" uuid="LEap_iYcj7kAAAFBlFvg5xRL">
+        <node uuid="LEap_iYcj7kAAAFBlFvg5xRL" name="GetAccountsFromSession" x="250" y="214" type="CUSTOM">
             <parameters/>
             <config>
-                <parameter value="GetAccountsFromSession" key="SWF_BLOCK_CLASS"/>
-                <parameter value="org.neuro4j.example.web.blocks.GetAccountsFromSession" key="SWF_CUSTOM_CLASS"/>
+                <parameter key="SWF_BLOCK_CLASS" value="GetAccountsFromSession"/>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.example.web.blocks.GetAccountsFromSession"/>
             </config>
             <transitions>
-                <transition toNode="7SoQV.0EsVAAAAFAQ_QracwE" name="NEXT" uuid="3xap_iYcZ.AAAAFBolvg5xRL">
+                <transition uuid="3xap_iYcZ.AAAAFBolvg5xRL" name="NEXT" toNode="7SoQV.0EsVAAAAFAQ_QracwE">
                     <points>0, 0, -350, -245|350, 217, 0, -28|</points>
                 </transition>
             </transitions>

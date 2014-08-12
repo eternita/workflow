@@ -13,13 +13,13 @@
 		<tbody>
 			<c:forEach items="${accountList}" var="account">
 				<tr>
-					<td class="column1"><img src="../images/ch.png" alt="included"
+					<td class="column1"><img src="../resources/images/ch.png" alt="included"
 						width="16" height="16"></td>
 					<th scope="row">${account.firstName}</th>
 					<th scope="row">${account.lastName}</th>
 					<td><a
 						href="UserAccounts-Remove?&uuid=${account.uuid}"><img
-							src="../images/delete.gif" alt="remove"></a></td>
+							src="../resources/images/delete.gif" alt="remove"></a></td>
 				</tr>
 			</c:forEach>
 			</tbody>	
@@ -31,7 +31,7 @@
 				<th scope="col">&nbsp;<br>
 				</th>
 				<th scope="col"><a href="UserAccounts-New"><img
-						src="../images/add-icon.png" /></a><br></th>
+						src="../resources/images/add-icon.png" /></a><br></th>
 			</tr>
 		</tfoot>
 	</table>
@@ -40,5 +40,5 @@
 <hr>
 <b>Source:</b>
 
-<p><img alt="" src="../images/example1.jpg"> 
+<p><img alt="" src="../resources/images/example1.jpg"> 
 

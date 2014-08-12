@@ -26,7 +26,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.velocity.tools.view.VelocityViewServlet;
-import org.neuro4j.web.logic.WebFlowConstants;
 import org.neuro4j.web.logic.render.ViewNodeRenderEngine;
 import org.neuro4j.web.logic.render.ViewNodeRenderExecutionException;
 import org.neuro4j.workflow.FlowContext;
@@ -65,20 +64,11 @@ public class VelocityViewNodeRenderEngine implements ViewNodeRenderEngine {
             FlowContext logicContext, String viewTemplate)
             throws ViewNodeRenderExecutionException {
 
-        // handle if view is not specified -> go to default page with trace
-        if (null == viewTemplate) {
-            viewTemplate = WebFlowConstants.DEFAULT_VIEW_PAGE;
-        } else if (viewTemplate.startsWith("/")) {
-            viewTemplate = WebFlowConstants.DEFAULT_VIEW_DIRECTORY + viewTemplate.replaceFirst("/", "");
-        } else {
-            viewTemplate = WebFlowConstants.DEFAULT_VIEW_DIRECTORY + viewTemplate;
-        }
         
         try
         {
-            String templatePath = updateTemplatePath(viewTemplate);
 
-            request.setAttribute("javax.servlet.include.servlet_path", templatePath);
+            request.setAttribute("javax.servlet.include.servlet_path", viewTemplate);
 
             if ((this.theServlet instanceof SingleThreadModel))
             {
@@ -137,9 +127,5 @@ public class VelocityViewNodeRenderEngine implements ViewNodeRenderEngine {
         return param;
     }
 
-    private String updateTemplatePath(String templatePath)
-    {
-        return templatePath.replaceFirst(TEMPLATE_PATH + "/", "");
-    }
 
 }

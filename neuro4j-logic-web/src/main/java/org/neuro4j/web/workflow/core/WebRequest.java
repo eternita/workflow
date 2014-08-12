@@ -16,6 +16,8 @@
 
 package org.neuro4j.web.workflow.core;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -28,4 +30,9 @@ public final class WebRequest extends WorkflowRequest {
         super(new WebFlowContext(request, response));
     }
 
+    public WebRequest(Map<String, Object> parameters, HttpServletRequest request, HttpServletResponse response)
+    {
+        super(new WebFlowContext(parameters, request, response));
+    }
+    
 }

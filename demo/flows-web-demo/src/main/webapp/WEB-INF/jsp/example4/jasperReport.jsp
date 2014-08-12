@@ -5,10 +5,10 @@
      
      <p>Click on icon to generate report in specific format.
      
-    <p> <a title="PDF" href="GenerateJasperReport-Start?jasperFormat=pdf"><img alt="PDF" src="../images/file_pdf.png"></a> &nbsp;&nbsp;&nbsp;<a title="RTF" href="GenerateJasperReport-Start?jasperFormat=rtf"><img alt="RTF" src="../images/file_rtf.png"></a>&nbsp;&nbsp;&nbsp;<a title="DOCX" href="GenerateJasperReport-Start?jasperFormat=docx"><img alt="DOCX" src="../images/file_doc.png"></a>&nbsp;&nbsp;&nbsp;<a title="PPTX" href="GenerateJasperReport-Start?jasperFormat=pptx"><img alt="PPTX" src="../images/file_ppt.png"> </a>
+    <p> <a title="PDF" href="GenerateJasperReport-Start?jasperFormat=pdf"><img alt="PDF" src="../resources/images/file_pdf.png"></a> &nbsp;&nbsp;&nbsp;<a title="RTF" href="GenerateJasperReport-Start?jasperFormat=rtf"><img alt="RTF" src="../resources/images/file_rtf.png"></a>&nbsp;&nbsp;&nbsp;<a title="DOCX" href="GenerateJasperReport-Start?jasperFormat=docx"><img alt="DOCX" src="../resources/images/file_doc.png"></a>&nbsp;&nbsp;&nbsp;<a title="PPTX" href="GenerateJasperReport-Start?jasperFormat=pptx"><img alt="PPTX" src="../resources/images/file_ppt.png"> </a>
      
      <hr>
 <b>Source:</b>
 
-     <p><img alt="JasperReports" src="../images/jasperReports.jpg">
+     <p><img alt="JasperReports" src="../resources/images/jasperReports.jpg">
 </div>

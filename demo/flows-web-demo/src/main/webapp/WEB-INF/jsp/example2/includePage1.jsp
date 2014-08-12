@@ -6,8 +6,8 @@
 <b>Source:</b>
 
   
-  <p><img alt="Remote Include JSP" src="../images/includeJsp.jpg"> 
+  <p><img alt="Remote Include JSP" src="../resources/images/includeJsp.jpg"> 
     <hr>
-  <p><img alt="Remote Include" src="../images/include.jpg"> 
+  <p><img alt="Remote Include" src="../resources/images/include.jpg"> 
    
 </div>

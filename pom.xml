@@ -27,6 +27,7 @@
         <module>jasper-report-workflow</module>
         <module>velocity-web-plugin</module>
         <module>json-web-plugin</module>
+        <module>spring-webmvc-workflow</module>
     </modules>
 
     <properties>

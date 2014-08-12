@@ -11,6 +11,6 @@
   <hr>
 <b>Source:</b>
  
-  <p><img alt="Apache Velocity" src="../images/velocity.jpg">
+  <p><img alt="Apache Velocity" src="../resources/images/velocity.jpg">
   
 </div>

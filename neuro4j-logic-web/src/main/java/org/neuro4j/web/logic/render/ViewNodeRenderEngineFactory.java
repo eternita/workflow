@@ -36,11 +36,13 @@ public class ViewNodeRenderEngineFactory {
 
     public static ViewNodeRenderEngine getViewNodeRenderEngine(ServletConfig config, ServletContext servletContext, String renderType) throws ViewNodeRenderExecutionException
     {
+        
+        ViewNodeRenderEngine engine = null;
 
         if (renders.containsKey(renderType))
         {
-            return renders.get(renderType);
-        }
+            engine = renders.get(renderType);
+        } else {
 
         synchronized (renders) {
             String renderClass = getRenderImpl(renderType);
@@ -51,25 +53,27 @@ public class ViewNodeRenderEngineFactory {
 
                 if (fObj instanceof ViewNodeRenderEngine)
                 {
-                    ViewNodeRenderEngine renderEngine = (ViewNodeRenderEngine) fObj;
+                    engine = (ViewNodeRenderEngine) fObj;
 
-                    renderEngine.init(config, servletContext);
+                    engine.init(config, servletContext);
 
-                    renders.put(renderType, (ViewNodeRenderEngine) fObj);
+                    renders.put(renderType, engine);
 
-                    return renders.get(renderType);
                 }
             } catch (ClassNotFoundException e) {
                 Logger.error(ViewNodeRenderEngineFactory.class, e);
+                throw new ViewNodeRenderExecutionException("ViewNodeRenderEngine " + renderClass + " not found");
             } catch (InstantiationException e) {
                 Logger.error(ViewNodeRenderEngineFactory.class, e);
+                throw new ViewNodeRenderExecutionException("ViewNodeRenderEngine: InstantiationException for: " + renderClass);
             } catch (IllegalAccessException e) {
                 Logger.error(ViewNodeRenderEngineFactory.class, e);
+                throw new ViewNodeRenderExecutionException("ViewNodeRenderEngine: IllegalAccessException for: " + renderClass);
             }
-            throw new ViewNodeRenderExecutionException("ViewNodeRenderEngine " + renderClass + " not found");
+            
         }
-
-        
+        }
+        return engine;
     }
 
     /**

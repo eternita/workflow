@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<flow visibility="Public">
+    <nodes>
+        <node uuid="RKwQV.0E.W0AAAFHLO8Z2MXg" name="View" x="507" y="110" type="START">
+            <parameters/>
+            <config>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
+            </config>
+            <transitions>
+                <transition uuid="IrgQV.0ECJ8AAAFHL8wZ2MXh" name="NEXT" toNode="ibUQV.0EvKcAAAFH4ngZ2MXi">
+                    <points>0, 32, 550, 173|-550, -141, 0, 0|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="y0UQV.0E994AAAFHlzAZ2MXh" name="ViewNode1" x="494" y="606" type="VIEW">
+            <parameters/>
+            <config>
+                <parameter key="SWF_PARAM_VIEW_TEMPLATE" value="/jsp/application.jsp"/>
+                <parameter key="SWF_PARAM_VIEW_RENDER_TYPE" value="jsp"/>
+            </config>
+            <transitions/>
+        </node>
+        <node uuid="ibUQV.0EvKcAAAFH4ngZ2MXi" name="MapperNode1" x="507" y="430" type="MAP">
+            <parameters/>
+            <config/>
+            <transitions>
+                <transition uuid="9eAQV.0ElsMAAAFH43gZ2MXi" name="NEXT" toNode="y0UQV.0E994AAAFHlzAZ2MXh">
+                    <points>0, 0, -550, -648|550, 606, 0, -42|</points>
+                </transition>
+            </transitions>
+        </node>
+    </nodes>
+</flow>

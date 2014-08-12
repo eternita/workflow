@@ -19,6 +19,7 @@ package org.neuro4j.workflow;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Stack;
 
 import org.neuro4j.workflow.common.FlowExecutionException;
@@ -36,6 +37,10 @@ public class WorkflowRequest {
 
     public WorkflowRequest() {
         this(new FlowContext());
+    }
+    
+    public WorkflowRequest(Map<String, Object> map) {
+        this(new FlowContext(map));
     }
     
     public WorkflowRequest(FlowContext logicContext) {

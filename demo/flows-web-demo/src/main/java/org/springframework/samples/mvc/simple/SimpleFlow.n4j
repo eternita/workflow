@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<flow visibility="Public">
+    <nodes>
+        <node uuid="hAkQV.0E8KoAAAFH0_4bSbJD" name="Start" x="872" y="25" type="START">
+            <parameters/>
+            <config>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
+            </config>
+            <transitions>
+                <transition uuid="0NwQV.0EabQAAAFHXBobSbJE" name="NEXT" toNode="MxgQV.0EhZ0AAAFHXj4bSbJE">
+                    <points>0, 32, 455, 73|-455, -41, 0, 0|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="XIUQV.0EJ_EAAAFH5QwbSbJE" name="EndNode1" x="872" y="429" type="END">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node uuid="MxgQV.0EhZ0AAAFHXj4bSbJE" name="SayHello" x="875" y="234" type="CUSTOM">
+            <parameters>
+                <parameter key="var2" value="helloMessage" input="false"/>
+            </parameters>
+            <config>
+                <parameter key="SWF_BLOCK_CLASS" value="SayHello"/>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.springframework.samples.mvc.simple.SayHello"/>
+            </config>
+            <transitions>
+                <transition uuid="xx4QV.0EAK8AAAFHHkwbSbJE" name="NEXT" toNode="XIUQV.0EJ_EAAAFH5QwbSbJE">
+                    <points>0, 29, 13, -295|-13, 290, 0, -34|</points>
+                </transition>
+            </transitions>
+        </node>
+    </nodes>
+</flow>

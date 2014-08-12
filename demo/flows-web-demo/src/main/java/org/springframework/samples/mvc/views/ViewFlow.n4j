@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<flow visibility="Public">
+    <nodes>
+        <node uuid="M0QQV.0EuvYAAAFHVdMZ2McK" name="Start" x="510" y="10" type="START">
+            <parameters/>
+            <config>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
+            </config>
+            <transitions>
+                <transition uuid="hwAQV.0E94AAAAFHiqQZ2McL" name="NEXT" toNode="B10QV.0EZkUAAAFHLdoZ2McK">
+                    <points>0, 32, -3, -506|3, 496, 0, -42|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="B10QV.0EZkUAAAFHLdoZ2McK" name="ViewNode1" x="487" y="537" type="VIEW">
+            <parameters>
+                <parameter key="DYNAMIC_VIEW" value="" input="true"/>
+            </parameters>
+            <config>
+                <parameter key="SWF_PARAM_VIEW_TEMPLATE" value="/views/views/html.jsp"/>
+                <parameter key="SWF_PARAM_VIEW_RENDER_TYPE" value="jsp"/>
+            </config>
+            <transitions/>
+        </node>
+    </nodes>
+</flow>

@@ -1,62 +1,62 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <flow visibility="Public">
     <nodes>
-        <node type="START" y="10" x="415" name="View" uuid="CCAQV.0Eo10AAAFHbqPG5ac5">
+        <node uuid="CCAQV.0Eo10AAAFHbqPG5ac5" name="View" x="415" y="10" type="START">
             <parameters/>
             <config>
-                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
             </config>
             <transitions>
-                <transition toNode="KFIQV.0E5MsAAAFH92J3vKdI" name="NEXT" uuid="xSMQV.0EqrUAAAFH_n13vKdI">
+                <transition uuid="xSMQV.0EqrUAAAFH_n13vKdI" name="NEXT" toNode="KFIQV.0E5MsAAAFH92J3vKdI">
                     <points>0, 32, -14, -85|14, 89, 0, -28|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="VIEW" y="718" x="415" name="ViewNode1" uuid="fIQQV.0ErisAAAFHJavG5ac5">
+        <node uuid="fIQQV.0ErisAAAFHJavG5ac5" name="ViewNode1" x="415" y="625" type="VIEW">
             <parameters>
-                <parameter input="true" value="jsonStr" key="DYNAMIC_VIEW"/>
+                <parameter key="DYNAMIC_VIEW" value="jsonStr" input="true"/>
             </parameters>
             <config>
-                <parameter value="json" key="SWF_PARAM_VIEW_RENDER_TYPE"/>
+                <parameter key="SWF_PARAM_VIEW_RENDER_TYPE" value="json"/>
             </config>
             <transitions/>
         </node>
-        <node type="CUSTOM" y="299" x="397" name="GetAccountsList" uuid="NagQV.0EjzoAAAFHdOXG5ac5">
+        <node uuid="NagQV.0EjzoAAAFHdOXG5ac5" name="GetAccountsList" x="397" y="299" type="CUSTOM">
             <parameters>
-                <parameter input="false" value="accounts" key="accounts"/>
+                <parameter key="accounts" value="accounts" input="false"/>
             </parameters>
             <config>
-                <parameter value="GetAccountsList" key="SWF_BLOCK_CLASS"/>
-                <parameter value="org.neuro4j.example.web.blocks.GetAccountsList" key="SWF_CUSTOM_CLASS"/>
+                <parameter key="SWF_BLOCK_CLASS" value="GetAccountsList"/>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.example.web.blocks.GetAccountsList"/>
             </config>
             <transitions>
-                <transition toNode="6RYQV.0EIwkAAAFHd1TG5ac." name="NEXT" uuid="B1EQV.0Ext8AAAFHOAjG5ac6">
+                <transition uuid="B1EQV.0Ext8AAAFHOAjG5ac6" name="NEXT" toNode="6RYQV.0EIwkAAAFHd1TG5ac.">
                     <points>0, 29, 467, 308|-467, -279, 0, 0|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="CUSTOM" y="528" x="372" name="CreateJsonFromAccounts" uuid="6RYQV.0EIwkAAAFHd1TG5ac.">
+        <node uuid="6RYQV.0EIwkAAAFHd1TG5ac." name="CreateJsonFromAccounts" x="373" y="458" type="CUSTOM">
             <parameters>
-                <parameter input="true" value="accountList" key="accounts"/>
+                <parameter key="accounts" value="accountList" input="true"/>
             </parameters>
             <config>
-                <parameter value="CreateJsonFromAccounts" key="SWF_BLOCK_CLASS"/>
-                <parameter value="org.neuro4j.example.web.json.CreateJsonFromAccounts" key="SWF_CUSTOM_CLASS"/>
+                <parameter key="SWF_BLOCK_CLASS" value="CreateJsonFromAccounts"/>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.example.web.json.CreateJsonFromAccounts"/>
             </config>
             <transitions>
-                <transition toNode="fIQQV.0ErisAAAFHJavG5ac5" name="NEXT" uuid="6pYQV.0EnJ0AAAFH4ZTG5ac.">
+                <transition uuid="6pYQV.0EnJ0AAAFH4ZTG5ac." name="NEXT" toNode="fIQQV.0ErisAAAFHJavG5ac5">
                     <points>0, 29, 2, -169|-2, 164, 0, -34|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="CUSTOM" y="140" x="371" name="GetAccountsFromSession" uuid="KFIQV.0E5MsAAAFH92J3vKdI">
+        <node uuid="KFIQV.0E5MsAAAFH92J3vKdI" name="GetAccountsFromSession" x="371" y="140" type="CUSTOM">
             <parameters/>
             <config>
-                <parameter value="GetAccountsFromSession" key="SWF_BLOCK_CLASS"/>
-                <parameter value="org.neuro4j.example.web.blocks.GetAccountsFromSession" key="SWF_CUSTOM_CLASS"/>
+                <parameter key="SWF_BLOCK_CLASS" value="GetAccountsFromSession"/>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.example.web.blocks.GetAccountsFromSession"/>
             </config>
             <transitions>
-                <transition toNode="NagQV.0EjzoAAAFHdOXG5ac5" name="NEXT" uuid="_NsQV.0EiWAAAAFHjIh3vKdI">
+                <transition uuid="_NsQV.0EiWAAAAFHjIh3vKdI" name="NEXT" toNode="NagQV.0EjzoAAAFHdOXG5ac5">
                     <points>0, 29, 2, -92|-2, 93, 0, -28|</points>
                 </transition>
             </transitions>

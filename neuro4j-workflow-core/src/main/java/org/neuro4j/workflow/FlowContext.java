@@ -23,6 +23,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.beanutils.PropertyUtils;
@@ -38,7 +39,7 @@ public class FlowContext {
     /**
      * 
      */
-    private HashMap<String, Object> parameters = new HashMap<String, Object>();
+    private Map<String, Object> parameters = new HashMap<String, Object>();
     /**
      * Name of template which should be rendered after flow execution.
      * Can be used in web application.
@@ -58,6 +59,13 @@ public class FlowContext {
     public FlowContext() {
         super();
         locale = Locale.US;
+    }
+
+    /**
+     * @param map
+     */
+    public FlowContext(Map<String, Object> map) {
+        parameters.putAll(map);
     }
 
     public void put(String key, Object value) {
@@ -161,6 +169,10 @@ public class FlowContext {
             localStringBuilder.append(", ");
         }
         return localStringBuilder.toString();
+    }
+    
+    public Map<String, Object> getParameters(){        
+        return new HashMap<String, Object>(parameters);
     }
 
 }

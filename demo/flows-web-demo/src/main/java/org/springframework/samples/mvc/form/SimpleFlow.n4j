@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<flow visibility="Public">
+    <nodes>
+        <node uuid="Y3gQV.0En8UAAAFHDrMbSbKu" name="Start" x="519" y="19" type="START">
+            <parameters/>
+            <config>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
+            </config>
+            <transitions>
+                <transition uuid="cw8QV.0EpmoAAAFHCOAbSbKw" name="NEXT" toNode="HUQQV.0EBHQAAAFH46obSbKw">
+                    <points>0, 32, -4, -172|4, 176, 0, -28|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="C6kQV.0EuKsAAAFHlbsbSbKu" name="END" x="519" y="529" type="END">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node uuid="HUQQV.0EBHQAAAFH46obSbKw" name="ProcessForm" x="511" y="317" type="CUSTOM">
+            <parameters/>
+            <config>
+                <parameter key="SWF_BLOCK_CLASS" value="ProcessForm"/>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.springframework.samples.mvc.form.ProcessForm"/>
+            </config>
+            <transitions>
+                <transition uuid="oL4QV.0E70MAAAFHLQQbSbKx" name="NEXT" toNode="C6kQV.0EuKsAAAFHlbsbSbKu">
+                    <points>0, 29, 9, -295|-9, 290, 0, -34|</points>
+                </transition>
+            </transitions>
+        </node>
+    </nodes>
+</flow>
