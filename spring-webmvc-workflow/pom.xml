@@ -8,7 +8,7 @@
     </parent>
     <artifactId>spring-webmvc-workflow</artifactId>
 	<properties>
-		<org.springframework-version>4.1.0.RC1</org.springframework-version>
+		<org.springframework-version>4.0.6.RELEASE</org.springframework-version>
 		<org.springframework.security-version>3.2.0.RELEASE</org.springframework.security-version>
 	</properties>
 
