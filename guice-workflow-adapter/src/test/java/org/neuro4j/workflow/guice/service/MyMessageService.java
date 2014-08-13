@@ -14,24 +14,19 @@
  * limitations under the License.
  */
 
-package org.neuro4j.workflow.common;
 
-public class FlowInitializationException extends Exception {
+package org.neuro4j.workflow.guice.service;
 
-    /**
-	 * 
-	 */
-    private static final long serialVersionUID = 1L;
+/**
+ * Test service.
+ *
+ */
+public class MyMessageService implements MessageService {
 
-    public FlowInitializationException(String msg) {
-        super(msg);
-    }
-
-    /**
-     * @param e
-     */
-    public FlowInitializationException(Exception e) {
-        super(e);
+    public String sendMessage(String msg, String receipient) {
+        String message = "Message to " + receipient + " = " + msg;
+        System.out.println(message);
+        return message;
     }
 
 }

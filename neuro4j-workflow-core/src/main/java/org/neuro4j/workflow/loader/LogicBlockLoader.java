@@ -16,9 +16,9 @@
 
 package org.neuro4j.workflow.loader;
 
-import java.util.Hashtable;
+import java.util.HashMap;
+import java.util.Map;
 
-import org.neuro4j.workflow.ExecutableEntityFactory;
 import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.node.CustomBlock;
 import org.neuro4j.workflow.node.CustomNode;
@@ -31,7 +31,9 @@ public class LogicBlockLoader {
 
     private static LogicBlockLoader INSTANCE = new LogicBlockLoader();
 
-    private Hashtable<String, CustomBlock> cache = new Hashtable<String, CustomBlock>();
+    private Map<String, CustomBlock> cache = new HashMap<String, CustomBlock>();
+
+    private CustomBlockInitStrategy customBlockInitStrategy = null;
 
     /**
      * Constructor.
@@ -54,20 +56,32 @@ public class LogicBlockLoader {
      */
     public CustomBlock lookupBlock(CustomNode entity) throws FlowInitializationException
     {
+
         if (entity.getExecutableClass() == null)
         {
             throw new FlowInitializationException("ExecutableClass not defined for CustomNode " + entity.getName());
         }
-        
+
         CustomBlock block = cache.get(entity.getExecutableClass());
 
-        if (block == null)
-        {
-            block = (CustomBlock) ExecutableEntityFactory.getActionEntity(entity);
-            block.init();
-            cache.put(entity.getExecutableClass(), block);
+        synchronized (cache) {
+            if (block == null)
+            {
+                if (customBlockInitStrategy == null)
+                {
+                    customBlockInitStrategy = new DefaultCustomBlockInitStrategy();
+                }
+                block = customBlockInitStrategy.loadCustomBlock(entity.getExecutableClass());
+
+                cache.put(entity.getExecutableClass(), block);
+            }            
         }
 
+
         return block;
+    }
+
+    public void setInitStrategy(CustomBlockInitStrategy newStrategy) {
+        this.customBlockInitStrategy = newStrategy;
     }
 }

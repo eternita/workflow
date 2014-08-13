@@ -14,24 +14,18 @@
  * limitations under the License.
  */
 
-package org.neuro4j.workflow.common;
+package org.neuro4j.workflow.guice;
 
-public class FlowInitializationException extends Exception {
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+import org.junit.runners.Suite.SuiteClasses;
 
-    /**
-	 * 
-	 */
-    private static final long serialVersionUID = 1L;
-
-    public FlowInitializationException(String msg) {
-        super(msg);
-    }
-
-    /**
-     * @param e
-     */
-    public FlowInitializationException(Exception e) {
-        super(e);
-    }
+/**
+ *
+ *
+ */
+@RunWith(Suite.class)
+@SuiteClasses({ GuiceWithWorkflowTestCase.class })
+public class AllTests {
 
 }

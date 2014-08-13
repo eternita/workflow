@@ -23,6 +23,8 @@ import org.neuro4j.workflow.ExecutionResult;
 import org.neuro4j.workflow.Workflow;
 import org.neuro4j.workflow.WorkflowMngImpl;
 import org.neuro4j.workflow.WorkflowRequest;
+import org.neuro4j.workflow.loader.CustomBlockInitStrategy;
+import org.neuro4j.workflow.loader.LogicBlockLoader;
 import org.neuro4j.workflow.log.Logger;
 import org.neuro4j.workflow.node.StartNode;
 import org.neuro4j.workflow.node.WorkflowNode;
@@ -143,6 +145,11 @@ public class WorkflowEngine {
             Logger.error(WorkflowEngine.class, e.getMessage(), e);
         }
         return null;
+    }
+    
+    public static void setCustomBlockInitStrategy(CustomBlockInitStrategy newStrategy)
+    {
+        LogicBlockLoader.getInstance().setInitStrategy(newStrategy);
     }
 
 }

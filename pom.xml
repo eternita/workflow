@@ -28,6 +28,7 @@
         <module>velocity-web-plugin</module>
         <module>json-web-plugin</module>
         <module>spring-webmvc-workflow</module>
+        <module>guice-workflow-adapter</module>
     </modules>
 
     <properties>

@@ -14,24 +14,18 @@
  * limitations under the License.
  */
 
-package org.neuro4j.workflow.common;
+package org.neuro4j.workflow.guice;
 
-public class FlowInitializationException extends Exception {
+import org.neuro4j.workflow.guice.service.MessageService;
+import org.neuro4j.workflow.guice.service.MyMessageService;
 
-    /**
-	 * 
-	 */
-    private static final long serialVersionUID = 1L;
+import com.google.inject.AbstractModule;
 
-    public FlowInitializationException(String msg) {
-        super(msg);
+public class AppInjector extends AbstractModule {
+    
+    @Override
+    protected void configure() {
+        bind(MessageService.class).to(MyMessageService.class);
     }
-
-    /**
-     * @param e
-     */
-    public FlowInitializationException(Exception e) {
-        super(e);
-    }
-
+ 
 }

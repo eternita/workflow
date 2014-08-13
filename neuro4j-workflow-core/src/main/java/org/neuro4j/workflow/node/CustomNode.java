@@ -99,6 +99,10 @@ public class CustomNode extends WorkflowNode {
     public final void validate(FlowContext ctx) throws FlowExecutionException {
         super.validate(ctx);
         ParameterDefinitionList parameterDefinitionList = node.getClass().getAnnotation(org.neuro4j.workflow.common.ParameterDefinitionList.class);
+        if (parameterDefinitionList == null)
+        {
+            return;
+        }
         ParameterDefinition[] parameters = parameterDefinitionList.input();
         for (ParameterDefinition parameter : parameters)
         {
@@ -136,6 +140,10 @@ public class CustomNode extends WorkflowNode {
     private void doOutputMapping(FlowContext ctx) throws FlowExecutionException
     {
         ParameterDefinitionList parameterDefinitionList = node.getClass().getAnnotation(org.neuro4j.workflow.common.ParameterDefinitionList.class);
+        if (parameterDefinitionList == null)
+        {
+            return;
+        }
         ParameterDefinition[] parameters = parameterDefinitionList.output();
         for (ParameterDefinition parameter : parameters)
         {
