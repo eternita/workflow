@@ -40,6 +40,8 @@
 	<!-- Only needed because we require fileupload in the org.springframework.samples.mvc.fileupload package -->
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
 
+	<beans:bean  class="org.neuro4j.workflow.springmvc.WorkflowWebApplicationListener" />
+
 	<!-- Imports user-defined @Controller beans that process client requests -->
 	<beans:import resource="controllers.xml" />
 

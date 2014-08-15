@@ -41,5 +41,6 @@ public class ViewsController extends AbstractWorkflowController{
 		// JavaBean "foo" and "fruit" properties populated from URI variables 
 		return "views/dataBinding";
 	}
+	
 
 }
