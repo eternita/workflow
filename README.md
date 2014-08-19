@@ -3,6 +3,30 @@ Neuro4j Workflow.
 Java workflow engine with Eclipse-based development environment.
 
 
+What are the advantages of Neuro4j Workflow framework?
+======================
+
+The advantages of Workflows are as follows:
+
+* Neuro4j Workflow has layered architecture.
+ 
+* It will be much easier to organize, read and support your code.
+ 
+* Reusable business code, no need for duplication. 
+
+* Module Development
+ 
+* Easy to integrate with different technologies. 
+
+* Dependency Injection.
+ Developer can use Google Guice library or Spring framework to initialize code.
+
+* Open source.
+  
+
+First Flow
+----------
+
 This is HelloWorld example how to use Neuro4j Flows.
 
 Flow file org\neuro4j\example\HelloWorld.n4j:
