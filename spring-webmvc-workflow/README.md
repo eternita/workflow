@@ -1,7 +1,7 @@
 Spring MVC Plugin.
 ========
 
-spring-webmvc-workflow plugin allows using Neuro4j Workflow framework together with Spring MVC in web application.
+spring-webmvc-workflow plugin allows developer to  use Neuro4j Workflow framework together with Spring MVC in web application.
 
 Here is example how to move your business code to workflow but use url mapping, dependency injection and security from Spring MVC.
 
