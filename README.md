@@ -4,7 +4,7 @@ Java workflow engine with Eclipse-based development environment.
 
 
 What are the advantages of Neuro4j Workflow framework?
-======================
+----------------
 
 The advantages of Workflows are as follows:
 
