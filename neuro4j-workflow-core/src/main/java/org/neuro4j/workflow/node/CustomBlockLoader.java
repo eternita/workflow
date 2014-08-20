@@ -14,22 +14,22 @@
  * limitations under the License.
  */
 
-package org.neuro4j.workflow.loader;
+package org.neuro4j.workflow.node;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import org.neuro4j.workflow.common.FlowInitializationException;
-import org.neuro4j.workflow.node.CustomBlock;
-import org.neuro4j.workflow.node.CustomNode;
+import org.neuro4j.workflow.loader.CustomBlockInitStrategy;
+import org.neuro4j.workflow.loader.DefaultCustomBlockInitStrategy;
 
 /**
  * Loads and initializes custom (user's defined) blocks.
  * 
  */
-public class LogicBlockLoader {
+public class CustomBlockLoader {
 
-    private static LogicBlockLoader INSTANCE = new LogicBlockLoader();
+    private static CustomBlockLoader INSTANCE = new CustomBlockLoader();
 
     private Map<String, CustomBlock> cache = new HashMap<String, CustomBlock>();
 
@@ -38,11 +38,11 @@ public class LogicBlockLoader {
     /**
      * Constructor.
      */
-    private LogicBlockLoader() {
+    private CustomBlockLoader() {
         super();
     }
 
-    public static LogicBlockLoader getInstance() {
+    public static CustomBlockLoader getInstance() {
         return INSTANCE;
     }
 
@@ -54,7 +54,7 @@ public class LogicBlockLoader {
      * @return
      * @throws FlowInitializationException
      */
-    public CustomBlock lookupBlock(CustomNode entity) throws FlowInitializationException
+    CustomBlock lookupBlock(CustomNode entity) throws FlowInitializationException
     {
 
         if (entity.getExecutableClass() == null)
@@ -63,10 +63,11 @@ public class LogicBlockLoader {
         }
 
         CustomBlock block = cache.get(entity.getExecutableClass());
+        
+        if (block == null)
+        {
+            synchronized (cache) {
 
-        synchronized (cache) {
-            if (block == null)
-            {
                 if (customBlockInitStrategy == null)
                 {
                     customBlockInitStrategy = new DefaultCustomBlockInitStrategy();
@@ -74,7 +75,7 @@ public class LogicBlockLoader {
                 block = customBlockInitStrategy.loadCustomBlock(entity.getExecutableClass());
 
                 cache.put(entity.getExecutableClass(), block);
-            }            
+            }
         }
 
 

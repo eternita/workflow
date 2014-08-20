@@ -1,24 +1,74 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <flow visibility="Public">
     <nodes>
-        <node uuid="M0QQV.0EuvYAAAFHVdMZ2McK" name="Start" x="510" y="10" type="START">
+        <node uuid="M0QQV.0EuvYAAAFHVdMZ2McK" name="Start" x="510" y="124" type="START">
             <parameters/>
             <config>
                 <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
             </config>
             <transitions>
-                <transition uuid="hwAQV.0E94AAAAFHiqQZ2McL" name="NEXT" toNode="B10QV.0EZkUAAAFHLdoZ2McK">
-                    <points>0, 32, -3, -506|3, 496, 0, -42|</points>
+                <transition uuid="DY0QV.0EMV4AAAFHDQhA1vVe" name="NEXT" toNode="s.0QV.0EcM8AAAFHlRVA1u9u">
+                    <points>0, 32, 0, -167|0, 171, 0, -28|</points>
                 </transition>
             </transitions>
         </node>
-        <node uuid="B10QV.0EZkUAAAFHLdoZ2McK" name="ViewNode1" x="487" y="537" type="VIEW">
+        <node uuid="B10QV.0EZkUAAAFHLdoZ2McK" name="ViewNode1" x="487" y="453" type="VIEW">
             <parameters>
                 <parameter key="DYNAMIC_VIEW" value="" input="true"/>
             </parameters>
             <config>
                 <parameter key="SWF_PARAM_VIEW_TEMPLATE" value="/views/views/html.jsp"/>
                 <parameter key="SWF_PARAM_VIEW_RENDER_TYPE" value="jsp"/>
+            </config>
+            <transitions/>
+        </node>
+        <node uuid="s.0QV.0EcM8AAAFHlRVA1u9u" name="BlockWithService" x="488" y="326" type="CUSTOM">
+            <parameters/>
+            <config>
+                <parameter key="SWF_BLOCK_CLASS" value="BlockWithService"/>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.springframework.samples.mvc.views.BlockWithService"/>
+            </config>
+            <transitions>
+                <transition uuid="Xv4QV.0E2c4AAAFHjSVA1u9u" name="NEXT" toNode="B10QV.0EZkUAAAFHLdoZ2McK">
+                    <points>0, 29, -2, -188|2, 175, 0, -42|</points>
+                </transition>
+                <transition uuid="7MMQV.0E4GUAAAFHWnVA1vBI" name="ERROR" toNode="pUkQV.0EehcAAAFHT0RA1vBI">
+                    <points>63, 0, -155, -128|218, 86, 0, -42|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="pUkQV.0EehcAAAFHT0RA1vBI" name="ViewNode2" x="730" y="451" type="VIEW">
+            <parameters/>
+            <config>
+                <parameter key="SWF_PARAM_VIEW_TEMPLATE" value="/error.jsp"/>
+                <parameter key="SWF_PARAM_VIEW_RENDER_TYPE" value="jsp"/>
+            </config>
+            <transitions/>
+        </node>
+        <node uuid="note" name="TukQV.0EasUAAAFHjRJA1vVe" x="610" y="290" type="NOTE">
+            <description>Reuseble bussines code</description>
+            <parameters/>
+            <config>
+                <parameter key="w" value="171"/>
+                <parameter key="h" value="43"/>
+            </config>
+            <transitions/>
+        </node>
+        <node uuid="note" name="uEcQV.0EasYAAAFHjRJA1vVe" x="647" y="213" type="NOTE">
+            <description>Calling other workflow</description>
+            <parameters/>
+            <config>
+                <parameter key="w" value="214"/>
+                <parameter key="h" value="44"/>
+            </config>
+            <transitions/>
+        </node>
+        <node uuid="note" name="KcMQV.0EascAAAFHjRJA1vVe" x="599" y="449" type="NOTE">
+            <description>Your view</description>
+            <parameters/>
+            <config>
+                <parameter key="w" value="107"/>
+                <parameter key="h" value="45"/>
             </config>
             <transitions/>
         </node>

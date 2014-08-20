@@ -18,11 +18,11 @@ package org.neuro4j.workflow.node;
 
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.Workflow;
-import org.neuro4j.workflow.WorkflowMngImpl;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.common.WorkflowEngine;
+import org.neuro4j.workflow.loader.f4j.WorkflowMngImpl;
 import org.neuro4j.workflow.log.Logger;
 
 /**
@@ -92,7 +92,7 @@ public class CallNode extends WorkflowNode {
      * 
      * @see org.neuro4j.workflow.node.LogicBlock#execute(org.neuro4j.workflow.WorkflowRequest)
      */
-    public Transition execute(WorkflowRequest request) throws FlowExecutionException {
+    public final Transition execute(WorkflowRequest request) throws FlowExecutionException {
         FlowContext ctx = request.getLogicContext();
         String flow = null;
         if (dynamicFlownName != null)
@@ -132,9 +132,9 @@ public class CallNode extends WorkflowNode {
             calledWorkflow.executeWorkflow(startNode, request);
 
             request.popPackage();
-        } catch (FlowExecutionException e1) {
+        } catch (FlowExecutionException exeption) {
             request.popPackage();
-            throw new FlowExecutionException(e1.getCause());
+            throw exeption;
         }
 
         WorkflowNode endNode = request.getLastSuccessfulNode();

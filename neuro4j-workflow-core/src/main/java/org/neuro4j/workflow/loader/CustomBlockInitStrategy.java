@@ -20,7 +20,7 @@ import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.node.CustomBlock;
 
 /**
- *
+ *  
  *
  */
 public interface CustomBlockInitStrategy {

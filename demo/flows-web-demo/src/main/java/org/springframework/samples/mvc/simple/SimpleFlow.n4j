@@ -43,7 +43,7 @@
                 </transition>
             </transitions>
         </node>
-        <node uuid="QmoQV.0EUooAAAFHnoZA1taO" name="StartNode2" x="910" y="110" type="START">
+        <node uuid="QmoQV.0EUooAAAFHnoZA1taO" name="StartNode2" x="908" y="98" type="START">
             <parameters/>
             <config>
                 <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>

@@ -21,11 +21,11 @@ import java.util.Map;
 
 import org.neuro4j.workflow.ExecutionResult;
 import org.neuro4j.workflow.Workflow;
-import org.neuro4j.workflow.WorkflowMngImpl;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.loader.CustomBlockInitStrategy;
-import org.neuro4j.workflow.loader.LogicBlockLoader;
+import org.neuro4j.workflow.loader.f4j.WorkflowMngImpl;
 import org.neuro4j.workflow.log.Logger;
+import org.neuro4j.workflow.node.CustomBlockLoader;
 import org.neuro4j.workflow.node.StartNode;
 import org.neuro4j.workflow.node.WorkflowNode;
 
@@ -138,7 +138,7 @@ public class WorkflowEngine {
      * @param flowName
      * @return
      */
-    public static Workflow loadFlow(String flowName) {
+    private static Workflow loadFlow(String flowName) {
         try {
             return WorkflowMngImpl.getInstance().lookupWorkflow(flowName);
         } catch (FlowInitializationException e) {
@@ -149,7 +149,7 @@ public class WorkflowEngine {
     
     public static void setCustomBlockInitStrategy(CustomBlockInitStrategy newStrategy)
     {
-        LogicBlockLoader.getInstance().setInitStrategy(newStrategy);
+        CustomBlockLoader.getInstance().setInitStrategy(newStrategy);
     }
 
 }

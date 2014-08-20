@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -35,7 +36,7 @@ public class FormController extends AbstractWorkflowController{
 		String message = (String) flowContext.get("message");
 		if (ajaxRequest) {
 			model.addAttribute("message", message);
-			return null;
+			return "views/form";
 		} else {
 			redirectAttrs.addFlashAttribute("message", message);
 			return "redirect:/form";			
@@ -56,7 +57,8 @@ public class FormController extends AbstractWorkflowController{
 	}
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public void form() {
+	public ModelAndView form() {
+		return new ModelAndView("views/form");
 	}
 	
 }

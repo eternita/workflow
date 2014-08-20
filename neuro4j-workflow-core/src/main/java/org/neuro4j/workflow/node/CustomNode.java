@@ -26,7 +26,6 @@ import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.common.ParameterDefinition;
 import org.neuro4j.workflow.common.ParameterDefinitionList;
-import org.neuro4j.workflow.loader.LogicBlockLoader;
 import org.neuro4j.workflow.loader.f4j.SWFConstants;
 import org.neuro4j.workflow.log.Logger;
 
@@ -62,7 +61,7 @@ public class CustomNode extends WorkflowNode {
     {
         mainExit = getExitByName(NEXT_EXIT_RELATION);
         errorExit = getExitByName(ERROR_EXIT_RELATION);
-        node = LogicBlockLoader.getInstance().lookupBlock(this);
+        node = CustomBlockLoader.getInstance().lookupBlock(this);
     }
 
     /*

@@ -14,10 +14,15 @@
  * limitations under the License.
  */
 
-package org.neuro4j.workflow;
+package org.neuro4j.workflow.loader.f4j;
 
+import java.io.IOException;
+import java.io.InputStream;
+
+import org.neuro4j.workflow.Workflow;
+import org.neuro4j.workflow.WorkflowSet;
 import org.neuro4j.workflow.common.FlowInitializationException;
-import org.neuro4j.workflow.loader.WorkflowLoader;
+import org.neuro4j.workflow.log.Logger;
 
 public class WorkflowMngImpl {
 
@@ -29,7 +34,12 @@ public class WorkflowMngImpl {
 
     private WorkflowMngImpl()
     {
-        developmentMode = true;
+
+    }
+    
+    public void setDevMode(boolean mode)
+    {
+        this.developmentMode = mode;
     }
 
     public static synchronized WorkflowMngImpl getInstance()
@@ -49,12 +59,45 @@ public class WorkflowMngImpl {
         if (null != workflow)
             return workflow;
 
-        workflow = WorkflowLoader.loadWorkFlowFromFile(flowName);
+        workflow = loadWorkFlowFromFile(flowName);
 
-        if (null != workflow) {
+        if (null != workflow && !developmentMode) {
             flowCache.addWorkflow(flowName, workflow);
         }
         return workflow;
+    }
+    
+    
+    static Workflow loadWorkFlowFromFile(String file) throws FlowInitializationException
+    {
+        Workflow flow = null;
+        InputStream fis = WorkflowMngImpl.class.getClassLoader().getResourceAsStream(file + ".n4j");
+        if (null != fis) {
+            flow = loadFlowFromFS(fis, file);
+        }
+
+        return flow;
+    }
+
+    static Workflow loadFlowFromFS(InputStream is, String flow) throws FlowInitializationException
+    {
+        Workflow net = null;
+        try {
+            if (null != is)
+                try {
+                    net = FlowConverter.xml2workflow(is, flow);
+                } catch (ConvertationException e) {
+                    Logger.error(WorkflowMngImpl.class, e);
+                }
+        } finally {
+            try {
+                if (null != is)
+                    is.close();
+            } catch (IOException e) {
+                Logger.error(WorkflowMngImpl.class, e);
+            }
+        }
+        return net;
     }
 
 }

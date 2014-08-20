@@ -50,7 +50,7 @@ public class FlowConverter {
      * @return
      * @throws FlowInitializationException
      */
-    public static Workflow xml2workflow(InputStream xml, String flow)
+  static Workflow xml2workflow(InputStream xml, String flow)
             throws ConvertationException, FlowInitializationException {
         if (null == xml)
             return null;

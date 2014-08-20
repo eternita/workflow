@@ -16,6 +16,8 @@
 
 package org.neuro4j.workflow;
 
+import org.neuro4j.workflow.common.FlowExecutionException;
+
 /**
  * Class holds information regarding execution result. 
  *
@@ -27,7 +29,7 @@ public class ExecutionResult {
     /**
      *  Keeps exception if flow finished with error.
      */
-    Exception exception = null;
+    FlowExecutionException exception = null;
     
     /**
      *  Keeps context after execution.
@@ -43,11 +45,11 @@ public class ExecutionResult {
         this.flowContext = logicContext;
     }
 
-    public void setExecutionExeption(Exception ex) {
+    public void setExecutionExeption(FlowExecutionException ex) {
         this.exception = ex;
     }
 
-    public Exception getException() {
+    public FlowExecutionException getException() {
         return exception;
     }
 

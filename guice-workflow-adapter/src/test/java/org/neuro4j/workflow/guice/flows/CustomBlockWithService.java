@@ -36,7 +36,7 @@ public class CustomBlockWithService extends CustomBlock {
 
     public int execute(FlowContext ctx) throws FlowExecutionException {
 
-        Assert.assertEquals(this.service.sendMessage("Hi", "Mister"), "Message to Mister = Hi");
+        this.service.sendMessage("Hi", "Mister");
         return NEXT;
     }
 
