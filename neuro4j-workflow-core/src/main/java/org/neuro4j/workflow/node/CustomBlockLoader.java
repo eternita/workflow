@@ -67,6 +67,11 @@ public class CustomBlockLoader {
         if (block == null)
         {
             synchronized (cache) {
+                
+                if (cache.containsKey(entity.getExecutableClass()))
+                {
+                    return cache.get(entity.getExecutableClass());
+                }
 
                 if (customBlockInitStrategy == null)
                 {

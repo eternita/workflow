@@ -39,17 +39,11 @@ public class DefaultCustomBlockInitStrategy implements CustomBlockInitStrategy {
                 return customBlock;
             }
 
-        } catch (ClassNotFoundException e) {
-            Logger.error(this, e);
-            throw new FlowInitializationException(e);
-        } catch (InstantiationException e) {
-            Logger.error(this, e);
-            throw new FlowInitializationException(e);
-        } catch (IllegalAccessException e) {
+        } catch (Exception e) {
             Logger.error(this, e);
             throw new FlowInitializationException(e);
         }
-        throw new FlowInitializationException("CustomBlock: " + className + " not found");
+        throw new FlowInitializationException("CustomBlock: " + className + " can not be initialized.");
     }
 
 }
