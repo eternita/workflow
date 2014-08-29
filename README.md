@@ -44,3 +44,13 @@ Following code execute flow:
 
 
 Online documentation how to create first application based on flow available at (http://neuro4j.org/docs/wf/helloworld)
+
+Debuging flow
+----------
+
+Neuro4j Studio provides  plugin which allows to debug flow in visual editor.
+
+![workflow-example-higlevel](https://raw.github.com/neuro4j/workflow/master/doc/images/debug.png "Debuging workflow")
+
+More information about debug plugin avaliable at http://neuro4j.org/docs/wf/flowdebugtool
+
