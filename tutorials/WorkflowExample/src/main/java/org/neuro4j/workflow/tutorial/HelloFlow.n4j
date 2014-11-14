@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<flow visibility="Public">
+    <nodes>
+        <node uuid="jtwQV.89kbcAAAFJ2mwMBXff" name="Start" x="301" y="61" type="START">
+            <parameters/>
+            <config>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
+            </config>
+            <transitions>
+                <transition uuid="4sUQV.89OzYAAAFJOUoMBXgL" name="NEXT" toNode="xGIQV.89OY4AAAFJcDIMBXgL">
+                    <points>0, 32, 0, -122|0, 126, 0, -28|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="bbsQV.89Lh8AAAFJ5IoMBXff" name="End" x="301" y="444" type="END">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node uuid="xGIQV.89OY4AAAFJcDIMBXgL" name="HelloWorld" x="297" y="253" type="CUSTOM">
+            <parameters/>
+            <config>
+                <parameter key="SWF_BLOCK_CLASS" value="HelloWorld"/>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.workflow.tutorial.HelloWorld"/>
+            </config>
+            <transitions>
+                <transition uuid="SHIQV.89iVMAAAFJE1UMBXgL" name="NEXT" toNode="bbsQV.89Lh8AAAFJ5IoMBXff">
+                    <points>0, 29, 0, -147|0, 142, 0, -34|</points>
+                </transition>
+            </transitions>
+        </node>
+    </nodes>
+</flow>
