@@ -19,7 +19,7 @@ package org.neuro4j.workflow.loader.f4j;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import org.neuro4j.workflow.Workflow;
+import org.neuro4j.workflow.common.Workflow;
 import org.neuro4j.workflow.node.Transition;
 import org.neuro4j.workflow.node.WorkflowNode;
 

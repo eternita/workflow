@@ -21,10 +21,10 @@ import java.util.Collection;
 import java.util.Iterator;
 
 import org.neuro4j.workflow.FlowContext;
-import org.neuro4j.workflow.Workflow;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.FlowInitializationException;
+import org.neuro4j.workflow.common.Workflow;
 import org.neuro4j.workflow.loader.f4j.SWFConstants;
 
 public class LoopNode extends WorkflowNode {

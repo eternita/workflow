@@ -14,6 +14,11 @@ import org.neuro4j.workflow.common.ParameterDefinition;
 import org.neuro4j.workflow.common.ParameterDefinitionList;
 import org.neuro4j.workflow.node.CustomBlock;
 
+/**
+ * Remove account.
+ * @author pavlikdm
+ *
+ */
 @ParameterDefinitionList(input={
 		                         @ParameterDefinition(name=IN_UUID, isOptional=false, type= "java.lang.String"), @ParameterDefinition(name=IN_ACCOUNTS, isOptional=false, type= "java.util.Map")},
                          output={ })	

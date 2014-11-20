@@ -16,7 +16,7 @@
 
 package org.neuro4j.workflow.node;
 
-import org.neuro4j.workflow.Workflow;
+import org.neuro4j.workflow.common.Workflow;
 
 public class Transition {
 

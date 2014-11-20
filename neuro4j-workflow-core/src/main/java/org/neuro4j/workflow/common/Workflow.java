@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-package org.neuro4j.workflow;
+package org.neuro4j.workflow.common;
 
 import java.util.Collection;
 import java.util.HashMap;
 
-import org.neuro4j.workflow.common.FlowExecutionException;
+import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.enums.FlowVisibility;
 import org.neuro4j.workflow.log.Logger;
 import org.neuro4j.workflow.node.StartNode;
@@ -68,12 +68,18 @@ public class Workflow {
         return visibility == FlowVisibility.Public;
     }
 
-    public void executeWorkflow(StartNode startNode, WorkflowRequest request) throws FlowExecutionException {
+    /**
+     * Executes  workflow from given firstNode.
+     * @param firstNode
+     * @param request
+     * @throws FlowExecutionException
+     */
+    void executeWorkflow(WorkflowNode firstNode, WorkflowRequest request) throws FlowExecutionException {
 
         if (null == request)
             throw new RuntimeException("WorkflowRequest must not be null");
 
-        WorkflowNode step = startNode;
+        WorkflowNode step = firstNode;
 
         while (null != step)
         {
@@ -91,6 +97,9 @@ public class Workflow {
         }
 
     }
+    
+
+    
 
     public WorkflowNode getById(String uuid) {
         return nodes.get(uuid);
@@ -119,5 +128,7 @@ public class Workflow {
     public String getFlowName() {
         return flowName;
     }
+
+
 
 }

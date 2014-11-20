@@ -16,10 +16,10 @@
 
 package org.neuro4j.workflow.node;
 
-import org.neuro4j.workflow.Workflow;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.FlowInitializationException;
+import org.neuro4j.workflow.common.Workflow;
 import org.neuro4j.workflow.enums.StartNodeTypes;
 
 public class StartNode extends WorkflowNode {

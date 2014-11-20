@@ -17,9 +17,9 @@
 package org.neuro4j.workflow.node;
 
 import org.neuro4j.workflow.FlowContext;
-import org.neuro4j.workflow.Workflow;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
+import org.neuro4j.workflow.common.Workflow;
 
 public class ViewNode extends WorkflowNode {
 

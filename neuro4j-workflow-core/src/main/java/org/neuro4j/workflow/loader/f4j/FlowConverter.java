@@ -22,13 +22,13 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
-import org.neuro4j.workflow.Workflow;
+import org.neuro4j.workflow.common.CallNode;
 import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.common.SWFParametersConstants;
+import org.neuro4j.workflow.common.Workflow;
 import org.neuro4j.workflow.enums.DecisionCompTypes;
 import org.neuro4j.workflow.enums.DecisionOperators;
 import org.neuro4j.workflow.enums.StartNodeTypes;
-import org.neuro4j.workflow.node.CallNode;
 import org.neuro4j.workflow.node.CustomNode;
 import org.neuro4j.workflow.node.DecisionNode;
 import org.neuro4j.workflow.node.EndNode;
@@ -41,6 +41,10 @@ import org.neuro4j.workflow.node.Transition;
 import org.neuro4j.workflow.node.ViewNode;
 import org.neuro4j.workflow.node.WorkflowNode;
 
+/**
+ * Loads workflow from file.
+ *
+ */
 public class FlowConverter {
 
     /**
@@ -50,7 +54,7 @@ public class FlowConverter {
      * @return
      * @throws FlowInitializationException
      */
-  static Workflow xml2workflow(InputStream xml, String flow)
+  public static Workflow xml2workflow(InputStream xml, String flow)
             throws ConvertationException, FlowInitializationException {
         if (null == xml)
             return null;

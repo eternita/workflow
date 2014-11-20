@@ -17,7 +17,7 @@
 	</repositories>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<org.neuro4j.version>2.0.1</org.neuro4j.version>
+		<org.neuro4j.version>2.0.2</org.neuro4j.version>
 		<java.version>1.6</java.version>
 	</properties>
 
@@ -33,8 +33,8 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
-	</dependencies>
-	<build>
+	</dependencies>	
+	<build>	
 		<resources>
 			<resource>
 				<directory>src/main/java</directory>
@@ -42,6 +42,12 @@
 					<include>**/*.n4j</include>
 				</includes>
 			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*.png</include>
+				</includes>
+			</resource>			
 		</resources>
 		<plugins>
 			<plugin>

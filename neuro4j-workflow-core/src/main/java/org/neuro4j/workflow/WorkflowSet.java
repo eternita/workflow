@@ -19,6 +19,8 @@ package org.neuro4j.workflow;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.neuro4j.workflow.common.Workflow;
+
 public class WorkflowSet {
 
     private Map<String, Workflow> workflows = new HashMap<String, Workflow>();

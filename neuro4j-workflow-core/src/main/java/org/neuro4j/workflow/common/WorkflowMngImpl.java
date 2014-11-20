@@ -14,17 +14,19 @@
  * limitations under the License.
  */
 
-package org.neuro4j.workflow.loader.f4j;
+package org.neuro4j.workflow.common;
 
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.neuro4j.workflow.Workflow;
 import org.neuro4j.workflow.WorkflowSet;
-import org.neuro4j.workflow.common.FlowInitializationException;
+import org.neuro4j.workflow.loader.f4j.ConvertationException;
+import org.neuro4j.workflow.loader.f4j.FlowConverter;
 import org.neuro4j.workflow.log.Logger;
 
 public class WorkflowMngImpl {
+    
+    public static final String WORKFLOW_FILE_EXT = ".n4j";
 
     private static WorkflowMngImpl instance = null;
 
@@ -52,7 +54,7 @@ public class WorkflowMngImpl {
         return instance;
     }
 
-    public Workflow lookupWorkflow(String flowName) throws FlowInitializationException {
+    Workflow lookupWorkflow(String flowName) throws FlowInitializationException {
 
         Workflow workflow = flowCache.getWorkflow(flowName);
 
@@ -68,10 +70,16 @@ public class WorkflowMngImpl {
     }
     
     
+    /**
+     * Loads workflow from file.
+     * @param file
+     * @return
+     * @throws FlowInitializationException
+     */
     static Workflow loadWorkFlowFromFile(String file) throws FlowInitializationException
     {
         Workflow flow = null;
-        InputStream fis = WorkflowMngImpl.class.getClassLoader().getResourceAsStream(file + ".n4j");
+        InputStream fis = WorkflowMngImpl.class.getClassLoader().getResourceAsStream(file + WORKFLOW_FILE_EXT);
         if (null != fis) {
             flow = loadFlowFromFS(fis, file);
         }
@@ -79,20 +87,27 @@ public class WorkflowMngImpl {
         return flow;
     }
 
-    static Workflow loadFlowFromFS(InputStream is, String flow) throws FlowInitializationException
+    /**
+     * Loads Workflow from input stream.
+     * @param inputStream the input stream
+     * @param flow flow name
+     * @return Workflow object
+     * @throws FlowInitializationException
+     */
+    static Workflow loadFlowFromFS(InputStream inputStream, String flow) throws FlowInitializationException
     {
         Workflow net = null;
         try {
-            if (null != is)
+            if (null != inputStream)
                 try {
-                    net = FlowConverter.xml2workflow(is, flow);
+                    net = FlowConverter.xml2workflow(inputStream, flow);
                 } catch (ConvertationException e) {
                     Logger.error(WorkflowMngImpl.class, e);
                 }
         } finally {
             try {
-                if (null != is)
-                    is.close();
+                if (null != inputStream)
+                    inputStream.close();
             } catch (IOException e) {
                 Logger.error(WorkflowMngImpl.class, e);
             }

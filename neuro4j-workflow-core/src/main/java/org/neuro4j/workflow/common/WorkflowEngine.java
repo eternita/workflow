@@ -20,12 +20,11 @@ import java.util.Collections;
 import java.util.Map;
 
 import org.neuro4j.workflow.ExecutionResult;
-import org.neuro4j.workflow.Workflow;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.loader.CustomBlockInitStrategy;
-import org.neuro4j.workflow.loader.f4j.WorkflowMngImpl;
 import org.neuro4j.workflow.log.Logger;
 import org.neuro4j.workflow.node.CustomBlockLoader;
+import org.neuro4j.workflow.node.CustomNode;
 import org.neuro4j.workflow.node.StartNode;
 import org.neuro4j.workflow.node.WorkflowNode;
 
@@ -36,7 +35,6 @@ import org.neuro4j.workflow.node.WorkflowNode;
  */
 public class WorkflowEngine {
 
-    private static final String FLOW_FILE_EXTENSION = ".n4j";
 
     public static ExecutionResult run(String flow) {
         return run(flow, Collections.EMPTY_MAP);
@@ -110,6 +108,34 @@ public class WorkflowEngine {
         return result;
     }
 
+    static ExecutionResult runFromTrigger(TriggerBlock trigger, WorkflowRequest request) {
+
+        ExecutionResult result = new ExecutionResult(request.getLogicContext());
+
+        try {
+
+            CustomNode node = trigger.getNode();
+            
+            Workflow workflow = node.getWorkflow();
+            
+            request.pushPackage(workflow.getPackage());
+
+            workflow.executeWorkflow(node, request);
+            request.popPackage();
+        } catch (FlowExecutionException ex) {
+            Logger.error(FlowExecutionException.class, ex.getMessage(), ex);
+            result.setExecutionExeption(ex);
+        }
+
+        WorkflowNode lastNode = request.getLastSuccessfulNode();
+        if (lastNode != null)
+        {
+            result.setLastSuccessfulNodeName(lastNode.getName());
+        }
+
+        return result;
+    }
+    
     public static String[] parseFlowName(String flow)
             throws FlowExecutionException {
 
