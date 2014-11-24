@@ -50,23 +50,13 @@
                 <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.springframework.jms.GetTextMessageCreator"/>
             </config>
             <transitions>
-                <transition uuid="2WQQV.89EzMAAAFJdueon9RC" name="NEXT" toNode="SmYQV.890YMAAAFJ7sWon9RC">
-                    <points>0, 29, 3, -76|-3, 77, 0, -28|</points>
+                <transition uuid="jQ4QV.89bMIAAAFJp1rpEuPp" toNode="Y5cQV.89L.YAAAFJYcCon9RK"/>
+                <transition uuid="09AQV.8974UAAAFJrGfpEuPp" name="NEXT" toNode="Y5cQV.89L.YAAAFJYcCon9RK">
+                    <points>0, 29, 0, -222|0, 216, 0, -35|</points>
                 </transition>
             </transitions>
         </node>
-        <node uuid="SmYQV.890YMAAAFJ7sWon9RC" name="PrintFlowContext" x="494" y="369" type="CUSTOM">
-            <parameters/>
-            <config>
-                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.workflow.log.PrintFlowContext"/>
-            </config>
-            <transitions>
-                <transition uuid="_KAQV.89Z0IAAAFJuw.on9RL" name="NEXT" toNode="Y5cQV.89L.YAAAFJYcCon9RK">
-                    <points>0, 29, 0, -81|0, 82, 0, -28|</points>
-                </transition>
-            </transitions>
-        </node>
-        <node uuid="Y5cQV.89L.YAAAFJYcCon9RK" name="JMSQueueSender" x="493" y="479" type="CUSTOM">
+        <node uuid="Y5cQV.89L.YAAAFJYcCon9RK" name="JMSQueueSender" x="493" y="418" type="CUSTOM">
             <parameters/>
             <config>
                 <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.springframework.jms.JMSQueueSender"/>
@@ -99,7 +89,7 @@
                 </transition>
             </transitions>
         </node>
-        <node uuid="note" name=".aQQV.89COEAAAFJvxDpEuPk" x="55" y="27" type="NOTE">
+        <node uuid="note" name="pUAQV.895nsAAAFJ9CrpEuPu" x="55" y="27" type="NOTE">
             <description>Listen to configured destination</description>
             <parameters/>
             <config>
@@ -108,16 +98,16 @@
             </config>
             <transitions/>
         </node>
-        <node uuid="note" name=".h0QV.89UfgAAAFJwBDpEuPk" x="574" y="21" type="NOTE">
+        <node uuid="note" name="rnYQV.895nwAAAFJ9CrpEuPu" x="574" y="27" type="NOTE">
             <description>Send a message to distination</description>
             <parameters/>
             <config>
-                <parameter key="w" value="429"/>
-                <parameter key="h" value="52"/>
+                <parameter key="w" value="270"/>
+                <parameter key="h" value="46"/>
             </config>
             <transitions/>
         </node>
-        <node uuid="note" name="zrcQV.89UfkAAAFJwBDpEuPk" x="9" y="374" type="NOTE">
+        <node uuid="note" name="r4gQV.895n0AAAFJ9CrpEuPu" x="9" y="374" type="NOTE">
             <description>Close context and Remove temprorary files.</description>
             <parameters/>
             <config>
@@ -126,7 +116,7 @@
             </config>
             <transitions/>
         </node>
-        <node uuid="note" name="_TMQV.89UfoAAAFJwBDpEuPk" x="-1" y="220" type="NOTE">
+        <node uuid="note" name="KfcQV.895n4AAAFJ9CrpEuPu" x="-1" y="220" type="NOTE">
             <description>Some business code... Just print to log.</description>
             <parameters/>
             <config>
@@ -135,7 +125,7 @@
             </config>
             <transitions/>
         </node>
-        <node uuid="note" name="KR0QV.89UfsAAAFJwBDpEuPk" x="645" y="215" type="NOTE">
+        <node uuid="note" name="KkEQV.895n8AAAFJ9CrpEuPu" x="590" y="169" type="NOTE">
             <description>Create org.springframework.jms.core.MessageCreator.</description>
             <parameters/>
             <config>
