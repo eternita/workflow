@@ -60,16 +60,15 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        // Clean out any ActiveMQ data from a previous run
+
         FileSystemUtils.deleteRecursively(new File("activemq-data"));
 
-        // Launch the application
         ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
         
         Map<String, Object> parameters = new HashMap<String, Object>();
-        parameters.put("messageDestination", mailboxDestination);
         
-
+        parameters.put("messageDestination", mailboxDestination);
+        parameters.put("message", "Hi Mister!");      
         
         WorkflowEngine.run("org.neuro4j.springframework.jms.flows.MessageFlow-SendMessage", parameters);
 

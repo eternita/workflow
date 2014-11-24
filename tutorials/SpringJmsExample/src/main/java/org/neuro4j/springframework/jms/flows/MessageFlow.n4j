@@ -45,9 +45,7 @@
             <transitions/>
         </node>
         <node uuid="FqkQV.89kKkAAAFJJNmon9Qh" name="GetTextMessageCreator" x="474" y="235" type="CUSTOM">
-            <parameters>
-                <parameter key="message" value="&quot;Ping!&quot;" input="true"/>
-            </parameters>
+            <parameters/>
             <config>
                 <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.springframework.jms.GetTextMessageCreator"/>
             </config>
@@ -101,7 +99,7 @@
                 </transition>
             </transitions>
         </node>
-        <node uuid="note" name="YVUQV.894P0AAAFJViXpEuO4" x="55" y="27" type="NOTE">
+        <node uuid="note" name=".aQQV.89COEAAAFJvxDpEuPk" x="55" y="27" type="NOTE">
             <description>Listen to configured destination</description>
             <parameters/>
             <config>
@@ -110,7 +108,7 @@
             </config>
             <transitions/>
         </node>
-        <node uuid="note" name="tD0QV.894P4AAAFJViXpEuO4" x="574" y="21" type="NOTE">
+        <node uuid="note" name=".h0QV.89UfgAAAFJwBDpEuPk" x="574" y="21" type="NOTE">
             <description>Send a message to distination</description>
             <parameters/>
             <config>
@@ -119,7 +117,7 @@
             </config>
             <transitions/>
         </node>
-        <node uuid="note" name="K5AQV.894P8AAAFJViXpEuO4" x="9" y="374" type="NOTE">
+        <node uuid="note" name="zrcQV.89UfkAAAFJwBDpEuPk" x="9" y="374" type="NOTE">
             <description>Close context and Remove temprorary files.</description>
             <parameters/>
             <config>
@@ -128,12 +126,21 @@
             </config>
             <transitions/>
         </node>
-        <node uuid="note" name="hsQQV.894QAAAAFJViXpEuO4" x="22" y="220" type="NOTE">
-            <description>Some business code...</description>
+        <node uuid="note" name="_TMQV.89UfoAAAFJwBDpEuPk" x="-1" y="220" type="NOTE">
+            <description>Some business code... Just print to log.</description>
             <parameters/>
             <config>
-                <parameter key="w" value="164"/>
-                <parameter key="h" value="40"/>
+                <parameter key="w" value="163"/>
+                <parameter key="h" value="78"/>
+            </config>
+            <transitions/>
+        </node>
+        <node uuid="note" name="KR0QV.89UfsAAAFJwBDpEuPk" x="645" y="215" type="NOTE">
+            <description>Create org.springframework.jms.core.MessageCreator.</description>
+            <parameters/>
+            <config>
+                <parameter key="w" value="297"/>
+                <parameter key="h" value="58"/>
             </config>
             <transitions/>
         </node>
