@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<flow visibility="Public">
+    <nodes>
+        <node uuid="RcwQV.89PKkAAAFJNSF2bcow" name="JMSMessageListener" x="172" y="111" type="CUSTOM">
+            <parameters/>
+            <config>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.springframework.jms.JMSMessageListener"/>
+            </config>
+            <transitions>
+                <transition uuid="i.8QV.893gMAAAFJCZ1Bt.Ly" name="NEXT" toNode="rUAQV.89GQEAAAFJR4tBt.Ly">
+                    <points>0, 29, -6, -84|6, 85, 0, -28|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="1F4QV.89E1YAAAFJDE92bcow" name="EndNode2" x="202" y="704" type="END">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node uuid="LrMQV.89854AAAFJkBion9O6" name="CloseApplicationContext" x="162" y="432" type="CUSTOM">
+            <parameters/>
+            <config>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.springframework.jms.CloseApplicationContext"/>
+            </config>
+            <transitions>
+                <transition uuid="y1oQV.89rCAAAAFJs1hBt.Lw" name="NEXT" toNode="BYUQV.89Pk0AAAFJAzRBt.Lw">
+                    <points>0, 29, -2, -69|2, 70, 0, -28|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="H7gQV.895FsAAAFJw8Gon9Qh" name="SendMessage" x="505" y="101" type="START">
+            <parameters/>
+            <config>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
+            </config>
+            <transitions>
+                <transition uuid="pgwQV.89AIAAAAFJBTaon9Qi" name="NEXT" toNode="FqkQV.89kKkAAAFJJNmon9Qh">
+                    <points>0, 32, 4, -99|-4, 103, 0, -28|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="VM0QV.89oMUAAAFJ.cqon9Qh" name="EndNode3" x="515" y="706" type="END">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node uuid="FqkQV.89kKkAAAFJJNmon9Qh" name="GetTextMessageCreator" x="474" y="235" type="CUSTOM">
+            <parameters>
+                <parameter key="message" value="&quot;Ping!&quot;" input="true"/>
+            </parameters>
+            <config>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.springframework.jms.GetTextMessageCreator"/>
+            </config>
+            <transitions>
+                <transition uuid="2WQQV.89EzMAAAFJdueon9RC" name="NEXT" toNode="SmYQV.890YMAAAFJ7sWon9RC">
+                    <points>0, 29, 3, -76|-3, 77, 0, -28|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="SmYQV.890YMAAAFJ7sWon9RC" name="PrintFlowContext" x="494" y="369" type="CUSTOM">
+            <parameters/>
+            <config>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.workflow.log.PrintFlowContext"/>
+            </config>
+            <transitions>
+                <transition uuid="_KAQV.89Z0IAAAFJuw.on9RL" name="NEXT" toNode="Y5cQV.89L.YAAAFJYcCon9RK">
+                    <points>0, 29, 0, -81|0, 82, 0, -28|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="Y5cQV.89L.YAAAFJYcCon9RK" name="JMSQueueSender" x="493" y="479" type="CUSTOM">
+            <parameters/>
+            <config>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.springframework.jms.JMSQueueSender"/>
+            </config>
+            <transitions>
+                <transition uuid="hmwQV.89DgMAAAFJKxyon9RL" name="NEXT" toNode="VM0QV.89oMUAAAFJ.cqon9Qh">
+                    <points>0, 29, 1, -76|-1, 71, 0, -34|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="BYUQV.89Pk0AAAFJAzRBt.Lw" name="RemoveJmsTmpFiles" x="171" y="577" type="CUSTOM">
+            <parameters/>
+            <config>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.springframework.jms.example.RemoveJmsTmpFiles"/>
+            </config>
+            <transitions>
+                <transition uuid="6HgQV.89Kn4AAAFJ6X5Bt.Lw" name="NEXT" toNode="1F4QV.89E1YAAAFJDE92bcow">
+                    <points>0, 29, -1, -81|1, 76, 0, -34|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="rUAQV.89GQEAAAFJR4tBt.Ly" name="DoSomething" x="191" y="253" type="CUSTOM">
+            <parameters/>
+            <config>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.springframework.jms.example.DoSomething"/>
+            </config>
+            <transitions>
+                <transition uuid="3a0QV.89U78AAAFJorlBt.Ly" name="NEXT" toNode="LrMQV.89854AAAFJkBion9O6">
+                    <points>0, 29, -3, -179|3, 180, 0, -28|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="note" name="YVUQV.894P0AAAFJViXpEuO4" x="55" y="27" type="NOTE">
+            <description>Listen to configured destination</description>
+            <parameters/>
+            <config>
+                <parameter key="w" value="272"/>
+                <parameter key="h" value="49"/>
+            </config>
+            <transitions/>
+        </node>
+        <node uuid="note" name="tD0QV.894P4AAAFJViXpEuO4" x="574" y="21" type="NOTE">
+            <description>Send a message to distination</description>
+            <parameters/>
+            <config>
+                <parameter key="w" value="429"/>
+                <parameter key="h" value="52"/>
+            </config>
+            <transitions/>
+        </node>
+        <node uuid="note" name="K5AQV.894P8AAAFJViXpEuO4" x="9" y="374" type="NOTE">
+            <description>Close context and Remove temprorary files.</description>
+            <parameters/>
+            <config>
+                <parameter key="w" value="175"/>
+                <parameter key="h" value="55"/>
+            </config>
+            <transitions/>
+        </node>
+        <node uuid="note" name="hsQQV.894QAAAAFJViXpEuO4" x="22" y="220" type="NOTE">
+            <description>Some business code...</description>
+            <parameters/>
+            <config>
+                <parameter key="w" value="164"/>
+                <parameter key="h" value="40"/>
+            </config>
+            <transitions/>
+        </node>
+    </nodes>
+</flow>

@@ -1,4 +1,4 @@
-package org.neuro4j.workflow.context;
+package org.neuro4j.springframework.context;
 
 import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.loader.CustomBlockInitStrategy;

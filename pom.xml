@@ -27,7 +27,9 @@
         <module>jasper-report-workflow</module>
         <module>velocity-web-plugin</module>
         <module>json-web-plugin</module>
+        <module>spring-context-adapter</module>
         <module>spring-webmvc-workflow</module>
+        <module>spring-jms-adapter</module>
         <module>guice-workflow-adapter</module>
     </modules>
 
@@ -46,11 +48,21 @@
 		<artifactId>slf4j-api</artifactId>
 		<version>1.6.1</version>
 	</dependency>
+<!--
 	<dependency>
 		<groupId>org.slf4j</groupId>
 		<artifactId>slf4j-log4j12</artifactId>
 		<version>1.6.1</version>
 	</dependency>
+-->
+	<dependency>
+		<groupId>org.slf4j</groupId>
+		<artifactId>log4j-over-slf4j</artifactId>
+		<version>1.6.1</version>
+	</dependency>
+
+
+
 	<dependency>
 			<groupId>commons-beanutils</groupId>
 			<artifactId>commons-beanutils</artifactId>

@@ -1,7 +1,7 @@
 package org.neuro4j.workflow.springmvc;
 
+import org.neuro4j.springframework.context.SpringContextInitStrategy;
 import org.neuro4j.workflow.common.WorkflowEngine;
-import org.neuro4j.workflow.context.SpringContextInitStrategy;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
