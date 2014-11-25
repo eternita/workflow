@@ -12,7 +12,7 @@
                 </transition>
             </transitions>
         </node>
-        <node uuid="bbsQV.89Lh8AAAFJ5IoMBXff" name="End" x="301" y="444" type="END">
+        <node uuid="bbsQV.89Lh8AAAFJ5IoMBXff" name="End" x="301" y="443" type="END">
             <parameters/>
             <config/>
             <transitions/>
@@ -20,7 +20,6 @@
         <node uuid="xGIQV.89OY4AAAFJcDIMBXgL" name="HelloWorld" x="297" y="253" type="CUSTOM">
             <parameters/>
             <config>
-                <parameter key="SWF_BLOCK_CLASS" value="HelloWorld"/>
                 <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.workflow.tutorial.HelloWorld"/>
             </config>
             <transitions>
