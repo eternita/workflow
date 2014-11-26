@@ -16,7 +16,7 @@
 
 package org.neuro4j.workflow.common;
 
-import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.neuro4j.workflow.ExecutionResult;
@@ -37,7 +37,7 @@ public class WorkflowEngine {
 
 
     public static ExecutionResult run(String flow) {
-        return run(flow, Collections.EMPTY_MAP);
+        return run(flow, new HashMap<String, Object>());
     }
 
     public static ExecutionResult run(String flow, Map<String, Object> params) {
@@ -60,13 +60,13 @@ public class WorkflowEngine {
      *         - if can't load flow, can't find start node, etc
      */
     public static ExecutionResult run(String flow, WorkflowRequest request) {
-
+        long start = System.currentTimeMillis();
         ExecutionResult result = new ExecutionResult(request.getLogicContext());
 
         try {
-            String[] fArr = parseFlowName(flow);
-            String flowName = fArr[0];
-            String startNode = fArr[1];
+            String[] array = parseFlowName(flow);
+            String flowName = array[0];
+            String startNodeName = array[1];
 
             Logger.debug(WorkflowEngine.class, "Loading flow: {}.",
                     flowName);
@@ -78,21 +78,21 @@ public class WorkflowEngine {
 
             Logger.debug(WorkflowEngine.class, "Loaded flow: {}.", flowName);
 
-            StartNode startNodeAdapter = workflow.getStartNode(startNode);
-            if (null == startNodeAdapter)
-                throw new FlowExecutionException("StartNode '" + startNode  + "' not found in flow " + flowName);
+            StartNode startNode = workflow.getStartNode(startNodeName);
+            if (null == startNode)
+                throw new FlowExecutionException("StartNode '" + startNodeName  + "' not found in flow " + flowName);
 
             if (!workflow.isPublic()) {
                 throw new FlowExecutionException("Flow '" + flow + "' is not public");
             }
 
-            if (!startNodeAdapter.isPublic()) {
-                throw new FlowExecutionException("Node '" + startNodeAdapter.getName() + "' is not public");
+            if (!startNode.isPublic()) {
+                throw new FlowExecutionException("Node '" + startNode.getName() + "' is not public");
             }
 
             request.pushPackage(workflow.getPackage());
 
-            workflow.executeWorkflow(startNodeAdapter, request);
+            workflow.executeWorkflow(startNode, request);
             request.popPackage();
         } catch (FlowExecutionException ex) {
             Logger.error(FlowExecutionException.class, ex.getMessage(), ex);
@@ -104,12 +104,20 @@ public class WorkflowEngine {
         {
             result.setLastSuccessfulNodeName(lastNode.getName());
         }
-
+        Logger.debug(WorkflowEngine.class, "Flow execution time: {} ms.", System.currentTimeMillis() - start);
         return result;
     }
 
+    /**
+     * Start flow execution from trigger node.
+     * @param trigger
+     * @param request
+     * @return Execution result
+     */
     static ExecutionResult runFromTrigger(TriggerBlock trigger, WorkflowRequest request) {
-
+        
+        long start = System.currentTimeMillis();
+        
         ExecutionResult result = new ExecutionResult(request.getLogicContext());
 
         try {
@@ -133,28 +141,31 @@ public class WorkflowEngine {
             result.setLastSuccessfulNodeName(lastNode.getName());
         }
 
+        Logger.debug(WorkflowEngine.class, "Flow execution time: {} ms.", System.currentTimeMillis() - start);
         return result;
     }
     
-    public static String[] parseFlowName(String flow)
-            throws FlowExecutionException {
+    /**
+     * Extract flow package and start node name.
+     * @param flow
+     * @return
+     * @throws FlowExecutionException
+     */
+    public static String[] parseFlowName(String flow) throws FlowExecutionException {
 
-        int separatorIdx = flow.indexOf("-");
-        if (-1 == separatorIdx)
-            throw new FlowExecutionException(
-                    "Incorrect flow name. Must be package.name.FlowName-StartNode");
-        // check > 1 "-"
-        if (separatorIdx != flow.lastIndexOf("-"))
+        if (flow == null)
+            throw new FlowExecutionException("Flow is undefined.");
+        
+        String[] array = flow.split("-");
+        
+        if (array.length != 2)
+        {
             throw new FlowExecutionException("Incorrect flow name. Must be package.name.FlowName-StartNode");
-
-        String flowName = flow.substring(0, separatorIdx);
-        // replace '.' -> '/'
-        if (-1 < flowName.indexOf("."))
-            flowName = flowName.replace('.', '/');
-
-        String startNode = flow.substring(separatorIdx + 1);
-
-        return new String[] { flowName, startNode };
+        }
+        
+        array[0] =  array[0].replace('.', '/');
+                
+        return array;
     }
 
     /**

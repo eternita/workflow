@@ -46,6 +46,7 @@ public class ExecutionResult {
     }
 
     public void setExecutionExeption(FlowExecutionException ex) {
+        
         this.exception = ex;
     }
 
@@ -62,7 +63,6 @@ public class ExecutionResult {
     }
 
     public void print() {
-        System.out.println("exception is" + exception);
         if (exception != null) {
             exception.printStackTrace();
         }

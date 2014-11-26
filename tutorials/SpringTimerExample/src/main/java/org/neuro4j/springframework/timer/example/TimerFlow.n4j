@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<flow visibility="Public">
+    <nodes>
+        <node uuid="s74QV.89EhAAAAFJpNVffejZ" name="Timer" x="311" y="17" type="CUSTOM">
+            <parameters/>
+            <config>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.springframework.timer.Timer"/>
+            </config>
+            <transitions>
+                <transition uuid="hbUQV.89EKQAAAFJYilffeja" name="NEXT" toNode="j9YQV.894GIAAAFJOfdffejZ">
+                    <points>0, 29, -5, -176|5, 177, 0, -28|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="azwQV.89n4IAAAFJSelffejZ" name="EndNode1" x="300" y="417" type="END">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node uuid="j9YQV.894GIAAAFJOfdffejZ" name="SystemOutBlock" x="281" y="196" type="CUSTOM">
+            <parameters>
+                <parameter key="varToPrint" value="&quot;Running!&quot;" input="true"/>
+            </parameters>
+            <config>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.workflow.core.SystemOutBlock"/>
+            </config>
+            <transitions>
+                <transition uuid="8KcQV.89CAEAAAFJKUhffeja" name="NEXT" toNode="azwQV.89n4IAAAFJSelffejZ">
+                    <points>0, 29, -9, -172|9, 167, 0, -34|</points>
+                </transition>
+            </transitions>
+        </node>
+    </nodes>
+</flow>

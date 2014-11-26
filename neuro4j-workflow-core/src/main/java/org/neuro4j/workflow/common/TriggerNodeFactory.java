@@ -2,12 +2,19 @@ package org.neuro4j.workflow.common;
 
 import java.util.Collection;
 
+import org.neuro4j.workflow.log.Logger;
 import org.neuro4j.workflow.node.CustomBlock;
 import org.neuro4j.workflow.node.CustomNode;
 import org.neuro4j.workflow.node.WorkflowNode;
 
 public class TriggerNodeFactory {
 
+    /**
+     * Returns initialized trigger block.
+     * @param flow - flow name with trigger node. Ex. org.neuro4j.springframework.timer.example.TimerFlow-Timer
+     * @return the initialized trigger block.
+     * @throws FlowInitializationException
+     */
     public static TriggerBlock initTriggerNode(String flow) throws FlowInitializationException
     {
         String[] flowArray;
@@ -21,6 +28,11 @@ public class TriggerNodeFactory {
         String triggerName = flowArray[1];
 
         Workflow workflow = WorkflowMngImpl.getInstance().lookupWorkflow(flowName);
+        if (workflow == null)
+        {
+            Logger.error(TriggerNodeFactory.class, "Flow: {} not found in classpath.", flow);
+            throw new FlowInitializationException("Flow: " + flow + " not found in classpath.");
+        }
 
         Collection<WorkflowNode> nodes = workflow.getNodes();
         for (WorkflowNode node : nodes)

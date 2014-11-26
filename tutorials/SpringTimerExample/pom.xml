@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.neuro4j.workflow.tutorial</groupId>
+	<version>1.0-SNAPSHOT</version>
+	<name>SpringTimerExample</name>
+    <artifactId>SpringTimerExample</artifactId>
+	<properties>
+		<java-version>1.6</java-version>
+		<org.springframework-version>4.1.0.RC1</org.springframework-version>
+		<org.aspectj-version>1.8.1</org.aspectj-version>
+		<org.slf4j-version>1.6.1</org.slf4j-version>
+		<org.neuro4j-version>2.0.1</org.neuro4j-version>
+	</properties>
+	<repositories>
+		<repository>
+			<id>spring-releases</id>
+			<url>http://repo.spring.io/libs-release</url>
+		</repository>
+		<repository>
+			<id>neuro4j-maven-milestone</id>
+			<name>Neuro4J Maven Repository</name>
+			<url>http://static.neuro4j.org/maven2</url>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-releases</id>
+			<url>http://repo.spring.io/libs-release</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.neuro4j</groupId>
+			<artifactId>neuro4j-workflow-common</artifactId>
+			<version>${org.neuro4j-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.neuro4j</groupId>
+			<artifactId>spring-timer-adapter</artifactId>
+			<version>${org.neuro4j-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+			<version>1.1.9.RELEASE</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.n4j</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*</include>
+				</includes>
+			</resource>
+		</resources>
+
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+
+	</build>
+
+</project>

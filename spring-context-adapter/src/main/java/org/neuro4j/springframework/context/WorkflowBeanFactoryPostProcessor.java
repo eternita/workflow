@@ -16,9 +16,12 @@ public class WorkflowBeanFactoryPostProcessor extends SpringContextInitStrategy 
 		super(beanFactory);
 	}
 
-
+	public WorkflowBeanFactoryPostProcessor() {
+		super();
+	}
 
 	public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
+		setBeanFactory(beanFactory);
 		WorkflowEngine.setCustomBlockInitStrategy(this);
 	}
 

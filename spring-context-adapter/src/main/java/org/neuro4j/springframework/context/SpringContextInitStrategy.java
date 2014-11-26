@@ -15,15 +15,25 @@ import org.springframework.stereotype.Component;
  */
 public class SpringContextInitStrategy implements CustomBlockInitStrategy {
 
-	private final BeanFactory beanFactory;
+	private BeanFactory beanFactory;
 
 	private final CustomBlockInitStrategy defaultStrategy;
 
 	public SpringContextInitStrategy(BeanFactory beanFactory) {
-		super();
+		this();
 		this.beanFactory = beanFactory;
+	}
+
+	public SpringContextInitStrategy() {
+		super();
 		this.defaultStrategy = new DefaultCustomBlockInitStrategy();
 	}
+	
+	public void setBeanFactory(BeanFactory beanFactory) {
+		this.beanFactory = beanFactory;
+	}
+
+
 
 	/**
 	 * 
@@ -50,5 +60,7 @@ public class SpringContextInitStrategy implements CustomBlockInitStrategy {
 		return this.defaultStrategy.loadCustomBlock(className);
 
 	}
+	
+	
 
 }
