@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        					http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+	<context:component-scan base-package="org.neuro4j.springframework.timer" />
+
+	<bean
+		class="org.neuro4j.springframework.context.WorkflowBeanFactoryPostProcessor">
+	</bean>
+
+	<bean id="timerTask" class="org.neuro4j.workflow.common.TriggerNodeFactory"
+		factory-method="initTriggerNode">
+		<constructor-arg type="java.lang.String" value="org.neuro4j.springframework.timer.example.TimerFlow-Timer" />
+	</bean>
+
+	<bean id="timerJobDetail"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="timerTask" />
+		<property name="targetMethod" value="execute" />
+	</bean>
+
+
+
+	<bean id="timeTrigger"
+		class="org.springframework.scheduling.quartz.SimpleTriggerFactoryBean">
+		<property name="jobDetail" ref="timerJobDetail" />
+		<property name="startDelay" value="1000" />
+		<property name="repeatInterval" value="2000" />
+	</bean>
+
+
+
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="jobDetails">
+			<list>
+				<ref bean="timerJobDetail" />
+			</list>
+		</property>
+
+		<property name="triggers">
+			<list>
+				<ref bean="timeTrigger" />
+			</list>
+		</property>
+	</bean>
+
+</beans>

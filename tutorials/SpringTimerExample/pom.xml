@@ -5,12 +5,10 @@
 	<groupId>org.neuro4j.workflow.tutorial</groupId>
 	<version>1.0-SNAPSHOT</version>
 	<name>SpringTimerExample</name>
-    <artifactId>SpringTimerExample</artifactId>
+	<artifactId>SpringTimerExample</artifactId>
 	<properties>
 		<java-version>1.6</java-version>
-		<org.springframework-version>4.1.0.RC1</org.springframework-version>
 		<org.aspectj-version>1.8.1</org.aspectj-version>
-		<org.slf4j-version>1.6.1</org.slf4j-version>
 		<org.neuro4j-version>2.0.1</org.neuro4j-version>
 	</properties>
 	<repositories>
@@ -48,7 +46,6 @@
 			<version>1.1.9.RELEASE</version>
 		</dependency>
 	</dependencies>
-
 	<build>
 		<resources>
 			<resource>
