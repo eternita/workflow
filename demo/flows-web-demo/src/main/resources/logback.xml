@@ -127,12 +127,7 @@
 		<appender-ref ref="Error" />
 		<appender-ref ref="DebugFlow" />		
 	</logger>
-	<!-- 
-	<logger name="PERFORMANCE_DB">
-	    <level value="DEBUG" />
-		<appender-ref ref="DebugPerformance" />		
-	</logger>
-	 -->
+
 	 
 
 	<logger name="javax">

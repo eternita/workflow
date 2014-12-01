@@ -71,7 +71,7 @@
 			<resource>
 				<directory>src/main/resources</directory>
 				<includes>
-					<include>**/*.n4j</include>
+					<include>**/*</include>
 				</includes>
 			</resource>
 		</resources>

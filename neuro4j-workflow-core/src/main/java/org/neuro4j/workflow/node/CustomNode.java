@@ -34,17 +34,16 @@ public class CustomNode extends WorkflowNode {
     private static final String NEXT_EXIT_RELATION = SWFConstants.NEXT_RELATION_NAME;
     private static final String ERROR_EXIT_RELATION = "ERROR";
 
-    private String executableClass = null;
-
-    CustomBlock node = null;
+    private final String executableClass;
 
     private Transition mainExit = null;
     private Transition errorExit = null;
 
-    private Map<String, String> outParameters = null;
+    private final Map<String, String> outParameters;
 
-    public CustomNode(String name, String uuid, Workflow workflow) {
+    public CustomNode(String executableClass, String name, String uuid, Workflow workflow) {
         super(name, uuid, workflow);
+        this.executableClass = executableClass;
         outParameters = new HashMap<String, String>(3);
     }
 
@@ -61,8 +60,9 @@ public class CustomNode extends WorkflowNode {
     {
         mainExit = getExitByName(NEXT_EXIT_RELATION);
         errorExit = getExitByName(ERROR_EXIT_RELATION);
-        node = CustomBlockLoader.getInstance().lookupBlock(this);
     }
+
+    
 
     /*
      * (non-Javadoc)
@@ -72,10 +72,19 @@ public class CustomNode extends WorkflowNode {
     public final Transition execute(WorkflowRequest request)
             throws FlowExecutionException {
         FlowContext context = request.getLogicContext();
-        int result = node.execute(context);
+        
+        CustomBlock cBlock = null;
+        try {
+            cBlock = getCustomBlock(this);
+        } catch (FlowInitializationException e) {
+            Logger.error(this, e);
+            throw new FlowExecutionException(e);
+        }
+        
+        int result = cBlock.execute(context);
         if (result != CustomBlock.ERROR)
         {
-            doOutputMapping(context);
+            doOutputMapping(cBlock, context);
             request.setNextRelation(mainExit);
         } else {
             if (errorExit == null)
@@ -84,7 +93,6 @@ public class CustomNode extends WorkflowNode {
             }
             request.setNextRelation(errorExit);
         }
-
         return request.getNextWorkflowNode();
 
     }
@@ -97,7 +105,16 @@ public class CustomNode extends WorkflowNode {
     @Override
     public final void validate(FlowContext ctx) throws FlowExecutionException {
         super.validate(ctx);
-        ParameterDefinitionList parameterDefinitionList = node.getClass().getAnnotation(org.neuro4j.workflow.common.ParameterDefinitionList.class);
+        
+        Class<? extends CustomBlock> customClass = null;
+        try {
+            customClass = getCustomBlockClass(this);
+        } catch (FlowInitializationException e) {
+           Logger.error(this, e);
+           throw new FlowExecutionException(e);
+        }
+        
+        ParameterDefinitionList parameterDefinitionList = customClass.getAnnotation(org.neuro4j.workflow.common.ParameterDefinitionList.class);
         if (parameterDefinitionList == null)
         {
             return;
@@ -116,7 +133,7 @@ public class CustomNode extends WorkflowNode {
             {
                 if (obj == null)
                 {
-                    throw new FlowExecutionException("Parameter " + name + " is mandatory for " + node.getClass().getName());
+                    throw new FlowExecutionException("Parameter " + name + " is mandatory for " + executableClass);
                 }
             }
             checkPatameterType(parameter, obj);
@@ -125,7 +142,7 @@ public class CustomNode extends WorkflowNode {
 
         if (mainExit == null)
         {
-            throw new FlowExecutionException("CustomBlock " + node.getClass() + ": Connector not defined.");
+            throw new FlowExecutionException("CustomBlock " + executableClass + ": Connector not defined.");
         }
     }
 
@@ -136,9 +153,9 @@ public class CustomNode extends WorkflowNode {
      *        flow context
      * @throws FlowExecutionException
      */
-    private void doOutputMapping(FlowContext ctx) throws FlowExecutionException
+    private void doOutputMapping(CustomBlock cBlock, FlowContext ctx) throws FlowExecutionException
     {
-        ParameterDefinitionList parameterDefinitionList = node.getClass().getAnnotation(org.neuro4j.workflow.common.ParameterDefinitionList.class);
+        ParameterDefinitionList parameterDefinitionList = cBlock.getClass().getAnnotation(org.neuro4j.workflow.common.ParameterDefinitionList.class);
         if (parameterDefinitionList == null)
         {
             return;
@@ -255,12 +272,6 @@ public class CustomNode extends WorkflowNode {
 
     }
 
-    /**
-     * @param executableClass
-     */
-    public void setExecutableClass(String executableClass) {
-        this.executableClass = executableClass;
-    }
 
     /**
      * @return
@@ -270,7 +281,19 @@ public class CustomNode extends WorkflowNode {
     }
     
     
-    public CustomBlock getCustomBlock(){
-        return node;
+    private CustomBlock getCustomBlock(CustomNode node) throws FlowInitializationException{
+        return CustomBlockLoader.getInstance().lookupBlock(node);
+    }
+    
+    private Class<? extends CustomBlock> getCustomBlockClass(CustomNode node) throws FlowInitializationException{
+        return CustomBlockLoader.getInstance().getCustomBlockClass(node);
+    }
+
+    /**
+     * @return
+     * @throws FlowInitializationException 
+     */
+    public CustomBlock getCustomBlock() throws FlowInitializationException {
+        return getCustomBlock(this);
     }
 }

@@ -1,188 +1,188 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <flow visibility="Private">
     <nodes>
-        <node type="END" y="235" x="1210" name="EndNode5" uuid="Kp8QV.0EczMAAAFDhw9QbMCX">
+        <node uuid="Kp8QV.0EczMAAAFDhw9QbMCX" name="EndNode5" x="1210" y="235" type="END">
             <parameters/>
             <config/>
             <transitions/>
         </node>
-        <node type="CUSTOM" y="148" x="864" name="BlockWithStringParameter" uuid="leqp_iYcxx8AAAFDkzpTzrwj">
+        <node uuid="leqp_iYcxx8AAAFDkzpTzrwj" name="BlockWithStringParameter" x="864" y="148" type="CUSTOM">
             <parameters>
-                <parameter input="true" value="&quot;value1 &quot; + &quot;value2&quot;" key="string1"/>
+                <parameter key="string1" value="&quot;value1 &quot; + &quot;value2&quot;" input="true"/>
             </parameters>
             <config>
-                <parameter value="BlockWithStringParameter" key="SWF_BLOCK_CLASS"/>
-                <parameter value="org.neuro4j.flows.custom.blocks.BlockWithStringParameter" key="SWF_CUSTOM_CLASS"/>
+                <parameter key="SWF_BLOCK_CLASS" value="BlockWithStringParameter"/>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.flows.custom.blocks.BlockWithStringParameter"/>
             </config>
             <transitions>
-                <transition toNode="qZyp_iYc40wAAAFDDLxTzrwf" name="NEXT" uuid="7rOp_iYcgnwAAAFD7pZTzrwj">
+                <transition uuid="7rOp_iYcgnwAAAFD7pZTzrwj" name="NEXT" toNode="qZyp_iYc40wAAAFDDLxTzrwf">
                     <points>0, 29, 5, -95|-5, 90, 0, -34|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="END" y="279" x="686" name="EndNode3" uuid="Y1oQV.0EhCAAAAE99cFO7LNY">
+        <node uuid="Y1oQV.0EhCAAAAE99cFO7LNY" name="EndNode3" x="686" y="279" type="END">
             <parameters/>
             <config/>
             <transitions/>
         </node>
-        <node type="START" y="24" x="102" name="StartNode1" uuid="4TWp_lq3FEEAAAE9y2.DXBaB">
+        <node uuid="4TWp_lq3FEEAAAE9y2.DXBaB" name="StartNode1" x="102" y="24" type="START">
             <parameters/>
             <config>
-                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
             </config>
             <transitions>
-                <transition toNode="17qp_lq3rSoAAAE935CDXBaB" name="NEXT" uuid="4lWp_lq3zpgAAAE9zcSDXBaB">
+                <transition uuid="4lWp_lq3zpgAAAE9zcSDXBaB" name="NEXT" toNode="17qp_lq3rSoAAAE935CDXBaB">
                     <points>0, 32, 0, -88|0, 92, 0, -28|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="END" y="235" x="912" name="EndNode4" uuid="qZyp_iYc40wAAAFDDLxTzrwf">
+        <node uuid="qZyp_iYc40wAAAFDDLxTzrwf" name="EndNode4" x="912" y="235" type="END">
             <parameters/>
             <config/>
             <transitions/>
         </node>
-        <node type="CUSTOM" y="153" x="297" name="BlockWithMandatoryInputParameter" uuid="FCup_lq3D6gAAAE9hz6DXBaW">
+        <node uuid="FCup_lq3D6gAAAE9hz6DXBaW" name="BlockWithMandatoryInputParameter" x="282" y="156" type="CUSTOM">
             <parameters/>
             <config>
-                <parameter value="BlockWithMandatoryInputParameter" key="SWF_BLOCK_CLASS"/>
-                <parameter value="org.neuro4j.flows.custom.blocks.BlockWithMandatoryInputParameter" key="SWF_CUSTOM_CLASS"/>
+                <parameter key="SWF_BLOCK_CLASS" value="BlockWithMandatoryInputParameter"/>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.flows.custom.blocks.BlockWithMandatoryInputParameter"/>
             </config>
             <transitions>
-                <transition toNode="b5ap_lq3Tv4AAAE9BzaDXBaW" name="NEXT" uuid="Kn6p_lq3yEQAAAE9kFGDXBaW">
+                <transition uuid="Kn6p_lq3yEQAAAE9kFGDXBaW" name="NEXT" toNode="b5ap_lq3Tv4AAAE9BzaDXBaW">
                     <points>0, 29, 0, -89|0, 89, 0, -29|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="CUSTOM" y="125" x="1161" name="BlockWithStringParameter" uuid="CIwQV.0EHfoAAAFDiC1QbMCX">
+        <node uuid="CIwQV.0EHfoAAAFDiC1QbMCX" name="BlockWithStringParameter" x="1161" y="125" type="CUSTOM">
             <parameters>
-                <parameter input="true" value="&quot;value1 &quot; + var1.stringVar" key="string1"/>
+                <parameter key="string1" value="&quot;value1 &quot; + var1.stringVar" input="true"/>
             </parameters>
             <config>
-                <parameter value="BlockWithStringParameter" key="SWF_BLOCK_CLASS"/>
-                <parameter value="org.neuro4j.flows.custom.blocks.BlockWithStringParameter" key="SWF_CUSTOM_CLASS"/>
+                <parameter key="SWF_BLOCK_CLASS" value="BlockWithStringParameter"/>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.flows.custom.blocks.BlockWithStringParameter"/>
             </config>
             <transitions>
-                <transition toNode="Kp8QV.0EczMAAAFDhw9QbMCX" name="NEXT" uuid="nC0QV.0Ep7UAAAFDeFFQbMCX">
+                <transition uuid="nC0QV.0Ep7UAAAFDeFFQbMCX" name="NEXT" toNode="Kp8QV.0EczMAAAFDhw9QbMCX">
                     <points>0, 29, -1, -87|1, 82, 0, -34|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="START" y="30" x="360" name="StartNode2" uuid="VROp_lq3TdoAAAE9vyiDXBaW">
+        <node uuid="VROp_lq3TdoAAAE9vyiDXBaW" name="StartNode2" x="360" y="30" type="START">
             <parameters/>
             <config>
-                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
             </config>
             <transitions>
-                <transition toNode="FCup_lq3D6gAAAE9hz6DXBaW" name="NEXT" uuid="Euup_lq38coAAAE9kEiDXBaW">
+                <transition uuid="Euup_lq38coAAAE9kEiDXBaW" name="NEXT" toNode="FCup_lq3D6gAAAE9hz6DXBaW">
                     <points>0, 32, 0, -88|0, 92, 0, -28|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="CUSTOM" y="158" x="650" name="BlockWithStaticInputName" uuid="qTYQV.0EUcwAAAE9d89O7LNY">
+        <node uuid="qTYQV.0EUcwAAAE9d89O7LNY" name="BlockWithStaticInputName" x="650" y="158" type="CUSTOM">
             <parameters/>
             <config>
-                <parameter value="BlockWithStaticInputName" key="SWF_BLOCK_CLASS"/>
-                <parameter value="org.neuro4j.flows.custom.blocks.BlockWithStaticInputName" key="SWF_CUSTOM_CLASS"/>
+                <parameter key="SWF_BLOCK_CLASS" value="BlockWithStaticInputName"/>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.flows.custom.blocks.BlockWithStaticInputName"/>
             </config>
             <transitions>
-                <transition toNode="Y1oQV.0EhCAAAAE99cFO7LNY" name="NEXT" uuid="QIsQV.0E644AAAE9Dk5O7LNZ">
+                <transition uuid="QIsQV.0E644AAAE9Dk5O7LNZ" name="NEXT" toNode="Y1oQV.0EhCAAAAE99cFO7LNY">
                     <points>0, 29, -7, -81|7, 81, 0, -29|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="START" y="35" x="678" name="StartNode3" uuid="iIoQV.0EbL4AAAE9p7lO7LNY">
+        <node uuid="iIoQV.0EbL4AAAE9p7lO7LNY" name="StartNode3" x="678" y="35" type="START">
             <parameters/>
             <config>
-                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
             </config>
             <transitions>
-                <transition toNode="qTYQV.0EUcwAAAE9d89O7LNY" name="NEXT" uuid="N0IQV.0EWG8AAAE9PERO7LNZ">
+                <transition uuid="N0IQV.0EWG8AAAE9PERO7LNZ" name="NEXT" toNode="qTYQV.0EUcwAAAE9d89O7LNY">
                     <points>0, 32, -9, -77|9, 81, 0, -28|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="END" y="270" x="93" name="EndNode1" uuid="G4ip_lq3ZQkAAAE9knyDXBaB">
+        <node uuid="G4ip_lq3ZQkAAAE9knyDXBaB" name="EndNode1" x="93" y="270" type="END">
             <parameters/>
             <config/>
             <transitions/>
         </node>
-        <node type="START" y="10" x="1210" name="StartNode5" uuid="OPYQV.0EMTkAAAFDAAVQbMCX">
+        <node uuid="OPYQV.0EMTkAAAFDAAVQbMCX" name="StartNode5" x="1210" y="10" type="START">
             <parameters/>
             <config>
-                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
             </config>
             <transitions>
-                <transition toNode="CIwQV.0EHfoAAAFDiC1QbMCX" name="NEXT" uuid="K5UQV.0ERMQAAAFDuUhQbMCX">
+                <transition uuid="K5UQV.0ERMQAAAFDuUhQbMCX" name="NEXT" toNode="CIwQV.0EHfoAAAFDiC1QbMCX">
                     <points>0, 32, 6, -80|-6, 84, 0, -28|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="CUSTOM" y="153" x="30" name="BlockWithMandatoryInputParameter" uuid="17qp_lq3rSoAAAE935CDXBaB">
+        <node uuid="17qp_lq3rSoAAAE935CDXBaB" name="BlockWithMandatoryInputParameter" x="16" y="158" type="CUSTOM">
             <parameters>
-                <parameter input="true" value="var1" key="mandatoryParameter"/>
+                <parameter key="mandatoryParameter" value="var1" input="true"/>
             </parameters>
             <config>
-                <parameter value="BlockWithMandatoryInputParameter" key="SWF_BLOCK_CLASS"/>
-                <parameter value="org.neuro4j.flows.custom.blocks.BlockWithMandatoryInputParameter" key="SWF_CUSTOM_CLASS"/>
+                <parameter key="SWF_BLOCK_CLASS" value="BlockWithMandatoryInputParameter"/>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.flows.custom.blocks.BlockWithMandatoryInputParameter"/>
             </config>
             <transitions>
-                <transition toNode="G4ip_lq3ZQkAAAE9knyDXBaB" name="NEXT" uuid="f8Sp_lq3r48AAAE959GDXBaB">
+                <transition uuid="f8Sp_lq3r48AAAE959GDXBaB" name="NEXT" toNode="G4ip_lq3ZQkAAAE9knyDXBaB">
                     <points>0, 29, 0, -89|0, 89, 0, -29|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="START" y="34" x="906" name="StartNode4" uuid="1.Wp_iYcfowAAAFDhrFTzrwf">
+        <node uuid="1.Wp_iYcfowAAAFDhrFTzrwf" name="StartNode4" x="906" y="34" type="START">
             <parameters/>
             <config>
-                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
             </config>
             <transitions>
-                <transition toNode="leqp_iYcxx8AAAFDkzpTzrwj" name="NEXT" uuid="_Qep_iYc.igAAAFDzotTzrwj">
+                <transition uuid="_Qep_iYc.igAAAFDzotTzrwj" name="NEXT" toNode="leqp_iYcxx8AAAFDkzpTzrwj">
                     <points>0, 32, 0, -72|0, 76, 0, -28|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="END" y="270" x="360" name="EndNode2" uuid="b5ap_lq3Tv4AAAE9BzaDXBaW">
+        <node uuid="b5ap_lq3Tv4AAAE9BzaDXBaW" name="EndNode2" x="360" y="270" type="END">
             <parameters/>
             <config/>
             <transitions/>
         </node>
-        <node type="START" y="402" x="726" name="StartNode6" uuid="bvkQV.0E9XUAAAFHOpF0q2UO">
+        <node uuid="bvkQV.0E9XUAAAFHOpF0q2UO" name="StartNode6" x="726" y="402" type="START">
             <parameters/>
             <config>
-                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
             </config>
             <transitions>
-                <transition toNode="8JsQV.0Epi0AAAFHcgOvn2qH" name="NEXT" uuid="vvMQV.0EBM4AAAFHSx.vn2qH">
+                <transition uuid="vvMQV.0EBM4AAAFHSx.vn2qH" name="NEXT" toNode="8JsQV.0Epi0AAAFHcgOvn2qH">
                     <points>0, 32, 8, -80|-8, 84, 0, -28|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="END" y="639" x="747" name="EndNode6" uuid="enYQV.0EvjgAAAFHSE.vn2p3">
+        <node uuid="enYQV.0EvjgAAAFHSE.vn2p3" name="EndNode6" x="747" y="639" type="END">
             <parameters/>
             <config/>
             <transitions/>
         </node>
-        <node type="CUSTOM" y="527" x="694" name="CustomWithInOutParam" uuid="8JsQV.0Epi0AAAFHcgOvn2qH">
+        <node uuid="8JsQV.0Epi0AAAFHcgOvn2qH" name="CustomWithInOutParam" x="694" y="527" type="CUSTOM">
             <parameters>
-                <parameter input="false" value="out2" key="out1"/>
+                <parameter key="out1" value="out2" input="false"/>
             </parameters>
             <config>
-                <parameter value="CustomWithInOutParam" key="SWF_BLOCK_CLASS"/>
-                <parameter value="org.neuro4j.flows.custom.blocks.CustomWithInOutParam" key="SWF_CUSTOM_CLASS"/>
+                <parameter key="SWF_BLOCK_CLASS" value="CustomWithInOutParam"/>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.flows.custom.blocks.CustomWithInOutParam"/>
             </config>
             <transitions>
-                <transition toNode="enYQV.0EvjgAAAFHSE.vn2p3" name="NEXT" uuid="zwYQV.0EGNsAAAFH0jOvn2qH">
+                <transition uuid="zwYQV.0EGNsAAAFH0jOvn2qH" name="NEXT" toNode="enYQV.0EvjgAAAFHSE.vn2p3">
                     <points>0, 29, -7, -92|7, 87, 0, -34|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="NOTE" y="18" x="1014" name="79gQV.0EnOkAAAFHuMevn2qP" uuid="note">
-            <description>put &quot;value1 &quot; + &quot;value2&quot; into input parameter</description>
+        <node uuid="note" name="fmsQV.89ZRMAAAFK08YJ1APu" x="1014" y="18" type="NOTE">
+            <description>put "value1 " + "value2" into input parameter</description>
             <parameters/>
             <config>
-                <parameter value="168" key="w"/>
-                <parameter value="64" key="h"/>
+                <parameter key="w" value="168"/>
+                <parameter key="h" value="64"/>
             </config>
             <transitions/>
         </node>

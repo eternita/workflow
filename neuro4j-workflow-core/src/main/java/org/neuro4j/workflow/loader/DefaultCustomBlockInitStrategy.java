@@ -35,8 +35,24 @@ public class DefaultCustomBlockInitStrategy implements CustomBlockInitStrategy {
             if (null != clazz)
             {
                 CustomBlock customBlock = clazz.newInstance();
-                customBlock.init();
                 return customBlock;
+            }
+
+        } catch (Exception e) {
+            Logger.error(this, e);
+            throw new FlowInitializationException(e);
+        }
+        throw new FlowInitializationException("CustomBlock: " + className + " can not be initialized.");
+    }
+    
+   
+    public Class<? extends CustomBlock> getCustomBlockClass(String className) throws FlowInitializationException {
+        try {
+
+            Class<? extends CustomBlock> clazz = (Class<? extends CustomBlock>) Class.forName(className);
+            if (null != clazz)
+            {
+                return clazz;
             }
 
         } catch (Exception e) {

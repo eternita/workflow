@@ -25,7 +25,6 @@
         <node uuid="s.0QV.0EcM8AAAFHlRVA1u9u" name="BlockWithService" x="488" y="326" type="CUSTOM">
             <parameters/>
             <config>
-                <parameter key="SWF_BLOCK_CLASS" value="BlockWithService"/>
                 <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.workflow.tutorial.mvc.views.BlockWithService"/>
             </config>
             <transitions>
@@ -44,6 +43,33 @@
                 <parameter key="SWF_PARAM_VIEW_RENDER_TYPE" value="jsp"/>
             </config>
             <transitions/>
+        </node>
+        <node uuid="_CsQV.89p7kAAAFJdKvuru6E" name="GetGreeting" x="210" y="110" type="START">
+            <parameters/>
+            <config>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
+            </config>
+            <transitions>
+                <transition uuid="hzUQV.89FP4AAAFJMt7uru6H" name="NEXT" toNode="SXsQV.89jEEAAAFJ.7zuru6H">
+                    <points>0, 32, -9, -172|9, 176, 0, -28|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="FTwQV.89.2QAAAFJhMHuru6E" name="EndNode1" x="218" y="435" type="END">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node uuid="SXsQV.89jEEAAAFJ.7zuru6H" name="CreateGreeting" x="202" y="317" type="CUSTOM">
+            <parameters/>
+            <config>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.workflow.tutorial.restful.CreateGreeting"/>
+            </config>
+            <transitions>
+                <transition uuid="IqAQV.89GRQAAAFJMu7uru6H" name="NEXT" toNode="FTwQV.89.2QAAAFJhMHuru6E">
+                    <points>0, 29, 9, -95|-9, 90, 0, -34|</points>
+                </transition>
+            </transitions>
         </node>
     </nodes>
 </flow>

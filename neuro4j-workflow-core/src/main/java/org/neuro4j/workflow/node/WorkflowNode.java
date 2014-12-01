@@ -33,11 +33,11 @@ import org.neuro4j.workflow.log.Logger;
 public class WorkflowNode {
 
     protected Workflow workflow = null;
-    private Map<String, String> parameters = null;
+    final private Map<String, String> parameters;
     private String uuid = null;
     private String name;
 
-    Map<String, Transition> exits = null;
+    final Map<String, Transition> exits;
 
     public WorkflowNode() {
         exits = new HashMap<String, Transition>(3);

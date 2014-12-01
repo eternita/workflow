@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+                             http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.neuro4j</groupId>
+    <artifactId>workflow-tutorials</artifactId>
+    <version>2.0.1</version>
+    <packaging>pom</packaging>
+    <name>Workflow Tuturials</name>
+    <url>http://neuro4j.org</url>
+
+    <repositories>
+        <repository>
+            <id>neuro4j-maven-milestone</id>
+            <name>Neuro4J Maven Repository</name>
+            <url>http://static.neuro4j.org/maven2</url>
+        </repository>
+    </repositories>  
+
+    <modules>
+        <module>WorkflowExample</module>
+        <module>GuiceWorkflowExample</module>
+        <module>SpringJmsExample</module>
+        <module>SpringMVCExample</module>
+        <module>SpringTimerExample</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<java-version>1.6</java-version>
+        <maven.compiler.source>1.6</maven.compiler.source>
+        <maven.compiler.target>1.6</maven.compiler.target>
+	<org.aspectj-version>1.8.1</org.aspectj-version>
+    </properties>
+
+
+
+
+</project>

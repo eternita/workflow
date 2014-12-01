@@ -60,7 +60,9 @@ public class WorkflowEngine {
      *         - if can't load flow, can't find start node, etc
      */
     public static ExecutionResult run(String flow, WorkflowRequest request) {
+        
         long start = System.currentTimeMillis();
+        
         ExecutionResult result = new ExecutionResult(request.getLogicContext());
 
         try {
@@ -68,15 +70,14 @@ public class WorkflowEngine {
             String flowName = array[0];
             String startNodeName = array[1];
 
-            Logger.debug(WorkflowEngine.class, "Loading flow: {}.",
-                    flowName);
+            Logger.debug(WorkflowEngine.class, "Loading flow: {}", flowName);
 
             Workflow workflow = loadFlow(flowName);
 
             if (null == workflow)
                 throw new FlowExecutionException("Flow '" + flowName + "' can't be loaded");
 
-            Logger.debug(WorkflowEngine.class, "Loaded flow: {}.", flowName);
+            Logger.debug(WorkflowEngine.class, "Loaded flow: {} in {} ms", flowName, System.currentTimeMillis() - start);
 
             StartNode startNode = workflow.getStartNode(startNodeName);
             if (null == startNode)

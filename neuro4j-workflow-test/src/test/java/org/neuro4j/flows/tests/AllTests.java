@@ -19,6 +19,8 @@ package org.neuro4j.flows.tests;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
+import org.neuro4j.flows.common.WorkflowEngineTestCase;
+import org.neuro4j.flows.custom.FlowContextTestCase;
 import org.neuro4j.flows.custom.InputParametersTestCase;
 import org.neuro4j.flows.custom.OutParametersTestCase;
 import org.neuro4j.flows.network.NetworkTestCase;
@@ -30,8 +32,8 @@ import org.neuro4j.flows.nodes.switchnode.SwitchNodeTestCase;
 import org.neuro4j.flows.nodes.viewnode.SetViewTemplateNodeTestCase;
 
 @RunWith(Suite.class)
-@SuiteClasses({ DecisionNodeTestCase.class, SwitchNodeTestCase.class,
-        LoopNodeTestCase.class, MapperNodeTestCase.class, CallNodeTestCase.class, SetViewTemplateNodeTestCase.class, InputParametersTestCase.class,OutParametersTestCase.class, NetworkTestCase.class })
+@SuiteClasses({WorkflowEngineTestCase.class, DecisionNodeTestCase.class, SwitchNodeTestCase.class,
+        LoopNodeTestCase.class, MapperNodeTestCase.class, CallNodeTestCase.class, SetViewTemplateNodeTestCase.class, InputParametersTestCase.class,OutParametersTestCase.class, NetworkTestCase.class, FlowContextTestCase.class })
 public class AllTests {
 
 }

@@ -46,6 +46,7 @@ import org.neuro4j.workflow.node.WorkflowNode;
  *
  */
 public class FlowConverter {
+    
 
     /**
      * In case of exception input stream are closed by JAXB
@@ -343,17 +344,22 @@ public class FlowConverter {
      * @param e
      * @param parameters
      * @return
+     * @throws FlowInitializationException 
      */
-    private static WorkflowNode createCustomNode(Workflow workflow, NodeXML e) {
-        CustomNode node = new CustomNode(e.getName(), e.getUuid(), workflow);
+    private static WorkflowNode createCustomNode(Workflow workflow, NodeXML e) throws FlowInitializationException {
+        String executableClass = e.getConfig("SWF_CUSTOM_CLASS");
+        if (executableClass == null)
+        {
+            throw new FlowInitializationException("Executable class not defined for node: " + e.getUuid() + " flow: " + workflow.getPackage() + workflow.getFlowName());
+        }
+        CustomNode node = new CustomNode(executableClass, e.getName(), e.getUuid(), workflow);
         for (ParameterXML param : e.parameters) {
             if (param.input == null || param.input) {
                 node.addParameter(param.key, param.value);
             } else {
                 node.addOutParameter(param.key, param.value);
             }
-        }
-        node.setExecutableClass(e.getConfig("SWF_CUSTOM_CLASS"));
+        }       
 
         return node;
     }

@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <flow visibility="Public">
     <nodes>
-        <node type="END" y="328" x="215" name="EndNode1" uuid="U2cQV.0EmjEAAAFCdsfrrbqa">
+        <node uuid="U2cQV.0EmjEAAAFCdsfrrbqa" name="EndNode1" x="215" y="328" type="END">
             <parameters/>
             <config/>
             <transitions/>
         </node>
-        <node type="START" y="10" x="215" name="Start" uuid="Uj0QV.0E_BoAAAFCnL3rrbqa">
+        <node uuid="Uj0QV.0E_BoAAAFCnL3rrbqa" name="Start" x="215" y="10" type="START">
             <parameters/>
             <config>
-                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
             </config>
             <transitions>
-                <transition toNode="ProQV.0ElRkAAAFCfPzrrbqa" name="NEXT" uuid="pokQV.0EZxUAAAFCgAjrrbqb">
+                <transition uuid="pokQV.0EZxUAAAFCgAjrrbqb" name="NEXT" toNode="ProQV.0ElRkAAAFCfPzrrbqa">
                     <points>0, 32, -8, -172|8, 176, 0, -28|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="CUSTOM" y="158" x="248" name="SayHello" uuid="ProQV.0ElRkAAAFCfPzrrbqa">
+        <node uuid="ProQV.0ElRkAAAFCfPzrrbqa" name="SayHello" x="218" y="161" type="CUSTOM">
             <parameters>
-                <parameter input="true" value="&quot;World&quot;" key="name"/>
+                <parameter key="name" value="&quot;World&quot;" input="true"/>
             </parameters>
             <config>
-                <parameter value="SayHello" key="SWF_BLOCK_CLASS"/>
-                <parameter value="org.neuro4j.example.helloword.SayHello" key="SWF_CUSTOM_CLASS"/>
+                <parameter key="SWF_BLOCK_CLASS" value="SayHello"/>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.example.helloword.SayHello"/>
             </config>
             <transitions>
-                <transition toNode="U2cQV.0EmjEAAAFCdsfrrbqa" name="NEXT" uuid="BgAQV.0Er4wAAAFC2SPrrbqb">
+                <transition uuid="BgAQV.0Er4wAAAFC2SPrrbqb" name="NEXT" toNode="U2cQV.0EmjEAAAFCdsfrrbqa">
                     <points>0, 29, 5, -195|-5, 190, 0, -34|</points>
                 </transition>
             </transitions>

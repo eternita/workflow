@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-
 public class ViewsController extends AbstractWorkflowController{
 
 	@RequestMapping(value="/simpleview", method=RequestMethod.GET)

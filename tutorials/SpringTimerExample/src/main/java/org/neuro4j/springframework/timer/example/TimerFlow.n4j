@@ -7,8 +7,9 @@
                 <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.springframework.timer.Timer"/>
             </config>
             <transitions>
-                <transition uuid="hbUQV.89EKQAAAFJYilffeja" name="NEXT" toNode="j9YQV.894GIAAAFJOfdffejZ">
-                    <points>0, 29, -5, -176|5, 177, 0, -28|</points>
+                <transition uuid="054QV.89A7MAAAFKsHburgLN" toNode="azwQV.89n4IAAAFJSelffejZ"/>
+                <transition uuid="ouoQV.89CmUAAAFK94vurgLN" name="NEXT" toNode="LL0QV.891wsAAAFK02DurgLN">
+                    <points>0, 36, 1, -157|-1, 165, 0, -28|</points>
                 </transition>
             </transitions>
         </node>
@@ -17,16 +18,16 @@
             <config/>
             <transitions/>
         </node>
-        <node uuid="j9YQV.894GIAAAFJOfdffejZ" name="SystemOutBlock" x="281" y="196" type="CUSTOM">
+        <node uuid="LL0QV.891wsAAAFK02DurgLN" name="SystemOutBlock" x="281" y="217" type="CUSTOM">
             <parameters>
-                <parameter key="varToPrint" value="&quot;Running!&quot;" input="true"/>
+                <parameter key="varToPrint" value="&quot;Ping!&quot;" input="true"/>
             </parameters>
             <config>
                 <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.workflow.core.SystemOutBlock"/>
             </config>
             <transitions>
-                <transition uuid="8KcQV.89CAEAAAFJKUhffeja" name="NEXT" toNode="azwQV.89n4IAAAFJSelffejZ">
-                    <points>0, 29, -9, -172|9, 167, 0, -34|</points>
+                <transition uuid="UtgQV.89uuIAAAFK0pnurgLN" name="NEXT" toNode="azwQV.89n4IAAAFJSelffejZ">
+                    <points>0, 29, -1, -177|1, 172, 0, -34|</points>
                 </transition>
             </transitions>
         </node>

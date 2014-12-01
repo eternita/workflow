@@ -16,12 +16,10 @@
 
 package org.neuro4j.workflow.node;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.loader.CustomBlockInitStrategy;
 import org.neuro4j.workflow.loader.DefaultCustomBlockInitStrategy;
+import org.neuro4j.workflow.log.Logger;
 
 /**
  * Loads and initializes custom (user's defined) blocks.
@@ -31,8 +29,8 @@ public class CustomBlockLoader {
 
     private static CustomBlockLoader INSTANCE = new CustomBlockLoader();
 
-    private Map<String, CustomBlock> cache = new HashMap<String, CustomBlock>();
-
+    private final DefaultCustomBlockInitStrategy defaultInitStrategy = new DefaultCustomBlockInitStrategy();
+    
     private CustomBlockInitStrategy customBlockInitStrategy = null;
 
     /**
@@ -57,36 +55,36 @@ public class CustomBlockLoader {
     CustomBlock lookupBlock(CustomNode entity) throws FlowInitializationException
     {
 
+        long start = System.currentTimeMillis();
+        
         if (entity.getExecutableClass() == null)
         {
             throw new FlowInitializationException("ExecutableClass not defined for CustomNode " + entity.getName());
         }
-
-        CustomBlock block = cache.get(entity.getExecutableClass());
         
-        if (block == null)
+        CustomBlock block = null;
+        
+        if (customBlockInitStrategy == null)
         {
-            synchronized (cache) {
-                
-                if (cache.containsKey(entity.getExecutableClass()))
-                {
-                    return cache.get(entity.getExecutableClass());
-                }
+            block = defaultInitStrategy.loadCustomBlock(entity.getExecutableClass());
 
-                if (customBlockInitStrategy == null)
-                {
-                    customBlockInitStrategy = new DefaultCustomBlockInitStrategy();
-                }
-                block = customBlockInitStrategy.loadCustomBlock(entity.getExecutableClass());
-
-                cache.put(entity.getExecutableClass(), block);
-            }
+        } else {
+            block = customBlockInitStrategy.loadCustomBlock(entity.getExecutableClass());
         }
-
-
+        
+        block.init();
+        
+        Logger.debug(this, "CustomBlock {} loaded and initialized in {} ms", entity.getExecutableClass(), System.currentTimeMillis() - start);
+        
         return block;
     }
 
+    
+    Class<? extends CustomBlock> getCustomBlockClass(CustomNode entity) throws FlowInitializationException
+    {
+        return defaultInitStrategy.getCustomBlockClass(entity.getExecutableClass());
+    }
+    
     public void setInitStrategy(CustomBlockInitStrategy newStrategy) {
         this.customBlockInitStrategy = newStrategy;
     }

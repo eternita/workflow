@@ -11,7 +11,9 @@ public class TriggerNodeFactory {
 
     /**
      * Returns initialized trigger block.
-     * @param flow - flow name with trigger node. Ex. org.neuro4j.springframework.timer.example.TimerFlow-Timer
+     * 
+     * @param flow
+     *        - flow name with trigger node. Ex. org.neuro4j.springframework.timer.example.TimerFlow-Timer
      * @return the initialized trigger block.
      * @throws FlowInitializationException
      */
@@ -51,8 +53,8 @@ public class TriggerNodeFactory {
 
             }
         }
-        
-        throw new FlowInitializationException("No trigger node found in " + flow);
+
+        throw new FlowInitializationException("No valid trigger node found in " + flow);
 
     }
 

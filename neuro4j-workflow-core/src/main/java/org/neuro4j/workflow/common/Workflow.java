@@ -27,10 +27,9 @@ import org.neuro4j.workflow.node.WorkflowNode;
 
 public class Workflow {
 
-    private long loadtime = -1;
 
-    private HashMap<String, StartNode> startNodes = null;
-    protected HashMap<String, WorkflowNode> nodes = null;
+    private final HashMap<String, StartNode> startNodes;
+    protected final HashMap<String, WorkflowNode> nodes;
 
     FlowVisibility visibility = FlowVisibility.Public;
 
@@ -42,7 +41,6 @@ public class Workflow {
         this();
         this.flowName = flowName;
         this.flowPackage = flowPackage;
-        this.loadtime = System.currentTimeMillis();
     }
 
     private Workflow() {
