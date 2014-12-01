@@ -1,47 +1,45 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <flow visibility="Public">
     <nodes>
-        <node type="VIEW" y="340" x="160" name="ViewNode2" uuid="gsEQV.0ElwQAAAE_GudPEs_B">
+        <node uuid="gsEQV.0ElwQAAAE_GudPEs_B" name="ViewNode2" x="123" y="340" type="VIEW">
             <parameters/>
             <config>
-                <parameter value="/jsp/example2/includePage1.jsp" key="SWF_PARAM_VIEW_TEMPLATE"/>
-                <parameter value="jsp" key="SWF_PARAM_VIEW_RENDER_TYPE"/>
-                <parameter value="org.neuro4j.web.logic.render.JspViewNodeRenderEngine" key="RENDER_IMPL"/>                
+                <parameter key="SWF_PARAM_VIEW_TEMPLATE" value="/jsp/example2/includePage1.jsp"/>
+                <parameter key="SWF_PARAM_VIEW_RENDER_TYPE" value="jsp"/>
             </config>
             <transitions/>
         </node>
-        <node type="VIEW" y="340" x="428" name="ViewNode2" uuid="bNAQV.0EGZEAAAFAATLat3la">
+        <node uuid="bNAQV.0EGZEAAAFAATLat3la" name="ViewNode2" x="428" y="340" type="VIEW">
             <parameters/>
             <config>
-                <parameter value="/jsp/example2/includePage2.jsp" key="SWF_PARAM_VIEW_TEMPLATE"/>
-                <parameter value="jsp" key="SWF_PARAM_VIEW_RENDER_TYPE"/>
-                <parameter value="org.neuro4j.web.logic.render.JspViewNodeRenderEngine" key="RENDER_IMPL"/>                
+                <parameter key="SWF_PARAM_VIEW_TEMPLATE" value="/jsp/example2/includePage2.jsp"/>
+                <parameter key="SWF_PARAM_VIEW_RENDER_TYPE" value="jsp"/>
             </config>
             <transitions/>
         </node>
-        <node type="DECISION" y="123" x="161" name="DecisionNode1" uuid="wy8QV.0EdZAAAAFABUvat3lY">
+        <node uuid="wy8QV.0EdZAAAAFABUvat3lY" name="DecisionNode1" x="161" y="123" type="DECISION">
             <parameters/>
             <config>
-                <parameter value="EQ_STR" key="SYS_OPERATOR"/>
-                <parameter value="&quot;page1&quot;" key="SYS_COMP_KEY"/>
-                <parameter value="p" key="SYS_DECISION_KEY"/>
+                <parameter key="SYS_OPERATOR" value="EQ_STR"/>
+                <parameter key="SYS_COMP_KEY" value="&quot;page1&quot;"/>
+                <parameter key="SYS_DECISION_KEY" value="p"/>
             </config>
             <transitions>
-                <transition toNode="bNAQV.0EGZEAAAFAATLat3la" name="FALSE" uuid="sGYQV.0Ev7gAAAFAIkvat3la">
+                <transition uuid="sGYQV.0Ev7gAAAFAIkvat3la" name="FALSE" toNode="bNAQV.0EGZEAAAFAATLat3la">
                     <points>59, 0, -141, -219|200, 190, 0, -29|</points>
                 </transition>
-                <transition toNode="gsEQV.0ElwQAAAE_GudPEs_B" name="NEXT" uuid="j8EQV.0EB0MAAAFAN0vat3lY">
+                <transition uuid="j8EQV.0EB0MAAAFAN0vat3lY" name="NEXT" toNode="gsEQV.0ElwQAAAE_GudPEs_B">
                     <points>0, 0, -250, -369|250, 340, 0, -29|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="START" y="10" x="210" name="Include" uuid="f0YQV.0EjboAAAE_K5lPEs_B">
+        <node uuid="f0YQV.0EjboAAAE_K5lPEs_B" name="Include" x="173" y="7" type="START">
             <parameters/>
             <config>
-                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
             </config>
             <transitions>
-                <transition toNode="wy8QV.0EdZAAAAFABUvat3lY" name="NEXT" uuid=".hgQV.0EuVkAAAE_U_RPEs_B">
+                <transition uuid=".hgQV.0EuVkAAAE_U_RPEs_B" name="NEXT" toNode="wy8QV.0EdZAAAAFABUvat3lY">
                     <points>0, 32, 0, -296|0, 299, 0, -29|</points>
                 </transition>
             </transitions>

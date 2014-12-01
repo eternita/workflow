@@ -46,7 +46,6 @@
         <node uuid="7SoQV.0EsVAAAAFAQ_QracwE" name="GetAccountsList" x="276" y="313" type="CUSTOM">
             <parameters/>
             <config>
-                <parameter key="SWF_BLOCK_CLASS" value="GetAccountsList"/>
                 <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.example.web.blocks.GetAccountsList"/>
             </config>
             <transitions>
@@ -55,7 +54,7 @@
                 </transition>
             </transitions>
         </node>
-        <node uuid="xBUQV.0EJGcAAAFA9_stpMvZ" name="ViewNode1" x="257" y="439" type="VIEW">
+        <node uuid="xBUQV.0EJGcAAAFA9_stpMvZ" name="ViewNode1" x="250" y="439" type="VIEW">
             <parameters/>
             <config>
                 <parameter key="SWF_PARAM_VIEW_TEMPLATE" value="/velotemplates/template.vm"/>
@@ -66,7 +65,6 @@
         <node uuid="LEap_iYcj7kAAAFBlFvg5xRL" name="GetAccountsFromSession" x="250" y="214" type="CUSTOM">
             <parameters/>
             <config>
-                <parameter key="SWF_BLOCK_CLASS" value="GetAccountsFromSession"/>
                 <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.example.web.blocks.GetAccountsFromSession"/>
             </config>
             <transitions>

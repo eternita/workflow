@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <flow visibility="Public">
     <nodes>
-        <node uuid="U2cQV.0EmjEAAAFCdsfrrbqa" name="EndNode1" x="215" y="328" type="END">
+        <node uuid="U2cQV.0EmjEAAAFCdsfrrbqa" name="EndNode1" x="215" y="299" type="END">
             <parameters/>
             <config/>
             <transitions/>
@@ -22,7 +22,6 @@
                 <parameter key="name" value="&quot;World&quot;" input="true"/>
             </parameters>
             <config>
-                <parameter key="SWF_BLOCK_CLASS" value="SayHello"/>
                 <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.example.helloword.SayHello"/>
             </config>
             <transitions>

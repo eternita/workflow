@@ -1,112 +1,87 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<flow>
+<flow visibility="Public">
     <nodes>
-        <node type="CUSTOM" y="0" x="0" name="org.neuro4j.logic.def.NetConfig" uuid="yeAQV.0E5JUAAAFBV_WhyVHO">
+        <node uuid="NcXAqFYBl6AAAAE_gvsmsZs9" name="Contacts" x="659" y="106" type="START">
             <parameters/>
             <config>
-                <parameter value="org.neuro4j.logic.def.NetConfig" key="SWF_BLOCK_CLASS"/>
-            </config>
-            <transitions/>
-        </node>
-        <node type="START" y="106" x="659" name="Contacts" uuid="NcXAqFYBl6AAAAE_gvsmsZs9">
-            <parameters/>
-            <config>
-                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
             </config>
             <transitions>
-                <transition toNode="g4LAqFYBJg0AAAE_93MmsaVo" name="NEXT" uuid="qDPAqFYBvIgAAAE_f7AmsaVo">
+                <transition uuid="qDPAqFYBvIgAAAE_f7AmsaVo" name="NEXT" toNode="g4LAqFYBJg0AAAE_93MmsaVo">
                     <points>0, 34, 28, -136|-28, 149, 0, -21|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="VIEW" y="393" x="142" name="ViewNode1" uuid="rQrAqFYBvoUAAAE_XdAvh4Ia">
+        <node uuid="rQrAqFYBvoUAAAE_XdAvh4Ia" name="ViewNode1" x="172" y="412" type="VIEW">
             <parameters/>
             <config>
-                <parameter value="/jsp/welcome.jsp" key="SWF_PARAM_VIEW_TEMPLATE"/>
-                <parameter value="jsp" key="SWF_PARAM_VIEW_RENDER_TYPE"/>
+                <parameter key="SWF_PARAM_VIEW_TEMPLATE" value="/jsp/welcome.jsp"/>
+                <parameter key="SWF_PARAM_VIEW_RENDER_TYPE" value="jsp"/>
             </config>
             <transitions/>
         </node>
-        <node type="MAP" y="289" x="650" name="MapperNode2" uuid="g4LAqFYBJg0AAAE_93MmsaVo">
-            <parameters>
-                <parameter input="true" key="N4J_CONSOLE_NODE_TYPE"/>
-                <parameter input="true" key="SWF_BLOCK_CLASS"/>
-                <parameter input="true" key="y"/>
-                <parameter input="true" key="SWF_PARAM_KEY_1"/>
-                <parameter input="true" key="x"/>
-            </parameters>
+        <node uuid="g4LAqFYBJg0AAAE_93MmsaVo" name="MapperNode2" x="650" y="289" type="MAP">
+            <parameters/>
             <config/>
             <transitions>
-                <transition toNode="SjfAqFYBIZAAAAE_chsmsZs." name="NEXT" uuid="G4TAqFYBKUkAAAE_57smsaVo">
+                <transition uuid="G4TAqFYBKUkAAAE_57smsaVo" name="NEXT" toNode="SjfAqFYBIZAAAAE_chsmsZs.">
                     <points>0, 21, -20, -107|20, 97, 0, -31|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="START" y="85" x="180" name="Start" uuid="16nAqFYB1REAAAE_3sQvh4Ia">
+        <node uuid="16nAqFYB1REAAAE_3sQvh4Ia" name="Start" x="180" y="85" type="START">
             <parameters/>
             <config>
-                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
             </config>
             <transitions>
-                <transition toNode="MD7AqFYBc1YAAAE__OcmsaVg" name="NEXT" uuid="x.rAqFYBnPMAAAE_RBkmsaVh">
+                <transition uuid="x.rAqFYBnPMAAAE_RBkmsaVh" name="NEXT" toNode="MD7AqFYBc1YAAAE__OcmsaVg">
                     <points>0, 34, -5, -143|5, 156, 0, -21|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="START" y="129" x="998" name="SiteMap" uuid="aArAqFYB8ecAAAE_8romsZs.">
+        <node uuid="aArAqFYB8ecAAAE_8romsZs." name="SiteMap" x="998" y="129" type="START">
             <parameters/>
             <config>
-                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
             </config>
             <transitions>
-                <transition toNode="KOfAqFYBI0sAAAE_z4wmsaVo" name="NEXT" uuid="YQDAqFYBV7UAAAE_8NImsaVo">
+                <transition uuid="YQDAqFYBV7UAAAE_8NImsaVo" name="NEXT" toNode="KOfAqFYBI0sAAAE_z4wmsaVo">
                     <points>0, 34, 19, -138|-19, 151, 0, -21|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="MAP" y="314" x="998" name="MapperNode3" uuid="KOfAqFYBI0sAAAE_z4wmsaVo">
-            <parameters>
-                <parameter input="true" key="N4J_CONSOLE_NODE_TYPE"/>
-                <parameter input="true" key="SWF_BLOCK_CLASS"/>
-                <parameter input="true" key="y"/>
-                <parameter input="true" key="SWF_PARAM_KEY_1"/>
-                <parameter input="true" key="x"/>
-            </parameters>
+        <node uuid="KOfAqFYBI0sAAAE_z4wmsaVo" name="MapperNode3" x="998" y="314" type="MAP">
+            <parameters/>
             <config/>
             <transitions>
-                <transition toNode="NynAqFYBV3cAAAE_WuAmsZs." name="NEXT" uuid="ICzAqFYBKoMAAAE_l.YmsaVo">
+                <transition uuid="ICzAqFYBKoMAAAE_l.YmsaVo" name="NEXT" toNode="NynAqFYBV3cAAAE_WuAmsZs.">
                     <points>0, 21, 11, -108|-11, 98, 0, -31|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="VIEW" y="407" x="630" name="ViewNode2" uuid="SjfAqFYBIZAAAAE_chsmsZs.">
+        <node uuid="SjfAqFYBIZAAAAE_chsmsZs." name="ViewNode2" x="653" y="412" type="VIEW">
             <parameters/>
             <config>
-                <parameter value="/jsp/contacts.jsp" key="SWF_PARAM_VIEW_TEMPLATE"/>
-                <parameter value="jsp" key="SWF_PARAM_VIEW_RENDER_TYPE"/>
+                <parameter key="SWF_PARAM_VIEW_TEMPLATE" value="/jsp/contacts.jsp"/>
+                <parameter key="SWF_PARAM_VIEW_RENDER_TYPE" value="jsp"/>
             </config>
             <transitions/>
         </node>
-        <node type="MAP" y="279" x="191" name="MapperNode1" uuid="MD7AqFYBc1YAAAE__OcmsaVg">
-            <parameters>
-                <parameter input="true" key="N4J_CONSOLE_NODE_TYPE"/>
-                <parameter input="true" key="SWF_BLOCK_CLASS"/>
-                <parameter input="true" key="y"/>
-                <parameter input="true" key="SWF_PARAM_KEY_1"/>
-                <parameter input="true" key="x"/>
-            </parameters>
+        <node uuid="MD7AqFYBc1YAAAE__OcmsaVg" name="MapperNode1" x="180" y="279" type="MAP">
+            <parameters/>
             <config/>
             <transitions>
-                <transition toNode="rQrAqFYBvoUAAAE_XdAvh4Ia" name="NEXT" uuid="fhDAqFYBQDMAAAE_.0AmsaVh">
+                <transition uuid="fhDAqFYBQDMAAAE_.0AmsaVh" name="NEXT" toNode="rQrAqFYBvoUAAAE_XdAvh4Ia">
                     <points>0, 21, 8, -103|-8, 93, 0, -31|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="VIEW" y="433" x="949" name="ViewNode3" uuid="NynAqFYBV3cAAAE_WuAmsZs.">
+        <node uuid="NynAqFYBV3cAAAE_WuAmsZs." name="ViewNode3" x="949" y="433" type="VIEW">
             <parameters/>
             <config>
-                <parameter value="/jsp/sitemap.jsp" key="SWF_PARAM_VIEW_TEMPLATE"/>
-                <parameter value="jsp" key="SWF_PARAM_VIEW_RENDER_TYPE"/>
+                <parameter key="SWF_PARAM_VIEW_TEMPLATE" value="/jsp/sitemap.jsp"/>
+                <parameter key="SWF_PARAM_VIEW_RENDER_TYPE" value="jsp"/>
             </config>
             <transitions/>
         </node>

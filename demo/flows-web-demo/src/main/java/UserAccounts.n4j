@@ -1,180 +1,174 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <flow visibility="Public">
     <nodes>
-        <node type="MAP" y="698" x="522" name="setListPage" uuid="aLzAqG8BuD8AAAE9C7AQ24Ww">
+        <node uuid="aLzAqG8BuD8AAAE9C7AQ24Ww" name="setListPage" x="522" y="698" type="MAP">
             <parameters>
-                <parameter input="true" value="&quot;/jsp/example1/accounts.jsp&quot;" key="page"/>
-                <parameter input="true" value="&quot;activeCl&quot;" key="example_1"/>
+                <parameter key="page" value="&quot;/jsp/example1/accounts.jsp&quot;" input="true"/>
+                <parameter key="example_1" value="&quot;activeCl&quot;" input="true"/>
             </parameters>
             <config/>
             <transitions>
-                <transition toNode="uOvAqG8B__AAAAE9Z7AQ24Wt" name="NEXT" uuid="LIfAqG8BUKcAAAE96cUQ24Ww">
+                <transition uuid="LIfAqG8BUKcAAAE96cUQ24Ww" name="NEXT" toNode="uOvAqG8B__AAAAE9Z7AQ24Wt">
                     <points>0, 23, 261, -205|0, 136, 261, -92|-261, 136, 0, -92|-261, 194, 0, -34|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="VIEW" y="913" x="291" name="ViewNode1" uuid="uOvAqG8B__AAAAE9Z7AQ24Wt">
+        <node uuid="uOvAqG8B__AAAAE9Z7AQ24Wt" name="ViewNode1" x="290" y="926" type="VIEW">
             <parameters/>
             <config>
-                <parameter value="/jsp/application.jsp" key="SWF_PARAM_VIEW_TEMPLATE"/>
-                <parameter value="jsp" key="SWF_PARAM_VIEW_RENDER_TYPE"/>
-                <parameter value="org.neuro4j.web.logic.render.JspViewNodeRenderEngine" key="RENDER_IMPL"/>
+                <parameter key="SWF_PARAM_VIEW_TEMPLATE" value="/jsp/application.jsp"/>
+                <parameter key="SWF_PARAM_VIEW_RENDER_TYPE" value="jsp"/>
             </config>
             <transitions/>
         </node>
-        <node type="CUSTOM" y="493" x="504" name="GetAccountsList" uuid="1hrAqG8BNDkAAAE96pEQ24Wv">
+        <node uuid="1hrAqG8BNDkAAAE96pEQ24Wv" name="GetAccountsList" x="504" y="493" type="CUSTOM">
             <parameters>
-                <parameter input="false" value="accountList" key="accounts"/>
+                <parameter key="accounts" value="accountList" input="false"/>
             </parameters>
             <config>
-                <parameter value="GetAccountsList" key="SWF_BLOCK_CLASS"/>
-                <parameter value="org.neuro4j.example.web.blocks.GetAccountsList" key="SWF_CUSTOM_CLASS"/>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.example.web.blocks.GetAccountsList"/>
             </config>
             <transitions>
-                <transition toNode="aLzAqG8BuD8AAAE9C7AQ24Ww" name="NEXT" uuid="kE_AqG8BAR8AAAE9SPe2jYXR"/>
+                <transition uuid="kE_AqG8BAR8AAAE9SPe2jYXR" name="NEXT" toNode="aLzAqG8BuD8AAAE9C7AQ24Ww"/>
             </transitions>
         </node>
-        <node type="CUSTOM" y="149" x="510" name="GetAccountsFromSession" uuid="uS2p_iYcXeQAAAFB4uPg5xRJ">
+        <node uuid="uS2p_iYcXeQAAAFB4uPg5xRJ" name="GetAccountsFromSession" x="510" y="149" type="CUSTOM">
             <parameters/>
             <config>
-                <parameter value="GetAccountsFromSession" key="SWF_BLOCK_CLASS"/>
-                <parameter value="org.neuro4j.example.web.blocks.GetAccountsFromSession" key="SWF_CUSTOM_CLASS"/>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.example.web.blocks.GetAccountsFromSession"/>
             </config>
             <transitions>
-                <transition toNode="c_rAqG8BgnUAAAE9v4O2jYXR" name="NEXT" uuid="Ynyp_iYcB9kAAAFB5OPg5xRJ">
+                <transition uuid="Ynyp_iYcB9kAAAFB5OPg5xRJ" name="NEXT" toNode="c_rAqG8BgnUAAAE9v4O2jYXR">
                     <points>0, 0, -562, -411|562, 396, 0, -15|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="CALL" y="274" x="279" name="CallNode2" uuid="QdXAqG8BHfoAAAE9PLW2jYXP">
+        <node uuid="QdXAqG8BHfoAAAE9PLW2jYXP" name="CallNode2" x="279" y="274" type="CALL">
             <parameters/>
             <config>
-                <parameter value="org.neuro4j.example.web.logic.ProcessAccount-RemoveAccount" key="SYS_FLOW_NAME"/>
+                <parameter key="SYS_FLOW_NAME" value="org.neuro4j.example.web.logic.ProcessAccount-RemoveAccount"/>
             </config>
             <transitions>
-                <transition toNode="c_rAqG8BgnUAAAE9v4O2jYXR" name="End" uuid="JlUQV.0EykcAAAE9ZJ2O6esr">
+                <transition uuid="JlUQV.0EykcAAAE9ZJ2O6esr" name="End" toNode="c_rAqG8BgnUAAAE9v4O2jYXR">
                     <points>0, 29, -198, -73|198, 87, 0, -15|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="CUSTOM" y="140" x="101" name="GetAccountsFromSession" uuid="xJyp_iYczNMAAAFBTXbg5xRK">
+        <node uuid="xJyp_iYczNMAAAFBTXbg5xRK" name="GetAccountsFromSession" x="101" y="140" type="CUSTOM">
             <parameters/>
             <config>
-                <parameter value="GetAccountsFromSession" key="SWF_BLOCK_CLASS"/>
-                <parameter value="org.neuro4j.example.web.blocks.GetAccountsFromSession" key="SWF_CUSTOM_CLASS"/>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.example.web.blocks.GetAccountsFromSession"/>
             </config>
             <transitions>
-                <transition toNode="B8PAqG8ByIYAAAE9NHe2jYXO" name="NEXT" uuid="tyqp_iYcBjkAAAFBTnbg5xRK">
+                <transition uuid="tyqp_iYcBjkAAAFBTnbg5xRK" name="NEXT" toNode="B8PAqG8ByIYAAAE9NHe2jYXO">
                     <points>0, 0, -174, -295|174, 267, 0, -28|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="MAP" y="702" x="79" name="SetPage" uuid="42nAqG8BGK0AAAE9nMsQ24Wx">
+        <node uuid="42nAqG8BGK0AAAE9nMsQ24Wx" name="SetPage" x="79" y="702" type="MAP">
             <parameters>
-                <parameter input="true" value="&quot;activeCl&quot;" key="example_1"/>
-                <parameter input="true" value="&quot;/jsp/example1/new_account.jsp&quot;" key="page"/>
+                <parameter key="example_1" value="&quot;activeCl&quot;" input="true"/>
+                <parameter key="page" value="&quot;/jsp/example1/new_account.jsp&quot;" input="true"/>
             </parameters>
             <config/>
             <transitions>
-                <transition toNode="uOvAqG8B__AAAAE9Z7AQ24Wt" name="NEXT" uuid="Q_jAqG8BTFIAAAE9u8IQ24Wy">
+                <transition uuid="Q_jAqG8BTFIAAAE9u8IQ24Wy" name="NEXT" toNode="uOvAqG8B__AAAAE9Z7AQ24Wt">
                     <points>0, 21, -176, -145|0, 100, -176, -66|176, 100, 0, -66|176, 137, 0, -29|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="START" y="18" x="555" name="List" uuid="omMQV.0EQgwAAAE9na0ql3.u">
+        <node uuid="omMQV.0EQgwAAAE9na0ql3.u" name="List" x="555" y="18" type="START">
             <parameters/>
             <config>
-                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
             </config>
             <transitions>
-                <transition toNode="uS2p_iYcXeQAAAFB4uPg5xRJ" name="NEXT" uuid="W.oQV.0Esn0AAAE_VXQeDKZr">
+                <transition uuid="W.oQV.0Esn0AAAE_VXQeDKZr" name="NEXT" toNode="uS2p_iYcXeQAAAFB4uPg5xRJ">
                     <points>0, 32, 0, -220|0, 237, 0, -15|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="START" y="26" x="136" name="Create" uuid="e2EQV.0EbLcAAAE_VpseDKZq">
+        <node uuid="e2EQV.0EbLcAAAE_VpseDKZq" name="Create" x="136" y="26" type="START">
             <parameters/>
             <config>
-                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
             </config>
             <transitions>
-                <transition toNode="xJyp_iYczNMAAAFBTXbg5xRK" name="NEXT" uuid="pNUQV.0EVl0AAAE_kCweDKZr">
+                <transition uuid="pNUQV.0EVl0AAAE_kCweDKZr" name="NEXT" toNode="xJyp_iYczNMAAAFBTXbg5xRK">
                     <points>0, 32, 7, -188|-7, 192, 0, -28|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="START" y="23" x="-9" name="New" uuid="x7AQV.0ExFUAAAE_cLm8aabi">
+        <node uuid="x7AQV.0ExFUAAAE_cLm8aabi" name="New" x="-9" y="23" type="START">
             <parameters/>
             <config>
-                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
             </config>
             <transitions>
-                <transition toNode="Asap_iYclYEAAAFBVJvg5xRK" name="NEXT" uuid="mTIQV.0EIxsAAAFAXJnat3lW">
+                <transition uuid="mTIQV.0EIxsAAAFAXJnat3lW" name="NEXT" toNode="Asap_iYclYEAAAFBVJvg5xRK">
                     <points>0, 32, -86, -346|71, 378, -15, 0|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="START" y="20" x="331" name="Remove" uuid="Ca8QV.0E5FMAAAE_vfweDKZq">
+        <node uuid="Ca8QV.0E5FMAAAE_vfweDKZq" name="Remove" x="331" y="20" type="START">
             <parameters/>
             <config>
-                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
             </config>
             <transitions>
-                <transition toNode="FEWp_iYc3HoAAAFBXUHg5xRK" name="NEXT" uuid="AxIQV.0Egx0AAAE_aE8eDKZr">
+                <transition uuid="AxIQV.0Egx0AAAE_aE8eDKZr" name="NEXT" toNode="FEWp_iYc3HoAAAFBXUHg5xRK">
                     <points>0, 32, 1, -183|-1, 187, 0, -28|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="JOIN" y="396" x="547" name="JoinNode2" uuid="c_rAqG8BgnUAAAE9v4O2jYXR">
+        <node uuid="c_rAqG8BgnUAAAE9v4O2jYXR" name="JoinNode2" x="547" y="396" type="JOIN">
             <parameters/>
             <config/>
             <transitions>
-                <transition toNode="1hrAqG8BNDkAAAE96pEQ24Wv" name="NEXT" uuid="9crAqG8B39cAAAE9q.y2jYXR"/>
+                <transition uuid="9crAqG8B39cAAAE9q.y2jYXR" name="NEXT" toNode="1hrAqG8BNDkAAAE96pEQ24Wv"/>
             </transitions>
         </node>
-        <node type="CUSTOM" y="138" x="-53" name="GetAccountsFromSession" uuid="Asap_iYclYEAAAFBVJvg5xRK">
+        <node uuid="Asap_iYclYEAAAFBVJvg5xRK" name="GetAccountsFromSession" x="-53" y="138" type="CUSTOM">
             <parameters/>
             <config>
-                <parameter value="GetAccountsFromSession" key="SWF_BLOCK_CLASS"/>
-                <parameter value="org.neuro4j.example.web.blocks.GetAccountsFromSession" key="SWF_CUSTOM_CLASS"/>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.example.web.blocks.GetAccountsFromSession"/>
             </config>
             <transitions>
-                <transition toNode="7wkQV.0EMq8AAAE_C_O8aabi" name="NEXT" uuid="XN.p_iYclYIAAAFBVJvg5xRK">
+                <transition uuid="XN.p_iYclYIAAAFBVJvg5xRK" name="NEXT" toNode="7wkQV.0EMq8AAAE_C_O8aabi">
                     <points>0, 0, -119, -533|119, 518, 0, -15|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="CALL" y="269" x="97" name="CallNode1" uuid="B8PAqG8ByIYAAAE9NHe2jYXO">
+        <node uuid="B8PAqG8ByIYAAAE9NHe2jYXO" name="CallNode1" x="97" y="269" type="CALL">
             <parameters/>
             <config>
-                <parameter value="org.neuro4j.example.web.logic.ProcessAccount-CreateAccount" key="SYS_FLOW_NAME"/>
+                <parameter key="SYS_FLOW_NAME" value="org.neuro4j.example.web.logic.ProcessAccount-CreateAccount"/>
             </config>
             <transitions>
-                <transition toNode="7wkQV.0EMq8AAAE_C_O8aabi" name="EndErrorNode" uuid="IgsQV.0EZjgAAAE.4Fx7BoYb">
+                <transition uuid="IgsQV.0EZjgAAAE.4Fx7BoYb" name="EndErrorNode" toNode="7wkQV.0EMq8AAAE_C_O8aabi">
                     <points>0, 34, 55, -199|0, 190, 55, -43|-55, 190, 0, -43|-55, 218, 0, -15|</points>
                 </transition>
-                <transition toNode="c_rAqG8BgnUAAAE9v4O2jYXR" name="EndCreateAccount" uuid="04cQV.0EAqwAAAFAOebat3lV">
+                <transition uuid="04cQV.0EAqwAAAFAOebat3lV" name="EndCreateAccount" toNode="c_rAqG8BgnUAAAE9v4O2jYXR">
                     <points>0, 29, -387, -65|372, 94, -15, 0|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="JOIN" y="518" x="104" name="JoinNode2" uuid="7wkQV.0EMq8AAAE_C_O8aabi">
+        <node uuid="7wkQV.0EMq8AAAE_C_O8aabi" name="JoinNode2" x="104" y="518" type="JOIN">
             <parameters/>
             <config/>
             <transitions>
-                <transition toNode="42nAqG8BGK0AAAE9nMsQ24Wx" name="NEXT" uuid="3zAQV.0EloEAAAFHgsYCu4NT">
+                <transition uuid="3zAQV.0EloEAAAFHgsYCu4NT" name="NEXT" toNode="42nAqG8BGK0AAAE9nMsQ24Wx">
                     <points>0, 15, -129, -160|129, 153, 0, -22|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="CUSTOM" y="146" x="287" name="GetAccountsFromSession" uuid="FEWp_iYc3HoAAAFBXUHg5xRK">
+        <node uuid="FEWp_iYc3HoAAAFBXUHg5xRK" name="GetAccountsFromSession" x="287" y="146" type="CUSTOM">
             <parameters/>
             <config>
-                <parameter value="GetAccountsFromSession" key="SWF_BLOCK_CLASS"/>
-                <parameter value="org.neuro4j.example.web.blocks.GetAccountsFromSession" key="SWF_CUSTOM_CLASS"/>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.example.web.blocks.GetAccountsFromSession"/>
             </config>
             <transitions>
-                <transition toNode="QdXAqG8BHfoAAAE9PLW2jYXP" name="NEXT" uuid="PMep_iYcWSsAAAFBXkHg5xRK">
+                <transition uuid="PMep_iYcWSsAAAFBXkHg5xRK" name="NEXT" toNode="QdXAqG8BHfoAAAE9PLW2jYXP">
                     <points>0, 0, -363, -287|363, 259, 0, -28|</points>
                 </transition>
             </transitions>

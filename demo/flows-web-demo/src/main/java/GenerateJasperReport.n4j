@@ -38,16 +38,15 @@
         <node uuid="FGyp_iYcmcoAAAFBvhXg5xRM" name="GetAccountsFromSession" x="467" y="114" type="CUSTOM">
             <parameters/>
             <config>
-                <parameter key="SWF_BLOCK_CLASS" value="GetAccountsFromSession"/>
                 <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.example.web.blocks.GetAccountsFromSession"/>
             </config>
             <transitions>
-                <transition uuid="Ngap_iYc6zoAAAFBmM7g5xRS" name="NEXT" toNode="eUDAqG8BtqAAAAFAa4fFhtFQ">
-                    <points>0, 29, 0, -136|0, 137, 0, -28|</points>
+                <transition uuid="D90QV.0EAOwAAAFIBMRpwSOg" name="NEXT" toNode="M5EQV.0EBQUAAAFIi7lpwSOg">
+                    <points>0, 29, 1, -79|-1, 75, 0, -33|</points>
                 </transition>
             </transitions>
         </node>
-        <node uuid="QkHAqG8BlmwAAAFAZduNktGW" name="ViewNode3" x="776" y="596" type="VIEW">
+        <node uuid="QkHAqG8BlmwAAAFAZduNktGW" name="ViewNode3" x="777" y="505" type="VIEW">
             <parameters/>
             <config>
                 <parameter key="SWF_PARAM_VIEW_TEMPLATE" value="/jsp/application.jsp"/>
@@ -55,12 +54,11 @@
             </config>
             <transitions/>
         </node>
-        <node uuid="eUDAqG8BtqAAAAFAa4fFhtFQ" name="GetAccountsList" x="493" y="273" type="CUSTOM">
+        <node uuid="eUDAqG8BtqAAAAFAa4fFhtFQ" name="GetAccountsList" x="493" y="329" type="CUSTOM">
             <parameters>
                 <parameter key="accounts" value="accounts" input="false"/>
             </parameters>
             <config>
-                <parameter key="SWF_BLOCK_CLASS" value="GetAccountsList"/>
                 <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.example.web.blocks.GetAccountsList"/>
             </config>
             <transitions>
@@ -69,12 +67,11 @@
                 </transition>
             </transitions>
         </node>
-        <node uuid="mR_AqG8BmbgAAAFAsfzFhtFP" name="CreateJRBeanCollectionDataSource" x="440" y="422" type="CUSTOM">
+        <node uuid="mR_AqG8BmbgAAAFAsfzFhtFP" name="CreateJRBeanCollectionDataSource" x="444" y="493" type="CUSTOM">
             <parameters>
                 <parameter key="collection" value="accountList" input="true"/>
             </parameters>
             <config>
-                <parameter key="SWF_BLOCK_CLASS" value="CreateJRBeanCollectionDataSource"/>
                 <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.jasper.datasource.CreateJRBeanCollectionDataSource"/>
             </config>
             <transitions>
@@ -83,13 +80,49 @@
                 </transition>
             </transitions>
         </node>
-        <node uuid="V5XAqG8BjuIAAAFA2gafFcHr" name="ViewNode2" x="484" y="605" type="VIEW">
+        <node uuid="V5XAqG8BjuIAAAFA2gafFcHr" name="ViewNode2" x="486" y="672" type="VIEW">
             <parameters/>
             <config>
                 <parameter key="SWF_PARAM_VIEW_TEMPLATE" value="/reports/report1.jasper"/>
                 <parameter key="SWF_PARAM_VIEW_RENDER_TYPE" value="jasper"/>
             </config>
             <transitions/>
+        </node>
+        <node uuid="WFQQV.0E.zQAAAFIrjVpwSOg" name="StartNode3" x="1110" y="10" type="START">
+            <parameters/>
+            <config>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
+            </config>
+            <transitions>
+                <transition uuid="YhgQV.0E4i8AAAFIJV9pwSOg" name="NEXT" toNode="mJ0QV.0EmcQAAAFIi1BpwSOg">
+                    <points>0, 32, 5, -177|-5, 194, 0, -15|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="zbMQV.0EoQ4AAAFI7T9pwSOg" name="EndNode1" x="1110" y="535" type="END">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node uuid="mJ0QV.0EmcQAAAFIi1BpwSOg" name="JoinNode1" x="1135" y="235" type="JOIN">
+            <parameters/>
+            <config/>
+            <transitions>
+                <transition uuid="8RsQV.0Eke4AAAFIQ2tpwSOg" name="NEXT" toNode="zbMQV.0EoQ4AAAFI7T9pwSOg">
+                    <points>0, 15, 0, -304|0, 285, 0, -34|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="M5EQV.0EBQUAAAFIi7lpwSOg" name="CallNode1" x="451" y="209" type="CALL">
+            <parameters/>
+            <config>
+                <parameter key="SYS_FLOW_NAME" value="GenerateJasperReport-StartNode3"/>
+            </config>
+            <transitions>
+                <transition uuid="pvQQV.0EuEoAAAFIQc1pwSOg" name="NEXT" toNode="eUDAqG8BtqAAAAFAa4fFhtFQ">
+                    <points>0, 34, 3, -73|-3, 79, 0, -28|</points>
+                </transition>
+            </transitions>
         </node>
     </nodes>
 </flow>

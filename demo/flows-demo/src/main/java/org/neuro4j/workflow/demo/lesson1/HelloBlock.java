@@ -21,7 +21,7 @@ public class HelloBlock extends CustomBlock {
     static final String OUT_MESSAGE = "message"; 
     
     
-    @Override
+
     public int execute(FlowContext ctx) throws FlowExecutionException {
 		
 		String name = (String)ctx.get(IN_NAME);

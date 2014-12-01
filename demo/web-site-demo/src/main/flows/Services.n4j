@@ -1,36 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<flow>
+<flow visibility="Public">
     <nodes>
-        <node type="START" y="156" x="285" name="Start" uuid="viTAqFYBepUAAAE_slcmsZs9">
+        <node uuid="viTAqFYBepUAAAE_slcmsZs9" name="Start" x="285" y="156" type="START">
             <parameters/>
             <config>
-                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
             </config>
             <transitions>
-                <transition toNode="lXXAqFYB1lcAAAE_tYwmsaVr" name="NEXT" uuid="kQ7AqFYBzvQAAAE_lLwmsaVr">
+                <transition uuid="kQ7AqFYBzvQAAAE_lLwmsaVr" name="NEXT" toNode="lXXAqFYB1lcAAAE_tYwmsaVr">
                     <points>0, 34, 13, -107|-13, 120, 0, -21|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="VIEW" y="406" x="261" name="ViewNode1" uuid="u6TAqFYBGrsAAAE_y28msZs9">
+        <node uuid="u6TAqFYBGrsAAAE_y28msZs9" name="ViewNode1" x="261" y="406" type="VIEW">
             <parameters/>
             <config>
-                <parameter value="/jsp/services.jsp" key="SWF_PARAM_VIEW_TEMPLATE"/>
-                <parameter value="jsp" key="SWF_PARAM_VIEW_RENDER_TYPE"/>
+                <parameter key="SWF_PARAM_VIEW_TEMPLATE" value="/jsp/services.jsp"/>
+                <parameter key="SWF_PARAM_VIEW_RENDER_TYPE" value="jsp"/>
             </config>
             <transitions/>
         </node>
-        <node type="MAP" y="294" x="299" name="MapperNode1" uuid="lXXAqFYB1lcAAAE_tYwmsaVr">
-            <parameters>
-                <parameter input="true" key="N4J_CONSOLE_NODE_TYPE"/>
-                <parameter input="true" key="SWF_BLOCK_CLASS"/>
-                <parameter input="true" key="y"/>
-                <parameter input="true" key="SWF_PARAM_KEY_1"/>
-                <parameter input="true" key="x"/>
-            </parameters>
+        <node uuid="lXXAqFYB1lcAAAE_tYwmsaVr" name="MapperNode1" x="286" y="292" type="MAP">
+            <parameters/>
             <config/>
             <transitions>
-                <transition toNode="u6TAqFYBGrsAAAE_y28msZs9" name="NEXT" uuid="qYvAqFYBJ0gAAAE_FcgmsaVr">
+                <transition uuid="qYvAqFYBJ0gAAAE_FcgmsaVr" name="NEXT" toNode="u6TAqFYBGrsAAAE_y28msZs9">
                     <points>0, 21, -43, -112|43, 102, 0, -31|</points>
                 </transition>
             </transitions>
