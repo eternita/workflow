@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<flow visibility="Public">
+    <nodes>
+        <node type="START" y="67" x="970" name="StartNodeSD" uuid="KF.p_lq3BH0AAAE9iObSKEcw">
+            <parameters/>
+            <config>
+                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+            </config>
+            <transitions>
+                <transition toNode="m7Kp_lq3cIIAAAE9zwvSKEcx" name="NEXT" uuid="dOip_lq3Ep8AAAE9eiLSKEcx"/>
+            </transitions>
+        </node>
+        <node type="VIEW" y="387" x="158" name="ViewNode1" uuid="3QKp_lq3G_4AAAE9Rf7SKEcS">
+            <parameters/>
+            <config>
+                <parameter value="hello.jsp" key="SWF_PARAM_VIEW_TEMPLATE"/>
+            </config>
+            <transitions/>
+        </node>
+        <node type="VIEW" y="383" x="481" name="ViewNode2" uuid="I..p_lq3A1sAAAE95jfSKEci">
+            <parameters/>
+            <config>
+                <parameter value="templateName" key="DYNAMIC_VIEW"/>
+            </config>
+            <transitions/>
+        </node>
+        <node type="START" y="72" x="183" name="StartNode1Static" uuid="ckyp_lq3gH0AAAE9VvXSKEcS">
+            <parameters/>
+            <config>
+                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+            </config>
+            <transitions>
+                <transition toNode="3QKp_lq3G_4AAAE9Rf7SKEcS" name="NEXT" uuid="8QKp_lq3K80AAAE99wzSKEcT"/>
+            </transitions>
+        </node>
+        <node type="VIEW" y="381" x="933" name="ViewNode3" uuid="VAqp_lq3rSsAAAE9f.7SKEcw">
+            <parameters/>
+            <config>
+                <parameter value="&quot;hello.jsp&quot;" key="SWF_PARAM_VIEW_TEMPLATE"/>
+                <parameter value="templateName" key="DYNAMIC_VIEW"/>
+            </config>
+            <transitions/>
+        </node>
+        <node type="START" y="64" x="468" name="StartNodeDynamic" uuid="kByp_lq3F7gAAAE99i3SKEci">
+            <parameters/>
+            <config>
+                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+            </config>
+            <transitions>
+                <transition toNode="v4ep_lq3nwoAAAE9Q7LSKEci" name="NEXT" uuid="bHCp_lq3NaQAAAE9Us7SKEci"/>
+            </transitions>
+        </node>
+        <node type="MAP" y="222" x="1006" name="MapperNode2" uuid="m7Kp_lq3cIIAAAE9zwvSKEcx">
+            <parameters>
+                <parameter input="true" key="N4J_CONSOLE_NODE_TYPE"/>
+                <parameter input="true" key="SWF_BLOCK_CLASS"/>
+                <parameter input="true" key="y"/>
+                <parameter input="true" key="SWF_PARAM_KEY_1"/>
+                <parameter input="true" key="x"/>
+            </parameters>
+            <config/>
+            <transitions>
+                <transition toNode="VAqp_lq3rSsAAAE9f.7SKEcw" name="NEXT" uuid="vNCp_lq3PO0AAAE9eCzSKEcx"/>
+            </transitions>
+        </node>
+        <node type="MAP" y="222" x="519" name="MapperNode1" uuid="v4ep_lq3nwoAAAE9Q7LSKEci">
+            <parameters>
+                <parameter input="true" key="N4J_CONSOLE_NODE_TYPE"/>
+                <parameter input="true" key="SWF_BLOCK_CLASS"/>
+                <parameter input="true" key="y"/>
+                <parameter input="true" key="SWF_PARAM_KEY_1"/>
+                <parameter input="true" key="x"/>
+            </parameters>
+            <config/>
+            <transitions>
+                <transition toNode="I..p_lq3A1sAAAE95jfSKEci" name="NEXT" uuid="MSup_lq3AKwAAAE9mtbSKEci"/>
+            </transitions>
+        </node>
+    </nodes>
+</flow>
