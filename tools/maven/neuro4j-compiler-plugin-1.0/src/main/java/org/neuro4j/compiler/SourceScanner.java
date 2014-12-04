@@ -68,16 +68,19 @@ public class SourceScanner {
 		return ds.getIncludedFiles();
 	}
 
-	public Set<FileHolder> getIncludedSources(String sourceRoot, File sourceDir, File targetDir) {
+	public Set<FileHolder> getIncludedSources(String sourceRoot,
+			File sourceDir, File targetDir) {
 
 		String[] potentialSources = scanForSources(sourceDir, sourceIncludes,
 				sourceExcludes);
 
-		Set<FileHolder> matchingSources = new HashSet<FileHolder>(potentialSources != null ? potentialSources.length : 0);
+		Set<FileHolder> matchingSources = new HashSet<FileHolder>(
+				potentialSources != null ? potentialSources.length : 0);
 
 		if (potentialSources != null) {
 			for (String potentialSource : potentialSources) {
-				matchingSources.add(new FileHolder(new File(sourceDir, potentialSource), sourceRoot));
+				matchingSources.add(new FileHolder(new File(sourceDir,
+						potentialSource), sourceRoot));
 			}
 		}
 

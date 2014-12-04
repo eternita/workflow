@@ -57,6 +57,7 @@
 						<id>generate</id>
 						<goals>
 							<goal>generate</goal>
+							<goal>testGenerate</goal>
 						</goals>
 					</execution>
 				</executions>

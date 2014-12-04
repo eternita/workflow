@@ -30,12 +30,6 @@ import org.neuro4j.workflow.loader.f4j.TransitionXML;
 public class WorkflowBuilder {
 
 	public static void buildParameters(FileHolder workflowFileHolder, Map<String, String> parameters,	FlowXML workflow) throws FlowInitializationException {
-		String flowPackage = getFlowPackageValue(workflowFileHolder, workflow);
-		parameters.put("{flowPackage}", flowPackage.replace(".", "/"));
-
-		String packageFullName = getPackageFullNameValue(flowPackage);
-
-		parameters.put("{packageFullName}", packageFullName);
 
 		String initBlock = getInitBlockValue(workflow);
 
@@ -43,26 +37,7 @@ public class WorkflowBuilder {
 
 	}
 
-	private static String getFlowPackageValue(FileHolder workflowFileHolder, FlowXML workflow) {
-		String sourceFolder = workflowFileHolder.getSourceRoot();
-		String path = workflowFileHolder.getFile().getPath();
-		//:)
-		String packageStr = path.replace(sourceFolder + File.separator, "").replace(workflowFileHolder.getFile().getName(), "").replace(File.separator, ".");
-		if (packageStr.endsWith("."))
-		{
-			packageStr = packageStr.substring(0, packageStr.length() - 1);
-		}
-		
-		return packageStr.trim();
-	}
 
-	private static String getPackageFullNameValue(String packageStr) {
-		if (packageStr.length() > 1)
-		{
-			return "package " + packageStr + ";";
-		}
-		return "";
-	}
 
 	private static String getInitBlockValue(FlowXML workflow) throws FlowInitializationException {
 		StringBuffer str = new StringBuffer(256);

@@ -29,35 +29,37 @@ import org.apache.maven.project.MavenProject;
  * 
  *
  */
-@Mojo(name = "generate", defaultPhase = LifecyclePhase.PROCESS_SOURCES, requiresDependencyResolution = ResolutionScope.COMPILE)
-public class N4j2JavaMojo extends AbstractN4j2JavaMojo {
+@Mojo(name = "testGenerate", defaultPhase = LifecyclePhase.PROCESS_TEST_SOURCES, requiresDependencyResolution = ResolutionScope.COMPILE)
+public class TestN4j2JavaMojo extends N4j2JavaMojo {
 	
 
-	@Parameter(defaultValue = "${project.compileSourceRoots}", readonly = true, required = true)
-	private List<String> compileSourceRoots;
+	@Parameter(property = "project.testCompileSourceRoots", required = true, readonly = true)
+	private List<String> testSourceRoots;
 
+    @Parameter( defaultValue = "${project.build.directory}/generated-test-sources/n4j", required = true )
+    private File outputTestDirectory;
 	
-    @Parameter( defaultValue = "${project.build.directory}/generated-sources/n4j", required = true )
-    private File outputDirectory;
    
 	protected List<String> sourceDirs()
 	{
-		return getCompileSourceRoots();
+		return getCompileTestSourceRoots();
 
 	}
 	
 	protected File getOutputDirectory(){
-		return outputDirectory;
+		return outputTestDirectory;
 	}
 
 
-	protected List<String> getCompileSourceRoots() {
-		return compileSourceRoots;
+	protected List<String> getCompileTestSourceRoots() {
+		return testSourceRoots;
 	}
+	
 	
     protected void addCompileSourceRoot( MavenProject project )
     {
-        project.addCompileSourceRoot( getOutputDirectory().getAbsolutePath() );
+        project.addTestCompileSourceRoot(getOutputDirectory().getAbsolutePath() );
     }
+    
 
 }
