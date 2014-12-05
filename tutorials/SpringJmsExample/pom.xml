@@ -28,6 +28,11 @@
 			<id>spring-releases</id>
 			<url>http://repo.spring.io/libs-release</url>
 		</pluginRepository>
+		<pluginRepository>
+			<id>neuro4j-plugin-repo</id>
+			<name>Neuro4j Maven Plugin Repository</name>
+			<url>http://static.neuro4j.org/maven2</url>
+		</pluginRepository>		
 	</pluginRepositories>
 
 	<artifactId>SpringJmsExample</artifactId>
@@ -77,6 +82,22 @@
 		</resources>
 
 		<plugins>
+	
+			<plugin>
+				<groupId>org.neuro4j.tools</groupId>
+				<artifactId>neuro4j-compiler-plugin</artifactId>
+				<version>1.0</version>
+				<executions>
+					<execution>
+						<id>generate</id>
+						<goals>
+							<goal>generate</goal>
+							<goal>testGenerate</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+				
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
