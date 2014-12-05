@@ -17,6 +17,7 @@
 
 package org.neuro4j.workflow.loader;
 
+import org.apache.commons.beanutils.ConstructorUtils;
 import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.log.Logger;
 import org.neuro4j.workflow.node.CustomBlock;
@@ -34,7 +35,7 @@ public class DefaultCustomBlockInitStrategy implements CustomBlockInitStrategy {
             Class<? extends CustomBlock> clazz = (Class<? extends CustomBlock>) Class.forName(className);
             if (null != clazz)
             {
-                CustomBlock customBlock = clazz.newInstance();
+                CustomBlock customBlock  = (CustomBlock) ConstructorUtils.invokeConstructor(clazz, null);
                 return customBlock;
             }
 

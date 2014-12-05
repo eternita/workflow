@@ -19,7 +19,6 @@ package org.neuro4j.workflow.common;
 import java.io.IOException;
 import java.io.InputStream;
 
-import org.neuro4j.workflow.WorkflowSet;
 import org.neuro4j.workflow.loader.f4j.ConvertationException;
 import org.neuro4j.workflow.loader.f4j.FlowConverter;
 import org.neuro4j.workflow.log.Logger;
@@ -28,9 +27,8 @@ public class WorkflowMngImpl {
     
     public static final String WORKFLOW_FILE_EXT = ".n4j";
 
-    private static WorkflowMngImpl instance = null;
+    private static WorkflowMngImpl instance  = new WorkflowMngImpl();
 
-    private static WorkflowSet flowCache = new WorkflowSet();
 
     private boolean developmentMode = false;
 
@@ -44,29 +42,47 @@ public class WorkflowMngImpl {
         this.developmentMode = mode;
     }
 
-    public static synchronized WorkflowMngImpl getInstance()
+    public static WorkflowMngImpl getInstance()
     {
-        if (instance == null)
-        {
-            instance = new WorkflowMngImpl();
-        }
 
         return instance;
     }
 
     Workflow lookupWorkflow(String flowName) throws FlowInitializationException {
 
-        Workflow workflow = flowCache.getWorkflow(flowName);
-
+    	
+    	Workflow workflow = createFromGeneratedClasses(flowName);
+    	    	
         if (null != workflow)
             return workflow;
 
         workflow = loadWorkFlowFromFile(flowName);
 
-        if (null != workflow && !developmentMode) {
-            flowCache.addWorkflow(flowName, workflow);
-        }
+
         return workflow;
+    }
+    
+    private Workflow createFromGeneratedClasses(String flowName)
+    {
+    	
+        try {
+            String flowCalssname = flowName.replace('/', '.');
+            long start = System.currentTimeMillis();
+            Class<? extends Workflow> workflowClass = (Class<? extends Workflow>) Class.forName(flowCalssname);
+            if (null != workflowClass)
+            {
+            	
+            	Workflow customBlock = workflowClass.newInstance();
+            	
+            	Logger.info(this, "Workflow '{}' has been created from generated file in {} ms", new Object[]{flowName, System.currentTimeMillis() - start});            	
+                return customBlock;
+            }
+
+        } catch (Exception e) {
+            Logger.warn(this, "Enable to created worflow {} from generated file.", new String[]{flowName});
+        }
+    	
+    	return null;
     }
     
     

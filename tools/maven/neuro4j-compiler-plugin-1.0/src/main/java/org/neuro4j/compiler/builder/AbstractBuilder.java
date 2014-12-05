@@ -37,7 +37,6 @@ public abstract class AbstractBuilder {
 
 		buidNodeSpecificCode(buffer);
 		
-		buffer.append("  ").append(names.get(this.node.getUuid())).append(".registerNodeInWorkflow(); \n");
 		
 	}
 	

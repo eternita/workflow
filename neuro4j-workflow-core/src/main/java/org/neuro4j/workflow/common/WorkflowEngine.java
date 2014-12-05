@@ -69,15 +69,15 @@ public class WorkflowEngine {
             String[] array = parseFlowName(flow);
             String flowName = array[0];
             String startNodeName = array[1];
-
+            
             Logger.debug(WorkflowEngine.class, "Loading flow: {}", flowName);
-
+            long startLoading = System.currentTimeMillis();
             Workflow workflow = loadFlow(flowName);
-
+            Logger.debug(WorkflowEngine.class, "Loaded flow: {} in {} ms", flowName, System.currentTimeMillis() - startLoading);
             if (null == workflow)
                 throw new FlowExecutionException("Flow '" + flowName + "' can't be loaded");
 
-            Logger.debug(WorkflowEngine.class, "Loaded flow: {} in {} ms", flowName, System.currentTimeMillis() - start);
+           
 
             StartNode startNode = workflow.getStartNode(startNodeName);
             if (null == startNode)

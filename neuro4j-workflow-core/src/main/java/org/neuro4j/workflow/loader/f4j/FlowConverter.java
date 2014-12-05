@@ -75,38 +75,35 @@ public class FlowConverter {
         }
     }
 
-    private static Workflow netXML2net(FlowXML net, String flow) throws FlowInitializationException {
+	private static Workflow netXML2net(FlowXML net, String flow)
+			throws FlowInitializationException {
 
-        Workflow network = new Workflow(flow, getFlowPackage(flow));
+		Workflow network = new Workflow(flow, getFlowPackage(flow));
 
-        for (NodeXML e : net.getXmlNodes()) {
+		for (NodeXML e : net.getXmlNodes()) {
 
-            WorkflowNode entity = createNode(network, e);
-            if (entity != null)
-            {
-                entity.registerNodeInWorkflow();
-            }
+			createNode(network, e);
 
-        }
+		}
 
-        for (NodeXML entity : net.getXmlNodes()) {
+		for (NodeXML entity : net.getXmlNodes()) {
 
-            WorkflowNode node = network.getById(entity.getUuid());
-            if (node != null) {
-                for (TransitionXML transitionXml : entity.getRelations())
-                {
-                    Transition transition = transitionXml.createTransition(network, node);
-                    transition.setToNode(network.getById(transitionXml.toNode));
-                    node.registerExit(transition);
-                }
+			WorkflowNode node = network.getById(entity.getUuid());
+			if (node != null) {
+				for (TransitionXML transitionXml : entity.getRelations()) {
+					Transition transition = transitionXml.createTransition(
+							network, node);
+					transition.setToNode(network.getById(transitionXml.toNode));
+					node.registerExit(transition);
+				}
 
-                node.init();
-            }
+				node.init();
+			}
 
-        }
+		}
 
-        return network;
-    }
+		return network;
+	}
 
     private static String getFlowPackage(String flow) {
         String flowPackage = "default";

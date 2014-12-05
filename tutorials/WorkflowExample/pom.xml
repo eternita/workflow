@@ -51,6 +51,20 @@
 		</resources>
 		<plugins>
 			<plugin>
+				<groupId>org.neuro4j.tools.maven</groupId>
+				<artifactId>neuro4j-compiler-plugin</artifactId>
+				<version>1.0</version>
+				<executions>
+					<execution>
+						<id>generate</id>
+						<goals>
+							<goal>generate</goal>
+							<goal>testGenerate</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>		
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.1</version>

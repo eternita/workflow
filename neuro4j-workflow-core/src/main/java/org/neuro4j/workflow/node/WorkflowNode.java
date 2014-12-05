@@ -32,23 +32,21 @@ import org.neuro4j.workflow.log.Logger;
 
 public class WorkflowNode {
 
-    protected Workflow workflow = null;
+    protected final Workflow workflow;
     final private Map<String, String> parameters;
-    private String uuid = null;
+    private final String uuid;
     private String name;
 
     final Map<String, Transition> exits;
 
-    public WorkflowNode() {
-        exits = new HashMap<String, Transition>(3);
-        parameters = new HashMap<String, String>(4);
-    }
 
     public WorkflowNode(String name, String uuid, Workflow workflow) {
-        this();
-        setUuid(uuid);
+        exits = new HashMap<String, Transition>(3);
+        parameters = new HashMap<String, String>(4);
+        this.uuid = uuid;
         setName(name);
         this.workflow = workflow;
+        this.workflow.registerNode(this);
     }
 
     public Workflow getWorkflow() {
@@ -80,9 +78,6 @@ public class WorkflowNode {
         return exits.get(relationName);
     }
 
-    private void setUuid(String uuid2) {
-        this.uuid = uuid2;
-    }
 
     protected void setName(String name) {
         this.name = name;
@@ -96,10 +91,6 @@ public class WorkflowNode {
 
     public Collection<Transition> getExits() {
         return exits.values();
-    }
-
-    public void registerNodeInWorkflow() {
-        workflow.registerNode(this);
     }
 
     /**

@@ -54,9 +54,7 @@ public class WorkflowRequest {
     }
 
     public Iterator getLoopIterator(String aKey) {
-        Iterator result = this.loopIterator.get(aKey);
-
-        return result;
+        return this.loopIterator.get(aKey);
     }
 
     public void removeLoopIterator(String aKey) {

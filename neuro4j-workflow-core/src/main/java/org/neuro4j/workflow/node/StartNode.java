@@ -34,6 +34,7 @@ public class StartNode extends WorkflowNode {
     public StartNode(String name, String uuid, Workflow workflow)
     {
         super(name, uuid, workflow);
+        workflow.registerStartNode(this);
     }
 
     public void setType(StartNodeTypes type) {
@@ -50,11 +51,7 @@ public class StartNode extends WorkflowNode {
         return workflow.getPackage();
     }
 
-    public void registerNodeInWorkflow()
-    {
-        workflow.registerNode(this);
-        workflow.registerStartNode(this);
-    }
+
 
     @Override
     public Transition execute(WorkflowRequest request) throws FlowExecutionException {

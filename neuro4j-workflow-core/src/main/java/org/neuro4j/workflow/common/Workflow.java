@@ -72,29 +72,29 @@ public class Workflow {
      * @param request
      * @throws FlowExecutionException
      */
-    void executeWorkflow(WorkflowNode firstNode, WorkflowRequest request) throws FlowExecutionException {
+	void executeWorkflow(WorkflowNode firstNode, WorkflowRequest request)
+			throws FlowExecutionException {
 
-        if (null == request)
-            throw new RuntimeException("WorkflowRequest must not be null");
+		if (null == request)
+			throw new RuntimeException("WorkflowRequest must not be null");
 
-        WorkflowNode step = firstNode;
+		WorkflowNode step = firstNode;
 
-        while (null != step)
-        {
-            WorkflowNode lastNode = step;
+		while (null != step) {
+			WorkflowNode lastNode = step;
 
-            step = step.executeNode(request);
+			step = step.executeNode(request);
 
-            request.setLastSuccessfulNode(lastNode);
+			request.setLastSuccessfulNode(lastNode);
 
-            if (step != null)
-            {
-                Logger.debug(Workflow.class, "Next step: {} ({})", step.getName(), step.getUuid());
-            }
+			if (step != null) {
+				Logger.debug(Workflow.class, "Next step: {} ({})",
+						step.getName(), step.getUuid());
+			}
 
-        }
+		}
 
-    }
+	}
     
 
     

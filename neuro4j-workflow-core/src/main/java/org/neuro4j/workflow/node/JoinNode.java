@@ -33,14 +33,6 @@ public class JoinNode extends WorkflowNode {
     private Transition next = null;
 
     /**
-     * Default constructor.
-     */
-    public JoinNode()
-    {
-        super();
-    }
-
-    /**
      * @param name
      * @param uuid
      * @param workflow

@@ -124,7 +124,7 @@ public class CustomNode extends WorkflowNode {
         {
             String name = parameter.name();
 
-            Logger.debug(this, "Processing input parameter: name - {} , type - {})", name, parameter.type());
+            Logger.debug(this, "Processing input parameter: name - {} , type - {}", name, parameter.type());
 
             doInputMapping(ctx, name);
 
@@ -194,7 +194,7 @@ public class CustomNode extends WorkflowNode {
             String mappedValue = getParameter(originalName);
             if (mappedValue != null && !mappedValue.equalsIgnoreCase(originalName))
             {
-                Logger.debug(this, "Mapping parameter: {} to  {})", mappedValue, originalName);
+                Logger.debug(this, "Mapping parameter: {} to  {}", mappedValue, originalName);
 
                 evaluateParameterValue(mappedValue, originalName, ctx);
             }

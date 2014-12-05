@@ -27,12 +27,6 @@ import org.neuro4j.workflow.node.Transition;
  */
 public class EndNode extends WorkflowNode {
 
-    /**
-     * Default constructor.
-     */
-    public EndNode() {
-        super();
-    }
 
     /**
      * Constructor.

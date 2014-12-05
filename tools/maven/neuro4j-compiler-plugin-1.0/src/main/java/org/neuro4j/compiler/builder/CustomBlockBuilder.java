@@ -52,11 +52,6 @@ public class CustomBlockBuilder extends AbstractBuilder {
             }
         }    
 
-	
-		
-		
-		buffer.append("  ").append(names.get(this.node.getUuid())).append(".registerNodeInWorkflow(); \n");
-		
 	}
 
 	@Override

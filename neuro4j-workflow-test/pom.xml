@@ -38,7 +38,7 @@
 			<resource>
 				<directory>src/test/java</directory>
 				<includes>
-					<include>**/*.n4j</include>
+					<include>**/*</include>
 				</includes>
 			</resource>
 			<resource>
@@ -48,6 +48,23 @@
 				</includes>
 			</resource>
 		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.neuro4j.tools.maven</groupId>
+				<artifactId>neuro4j-compiler-plugin</artifactId>
+				<version>1.0</version>
+				<executions>
+					<execution>
+						<id>generate</id>
+						<goals>
+							<goal>generate</goal>
+							<goal>testGenerate</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+		
 	</build>
 
 </project>
