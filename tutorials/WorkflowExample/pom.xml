@@ -7,7 +7,13 @@
 	<version>1.0-SNAPSHOT</version>
 	<name>WorkflowExample</name>
 	<url>http://maven.apache.org</url>
-
+	<pluginRepositories>
+		<pluginRepository>
+			<id>neuro4j-plugin-repo</id>
+			<name>Neuro4j Maven Plugin Repository</name>
+			<url>http://static.neuro4j.org/maven2</url>
+		</pluginRepository>
+	</pluginRepositories>
 	<repositories>
 		<repository>
 			<id>neuro4j-maven-milestone</id>
@@ -15,6 +21,8 @@
 			<url>http://static.neuro4j.org/maven2</url>
 		</repository>
 	</repositories>
+
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<org.neuro4j.version>2.0.1</org.neuro4j.version>
@@ -33,8 +41,8 @@
 			<artifactId>logback-classic</artifactId>
 			<version>${logback.version}</version>
 		</dependency>
-	</dependencies>	
-	<build>	
+	</dependencies>
+	<build>
 		<resources>
 			<resource>
 				<directory>src/main/java</directory>
@@ -47,11 +55,11 @@
 				<includes>
 					<include>**/*.png</include>
 				</includes>
-			</resource>			
+			</resource>
 		</resources>
 		<plugins>
 			<plugin>
-				<groupId>org.neuro4j.tools.maven</groupId>
+				<groupId>org.neuro4j.tools</groupId>
 				<artifactId>neuro4j-compiler-plugin</artifactId>
 				<version>1.0</version>
 				<executions>
@@ -63,7 +71,7 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>		
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
