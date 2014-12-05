@@ -12,7 +12,13 @@
 
 	<name>Neuro4j Gen Maven Plugin</name>
 	<description>Generate java files from n4j files.</description>
-
+	<repositories>
+		<repository>
+			<id>neuro4j-maven-milestone</id>
+			<name>Neuro4J Maven Repository</name>
+			<url>http://static.neuro4j.org/maven2</url>
+		</repository>
+	</repositories>
 	<properties>
 		<mavenVersion>2.2.1</mavenVersion>
 		<org.neuro4j.version>2.0.1</org.neuro4j.version>
