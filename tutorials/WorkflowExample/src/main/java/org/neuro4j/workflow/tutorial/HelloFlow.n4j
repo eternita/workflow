@@ -28,5 +28,14 @@
                 </transition>
             </transitions>
         </node>
+        <node uuid="note" name="P_YQV.89JlkAAAFKQZb3nhyO" x="400" y="69" type="NOTE">
+            <description>This is my first flow</description>
+            <parameters/>
+            <config>
+                <parameter key="w" value="253"/>
+                <parameter key="h" value="38"/>
+            </config>
+            <transitions/>
+        </node>
     </nodes>
 </flow>
