@@ -45,6 +45,14 @@ Following code execute flow:
 
 Online documentation how to create first application based on flow available at (http://neuro4j.org/docs/wf/helloworld)
 
+
+How It Works?
+----------
+
+![workflow-how-works](https://raw.githubusercontent.com/neuro4j/workflow/master/doc/images/diagram.png "How it works")
+
+
+
 Debuging flow
 ----------
 
