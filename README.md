@@ -43,7 +43,7 @@ Following code execute flow:
 ![workflow-example-higlevel](https://raw.github.com/neuro4j/workflow/master/doc/images/MainClass.png "HelloWorld workflow")
 
 
-Online documentation how to create first application based on flow available at (http://neuro4j.org/docs/wf/helloworld)
+Online documentation how to create first application based on flow available at (http://neuro4j.org/articles/tutorial_hello_world)
 
 
 How It Works?
