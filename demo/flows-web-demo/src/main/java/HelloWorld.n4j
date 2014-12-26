@@ -17,7 +17,7 @@
                 </transition>
             </transitions>
         </node>
-        <node uuid="ProQV.0ElRkAAAFCfPzrrbqa" name="SayHello" x="218" y="161" type="CUSTOM">
+        <node uuid="ProQV.0ElRkAAAFCfPzrrbqa" name="SayHello" x="206" y="161" type="CUSTOM">
             <parameters>
                 <parameter key="name" value="&quot;World&quot;" input="true"/>
             </parameters>

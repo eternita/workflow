@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <flow visibility="Public">
     <nodes>
-        <node uuid="wwwQV.0EqEEAAAFBhV6Jkg7T" name="MapperNode2" x="789" y="248" type="MAP">
+        <node uuid="wwwQV.0EqEEAAAFBhV6Jkg7T" name="MapperNode2" x="784" y="248" type="MAP">
             <parameters>
                 <parameter key="page" value="&quot;/jsp/example4/jasperReport.jsp&quot;" input="true"/>
                 <parameter key="example4" value="&quot;activeCl&quot;" input="true"/>
@@ -35,7 +35,7 @@
                 </transition>
             </transitions>
         </node>
-        <node uuid="FGyp_iYcmcoAAAFBvhXg5xRM" name="GetAccountsFromSession" x="467" y="114" type="CUSTOM">
+        <node uuid="FGyp_iYcmcoAAAFBvhXg5xRM" name="GetAccountsFromSession" x="502" y="114" type="CUSTOM">
             <parameters/>
             <config>
                 <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.example.web.blocks.GetAccountsFromSession"/>
@@ -46,7 +46,7 @@
                 </transition>
             </transitions>
         </node>
-        <node uuid="QkHAqG8BlmwAAAFAZduNktGW" name="ViewNode3" x="777" y="505" type="VIEW">
+        <node uuid="QkHAqG8BlmwAAAFAZduNktGW" name="ViewNode3" x="789" y="505" type="VIEW">
             <parameters/>
             <config>
                 <parameter key="SWF_PARAM_VIEW_TEMPLATE" value="/jsp/application.jsp"/>
@@ -54,7 +54,7 @@
             </config>
             <transitions/>
         </node>
-        <node uuid="eUDAqG8BtqAAAAFAa4fFhtFQ" name="GetAccountsList" x="493" y="329" type="CUSTOM">
+        <node uuid="eUDAqG8BtqAAAAFAa4fFhtFQ" name="GetAccountsList" x="502" y="329" type="CUSTOM">
             <parameters>
                 <parameter key="accounts" value="accounts" input="false"/>
             </parameters>
@@ -67,7 +67,7 @@
                 </transition>
             </transitions>
         </node>
-        <node uuid="mR_AqG8BmbgAAAFAsfzFhtFP" name="CreateJRBeanCollectionDataSource" x="444" y="493" type="CUSTOM">
+        <node uuid="mR_AqG8BmbgAAAFAsfzFhtFP" name="CreateJRBeanCollectionDataSource" x="502" y="493" type="CUSTOM">
             <parameters>
                 <parameter key="collection" value="accountList" input="true"/>
             </parameters>
@@ -80,7 +80,7 @@
                 </transition>
             </transitions>
         </node>
-        <node uuid="V5XAqG8BjuIAAAFA2gafFcHr" name="ViewNode2" x="486" y="672" type="VIEW">
+        <node uuid="V5XAqG8BjuIAAAFA2gafFcHr" name="ViewNode2" x="511" y="672" type="VIEW">
             <parameters/>
             <config>
                 <parameter key="SWF_PARAM_VIEW_TEMPLATE" value="/reports/report1.jasper"/>
@@ -113,7 +113,7 @@
                 </transition>
             </transitions>
         </node>
-        <node uuid="M5EQV.0EBQUAAAFIi7lpwSOg" name="CallNode1" x="451" y="209" type="CALL">
+        <node uuid="M5EQV.0EBQUAAAFIi7lpwSOg" name="CallNode1" x="502" y="209" type="CALL">
             <parameters/>
             <config>
                 <parameter key="SYS_FLOW_NAME" value="GenerateJasperReport-StartNode3"/>

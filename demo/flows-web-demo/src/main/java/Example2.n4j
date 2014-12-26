@@ -1,58 +1,51 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <flow visibility="Public">
     <nodes>
-        <node type="END" y="435" x="810" name="EndNode1" uuid="7LEQV.0E7FQAAAFBv_OHjaR3">
+        <node uuid="7LEQV.0E7FQAAAFBv_OHjaR3" name="EndNode1" x="810" y="435" type="END">
             <parameters/>
             <config/>
             <transitions/>
         </node>
-        <node type="START" y="110" x="810" name="StartNode2" uuid="3.kQV.0Epp4AAAFBH.iHjaR3">
+        <node uuid="3.kQV.0Epp4AAAFBH.iHjaR3" name="StartNode2" x="810" y="110" type="START">
             <parameters/>
             <config>
-                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
             </config>
             <transitions>
-                <transition toNode="7LEQV.0E7FQAAAFBv_OHjaR3" name="NEXT" uuid="uEkQV.0E8MoAAAFBH_2HjaR3">
+                <transition uuid="uEkQV.0E8MoAAAFBH_2HjaR3" name="NEXT" toNode="7LEQV.0E7FQAAAFBv_OHjaR3">
                     <points>0, 32, 0, -291|0, 294, 0, -29|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="VIEW" y="510" x="309" name="ViewNode1" uuid="MTKp_iYcercAAAE_uXJJYq.g">
+        <node uuid="MTKp_iYcercAAAE_uXJJYq.g" name="ViewNode1" x="329" y="510" type="VIEW">
             <parameters/>
             <config>
-                <parameter value="/jsp/application.jsp" key="SWF_PARAM_VIEW_TEMPLATE"/>
+                <parameter key="SWF_PARAM_VIEW_TEMPLATE" value="/jsp/application.jsp"/>
             </config>
             <transitions/>
         </node>
-        <node type="MAP" y="415" x="341" name="MapperNode1" uuid="3xap_iYcXQQAAAE_fF1JYq.s">
+        <node uuid="3xap_iYcXQQAAAE_fF1JYq.s" name="MapperNode1" x="324" y="389" type="MAP">
             <parameters>
-                <parameter input="true" value="&quot;/jsp/example2/page1.jsp&quot;" key="page"/>
-                <parameter input="true" value="&quot;activeCl&quot;" key="example_2"/>
+                <parameter key="page" value="&quot;/jsp/example2/page1.jsp&quot;" input="true"/>
+                <parameter key="example_2" value="&quot;activeCl&quot;" input="true"/>
             </parameters>
             <config/>
             <transitions>
-                <transition toNode="MTKp_iYcercAAAE_uXJJYq.g" name="NEXT" uuid="faip_iYc6PcAAAE_roNJYq.s">
+                <transition uuid="faip_iYc6PcAAAE_roNJYq.s" name="NEXT" toNode="MTKp_iYcercAAAE_uXJJYq.g">
                     <points>0, 21, 0, -82|0, 74, 0, -29|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="START" y="134" x="328" name="Start" uuid="w6up_iYcwoQAAAE_bkJJYq.S">
+        <node uuid="w6up_iYcwoQAAAE_bkJJYq.S" name="Start" x="328" y="134" type="START">
             <parameters/>
             <config>
-                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
             </config>
             <transitions>
-                <transition toNode="3xap_iYcXQQAAAE_fF1JYq.s" name="NEXT" uuid="QfGp_iYcn2AAAAE_Rm1JYq.s">
+                <transition uuid="QfGp_iYcn2AAAAE_Rm1JYq.s" name="NEXT" toNode="3xap_iYcXQQAAAE_fF1JYq.s">
                     <points>0, 32, 5, -249|-5, 260, 0, -21|</points>
                 </transition>
             </transitions>
-        </node>
-        <node type="START" y="810" x="510" name="StartNode3" uuid="4scQV.0EhXcAAAFHxqDsWaig">
-            <parameters/>
-            <config>
-                <parameter value="PRIVATE" key="SYS_START_NODE_TYPE"/>
-            </config>
-            <transitions/>
         </node>
     </nodes>
 </flow>

@@ -12,7 +12,7 @@
                 </transition>
             </transitions>
         </node>
-        <node uuid="fIQQV.0ErisAAAFHJavG5ac5" name="ViewNode1" x="417" y="644" type="VIEW">
+        <node uuid="fIQQV.0ErisAAAFHJavG5ac5" name="ViewNode1" x="415" y="644" type="VIEW">
             <parameters>
                 <parameter key="DYNAMIC_VIEW" value="jsonStr" input="true"/>
             </parameters>
@@ -21,7 +21,7 @@
             </config>
             <transitions/>
         </node>
-        <node uuid="NagQV.0EjzoAAAFHdOXG5ac5" name="GetAccountsList" x="397" y="299" type="CUSTOM">
+        <node uuid="NagQV.0EjzoAAAFHdOXG5ac5" name="GetAccountsList" x="406" y="299" type="CUSTOM">
             <parameters>
                 <parameter key="accounts" value="accounts" input="false"/>
             </parameters>
@@ -34,7 +34,7 @@
                 </transition>
             </transitions>
         </node>
-        <node uuid="6RYQV.0EIwkAAAFHd1TG5ac." name="CreateJsonFromAccounts" x="373" y="458" type="CUSTOM">
+        <node uuid="6RYQV.0EIwkAAAFHd1TG5ac." name="CreateJsonFromAccounts" x="406" y="458" type="CUSTOM">
             <parameters>
                 <parameter key="accounts" value="accountList" input="true"/>
             </parameters>
@@ -47,7 +47,7 @@
                 </transition>
             </transitions>
         </node>
-        <node uuid="KFIQV.0E5MsAAAFH92J3vKdI" name="GetAccountsFromSession" x="371" y="140" type="CUSTOM">
+        <node uuid="KFIQV.0E5MsAAAFH92J3vKdI" name="GetAccountsFromSession" x="406" y="161" type="CUSTOM">
             <parameters/>
             <config>
                 <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.example.web.blocks.GetAccountsFromSession"/>
