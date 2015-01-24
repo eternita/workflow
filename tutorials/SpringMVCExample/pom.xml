@@ -12,6 +12,13 @@
 		<org.aspectj-version>1.8.1</org.aspectj-version>
 		<org.neuro4j-version>2.0.1</org.neuro4j-version>
 	</properties>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>neuro4j-plugin-repo</id>
+			<name>Neuro4j Maven Plugin Repository</name>
+			<url>http://static.neuro4j.org/maven2</url>
+		</pluginRepository>
+	</pluginRepositories>	
 	<repositories>
 		<repository>
 			<id>neuro4j-maven-milestone</id>
@@ -100,6 +107,20 @@
 			</resource>
 		</resources>
 		<plugins>
+			<plugin>
+				<groupId>org.neuro4j.tools</groupId>
+				<artifactId>neuro4j-compiler-plugin</artifactId>
+				<version>1.0</version>
+				<executions>
+					<execution>
+						<id>generate</id>
+						<goals>
+							<goal>generate</goal>
+							<goal>testGenerate</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>		
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>

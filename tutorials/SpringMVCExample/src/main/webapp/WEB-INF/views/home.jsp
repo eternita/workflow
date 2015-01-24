@@ -9,5 +9,9 @@
 
 	<br> Click on
 	<a href="./simpleview">link</a> to call SpringMVC controller.
+	<p> 
+	<br> Click on 
+	<a href="./greeting?name=Mister">link</a> to call RESTfull service.
+	</p>
 </body>
 </html>
