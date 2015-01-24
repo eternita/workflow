@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<flow visibility="Public">
+    <nodes>
+        <node uuid=".nIQV.894Q4AAAFL88c_LA2v" name="HandleMessage" x="111" y="117" type="CUSTOM">
+            <parameters/>
+            <config>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.springintegration.mail.HandleInputMessage"/>
+            </config>
+            <transitions>
+                <transition uuid="h.IQV.89mvMAAAFL9lw_LA8F" name="NEXT" toNode="Nv4QV.89A2cAAAFLXho_LA8F">
+                    <points>-78, 35, -78, -65|-78, 65, -78, -35|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="wfMQV.89r_kAAAFLYOI_LA2v" name="END" x="120" y="539" type="END">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node uuid="yIgQV.896NwAAAFLeqM_LA8D" name="ERROR" x="330" y="535" type="END">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node uuid="Nv4QV.89A2cAAAFLXho_LA8F" name="PrintMessageHeader" x="111" y="217" type="CUSTOM">
+            <parameters/>
+            <config>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.springintegration.mail.debug.PrintMessageHeader"/>
+            </config>
+            <transitions>
+                <transition uuid="CZcQV.89xQsAAAFLPmw_LA8F" name="NEXT" toNode="bckQV.89FEoAAAFLbkE_LBVw">
+                    <points>-78, 35, -78, -65|-78, 65, -78, -35|</points>
+                </transition>
+                <transition uuid="NS4QV.89Q5sAAAFL950_LA8F" name="ERROR" toNode="2H0QV.89PBsAAAFLpI4_LA8F">
+                    <points>-43, 0, -175, -100|-43, -3, -175, -103|132, -3, 0, -103|132, 85, 0, -15|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="2H0QV.89PBsAAAFLpI4_LA8F" name="JoinNode1" x="340" y="337" type="JOIN">
+            <parameters/>
+            <config/>
+            <transitions>
+                <transition uuid="mAAQV.89fYwAAAFLPNg_LA8F" name="NEXT" toNode="yIgQV.896NwAAAFLeqM_LA8D">
+                    <points>0, 15, -34, -214|-16, 185, -50, -44|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="bckQV.89FEoAAAFLbkE_LBVw" name="PrintMessage" x="111" y="317" type="CUSTOM">
+            <parameters/>
+            <config>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.springintegration.mail.debug.PrintMessage"/>
+            </config>
+            <transitions>
+                <transition uuid="bawQV.89DTkAAAFL9QE_LBk3" name="NEXT" toNode="wfMQV.89r_kAAAFLYOI_LA2v">
+                    <points>-78, 35, -50, -196|-78, 187, -50, -44|</points>
+                </transition>
+                <transition uuid="IS0QV.89w4kAAAFLCDY_LBk3" name="ERROR" toNode="2H0QV.89PBsAAAFLpI4_LA8F">
+                    <points>-43, 0, -175, -4|117, 4, -15, 0|</points>
+                </transition>
+            </transitions>
+        </node>
+    </nodes>
+</flow>

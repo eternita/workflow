@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.neuro4j.workflow.tutorial</groupId>
+	<version>1.0-SNAPSHOT</version>
+	<name>SpringEmailExample</name>
+	<properties>
+		<java-version>1.6</java-version>
+		<org.springframework-version>4.1.0.RC1</org.springframework-version>
+		<org.aspectj-version>1.8.1</org.aspectj-version>
+		<logback.version>1.0.13</logback.version>
+		<org.neuro4j-version>2.0.1</org.neuro4j-version>
+	</properties>
+	<repositories>
+		<repository>
+			<id>neuro4j-maven-milestone</id>
+			<name>Neuro4J Maven Repository</name>
+			<url>http://static.neuro4j.org/maven2</url>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>neuro4j-plugin-repo</id>
+			<name>Neuro4j Maven Plugin Repository</name>
+			<url>http://static.neuro4j.org/maven2</url>
+		</pluginRepository>		
+	</pluginRepositories>
+
+	<artifactId>SpringEmailExample</artifactId>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.neuro4j</groupId>
+			<artifactId>neuro4j-workflow-common</artifactId>
+			<version>${org.neuro4j-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.neuro4j</groupId>
+			<artifactId>spring-mail-adapter</artifactId>
+			<version>${org.neuro4j-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback.version}</version>
+		</dependency>		
+	</dependencies>
+
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.n4j</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*</include>
+				</includes>
+			</resource>
+		</resources>
+
+		<plugins>
+	
+			<plugin>
+				<groupId>org.neuro4j.tools</groupId>
+				<artifactId>neuro4j-compiler-plugin</artifactId>
+				<version>1.0</version>
+				<executions>
+					<execution>
+						<id>generate</id>
+						<goals>
+							<goal>generate</goal>
+							<goal>testGenerate</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
