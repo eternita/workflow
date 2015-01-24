@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <flow visibility="Public">
     <nodes>
-        <node uuid="jtwQV.89kbcAAAFJ2mwMBXff" name="Start" x="301" y="61" type="START">
+        <node uuid="jtwQV.89kbcAAAFJ2mwMBXff" name="Start" x="343" y="30" type="START">
             <parameters/>
             <config>
                 <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
             </config>
             <transitions>
                 <transition uuid="4sUQV.89OzYAAAFJOUoMBXgL" name="NEXT" toNode="xGIQV.89OY4AAAFJcDIMBXgL">
-                    <points>0, 32, 0, -122|0, 126, 0, -28|</points>
+                    <points>0, 32, 0, -85|0, 92, 0, -25|</points>
                 </transition>
             </transitions>
         </node>
-        <node uuid="bbsQV.89Lh8AAAFJ5IoMBXff" name="End" x="301" y="443" type="END">
+        <node uuid="bbsQV.89Lh8AAAFJ5IoMBXff" name="END" x="343" y="263" type="END">
             <parameters/>
             <config/>
             <transitions/>
         </node>
-        <node uuid="xGIQV.89OY4AAAFJcDIMBXgL" name="HelloWorld" x="297" y="253" type="CUSTOM">
+        <node uuid="xGIQV.89OY4AAAFJcDIMBXgL" name="HelloWorld" x="334" y="153" type="CUSTOM">
             <parameters/>
             <config>
                 <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.workflow.tutorial.HelloWorld"/>
             </config>
             <transitions>
                 <transition uuid="SHIQV.89iVMAAAFJE1UMBXgL" name="NEXT" toNode="bbsQV.89Lh8AAAFJ5IoMBXff">
-                    <points>0, 29, 0, -147|0, 142, 0, -34|</points>
+                    <points>0, 25, 0, -94|0, 85, 0, -34|</points>
                 </transition>
             </transitions>
         </node>
-        <node uuid="note" name="P_YQV.89JlkAAAFKQZb3nhyO" x="400" y="69" type="NOTE">
+        <node uuid="note" name="0VnAqG8BZn0AAAFK9z9eSH1p" x="64" y="41" type="NOTE">
             <description>This is my first flow</description>
             <parameters/>
             <config>

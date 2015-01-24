@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <flow visibility="Public">
     <nodes>
-        <node uuid="s74QV.89EhAAAAFJpNVffejZ" name="Timer" x="311" y="17" type="CUSTOM">
+        <node uuid="s74QV.89EhAAAAFJpNVffejZ" name="Timer" x="281" y="17" type="CUSTOM">
             <parameters/>
             <config>
                 <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.springframework.timer.Timer"/>
             </config>
             <transitions>
-                <transition uuid="054QV.89A7MAAAFKsHburgLN" toNode="azwQV.89n4IAAAFJSelffejZ"/>
                 <transition uuid="ouoQV.89CmUAAAFK94vurgLN" name="NEXT" toNode="LL0QV.891wsAAAFK02DurgLN">
                     <points>0, 36, 1, -157|-1, 165, 0, -28|</points>
                 </transition>
             </transitions>
         </node>
-        <node uuid="azwQV.89n4IAAAFJSelffejZ" name="EndNode1" x="300" y="417" type="END">
+        <node uuid="azwQV.89n4IAAAFJSelffejZ" name="EndNode1" x="290" y="417" type="END">
             <parameters/>
             <config/>
             <transitions/>

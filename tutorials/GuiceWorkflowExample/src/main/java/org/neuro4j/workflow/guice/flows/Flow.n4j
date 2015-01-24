@@ -17,7 +17,7 @@
             <config/>
             <transitions/>
         </node>
-        <node uuid="HuQQV.0EUWUAAAFHtOXf2NE3" name="CustomBlockWithService" x="467" y="226" type="CUSTOM">
+        <node uuid="HuQQV.0EUWUAAAFHtOXf2NE3" name="CustomBlockWithService" x="501" y="226" type="CUSTOM">
             <parameters/>
             <config>
                 <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.workflow.guice.flows.CustomBlockWithService"/>
@@ -28,7 +28,7 @@
                 </transition>
             </transitions>
         </node>
-        <node uuid="note" name="zJgQV.89VScAAAFKG6ZyJAfP" x="605" y="50" type="NOTE">
+        <node uuid="note" name="hf3AqG8BF2IAAAFKs5tV6IQY" x="605" y="50" type="NOTE">
             <description>This flow demonstrates how to use Google Guice for dependency injection in CustomBlock</description>
             <parameters/>
             <config>
