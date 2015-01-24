@@ -18,7 +18,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<org.neuro4j.version>2.0.1</org.neuro4j.version>		
-		<java.version>1.6</java.version>
+		<java.version>1.7</java.version>
 	</properties>
 
 	<dependencies>
