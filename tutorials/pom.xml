@@ -24,6 +24,8 @@
         <module>SpringJmsExample</module>
         <module>SpringMVCExample</module>
         <module>SpringTimerExample</module>
+        <module>SpringEmailExample</module>
+
     </modules>
 
     <properties>

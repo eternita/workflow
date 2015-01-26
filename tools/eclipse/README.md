@@ -1,8 +1,7 @@
 Neuro4j Studio Installer
 =================
 
-Simple installation script for Studio (Linux only).
-
+Simple installation script for Neuro4j Studio (Linux only).
 
 
 Based on https://github.com/bepcyc/eclipse_installer - Thank you!
