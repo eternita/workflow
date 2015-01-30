@@ -1,41 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
 	<artifactId>spring-mail-adapter</artifactId>
-	<groupId>org.neuro4j</groupId>
-	<version>2.0.1</version>
-	<repositories>
-		<repository>
-			<id>neuro4j-maven-milestone</id>
-			<name>Neuro4J Maven Repository</name>
-			<url>http://static.neuro4j.org/maven2</url>
-		</repository>
-	</repositories>
-	<properties>
-		<org.neuro4j-version>2.0.1</org.neuro4j-version>
-	</properties>
+  <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.neuro4j</groupId>
+        <artifactId>workflow</artifactId>
+        <version>2.0.1</version>
+    </parent>
+
+    <properties>
+	<org.springframework-version>4.1.1.RELEASE</org.springframework-version>
+    </properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.integration</groupId>
 			<artifactId>spring-integration-core</artifactId>
-			<version>4.1.0.RELEASE</version>
+			<version>${org.springframework-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.integration</groupId>
 			<artifactId>spring-integration-mail</artifactId>
-			<version>4.1.0.RELEASE</version>
+			<version>${org.springframework-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.neuro4j</groupId>
 			<artifactId>spring-context-adapter</artifactId>
-			<version>${org.neuro4j-version}</version>
+			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>4.1.1.RELEASE</version>
+			<version>${org.springframework-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
