@@ -24,7 +24,7 @@
 			<id>neuro4j-plugin-repo</id>
 			<name>Neuro4j Maven Plugin Repository</name>
 			<url>http://static.neuro4j.org/maven2</url>
-		</pluginRepository>		
+		</pluginRepository>
 	</pluginRepositories>
 
 	<artifactId>SpringEmailExample</artifactId>
@@ -44,7 +44,7 @@
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
 			<version>${logback.version}</version>
-		</dependency>		
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -64,7 +64,7 @@
 		</resources>
 
 		<plugins>
-	
+
 			<plugin>
 				<groupId>org.neuro4j.tools</groupId>
 				<artifactId>neuro4j-compiler-plugin</artifactId>

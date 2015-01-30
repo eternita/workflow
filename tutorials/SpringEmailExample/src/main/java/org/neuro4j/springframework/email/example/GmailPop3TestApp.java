@@ -8,6 +8,5 @@ public class GmailPop3TestApp {
 
 	public static void main (String[] args) throws Exception {
 		ApplicationContext ac = new ClassPathXmlApplicationContext("/META-INF/spring/integration/gmail-pop3-config.xml");
-
 	}
 }

@@ -10,12 +10,11 @@
 	xmlns:util="http://www.springframework.org/schema/util">
 
 	<int:channel id="receiveChannel" />
-	<!-- replace 'userid and 'password' wit the real values -->
+
 	<int-mail:inbound-channel-adapter id="pop3ShouldDeleteTrue"
 		store-uri="pop3://login%40gmail.com:password@pop.gmail.com/INBOX"
 		channel="receiveChannel" should-delete-messages="false" auto-startup="true"
 		java-mail-properties="javaMailProperties">
-		<!-- Will poll every 20 seconds -->
 		<int:poller fixed-rate="100000" />
 
 	</int-mail:inbound-channel-adapter>

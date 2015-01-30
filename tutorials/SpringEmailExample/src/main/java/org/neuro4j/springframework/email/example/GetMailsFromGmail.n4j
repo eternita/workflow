@@ -45,7 +45,7 @@
                 </transition>
             </transitions>
         </node>
-        <node uuid="bckQV.89FEoAAAFLbkE_LBVw" name="PrintMessage" x="111" y="317" type="CUSTOM">
+        <node uuid="bckQV.89FEoAAAFLbkE_LBVw" name="PrintMessageInfo" x="111" y="317" type="CUSTOM">
             <parameters/>
             <config>
                 <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.springintegration.mail.debug.PrintMessage"/>
@@ -58,6 +58,24 @@
                     <points>-43, 0, -175, -4|117, 4, -15, 0|</points>
                 </transition>
             </transitions>
+        </node>
+        <node uuid="note" name="alQQV.89uxsAAAFLEmaV3TzG" x="166" y="404" type="NOTE">
+            <description>PrintMessageInfo debug mail info</description>
+            <parameters/>
+            <config>
+                <parameter key="w" value="180"/>
+                <parameter key="h" value="50"/>
+            </config>
+            <transitions/>
+        </node>
+        <node uuid="note" name=".UkQV.89uxwAAAFLEmaV3TzG" x="183" y="54" type="NOTE">
+            <description>Spring Container will call HandleMessage on new mail</description>
+            <parameters/>
+            <config>
+                <parameter key="w" value="336"/>
+                <parameter key="h" value="36"/>
+            </config>
+            <transitions/>
         </node>
     </nodes>
 </flow>
