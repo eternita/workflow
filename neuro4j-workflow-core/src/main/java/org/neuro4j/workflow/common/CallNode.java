@@ -145,9 +145,14 @@ public class CallNode extends WorkflowNode {
                 nextNode = getExits().iterator().next();
 
             }
+            
+        }
+        
+        if (nextNode != null)
+        {
+            request.setNextRelation(nextNode);
         }
 
-        request.setNextRelation(nextNode);
 
         return nextNode;
     }
