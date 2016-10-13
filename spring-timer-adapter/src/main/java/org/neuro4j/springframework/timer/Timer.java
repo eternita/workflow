@@ -1,14 +1,18 @@
 package org.neuro4j.springframework.timer;
 
-import java.util.HashMap;
+import org.neuro4j.workflow.FlowContext;
+import org.neuro4j.workflow.common.FlowExecutionException;
+import org.neuro4j.workflow.node.CustomBlock;
 
-import org.neuro4j.workflow.common.TriggerBlock;
 
-
-public class Timer extends TriggerBlock
+public class Timer extends CustomBlock
 {
 
 	public void execute() {		
-		executeFlow(new HashMap<String, Object>());
+	}
+
+	@Override
+	public int execute(FlowContext context) throws FlowExecutionException {
+		return 0;
 	}
 }

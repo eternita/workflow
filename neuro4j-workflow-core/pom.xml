@@ -5,8 +5,8 @@
 	<parent>
 		<groupId>org.neuro4j</groupId>
 		<artifactId>workflow</artifactId>
-	        <version>2.1.1-SNAPSHOT</version>
-                <relativePath>../pom.xml</relativePath>
+		<version>2.1.1-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 
 	<artifactId>neuro4j-workflow-core</artifactId>
@@ -17,10 +17,39 @@
 			<version>1.8.3</version>
 		</dependency>
 		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>1.6.1</version>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.2</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	<build>
+			<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.n4j</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/**</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/test/java</directory>
+				<includes>
+					<include>**/*.n4j</include>
+				</includes>
+			</resource>
+			<resource>
+				<directory>src/test/resources</directory>
+				<includes>
+					<include>**/**</include>
+				</includes>
+			</resource>
 
+		</resources>
+	</build>
 </project>

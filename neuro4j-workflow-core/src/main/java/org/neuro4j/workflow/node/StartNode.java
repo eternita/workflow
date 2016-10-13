@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013-2014, Neuro4j
+ * Copyright (c) 2013-2016, Neuro4j
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -54,7 +54,7 @@ public class StartNode extends WorkflowNode {
 
 
     @Override
-    public Transition execute(WorkflowRequest request) throws FlowExecutionException {
+    public Transition execute(final WorkflowProcessor processor, WorkflowRequest request) throws FlowExecutionException {
         request.setNextRelation(nextNode);
         return nextNode;
     }

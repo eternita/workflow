@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013-2014, Neuro4j
+ * Copyright (c) 2013-2016, Neuro4j
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -50,17 +50,16 @@ public class DefaultCustomBlockInitStrategy implements CustomBlockInitStrategy {
     public Class<? extends CustomBlock> getCustomBlockClass(String className) throws FlowInitializationException {
         try {
 
-            Class<? extends CustomBlock> clazz = (Class<? extends CustomBlock>) Class.forName(className);
-            if (null != clazz)
-            {
-                return clazz;
-            }
+        	Class<? extends CustomBlock> clazz =(Class<? extends CustomBlock>) getClass().getClassLoader().loadClass(className);
+        	if (clazz != null){
+        		return clazz;
+        	}
 
         } catch (Exception e) {
             Logger.error(this, e);
-            throw new FlowInitializationException(e);
         }
         throw new FlowInitializationException("CustomBlock: " + className + " can not be initialized.");
     }
-
+    
+	
 }

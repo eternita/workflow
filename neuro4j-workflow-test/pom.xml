@@ -32,12 +32,6 @@
 			<artifactId>neuro4j-workflow-common</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<version>1.0.13</version>
-		</dependency>
-
 	</dependencies>
 
 	<build>
@@ -51,10 +45,11 @@
 			<resource>
 				<directory>src/test/resources</directory>
 				<includes>
-					<include>**/*.xml</include>
+					<include>**/*.n4j</include>
 				</includes>
 			</resource>
 		</resources>
+		<!-- 
 		<plugins>
 			<plugin>
 				<groupId>org.neuro4j.tools</groupId>
@@ -71,7 +66,7 @@
 				</executions>
 			</plugin>
 		</plugins>
-		
+		 -->
 	</build>
 
 </project>

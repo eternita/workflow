@@ -8,12 +8,13 @@ import java.util.Map;
 import javax.jms.ConnectionFactory;
 import javax.jms.MessageListener;
 
-import org.neuro4j.springframework.context.WorkflowBeanFactoryPostProcessor;
+import org.neuro4j.springframework.context.SpringContextInitStrategy;
 import org.neuro4j.springframework.jms.JMSMessageListener;
 import org.neuro4j.springframework.jms.JMSQueueSender;
 import org.neuro4j.workflow.common.FlowInitializationException;
-import org.neuro4j.workflow.common.TriggerNodeFactory;
-import org.neuro4j.workflow.common.WorkflowEngine;
+import org.neuro4j.workflow.common.Neuro4jEngine;
+import org.neuro4j.workflow.common.Neuro4jEngine.ConfigBuilder;
+import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -31,16 +32,9 @@ public class Application {
     
     @Bean
     JMSMessageListener receiver(ConfigurableApplicationContext context) throws FlowInitializationException {    	
-        return  (JMSMessageListener) TriggerNodeFactory.initTriggerNode("org.neuro4j.springframework.jms.flows.MessageFlow-JMSMessageListener");
-
+        return new JMSMessageListener("org.neuro4j.springframework.jms.flows.MessageFlow-JMSMessageListener");
     }
     
-    @Bean
-   static WorkflowBeanFactoryPostProcessor getWorkflowBeanFactoryPostProcessor(ConfigurableApplicationContext context)
-    {
-    	WorkflowBeanFactoryPostProcessor strategy = new WorkflowBeanFactoryPostProcessor(context);        
-    	return strategy;
-    }
 
     @Bean
     JMSQueueSender sender(ConnectionFactory connectionFactory) {    	
@@ -58,6 +52,12 @@ public class Application {
         container.setDestinationName(mailboxDestination);
         return container;
     }
+    
+    @Bean
+    Neuro4jEngine getWorkflowEngine(ConfigurableListableBeanFactory beanFactory){
+    	Neuro4jEngine engine = new Neuro4jEngine(new ConfigBuilder().withCustomBlockInitStrategy(new SpringContextInitStrategy(beanFactory)));
+    	return engine;
+    }
 
     public static void main(String[] args) {
 
@@ -70,7 +70,9 @@ public class Application {
         parameters.put("messageDestination", mailboxDestination);
         parameters.put("message", "Hi Mister!");      
         
-        WorkflowEngine.run("org.neuro4j.springframework.jms.flows.MessageFlow-SendMessage", parameters);
+        Neuro4jEngine engine = context.getBean(Neuro4jEngine.class);
+        
+        engine.execute("org.neuro4j.springframework.jms.flows.MessageFlow-SendMessage", parameters);
 
 
         

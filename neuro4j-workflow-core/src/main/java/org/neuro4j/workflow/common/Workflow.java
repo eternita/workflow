@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013-2014, Neuro4j
+ * Copyright (c) 2013-2016, Neuro4j
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,12 +19,13 @@ package org.neuro4j.workflow.common;
 import java.util.Collection;
 import java.util.HashMap;
 
-import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.enums.FlowVisibility;
-import org.neuro4j.workflow.log.Logger;
 import org.neuro4j.workflow.node.StartNode;
 import org.neuro4j.workflow.node.WorkflowNode;
 
+/**
+ *
+ */
 public class Workflow {
 
 
@@ -65,38 +66,6 @@ public class Workflow {
     public boolean isPublic() {
         return visibility == FlowVisibility.Public;
     }
-
-    /**
-     * Executes  workflow from given firstNode.
-     * @param firstNode
-     * @param request
-     * @throws FlowExecutionException
-     */
-	void executeWorkflow(WorkflowNode firstNode, WorkflowRequest request)
-			throws FlowExecutionException {
-
-		if (null == request)
-			throw new RuntimeException("WorkflowRequest must not be null");
-
-		WorkflowNode step = firstNode;
-
-		while (null != step) {
-			WorkflowNode lastNode = step;
-
-			step = step.executeNode(request);
-
-			request.setLastSuccessfulNode(lastNode);
-
-			if (step != null) {
-				Logger.debug(Workflow.class, "Next step: {} ({})",
-						step.getName(), step.getUuid());
-			}
-
-		}
-
-	}
-    
-
     
 
     public WorkflowNode getById(String uuid) {

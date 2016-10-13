@@ -1,6 +1,6 @@
 
 /*
- * Copyright (c) 2013-2014, Neuro4j
+ * Copyright (c) 2013-2016, Neuro4j
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@
 
 package org.neuro4j.workflow.guice.flows;
 
-import org.junit.Assert;
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.guice.service.MessageService;

@@ -3,15 +3,20 @@ package org.neuro4j.workflow.springmvc;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.neuro4j.springframework.context.SpringContextInitStrategy;
 import org.neuro4j.web.workflow.core.WebRequest;
 import org.neuro4j.workflow.ExecutionResult;
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
-import org.neuro4j.workflow.common.WorkflowEngine;
+import org.neuro4j.workflow.common.Neuro4jEngine;
+import org.neuro4j.workflow.common.Neuro4jEngine.ConfigBuilder;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
+import org.springframework.context.annotation.Bean;
 import org.springframework.ui.Model;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -20,6 +25,15 @@ import org.springframework.web.servlet.ModelAndView;
  * 
  */
 public class AbstractWorkflowController implements BeanFactoryAware{
+	
+    @Bean
+    Neuro4jEngine getWorkflowEngine(ConfigurableListableBeanFactory beanFactory){
+    	Neuro4jEngine engine = new Neuro4jEngine(new ConfigBuilder().withCustomBlockInitStrategy(new SpringContextInitStrategy(beanFactory)));
+    	return engine;
+    }
+    
+    @Autowired
+    Neuro4jEngine engine;
 
     private static final String JSP_SUFFIX = ".jsp";
 
@@ -52,7 +66,7 @@ public class AbstractWorkflowController implements BeanFactoryAware{
      * @throws FlowExecutionException
      */
     protected FlowContext processWorkflow(String flow, WorkflowRequest request) throws FlowExecutionException {
-        ExecutionResult result = WorkflowEngine.run(flow, request);
+        ExecutionResult result = engine.execute(flow, request);
         if (result.getException() != null) {
             throw new FlowExecutionException(result.getException());
         }
@@ -67,7 +81,7 @@ public class AbstractWorkflowController implements BeanFactoryAware{
      * @throws FlowExecutionException
      */
     protected ModelAndView processWorkflowWithModelView(String flow, WorkflowRequest request) throws FlowExecutionException {
-        ExecutionResult result = WorkflowEngine.run(flow, request);
+        ExecutionResult result = engine.execute(flow, request);
         if (result.getException() != null) {
            throw result.getException(); 
         }

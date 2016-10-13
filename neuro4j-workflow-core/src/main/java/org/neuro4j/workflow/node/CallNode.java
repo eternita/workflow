@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013-2014, Neuro4j
+ * Copyright (c) 2013-2016, Neuro4j
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,14 +14,13 @@
  * limitations under the License.
  */
 
-package org.neuro4j.workflow.common;
+package org.neuro4j.workflow.node;
 
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.WorkflowRequest;
-import org.neuro4j.workflow.log.Logger;
-import org.neuro4j.workflow.node.StartNode;
-import org.neuro4j.workflow.node.Transition;
-import org.neuro4j.workflow.node.WorkflowNode;
+import org.neuro4j.workflow.common.FlowExecutionException;
+import org.neuro4j.workflow.common.FlowInitializationException;
+import org.neuro4j.workflow.common.Workflow;
 
 /**
  * XML representation of CallNode.
@@ -85,12 +84,8 @@ public class CallNode extends WorkflowNode {
 
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.neuro4j.workflow.node.LogicBlock#execute(org.neuro4j.workflow.WorkflowRequest)
-     */
-    public final Transition execute(WorkflowRequest request) throws FlowExecutionException {
+    @Override
+    public final Transition execute(final WorkflowProcessor processor, final WorkflowRequest request) throws FlowExecutionException {
         FlowContext ctx = request.getLogicContext();
         String flow = null;
         if (dynamicFlownName != null)
@@ -105,11 +100,12 @@ public class CallNode extends WorkflowNode {
             throw new FlowExecutionException("CallNode: Flow not defined.");
         }
 
-        String[] fArr = WorkflowEngine.parseFlowName(flow);
+        String[] fArr = WorkflowProcessor.parseFlowName(flow);
         String flowName = fArr[0];
         String startNodeName = fArr[1];
 
-        Workflow calledWorkflow = loadFlow(flowName);
+        Workflow calledWorkflow  = processor.loadWorkflow(flowName);
+
         if (calledWorkflow == null)
         {
             throw new FlowExecutionException(flowName + " not found.");
@@ -127,7 +123,7 @@ public class CallNode extends WorkflowNode {
 
             request.pushPackage(calledWorkflow.getPackage());
 
-            calledWorkflow.executeWorkflow(startNode, request);
+            processor.executeWorkflow(startNode, request);
 
             request.popPackage();
         } catch (FlowExecutionException exeption) {
@@ -175,29 +171,11 @@ public class CallNode extends WorkflowNode {
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.neuro4j.workflow.node.LogicBlock#load(org.neuro4j.workflow.xml.WorkflowNode)
-     */
+    @Override
     public final void init() throws FlowInitializationException
     {
 
     }
 
-    /**
-     * Loads called flow from storage.
-     * 
-     * @param flowName
-     * @return
-     */
-    private Workflow loadFlow(String flowName) {
-        try {
-            return WorkflowMngImpl.getInstance().lookupWorkflow(flowName);
-        } catch (FlowInitializationException e) {
-            Logger.error(this, e.getMessage(), e);
-        }
-        return null;
-    }
 
 }

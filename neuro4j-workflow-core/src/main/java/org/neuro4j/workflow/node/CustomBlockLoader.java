@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013-2014, Neuro4j
+ * Copyright (c) 2013-2016, Neuro4j
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,22 +27,19 @@ import org.neuro4j.workflow.log.Logger;
  */
 public class CustomBlockLoader {
 
-    private static CustomBlockLoader INSTANCE = new CustomBlockLoader();
 
     private final DefaultCustomBlockInitStrategy defaultInitStrategy = new DefaultCustomBlockInitStrategy();
     
-    private CustomBlockInitStrategy customBlockInitStrategy = null;
+    final private CustomBlockInitStrategy customBlockInitStrategy;
 
     /**
      * Constructor.
      */
-    private CustomBlockLoader() {
+    public CustomBlockLoader(final CustomBlockInitStrategy customBlockInitStrategy) {
         super();
+        this.customBlockInitStrategy = customBlockInitStrategy;
     }
 
-    public static CustomBlockLoader getInstance() {
-        return INSTANCE;
-    }
 
     /**
      * Lookups customBlock by executable class.
@@ -85,7 +82,4 @@ public class CustomBlockLoader {
         return defaultInitStrategy.getCustomBlockClass(entity.getExecutableClass());
     }
     
-    public void setInitStrategy(CustomBlockInitStrategy newStrategy) {
-        this.customBlockInitStrategy = newStrategy;
-    }
 }

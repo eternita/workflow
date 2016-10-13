@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013-2014, Neuro4j
+ * Copyright (c) 2013-2016, Neuro4j
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,33 +21,24 @@ import java.util.Map;
 
 import org.neuro4j.workflow.ExecutionResult;
 import org.neuro4j.workflow.WorkflowRequest;
-import org.neuro4j.workflow.loader.CustomBlockInitStrategy;
-import org.neuro4j.workflow.log.Logger;
-import org.neuro4j.workflow.node.CustomBlockLoader;
-import org.neuro4j.workflow.node.CustomNode;
-import org.neuro4j.workflow.node.StartNode;
-import org.neuro4j.workflow.node.WorkflowNode;
+import org.neuro4j.workflow.common.Neuro4jEngine.ConfigBuilder;
 
 /**
  * 
  * Runs flows stored on file system in XML files (.n4j extension)
  * 
  */
+@Deprecated
 public class WorkflowEngine {
 
+    static Neuro4jEngine engine = new Neuro4jEngine(new ConfigBuilder().withLoader(new ClasspathWorkflowLoader()));
 
     public static ExecutionResult run(String flow) {
         return run(flow, new HashMap<String, Object>());
     }
 
     public static ExecutionResult run(String flow, Map<String, Object> params) {
-        WorkflowRequest request = new WorkflowRequest();
-
-        if (null != params && !params.isEmpty()) {
-            for (String key : params.keySet())
-                request.addParameter(key, params.get(key));
-        }
-        return run(flow, request);
+        return engine.execute(flow, params);
     }
 
     /**
@@ -60,134 +51,9 @@ public class WorkflowEngine {
      *         - if can't load flow, can't find start node, etc
      */
     public static ExecutionResult run(String flow, WorkflowRequest request) {
-        
-        long start = System.currentTimeMillis();
-        
-        ExecutionResult result = new ExecutionResult(request.getLogicContext());
-
-        try {
-            String[] array = parseFlowName(flow);
-            String flowName = array[0];
-            String startNodeName = array[1];
-            
-            Logger.debug(WorkflowEngine.class, "Loading flow: {}", flowName);
-            long startLoading = System.currentTimeMillis();
-            Workflow workflow = loadFlow(flowName);
-            Logger.debug(WorkflowEngine.class, "Loaded flow: {} in {} ms", flowName, System.currentTimeMillis() - startLoading);
-            if (null == workflow)
-                throw new FlowExecutionException("Flow '" + flowName + "' can't be loaded");
-
-           
-
-            StartNode startNode = workflow.getStartNode(startNodeName);
-            if (null == startNode)
-                throw new FlowExecutionException("StartNode '" + startNodeName  + "' not found in flow " + flowName);
-
-            if (!workflow.isPublic()) {
-                throw new FlowExecutionException("Flow '" + flow + "' is not public");
-            }
-
-            if (!startNode.isPublic()) {
-                throw new FlowExecutionException("Node '" + startNode.getName() + "' is not public");
-            }
-
-            request.pushPackage(workflow.getPackage());
-
-            workflow.executeWorkflow(startNode, request);
-            request.popPackage();
-        } catch (FlowExecutionException ex) {
-            Logger.error(FlowExecutionException.class, ex.getMessage(), ex);
-            result.setExecutionExeption(ex);
-        }
-
-        WorkflowNode lastNode = request.getLastSuccessfulNode();
-        if (lastNode != null)
-        {
-            result.setLastSuccessfulNodeName(lastNode.getName());
-        }
-        Logger.debug(WorkflowEngine.class, "Flow execution time: {} ms.", System.currentTimeMillis() - start);
-        return result;
+      return engine.execute(flow, request);
     }
 
-    /**
-     * Start flow execution from trigger node.
-     * @param trigger
-     * @param request
-     * @return Execution result
-     */
-    static ExecutionResult runFromTrigger(TriggerBlock trigger, WorkflowRequest request) {
-        
-        long start = System.currentTimeMillis();
-        
-        ExecutionResult result = new ExecutionResult(request.getLogicContext());
-
-        try {
-
-            CustomNode node = trigger.getNode();
-            
-            Workflow workflow = node.getWorkflow();
-            
-            request.pushPackage(workflow.getPackage());
-
-            workflow.executeWorkflow(node, request);
-            request.popPackage();
-        } catch (FlowExecutionException ex) {
-            Logger.error(FlowExecutionException.class, ex.getMessage(), ex);
-            result.setExecutionExeption(ex);
-        }
-
-        WorkflowNode lastNode = request.getLastSuccessfulNode();
-        if (lastNode != null)
-        {
-            result.setLastSuccessfulNodeName(lastNode.getName());
-        }
-
-        Logger.debug(WorkflowEngine.class, "Flow execution time: {} ms.", System.currentTimeMillis() - start);
-        return result;
-    }
     
-    /**
-     * Extract flow package and start node name.
-     * @param flow
-     * @return
-     * @throws FlowExecutionException
-     */
-    public static String[] parseFlowName(String flow) throws FlowExecutionException {
-
-        if (flow == null)
-            throw new FlowExecutionException("Flow is undefined.");
-        
-        String[] array = flow.split("-");
-        
-        if (array.length != 2)
-        {
-            throw new FlowExecutionException("Incorrect flow name. Must be package.name.FlowName-StartNode");
-        }
-        
-        array[0] =  array[0].replace('.', '/');
-                
-        return array;
-    }
-
-    /**
-     * Get flow by name. Should be without .n4j extension. E.g.
-     * package.name.FlowName
-     * 
-     * @param flowName
-     * @return
-     */
-    private static Workflow loadFlow(String flowName) {
-        try {
-            return WorkflowMngImpl.getInstance().lookupWorkflow(flowName);
-        } catch (FlowInitializationException e) {
-            Logger.error(WorkflowEngine.class, e.getMessage(), e);
-        }
-        return null;
-    }
-    
-    public static void setCustomBlockInitStrategy(CustomBlockInitStrategy newStrategy)
-    {
-        CustomBlockLoader.getInstance().setInitStrategy(newStrategy);
-    }
 
 }

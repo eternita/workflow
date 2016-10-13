@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<flow visibility="Public">
+    <nodes>
+        <node uuid="9voKBws3q2QAAAFX2uri4LDU" name="Start1" x="110" y="10" type="START">
+            <parameters/>
+            <config>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
+            </config>
+            <transitions>
+                <transition uuid="pmsKBws3PxYAAAFXUgri4LDV" name="NEXT" toNode="C4QKBws3CP0AAAFXChfi4LIH">
+                    <points>-50, 36, 135, 81|-185, -45, 0, 0|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="3ewKBws3XC4AAAFXYvzi4LDU" name="End1" x="110" y="285" type="END">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node uuid="C4QKBws3CP0AAAFXChfi4LIH" name="MapperNode1" x="105" y="131" type="MAP">
+            <parameters>
+                <parameter key="var1" value="&quot;some value&quot;" input="true"/>
+            </parameters>
+            <config/>
+            <transitions>
+                <transition uuid="OugKBws3ZK0AAAFXCxfi4LIH" name="NEXT" toNode="3ewKBws3XC4AAAFXYvzi4LDU">
+                    <points>0, 0, -185, -329|135, 285, -50, -44|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="note" name="MogKBws3emEAAAFX40fi4LI_" x="171" y="20" type="NOTE">
+            <description>Used for Classpathloader</description>
+            <parameters/>
+            <config>
+                <parameter key="w" value="270"/>
+                <parameter key="h" value="38"/>
+            </config>
+            <transitions/>
+        </node>
+    </nodes>
+</flow>

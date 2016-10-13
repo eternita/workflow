@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013-2014, Neuro4j
+ * Copyright (c) 2013-2016, Neuro4j
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,25 +26,22 @@ import org.neuro4j.workflow.loader.f4j.SWFConstants;
 
 public class SwitchNode extends WorkflowNode {
 
-    private String relationName = null;
+    private final String relationName;
     private Transition defaultRelation = null;
 
-    public SwitchNode(String name, String uuid, Workflow workflow)
+    public SwitchNode(String name, String uuid, Workflow workflow, String relationName)
     {
         super(name, uuid, workflow);
+        this.relationName = relationName;
     }
 
     public String getRelationName() {
         return relationName;
     }
 
-    public void setRelationName(String relationName) {
-        this.relationName = relationName;
-    }
 
-    public Transition execute(WorkflowRequest request)
-
-            throws FlowExecutionException {
+    @Override
+    public final Transition execute(WorkflowProcessor processor, WorkflowRequest request)  throws FlowExecutionException {
         FlowContext ctx = request.getLogicContext();
         Transition nextStepUUID = null;
         String relation = relationName;
@@ -83,10 +80,7 @@ public class SwitchNode extends WorkflowNode {
      * @see org.neuro4j.workflow.node.LogicBlock#load(org.neuro4j.workflow.xml.WorkflowNode)
      */
     @Override
-    public final void init() throws FlowInitializationException
-    {
-
-        relationName = getRelationName();
+    public final void init() throws FlowInitializationException {
 
         defaultRelation = getExitByName(SWFParametersConstants.SWITCH_NODE_DEFAULT_ACTION_NAME_2);
         if (defaultRelation == null)

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013-2014, Neuro4j
+ * Copyright (c) 2013-2016, Neuro4j
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,10 +16,7 @@
 
 package org.neuro4j.workflow.node;
 
-import org.neuro4j.workflow.WorkflowRequest;
-import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.Workflow;
-import org.neuro4j.workflow.node.Transition;
 
 /**
  * EndBlock stops flow execution.
@@ -36,15 +33,6 @@ public class EndNode extends WorkflowNode {
     public EndNode(String name, String uuid, Workflow workflow) {
         super(name, uuid, workflow);
 
-    }
-
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.neuro4j.workflow.node.LogicBlock#execute(org.neuro4j.workflow.WorkflowRequest)
-     */
-    public final Transition execute(WorkflowRequest request) throws FlowExecutionException {
-        return null;
     }
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013-2014, Neuro4j
+ * Copyright (c) 2013-2016, Neuro4j
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -76,7 +76,7 @@ public class ViewNode extends WorkflowNode {
      * @see org.neuro4j.workflow.xml.WorkflowNode#execute(org.neuro4j.workflow.WorkflowRequest)
      */
     @Override
-    public Transition execute(WorkflowRequest request) throws FlowExecutionException
+    public Transition execute(final WorkflowProcessor processor,  final WorkflowRequest request) throws FlowExecutionException
     {
         FlowContext ctx = request.getLogicContext();
         String view = (String) ctx.get(dynamicView);

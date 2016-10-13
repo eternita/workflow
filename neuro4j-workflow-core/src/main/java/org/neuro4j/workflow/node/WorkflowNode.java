@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013-2014, Neuro4j
+ * Copyright (c) 2013-2016, Neuro4j
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,7 +26,6 @@ import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.common.Workflow;
-import org.neuro4j.workflow.debug.DebugService;
 import org.neuro4j.workflow.loader.f4j.SWFConstants;
 import org.neuro4j.workflow.log.Logger;
 
@@ -97,37 +96,14 @@ public class WorkflowNode {
      * @param ctx
      * @throws FlowExecutionException
      */
-    public void validate(FlowContext ctx) throws FlowExecutionException
+    public void validate(final WorkflowProcessor processor, final FlowContext ctx) throws FlowExecutionException
     {
         return;
     }
 
-    /**
-     * 
-     * @param request
-     * @return
-     * @throws FlowExecutionException
-     */
-    public final WorkflowNode executeNode(WorkflowRequest request) throws FlowExecutionException {
-        long startTime = System.currentTimeMillis();
-        Logger.debug(this, "      Running: {} ({})", this.getName(), this.getClass().getCanonicalName());
 
-        validate(request.getLogicContext());
-        
-        DebugService.getInstance().onNodeCall(this, request);
-        Transition transition = execute(request);
 
-        
-        Logger.debug(this, "      Finished: {} in ({} ms.)", this.getName(), (System.currentTimeMillis() - startTime));
-        if (transition != null)
-        {
-            return transition.getToNode();
-        }
-
-        return null;
-    }
-
-    protected Transition execute(WorkflowRequest request) throws FlowExecutionException
+    protected Transition execute(final WorkflowProcessor processor, final WorkflowRequest request) throws FlowExecutionException
     {
         return null;
     }

@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <flow visibility="Public">
     <nodes>
-        <node uuid="RcwQV.89PKkAAAFJNSF2bcow" name="JMSMessageListener" x="172" y="111" type="CUSTOM">
-            <parameters/>
-            <config>
-                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.springframework.jms.JMSMessageListener"/>
-            </config>
-            <transitions>
-                <transition uuid="i.8QV.893gMAAAFJCZ1Bt.Ly" name="NEXT" toNode="rUAQV.89GQEAAAFJR4tBt.Ly">
-                    <points>0, 29, -6, -84|6, 85, 0, -28|</points>
-                </transition>
-            </transitions>
-        </node>
         <node uuid="1F4QV.89E1YAAAFJDE92bcow" name="EndNode2" x="180" y="704" type="END">
             <parameters/>
             <config/>
@@ -88,7 +77,18 @@
                 </transition>
             </transitions>
         </node>
-        <node uuid="note" name="4vvAqG8BOyEAAAFKbwNV6IQi" x="55" y="27" type="NOTE">
+        <node uuid="CMDAqAIF_ZYAAAFXbQt0pLyf" name="JMSMessageListener" x="181" y="98" type="START">
+            <parameters/>
+            <config>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
+            </config>
+            <transitions>
+                <transition uuid="FnLAqAIFfaEAAAFXSCZ0pLyf" name="NEXT" toNode="rUAQV.89GQEAAAFJR4tBt.Ly">
+                    <points>-50, 36, -69, -119|-59, 120, -78, -35|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="note" name="d6PAqAIFtbAAAAFXkXR0pLyf" x="55" y="27" type="NOTE">
             <description>Listen to configured destination</description>
             <parameters/>
             <config>
@@ -97,7 +97,7 @@
             </config>
             <transitions/>
         </node>
-        <node uuid="note" name="gDjAqG8BOyIAAAFKbwNV6IQi" x="574" y="27" type="NOTE">
+        <node uuid="note" name="2ZPAqAIFAI0AAAFXknR0pLyf" x="574" y="27" type="NOTE">
             <description>Send a message to distination</description>
             <parameters/>
             <config>
@@ -106,7 +106,7 @@
             </config>
             <transitions/>
         </node>
-        <node uuid="note" name="hIDAqG8BOyMAAAFKbwNV6IQi" x="9" y="374" type="NOTE">
+        <node uuid="note" name="LFTAqAIFAI4AAAFXknR0pLyf" x="9" y="374" type="NOTE">
             <description>Close context and Remove temprorary files.</description>
             <parameters/>
             <config>
@@ -115,7 +115,7 @@
             </config>
             <transitions/>
         </node>
-        <node uuid="note" name="ksfAqG8BOyQAAAFKbwNV6IQi" x="-1" y="220" type="NOTE">
+        <node uuid="note" name="vjTAqAIFAI8AAAFXknR0pLyf" x="-1" y="220" type="NOTE">
             <description>Some business code... Just print to log.</description>
             <parameters/>
             <config>
@@ -124,7 +124,7 @@
             </config>
             <transitions/>
         </node>
-        <node uuid="note" name="K8fAqG8BOyUAAAFKbwNV6IQi" x="590" y="169" type="NOTE">
+        <node uuid="note" name="A13AqAIFAJAAAAFXknR0pLyf" x="590" y="169" type="NOTE">
             <description>Create org.springframework.jms.core.MessageCreator.</description>
             <parameters/>
             <config>

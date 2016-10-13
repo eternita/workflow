@@ -6,6 +6,7 @@ package org.neuro4j.workflow.guice;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.junit.After;
@@ -13,8 +14,11 @@ import org.junit.Before;
 import org.junit.Test;
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.WorkflowRequest;
+import org.neuro4j.workflow.common.ClasspathWorkflowLoader;
 import org.neuro4j.workflow.common.FlowInitializationException;
+import org.neuro4j.workflow.common.Neuro4jEngine;
 import org.neuro4j.workflow.common.WorkflowEngine;
+import org.neuro4j.workflow.common.Neuro4jEngine.ConfigBuilder;
 import org.neuro4j.workflow.guice.flows.CustomBlockWithService;
 import org.neuro4j.workflow.log.Logger;
 
@@ -42,7 +46,6 @@ public class GuiceWithWorkflowTestCase {
         // Register Guice strategy in workflow engine.
         initStrategy = new GuiceCustomBlockInitStrategy(modules);
         
-        WorkflowEngine.setCustomBlockInitStrategy(initStrategy);
     }
 
     /**
@@ -55,7 +58,9 @@ public class GuiceWithWorkflowTestCase {
     @Test
     public void testFlow() {
         // Now all custom blocks will be initialized with Guice.
-        WorkflowEngine.run("org.neuro4j.workflow.guice.flows.Flow-Start", new WorkflowRequest());
+        Neuro4jEngine engine = new Neuro4jEngine(new ConfigBuilder().withLoader(new ClasspathWorkflowLoader()).withCustomBlockInitStrategy(initStrategy));
+
+        engine.execute("org.neuro4j.workflow.guice.flows.Flow-Start", new HashMap<String, Object>());
     }
     
     @Test

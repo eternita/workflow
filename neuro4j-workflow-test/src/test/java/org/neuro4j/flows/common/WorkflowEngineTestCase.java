@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013-2014, Neuro4j
+ * Copyright (c) 2013-2016, Neuro4j
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,6 +23,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.WorkflowEngine;
+import org.neuro4j.workflow.node.WorkflowProcessor;
 
 public class WorkflowEngineTestCase {
 
@@ -39,29 +40,29 @@ public class WorkflowEngineTestCase {
     public void testParseFlow() {
 
         try {
-            WorkflowEngine.parseFlowName("org.neuro4j.Flow1-StartNode1");
+            WorkflowProcessor.parseFlowName("org.neuro4j.Flow1-StartNode1");
         } catch (FlowExecutionException e) {
               fail();
         }
         try {
-            WorkflowEngine.parseFlowName("Flow1-StartNode1");
+        	WorkflowProcessor.parseFlowName("Flow1-StartNode1");
         } catch (FlowExecutionException e) {
               fail();
         }
         try {
-            WorkflowEngine.parseFlowName("org.neuro4j.Flow1");
+        	WorkflowProcessor.parseFlowName("org.neuro4j.Flow1");
             fail();
         } catch (FlowExecutionException e) {
 
         }
         try {
-            WorkflowEngine.parseFlowName("org.neuro4j.Flow1-Start-Start");
+        	WorkflowProcessor.parseFlowName("org.neuro4j.Flow1-Start-Start");
             fail();
         } catch (FlowExecutionException e) {
 
         }
         try {
-            WorkflowEngine.parseFlowName(null);
+        	WorkflowProcessor.parseFlowName(null);
             fail();
         } catch (FlowExecutionException e) {
 

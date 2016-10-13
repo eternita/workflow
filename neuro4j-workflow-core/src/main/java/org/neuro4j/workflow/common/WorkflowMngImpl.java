@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013-2014, Neuro4j
+ * Copyright (c) 2013-2016, Neuro4j
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,6 +23,7 @@ import org.neuro4j.workflow.loader.f4j.ConvertationException;
 import org.neuro4j.workflow.loader.f4j.FlowConverter;
 import org.neuro4j.workflow.log.Logger;
 
+@Deprecated
 public class WorkflowMngImpl {
     
     public static final String WORKFLOW_FILE_EXT = ".n4j";

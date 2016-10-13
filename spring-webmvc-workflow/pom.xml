@@ -10,7 +10,7 @@
 	</parent>
 	<artifactId>spring-webmvc-workflow</artifactId>
 	<properties>
-		<org.springframework-version>4.0.6.RELEASE</org.springframework-version>
+		<org.springframework-version>4.1.6.RELEASE</org.springframework-version>
 	</properties>
 
 	<dependencies>

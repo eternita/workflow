@@ -8,9 +8,9 @@
 	<packaging>war</packaging>
 	<properties>
 		<java-version>1.6</java-version>
-		<org.springframework-version>4.1.0.RC1</org.springframework-version>
+		<org.springframework-version>4.1.6.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.8.1</org.aspectj-version>
-		<org.neuro4j-version>2.0.1</org.neuro4j-version>
+		<org.neuro4j-version>2.1.1-SNAPSHOT</org.neuro4j-version>
 	</properties>
 	<pluginRepositories>
 		<pluginRepository>
@@ -107,6 +107,7 @@
 			</resource>
 		</resources>
 		<plugins>
+		<!--  
 			<plugin>
 				<groupId>org.neuro4j.tools</groupId>
 				<artifactId>neuro4j-compiler-plugin</artifactId>
@@ -120,7 +121,8 @@
 						</goals>
 					</execution>
 				</executions>
-			</plugin>		
+			</plugin>
+			-->		
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013-2014, Neuro4j
+ * Copyright (c) 2013-2016, Neuro4j
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 
 package org.neuro4j.workflow.node;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -53,7 +54,7 @@ public class CustomNode extends WorkflowNode {
     }
 
     public Map<String, String> getOutParameters() {
-        return outParameters;
+        return Collections.unmodifiableMap(outParameters);
     }
 
     public final void init() throws FlowInitializationException
@@ -64,18 +65,13 @@ public class CustomNode extends WorkflowNode {
 
     
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.neuro4j.workflow.node.LogicBlock#execute(org.neuro4j.workflow.WorkflowRequest)
-     */
-    public final Transition execute(WorkflowRequest request)
-            throws FlowExecutionException {
+    @Override
+    public final Transition execute(final WorkflowProcessor processor, final WorkflowRequest request) throws FlowExecutionException {
         FlowContext context = request.getLogicContext();
         
         CustomBlock cBlock = null;
         try {
-            cBlock = getCustomBlock(this);
+            cBlock = processor.loadCustomBlock(this);
         } catch (FlowInitializationException e) {
             Logger.error(this, e);
             throw new FlowExecutionException(e);
@@ -103,12 +99,12 @@ public class CustomNode extends WorkflowNode {
      * @see org.neuro4j.workflow.node.LogicBlock#validate(org.neuro4j.workflow.FlowContext)
      */
     @Override
-    public final void validate(FlowContext ctx) throws FlowExecutionException {
-        super.validate(ctx);
+    public final void validate(final WorkflowProcessor processor, final FlowContext ctx) throws FlowExecutionException {
+        super.validate(processor, ctx);
         
         Class<? extends CustomBlock> customClass = null;
         try {
-            customClass = getCustomBlockClass(this);
+            customClass = processor.getCustomBlockClass(this);
         } catch (FlowInitializationException e) {
            Logger.error(this, e);
            throw new FlowExecutionException(e);
@@ -188,18 +184,16 @@ public class CustomNode extends WorkflowNode {
      * @param originalName
      *        name of this parameter will be updated to new.
      */
-    private void doInputMapping(FlowContext ctx, String originalName)
-    {
+	private void doInputMapping(FlowContext ctx, String originalName) {
 
-            String mappedValue = getParameter(originalName);
-            if (mappedValue != null && !mappedValue.equalsIgnoreCase(originalName))
-            {
-                Logger.debug(this, "Mapping parameter: {} to  {}", mappedValue, originalName);
+		String mappedValue = getParameter(originalName);
+		if (mappedValue != null && !mappedValue.equalsIgnoreCase(originalName)) {
+			Logger.debug(this, "Mapping parameter: {} to  {}", mappedValue, originalName);
 
-                evaluateParameterValue(mappedValue, originalName, ctx);
-            }
+			evaluateParameterValue(mappedValue, originalName, ctx);
+		}
 
-    }
+	}
 
     /**
      * Method processes output parameters.
@@ -209,20 +203,18 @@ public class CustomNode extends WorkflowNode {
      * @param originalName
      * @return
      */
-    private String doOutMapping(FlowContext ctx, String originalName) {
+	private String doOutMapping(FlowContext ctx, String originalName) {
 
-            String mappedValue = getOutParameters().get(originalName);
-            if (mappedValue != null && !mappedValue.equalsIgnoreCase(originalName))
-            {
-                Object obj = ctx.remove(originalName);
-                ctx.put(mappedValue, obj);
-                return mappedValue;
-            }
+		String mappedValue = getOutParameters().get(originalName);
+		if (mappedValue != null && !mappedValue.equalsIgnoreCase(originalName)) {
+			Object obj = ctx.remove(originalName);
+			ctx.put(mappedValue, obj);
+			return mappedValue;
+		}
 
+		return originalName;
 
-        return originalName;
-
-    }
+	}
 
     /**
      * Checks if type in parameterDefinition is the same with object's type.
@@ -253,7 +245,7 @@ public class CustomNode extends WorkflowNode {
         }
 
         try {
-            Class<?> cl = CustomBlock.class.getClassLoader().loadClass(className);
+            Class<?> cl = getClass().getClassLoader().loadClass(className);
 
             if (!cl.isAssignableFrom(obj.getClass()))
             {
@@ -279,21 +271,5 @@ public class CustomNode extends WorkflowNode {
     public String getExecutableClass() {
         return executableClass;
     }
-    
-    
-    private CustomBlock getCustomBlock(CustomNode node) throws FlowInitializationException{
-        return CustomBlockLoader.getInstance().lookupBlock(node);
-    }
-    
-    private Class<? extends CustomBlock> getCustomBlockClass(CustomNode node) throws FlowInitializationException{
-        return CustomBlockLoader.getInstance().getCustomBlockClass(node);
-    }
-
-    /**
-     * @return
-     * @throws FlowInitializationException 
-     */
-    public CustomBlock getCustomBlock() throws FlowInitializationException {
-        return getCustomBlock(this);
-    }
+   
 }

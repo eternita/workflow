@@ -9,7 +9,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.neuro4j.workflow.ExecutionResult;
-import org.neuro4j.workflow.common.WorkflowEngine;
+import org.neuro4j.workflow.common.Neuro4jEngine;
+import org.neuro4j.workflow.common.Neuro4jEngine.ConfigBuilder;
 import org.neuro4j.workflow.guice.service.MessageService;
 import org.neuro4j.workflow.guice.service.MyMessageService;
 
@@ -29,23 +30,19 @@ public class App {
             @Override
             protected void configure() {
                 bind(MessageService.class).to(MyMessageService.class);
-
             }
 
         };
 
         List<Module> modules = new ArrayList<Module>();
         modules.add(module);
-
         
-        GuiceCustomBlockInitStrategy initStrategy = new GuiceCustomBlockInitStrategy(modules);
-        WorkflowEngine.setCustomBlockInitStrategy(initStrategy);
-
+    	Neuro4jEngine engine = new Neuro4jEngine(new ConfigBuilder().withCustomBlockInitStrategy(new GuiceCustomBlockInitStrategy(modules)));
         
         Map<String, Object> parameters = new HashMap<String, Object>();
         parameters.put("name", "Mister");
 
-        ExecutionResult result = WorkflowEngine.run("org.neuro4j.workflow.guice.flows.Flow-Start",    parameters);
+        ExecutionResult result = engine.execute("org.neuro4j.workflow.guice.flows.Flow-Start", parameters);
 
         if (result.getException() == null) {
             String message = (String) result.getFlowContext().get("message");

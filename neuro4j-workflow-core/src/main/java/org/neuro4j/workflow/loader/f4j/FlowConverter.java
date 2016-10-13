@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013-2014, Neuro4j
+ * Copyright (c) 2013-2016, Neuro4j
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,13 +22,13 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
-import org.neuro4j.workflow.common.CallNode;
 import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.common.SWFParametersConstants;
 import org.neuro4j.workflow.common.Workflow;
 import org.neuro4j.workflow.enums.DecisionCompTypes;
 import org.neuro4j.workflow.enums.DecisionOperators;
 import org.neuro4j.workflow.enums.StartNodeTypes;
+import org.neuro4j.workflow.node.CallNode;
 import org.neuro4j.workflow.node.CustomNode;
 import org.neuro4j.workflow.node.DecisionNode;
 import org.neuro4j.workflow.node.EndNode;
@@ -206,14 +206,11 @@ public class FlowConverter {
      * @return
      */
     private static WorkflowNode createSwitchNode(Workflow workflow, NodeXML e) {
-        SwitchNode node = new SwitchNode(e.getName(), e.getUuid(), workflow);
-
         String relationName = e.getConfig(SWFParametersConstants.SWITCH_NODE_ACTION_NAME);
         if (relationName == null) {
             relationName = SWFParametersConstants.SWITCH_NODE_DEFAULT_PARAMETER_VALUE;
         }
-
-        node.setRelationName(relationName);
+        SwitchNode node = new SwitchNode(e.getName(), e.getUuid(), workflow, relationName);
 
         return node;
     }

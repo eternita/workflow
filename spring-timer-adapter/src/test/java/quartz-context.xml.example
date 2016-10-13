@@ -10,11 +10,12 @@
 		class="org.neuro4j.springframework.context.WorkflowBeanFactoryPostProcessor">
 	</bean>
 
+<!--
 	<bean id="timerTask" class="org.neuro4j.workflow.common.TriggerNodeFactory"
 		factory-method="initTriggerNode">
 		<constructor-arg type="java.lang.String" value="org.neuro4j.springframework.timer.example.TimerFlow-Timer" />
 	</bean>
-
+-->
 	<bean id="timerJobDetail"
 		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
 		<property name="targetObject" ref="timerTask" />

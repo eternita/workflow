@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2013-2014, Neuro4j
+ * Copyright (c) 2013-2016, Neuro4j
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -41,12 +41,8 @@ public class JoinNode extends WorkflowNode {
         super(name, uuid, workflow);
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.neuro4j.workflow.node.LogicBlock#execute(org.neuro4j.workflow.WorkflowRequest)
-     */
-    public final Transition execute(WorkflowRequest request)
+    @Override
+    public final Transition execute(final WorkflowProcessor processor, final WorkflowRequest request)
             throws FlowExecutionException {
         request.setNextRelation(next);
         return next;
@@ -69,9 +65,7 @@ public class JoinNode extends WorkflowNode {
      * @see org.neuro4j.workflow.node.LogicBlock#validate(org.neuro4j.workflow.FlowContext)
      */
     @Override
-    public final void validate(FlowContext ctx) throws FlowExecutionException {
-        super.validate(ctx);
-
+    public final void validate(final WorkflowProcessor processor, final FlowContext ctx) throws FlowExecutionException {
         if (next == null)
         {
             throw new FlowExecutionException("JoinBlock: Wrong configuration");

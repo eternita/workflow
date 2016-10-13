@@ -18,8 +18,9 @@ import org.springframework.jms.core.MessageCreator;
  * Creates text message creator.
  * 
  */
-@ParameterDefinitionList(input = { @ParameterDefinition(name = IN_MESSAGE, isOptional = true, type = "java.lang.String") }, 
-                         output = { @ParameterDefinition(name = OUT_MESSAGECREATOR, isOptional = true, type = "org.springframework.jms.core.MessageCreator") })
+@ParameterDefinitionList(input = {
+		@ParameterDefinition(name = IN_MESSAGE, isOptional = true, type = "java.lang.String") }, output = {
+				@ParameterDefinition(name = OUT_MESSAGECREATOR, isOptional = true, type = "org.springframework.jms.core.MessageCreator") })
 public class GetTextMessageCreator extends CustomBlock {
 
 	static final String IN_MESSAGE = "message";
