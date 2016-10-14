@@ -20,17 +20,25 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.neuro4j.workflow.ExecutionResult;
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.WorkflowEngine;
+import org.neuro4j.workflow.common.WorkflowEngine.ConfigBuilder;
 
 public class BaseFlowTestCase {
+	
+	WorkflowEngine engine;
 
+	@Before
+	public void setUp(){
+		engine = new WorkflowEngine(new ConfigBuilder());
+	}
 
     protected FlowContext executeFlowWithoutErrors(String flowName, Map<String, Object> parameters)
     {
-        ExecutionResult result = WorkflowEngine.run(flowName, parameters);
+        ExecutionResult result = engine.execute(flowName, parameters);
         if (result.getException() != null)
         {
             result.getException().printStackTrace();
@@ -53,28 +61,28 @@ public class BaseFlowTestCase {
 
     protected String executeFlowAndReturnLastNode(String flowName, Map<String, Object> parameters)
     {
-        ExecutionResult result = WorkflowEngine.run(flowName, parameters);
+        ExecutionResult result = engine.execute(flowName, parameters);
         Assert.assertTrue(result.getException() == null);
         return result.getLastSuccessfulNodeName();
     }
 
     protected ExecutionResult executeFlowAndReturnResult(String flowName, Map<String, Object> parameters)
     {
-        ExecutionResult result = WorkflowEngine.run(flowName, parameters);
+        ExecutionResult result = engine.execute(flowName, parameters);
 
         return result;
     }
 
     protected Object executeFlowAndReturnObject(String flowName, Map<String, Object> parameters, String name)
     {
-        ExecutionResult result = WorkflowEngine.run(flowName, parameters);
+        ExecutionResult result = engine.execute(flowName, parameters);
 
         return result.getFlowContext().get(name);
     }
 
     protected void executeFlowAndCheckExceptioMessage(String flowName, Map<String, Object> parameters, String message)
     {
-        ExecutionResult result = WorkflowEngine.run(flowName, parameters);
+        ExecutionResult result = engine.execute(flowName, parameters);
 
         Assert.assertTrue(result.getException() instanceof FlowExecutionException);
         Assert.assertEquals(result.getException().getMessage(), message);

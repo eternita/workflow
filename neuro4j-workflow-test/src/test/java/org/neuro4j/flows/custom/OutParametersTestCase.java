@@ -21,16 +21,13 @@ import java.util.Map;
 
 import org.junit.After;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.neuro4j.tests.base.BaseFlowTestCase;
 import org.neuro4j.workflow.ExecutionResult;
 
 public class OutParametersTestCase extends BaseFlowTestCase {
 
-    @Before
-    public void setUp() throws Exception {
-    }
+
 
     @After
     public void tearDown() throws Exception {

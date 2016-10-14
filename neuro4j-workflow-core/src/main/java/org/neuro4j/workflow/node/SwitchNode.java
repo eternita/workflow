@@ -21,7 +21,6 @@ import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.common.SWFParametersConstants;
-import org.neuro4j.workflow.common.Workflow;
 import org.neuro4j.workflow.loader.f4j.SWFConstants;
 
 public class SwitchNode extends WorkflowNode {
@@ -29,9 +28,9 @@ public class SwitchNode extends WorkflowNode {
     private final String relationName;
     private Transition defaultRelation = null;
 
-    public SwitchNode(String name, String uuid, Workflow workflow, String relationName)
+    public SwitchNode(String name, String uuid, String relationName)
     {
-        super(name, uuid, workflow);
+        super(name, uuid);
         this.relationName = relationName;
     }
 

@@ -19,22 +19,19 @@ package org.neuro4j.workflow.node;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.FlowInitializationException;
-import org.neuro4j.workflow.common.Workflow;
 import org.neuro4j.workflow.enums.StartNodeTypes;
 
 public class StartNode extends WorkflowNode {
 
     StartNodeTypes type;
-    String flowPackage;
 
     Transition nextNode = null;
 
     private static final String NEXT = "NEXT";
 
-    public StartNode(String name, String uuid, Workflow workflow)
+    public StartNode(String name, String uuid)
     {
-        super(name, uuid, workflow);
-        workflow.registerStartNode(this);
+        super(name, uuid);
     }
 
     public void setType(StartNodeTypes type) {
@@ -43,14 +40,8 @@ public class StartNode extends WorkflowNode {
 
     public boolean isPublic()
     {
-        return type == StartNodeTypes.PUBLIC;
+        return StartNodeTypes.PUBLIC.equals(this.type);
     }
-
-    public String getPackage()
-    {
-        return workflow.getPackage();
-    }
-
 
 
     @Override

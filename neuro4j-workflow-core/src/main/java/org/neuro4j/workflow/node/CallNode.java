@@ -36,9 +36,9 @@ public class CallNode extends WorkflowNode {
      * @param uuid
      * @param workflow
      */
-    public CallNode(String name, String uuid, Workflow workflow)
+    public CallNode(String name, String uuid)
     {
-        super(name, uuid, workflow);
+        super(name, uuid);
     }
 
     /**
@@ -112,11 +112,17 @@ public class CallNode extends WorkflowNode {
         }
 
         StartNode startNode = calledWorkflow.getStartNode(startNodeName);
-        checkNodeBeforeCall(startNode, request);
-
         if (startNode == null)
         {
             throw new FlowExecutionException(new StringBuilder(startNodeName).append(" not found in flow ").append(flowName).toString());
+        }
+        
+        if (!startNode.isPublic())
+        {
+            if (!request.getCurrentPackage().equals(calledWorkflow.getPackage()))
+            {
+                throw new FlowExecutionException(new StringBuilder("Node ").append(startNode.getName()).append(" in package ").append(calledWorkflow.getPackage()).append(" is private and can be used just inside package.").toString());
+            }
         }
 
         try {
@@ -153,23 +159,6 @@ public class CallNode extends WorkflowNode {
         return nextNode;
     }
 
-    /**
-     * Validates if startNode is public.
-     * 
-     * @param startNode
-     * @param request
-     * @throws FlowExecutionException
-     */
-    private void checkNodeBeforeCall(StartNode startNode, WorkflowRequest request) throws FlowExecutionException
-    {
-        if (!startNode.isPublic())
-        {
-            if (!request.getCurrentPackage().equals(startNode.getPackage()))
-            {
-                throw new FlowExecutionException(new StringBuilder("Node ").append(startNode.getName()).append(" in package ").append(startNode.getPackage()).append(" is private and can be used just inside package.").toString());
-            }
-        }
-    }
 
     @Override
     public final void init() throws FlowInitializationException

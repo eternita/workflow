@@ -12,8 +12,8 @@ import org.neuro4j.workflow.log.Logger;
  */
 public class XMLWorkflowSource extends URLWorkflowSource {
 
-	public XMLWorkflowSource(String location, URL resource) {
-		super(location, resource);
+	public XMLWorkflowSource(String name, URL resource) {
+		super(name, resource);
 	}
 
 	@Override
@@ -23,7 +23,7 @@ public class XMLWorkflowSource extends URLWorkflowSource {
 		try {
 			inputStream = getStream();
 			if (null != inputStream)
-				net = FlowConverter.xml2workflow(inputStream, location());
+				net = FlowConverter.xml2workflow(inputStream, name());
 		} catch (Exception e) {
 			throw new FlowExecutionException(e);
 		} finally {

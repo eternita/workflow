@@ -17,6 +17,7 @@
 package org.neuro4j.workflow;
 
 import org.neuro4j.workflow.common.FlowExecutionException;
+import org.neuro4j.workflow.common.FlowInitializationException;
 
 /**
  * Base interface for executable blocks
@@ -24,12 +25,17 @@ import org.neuro4j.workflow.common.FlowExecutionException;
  */
 public interface ActionBlock {
 
-
+    public static final int NEXT = 1;
+    public static final int ERROR = 2;
+    
     /**
      * @param context
      * @return
      * @throws FlowExecutionException
      */
     public int execute(FlowContext context) throws FlowExecutionException;
-
+    
+    public void init() throws FlowInitializationException;
+    
+    public boolean cached();
 }

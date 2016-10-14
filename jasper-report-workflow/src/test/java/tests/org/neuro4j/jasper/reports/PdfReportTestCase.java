@@ -19,9 +19,11 @@ import java.util.Collections;
 
 import junit.framework.TestCase;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.neuro4j.workflow.ExecutionResult;
 import org.neuro4j.workflow.common.WorkflowEngine;
+import org.neuro4j.workflow.common.WorkflowEngine.ConfigBuilder;
 
 /**
  *
@@ -29,9 +31,16 @@ import org.neuro4j.workflow.common.WorkflowEngine;
 public class PdfReportTestCase extends TestCase {
 
 	
+	WorkflowEngine engine;
+
+	@Before
+	public void setUp(){
+		engine = new WorkflowEngine(new ConfigBuilder());
+	}
+	
     @Test
     public void testPdfCreation() {
-        ExecutionResult result = WorkflowEngine.run("tests.org.neuro4j.jasper.reports.GenerateReport-Start", Collections.EMPTY_MAP);
+        ExecutionResult result = engine.execute("tests.org.neuro4j.jasper.reports.GenerateReport-Start", Collections.EMPTY_MAP);
         System.out.println();
 
     }

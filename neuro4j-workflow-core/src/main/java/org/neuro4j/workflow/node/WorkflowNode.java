@@ -25,32 +25,27 @@ import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.FlowInitializationException;
-import org.neuro4j.workflow.common.Workflow;
 import org.neuro4j.workflow.loader.f4j.SWFConstants;
 import org.neuro4j.workflow.log.Logger;
 
+/**
+ * 
+ *
+ */
 public class WorkflowNode {
 
-    protected final Workflow workflow;
-    final private Map<String, String> parameters;
+    final private Map<String, String> parameters = new HashMap<String, String>(4);
     private final String uuid;
     private String name;
+    
+    final Map<String, Transition> exits = new HashMap<String, Transition>(3);
 
-    final Map<String, Transition> exits;
 
-
-    public WorkflowNode(String name, String uuid, Workflow workflow) {
-        exits = new HashMap<String, Transition>(3);
-        parameters = new HashMap<String, String>(4);
+    public WorkflowNode(String name, String uuid) {
         this.uuid = uuid;
         setName(name);
-        this.workflow = workflow;
-        this.workflow.registerNode(this);
     }
 
-    public Workflow getWorkflow() {
-        return workflow;
-    }
 
     public Map<String, String> getParameters() {
         return parameters;
@@ -155,11 +150,11 @@ public class WorkflowNode {
 
     }
 
-    private static Object createNewInstance(String clazzName) {
+    private  Object createNewInstance(String clazzName) {
         Class<?> beanClass = null;
         Object beanInstance = null;
         try {
-            beanClass = Class.forName(clazzName);
+            beanClass = getClass().getClassLoader().loadClass(clazzName);
             beanInstance = ConstructorUtils.invokeConstructor(beanClass, null);
         } catch (Exception e) {
             Logger.error(WorkflowNode.class, e.getMessage(), e);

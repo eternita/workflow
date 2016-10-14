@@ -24,7 +24,6 @@ import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.FlowInitializationException;
-import org.neuro4j.workflow.common.Workflow;
 import org.neuro4j.workflow.loader.f4j.SWFConstants;
 
 public class LoopNode extends WorkflowNode {
@@ -38,9 +37,9 @@ public class LoopNode extends WorkflowNode {
     private Transition doExit = null;
     private Transition loopExit = null;
 
-    public LoopNode(String name, String uuid, Workflow workflow)
+    public LoopNode(String name, String uuid)
     {
-        super(name, uuid, workflow);
+        super(name, uuid);
     }
 
     public String getIteratorKey() {

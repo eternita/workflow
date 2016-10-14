@@ -6,7 +6,7 @@ import java.util.Map;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 
-import org.neuro4j.workflow.common.Neuro4jEngine;
+import org.neuro4j.workflow.common.WorkflowEngine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ConfigurableApplicationContext;
 
@@ -30,7 +30,7 @@ public class JMSMessageListener implements MessageListener {
     ConfigurableApplicationContext context;
 
     @Autowired
-    Neuro4jEngine engine;
+    WorkflowEngine engine;
     /*
      * (non-Javadoc)
      * 

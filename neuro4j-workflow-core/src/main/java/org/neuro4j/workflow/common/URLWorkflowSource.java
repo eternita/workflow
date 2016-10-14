@@ -8,17 +8,17 @@ public class URLWorkflowSource implements WorkflowSource {
 
 	protected Long lastModified;
 
-	private String location;
+	private String name;
 
-	public URLWorkflowSource(String location, URL resource) {
-      this.location = location;
+	public URLWorkflowSource(String name, URL resource) {
+      this.name = name;
       this.resource = resource;
       
 	}
 
 	@Override
-	public String location() {
-		return location;
+	public String name() {
+		return name;
 	}
 
 	@Override

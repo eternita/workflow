@@ -30,7 +30,6 @@
 		<module>spring-context-adapter</module>
 		<module>spring-webmvc-workflow</module>
 		<module>spring-jms-adapter</module>
-		<module>spring-timer-adapter</module>
 		<module>spring-mail-adapter</module>
 		<module>guice-workflow-adapter</module>
 	</modules>

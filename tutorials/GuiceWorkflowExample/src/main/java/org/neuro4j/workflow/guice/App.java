@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Map;
 
 import org.neuro4j.workflow.ExecutionResult;
-import org.neuro4j.workflow.common.Neuro4jEngine;
-import org.neuro4j.workflow.common.Neuro4jEngine.ConfigBuilder;
+import org.neuro4j.workflow.common.WorkflowEngine;
+import org.neuro4j.workflow.common.WorkflowEngine.ConfigBuilder;
 import org.neuro4j.workflow.guice.service.MessageService;
 import org.neuro4j.workflow.guice.service.MyMessageService;
 
@@ -37,7 +37,7 @@ public class App {
         List<Module> modules = new ArrayList<Module>();
         modules.add(module);
         
-    	Neuro4jEngine engine = new Neuro4jEngine(new ConfigBuilder().withCustomBlockInitStrategy(new GuiceCustomBlockInitStrategy(modules)));
+    	WorkflowEngine engine = new WorkflowEngine(new ConfigBuilder().withCustomBlockInitStrategy(new GuiceCustomBlockInitStrategy(modules)));
         
         Map<String, Object> parameters = new HashMap<String, Object>();
         parameters.put("name", "Mister");

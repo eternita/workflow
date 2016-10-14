@@ -1,13 +1,14 @@
 package org.neuro4j.workflow.node;
 
+import org.neuro4j.workflow.ActionBlock;
 import org.neuro4j.workflow.ExecutionResult;
 import org.neuro4j.workflow.WorkflowRequest;
+import org.neuro4j.workflow.cache.WorkflowCache;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.FlowInitializationException;
+import org.neuro4j.workflow.common.WorkflowEngine.ConfigBuilder;
 import org.neuro4j.workflow.common.Workflow;
 import org.neuro4j.workflow.common.WorkflowLoader;
-import org.neuro4j.workflow.common.WorkflowSource;
-import org.neuro4j.workflow.common.Neuro4jEngine.ConfigBuilder;
 import org.neuro4j.workflow.debug.DebugService;
 import org.neuro4j.workflow.log.Logger;
 
@@ -19,6 +20,8 @@ public class WorkflowProcessor {
 	private final WorkflowLoader loader;
 
 	private final CustomBlockLoader customBlockLoader;
+	
+	private final WorkflowCache cache;
 
 	/**
 	 * @param builder
@@ -26,6 +29,7 @@ public class WorkflowProcessor {
 	public WorkflowProcessor(ConfigBuilder builder) {
 		this.loader = builder.getLoader();
 		this.customBlockLoader = new CustomBlockLoader(builder.getCustomInitStrategy());
+		this.cache = builder.getWorkflowCache();
 	}
 
 	/**
@@ -83,23 +87,6 @@ public class WorkflowProcessor {
 		return result;
 	}
 
-	/**
-	 * @param flowName
-	 * @return
-	 * @throws FlowExecutionException
-	 */
-	public Workflow loadWorkflow(String flowName) throws FlowExecutionException {
-
-		// TODO: cache
-
-		WorkflowSource workflowSource = loader.load(flowName);
-		if (workflowSource == null) {
-			throw new FlowExecutionException("Workflow " + flowName + " not loaded");
-		}
-
-		Workflow workflow = workflowSource.content();
-		return workflow;
-	}
 
 	/**
 	 * @param firstNode
@@ -180,7 +167,7 @@ public class WorkflowProcessor {
 	 * @return
 	 * @throws FlowInitializationException
 	 */
-	CustomBlock loadCustomBlock(CustomNode node) throws FlowInitializationException {
+	ActionBlock loadCustomBlock(CustomNode node) throws FlowInitializationException {
 		return customBlockLoader.lookupBlock(node);
 	}
 
@@ -189,8 +176,12 @@ public class WorkflowProcessor {
 	 * @return
 	 * @throws FlowInitializationException
 	 */
-	Class<? extends CustomBlock> getCustomBlockClass(CustomNode node) throws FlowInitializationException {
+	Class<? extends ActionBlock> getCustomBlockClass(CustomNode node) throws FlowInitializationException {
 		return customBlockLoader.getCustomBlockClass(node);
+	}
+
+	public Workflow loadWorkflow(String flowName) throws FlowExecutionException {
+		return cache.get(loader, flowName);
 	}
 
 }

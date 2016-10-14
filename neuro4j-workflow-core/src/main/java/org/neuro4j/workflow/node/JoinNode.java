@@ -37,8 +37,8 @@ public class JoinNode extends WorkflowNode {
      * @param uuid
      * @param workflow
      */
-    public JoinNode(String name, String uuid, Workflow workflow) {
-        super(name, uuid, workflow);
+    public JoinNode(String name, String uuid) {
+        super(name, uuid);
     }
 
     @Override

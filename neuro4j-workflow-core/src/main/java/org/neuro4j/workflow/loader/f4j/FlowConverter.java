@@ -111,7 +111,8 @@ public class FlowConverter {
         if (index > 0) {
             flowPackage = flow.substring(0, index);
         } else if (flow.contains(".")) {
-            flowPackage = flow;
+        	 index = flow.lastIndexOf(".");
+        	 flowPackage = flow.substring(0, index);
         }
         return flowPackage;
     }
@@ -127,6 +128,7 @@ public class FlowConverter {
 
             case START:
                 node = createStartNode(workflow, e);
+                workflow.registerStartNode((StartNode)node);
                 break;
             case END:
                 node = createEndNode(workflow, e);
@@ -159,6 +161,9 @@ public class FlowConverter {
 
                 throw new FlowInitializationException("Executable node is unknown");
         }
+        if (node != null){
+            workflow.registerNode(node);	
+        }
 
         return node;
     }
@@ -172,7 +177,7 @@ public class FlowConverter {
      * @return
      */
     private static StartNode createStartNode(Workflow workflow, NodeXML e) {
-        StartNode startNode = new StartNode(e.getName(), e.getUuid(), workflow);
+        StartNode startNode = new StartNode(e.getName(), e.getUuid());
 
         String nodeType = e.getConfig(SWFParametersConstants.START_NODE_TYPE);
 
@@ -191,7 +196,7 @@ public class FlowConverter {
      * @return
      */
     private static WorkflowNode createCallNode(Workflow workflow, NodeXML e) {
-        CallNode node = new CallNode(e.getName(), e.getUuid(), workflow);
+        CallNode node = new CallNode(e.getName(), e.getUuid());
         node.setCallFlow(e.getConfig(SWFParametersConstants.CAll_NODE_FLOW_NAME));
         node.setDynamicFlownName(e.getConfig(SWFParametersConstants.CAll_NODE_DYNAMIC_FLOW_NAME));
         return node;
@@ -210,7 +215,7 @@ public class FlowConverter {
         if (relationName == null) {
             relationName = SWFParametersConstants.SWITCH_NODE_DEFAULT_PARAMETER_VALUE;
         }
-        SwitchNode node = new SwitchNode(e.getName(), e.getUuid(), workflow, relationName);
+        SwitchNode node = new SwitchNode(e.getName(), e.getUuid(), relationName);
 
         return node;
     }
@@ -224,7 +229,7 @@ public class FlowConverter {
      * @return
      */
     private static WorkflowNode createEndNode(Workflow workflow, NodeXML e) {
-        EndNode node = new EndNode(e.getName(), e.getUuid(), workflow);
+        EndNode node = new EndNode(e.getName(), e.getUuid());
         return node;
     }
 
@@ -237,7 +242,7 @@ public class FlowConverter {
      * @return
      */
     private static WorkflowNode createViewNode(Workflow workflow, NodeXML e) {
-        ViewNode node = new ViewNode(e.getName(), e.getUuid(), workflow);
+        ViewNode node = new ViewNode(e.getName(), e.getUuid());
 
         node.setStaticTemplateName(e.getConfig(SWFParametersConstants.VIEW_NODE_TEMPLATE_NAME));
         node.setDynamicTemplateName(e.getParameter(SWFParametersConstants.VIEW_NODE_TEMPLATE_DYNAMIC_NAME));
@@ -263,7 +268,7 @@ public class FlowConverter {
      * @return
      */
     private static WorkflowNode createDecisionNode(Workflow workflow, NodeXML e) {
-        DecisionNode node = new DecisionNode(e.getName(), e.getUuid(), workflow);
+        DecisionNode node = new DecisionNode(e.getName(), e.getUuid());
         String sOperator = e.getConfig(SWFParametersConstants.DECISION_NODE_OPERATOR);
 
         if (sOperator != null) {
@@ -294,7 +299,7 @@ public class FlowConverter {
      * @return
      */
     private static WorkflowNode createLoopNode(Workflow workflow, NodeXML e) {
-        LoopNode node = new LoopNode(e.getName(), e.getUuid(), workflow);
+        LoopNode node = new LoopNode(e.getName(), e.getUuid());
 
         node.setIteratorKey(e.getConfig(SWFParametersConstants.LOOP_NODE_ITERATOR));
         node.setElementKey(e.getConfig(SWFParametersConstants.LOOP_NODE_ELEMENT));
@@ -310,7 +315,7 @@ public class FlowConverter {
      * @return
      */
     private static WorkflowNode createJoinNode(Workflow workflow, NodeXML e) {
-        JoinNode node = new JoinNode(e.getName(), e.getUuid(), workflow);
+        JoinNode node = new JoinNode(e.getName(), e.getUuid());
         return node;
     }
 
@@ -324,7 +329,7 @@ public class FlowConverter {
      * @return
      */
     private static WorkflowNode createKeyMapperNode(Workflow workflow, NodeXML e) {
-        KeyMapper node = new KeyMapper(e.getName(), e.getUuid(), workflow);
+        KeyMapper node = new KeyMapper(e.getName(), e.getUuid());
         for (ParameterXML key : e.parameters) {
             node.addParameter(key.key, key.value);
         }
@@ -346,7 +351,7 @@ public class FlowConverter {
         {
             throw new FlowInitializationException("Executable class not defined for node: " + e.getUuid() + " flow: " + workflow.getPackage() + workflow.getFlowName());
         }
-        CustomNode node = new CustomNode(executableClass, e.getName(), e.getUuid(), workflow);
+        CustomNode node = new CustomNode(executableClass, e.getName(), e.getUuid());
         for (ParameterXML param : e.parameters) {
             if (param.input == null || param.input) {
                 node.addParameter(param.key, param.value);

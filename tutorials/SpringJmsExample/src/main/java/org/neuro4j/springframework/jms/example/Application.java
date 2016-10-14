@@ -12,8 +12,8 @@ import org.neuro4j.springframework.context.SpringContextInitStrategy;
 import org.neuro4j.springframework.jms.JMSMessageListener;
 import org.neuro4j.springframework.jms.JMSQueueSender;
 import org.neuro4j.workflow.common.FlowInitializationException;
-import org.neuro4j.workflow.common.Neuro4jEngine;
-import org.neuro4j.workflow.common.Neuro4jEngine.ConfigBuilder;
+import org.neuro4j.workflow.common.WorkflowEngine;
+import org.neuro4j.workflow.common.WorkflowEngine.ConfigBuilder;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -54,8 +54,8 @@ public class Application {
     }
     
     @Bean
-    Neuro4jEngine getWorkflowEngine(ConfigurableListableBeanFactory beanFactory){
-    	Neuro4jEngine engine = new Neuro4jEngine(new ConfigBuilder().withCustomBlockInitStrategy(new SpringContextInitStrategy(beanFactory)));
+    WorkflowEngine getWorkflowEngine(ConfigurableListableBeanFactory beanFactory){
+    	WorkflowEngine engine = new WorkflowEngine(new ConfigBuilder().withCustomBlockInitStrategy(new SpringContextInitStrategy(beanFactory)));
     	return engine;
     }
 
@@ -70,7 +70,7 @@ public class Application {
         parameters.put("messageDestination", mailboxDestination);
         parameters.put("message", "Hi Mister!");      
         
-        Neuro4jEngine engine = context.getBean(Neuro4jEngine.class);
+        WorkflowEngine engine = context.getBean(WorkflowEngine.class);
         
         engine.execute("org.neuro4j.springframework.jms.flows.MessageFlow-SendMessage", parameters);
 

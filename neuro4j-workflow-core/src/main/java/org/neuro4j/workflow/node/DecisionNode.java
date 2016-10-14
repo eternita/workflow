@@ -24,7 +24,6 @@ import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.FlowInitializationException;
-import org.neuro4j.workflow.common.Workflow;
 import org.neuro4j.workflow.enums.DecisionCompTypes;
 import org.neuro4j.workflow.enums.DecisionOperators;
 import org.neuro4j.workflow.loader.f4j.SWFConstants;
@@ -48,9 +47,9 @@ public class DecisionNode extends WorkflowNode {
      */
     private Transition falseExit = null;
 
-    public DecisionNode(String name, String uuid, Workflow workflow)
+    public DecisionNode(String name, String uuid)
     {
-        super(name, uuid, workflow);
+        super(name, uuid);
     }
 
     public DecisionOperators getOperator() {

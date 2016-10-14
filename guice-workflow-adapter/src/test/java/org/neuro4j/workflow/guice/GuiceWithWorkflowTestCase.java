@@ -16,9 +16,9 @@ import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.ClasspathWorkflowLoader;
 import org.neuro4j.workflow.common.FlowInitializationException;
-import org.neuro4j.workflow.common.Neuro4jEngine;
 import org.neuro4j.workflow.common.WorkflowEngine;
-import org.neuro4j.workflow.common.Neuro4jEngine.ConfigBuilder;
+import org.neuro4j.workflow.common.WorkflowEngine;
+import org.neuro4j.workflow.common.WorkflowEngine.ConfigBuilder;
 import org.neuro4j.workflow.guice.flows.CustomBlockWithService;
 import org.neuro4j.workflow.log.Logger;
 
@@ -58,7 +58,7 @@ public class GuiceWithWorkflowTestCase {
     @Test
     public void testFlow() {
         // Now all custom blocks will be initialized with Guice.
-        Neuro4jEngine engine = new Neuro4jEngine(new ConfigBuilder().withLoader(new ClasspathWorkflowLoader()).withCustomBlockInitStrategy(initStrategy));
+        WorkflowEngine engine = new WorkflowEngine(new ConfigBuilder().withLoader(new ClasspathWorkflowLoader()).withCustomBlockInitStrategy(initStrategy));
 
         engine.execute("org.neuro4j.workflow.guice.flows.Flow-Start", new HashMap<String, Object>());
     }

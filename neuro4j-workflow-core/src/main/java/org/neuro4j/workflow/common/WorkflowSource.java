@@ -5,7 +5,7 @@ package org.neuro4j.workflow.common;
  */
 public interface WorkflowSource {
 	
-	String location();
+	String name();
 	
 	Workflow content() throws FlowExecutionException;
 	

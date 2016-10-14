@@ -16,6 +16,7 @@
 
 package org.neuro4j.workflow.node;
 
+import org.neuro4j.workflow.ActionBlock;
 import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.loader.CustomBlockInitStrategy;
 import org.neuro4j.workflow.loader.DefaultCustomBlockInitStrategy;
@@ -49,7 +50,7 @@ public class CustomBlockLoader {
      * @return
      * @throws FlowInitializationException
      */
-    CustomBlock lookupBlock(CustomNode entity) throws FlowInitializationException
+    ActionBlock lookupBlock(CustomNode entity) throws FlowInitializationException
     {
 
         long start = System.currentTimeMillis();
@@ -59,7 +60,7 @@ public class CustomBlockLoader {
             throw new FlowInitializationException("ExecutableClass not defined for CustomNode " + entity.getName());
         }
         
-        CustomBlock block = null;
+        ActionBlock block = null;
         
         if (customBlockInitStrategy == null)
         {
@@ -77,7 +78,8 @@ public class CustomBlockLoader {
     }
 
     
-    Class<? extends CustomBlock> getCustomBlockClass(CustomNode entity) throws FlowInitializationException
+    
+    Class<? extends ActionBlock> getCustomBlockClass(CustomNode entity) throws FlowInitializationException
     {
         return defaultInitStrategy.getCustomBlockClass(entity.getExecutableClass());
     }

@@ -19,7 +19,6 @@ package org.neuro4j.workflow.node;
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
-import org.neuro4j.workflow.common.Workflow;
 
 public class ViewNode extends WorkflowNode {
 
@@ -31,9 +30,9 @@ public class ViewNode extends WorkflowNode {
     
     private String renderImpl = null;
 
-    public ViewNode(String name, String uuid, Workflow workflow)
+    public ViewNode(String name, String uuid)
     {
-        super(name, uuid, workflow);
+        super(name, uuid);
     }
 
     public String getStaticTemplateName() {

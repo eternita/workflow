@@ -5,7 +5,7 @@ import org.junit.Test;
 import static junit.framework.Assert.*;
 
 
-public class WorkflowLoaderTests {
+public class WorkflowLoaderTest {
 	
 	@Test
 	public void testDefaultClassPathLoader() throws FlowExecutionException{
@@ -23,8 +23,8 @@ public class WorkflowLoaderTests {
 		assertNotNull(workflowSource);
 		Workflow flow = workflowSource.content();
 		assertNotNull(flow);
-		assertEquals("FlowForClasspathLoader", flow.getFlowName());
-		//assertEquals("org.neuro4j.workflow.flows", flow.getPackage());
+		assertEquals("org.neuro4j.workflow.flows.FlowForClasspathLoader", flow.getFlowName());
+		assertEquals("org.neuro4j.workflow.flows", flow.getPackage());
 	}
 
 }

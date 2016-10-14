@@ -20,13 +20,13 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.neuro4j.workflow.ActionBlock;
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.common.ParameterDefinition;
 import org.neuro4j.workflow.common.ParameterDefinitionList;
-import org.neuro4j.workflow.common.Workflow;
 import org.neuro4j.workflow.loader.f4j.SWFConstants;
 import org.neuro4j.workflow.log.Logger;
 
@@ -42,8 +42,8 @@ public class CustomNode extends WorkflowNode {
 
     private final Map<String, String> outParameters;
 
-    public CustomNode(String executableClass, String name, String uuid, Workflow workflow) {
-        super(name, uuid, workflow);
+    public CustomNode(String executableClass, String name, String uuid) {
+        super(name, uuid);
         this.executableClass = executableClass;
         outParameters = new HashMap<String, String>(3);
     }
@@ -69,7 +69,7 @@ public class CustomNode extends WorkflowNode {
     public final Transition execute(final WorkflowProcessor processor, final WorkflowRequest request) throws FlowExecutionException {
         FlowContext context = request.getLogicContext();
         
-        CustomBlock cBlock = null;
+        ActionBlock cBlock = null;
         try {
             cBlock = processor.loadCustomBlock(this);
         } catch (FlowInitializationException e) {
@@ -102,7 +102,7 @@ public class CustomNode extends WorkflowNode {
     public final void validate(final WorkflowProcessor processor, final FlowContext ctx) throws FlowExecutionException {
         super.validate(processor, ctx);
         
-        Class<? extends CustomBlock> customClass = null;
+        Class<? extends ActionBlock> customClass = null;
         try {
             customClass = processor.getCustomBlockClass(this);
         } catch (FlowInitializationException e) {
@@ -149,7 +149,7 @@ public class CustomNode extends WorkflowNode {
      *        flow context
      * @throws FlowExecutionException
      */
-    private void doOutputMapping(CustomBlock cBlock, FlowContext ctx) throws FlowExecutionException
+    private void doOutputMapping(ActionBlock cBlock, FlowContext ctx) throws FlowExecutionException
     {
         ParameterDefinitionList parameterDefinitionList = cBlock.getClass().getAnnotation(org.neuro4j.workflow.common.ParameterDefinitionList.class);
         if (parameterDefinitionList == null)

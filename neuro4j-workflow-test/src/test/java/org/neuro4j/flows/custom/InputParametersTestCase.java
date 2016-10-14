@@ -27,12 +27,12 @@ import org.neuro4j.tests.base.BaseFlowTestCase;
 import org.neuro4j.workflow.ExecutionResult;
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.common.FlowExecutionException;
+import org.neuro4j.workflow.common.WorkflowEngine;
+import org.neuro4j.workflow.common.WorkflowEngine.ConfigBuilder;
 
 public class InputParametersTestCase extends BaseFlowTestCase {
 
-    @Before
-    public void setUp() throws Exception {
-    }
+	
 
     @After
     public void tearDown() throws Exception {

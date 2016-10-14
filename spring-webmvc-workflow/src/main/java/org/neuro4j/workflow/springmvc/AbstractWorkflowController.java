@@ -9,8 +9,8 @@ import org.neuro4j.workflow.ExecutionResult;
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
-import org.neuro4j.workflow.common.Neuro4jEngine;
-import org.neuro4j.workflow.common.Neuro4jEngine.ConfigBuilder;
+import org.neuro4j.workflow.common.WorkflowEngine;
+import org.neuro4j.workflow.common.WorkflowEngine.ConfigBuilder;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
@@ -27,13 +27,13 @@ import org.springframework.web.servlet.ModelAndView;
 public class AbstractWorkflowController implements BeanFactoryAware{
 	
     @Bean
-    Neuro4jEngine getWorkflowEngine(ConfigurableListableBeanFactory beanFactory){
-    	Neuro4jEngine engine = new Neuro4jEngine(new ConfigBuilder().withCustomBlockInitStrategy(new SpringContextInitStrategy(beanFactory)));
+    WorkflowEngine getWorkflowEngine(ConfigurableListableBeanFactory beanFactory){
+    	WorkflowEngine engine = new WorkflowEngine(new ConfigBuilder().withCustomBlockInitStrategy(new SpringContextInitStrategy(beanFactory)));
     	return engine;
     }
     
     @Autowired
-    Neuro4jEngine engine;
+    WorkflowEngine engine;
 
     private static final String JSP_SUFFIX = ".jsp";
 

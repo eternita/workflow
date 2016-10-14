@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.neuro4j.workflow.common.FlowInitializationException;
-import org.neuro4j.workflow.common.Neuro4jEngine;
+import org.neuro4j.workflow.common.WorkflowEngine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.integration.channel.DirectChannel;
 import org.springframework.messaging.Message;
@@ -18,7 +18,7 @@ import org.springframework.messaging.MessagingException;
 public class MessageHandlerFactoryBean {
 
 	@Autowired
-	Neuro4jEngine engine;
+	WorkflowEngine engine;
 
 	/**
 	 * The constructor.

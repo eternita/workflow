@@ -35,6 +35,8 @@ import org.neuro4j.workflow.log.Logger;
 
 public class FlowDispatcherServlet extends HttpServlet {
 
+	WorkflowEngine engine;
+	
     /**
 	 * 
 	 */
@@ -76,7 +78,7 @@ public class FlowDispatcherServlet extends HttpServlet {
         for (Object param : request.getParameterMap().keySet())
             webRequest.addParameter((String) param, request.getParameter((String) param));
 
-        ExecutionResult result = WorkflowEngine.run(flow, webRequest);
+        ExecutionResult result = engine.execute(flow, webRequest);
 
         if (result.getException() == null)
         {

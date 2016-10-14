@@ -1,5 +1,6 @@
 package org.neuro4j.springframework.context;
 
+import org.neuro4j.workflow.ActionBlock;
 import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.loader.CustomBlockInitStrategy;
 import org.neuro4j.workflow.loader.DefaultCustomBlockInitStrategy;
@@ -38,15 +39,15 @@ public class SpringContextInitStrategy implements CustomBlockInitStrategy {
 	/**
 	 * 
 	 */
-	public CustomBlock loadCustomBlock(String className)
+	public ActionBlock loadCustomBlock(String className)
 			throws FlowInitializationException {
 		try {
 
-			Class<? extends CustomBlock> clazz = (Class<? extends CustomBlock>) Class.forName(className);
+			Class<? extends ActionBlock> clazz = (Class<? extends ActionBlock>) Class.forName(className);
 			if (null != clazz) {
 				Component component = clazz.getAnnotation(org.springframework.stereotype.Component.class);
 				if (component != null) {
-					CustomBlock customBlock = beanFactory.getBean(clazz);
+					ActionBlock customBlock = beanFactory.getBean(clazz);
 					customBlock.init();
 					return customBlock;
 				}

@@ -7,17 +7,17 @@ import java.net.URL;
 public abstract class URLWorkflowLoader implements WorkflowLoader {
 
 	@Override
-	public WorkflowSource load(final String location) throws FlowExecutionException {
+	public WorkflowSource load(final String name) throws FlowExecutionException {
 		URL resource = null;
-		String path = normalize(location);
+		String path = normalize(name);
 		try {
 			resource = getResource(path);
 			if (resource == null) {
 				throw new FlowExecutionException(path + " not found.");
 			}
-			return new XMLWorkflowSource(path, resource);
+			return new XMLWorkflowSource(name, resource);
 		} catch (IOException e) {
-			throw new FlowExecutionException(location, e);
+			throw new FlowExecutionException(name, e);
 		}
 
 	}

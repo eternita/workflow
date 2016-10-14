@@ -18,6 +18,7 @@
 package org.neuro4j.workflow.loader;
 
 import org.apache.commons.beanutils.ConstructorUtils;
+import org.neuro4j.workflow.ActionBlock;
 import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.log.Logger;
 import org.neuro4j.workflow.node.CustomBlock;
@@ -29,10 +30,10 @@ import org.neuro4j.workflow.node.CustomBlock;
 public class DefaultCustomBlockInitStrategy implements CustomBlockInitStrategy {
 
     @Override
-    public CustomBlock loadCustomBlock(String className) throws FlowInitializationException {
+    public ActionBlock loadCustomBlock(String className) throws FlowInitializationException {
         try {
 
-            Class<? extends CustomBlock> clazz = (Class<? extends CustomBlock>) Class.forName(className);
+            Class<? extends ActionBlock> clazz = (Class<? extends ActionBlock>) Class.forName(className);
             if (null != clazz)
             {
                 CustomBlock customBlock  = (CustomBlock) ConstructorUtils.invokeConstructor(clazz, null);
@@ -47,10 +48,10 @@ public class DefaultCustomBlockInitStrategy implements CustomBlockInitStrategy {
     }
     
    
-    public Class<? extends CustomBlock> getCustomBlockClass(String className) throws FlowInitializationException {
+    public Class<? extends ActionBlock> getCustomBlockClass(String className) throws FlowInitializationException {
         try {
 
-        	Class<? extends CustomBlock> clazz =(Class<? extends CustomBlock>) getClass().getClassLoader().loadClass(className);
+        	Class<? extends ActionBlock> clazz =(Class<? extends ActionBlock>) getClass().getClassLoader().loadClass(className);
         	if (clazz != null){
         		return clazz;
         	}
