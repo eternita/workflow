@@ -33,9 +33,6 @@ public class CustomBlockLoader {
     
     final private CustomBlockInitStrategy customBlockInitStrategy;
 
-    /**
-     * Constructor.
-     */
     public CustomBlockLoader(final CustomBlockInitStrategy customBlockInitStrategy) {
         super();
         this.customBlockInitStrategy = customBlockInitStrategy;
@@ -46,12 +43,12 @@ public class CustomBlockLoader {
      * Lookups customBlock by executable class.
      * If block does not exist in cache - creates instance and init. it.
      * 
-     * @param entity
-     * @return
-     * @throws FlowInitializationException
+     * @param entity custom node
+     * @return object implemented ActionBlock
+     * @throws FlowInitializationException in case of error
      */
-    ActionBlock lookupBlock(CustomNode entity) throws FlowInitializationException
-    {
+    
+    ActionBlock lookupBlock(CustomNode entity) throws FlowInitializationException{
 
         long start = System.currentTimeMillis();
         
@@ -79,8 +76,7 @@ public class CustomBlockLoader {
 
     
     
-    Class<? extends ActionBlock> getCustomBlockClass(CustomNode entity) throws FlowInitializationException
-    {
+    Class<? extends ActionBlock> getCustomBlockClass(CustomNode entity) throws FlowInitializationException{
         return defaultInitStrategy.getCustomBlockClass(entity.getExecutableClass());
     }
     

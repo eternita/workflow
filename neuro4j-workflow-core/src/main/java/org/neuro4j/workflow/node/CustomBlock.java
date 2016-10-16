@@ -47,7 +47,7 @@ public abstract class CustomBlock implements ActionBlock {
 	}
 
 	@Override
-	public boolean cached() {
+	public boolean cacheable() {
 		return true;
 	}
 

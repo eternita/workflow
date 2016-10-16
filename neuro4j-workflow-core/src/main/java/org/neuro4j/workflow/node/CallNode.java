@@ -23,7 +23,7 @@ import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.common.Workflow;
 
 /**
- * XML representation of CallNode.
+ * CallNode calls other workflow.
  * 
  */
 public class CallNode extends WorkflowNode {
@@ -31,50 +31,33 @@ public class CallNode extends WorkflowNode {
     private String callFlow;
     private String dynamicFlownName;
 
-    /**
-     * @param name
-     * @param uuid
-     * @param workflow
-     */
     public CallNode(String name, String uuid)
     {
         super(name, uuid);
     }
 
     /**
-     * @return
+     * Returns flow's name which should be called
+     * @return flow's name 
      */
     public String getCallFlow() {
         return callFlow;
     }
 
-    /**
-     * @param callFlow
-     */
     public void setCallFlow(String callFlow) {
         this.callFlow = callFlow;
     }
 
-    /**
-     * @return
-     */
     public String getDynamicFlownName() {
         return dynamicFlownName;
     }
 
-    /**
-     * @param dynamicFlownName
-     */
     public void setDynamicFlownName(String dynamicFlownName) {
         this.dynamicFlownName = dynamicFlownName;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.neuro4j.workflow.node.LogicBlock#validate(org.neuro4j.workflow.FlowContext)
-     */
-    final public void validate(FlowContext ctx) throws FlowExecutionException
+    @Override
+    final public void validate(final WorkflowProcessor processor, FlowContext ctx) throws FlowExecutionException
     {
 
         if (dynamicFlownName == null && callFlow == null)
@@ -165,6 +148,5 @@ public class CallNode extends WorkflowNode {
     {
 
     }
-
 
 }

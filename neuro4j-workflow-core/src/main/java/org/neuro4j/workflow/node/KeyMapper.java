@@ -32,11 +32,6 @@ public class KeyMapper extends WorkflowNode {
 
     private Transition nextNode = null;
 
-    /**
-     * @param name
-     * @param uuid
-     * @param workflow
-     */
     public KeyMapper(String name, String uuid) {
         super(name, uuid);
     }
@@ -62,11 +57,7 @@ public class KeyMapper extends WorkflowNode {
         return nextNode;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.neuro4j.workflow.node.LogicBlock#load(org.neuro4j.workflow.xml.WorkflowNode)
-     */
+    @Override
     public final void init() throws FlowInitializationException {
         nextNode = getExitByName(SWFConstants.NEXT_RELATION_NAME);
     }

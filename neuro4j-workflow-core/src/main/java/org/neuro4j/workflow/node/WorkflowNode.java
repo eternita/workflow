@@ -29,7 +29,7 @@ import org.neuro4j.workflow.loader.f4j.SWFConstants;
 import org.neuro4j.workflow.log.Logger;
 
 /**
- * 
+ * Base class for executable nodes
  *
  */
 public class WorkflowNode {
@@ -88,8 +88,11 @@ public class WorkflowNode {
     }
 
     /**
-     * @param ctx
-     * @throws FlowExecutionException
+     * Validates if current node can be executed
+     * @param ctx current context
+     * @param processor current processor
+     * @param ctx current context
+     * @throws FlowExecutionException in case of error
      */
     public void validate(final WorkflowProcessor processor, final FlowContext ctx) throws FlowExecutionException
     {
@@ -98,11 +101,19 @@ public class WorkflowNode {
 
 
 
+    /**
+     * Executes current node.
+     * @param processor workflow processor
+     * @param request current request
+     * @return next transition
+     * @throws FlowExecutionException in case of error
+     */
     protected Transition execute(final WorkflowProcessor processor, final WorkflowRequest request) throws FlowExecutionException
     {
         return null;
     }
 
+    
     public void init() throws FlowInitializationException
     {
 

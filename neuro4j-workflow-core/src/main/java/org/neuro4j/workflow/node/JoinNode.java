@@ -20,10 +20,7 @@ import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.FlowInitializationException;
-import org.neuro4j.workflow.common.Workflow;
 import org.neuro4j.workflow.loader.f4j.SWFConstants;
-import org.neuro4j.workflow.node.Transition;
-import org.neuro4j.workflow.node.WorkflowNode;
 
 /**
  * JoinBlock links different blocks. Block has many 'input' transitions and one 'output' transition.
@@ -32,11 +29,7 @@ public class JoinNode extends WorkflowNode {
 
     private Transition next = null;
 
-    /**
-     * @param name
-     * @param uuid
-     * @param workflow
-     */
+
     public JoinNode(String name, String uuid) {
         super(name, uuid);
     }
@@ -48,22 +41,12 @@ public class JoinNode extends WorkflowNode {
         return next;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.neuro4j.workflow.node.LogicBlock#load(org.neuro4j.workflow.xml.WorkflowNode)
-     */
     @Override
     public final void init() throws FlowInitializationException {
         next = getExitByName(SWFConstants.NEXT_RELATION_NAME);
         return;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.neuro4j.workflow.node.LogicBlock#validate(org.neuro4j.workflow.FlowContext)
-     */
     @Override
     public final void validate(final WorkflowProcessor processor, final FlowContext ctx) throws FlowExecutionException {
         if (next == null)

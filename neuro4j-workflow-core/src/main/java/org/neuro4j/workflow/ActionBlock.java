@@ -20,7 +20,7 @@ import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.FlowInitializationException;
 
 /**
- * Base interface for executable blocks
+ * Base interface for executable blocks. 
  *
  */
 public interface ActionBlock {
@@ -29,13 +29,22 @@ public interface ActionBlock {
     public static final int ERROR = 2;
     
     /**
-     * @param context
-     * @return
-     * @throws FlowExecutionException
+     * @param context input context
+     * @return  1 (NEXT) or 2 (ERROR) exit
+     * @throws FlowExecutionException in case of error during execution
      */
     public int execute(FlowContext context) throws FlowExecutionException;
     
+    /**
+     * Processor run this method once during initialization.
+     * @throws FlowInitializationException if there is an error
+     */
     public void init() throws FlowInitializationException;
     
-    public boolean cached();
+    /**
+     * Returns true if the object can be reused between calls - false otherwise.
+     * In case of false - processor will create new object for each call
+     * @return true or false
+     */
+    public boolean cacheable();
 }

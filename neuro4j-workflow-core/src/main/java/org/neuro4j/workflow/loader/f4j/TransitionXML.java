@@ -90,10 +90,6 @@ public class TransitionXML {
 		return false;
 	}
 
-    /**
-     * @param workflow 
-     * @param node
-     */
     public Transition createTransition(Workflow workflow, WorkflowNode node) {
         Transition transition = new Transition(workflow);
         transition.setUuid(this.uuid);
@@ -102,8 +98,5 @@ public class TransitionXML {
         return transition;
         
     }
-
-
-	
 
 }

@@ -14,14 +14,12 @@
  * limitations under the License.
  */
 
-
 package org.neuro4j.workflow.loader;
 
 import org.apache.commons.beanutils.ConstructorUtils;
 import org.neuro4j.workflow.ActionBlock;
 import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.log.Logger;
-import org.neuro4j.workflow.node.CustomBlock;
 
 /**
  * This class provides default implementation of CustomBlockInitStrategy.
@@ -29,38 +27,42 @@ import org.neuro4j.workflow.node.CustomBlock;
  */
 public class DefaultCustomBlockInitStrategy implements CustomBlockInitStrategy {
 
-    @Override
-    public ActionBlock loadCustomBlock(String className) throws FlowInitializationException {
-        try {
+	@Override
+	public ActionBlock loadCustomBlock(String className) throws FlowInitializationException {
+		try {
 
-            Class<? extends ActionBlock> clazz = (Class<? extends ActionBlock>) Class.forName(className);
-            if (null != clazz)
-            {
-                CustomBlock customBlock  = (CustomBlock) ConstructorUtils.invokeConstructor(clazz, null);
-                return customBlock;
-            }
+			Class<? extends ActionBlock> clazz = getCustomBlockClass(className);
+			if (null != clazz) {
+				ActionBlock action = (ActionBlock) ConstructorUtils.invokeConstructor(clazz, null);
+				if (action != null) {
+					return action;
+				}
 
-        } catch (Exception e) {
-            Logger.error(this, e);
-            throw new FlowInitializationException(e);
-        }
-        throw new FlowInitializationException("CustomBlock: " + className + " can not be initialized.");
-    }
-    
-   
-    public Class<? extends ActionBlock> getCustomBlockClass(String className) throws FlowInitializationException {
-        try {
+			}
 
-        	Class<? extends ActionBlock> clazz =(Class<? extends ActionBlock>) getClass().getClassLoader().loadClass(className);
-        	if (clazz != null){
-        		return clazz;
-        	}
+		} catch (Exception e) {
+			Logger.error(this, e);
+			throw new FlowInitializationException(e);
+		}
+		throw new FlowInitializationException("CustomBlock: " + className + " can not be initialized.");
+	}
 
-        } catch (Exception e) {
-            Logger.error(this, e);
-        }
-        throw new FlowInitializationException("CustomBlock: " + className + " can not be initialized.");
-    }
-    
-	
+	public Class<? extends ActionBlock> getCustomBlockClass(String className) throws FlowInitializationException {
+		try {
+
+			Class<?> clazz = getClass().getClassLoader().loadClass(className);
+			if (null != clazz) {
+				if (ActionBlock.class.isAssignableFrom(clazz)) {
+					if (clazz != null) {
+						return (Class<? extends ActionBlock>) clazz;
+					}
+				}
+			}
+
+		} catch (Exception e) {
+			Logger.error(this, e);
+		}
+		throw new FlowInitializationException("CustomBlock: " + className + " can not be initialized.");
+	}
+
 }

@@ -62,7 +62,7 @@ public class FlowContext {
     }
 
     /**
-     * @param map
+     * @param map of request parameters
      */
     public FlowContext(Map<String, Object> map) {
         parameters.putAll(map);

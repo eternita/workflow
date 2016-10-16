@@ -25,7 +25,6 @@ import org.neuro4j.workflow.ExecutionResult;
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.WorkflowEngine;
-import org.neuro4j.workflow.common.WorkflowEngine.ConfigBuilder;
 
 public class BaseFlowTestCase {
 	
@@ -33,12 +32,12 @@ public class BaseFlowTestCase {
 
 	@Before
 	public void setUp(){
-		engine = new WorkflowEngine(new ConfigBuilder());
+		engine = new WorkflowEngine();
 	}
 
     protected FlowContext executeFlowWithoutErrors(String flowName, Map<String, Object> parameters)
     {
-        ExecutionResult result = engine.execute(flowName, parameters);
+        ExecutionResult result = executeFlowAndReturnResult(flowName, parameters);
         if (result.getException() != null)
         {
             result.getException().printStackTrace();
@@ -61,7 +60,7 @@ public class BaseFlowTestCase {
 
     protected String executeFlowAndReturnLastNode(String flowName, Map<String, Object> parameters)
     {
-        ExecutionResult result = engine.execute(flowName, parameters);
+        ExecutionResult result = executeFlowAndReturnResult(flowName, parameters);
         Assert.assertTrue(result.getException() == null);
         return result.getLastSuccessfulNodeName();
     }
@@ -75,14 +74,14 @@ public class BaseFlowTestCase {
 
     protected Object executeFlowAndReturnObject(String flowName, Map<String, Object> parameters, String name)
     {
-        ExecutionResult result = engine.execute(flowName, parameters);
+        ExecutionResult result = executeFlowAndReturnResult(flowName, parameters);
 
         return result.getFlowContext().get(name);
     }
 
     protected void executeFlowAndCheckExceptioMessage(String flowName, Map<String, Object> parameters, String message)
     {
-        ExecutionResult result = engine.execute(flowName, parameters);
+        ExecutionResult result = executeFlowAndReturnResult(flowName, parameters);
 
         Assert.assertTrue(result.getException() instanceof FlowExecutionException);
         Assert.assertEquals(result.getException().getMessage(), message);

@@ -47,14 +47,6 @@ import org.neuro4j.workflow.node.WorkflowNode;
  */
 public class FlowConverter {
     
-
-    /**
-     * In case of exception input stream are closed by JAXB
-     * 
-     * @param xml
-     * @return
-     * @throws FlowInitializationException
-     */
   public static Workflow xml2workflow(InputStream xml, String flow)
             throws ConvertationException, FlowInitializationException {
         if (null == xml)
@@ -168,14 +160,6 @@ public class FlowConverter {
         return node;
     }
 
-    /**
-     * Creates StartNode.
-     * 
-     * @param workflow
-     * @param e
-     * @param parameters
-     * @return
-     */
     private static StartNode createStartNode(Workflow workflow, NodeXML e) {
         StartNode startNode = new StartNode(e.getName(), e.getUuid());
 
@@ -187,14 +171,6 @@ public class FlowConverter {
         return startNode;
     }
 
-    /**
-     * Creates CallNode.
-     * 
-     * @param workflow
-     * @param e
-     * @param parameters
-     * @return
-     */
     private static WorkflowNode createCallNode(Workflow workflow, NodeXML e) {
         CallNode node = new CallNode(e.getName(), e.getUuid());
         node.setCallFlow(e.getConfig(SWFParametersConstants.CAll_NODE_FLOW_NAME));
@@ -202,14 +178,6 @@ public class FlowConverter {
         return node;
     }
 
-    /**
-     * Creates SwitchNode.
-     * 
-     * @param workflow
-     * @param e
-     * @param parameters
-     * @return
-     */
     private static WorkflowNode createSwitchNode(Workflow workflow, NodeXML e) {
         String relationName = e.getConfig(SWFParametersConstants.SWITCH_NODE_ACTION_NAME);
         if (relationName == null) {
@@ -220,27 +188,11 @@ public class FlowConverter {
         return node;
     }
 
-    /**
-     * Creates EndNode.
-     * 
-     * @param workflow
-     * @param e
-     * @param parameters
-     * @return
-     */
     private static WorkflowNode createEndNode(Workflow workflow, NodeXML e) {
         EndNode node = new EndNode(e.getName(), e.getUuid());
         return node;
     }
 
-    /**
-     * Creates ViewNode
-     * 
-     * @param workflow
-     * @param e
-     * @param parameters
-     * @return
-     */
     private static WorkflowNode createViewNode(Workflow workflow, NodeXML e) {
         ViewNode node = new ViewNode(e.getName(), e.getUuid());
 
@@ -259,14 +211,6 @@ public class FlowConverter {
         return node;
     }
 
-    /**
-     * Creates DecisionNode.
-     * 
-     * @param workflow
-     * @param e
-     * @param parameters
-     * @return
-     */
     private static WorkflowNode createDecisionNode(Workflow workflow, NodeXML e) {
         DecisionNode node = new DecisionNode(e.getName(), e.getUuid());
         String sOperator = e.getConfig(SWFParametersConstants.DECISION_NODE_OPERATOR);
@@ -290,14 +234,6 @@ public class FlowConverter {
         return node;
     }
 
-    /**
-     * Creates LoopNode.
-     * 
-     * @param workflow
-     * @param e
-     * @param parameters
-     * @return
-     */
     private static WorkflowNode createLoopNode(Workflow workflow, NodeXML e) {
         LoopNode node = new LoopNode(e.getName(), e.getUuid());
 
@@ -306,28 +242,11 @@ public class FlowConverter {
         return node;
     }
 
-    /**
-     * Creates JoinNode.
-     * 
-     * @param workflow
-     * @param e
-     * @param parameters
-     * @return
-     */
     private static WorkflowNode createJoinNode(Workflow workflow, NodeXML e) {
         JoinNode node = new JoinNode(e.getName(), e.getUuid());
         return node;
     }
 
-    /**
-     * 
-     * Creates and loads KeyMapper node.
-     * 
-     * @param workflow
-     * @param e
-     * @param parameters
-     * @return
-     */
     private static WorkflowNode createKeyMapperNode(Workflow workflow, NodeXML e) {
         KeyMapper node = new KeyMapper(e.getName(), e.getUuid());
         for (ParameterXML key : e.parameters) {
@@ -336,15 +255,6 @@ public class FlowConverter {
         return node;
     }
 
-    /**
-     * Creates and loads CustomNode and parameters.
-     * 
-     * @param workflow
-     * @param e
-     * @param parameters
-     * @return
-     * @throws FlowInitializationException 
-     */
     private static WorkflowNode createCustomNode(Workflow workflow, NodeXML e) throws FlowInitializationException {
         String executableClass = e.getConfig("SWF_CUSTOM_CLASS");
         if (executableClass == null)

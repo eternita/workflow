@@ -13,7 +13,7 @@ import org.neuro4j.workflow.debug.DebugService;
 import org.neuro4j.workflow.log.Logger;
 
 /**
- *
+ * Executes workflow with given parameters
  */
 public class WorkflowProcessor {
 
@@ -24,7 +24,8 @@ public class WorkflowProcessor {
 	private final WorkflowCache cache;
 
 	/**
-	 * @param builder
+	 * Constructor
+	 * @param builder object with configuration
 	 */
 	public WorkflowProcessor(ConfigBuilder builder) {
 		this.loader = builder.getLoader();
@@ -33,9 +34,10 @@ public class WorkflowProcessor {
 	}
 
 	/**
-	 * @param flow
-	 * @param request
-	 * @return
+	 * Executes flow by name with request's parameters
+	 * @param flow name
+	 * @param request with parameters
+	 * @return execution result
 	 */
 	public ExecutionResult execute(final String flow, final WorkflowRequest request) {
 
@@ -89,9 +91,10 @@ public class WorkflowProcessor {
 
 
 	/**
-	 * @param firstNode
-	 * @param request
-	 * @throws FlowExecutionException
+	 * Executes node with request's parameters
+	 * @param firstNode node to be executed
+	 * @param request with parameters
+	 * @throws FlowExecutionException in case of error
 	 */
 	public final void executeWorkflow(WorkflowNode firstNode, WorkflowRequest request) throws FlowExecutionException {
 
@@ -116,9 +119,10 @@ public class WorkflowProcessor {
 	}
 
 	/**
-	 * @param flow
-	 * @return
-	 * @throws FlowExecutionException
+	 * Extracts flow name and start node from string parameter
+	 * @param flow name
+	 * @return array with flow's name and startNode's name
+	 * @throws FlowExecutionException on case of wrong format
 	 */
 	public static String[] parseFlowName(String flow) throws FlowExecutionException {
 
@@ -137,10 +141,10 @@ public class WorkflowProcessor {
 	}
 
 	/**
-	 * 
-	 * @param request
-	 * @return
-	 * @throws FlowExecutionException
+	 * Executes next node with given parameters
+	 * @param request with parameters
+	 * @return next workflow node
+	 * @throws FlowExecutionException in case of error
 	 */
 	private final WorkflowNode executeNode(WorkflowNode node, WorkflowRequest request) throws FlowExecutionException {
 
@@ -163,8 +167,9 @@ public class WorkflowProcessor {
 	}
 
 	/**
-	 * @param node
-	 * @return
+	 * Returns object implemented ActionBlock
+	 * @param node CustomNode with executable class
+	 * @return object implemented ActionBlock
 	 * @throws FlowInitializationException
 	 */
 	ActionBlock loadCustomBlock(CustomNode node) throws FlowInitializationException {
@@ -172,14 +177,21 @@ public class WorkflowProcessor {
 	}
 
 	/**
-	 * @param node
-	 * @return
+	 * Returns class object implemented ActionBlock
+	 * @param node CustomNode with executable class
+	 * @return class object implemented ActionBlock
 	 * @throws FlowInitializationException
 	 */
 	Class<? extends ActionBlock> getCustomBlockClass(CustomNode node) throws FlowInitializationException {
 		return customBlockLoader.getCustomBlockClass(node);
 	}
 
+	/**
+	 * Loads workflow from cache
+	 * @param flowName name
+	 * @return flow object
+	 * @throws FlowExecutionException in case of error
+	 */
 	public Workflow loadWorkflow(String flowName) throws FlowExecutionException {
 		return cache.get(loader, flowName);
 	}

@@ -40,9 +40,7 @@ public class PdfReportTestCase extends TestCase {
 	
     @Test
     public void testPdfCreation() {
-        ExecutionResult result = engine.execute("tests.org.neuro4j.jasper.reports.GenerateReport-Start", Collections.EMPTY_MAP);
-        System.out.println();
-
+        ExecutionResult result = engine.execute("tests.org.neuro4j.jasper.reports.GenerateReport-Start", Collections.<String, Object> emptyMap());
     }
 
 }

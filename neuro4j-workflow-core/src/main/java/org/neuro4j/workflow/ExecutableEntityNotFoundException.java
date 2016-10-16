@@ -16,10 +16,12 @@
 
 package org.neuro4j.workflow;
 
-@SuppressWarnings("serial")
+
 public class ExecutableEntityNotFoundException extends Exception {
 
-    public ExecutableEntityNotFoundException(String string) {
+	private static final long serialVersionUID = -1419733513160863915L;
+
+	public ExecutableEntityNotFoundException(String string) {
         super(string);
     }
 

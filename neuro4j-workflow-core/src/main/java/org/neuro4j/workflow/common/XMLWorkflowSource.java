@@ -8,7 +8,7 @@ import org.neuro4j.workflow.loader.f4j.FlowConverter;
 import org.neuro4j.workflow.log.Logger;
 
 /**
- *
+ * Converts stream from xml-resource  to workflow object
  */
 public class XMLWorkflowSource extends URLWorkflowSource {
 

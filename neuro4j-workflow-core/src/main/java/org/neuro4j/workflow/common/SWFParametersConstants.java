@@ -139,9 +139,9 @@ public class SWFParametersConstants {
     /**
      * TODO:
      * MapperNode hold parameter like
-     * <item value="newKey:oldKey" key="SWF_PARAM_KEY_1"/>
+     * .. item value="newKey:oldKey" key="SWF_PARAM_KEY_1"/ ..
      * constants like
-     * <item value="newKey:\"string constant value\"" key="SWF_PARAM_KEY_1"/>
+     * .. item value="newKey:\"string constant value\"" key="SWF_PARAM_KEY_1"/ ..
      */
     public static final String MAPPER_NODE_KEY_PREFIX = "SWF_PARAM_KEY_";
     // end of MapperNode section

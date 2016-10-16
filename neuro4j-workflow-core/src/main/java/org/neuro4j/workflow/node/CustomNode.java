@@ -93,11 +93,6 @@ public class CustomNode extends WorkflowNode {
 
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.neuro4j.workflow.node.LogicBlock#validate(org.neuro4j.workflow.FlowContext)
-     */
     @Override
     public final void validate(final WorkflowProcessor processor, final FlowContext ctx) throws FlowExecutionException {
         super.validate(processor, ctx);
@@ -144,9 +139,8 @@ public class CustomNode extends WorkflowNode {
 
     /**
      * Updates names of output parameters.
-     * 
-     * @param ctx
-     *        flow context
+     * @param cBlock current action object
+     * @param ctx flow context
      * @throws FlowExecutionException
      */
     private void doOutputMapping(ActionBlock cBlock, FlowContext ctx) throws FlowExecutionException
@@ -179,10 +173,8 @@ public class CustomNode extends WorkflowNode {
     /**
      * Updates names of input parameters.
      * 
-     * @param ctx
-     *        flow context
-     * @param originalName
-     *        name of this parameter will be updated to new.
+     * @param ctx flow context
+     * @param originalName name of this parameter will be updated to new.
      */
 	private void doInputMapping(FlowContext ctx, String originalName) {
 
@@ -198,10 +190,9 @@ public class CustomNode extends WorkflowNode {
     /**
      * Method processes output parameters.
      * 
-     * @param ctx
-     *        flow context
-     * @param originalName
-     * @return
+     * @param ctx flow context
+     * @param originalName name of output parameter
+     * @return name old name of output parameter
      */
 	private String doOutMapping(FlowContext ctx, String originalName) {
 
@@ -219,9 +210,9 @@ public class CustomNode extends WorkflowNode {
     /**
      * Checks if type in parameterDefinition is the same with object's type.
      * 
-     * @param parameterDefinition
-     * @param obj
-     * @throws LogicException
+     * @param parameterDefinition annotation of ActionBlock
+     * @param obj input parameter
+     * @throws FlowExecutionException in case of error
      */
     private void checkPatameterType(ParameterDefinition parameterDefinition, Object obj) throws FlowExecutionException
     {
@@ -266,7 +257,8 @@ public class CustomNode extends WorkflowNode {
 
 
     /**
-     * @return
+     * Returns name of executable class
+     * @return class name will be executed
      */
     public String getExecutableClass() {
         return executableClass;

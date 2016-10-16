@@ -17,20 +17,13 @@
 package org.neuro4j.workflow.node;
 
 /**
- * EndBlock stops flow execution.
+ * EndBlock stops flow execution and passes execution to called workflow
  * 
  */
-public class EndNode extends WorkflowNode {
+public final class EndNode extends WorkflowNode {
 
-
-    /**
-     * Constructor.
-     * 
-     * @param name
-     */
-    public EndNode(String name, String uuid) {
-        super(name, uuid);
-
-    }
+	public EndNode(String name, String uuid) {
+		super(name, uuid);
+	}
 
 }

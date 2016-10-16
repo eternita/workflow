@@ -62,7 +62,6 @@ public class GuiceCustomBlockInitStrategy implements CustomBlockInitStrategy {
             if (null != clazz)
             {
             	ActionBlock customBlock =  injector.getInstance(clazz);
-            	customBlock.init();
                 return customBlock;
             }
 
