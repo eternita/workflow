@@ -1,0 +1,6 @@
+sudo: false
+language: java
+jdk:
+  - oraclejdk6
+after_success:
+  - mvn clean
