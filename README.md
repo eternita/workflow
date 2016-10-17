@@ -1,3 +1,5 @@
+[![Build Status](https://secure.travis-ci.org/neuro4j/workflow.png?branch=master)](https://travis-ci.org/neuro4j/workflow)
+
 Neuro4j Workflow.
 ========
 Java workflow engine with Eclipse-based development environment.
