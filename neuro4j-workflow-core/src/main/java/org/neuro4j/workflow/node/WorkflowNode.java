@@ -19,6 +19,7 @@ package org.neuro4j.workflow.node;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 import org.apache.commons.beanutils.ConstructorUtils;
 import org.neuro4j.workflow.FlowContext;
@@ -45,10 +46,9 @@ public class WorkflowNode {
         this.uuid = uuid;
         setName(name);
     }
-
-
-    public Map<String, String> getParameters() {
-        return parameters;
+    
+    public Set<String> getParameterNames() {
+        return parameters.keySet();
     }
 
     public void addParameter(String key, String value) {

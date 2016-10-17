@@ -101,6 +101,13 @@
 			<version>4.8.2</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-all</artifactId>
+			<version>1.1</version>
+			<scope>test</scope>
+		</dependency>
+			
 		<!-- to resolve issue in tests -->
 		<dependency>
 			<groupId>xerces</groupId>

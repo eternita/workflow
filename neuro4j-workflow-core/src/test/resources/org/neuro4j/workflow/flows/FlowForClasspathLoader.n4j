@@ -28,12 +28,48 @@
                 </transition>
             </transitions>
         </node>
-        <node uuid="note" name="MogKBws3emEAAAFX40fi4LI_" x="171" y="20" type="NOTE">
+        <node uuid="ExLAqAIFFgMAAAFXnEMWJ9Do" name="StartNode2" x="456" y="6" type="START">
+            <parameters/>
+            <config>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
+            </config>
+            <transitions>
+                <transition uuid="O53AqAIFAKoAAAFX8a8WJ9Do" name="NEXT" toNode="UDzAqAIFXmgAAAFX95EWJ9Do">
+                    <points>-50, 36, -5, -105|-45, 106, 0, -35|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="N8rAqAIFFjIAAAFXblMWJ9Do" name="EndNode2" x="461" y="281" type="END">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node uuid="UDzAqAIFXmgAAAFX95EWJ9Do" name="MapperNode2" x="456" y="147" type="MAP">
+            <parameters>
+                <parameter key="text" value="&quot;Hi&quot; + message" input="true"/>
+            </parameters>
+            <config/>
+            <transitions>
+                <transition uuid="xCfAqAIFkasAAAFXe7kWJ9Do" name="NEXT" toNode="N8rAqAIFFjIAAAFXblMWJ9Do">
+                    <points>0, 35, -50, -108|0, 99, -50, -44|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="note" name="hFLAqAIF4QkAAAFXRrEWJ9Du" x="171" y="20" type="NOTE">
             <description>Used for Classpathloader</description>
             <parameters/>
             <config>
                 <parameter key="w" value="270"/>
                 <parameter key="h" value="38"/>
+            </config>
+            <transitions/>
+        </node>
+        <node uuid="note" name="ZnTAqAIF4QoAAAFXRrEWJ9Du" x="533" y="160" type="NOTE">
+            <description>map "Hi" + message to text</description>
+            <parameters/>
+            <config>
+                <parameter key="w" value="132"/>
+                <parameter key="h" value="43"/>
             </config>
             <transitions/>
         </node>

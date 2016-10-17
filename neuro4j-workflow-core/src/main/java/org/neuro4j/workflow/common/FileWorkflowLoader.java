@@ -40,7 +40,7 @@ public class FileWorkflowLoader extends URLWorkflowLoader{
 	
 	@Override
 	protected URL getResource(final String location) throws IOException {
-	    File file = new File(location);
+	    File file = new File(baseDir + location);
 	    return file.exists() ? file.toURI().toURL() : delegate.getResource(location);
 	}
 

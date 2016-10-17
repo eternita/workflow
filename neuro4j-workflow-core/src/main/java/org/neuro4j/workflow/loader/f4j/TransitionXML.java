@@ -90,8 +90,8 @@ public class TransitionXML {
 		return false;
 	}
 
-    public Transition createTransition(Workflow workflow, WorkflowNode node) {
-        Transition transition = new Transition(workflow);
+    public Transition createTransition(WorkflowNode node) {
+        Transition transition = new Transition();
         transition.setUuid(this.uuid);
         transition.setFromNode(node);
         transition.setName(this.name);

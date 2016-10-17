@@ -40,7 +40,7 @@ public class KeyMapper extends WorkflowNode {
     public final Transition execute(final WorkflowProcessor processor, final WorkflowRequest request)
             throws FlowExecutionException {
         FlowContext ctx = request.getLogicContext();
-        Set<String> parameterKeys = getParameters().keySet();
+        Set<String> parameterKeys = getParameterNames();
 
         for (String key : parameterKeys)
         {

@@ -83,8 +83,7 @@ public class FlowConverter {
 			WorkflowNode node = network.getById(entity.getUuid());
 			if (node != null) {
 				for (TransitionXML transitionXml : entity.getRelations()) {
-					Transition transition = transitionXml.createTransition(
-							network, node);
+					Transition transition = transitionXml.createTransition(node);
 					transition.setToNode(network.getById(transitionXml.toNode));
 					node.registerExit(transition);
 				}

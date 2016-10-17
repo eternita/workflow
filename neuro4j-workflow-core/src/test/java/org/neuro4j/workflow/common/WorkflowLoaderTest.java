@@ -4,6 +4,9 @@ import org.junit.Test;
 
 import static junit.framework.Assert.*;
 
+import java.io.InputStream;
+import java.net.URL;
+
 
 public class WorkflowLoaderTest {
 	
@@ -32,5 +35,17 @@ public class WorkflowLoaderTest {
 		ClasspathWorkflowLoader loader = new ClasspathWorkflowLoader(".n4j");
 		loader.load("org.neuro4j.workflow.flows.SomeFlow");
 	}
+	
 
+//	@Test
+//	public void testDefaultFileWorkflowLoader() throws FlowExecutionException{
+//		ClasspathWorkflowLoader classpathLoader = new ClasspathWorkflowLoader();
+//		URL stream = getClass().getResource("file1.n4j");
+//		
+//		FileWorkflowLoader loader = new FileWorkflowLoader(classpathLoader, "");
+//		WorkflowSource workflowSource = loader.load("org.mydomain.FlowForFileWorkflowLoader");
+//		assertNotNull(workflowSource);
+//		Workflow flow = workflowSource.content();
+//		assertNotNull(flow);
+//	}
 }

@@ -16,18 +16,14 @@
 
 package org.neuro4j.workflow.node;
 
-import org.neuro4j.workflow.common.Workflow;
-
 public class Transition {
 
     private String uuid;
     private String name;
-    private Workflow workflow;
     private WorkflowNode fromNode;
     private WorkflowNode toNode;
 
-    public Transition(Workflow workflow) {
-        this.workflow = workflow;
+    public Transition() {
     }
 
     public WorkflowNode getFromNode() {
@@ -70,8 +66,5 @@ public class Transition {
         this.name = name;
     }
 
-    public Workflow getWorkflow() {
-        return workflow;
-    }
 
 }
