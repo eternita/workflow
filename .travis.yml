@@ -4,4 +4,4 @@ script: mvn test
 jdk:
   - oraclejdk8
 after_success:
-  - mvn clean test cobertura:cobertura coveralls:cobertura
+  - mvn clean test cobertura:cobertura coveralls:report
