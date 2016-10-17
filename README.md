@@ -1,5 +1,5 @@
 [![Build Status](https://secure.travis-ci.org/neuro4j/workflow.png?branch=master)](https://travis-ci.org/neuro4j/workflow)
-[![Coverage Status](https://coveralls.io/repos/github/neuro4j/workflow/badge.svg?branch=master)](https://coveralls.io/github/neuro4j/workflow?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/neuro4j/workflow/badge.svg)](https://coveralls.io/github/neuro4j/workflow)
 
 Neuro4j Workflow.
 ========
