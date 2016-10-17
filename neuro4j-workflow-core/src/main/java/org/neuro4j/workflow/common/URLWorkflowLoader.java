@@ -19,7 +19,6 @@ public abstract class URLWorkflowLoader implements WorkflowLoader {
 		} catch (IOException e) {
 			throw new FlowExecutionException(name, e);
 		}
-
 	}
 
 	protected abstract URL getResource(String location) throws IOException;

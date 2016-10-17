@@ -23,7 +23,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
 import org.neuro4j.workflow.common.FlowInitializationException;
-import org.neuro4j.workflow.common.SWFParametersConstants;
+import static org.neuro4j.workflow.common.SWFParametersConstants.*;
 import org.neuro4j.workflow.common.Workflow;
 import org.neuro4j.workflow.enums.DecisionCompTypes;
 import org.neuro4j.workflow.enums.DecisionOperators;
@@ -163,7 +163,7 @@ public class FlowConverter {
     private static StartNode createStartNode(Workflow workflow, NodeXML e) {
         StartNode startNode = new StartNode(e.getName(), e.getUuid());
 
-        String nodeType = e.getConfig(SWFParametersConstants.START_NODE_TYPE);
+        String nodeType = e.getConfig(START_NODE_TYPE);
 
         nodeType = (nodeType == null || nodeType.trim().equals("")) ? StartNodeTypes
                 .getDefaultType().name() : nodeType.toUpperCase();
@@ -173,15 +173,15 @@ public class FlowConverter {
 
     private static WorkflowNode createCallNode(Workflow workflow, NodeXML e) {
         CallNode node = new CallNode(e.getName(), e.getUuid());
-        node.setCallFlow(e.getConfig(SWFParametersConstants.CAll_NODE_FLOW_NAME));
-        node.setDynamicFlownName(e.getConfig(SWFParametersConstants.CAll_NODE_DYNAMIC_FLOW_NAME));
+        node.setCallFlow(e.getConfig(CAll_NODE_FLOW_NAME));
+        node.setDynamicFlownName(e.getConfig(CAll_NODE_DYNAMIC_FLOW_NAME));
         return node;
     }
 
     private static WorkflowNode createSwitchNode(Workflow workflow, NodeXML e) {
-        String relationName = e.getConfig(SWFParametersConstants.SWITCH_NODE_ACTION_NAME);
+        String relationName = e.getConfig(SWITCH_NODE_ACTION_NAME);
         if (relationName == null) {
-            relationName = SWFParametersConstants.SWITCH_NODE_DEFAULT_PARAMETER_VALUE;
+            relationName = SWITCH_NODE_DEFAULT_PARAMETER_VALUE;
         }
         SwitchNode node = new SwitchNode(e.getName(), e.getUuid(), relationName);
 
@@ -196,12 +196,12 @@ public class FlowConverter {
     private static WorkflowNode createViewNode(Workflow workflow, NodeXML e) {
         ViewNode node = new ViewNode(e.getName(), e.getUuid());
 
-        node.setStaticTemplateName(e.getConfig(SWFParametersConstants.VIEW_NODE_TEMPLATE_NAME));
-        node.setDynamicTemplateName(e.getParameter(SWFParametersConstants.VIEW_NODE_TEMPLATE_DYNAMIC_NAME));
-        node.setRenderImpl(e.getConfig(SWFParametersConstants.RENDER_IMP));
+        node.setStaticTemplateName(e.getConfig(VIEW_NODE_TEMPLATE_NAME));
+        node.setDynamicTemplateName(e.getParameter(VIEW_NODE_TEMPLATE_DYNAMIC_NAME));
+        node.setRenderImpl(e.getConfig(RENDER_IMP));
         
 
-        String renderType = e.getConfig(SWFParametersConstants.VIEW_NODE_RENDER_TYPE);
+        String renderType = e.getConfig(VIEW_NODE_RENDER_TYPE);
         if (renderType == null) {
             renderType = "jsp";
         }
@@ -213,13 +213,13 @@ public class FlowConverter {
 
     private static WorkflowNode createDecisionNode(Workflow workflow, NodeXML e) {
         DecisionNode node = new DecisionNode(e.getName(), e.getUuid());
-        String sOperator = e.getConfig(SWFParametersConstants.DECISION_NODE_OPERATOR);
+        String sOperator = e.getConfig(DECISION_NODE_OPERATOR);
 
         if (sOperator != null) {
             node.setOperator(DecisionOperators.valueOf(sOperator));
         }
 
-        String sCompType = e.getConfig(SWFParametersConstants.DECISION_NODE_COMP_TYPE);
+        String sCompType = e.getConfig(DECISION_NODE_COMP_TYPE);
 
         if (sCompType != null) {
             node.setCompTypes(DecisionCompTypes.valueOf(sCompType));
@@ -227,9 +227,9 @@ public class FlowConverter {
             node.setCompTypes(DecisionCompTypes.context);
         }
 
-        node.setDecisionKey(e.getConfig(SWFParametersConstants.DECISION_NODE_DECISION_KEY));
+        node.setDecisionKey(e.getConfig(DECISION_NODE_DECISION_KEY));
 
-        node.setComparisonKey(e.getConfig(SWFParametersConstants.DECISION_NODE_COMP_KEY));
+        node.setComparisonKey(e.getConfig(DECISION_NODE_COMP_KEY));
 
         return node;
     }
@@ -237,8 +237,8 @@ public class FlowConverter {
     private static WorkflowNode createLoopNode(Workflow workflow, NodeXML e) {
         LoopNode node = new LoopNode(e.getName(), e.getUuid());
 
-        node.setIteratorKey(e.getConfig(SWFParametersConstants.LOOP_NODE_ITERATOR));
-        node.setElementKey(e.getConfig(SWFParametersConstants.LOOP_NODE_ELEMENT));
+        node.setIteratorKey(e.getConfig(LOOP_NODE_ITERATOR));
+        node.setElementKey(e.getConfig(LOOP_NODE_ELEMENT));
         return node;
     }
 

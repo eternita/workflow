@@ -34,12 +34,12 @@ public class FileWorkflowLoader extends URLWorkflowLoader{
 		this.baseDir = baseDir;
 	}
 	
-	public FileWorkflowLoader(final String baseDir,final String ext){
+	public FileWorkflowLoader(final String baseDir, final String ext){
 		this(new ClasspathWorkflowLoader(ext), baseDir);
 	}
 	
 	@Override
-	protected URL getResource(String location) throws IOException {
+	protected URL getResource(final String location) throws IOException {
 	    File file = new File(location);
 	    return file.exists() ? file.toURI().toURL() : delegate.getResource(location);
 	}

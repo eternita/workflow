@@ -26,5 +26,11 @@ public class WorkflowLoaderTest {
 		assertEquals("org.neuro4j.workflow.flows.FlowForClasspathLoader", flow.getFlowName());
 		assertEquals("org.neuro4j.workflow.flows", flow.getPackage());
 	}
+	
+	@Test(expected=FlowExecutionException.class)
+	public void testClassPathLoaderNotFound() throws FlowExecutionException{
+		ClasspathWorkflowLoader loader = new ClasspathWorkflowLoader(".n4j");
+		loader.load("org.neuro4j.workflow.flows.SomeFlow");
+	}
 
 }

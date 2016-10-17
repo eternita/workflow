@@ -47,5 +47,9 @@ public enum FlowVisibility {
         }
         return null;
     }
-
+    
+    public static FlowVisibility getDefaultType()
+    {
+        return Public;
+    }
 }

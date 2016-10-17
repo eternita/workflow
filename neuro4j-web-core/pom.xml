@@ -7,7 +7,7 @@
         <version>2.1.1-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <artifactId>neuro4j-logic-web</artifactId>
+    <artifactId>neuro4j-web-core</artifactId>
 
     <dependencies>
 

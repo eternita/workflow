@@ -5,8 +5,8 @@
 	<parent>
 		<groupId>org.neuro4j</groupId>
 		<artifactId>workflow</artifactId>
-                <version>2.1.1-SNAPSHOT</version>
-                <relativePath>../pom.xml</relativePath>		
+        <version>2.1.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>		
 	</parent>
 	<artifactId>spring-webmvc-workflow</artifactId>
 	<properties>
@@ -17,7 +17,7 @@
 
 		<dependency>
 			<groupId>org.neuro4j</groupId>
-			<artifactId>neuro4j-logic-web</artifactId>
+			<artifactId>neuro4j-web-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
