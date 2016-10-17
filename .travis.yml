@@ -1,6 +1,6 @@
 sudo: false
 language: java
 jdk:
-  - oraclejdk6
+  - oraclejdk8
 after_success:
   - mvn clean
