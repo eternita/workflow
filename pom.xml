@@ -56,7 +56,7 @@
 		<module>neuro4j-workflow-core</module>
 		<module>neuro4j-web-core</module>
 		<module>neuro4j-workflow-common</module>
-		<module>neuro4j-workflow-test</module>
+	<!--	<module>neuro4j-workflow-test</module> -->
 		<module>jasper-report-web-plugin</module>
 		<module>jasper-report-workflow</module>
 		<module>velocity-web-plugin</module>
@@ -73,7 +73,6 @@
 		<java-version>1.6</java-version>
 		<maven.compiler.source>1.6</maven.compiler.source>
 		<maven.compiler.target>1.6</maven.compiler.target>
-		<org.aspectj-version>1.8.1</org.aspectj-version>
 	</properties>
 
 	<dependencies>
@@ -88,13 +87,6 @@
 			<artifactId>commons-beanutils</artifactId>
 			<version>1.8.3</version>
 		</dependency>
-		<!-- AspectJ -->
-		<dependency>
-			<groupId>org.aspectj</groupId>
-			<artifactId>aspectjrt</artifactId>
-			<version>${org.aspectj-version}</version>
-		</dependency>
-
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -125,40 +117,6 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.1</version>
 				<configuration>
-					<source>${java-version}</source>
-					<target>${java-version}</target>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>aspectj-maven-plugin</artifactId>
-				<!-- Have to use version 1.2 since version 1.3 does not appear to work 
-					with ITDs -->
-				<version>1.2</version>
-				<dependencies>
-					<!-- You must use Maven 2.0.9 or above or these are ignored (see MNG-2972) -->
-					<dependency>
-						<groupId>org.aspectj</groupId>
-						<artifactId>aspectjrt</artifactId>
-						<version>${org.aspectj-version}</version>
-					</dependency>
-					<dependency>
-						<groupId>org.aspectj</groupId>
-						<artifactId>aspectjtools</artifactId>
-						<version>${org.aspectj-version}</version>
-					</dependency>
-				</dependencies>
-				<executions>
-					<execution>
-						<goals>
-							<goal>compile</goal>
-							<goal>test-compile</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<outxml>true</outxml>
 					<source>${java-version}</source>
 					<target>${java-version}</target>
 				</configuration>

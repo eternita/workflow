@@ -55,7 +55,7 @@
                 </transition>
             </transitions>
         </node>
-        <node uuid="note" name="hFLAqAIF4QkAAAFXRrEWJ9Du" x="171" y="20" type="NOTE">
+        <node uuid="note" name="EiXAqAIFe7QAAAFXn_oWJ9F2" x="171" y="20" type="NOTE">
             <description>Used for Classpathloader</description>
             <parameters/>
             <config>
@@ -64,7 +64,7 @@
             </config>
             <transitions/>
         </node>
-        <node uuid="note" name="ZnTAqAIF4QoAAAFXRrEWJ9Du" x="533" y="160" type="NOTE">
+        <node uuid="note" name="LOXAqAIFe7UAAAFXn_oWJ9F2" x="533" y="160" type="NOTE">
             <description>map "Hi" + message to text</description>
             <parameters/>
             <config>

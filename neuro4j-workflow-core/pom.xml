@@ -21,8 +21,9 @@
 			<artifactId>junit</artifactId>
 			<version>4.8.2</version>
 			<scope>test</scope>
-		</dependency>
-	</dependencies>
+		</dependency>   
+  </dependencies>
+
 	<build>
 			<resources>
 			<resource>
@@ -37,19 +38,23 @@
 					<include>**/**</include>
 				</includes>
 			</resource>
-			<resource>
+		</resources>
+		<testResources>			
+			<testResource>
 				<directory>src/test/java</directory>
 				<includes>
 					<include>**/*.n4j</include>
 				</includes>
-			</resource>
-			<resource>
+			</testResource>
+			<testResource>
 				<directory>src/test/resources</directory>
 				<includes>
 					<include>**/**</include>
 				</includes>
-			</resource>
+			</testResource>
 
-		</resources>
+		</testResources>
+	
 	</build>
+	
 </project>

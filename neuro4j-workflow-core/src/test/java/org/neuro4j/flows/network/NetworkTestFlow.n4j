@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<flow visibility="Public">
+    <nodes>
+        <node type="START" y="37" x="196" name="StartNode1" uuid="ug8QV.0E5OAAAAE.cIS60zLR">
+            <parameters/>
+            <config>
+                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+            </config>
+            <transitions>
+                <transition toNode="qLoQV.0E6CIAAAE.1Au60zLS" name="NEXT" uuid="m1AQV.0Efj8AAAE.Ohe60zLS">
+                    <points>0, 32, -6, -132|6, 143, 0, -21|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="START" y="38" x="1280" name="StartNode5" uuid="wQoQV.0EeUAAAAE.8xu60zO4">
+            <parameters/>
+            <config>
+                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+            </config>
+            <transitions>
+                <transition toNode="S9kQV.0ELSEAAAE.gUS60zO4" name="NEXT" uuid="hEQQV.0EgBUAAAE.H4O60zO4">
+                    <points>0, 32, -5, -86|5, 90, 0, -28|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="END" y="310" x="783" name="EndNode3" uuid="L0kQV.0EFdMAAAE.V6O60zLW">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node type="MAP" y="192" x="519" name="MapperNode2" uuid="WtsQV.0EiaUAAAE.Bsm60zLX">
+            <parameters>
+            	<parameter value="&quot;test&quot;" key="var1"/>
+            </parameters>
+            <config/>
+            <transitions>
+                <transition toNode="xFcQV.0EysgAAAE.IXi60zLV" name="NEXT" uuid="QdIQV.0EoikAAAE.R_K60zLX">
+                    <points>0, 21, 0, -111|0, 103, 0, -29|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="END" y="337" x="482" name="EndNode2" uuid="xFcQV.0EysgAAAE.IXi60zLV">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node type="CALL" y="159" x="1232" name="CallNode1" uuid="S9kQV.0ELSEAAAE.gUS60zO4">
+            <parameters/>
+            <config>
+                <parameter value="org.neuro4j.flows.network.p2.NetworkTestFlow2-StartNode2" key="SYS_FLOW_NAME"/>
+            </config>
+            <transitions>
+                <transition toNode="1HMQV.0Etd8AAAE.OCy60zO4" name="EndNode2" uuid="0UIQV.0E_okAAAE.U5i60zO4">
+                    <points>0, 29, -10, -121|10, 121, 0, -29|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="END" y="308" x="1280" name="EndNode5" uuid="1HMQV.0Etd8AAAE.OCy60zO4">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node type="END" y="322" x="196" name="EndNode1" uuid="z7sQV.0ETsUAAAE.d4260zLR">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node type="MAP" y="211" x="215" name="MapperNode1" uuid="qLoQV.0E6CIAAAE.1Au60zLS">
+            <parameters>
+				<parameter value="&quot;test&quot;" key="value1"/>
+            </parameters>
+            <config/>
+            <transitions>
+                <transition toNode="z7sQV.0ETsUAAAE.d4260zLR" name="NEXT" uuid=".LUQV.0EgVwAAAE.AjW60zLS">
+                    <points>0, 21, 0, -98|0, 90, 0, -29|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="START" y="23" x="783" name="StartNode3" uuid="buoQV.0E42wAAAE.sXe60zLW">
+            <parameters/>
+            <config>
+                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+            </config>
+            <transitions>
+                <transition toNode="DZIQV.0EimwAAAE.WY660zLW" name="NEXT" uuid="eA4QV.0Emn8AAAE.osi60zLW">
+                    <points>0, 32, -13, -89|13, 93, 0, -28|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="END" y="311" x="1004" name="EndNode4" uuid="hHcQV.0EVl8AAAE.EnW60zOt">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node type="START" y="28" x="1004" name="StartNode4" uuid="yZsQV.0ETkMAAAE.Wma60zOt">
+            <parameters/>
+            <config>
+                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+            </config>
+            <transitions>
+                <transition toNode="l4MQV.0EVQEAAAE.MWy60zOx" name="NEXT" uuid="GsQQV.0Euh8AAAE.9oe60zOx">
+                    <points>0, 32, 6, -109|-6, 113, 0, -28|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="CALL" y="172" x="956" name="CallNode2" uuid="l4MQV.0EVQEAAAE.MWy60zOx">
+            <parameters/>
+            <config>
+                <parameter value="org.neuro4j.flows.network.p2.NetworkTestFlow2-StartNode1" key="SYS_FLOW_NAME"/>
+            </config>
+            <transitions>
+                <transition toNode="hHcQV.0EVl8AAAE.EnW60zOt" name="EndNode1" uuid="Qn4QV.0EB3sAAAE.kw260zOy">
+                    <points>0, 29, -5, -111|5, 111, 0, -29|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="START" y="38" x="500" name="StartNode2" uuid="aacQV.0ElQEAAAE.3GO60zLV">
+            <parameters/>
+            <config>
+                <parameter value="PRIVATE" key="SYS_START_NODE_TYPE"/>
+            </config>
+            <transitions>
+                <transition toNode="WtsQV.0EiaUAAAE.Bsm60zLX" name="NEXT" uuid="8DUQV.0EQ0wAAAE.79W60zLX">
+                    <points>0, 32, -4, -112|4, 123, 0, -21|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="CALL" y="139" x="738" name="CallNode3" uuid="DZIQV.0EimwAAAE.WY660zLW">
+            <parameters/>
+            <config>
+                <parameter value="org.neuro4j.flows.network.NetworkTestFlow-StartNode2" key="SYS_FLOW_NAME"/>
+            </config>
+            <transitions>
+                <transition toNode="L0kQV.0EFdMAAAE.V6O60zLW" name="EndNode2" uuid="mHoQV.0E5UoAAAE.USW60zLX">
+                    <points>0, 29, -11, -143|11, 143, 0, -29|</points>
+                </transition>
+            </transitions>
+        </node>
+    </nodes>
+</flow>

@@ -33,7 +33,6 @@
 	<java-version>1.6</java-version>
         <maven.compiler.source>1.6</maven.compiler.source>
         <maven.compiler.target>1.6</maven.compiler.target>
-	<org.aspectj-version>1.8.1</org.aspectj-version>
     </properties>
 
 

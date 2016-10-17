@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<flow visibility="Public">
+    <nodes>
+        <node type="END" y="335" x="210" name="EndNode1" uuid="_0UQV.0E8D4AAAFAfvnat3jF">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node type="CALL" y="117" x="202" name="CallNode1" uuid="Al4QV.0Ehb8AAAFAUQfat3jG">
+            <parameters/>
+            <config>
+                <parameter value="org.neuro4j.flows.nodes.callnode.Flow1-CalledFlow" key="SYS_FLOW_NAME"/>
+            </config>
+            <transitions>
+                <transition toNode="DLkQV.0EeOsAAAFAIzPat3jM" name="EndNode3" uuid="GsYQV.0EBQ4AAAFA9D_at3jM">
+                    <points>0, 29, -100, -190|0, 42, -100, -177|100, 42, 0, -177|100, 190, 0, -29|</points>
+                </transition>
+                <transition toNode="_0UQV.0E8D4AAAFAfvnat3jF" name="EndNode2" uuid="FWsQV.0EGHYAAAFAaYbat3jH">
+                    <points>0, 29, 8, -190|-8, 190, 0, -29|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="END" y="334" x="417" name="EndNode2" uuid="fa4QV.0EJGgAAAFAeT3at3jG">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node type="END" y="335" x="320" name="EndNode4" uuid="DLkQV.0EeOsAAAFAIzPat3jM">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node type="END" y="333" x="526" name="EndNode3" uuid="PusQV.0Eb70AAAFAGb3at3jG">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node type="START" y="10" x="419" name="CalledFlow" uuid="5cIQV.0ElS0AAAFAyBPat3jG">
+            <parameters/>
+            <config>
+                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+            </config>
+            <transitions>
+                <transition toNode="8nIQV.0E0xQAAAFAAEzat3jG" name="NEXT" uuid="bPwQV.0EbH8AAAFAwp3at3jG">
+                    <points>0, 32, -16, -77|16, 79, 0, -30|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="START" y="10" x="210" name="StartNode1" uuid="VvkQV.0E6ioAAAFA2Ozat3jF">
+            <parameters/>
+            <config>
+                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+            </config>
+            <transitions>
+                <transition toNode="Al4QV.0Ehb8AAAFAUQfat3jG" name="NEXT" uuid="5hwQV.0EVqsAAAFA4_nat3jG">
+                    <points>0, 32, 0, -72|0, 76, 0, -28|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node type="DECISION" y="120" x="416" name="DecisionNode1" uuid="8nIQV.0E0xQAAAFAAEzat3jG">
+            <parameters/>
+            <config>
+                <parameter value="DEFINED" key="SYS_OPERATOR"/>
+                <parameter value="var1" key="SYS_DECISION_KEY"/>
+            </config>
+            <transitions>
+                <transition toNode="fa4QV.0EJGgAAAFAeT3at3jG" name="NEXT" uuid="GfYQV.0EgOcAAAFA4JPat3jG">
+                    <points>0, 30, 16, -184|-16, 185, 0, -29|</points>
+                </transition>
+                <transition toNode="PusQV.0Eb70AAAFAGb3at3jG" name="FALSE" uuid="cCAQV.0EDLQAAAFA.8fat3jG">
+                    <points>41, 0, -159, -214|200, 185, 0, -29|</points>
+                </transition>
+            </transitions>
+        </node>
+    </nodes>
+</flow>
