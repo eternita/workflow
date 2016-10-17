@@ -77,12 +77,11 @@
 	</properties>
 
 	<dependencies>
-
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<version>1.1.7</version>
-		</dependency>
+	<dependency>
+		<groupId>ch.qos.logback</groupId>
+		<artifactId>logback-classic</artifactId>
+		<version>1.1.7</version>
+	</dependency>
 
 		<dependency>
 			<groupId>commons-beanutils</groupId>
@@ -102,6 +101,13 @@
 			<version>4.8.2</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- to resolve issue in tests -->
+		<dependency>
+			<groupId>xerces</groupId>
+			<artifactId>xercesImpl</artifactId>
+			<version>2.11.0</version>
+			<scope>test</scope>
+		</dependency>		
 	</dependencies>
 
 
