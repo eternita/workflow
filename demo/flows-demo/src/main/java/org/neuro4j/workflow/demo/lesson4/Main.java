@@ -16,7 +16,7 @@ public class Main {
 
 			Map<String, Object> params = new HashMap<String, Object>();
 			
-			ExecutionResult result = WorkflowEngine.run("org.neuro4j.workflow.demo.lesson4.Call-Start", params);
+			ExecutionResult result = new WorkflowEngine().execute("org.neuro4j.workflow.demo.lesson4.Call-Start", params);
 			
 	
 

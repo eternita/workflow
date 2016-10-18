@@ -39,12 +39,16 @@ public interface ActionBlock {
      * Processor run this method once during initialization.
      * @throws FlowInitializationException if there is an error
      */
-    public void init() throws FlowInitializationException;
+    public default void init() throws FlowExecutionException{
+    	
+    };
     
     /**
      * Returns true if the object can be reused between calls - false otherwise.
      * In case of false - processor will create new object for each call
      * @return true or false
      */
-    public boolean cacheable();
+    public default boolean cacheable(){
+    	return false;
+    }
 }

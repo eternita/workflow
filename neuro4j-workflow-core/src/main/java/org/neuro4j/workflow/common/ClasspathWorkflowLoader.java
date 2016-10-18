@@ -25,9 +25,6 @@ import java.net.URL;
  */
 public class ClasspathWorkflowLoader extends URLWorkflowLoader{
 	
-	public final static String DEFAULT_EXT = ".n4j";
-	
-	private final String fileExt;
 	
 	public ClasspathWorkflowLoader(final String ext){
 		this.fileExt = ext;
@@ -40,4 +37,5 @@ public class ClasspathWorkflowLoader extends URLWorkflowLoader{
 	protected URL getResource(String location) throws IOException {
 		  return  getClass().getClassLoader().getResource(location + fileExt);
 	}
+	
 }

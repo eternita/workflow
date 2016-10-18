@@ -56,9 +56,4 @@ public class CreateReportParameters extends CustomBlock {
         return NEXT;
     }
 
-    @Override
-    public void init() throws FlowInitializationException {
-        super.init();
-    }
-
 }

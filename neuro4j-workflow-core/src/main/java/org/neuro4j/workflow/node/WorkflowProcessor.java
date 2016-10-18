@@ -172,7 +172,7 @@ public class WorkflowProcessor {
 	 * @return object implemented ActionBlock
 	 * @throws FlowInitializationException
 	 */
-	ActionBlock loadCustomBlock(CustomNode node) throws FlowInitializationException {
+	ActionBlock loadCustomBlock(CustomNode node) throws FlowExecutionException {
 		return customBlockLoader.lookupBlock(node);
 	}
 
@@ -182,7 +182,7 @@ public class WorkflowProcessor {
 	 * @return class object implemented ActionBlock
 	 * @throws FlowInitializationException
 	 */
-	Class<? extends ActionBlock> getCustomBlockClass(CustomNode node) throws FlowInitializationException {
+	Class<? extends ActionBlock> getCustomBlockClass(CustomNode node) throws FlowExecutionException {
 		return customBlockLoader.getCustomBlockClass(node);
 	}
 

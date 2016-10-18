@@ -41,11 +41,11 @@ public class SetMessage extends CustomBlock {
 	}
 
 	@Override
-	public void init() throws FlowInitializationException {
+	public void init() throws FlowExecutionException {
 		super.init();
 		resourceBundle = ResourceBundle.getBundle(FILE_NAME);
 		if (resourceBundle == null) {
-			throw new FlowInitializationException(
+			throw new FlowExecutionException(
 					"ResourceBundle can not be loaded. File: " + FILE_NAME);
 		}
 	}

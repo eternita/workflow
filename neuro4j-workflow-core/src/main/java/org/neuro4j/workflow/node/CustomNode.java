@@ -69,13 +69,7 @@ public class CustomNode extends WorkflowNode {
     public final Transition execute(final WorkflowProcessor processor, final WorkflowRequest request) throws FlowExecutionException {
         FlowContext context = request.getLogicContext();
         
-        ActionBlock cBlock = null;
-        try {
-            cBlock = processor.loadCustomBlock(this);
-        } catch (FlowInitializationException e) {
-            Logger.error(this, e);
-            throw new FlowExecutionException(e);
-        }
+        ActionBlock cBlock = processor.loadCustomBlock(this);
         
         int result = cBlock.execute(context);
         if (result != CustomBlock.ERROR)
@@ -97,13 +91,8 @@ public class CustomNode extends WorkflowNode {
     public final void validate(final WorkflowProcessor processor, final FlowContext ctx) throws FlowExecutionException {
         super.validate(processor, ctx);
         
-        Class<? extends ActionBlock> customClass = null;
-        try {
-            customClass = processor.getCustomBlockClass(this);
-        } catch (FlowInitializationException e) {
-           Logger.error(this, e);
-           throw new FlowExecutionException(e);
-        }
+        Class<? extends ActionBlock> customClass = processor.getCustomBlockClass(this);
+
         
         ParameterDefinitionList parameterDefinitionList = customClass.getAnnotation(org.neuro4j.workflow.common.ParameterDefinitionList.class);
         if (parameterDefinitionList == null)

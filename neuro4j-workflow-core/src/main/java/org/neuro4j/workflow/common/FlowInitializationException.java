@@ -27,5 +27,13 @@ public class FlowInitializationException extends Exception {
     public FlowInitializationException(Exception e) {
         super(e);
     }
+    
+    public FlowInitializationException(String string, Exception e1) {
+        super(string, e1);
+    }
+
+    public FlowInitializationException(Throwable cause) {
+        super(cause);
+    }
 
 }

@@ -41,7 +41,7 @@ public class RemoveAccount extends CustomBlock {
 	}
 	
 	@Override
-	public void init() throws FlowInitializationException{
+	public void init() throws FlowExecutionException{
 		super.init();
 		accountMng = AccountMngImpl.getInstance();
 	}

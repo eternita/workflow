@@ -32,10 +32,6 @@ public class CustomWithInOutParam extends CustomBlock {
 		return NEXT;
 	}
 	
-	@Override
-	public void init() throws FlowInitializationException{
-		super.init();
-	}
 	
 
 }

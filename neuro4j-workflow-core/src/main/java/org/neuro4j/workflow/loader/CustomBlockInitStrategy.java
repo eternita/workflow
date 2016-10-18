@@ -17,14 +17,14 @@
 package org.neuro4j.workflow.loader;
 
 import org.neuro4j.workflow.ActionBlock;
-import org.neuro4j.workflow.common.FlowInitializationException;
+import org.neuro4j.workflow.common.FlowExecutionException;
 
 /**
- *  
+ *  Defines method to load CustomBlock
  *
  */
 public interface CustomBlockInitStrategy {
     
-    public ActionBlock loadCustomBlock(String className) throws FlowInitializationException;
+    public ActionBlock loadCustomBlock(String className) throws FlowExecutionException;
 
 }

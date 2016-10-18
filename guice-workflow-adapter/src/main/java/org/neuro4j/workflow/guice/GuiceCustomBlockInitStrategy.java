@@ -19,6 +19,7 @@ package org.neuro4j.workflow.guice;
 
 
 import org.neuro4j.workflow.ActionBlock;
+import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.loader.CustomBlockInitStrategy;
 import org.neuro4j.workflow.log.Logger;
@@ -55,7 +56,7 @@ public class GuiceCustomBlockInitStrategy implements CustomBlockInitStrategy {
      * @see org.neuro4j.workflow.loader.CustomBlockInitStrategy#loadCustomBlock(java.lang.String)
      */
     @SuppressWarnings("unchecked")
-    public ActionBlock loadCustomBlock(String className) throws FlowInitializationException {
+    public ActionBlock loadCustomBlock(String className) throws FlowExecutionException {
         try {
 
             Class<? extends ActionBlock> clazz = (Class<? extends CustomBlock>) Class.forName(className);
@@ -67,9 +68,9 @@ public class GuiceCustomBlockInitStrategy implements CustomBlockInitStrategy {
 
         } catch (ClassNotFoundException e) {
             Logger.error(this, e);
-            throw new FlowInitializationException(e);
+            throw new FlowExecutionException(e);
         }
-        throw new FlowInitializationException("CustomBlock: " + className + " not found");
+        throw new FlowExecutionException("CustomBlock: " + className + " not found");
     }
 
 }

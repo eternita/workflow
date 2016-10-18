@@ -25,7 +25,7 @@ public class Main {
 			
 			params.put("list1", list);
 			
-			ExecutionResult result = WorkflowEngine.run("org.neuro4j.workflow.demo.lesson2.Loop-Start", params);
+			ExecutionResult result = new WorkflowEngine().execute("org.neuro4j.workflow.demo.lesson2.Loop-Start", params);
 			
 
 

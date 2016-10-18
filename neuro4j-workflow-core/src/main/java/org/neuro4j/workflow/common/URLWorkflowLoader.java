@@ -3,9 +3,14 @@ package org.neuro4j.workflow.common;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 
 public abstract class URLWorkflowLoader implements WorkflowLoader {
 
+	public final static String DEFAULT_EXT = ".n4j";
+	
+	String fileExt;
+	
 	@Override
 	public WorkflowSource load(final String name) throws FlowExecutionException {
 		URL resource = null;
@@ -25,6 +30,10 @@ public abstract class URLWorkflowLoader implements WorkflowLoader {
 	
 	protected String normalize(String path){
 		return path.replaceAll("\\.", File.separator);
+	}
+	
+	protected String getFileExt(){
+		return  Optional.ofNullable(fileExt).orElse(DEFAULT_EXT);
 	}
 
 }

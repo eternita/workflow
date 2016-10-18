@@ -18,7 +18,7 @@ public class Main {
 			
 			params.put("var", "true");
 			
-			ExecutionResult result = WorkflowEngine.run("org.neuro4j.workflow.demo.lesson3.Decision-Start", params);
+			ExecutionResult result = new WorkflowEngine().execute("org.neuro4j.workflow.demo.lesson3.Decision-Start", params);
 			
 
 

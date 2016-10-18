@@ -1,6 +1,9 @@
 package org.neuro4j.workflow.common;
 
 import static org.junit.Assert.*;
+
+import java.io.File;
+
 import static org.hamcrest.CoreMatchers.*;
 
 import org.junit.Test;
@@ -25,7 +28,7 @@ public class ConfigBuilderTest {
 	
 	@Test
 	public void testConfigBuilderWithLoader() throws FlowExecutionException{
-	    	ConfigBuilder builder = new ConfigBuilder().withLoader(new FileWorkflowLoader("/tmp", ClasspathWorkflowLoader.DEFAULT_EXT));
+	    	ConfigBuilder builder = new ConfigBuilder().withLoader(new FileWorkflowLoader(new File("/tmp"), ClasspathWorkflowLoader.DEFAULT_EXT));
 	        assertNotNull(builder.getCustomInitStrategy());
 	        assertThat(builder.getCustomInitStrategy(), instanceOf(DefaultCustomBlockInitStrategy.class));
 	        assertNotNull(builder.getLoader());	

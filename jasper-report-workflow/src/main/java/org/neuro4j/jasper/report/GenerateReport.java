@@ -129,9 +129,5 @@ public class GenerateReport extends CustomBlock {
         return exporter;
     }
 
-    @Override
-    public void init() throws FlowInitializationException {
-        super.init();
-    }
 
 }

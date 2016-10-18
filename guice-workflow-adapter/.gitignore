@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-/bin
-/target
-/.externalToolBuilders
-/.settings
-=======
-/target
-/bin
->>>>>>> refs/remotes/origin/master
+/target/
+/.settings/
+/.externalToolBuilders/
+.classpath
+.project

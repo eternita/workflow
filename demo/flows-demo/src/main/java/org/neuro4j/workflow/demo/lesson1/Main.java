@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.neuro4j.workflow.ExecutionResult;
-import org.neuro4j.workflow.FlowContext;
-import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.WorkflowEngine;
 
 public class Main {
@@ -21,7 +19,7 @@ public class Main {
 			Map<String, Object> params = new HashMap<String, Object>();
 			params.put("name", "John");
 			
-			ExecutionResult result = WorkflowEngine.run("org.neuro4j.workflow.demo.lesson1.Hello-Start", params);
+			ExecutionResult result = new WorkflowEngine().execute("org.neuro4j.workflow.demo.lesson1.Hello-Start", params);
 			
 			String greeting = (String) result.getFlowContext().get("message");
 			System.out.println(greeting);

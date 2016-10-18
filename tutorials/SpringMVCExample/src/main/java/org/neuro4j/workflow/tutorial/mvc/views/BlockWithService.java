@@ -40,9 +40,5 @@ public class BlockWithService extends CustomBlock {
 		return NEXT;
 	}
 
-	@Override
-	public void init() throws FlowInitializationException {
-		super.init();
-	}
 
 }

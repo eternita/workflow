@@ -24,24 +24,29 @@ import java.net.URL;
  * Loads workflow from external folder.
  *
  */
-public class FileWorkflowLoader extends URLWorkflowLoader{
-	
-	final URLWorkflowLoader delegate;
-	final String baseDir;
+public class FileWorkflowLoader extends URLWorkflowLoader {
 
-	public FileWorkflowLoader(URLWorkflowLoader loader, String baseDir){
+	final URLWorkflowLoader delegate;
+	final File baseDir;
+
+	public FileWorkflowLoader(URLWorkflowLoader loader, File baseDir, final String fileExt)
+			throws FlowExecutionException {
+		if (baseDir == null || !baseDir.exists() || !baseDir.isDirectory()) {
+			throw new FlowExecutionException("BaseDir is not valid : " + baseDir);
+		}
 		this.delegate = loader;
 		this.baseDir = baseDir;
+		this.fileExt = fileExt;
 	}
-	
-	public FileWorkflowLoader(final String baseDir, final String ext){
-		this(new ClasspathWorkflowLoader(ext), baseDir);
+
+	public FileWorkflowLoader(final File baseDir, final String ext) throws FlowExecutionException {
+		this(new ClasspathWorkflowLoader(ext), baseDir, ext);
 	}
-	
+
 	@Override
 	protected URL getResource(final String location) throws IOException {
-	    File file = new File(baseDir + location);
-	    return file.exists() ? file.toURI().toURL() : delegate.getResource(location);
+		File file = new File(baseDir ,  location + getFileExt());
+		return file.exists() ? file.toURI().toURL() : delegate.getResource(location);
 	}
 
 }

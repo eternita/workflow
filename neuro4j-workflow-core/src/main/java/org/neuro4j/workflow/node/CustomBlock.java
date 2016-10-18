@@ -19,7 +19,6 @@ package org.neuro4j.workflow.node;
 import org.neuro4j.workflow.ActionBlock;
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.common.FlowExecutionException;
-import org.neuro4j.workflow.common.FlowInitializationException;
 
 /**
  * 
@@ -42,7 +41,7 @@ public abstract class CustomBlock implements ActionBlock {
 	}
 
 	@Override
-	public void init() throws FlowInitializationException {
+	public void init() throws FlowExecutionException {
 		
 	}
 

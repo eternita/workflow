@@ -17,6 +17,7 @@
 package org.neuro4j.workflow.node;
 
 import org.neuro4j.workflow.ActionBlock;
+import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.loader.CustomBlockInitStrategy;
 import org.neuro4j.workflow.loader.DefaultCustomBlockInitStrategy;
@@ -48,35 +49,34 @@ public class CustomBlockLoader {
      * @throws FlowInitializationException in case of error
      */
     
-    ActionBlock lookupBlock(CustomNode entity) throws FlowInitializationException{
+	ActionBlock lookupBlock(CustomNode entity) throws FlowExecutionException {
 
-        long start = System.currentTimeMillis();
-        
-        if (entity.getExecutableClass() == null)
-        {
-            throw new FlowInitializationException("ExecutableClass not defined for CustomNode " + entity.getName());
-        }
-        
-        ActionBlock block = null;
-        
-        if (customBlockInitStrategy == null)
-        {
-            block = defaultInitStrategy.loadCustomBlock(entity.getExecutableClass());
+		long start = System.currentTimeMillis();
 
-        } else {
-            block = customBlockInitStrategy.loadCustomBlock(entity.getExecutableClass());
-        }
-        
-        block.init();
-        
-        Logger.debug(this, "CustomBlock {} loaded and initialized in {} ms", entity.getExecutableClass(), System.currentTimeMillis() - start);
-        
-        return block;
-    }
+		if (entity.getExecutableClass() == null) {
+			throw new FlowExecutionException("ExecutableClass not defined for CustomNode " + entity.getName());
+		}
+
+		ActionBlock block = null;
+
+		if (customBlockInitStrategy == null) {
+			block = defaultInitStrategy.loadCustomBlock(entity.getExecutableClass());
+
+		} else {
+			block = customBlockInitStrategy.loadCustomBlock(entity.getExecutableClass());
+		}
+
+		block.init();
+
+		Logger.debug(this, "CustomBlock {} loaded and initialized in {} ms", entity.getExecutableClass(),
+				System.currentTimeMillis() - start);
+
+		return block;
+	}
 
     
     
-    Class<? extends ActionBlock> getCustomBlockClass(CustomNode entity) throws FlowInitializationException{
+    Class<? extends ActionBlock> getCustomBlockClass(CustomNode entity) throws FlowExecutionException{
         return defaultInitStrategy.getCustomBlockClass(entity.getExecutableClass());
     }
     

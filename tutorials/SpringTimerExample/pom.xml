@@ -9,7 +9,7 @@
 	<properties>
 		<java-version>1.6</java-version>
 		<org.aspectj-version>1.8.1</org.aspectj-version>
-		<org.neuro4j-version>2.1.1-SNAPSHOT</org.neuro4j-version>
+		<org.neuro4j-version>3.0.1-SNAPSHOT</org.neuro4j-version>
 	</properties>
 	<repositories>
 		<repository>
@@ -33,11 +33,6 @@
 		<dependency>
 			<groupId>org.neuro4j</groupId>
 			<artifactId>neuro4j-workflow-common</artifactId>
-			<version>${org.neuro4j-version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.neuro4j</groupId>
-			<artifactId>spring-timer-adapter</artifactId>
 			<version>${org.neuro4j-version}</version>
 		</dependency>
 		<dependency>
