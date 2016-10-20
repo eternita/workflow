@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<flow visibility="Public">
+    <nodes>
+        <node uuid="T4TAqAIGe9MAAAFXsqSUseCZ" name="StartNode1" x="136" y="14" type="START">
+            <parameters/>
+            <config>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
+            </config>
+            <transitions>
+                <transition uuid="jgXAqAIGkyYAAAFXVdGUseCa" name="NEXT" toNode="lWbAqAIGEH8AAAFX8tCUseCZ">
+                    <points>-50, 36, -81, -107|-47, 108, -78, -35|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="KdHAqAIGB3cAAAFX2LKUseCZ" name="EndNode1" x="146" y="395" type="END">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node uuid="lWbAqAIGEH8AAAFX8tCUseCZ" name="SystemOutBlock" x="136" y="162" type="CUSTOM">
+            <parameters>
+                <parameter key="varToPrint" value="var1" input="true"/>
+            </parameters>
+            <config>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.workflow.core.SystemOutBlock"/>
+            </config>
+            <transitions>
+                <transition uuid="p8bAqAIGvk0AAAFX7duUseCa" name="NEXT" toNode="ID3AqAIGnU8AAAFXeLM6OuCs">
+                    <points>-78, 35, -53, -138|-75, 129, -50, -44|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="ID3AqAIGnU8AAAFXeLM6OuCs" name="SystemOutBlock" x="137" y="296" type="CUSTOM">
+            <parameters/>
+            <config>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.workflow.core.SystemOutBlock"/>
+            </config>
+            <transitions>
+                <transition uuid="gK7AqAIGczgAAAFX88c6OuCs" name="NEXT" toNode="KdHAqAIGB3cAAAFX2LKUseCZ">
+                    <points>-78, 35, -36, -63|-92, 54, -50, -44|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="note" name="iYvAqAIGxLwAAAFXGAk6OuCu" x="216" y="20" type="NOTE">
+            <description>Call sysout block twice</description>
+            <parameters/>
+            <config>
+                <parameter key="w" value="192"/>
+                <parameter key="h" value="62"/>
+            </config>
+            <transitions/>
+        </node>
+    </nodes>
+</flow>

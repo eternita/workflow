@@ -95,10 +95,7 @@ public class LoopNode extends WorkflowNode {
         return request.getNextWorkflowNode();
     }
 
-    /**
-     * @param fctx
-     * @param request
-     */
+
     private void cleanOnExit(FlowContext fctx, WorkflowRequest request) throws FlowExecutionException
     {
         request.removeLoopIterator(this.iteratorKey);
@@ -106,13 +103,8 @@ public class LoopNode extends WorkflowNode {
 
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.neuro4j.workflow.node.LogicBlock#load(org.neuro4j.workflow.xml.WorkflowNode)
-     */
-    public final void init()
-            throws FlowInitializationException {
+    @Override
+    public final void init() throws FlowInitializationException {
 
         doExit = getExitByName(DO_EXIT_RELATION);
 
@@ -121,11 +113,6 @@ public class LoopNode extends WorkflowNode {
         return;
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.neuro4j.workflow.node.LogicBlock#validate(org.neuro4j.workflow.FlowContext)
-     */
     @Override
     public final void validate(final WorkflowProcessor processor, final FlowContext ctx) throws FlowExecutionException {
         if (elementKey == null || iteratorKey == null || doExit == null || loopExit == null)

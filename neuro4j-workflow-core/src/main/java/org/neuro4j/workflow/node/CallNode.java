@@ -16,6 +16,8 @@
 
 package org.neuro4j.workflow.node;
 
+import java.util.Optional;
+
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
@@ -70,34 +72,30 @@ public class CallNode extends WorkflowNode {
     @Override
     public final Transition execute(final WorkflowProcessor processor, final WorkflowRequest request) throws FlowExecutionException {
         FlowContext ctx = request.getLogicContext();
-        String flow = null;
+        String flow = callFlow;
         if (dynamicFlownName != null)
         {
             flow = (String) ctx.get(dynamicFlownName);
-        } else {
-            flow = callFlow;
         }
 
         if (flow == null)
         {
             throw new FlowExecutionException("CallNode: Flow not defined.");
         }
+        
+        FlowParameter flowParameter  = FlowParameter.parse(flow);
 
-        String[] fArr = WorkflowProcessor.parseFlowName(flow);
-        String flowName = fArr[0];
-        String startNodeName = fArr[1];
-
-        Workflow calledWorkflow  = processor.loadWorkflow(flowName);
+        Workflow calledWorkflow  = processor.loadWorkflow(flowParameter.getFlowName());
 
         if (calledWorkflow == null)
         {
-            throw new FlowExecutionException(flowName + " not found.");
+            throw new FlowExecutionException(flowParameter.getFlowName() + " not found.");
         }
 
-        StartNode startNode = calledWorkflow.getStartNode(startNodeName);
+        StartNode startNode = calledWorkflow.getStartNode(flowParameter.getStartNode());
         if (startNode == null)
         {
-            throw new FlowExecutionException(new StringBuilder(startNodeName).append(" not found in flow ").append(flowName).toString());
+            throw new FlowExecutionException(new StringBuilder(flowParameter.getStartNode()).append(" not found in flow ").append(flowParameter.getFlowName()).toString());
         }
         
         if (!startNode.isPublic())

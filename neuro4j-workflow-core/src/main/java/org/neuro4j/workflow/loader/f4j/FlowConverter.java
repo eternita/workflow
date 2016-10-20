@@ -22,6 +22,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
+import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.FlowInitializationException;
 import static org.neuro4j.workflow.common.SWFParametersConstants.*;
 import org.neuro4j.workflow.common.Workflow;
@@ -32,6 +33,7 @@ import org.neuro4j.workflow.node.CallNode;
 import org.neuro4j.workflow.node.CustomNode;
 import org.neuro4j.workflow.node.DecisionNode;
 import org.neuro4j.workflow.node.EndNode;
+import org.neuro4j.workflow.node.FlowParameter;
 import org.neuro4j.workflow.node.JoinNode;
 import org.neuro4j.workflow.node.KeyMapper;
 import org.neuro4j.workflow.node.LoopNode;
@@ -96,16 +98,15 @@ public class FlowConverter {
 		return network;
 	}
 
-    private static String getFlowPackage(String flow) {
-        String flowPackage = "default";
-        int index = flow.lastIndexOf("/");
-        if (index > 0) {
-            flowPackage = flow.substring(0, index);
-        } else if (flow.contains(".")) {
-        	 index = flow.lastIndexOf(".");
-        	 flowPackage = flow.substring(0, index);
-        }
-        return flowPackage;
+    private static String getFlowPackage(final String flow) {
+    	String flowPackage = "default";
+    	try {
+			FlowParameter parameter = FlowParameter.parse(flow);
+			flowPackage = parameter.getFlowPackage();
+		} catch (FlowExecutionException e) {
+
+		}
+    	return flowPackage;
     }
 
     private static WorkflowNode createNode(Workflow workflow, NodeXML e) throws FlowInitializationException {

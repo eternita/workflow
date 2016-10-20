@@ -21,6 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.neuro4j.workflow.ActionBlock;
+import org.neuro4j.workflow.ActionHandler;
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
@@ -69,12 +70,19 @@ public class CustomNode extends WorkflowNode {
     public final Transition execute(final WorkflowProcessor processor, final WorkflowRequest request) throws FlowExecutionException {
         FlowContext context = request.getLogicContext();
         
-        ActionBlock cBlock = processor.loadCustomBlock(this);
+        ActionBlock actionBlock = processor.loadCustomBlock(this);
         
-        int result = cBlock.execute(context);
+        ActionHandler handler = processor.getActionHandler(actionBlock);
+        
+        handler.preExecute(actionBlock, context);
+        
+        int result = actionBlock.execute(context);
+        
+        handler.postExecute(actionBlock, context);
+        
         if (result != CustomBlock.ERROR)
         {
-            doOutputMapping(cBlock, context);
+            doOutputMapping(actionBlock, context);
             request.setNextRelation(mainExit);
         } else {
             if (errorExit == null)

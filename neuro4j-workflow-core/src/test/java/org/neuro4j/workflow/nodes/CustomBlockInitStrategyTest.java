@@ -1,27 +1,16 @@
 package org.neuro4j.workflow.nodes;
 
-import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.fail;
-
-import java.util.UUID;
-import static org.hamcrest.collection.IsCollectionContaining.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
 
 import org.hamcrest.core.IsInstanceOf;
 import org.junit.Test;
 import org.neuro4j.workflow.ActionBlock;
-import org.neuro4j.workflow.FlowContext;
-import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
-import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.core.SystemOutBlock;
 import org.neuro4j.workflow.loader.CustomBlockInitStrategy;
 import org.neuro4j.workflow.loader.DefaultCustomBlockInitStrategy;
-import org.neuro4j.workflow.loader.f4j.SWFConstants;
-import org.neuro4j.workflow.node.EndNode;
-import org.neuro4j.workflow.node.JoinNode;
-import org.neuro4j.workflow.node.Transition;
-import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
 
 public class CustomBlockInitStrategyTest {
 	
@@ -44,11 +33,33 @@ public class CustomBlockInitStrategyTest {
 		CustomBlockInitStrategy strategy = new DefaultCustomBlockInitStrategy();
 		strategy.loadCustomBlock("org.neuro4j.workflow.core.SomeClass");
 	}
+	@Test(expected=FlowExecutionException.class)
+	public void testDefaultStrategyWithNull() throws FlowExecutionException {
+		CustomBlockInitStrategy strategy = new DefaultCustomBlockInitStrategy();
+		strategy.loadCustomBlock(null);
+	}
 	
 	@Test(expected=FlowExecutionException.class)
 	public void testDefaultStrategyLoadClassNotImplementedActionBlock() throws FlowExecutionException {
 		CustomBlockInitStrategy strategy = new DefaultCustomBlockInitStrategy();
 		strategy.loadCustomBlock("org.neuro4j.workflow.WorkflowRequest");
+	}
+	
+	@Test(expected=FlowExecutionException.class)
+	public void testGetCustomBlockClassNotImplemented() throws FlowExecutionException {
+		DefaultCustomBlockInitStrategy strategy = new DefaultCustomBlockInitStrategy();
+		strategy.getCustomBlockClass("org.neuro4j.workflow.WorkflowRequest");
+	}
+	
+	@Test(expected=FlowExecutionException.class)
+	public void testgetCustomBlockClassWithUnknowClass() throws FlowExecutionException {
+		DefaultCustomBlockInitStrategy strategy = new DefaultCustomBlockInitStrategy();
+		strategy.getCustomBlockClass("org.neuro4j.workflow.core.SomeClass");
+	}
+	@Test(expected= FlowExecutionException.class)
+	public void testgetCustomBlockClassWithNull() throws FlowExecutionException {
+		DefaultCustomBlockInitStrategy strategy = new DefaultCustomBlockInitStrategy();
+		strategy.getCustomBlockClass(null);
 	}
 	
 }

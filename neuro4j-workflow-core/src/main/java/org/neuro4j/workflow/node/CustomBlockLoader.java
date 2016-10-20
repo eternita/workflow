@@ -76,8 +76,8 @@ public class CustomBlockLoader {
 
     
     
-    Class<? extends ActionBlock> getCustomBlockClass(CustomNode entity) throws FlowExecutionException{
-        return defaultInitStrategy.getCustomBlockClass(entity.getExecutableClass());
-    }
+	Class<? extends ActionBlock> getCustomBlockClass(CustomNode entity) throws FlowExecutionException {
+		return defaultInitStrategy.getCustomBlockClass(entity.getExecutableClass());
+	}
     
 }

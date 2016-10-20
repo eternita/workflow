@@ -54,7 +54,7 @@ public class WorkflowLoaderTest {
 	}
 	
 	@Test(expected=FlowExecutionException.class)
-	public void testDefaultFileWorkflowLoaderWithEmptyBaseDirectory() throws FlowExecutionException{
+	public void testDefaultFileWorkflowLoaderWithEmptyBaseDirectory() throws FlowExecutionException {
 		ClasspathWorkflowLoader classpathLoader = new ClasspathWorkflowLoader();
 		
 		new FileWorkflowLoader(classpathLoader, null, ClasspathWorkflowLoader.DEFAULT_EXT);
@@ -62,7 +62,7 @@ public class WorkflowLoaderTest {
 	}
 	
 	@Test(expected=FlowExecutionException.class)
-	public void testDefaultFileWorkflowLoaderWithFileAsBaseDirectory() throws FlowExecutionException{
+	public void testDefaultFileWorkflowLoaderWithFileAsBaseDirectory() throws FlowExecutionException {
 		ClasspathWorkflowLoader classpathLoader = new ClasspathWorkflowLoader();
 		
 		File file = getTestFile();

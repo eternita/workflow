@@ -20,6 +20,7 @@ import org.apache.commons.beanutils.ConstructorUtils;
 import org.neuro4j.workflow.ActionBlock;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.log.Logger;
+import static org.neuro4j.workflow.utils.Validation.*;
 
 /**
  * This class provides default implementation of CustomBlockInitStrategy.
@@ -45,6 +46,7 @@ public class DefaultCustomBlockInitStrategy implements CustomBlockInitStrategy {
 	}
 
 	public Class<? extends ActionBlock> getCustomBlockClass(String className) throws FlowExecutionException {
+		requireNonNull(className, () -> new FlowExecutionException("CustomClassName can not be null"));
 		try {
 			Class<?> clazz = getClass().getClassLoader().loadClass(className);
 			if (null != clazz) {

@@ -3,6 +3,7 @@
  */
 package org.neuro4j.workflow.guice;
 
+import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
@@ -14,12 +15,17 @@ import org.junit.Before;
 import org.junit.Test;
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.WorkflowRequest;
+import org.neuro4j.workflow.cache.ActionRegistry;
+import org.neuro4j.workflow.cache.EmptyWorkflowCache;
 import org.neuro4j.workflow.common.ClasspathWorkflowLoader;
+import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.FlowInitializationException;
+import org.neuro4j.workflow.common.RemoteWorkflowLoader;
 import org.neuro4j.workflow.common.WorkflowEngine;
 import org.neuro4j.workflow.common.WorkflowEngine;
 import org.neuro4j.workflow.common.WorkflowEngine.ConfigBuilder;
 import org.neuro4j.workflow.guice.flows.CustomBlockWithService;
+import org.neuro4j.workflow.loader.DefaultCustomBlockInitStrategy;
 import org.neuro4j.workflow.log.Logger;
 
 import com.google.inject.Module;
@@ -73,5 +79,17 @@ public class GuiceWithWorkflowTestCase {
             fail();
         }
     }
+    
+	@Test
+	public void testConfigBuilderWithInitStrategy() throws FlowExecutionException{
+	    	ConfigBuilder builder = new ConfigBuilder().withCustomBlockInitStrategy(initStrategy);
+	        assertNotNull(builder.getCustomInitStrategy());
+	        assertThat(builder.getCustomInitStrategy(), instanceOf(GuiceCustomBlockInitStrategy.class));
+	        assertNotNull(builder.getLoader());	
+	        assertThat(builder.getLoader(), instanceOf(RemoteWorkflowLoader.class));
+	        assertNotNull(builder.getWorkflowCache());	
+	        assertThat(builder.getWorkflowCache(), instanceOf(EmptyWorkflowCache.class));
+	        assertThat(builder.getActionRegistry(), instanceOf(ActionRegistry.class));
+	}
 
 }

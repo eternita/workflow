@@ -1,13 +1,15 @@
 package org.neuro4j.workflow.node;
 
 import org.neuro4j.workflow.ActionBlock;
+import org.neuro4j.workflow.ActionHandler;
 import org.neuro4j.workflow.ExecutionResult;
 import org.neuro4j.workflow.WorkflowRequest;
+import org.neuro4j.workflow.cache.ActionRegistry;
 import org.neuro4j.workflow.cache.WorkflowCache;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.FlowInitializationException;
-import org.neuro4j.workflow.common.WorkflowEngine.ConfigBuilder;
 import org.neuro4j.workflow.common.Workflow;
+import org.neuro4j.workflow.common.WorkflowEngine.ConfigBuilder;
 import org.neuro4j.workflow.common.WorkflowLoader;
 import org.neuro4j.workflow.debug.DebugService;
 import org.neuro4j.workflow.log.Logger;
@@ -16,6 +18,8 @@ import org.neuro4j.workflow.log.Logger;
  * Executes workflow with given parameters
  */
 public class WorkflowProcessor {
+	
+	private final ActionRegistry registry;
 
 	private final WorkflowLoader loader;
 
@@ -31,6 +35,7 @@ public class WorkflowProcessor {
 		this.loader = builder.getLoader();
 		this.customBlockLoader = new CustomBlockLoader(builder.getCustomInitStrategy());
 		this.cache = builder.getWorkflowCache();
+		this.registry = builder.getActionRegistry();
 	}
 
 	/**
@@ -46,25 +51,24 @@ public class WorkflowProcessor {
 		ExecutionResult result = new ExecutionResult(request.getLogicContext());
 
 		try {
-			String[] array = parseFlowName(flow);
-			String flowName = array[0];
-			String startNodeName = array[1];
+			
+			FlowParameter flowParameter = FlowParameter.parse(flow);
 
-			Logger.debug(this, "Loading flow: {}", flowName);
+			Logger.debug(this, "Loading flow: {}", flowParameter);
 			long startLoading = System.currentTimeMillis();
 
-			Workflow workflow = loadWorkflow(flowName);
+			Workflow workflow = loadWorkflow(flowParameter.getFlowName());
 
-			Logger.debug(this, "Loaded flow: {} in {} ms", flowName, System.currentTimeMillis() - startLoading);
+			Logger.debug(this, "Loaded flow: {} in {} ms", flowParameter.getFlowName(), System.currentTimeMillis() - startLoading);
 			if (null == workflow)
-				throw new FlowExecutionException("Flow '" + flowName + "' can't be loaded");
+				throw new FlowExecutionException("Flow '" + flowParameter.getFlowName() + "' can't be loaded");
 
-			StartNode startNode = workflow.getStartNode(startNodeName);
+			StartNode startNode = workflow.getStartNode(flowParameter.getStartNode());
 			if (null == startNode)
-				throw new FlowExecutionException("StartNode '" + startNodeName + "' not found in flow " + flowName);
+				throw new FlowExecutionException("StartNode '" + flowParameter.getStartNode() + "' not found in flow " + flowParameter.getFlowName());
 
 			if (!workflow.isPublic()) {
-				throw new FlowExecutionException("Flow '" + flow + "' is not public");
+				throw new FlowExecutionException("Flow '" + flowParameter.getFlowName() + "' is not public");
 			}
 
 			if (!startNode.isPublic()) {
@@ -118,27 +122,6 @@ public class WorkflowProcessor {
 
 	}
 
-	/**
-	 * Extracts flow name and start node from string parameter
-	 * @param flow name
-	 * @return array with flow's name and startNode's name
-	 * @throws FlowExecutionException on case of wrong format
-	 */
-	public static String[] parseFlowName(String flow) throws FlowExecutionException {
-
-		if (flow == null)
-			throw new FlowExecutionException("Flow is undefined.");
-
-		String[] array = flow.split("-");
-
-		if (array.length != 2) {
-			throw new FlowExecutionException("Incorrect flow name. Must be package.name.FlowName-StartNode");
-		}
-
-		array[0] = array[0].replace('.', '/');
-
-		return array;
-	}
 
 	/**
 	 * Executes next node with given parameters
@@ -194,6 +177,10 @@ public class WorkflowProcessor {
 	 */
 	public Workflow loadWorkflow(String flowName) throws FlowExecutionException {
 		return cache.get(loader, flowName);
+	}
+	
+	public ActionHandler getActionHandler(ActionBlock obj){
+		return registry.get(obj.getClass());
 	}
 
 }

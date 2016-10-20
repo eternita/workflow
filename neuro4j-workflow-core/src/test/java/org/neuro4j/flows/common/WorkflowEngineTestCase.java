@@ -16,14 +16,17 @@
 
 package org.neuro4j.flows.common;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.WorkflowEngine;
+import org.neuro4j.workflow.node.FlowParameter;
 import org.neuro4j.workflow.node.WorkflowProcessor;
+
+import junit.framework.Assert;
 
 public class WorkflowEngineTestCase {
 
@@ -40,29 +43,41 @@ public class WorkflowEngineTestCase {
     public void testParseFlow() {
 
         try {
-            WorkflowProcessor.parseFlowName("org.neuro4j.Flow1-StartNode1");
+        	FlowParameter parameter = FlowParameter.parse("org.neuro4j.Flow1-StartNode1");
+        	assertEquals("org.neuro4j.Flow1", parameter.getFlowName());
+        	assertEquals("StartNode1", parameter.getStartNode());
+        	assertEquals("org.neuro4j", parameter.getFlowPackage());
         } catch (FlowExecutionException e) {
               fail();
         }
         try {
-        	WorkflowProcessor.parseFlowName("Flow1-StartNode1");
+        	FlowParameter parameter = FlowParameter.parse("Flow1-StartNode1");
+        	assertEquals("Flow1", parameter.getFlowName());
+        	assertEquals("StartNode1", parameter.getStartNode());
+        	assertEquals("default", parameter.getFlowPackage());
         } catch (FlowExecutionException e) {
               fail();
         }
         try {
-        	WorkflowProcessor.parseFlowName("org.neuro4j.Flow1");
+        	FlowParameter parameter = FlowParameter.parse("org.neuro4j.Flow1");
+        	assertEquals("org.neuro4j.Flow1", parameter.getFlowName());
+        	assertEquals("org.neuro4j", parameter.getFlowPackage());
+        	assertNull(parameter.getStartNode());
+
+        } catch (FlowExecutionException e) {
             fail();
+        }
+        try {
+        	FlowParameter.parse("org.neuro4j.Flow1-Start-Start");
+        	FlowParameter parameter = FlowParameter.parse("org.neuro4j.Flow1");
+        	assertEquals("org.neuro4j.Flow1", parameter.getFlowName());
+        	assertEquals("org.neuro4j", parameter.getFlowPackage());
+         	assertNull(parameter.getStartNode());
         } catch (FlowExecutionException e) {
 
         }
         try {
-        	WorkflowProcessor.parseFlowName("org.neuro4j.Flow1-Start-Start");
-            fail();
-        } catch (FlowExecutionException e) {
-
-        }
-        try {
-        	WorkflowProcessor.parseFlowName(null);
+        	FlowParameter.parse(null);
             fail();
         } catch (FlowExecutionException e) {
 

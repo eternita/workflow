@@ -57,7 +57,7 @@ public class NetworkTestCase extends BaseFlowTestCase {
         executeFlowAndCheckExceptioMessage(
                 "org.neuro4j.flows.network.NetworkTestFlow-StartNode4",
                 null,
-                "Node StartNode1 in package org/neuro4j/flows/network/p2 is private and can be used just inside package.");
+                "Node StartNode1 in package org.neuro4j.flows.network.p2 is private and can be used just inside package.");
     }
 
     @Test

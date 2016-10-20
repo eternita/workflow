@@ -82,7 +82,7 @@ public class Neuro4jWorkflowTest {
 	
 	@Test
 	public void testDefaultConstructorWithParametersAndWorkflowLoader() throws FlowExecutionException{
-            WorkflowEngine engine = new WorkflowEngine(new ClasspathWorkflowLoader());
+            WorkflowEngine engine = new WorkflowEngine(new ConfigBuilder().withLoader(new ClasspathWorkflowLoader()));
             Map<String, Object> parameters = new HashMap<String, Object>();
             String randomStr = UUID.randomUUID().toString();
             parameters.put("message", randomStr);
@@ -95,7 +95,7 @@ public class Neuro4jWorkflowTest {
 	
 	@Test
 	public void testDefaultConstructorWithEmptyParameters() throws FlowExecutionException{
-            WorkflowEngine engine = new WorkflowEngine(new ClasspathWorkflowLoader());
+            WorkflowEngine engine = new WorkflowEngine(new ConfigBuilder().withLoader(new ClasspathWorkflowLoader()));
             Map<String, Object> parameters = new HashMap<String, Object>();
             
             ExecutionResult result = engine.execute("org.neuro4j.workflow.flows.FlowForClasspathLoader-StartNode2", parameters);
@@ -106,7 +106,7 @@ public class Neuro4jWorkflowTest {
 	
 	@Test
 	public void testDefaultConstructorWithNullParameters() throws FlowExecutionException{
-            WorkflowEngine engine = new WorkflowEngine(new ClasspathWorkflowLoader());
+            WorkflowEngine engine = new WorkflowEngine(new ConfigBuilder().withLoader(new ClasspathWorkflowLoader()));
             Map<String, Object> parameters = null;
             
             ExecutionResult result = engine.execute("org.neuro4j.workflow.flows.FlowForClasspathLoader-StartNode2", parameters);
@@ -118,7 +118,7 @@ public class Neuro4jWorkflowTest {
 	@Test
 	public void testDefaultConstructorWithWorkflowRequest() throws FlowExecutionException{
             
-		WorkflowEngine engine = new WorkflowEngine(new ClasspathWorkflowLoader());
+		WorkflowEngine engine = new WorkflowEngine(new ConfigBuilder().withLoader(new ClasspathWorkflowLoader()));
             Map<String, Object> parameters = new HashMap<String, Object>();
             String randomStr = UUID.randomUUID().toString();
             parameters.put("message", randomStr);

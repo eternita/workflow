@@ -16,11 +16,13 @@
 
 package org.neuro4j.workflow.common;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.neuro4j.workflow.ExecutionResult;
 import org.neuro4j.workflow.WorkflowRequest;
+import org.neuro4j.workflow.cache.ActionRegistry;
 import org.neuro4j.workflow.cache.ConcurrentMapWorkflowCache;
 import org.neuro4j.workflow.cache.EmptyWorkflowCache;
 import org.neuro4j.workflow.cache.WorkflowCache;
@@ -58,15 +60,6 @@ public class WorkflowEngine {
 	}
 	
 
-	/**
-	 * Constructor with  WorkflowLoader 
-	 * @param loader can be composite of Remote/File/Classpath/Cache loaders
-	 */
-	public WorkflowEngine(WorkflowLoader loader) {
-		this(new ConfigBuilder().withCustomBlockInitStrategy(new DefaultCustomBlockInitStrategy())
-				                .withWorkflowCache(new ConcurrentMapWorkflowCache())
-				                .withLoader(loader));
-	}
 
 	/**
 	 * Executes flow with default parameters
@@ -113,6 +106,8 @@ public class WorkflowEngine {
 		private CustomBlockInitStrategy customInitStrategy;
 		
 		private WorkflowCache workflowCache;
+		
+		private ActionRegistry registry;
 
 		public ConfigBuilder() {
 
@@ -132,6 +127,11 @@ public class WorkflowEngine {
 			this.workflowCache = cache;
 			return this;
 		}
+		
+		public ConfigBuilder withActionRegistry(ActionRegistry registry) {
+			this.registry = registry;
+			return this;
+		}
 
 		public WorkflowLoader getLoader() {
 			return loader != null ? loader : new RemoteWorkflowLoader(new ClasspathWorkflowLoader());
@@ -143,6 +143,10 @@ public class WorkflowEngine {
 		
 		public WorkflowCache getWorkflowCache() {
 			return workflowCache != null ? workflowCache : EmptyWorkflowCache.INSTANCE;
+		}
+		
+		public ActionRegistry getActionRegistry() {
+			return this.registry != null ? this.registry : new ActionRegistry(Collections.emptyMap());
 		}
 
 	}
