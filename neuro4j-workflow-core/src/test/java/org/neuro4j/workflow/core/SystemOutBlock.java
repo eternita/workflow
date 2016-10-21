@@ -20,8 +20,11 @@ import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.ParameterDefinition;
 import org.neuro4j.workflow.common.ParameterDefinitionList;
+import static org.neuro4j.workflow.enums.ActionBlockCache.*;
+import org.neuro4j.workflow.enums.CachedNode;
 import org.neuro4j.workflow.node.CustomBlock;
 
+@CachedNode(type=SINGLETON)
 @ParameterDefinitionList(input = { @ParameterDefinition(name = "varToPrint", isOptional = true, type = "java.lang.Object") })
 public class SystemOutBlock extends CustomBlock {
 

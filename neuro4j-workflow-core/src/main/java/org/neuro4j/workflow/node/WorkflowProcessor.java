@@ -108,6 +108,7 @@ public class WorkflowProcessor {
 		WorkflowNode step = firstNode;
 
 		while (null != step) {
+			
 			WorkflowNode lastNode = step;
 
 			step = executeNode(step, request);

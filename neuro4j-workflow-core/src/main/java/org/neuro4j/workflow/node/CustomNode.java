@@ -16,7 +16,6 @@
 
 package org.neuro4j.workflow.node;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,12 +27,17 @@ import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.common.ParameterDefinition;
 import org.neuro4j.workflow.common.ParameterDefinitionList;
-import org.neuro4j.workflow.loader.f4j.SWFConstants;
+import static org.neuro4j.workflow.loader.f4j.SWFConstants.*;
 import org.neuro4j.workflow.log.Logger;
 
+/**
+ * Holds information about user's defined block.
+ * CustomNode has 2 exists - NEXT and ERROR
+ *
+ */
 public class CustomNode extends WorkflowNode {
 
-    private static final String NEXT_EXIT_RELATION = SWFConstants.NEXT_RELATION_NAME;
+    private static final String NEXT_EXIT_RELATION = NEXT_RELATION_NAME;
     private static final String ERROR_EXIT_RELATION = "ERROR";
 
     private final String executableClass;
@@ -54,8 +58,8 @@ public class CustomNode extends WorkflowNode {
         outParameters.put(key, value);
     }
 
-    public Map<String, String> getOutParameters() {
-        return Collections.unmodifiableMap(outParameters);
+    public String getOutParameter(final String name) {
+        return outParameters.get(name);
     }
 
     public final void init() throws FlowInitializationException
@@ -74,11 +78,11 @@ public class CustomNode extends WorkflowNode {
         
         ActionHandler handler = processor.getActionHandler(actionBlock);
         
-        handler.preExecute(actionBlock, context);
+        handler.preExecute(this.getNodeInfo(), context, actionBlock);
         
         int result = actionBlock.execute(context);
         
-        handler.postExecute(actionBlock, context);
+        handler.postExecute(this.getNodeInfo(), context, actionBlock);
         
         if (result != CustomBlock.ERROR)
         {
@@ -97,7 +101,6 @@ public class CustomNode extends WorkflowNode {
 
     @Override
     public final void validate(final WorkflowProcessor processor, final FlowContext ctx) throws FlowExecutionException {
-        super.validate(processor, ctx);
         
         Class<? extends ActionBlock> customClass = processor.getCustomBlockClass(this);
 
@@ -193,7 +196,7 @@ public class CustomNode extends WorkflowNode {
      */
 	private String doOutMapping(FlowContext ctx, String originalName) {
 
-		String mappedValue = getOutParameters().get(originalName);
+		String mappedValue = getOutParameter(originalName);
 		if (mappedValue != null && !mappedValue.equalsIgnoreCase(originalName)) {
 			Object obj = ctx.remove(originalName);
 			ctx.put(mappedValue, obj);

@@ -43,12 +43,4 @@ public interface ActionBlock {
     	
     };
     
-    /**
-     * Returns true if the object can be reused between calls - false otherwise.
-     * In case of false - processor will create new object for each call
-     * @return true or false
-     */
-    public default boolean cacheable(){
-    	return false;
-    }
 }

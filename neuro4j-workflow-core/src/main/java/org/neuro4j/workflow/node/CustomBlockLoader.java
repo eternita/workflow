@@ -16,12 +16,18 @@
 
 package org.neuro4j.workflow.node;
 
+import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
+
 import org.neuro4j.workflow.ActionBlock;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.FlowInitializationException;
+import org.neuro4j.workflow.enums.ActionBlockCache;
+import org.neuro4j.workflow.enums.CachedNode;
 import org.neuro4j.workflow.loader.CustomBlockInitStrategy;
 import org.neuro4j.workflow.loader.DefaultCustomBlockInitStrategy;
 import org.neuro4j.workflow.log.Logger;
+import org.neuro4j.workflow.utils.Validation;
 
 /**
  * Loads and initializes custom (user's defined) blocks.
@@ -29,6 +35,7 @@ import org.neuro4j.workflow.log.Logger;
  */
 public class CustomBlockLoader {
 
+	private final ConcurrentHashMap<String, ActionBlock> cache = new ConcurrentHashMap<>();
 
     private final DefaultCustomBlockInitStrategy defaultInitStrategy = new DefaultCustomBlockInitStrategy();
     
@@ -36,7 +43,7 @@ public class CustomBlockLoader {
 
     public CustomBlockLoader(final CustomBlockInitStrategy customBlockInitStrategy) {
         super();
-        this.customBlockInitStrategy = customBlockInitStrategy;
+        this.customBlockInitStrategy = Optional.ofNullable(customBlockInitStrategy).orElse(defaultInitStrategy);
     }
 
 
@@ -53,20 +60,40 @@ public class CustomBlockLoader {
 
 		long start = System.currentTimeMillis();
 
-		if (entity.getExecutableClass() == null) {
-			throw new FlowExecutionException("ExecutableClass not defined for CustomNode " + entity.getName());
-		}
-
+		Validation.requireNonNull(entity.getExecutableClass(), 
+				                  () -> new FlowExecutionException("ExecutableClass not defined for CustomNode " + entity.getName()));
+				
+		ActionBlockCache cacheType =  Optional.ofNullable(getCustomBlockClass(entity).getAnnotation(CachedNode.class))
+				                              .map(n -> n.type())
+				                              .orElseGet(() -> ActionBlockCache.NONE);		
 		ActionBlock block = null;
 
-		if (customBlockInitStrategy == null) {
-			block = defaultInitStrategy.loadCustomBlock(entity.getExecutableClass());
+		switch (cacheType) {
+		case SINGLETON:
+			block = cache.get(entity.getExecutableClass());
+			if (block == null){
+				block = loadCustomNode(entity);
+				cache.put(entity.getExecutableClass(), block);	
+			}
+			
+			break;
 
-		} else {
-			block = customBlockInitStrategy.loadCustomBlock(entity.getExecutableClass());
+		case NODE:
+			block = cache.get(entity.getUuid());
+			if (block == null){
+				block = loadCustomNode(entity);
+				cache.put(entity.getUuid(), block);
+			}
+			break;
+
+		case NONE:
+			block = loadCustomNode(entity);
+			break;
+			
+		default:
+			throw new FlowExecutionException("Unknow cache type: " + cacheType);
 		}
 
-		block.init();
 
 		Logger.debug(this, "CustomBlock {} loaded and initialized in {} ms", entity.getExecutableClass(),
 				System.currentTimeMillis() - start);
@@ -74,10 +101,16 @@ public class CustomBlockLoader {
 		return block;
 	}
 
+
+	private ActionBlock loadCustomNode(CustomNode entity) throws FlowExecutionException {
+		ActionBlock block = customBlockInitStrategy.loadCustomBlock(entity.getExecutableClass());
+		block.init();
+		return block;
+	}
     
     
 	Class<? extends ActionBlock> getCustomBlockClass(CustomNode entity) throws FlowExecutionException {
 		return defaultInitStrategy.getCustomBlockClass(entity.getExecutableClass());
 	}
-    
+
 }

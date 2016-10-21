@@ -36,15 +36,14 @@ import org.neuro4j.workflow.log.Logger;
 public class WorkflowNode {
 
     final private Map<String, String> parameters = new HashMap<String, String>(4);
-    private final String uuid;
-    private String name;
+
     
     final Map<String, Transition> exits = new HashMap<String, Transition>(3);
 
+    private final NodeInfo nodeInfo;
 
     public WorkflowNode(String name, String uuid) {
-        this.uuid = uuid;
-        setName(name);
+    	nodeInfo = new NodeInfo(uuid, name);
     }
     
     public Set<String> getParameterNames() {
@@ -61,21 +60,21 @@ public class WorkflowNode {
     }
 
     public String getName() {
-        return name;
+        return nodeInfo.getName();
     }
 
     public String getUuid() {
-        return uuid;
+        return nodeInfo.getUuid();
     }
+    
+    public NodeInfo getNodeInfo() {
+		return nodeInfo;
+	}
 
     public Transition getExitByName(String relationName) {
         return exits.get(relationName);
     }
 
-
-    protected void setName(String name) {
-        this.name = name;
-    }
 
     public void registerExit(Transition con) {
         con.setFromNode(this);
@@ -174,5 +173,61 @@ public class WorkflowNode {
         return beanInstance;
 
     }
+    
+	static public class NodeInfo {
+		private final String uuid;
+		private final String name;
+
+		public NodeInfo(String uuid, String name) {
+			super();
+			this.uuid = uuid;
+			this.name = name;
+		}
+
+		public String getUuid() {
+			return uuid;
+		}
+
+		public String getName() {
+			return name;
+		}
+
+		@Override
+		public int hashCode() {
+			final int prime = 31;
+			int result = 1;
+			result = prime * result + ((name == null) ? 0 : name.hashCode());
+			result = prime * result + ((uuid == null) ? 0 : uuid.hashCode());
+			return result;
+		}
+
+		@Override
+		public boolean equals(Object obj) {
+			if (this == obj)
+				return true;
+			if (obj == null)
+				return false;
+			if (getClass() != obj.getClass())
+				return false;
+			NodeInfo other = (NodeInfo) obj;
+			if (name == null) {
+				if (other.name != null)
+					return false;
+			} else if (!name.equals(other.name))
+				return false;
+			if (uuid == null) {
+				if (other.uuid != null)
+					return false;
+			} else if (!uuid.equals(other.uuid))
+				return false;
+			return true;
+		}
+
+		@Override
+		public String toString() {
+			return "NodeInfo [uuid=" + uuid + ", name=" + name + "]";
+		}
+
+	}
 
 }

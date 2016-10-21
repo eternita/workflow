@@ -12,12 +12,12 @@
                 </transition>
             </transitions>
         </node>
-        <node uuid="KdHAqAIGB3cAAAFX2LKUseCZ" name="EndNode1" x="146" y="395" type="END">
+        <node uuid="KdHAqAIGB3cAAAFX2LKUseCZ" name="EndNode1" x="136" y="395" type="END">
             <parameters/>
             <config/>
             <transitions/>
         </node>
-        <node uuid="lWbAqAIGEH8AAAFX8tCUseCZ" name="SystemOutBlock" x="136" y="162" type="CUSTOM">
+        <node uuid="lWbAqAIGEH8AAAFX8tCUseCZ" name="SystemOutBlock1" x="127" y="162" type="CUSTOM">
             <parameters>
                 <parameter key="varToPrint" value="var1" input="true"/>
             </parameters>
@@ -30,8 +30,10 @@
                 </transition>
             </transitions>
         </node>
-        <node uuid="ID3AqAIGnU8AAAFXeLM6OuCs" name="SystemOutBlock" x="137" y="296" type="CUSTOM">
-            <parameters/>
+        <node uuid="ID3AqAIGnU8AAAFXeLM6OuCs" name="SystemOutBlock2" x="127" y="296" type="CUSTOM">
+            <parameters>
+                <parameter key="varToPrint" value="var2" input="true"/>
+            </parameters>
             <config>
                 <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.workflow.core.SystemOutBlock"/>
             </config>
@@ -41,7 +43,7 @@
                 </transition>
             </transitions>
         </node>
-        <node uuid="note" name="iYvAqAIGxLwAAAFXGAk6OuCu" x="216" y="20" type="NOTE">
+        <node uuid="note" name="aQfAqAIGRx0AAAFXEAproOXB" x="216" y="20" type="NOTE">
             <description>Call sysout block twice</description>
             <parameters/>
             <config>
