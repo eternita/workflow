@@ -14,11 +14,14 @@
  * limitations under the License.
  */
 
-package org.neuro4j.workflow.common;
+package org.neuro4j.workflow.loader;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+
+import org.neuro4j.workflow.common.FlowExecutionException;
+import org.neuro4j.workflow.common.WorkflowConverter;
 
 /**
  * Loads workflow from external folder.
@@ -29,23 +32,21 @@ public class FileWorkflowLoader extends URLWorkflowLoader {
 	final URLWorkflowLoader delegate;
 	final File baseDir;
 
-	public FileWorkflowLoader(URLWorkflowLoader loader, File baseDir, final String fileExt)
+	public FileWorkflowLoader(final WorkflowConverter converter, URLWorkflowLoader loader, File baseDir)
 			throws FlowExecutionException {
+		super(converter);
 		if (baseDir == null || !baseDir.exists() || !baseDir.isDirectory()) {
 			throw new FlowExecutionException("BaseDir is not valid : " + baseDir);
 		}
 		this.delegate = loader;
 		this.baseDir = baseDir;
-		this.fileExt = fileExt;
 	}
 
-	public FileWorkflowLoader(final File baseDir, final String ext) throws FlowExecutionException {
-		this(new ClasspathWorkflowLoader(ext), baseDir, ext);
-	}
 
 	@Override
-	protected URL getResource(final String location) throws IOException {
-		File file = new File(baseDir ,  location + getFileExt());
+	protected URL getResource(final String name) throws IOException {
+		String location = normalize(name);
+		File file = new File(baseDir ,  location + converter.getFileExt());
 		return file.exists() ? file.toURI().toURL() : delegate.getResource(location);
 	}
 

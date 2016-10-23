@@ -172,7 +172,7 @@ public class FlowContext {
     }
     
     public Map<String, Object> getParameters(){        
-        return new HashMap<String, Object>(parameters);
+        return Collections.unmodifiableMap(parameters);
     }
 
 }

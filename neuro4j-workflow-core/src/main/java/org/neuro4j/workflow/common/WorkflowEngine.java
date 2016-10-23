@@ -26,8 +26,11 @@ import org.neuro4j.workflow.cache.ActionRegistry;
 import org.neuro4j.workflow.cache.ConcurrentMapWorkflowCache;
 import org.neuro4j.workflow.cache.EmptyWorkflowCache;
 import org.neuro4j.workflow.cache.WorkflowCache;
+import org.neuro4j.workflow.loader.ClasspathWorkflowLoader;
 import org.neuro4j.workflow.loader.CustomBlockInitStrategy;
 import org.neuro4j.workflow.loader.DefaultCustomBlockInitStrategy;
+import org.neuro4j.workflow.loader.RemoteWorkflowLoader;
+import org.neuro4j.workflow.loader.WorkflowLoader;
 import org.neuro4j.workflow.node.WorkflowProcessor;
 
 /**
@@ -56,7 +59,7 @@ public class WorkflowEngine {
 	public WorkflowEngine() {
 		this(new ConfigBuilder().withCustomBlockInitStrategy(new DefaultCustomBlockInitStrategy())
 				                .withWorkflowCache(new ConcurrentMapWorkflowCache())
-				                .withLoader(new ClasspathWorkflowLoader()));
+				                .withLoader(new ClasspathWorkflowLoader(new XmlWorkflowConverter())));
 	}
 	
 
@@ -108,9 +111,11 @@ public class WorkflowEngine {
 		private WorkflowCache workflowCache;
 		
 		private ActionRegistry registry;
+		
+		private final WorkflowConverter converter;
 
 		public ConfigBuilder() {
-
+			converter = new XmlWorkflowConverter();
 		}
 
 		public ConfigBuilder withLoader(WorkflowLoader loader) {
@@ -134,7 +139,7 @@ public class WorkflowEngine {
 		}
 
 		public WorkflowLoader getLoader() {
-			return loader != null ? loader : new RemoteWorkflowLoader(new ClasspathWorkflowLoader());
+			return loader != null ? loader : new RemoteWorkflowLoader(converter, new ClasspathWorkflowLoader(converter));
 		}
 
 		public CustomBlockInitStrategy getCustomInitStrategy() {

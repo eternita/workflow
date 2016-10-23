@@ -12,7 +12,10 @@ import org.neuro4j.workflow.cache.ActionRegistry;
 import org.neuro4j.workflow.cache.ConcurrentMapWorkflowCache;
 import org.neuro4j.workflow.cache.EmptyWorkflowCache;
 import org.neuro4j.workflow.common.WorkflowEngine.ConfigBuilder;
+import org.neuro4j.workflow.loader.ClasspathWorkflowLoader;
 import org.neuro4j.workflow.loader.DefaultCustomBlockInitStrategy;
+import org.neuro4j.workflow.loader.FileWorkflowLoader;
+import org.neuro4j.workflow.loader.RemoteWorkflowLoader;
 
 
 public class ConfigBuilderTest {
@@ -31,7 +34,8 @@ public class ConfigBuilderTest {
 	
 	@Test
 	public void testConfigBuilderWithLoader() throws FlowExecutionException{
-	    	ConfigBuilder builder = new ConfigBuilder().withLoader(new FileWorkflowLoader(new File("/tmp"), ClasspathWorkflowLoader.DEFAULT_EXT));
+		    WorkflowConverter converter = new XmlWorkflowConverter();
+	    	ConfigBuilder builder = new ConfigBuilder().withLoader(new FileWorkflowLoader(converter, new ClasspathWorkflowLoader(converter), new  File("/tmp")));
 	        assertNotNull(builder.getCustomInitStrategy());
 	        assertThat(builder.getCustomInitStrategy(), instanceOf(DefaultCustomBlockInitStrategy.class));
 	        assertNotNull(builder.getLoader());	

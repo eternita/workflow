@@ -14,10 +14,12 @@
  * limitations under the License.
  */
 
-package org.neuro4j.workflow.common;
+package org.neuro4j.workflow.loader;
 
 import java.io.IOException;
 import java.net.URL;
+
+import org.neuro4j.workflow.common.WorkflowConverter;
 
 /**
  * Loads workflow from classpath.
@@ -26,16 +28,14 @@ import java.net.URL;
 public class ClasspathWorkflowLoader extends URLWorkflowLoader{
 	
 	
-	public ClasspathWorkflowLoader(final String ext){
-		this.fileExt = ext;
-	}
-	public ClasspathWorkflowLoader(){
-		this(DEFAULT_EXT);
+	public ClasspathWorkflowLoader(final WorkflowConverter converter){
+		super(converter);
 	}
 
 	@Override
-	protected URL getResource(String location) throws IOException {
-		  return  getClass().getClassLoader().getResource(location + fileExt);
+	protected URL getResource(String name) throws IOException {
+		  String location = normalize(name);
+		  return  getClass().getClassLoader().getResource(location + converter.getFileExt());
 	}
 	
 }

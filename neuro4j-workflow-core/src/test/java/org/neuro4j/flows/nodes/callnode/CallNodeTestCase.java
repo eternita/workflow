@@ -49,7 +49,7 @@ public class CallNodeTestCase extends BaseFlowTestCase {
         ExecutionResult result = executeFlowAndReturnResult("org.neuro4j.flows.nodes.callnode.CallByNameFlow-StartNode2", null);
 
         Assert.assertTrue(result.getException() instanceof FlowExecutionException);
-        Assert.assertTrue(result.getException().getMessage().equals("org/neuro4j/flows/nodes/CallByNameFlow2 not found."));
+        Assert.assertEquals("org.neuro4j.flows.nodes.CallByNameFlow2 not found.", result.getException().getMessage());
 
     }
 

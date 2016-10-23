@@ -10,8 +10,8 @@ import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.common.Workflow;
 import org.neuro4j.workflow.common.WorkflowEngine.ConfigBuilder;
-import org.neuro4j.workflow.common.WorkflowLoader;
 import org.neuro4j.workflow.debug.DebugService;
+import org.neuro4j.workflow.loader.WorkflowLoader;
 import org.neuro4j.workflow.log.Logger;
 
 /**

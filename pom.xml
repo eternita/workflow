@@ -9,7 +9,7 @@
 	<packaging>pom</packaging>
 	<name>Workflow System</name>
 	<url>http://neuro4j.org</url>
-        <description>Light-weight workflow engine</description>
+	<description>Light-weight workflow engine</description>
 	<licenses>
 		<license>
 			<name>The Apache Software License, Version 2.0</name>
@@ -20,7 +20,7 @@
 		<connection>scm:git:git://github.com/neuro4j/workflow.git</connection>
 		<developerConnection>scm:git:ssh://github.com:neuro4j/workflow.git</developerConnection>
 		<url>http://github.com/neuro4j/workflow/tree/master</url>
-	</scm>	   
+	</scm>
 	<repositories>
 		<repository>
 			<id>neuro4j-maven-milestone</id>
@@ -50,7 +50,7 @@
 			<email>support@neuro4j.org</email>
 			<organization>Neuro4j</organization>
 			<organizationUrl>http://neuro4j.org</organizationUrl>
-		</developer>		
+		</developer>
 	</developers>
 	<modules>
 		<module>neuro4j-workflow-core</module>
@@ -70,16 +70,15 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java-version>1.8</java-version>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
+
 	</properties>
 
 	<dependencies>
-	<dependency>
-		<groupId>ch.qos.logback</groupId>
-		<artifactId>logback-classic</artifactId>
-		<version>1.1.7</version>
-	</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.1.7</version>
+		</dependency>
 
 		<dependency>
 			<groupId>commons-beanutils</groupId>
@@ -98,14 +97,14 @@
 			<version>1.1</version>
 			<scope>test</scope>
 		</dependency>
-			
+
 		<!-- to resolve issue in tests -->
 		<dependency>
 			<groupId>xerces</groupId>
 			<artifactId>xercesImpl</artifactId>
 			<version>2.11.0</version>
 			<scope>test</scope>
-		</dependency>		
+		</dependency>
 	</dependencies>
 
 
@@ -134,43 +133,61 @@
 				</executions>
 			</plugin>
 
-      <!-- Coveralls -->
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>cobertura-maven-plugin</artifactId>
-        <version>2.7</version>
-        <configuration>
-          <format>xml</format>
-          <maxmem>256m</maxmem>
-          <aggregate>true</aggregate>
-        </configuration>
-      </plugin>
+			<!-- Coveralls -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<version>2.7</version>
+				<configuration>
+					<format>xml</format>
+					<maxmem>256m</maxmem>
+					<aggregate>true</aggregate>
+				</configuration>
+			</plugin>
 
-		<plugin>
-		    <groupId>org.eluder.coveralls</groupId>
-		    <artifactId>coveralls-maven-plugin</artifactId>
-		    <version>4.3.0</version>
-		</plugin>		
+			<plugin>
+				<groupId>org.eluder.coveralls</groupId>
+				<artifactId>coveralls-maven-plugin</artifactId>
+				<version>4.3.0</version>
+			</plugin>
 			<!--  
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<version>2.9.1</version>
 				<executions>
-				    <execution>
-				    <id>attach-javadocs</id>
-    					<goals>
-    					    <goal>jar</goal>
-    					</goals>
-    				    </execution>
-    				</executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
-			-->
-			
+-->
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-				<version>0.7.5.201505241946</version>
+				<version>0.7.7.201606060606</version>
+				<configuration>
+					<destFile>${basedir}/target/coverage-reports/jacoco-unit.exec</destFile>
+					<dataFile>${basedir}/target/coverage-reports/jacoco-unit.exec</dataFile>
+				</configuration>
+				<executions>
+					<execution>
+						<id>jacoco-initialize</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>jacoco-site</id>
+						<phase>package</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

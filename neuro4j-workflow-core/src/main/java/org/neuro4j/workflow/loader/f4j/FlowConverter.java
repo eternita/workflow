@@ -17,6 +17,7 @@
 package org.neuro4j.workflow.loader.f4j;
 
 import java.io.InputStream;
+import java.io.Reader;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -49,25 +50,43 @@ import org.neuro4j.workflow.node.WorkflowNode;
  */
 public class FlowConverter {
     
-  public static Workflow xml2workflow(InputStream xml, String flow)
-            throws ConvertationException, FlowInitializationException {
-        if (null == xml)
-            return null;
-        try {
-            JAXBContext ctx = JAXBContext.newInstance(FlowXML.class);
+	public static Workflow xml2workflow(Reader xml, String flow)
+			throws ConvertationException, FlowInitializationException {
+		if (null == xml)
+			return null;
+		try {
+			JAXBContext ctx = JAXBContext.newInstance(FlowXML.class);
 
-            Unmarshaller um = ctx.createUnmarshaller();
-            FlowXML flowxml = (FlowXML) um.unmarshal(xml);
-            if (null == flowxml)
-                return null;
+			Unmarshaller um = ctx.createUnmarshaller();
+			FlowXML flowxml = (FlowXML) um.unmarshal(xml);
+			if (null == flowxml)
+				return null;
 
-            return netXML2net(flowxml, flow);
+			return netXML2net(flowxml, flow);
 
-        } catch (JAXBException e) {
-            throw new ConvertationException("Can't convert stream to workflow",
-                    e);
-        }
-    }
+		} catch (JAXBException e) {
+			throw new ConvertationException("Can't convert stream to workflow", e);
+		}
+	}
+
+	public static Workflow xml2workflow(InputStream xml, String flow)
+			throws ConvertationException, FlowInitializationException {
+		if (null == xml)
+			return null;
+		try {
+			JAXBContext ctx = JAXBContext.newInstance(FlowXML.class);
+
+			Unmarshaller um = ctx.createUnmarshaller();
+			FlowXML flowxml = (FlowXML) um.unmarshal(xml);
+			if (null == flowxml)
+				return null;
+
+			return netXML2net(flowxml, flow);
+
+		} catch (JAXBException e) {
+			throw new ConvertationException("Can't convert stream to workflow", e);
+		}
+	}
 
 	private static Workflow netXML2net(FlowXML net, String flow)
 			throws FlowInitializationException {

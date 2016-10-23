@@ -18,8 +18,7 @@ package org.neuro4j.workflow.cache;
 
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.Workflow;
-import org.neuro4j.workflow.common.WorkflowLoader;
-import org.neuro4j.workflow.common.WorkflowSource;
+import org.neuro4j.workflow.loader.WorkflowLoader;
 
 /**
  * Default cache implementation
@@ -30,13 +29,12 @@ public enum EmptyWorkflowCache implements WorkflowCache {
 
 
 	@Override
-	public Workflow get(WorkflowLoader loader,  String flowName) throws  FlowExecutionException {
-		WorkflowSource workflowSource = loader.load(flowName);
-		if (workflowSource == null) {
+	public Workflow get(WorkflowLoader loader, String flowName) throws FlowExecutionException {
+		Workflow workflow = loader.load(flowName);
+		if (workflow == null) {
 			throw new FlowExecutionException("Workflow " + flowName + " not loaded");
 		}
 
-		Workflow workflow = workflowSource.content();
 		return workflow;
 	}
 

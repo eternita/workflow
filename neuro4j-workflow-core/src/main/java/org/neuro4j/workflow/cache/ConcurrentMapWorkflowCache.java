@@ -21,7 +21,7 @@ import java.util.concurrent.ConcurrentMap;
 
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.Workflow;
-import org.neuro4j.workflow.common.WorkflowLoader;
+import org.neuro4j.workflow.loader.WorkflowLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -1,6 +1,6 @@
-*.DS_Store
-bin
-target
+/target/
+/.settings/
+/.externalToolBuilders/
 .classpath
 .project
 .settings
