@@ -35,15 +35,21 @@ import org.neuro4j.workflow.utils.Validation;
  */
 public class CustomBlockLoader {
 
-	private final ConcurrentHashMap<String, ActionBlock> cache = new ConcurrentHashMap<>();
+	private final ConcurrentHashMap<String, ActionBlock> cache;
 
     private final DefaultCustomBlockInitStrategy defaultInitStrategy = new DefaultCustomBlockInitStrategy();
     
     final private CustomBlockInitStrategy customBlockInitStrategy;
 
-    public CustomBlockLoader(final CustomBlockInitStrategy customBlockInitStrategy) {
+    public CustomBlockLoader(final CustomBlockInitStrategy customBlockInitStrategy, final ConcurrentHashMap<String, ActionBlock> cache) {
         super();
         this.customBlockInitStrategy = Optional.ofNullable(customBlockInitStrategy).orElse(defaultInitStrategy);
+        this.cache = cache;
+    }
+    
+    public CustomBlockLoader(final CustomBlockInitStrategy customBlockInitStrategy) {
+        this(customBlockInitStrategy, new ConcurrentHashMap<>());
+
     }
 
 
@@ -56,7 +62,7 @@ public class CustomBlockLoader {
      * @throws FlowInitializationException in case of error
      */
     
-	ActionBlock lookupBlock(CustomNode entity) throws FlowExecutionException {
+	public ActionBlock lookupBlock(CustomNode entity) throws FlowExecutionException {
 
 		long start = System.currentTimeMillis();
 

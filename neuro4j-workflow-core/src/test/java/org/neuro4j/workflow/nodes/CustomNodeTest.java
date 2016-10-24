@@ -4,8 +4,9 @@ import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.fail;
 
 import java.util.UUID;
-import static org.hamcrest.collection.IsCollectionContaining.*;
+
 import org.junit.Test;
+import org.junit.internal.matchers.IsCollectionContaining;
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
@@ -44,7 +45,7 @@ public class CustomNodeTest {
 		customNode.registerExit(transition);
 		
 		assertThat(customNode.getExitByName(SWFConstants.NEXT_RELATION_NAME), is(transition));
-		assertThat(customNode.getExits(), hasItems(transition));
+		assertThat(customNode.getExits(), IsCollectionContaining.hasItem(transition));
 		
 		assertEquals(name, customNode.getName());
 		assertEquals(uuid, customNode.getUuid());

@@ -18,9 +18,6 @@ package org.neuro4j.workflow.loader.f4j;
 
 public class ConvertationException extends Exception {
 
-    /**
-	 * 
-	 */
     private static final long serialVersionUID = 8622249445842241152L;
 
     public ConvertationException() {

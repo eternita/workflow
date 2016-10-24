@@ -17,7 +17,9 @@
 package org.neuro4j.workflow.loader.f4j;
 
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.Reader;
+import java.io.UnsupportedEncodingException;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
@@ -70,22 +72,8 @@ public class FlowConverter {
 	}
 
 	public static Workflow xml2workflow(InputStream xml, String flow)
-			throws ConvertationException, FlowInitializationException {
-		if (null == xml)
-			return null;
-		try {
-			JAXBContext ctx = JAXBContext.newInstance(FlowXML.class);
-
-			Unmarshaller um = ctx.createUnmarshaller();
-			FlowXML flowxml = (FlowXML) um.unmarshal(xml);
-			if (null == flowxml)
-				return null;
-
-			return netXML2net(flowxml, flow);
-
-		} catch (JAXBException e) {
-			throw new ConvertationException("Can't convert stream to workflow", e);
-		}
+			throws ConvertationException, FlowInitializationException, UnsupportedEncodingException {
+		 return xml2workflow(new InputStreamReader(xml, "UTF-8"), flow);
 	}
 
 	private static Workflow netXML2net(FlowXML net, String flow)

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<flow visibility="Public">
+    <nodes>
+        <node uuid="eyzAqAIGWSsAAAFXNROJwvPt" name="StartNode1" x="120" y="38" type="START">
+            <parameters/>
+            <config>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
+            </config>
+            <transitions>
+                <transition uuid="MufAqAIGpA4AAAFXezmJwvPu" name="NEXT" toNode="_6_AqAIGI6sAAAFXqj6JwvPt">
+                    <points>-50, 36, -75, -81|-53, 82, -78, -35|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="8ajAqAIGxFkAAAFXXCaJwvPt" name="EndNode1" x="120" y="752" type="END">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node uuid="_6_AqAIGI6sAAAFXqj6JwvPt" name="CustomBlockNoneCached1" x="111" y="155" type="CUSTOM">
+            <parameters/>
+            <config>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.workflow.core.CustomBlockNoneCached"/>
+            </config>
+            <transitions>
+                <transition uuid="FKfAqAIGPPgAAAFXZWKJwvPu" name="NEXT" toNode="hIbAqAIGivYAAAFXONiJwvPt">
+                    <points>-78, 35, -81, -78|-75, 78, -78, -35|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="hIbAqAIGivYAAAFXONiJwvPt" name="CustomBlockNodeCached" x="111" y="268" type="CUSTOM">
+            <parameters/>
+            <config>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.workflow.core.CustomBlockNodeCached"/>
+            </config>
+            <transitions>
+                <transition uuid="XXbAqAIGwlgAAAFXs3KJwvPu" name="NEXT" toNode="pfXAqAIG_zUAAAFXHxiJwvPu">
+                    <points>-78, 35, -81, -114|-75, 114, -78, -35|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="pfXAqAIG_zUAAAFXHxiJwvPu" name="SystemOutBlock" x="111" y="417" type="CUSTOM">
+            <parameters/>
+            <config>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.workflow.core.SystemOutBlock"/>
+            </config>
+            <transitions>
+                <transition uuid="ghXAqAIGSbsAAAFXL_GJwvPw" name="NEXT" toNode="EZbAqAIGo2wAAAFXogaJwvPw">
+                    <points>-78, 35, -83, -69|-73, 69, -78, -35|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="jEnAqAIGU7AAAAFXOOCJwvPu" name="StartNode2" x="424" y="40" type="START">
+            <parameters/>
+            <config>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
+            </config>
+            <transitions>
+                <transition uuid="VkjAqAIGhPUAAAFXsDyJwvPv" name="NEXT" toNode="objAqAIGzUIAAAFXyvCJwvPu">
+                    <points>-50, 36, -74, -79|-54, 80, -78, -35|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="objAqAIGzUIAAAFXyvCJwvPu" name="CustomBlockNoneCached" x="415" y="155" type="CUSTOM">
+            <parameters/>
+            <config>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.workflow.core.CustomBlockNoneCached"/>
+            </config>
+            <transitions>
+                <transition uuid="6WLAqAIGX7IAAAFXzMyJwvPv" name="NEXT" toNode="3L_AqAIGHwwAAAFXi_6JwvPu">
+                    <points>-78, 35, -91, -91|-65, 91, -78, -35|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="3L_AqAIGHwwAAAFXi_6JwvPu" name="CustomBlockNodeCached" x="415" y="281" type="CUSTOM">
+            <parameters/>
+            <config>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.workflow.core.CustomBlockNodeCached"/>
+            </config>
+            <transitions>
+                <transition uuid="vdbAqAIGUbsAAAFXQteJwvPv" name="NEXT" toNode="4GbAqAIGlnsAAAFXuw.JwvPv">
+                    <points>-78, 35, -84, -102|-72, 102, -78, -35|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="4GbAqAIGlnsAAAFXuw.JwvPv" name="SystemOutBlock" x="415" y="418" type="CUSTOM">
+            <parameters/>
+            <config>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.workflow.core.SystemOutBlock"/>
+            </config>
+            <transitions>
+                <transition uuid="gYLAqAIG_XYAAAFXceGJwvPv" name="NEXT" toNode="RGTAqAIGWpkAAAFXdiOJwvPv">
+                    <points>-78, 35, -50, -98|-78, 89, -50, -44|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="RGTAqAIGWpkAAAFXdiOJwvPv" name="EndNode2" x="424" y="542" type="END">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node uuid="EZbAqAIGo2wAAAFXogaJwvPw" name="CallNode1" x="111" y="576" type="CALL">
+            <parameters/>
+            <config>
+                <parameter key="SYS_FLOW_NAME" value="org.neuro4j.workflow.flows.FlowtotestCache-StartNode2"/>
+            </config>
+            <transitions>
+                <transition uuid="h4DAqAIGjVwAAAFXhjZsQfTp" name="EndNode2" toNode="8ajAqAIGxFkAAAFXXCaJwvPt">
+                    <points>-78, 35, -50, -150|-78, 141, -50, -44|</points>
+                </transition>
+            </transitions>
+        </node>
+    </nodes>
+</flow>
