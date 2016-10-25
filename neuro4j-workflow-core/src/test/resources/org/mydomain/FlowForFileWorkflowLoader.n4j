@@ -7,24 +7,24 @@
                 <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
             </config>
             <transitions>
-                <transition uuid="tdnAqAICMz4AAAFXXejBrvoo" name="NEXT" toNode="w3XAqAICOzcAAAFXUNfBrvoo">
-                    <points>-50, 36, 3, -76|-53, 77, 0, -35|</points>
+                <transition uuid="LVPAqAIC0qsAAAFXhWnBrvoi" name="NEXT" toNode="QyTAqAICpagAAAFXWlrBrvoi">
+                    <points>-50, 36, 5, -107|-55, 108, 0, -35|</points>
                 </transition>
             </transitions>
         </node>
-        <node uuid="aynAqAIFz9IAAAFX_.EWJ9E6" name="EndNode1" x="110" y="235" type="END">
+        <node uuid="aynAqAIFz9IAAAFX_.EWJ9E6" name="EndNode1" x="110" y="321" type="END">
             <parameters/>
             <config/>
             <transitions/>
         </node>
-        <node uuid="w3XAqAICOzcAAAFXUNfBrvoo" name="MapperNode1" x="105" y="122" type="MAP">
+        <node uuid="QyTAqAICpagAAAFXWlrBrvoi" name="MapperNode1" x="105" y="153" type="MAP">
             <parameters>
-                <parameter key="var1" value="&quot;fromExternalFolder&quot;" input="true"/>
+                <parameter key="var1" value="&quot;fromClassPath&quot;" input="true"/>
             </parameters>
             <config/>
             <transitions>
-                <transition uuid="9_DAqAICmH0AAAFXY_LBrvoo" name="NEXT" toNode="aynAqAIFz9IAAAFX_.EWJ9E6">
-                    <points>0, 35, -53, -87|3, 78, -50, -44|</points>
+                <transition uuid="PofAqAICigwAAAFXUX_Brvoi" name="NEXT" toNode="aynAqAIFz9IAAAFX_.EWJ9E6">
+                    <points>0, 35, -50, -142|0, 133, -50, -44|</points>
                 </transition>
             </transitions>
         </node>

@@ -2,6 +2,8 @@ package org.neuro4j.workflow.common;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.neuro4j.workflow.ExecutionResult;
+import org.neuro4j.workflow.common.WorkflowEngine.ConfigBuilder;
 import org.neuro4j.workflow.loader.ClasspathWorkflowLoader;
 import org.neuro4j.workflow.loader.FileWorkflowLoader;
 
@@ -80,6 +82,30 @@ public class WorkflowLoaderTest {
         fail("Should be exception");
 	}
 
+	@Test
+	public void testOverideFlowWithFileLoader() throws FlowExecutionException {
+		
+		String flowName = "org.mydomain.FlowForFileWorkflowLoader-StartNode1";
+		
+		ClasspathWorkflowLoader classpathLoader = new ClasspathWorkflowLoader(converter);
+		
+		WorkflowEngine engine = new WorkflowEngine(
+				new ConfigBuilder().withLoader(classpathLoader));
+		ExecutionResult result = engine.execute(flowName);
+		String var1 = (String)result.getFlowContext().get("var1");
+		
+		assertEquals("fromClassPath", var1);
+		
+		File file = getBaseDirectory();
+		assertTrue(file.exists());
+		
+		engine = new WorkflowEngine(new ConfigBuilder().withLoader(new FileWorkflowLoader(converter, classpathLoader, file)));
+		result = engine.execute(flowName);
+		var1 = (String)result.getFlowContext().get("var1");
+		
+		assertEquals("fromExternalFolder", var1);
+	}
+	
 	
 	
 	File getBaseDirectory(){

@@ -26,12 +26,27 @@ public class CustomNodeTest {
 	@Test
 	public void testCustomNode(){
 		
+	executeCustomBlock("org.neuro4j.workflow.core.SystemOutBlock");
+	}
+	
+	@Test
+	public void testCustomBlockWithNoAnnotation(){
+		executeCustomBlock("org.neuro4j.workflow.core.CustomBlockWithNoAnotations");
+	}
+	
+	@Test
+	public void testCustomBlockWithEmptyList(){
+		executeCustomBlock("org.neuro4j.workflow.core.CustomBlockWithEmptyList");
+	}
+	
+	public void executeCustomBlock(final String nodeName){
+		
 		WorkflowProcessor processor = new WorkflowProcessor(new ConfigBuilder());
 		
 		String name = UUID.randomUUID().toString();
 		String uuid = UUID.randomUUID().toString();
 		
-		CustomNode  customNode = new CustomNode("org.neuro4j.workflow.core.SystemOutBlock", name, uuid);
+		CustomNode  customNode = new CustomNode(nodeName, name, uuid);
 
 		String endName = UUID.randomUUID().toString();
 		String endUuid = UUID.randomUUID().toString();
@@ -77,6 +92,5 @@ public class CustomNodeTest {
 		
 		assertEquals(transition, request.getNextWorkflowNode());
 	}
-	
 	
 }

@@ -26,7 +26,7 @@ import org.neuro4j.workflow.ActionHandler;
 
 public class ActionRegistry{
 	
-	final ActionHandler defaultInstance = new ActionHandler(){
+	final private ActionHandler defaultInstance = new ActionHandler(){
 	};
 
 	private final ConcurrentMap<Class<? extends ActionBlock>, ActionHandler> cache = new ConcurrentHashMap<Class<? extends ActionBlock>, ActionHandler>();

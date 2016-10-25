@@ -53,7 +53,7 @@ public class CustomNode extends WorkflowNode {
         outParameters = new HashMap<String, String>(3);
     }
 
-    public void addOutParameter(String key, String value)
+    public void addOutParameter(final String key, final String value)
     {
         outParameters.put(key, value);
     }

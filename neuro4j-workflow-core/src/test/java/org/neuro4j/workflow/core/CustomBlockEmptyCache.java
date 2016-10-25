@@ -1,34 +1,35 @@
 package org.neuro4j.workflow.core;
 
 
-import org.neuro4j.workflow.FlowContext;
-import org.neuro4j.workflow.common.FlowExecutionException;
-import org.neuro4j.workflow.common.ParameterDefinition;
-import org.neuro4j.workflow.common.ParameterDefinitionList;
-
-import org.neuro4j.workflow.enums.CachedNode;
-import static org.neuro4j.workflow.core.CustomBlockNodeCached.*;
-import static org.neuro4j.workflow.enums.ActionBlockCache.*;
+import static org.neuro4j.workflow.core.CustomBlockEmptyCache.IN_PARAM;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.neuro4j.workflow.ActionBlock;
+import org.neuro4j.workflow.FlowContext;
+import org.neuro4j.workflow.common.FlowExecutionException;
+import org.neuro4j.workflow.common.ParameterDefinition;
+import org.neuro4j.workflow.common.ParameterDefinitionList;
 
 
 @ParameterDefinitionList(input={
                                 	@ParameterDefinition(name=IN_PARAM, isOptional=true, type= "java.lang.String")},
                          output={
                          	        })
-@CachedNode(type=NODE)
-public class CustomBlockNodeCached implements ActionBlock {
+public class CustomBlockEmptyCache implements ActionBlock {
     
     static final String IN_PARAM = "param";
       
-    private final AtomicInteger executeCounter = new AtomicInteger(0);
-    private final AtomicInteger initCounter = new AtomicInteger(0);
+    
+  private final AtomicInteger executeCounter = new AtomicInteger(); 
+  
+  private final AtomicInteger initCounter = new AtomicInteger(); 
+    
     
     public int execute(FlowContext ctx) throws FlowExecutionException {
 		
+    	executeCounter.getAndIncrement();
+    	
 		Object param = ctx.get(IN_PARAM);
         
 		
@@ -57,5 +58,6 @@ public class CustomBlockNodeCached implements ActionBlock {
 		return initCounter;
 	}
 	
+    
 
 }
