@@ -39,6 +39,84 @@ public class CustomNodeTest {
 		executeCustomBlock("org.neuro4j.workflow.core.CustomBlockWithEmptyList");
 	}
 	
+	@Test
+	public void testCustomBlockWithNull(){
+           WorkflowProcessor processor = new WorkflowProcessor(new ConfigBuilder());
+		
+		String name = UUID.randomUUID().toString() + "Name";
+		String uuid = UUID.randomUUID().toString() + "uuid";
+		
+		CustomNode  customNode = new CustomNode(null, name, uuid);
+		WorkflowRequest request = new WorkflowRequest();
+		
+		try {
+			customNode.execute(processor, request);
+			fail("Can not run custom node with null");
+		} catch (FlowExecutionException e) {
+              assertEquals("ExecutableClass not defined for CustomNode " + name, e.getMessage());
+		}
+		
+	}
+	
+	@Test
+	public void testCustomBlockWithWrongClass(){
+           WorkflowProcessor processor = new WorkflowProcessor(new ConfigBuilder());
+		
+		String name = UUID.randomUUID().toString() + "Name";
+		String uuid = UUID.randomUUID().toString() + "uuid";
+		String className = UUID.randomUUID().toString() + "Class";
+		
+		CustomNode  customNode = new CustomNode(className, name, uuid);
+		WorkflowRequest request = new WorkflowRequest();
+		
+		try {
+			customNode.execute(processor, request);
+			fail("Can not run custom node with null");
+		} catch (FlowExecutionException e) {
+              assertEquals("CustomBlock: " + className + " can not be initialized.", e.getMessage());
+		}
+		
+	}
+	
+	@Test
+	public void testCustomBlockClassNotImplementedActionBlock(){
+           WorkflowProcessor processor = new WorkflowProcessor(new ConfigBuilder());
+		
+		String name = UUID.randomUUID().toString() + "Name";
+		String uuid = UUID.randomUUID().toString() + "uuid";
+		String className = "java.lang.String";
+		
+		CustomNode  customNode = new CustomNode(className, name, uuid);
+		WorkflowRequest request = new WorkflowRequest();
+		
+		try {
+			customNode.execute(processor, request);
+			fail("Can not run custom node with null");
+		} catch (FlowExecutionException e) {
+              assertEquals(className + " does not implement org.neuro4j.workflow.ActionBlock", e.getMessage());
+		}
+	}
+	
+	@Test
+	public void testCustomBlockSystemOutBlocke(){
+           WorkflowProcessor processor = new WorkflowProcessor(new ConfigBuilder());
+		
+		String name = UUID.randomUUID().toString() + "Name";
+		String uuid = UUID.randomUUID().toString() + "uuid";
+		String className = "org.neuro4j.workflow.core.SystemOutBlock";
+		
+		CustomNode  customNode = new CustomNode(className, name, uuid);
+		WorkflowRequest request = new WorkflowRequest();
+		
+		try {
+			customNode.execute(processor, request);
+			fail();
+		} catch (FlowExecutionException e) {
+            assertEquals("Next transition can not be null", e.getMessage());
+			
+	    }
+	}
+	
 	public void executeCustomBlock(final String nodeName){
 		
 		WorkflowProcessor processor = new WorkflowProcessor(new ConfigBuilder());

@@ -13,7 +13,7 @@ import org.neuro4j.workflow.ActionBlock;
 import org.neuro4j.workflow.ActionHandler;
 import org.neuro4j.workflow.ExecutionResult;
 import org.neuro4j.workflow.FlowContext;
-import org.neuro4j.workflow.cache.ActionRegistry;
+import org.neuro4j.workflow.cache.ActionHandlersRegistry;
 import org.neuro4j.workflow.common.WorkflowEngine.ConfigBuilder;
 import org.neuro4j.workflow.core.SystemOutBlock;
 import org.neuro4j.workflow.node.WorkflowNode.NodeInfo;
@@ -57,7 +57,7 @@ public class ActionRegistryTest {
 		
 		map.put(SystemOutBlock.class, handler);
 		
-		WorkflowEngine engine = new WorkflowEngine(new ConfigBuilder().withActionRegistry(new ActionRegistry(map)));
+		WorkflowEngine engine = new WorkflowEngine(new ConfigBuilder().withActionRegistry(new ActionHandlersRegistry(map)));
 		
 		Map<String, Object> parameters = new HashMap<>();
 		parameters.put("var1", "value1");

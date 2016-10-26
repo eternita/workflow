@@ -20,10 +20,10 @@ package org.neuro4j.workflow.guice;
 
 import org.neuro4j.workflow.ActionBlock;
 import org.neuro4j.workflow.common.FlowExecutionException;
-import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.loader.CustomBlockInitStrategy;
-import org.neuro4j.workflow.log.Logger;
 import org.neuro4j.workflow.node.CustomBlock;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -36,6 +36,8 @@ import com.google.inject.Module;
  *
  */
 public class GuiceCustomBlockInitStrategy implements CustomBlockInitStrategy {
+
+	private static final Logger Logger = LoggerFactory.getLogger(GuiceCustomBlockInitStrategy.class);
 
     /**
      *  Guice's injector.
@@ -67,7 +69,7 @@ public class GuiceCustomBlockInitStrategy implements CustomBlockInitStrategy {
             }
 
         } catch (ClassNotFoundException e) {
-            Logger.error(this, e);
+            Logger.error(e.getMessage(), e);
             throw new FlowExecutionException(e);
         }
         throw new FlowExecutionException("CustomBlock: " + className + " not found");

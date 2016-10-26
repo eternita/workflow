@@ -29,7 +29,6 @@ import org.neuro4j.workflow.common.WorkflowEngine;
 import org.neuro4j.workflow.common.WorkflowEngine.ConfigBuilder;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanFactory;
-import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.annotation.Bean;
@@ -40,7 +39,7 @@ import org.springframework.web.servlet.ModelAndView;
  * Helps to call flows from spring-mvc controllers.
  * 
  */
-public class AbstractWorkflowController implements BeanFactoryAware{
+public class AbstractWorkflowController{
 	
     @Bean
     WorkflowEngine getWorkflowEngine(ConfigurableListableBeanFactory beanFactory){
@@ -137,12 +136,6 @@ public class AbstractWorkflowController implements BeanFactoryAware{
 		return view;
 	}
     
-
-    
-    public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
-
-        
-    }
     
     
 }

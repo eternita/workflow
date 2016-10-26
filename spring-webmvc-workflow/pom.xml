@@ -5,8 +5,8 @@
 	<parent>
 		<groupId>org.neuro4j</groupId>
 		<artifactId>workflow</artifactId>
-        <version>3.0.1-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>		
+		<version>3.0.1-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>spring-webmvc-workflow</artifactId>
 	<properties>
@@ -54,8 +54,18 @@
 			<version>2.0</version>
 			<scope>provided</scope>
 		</dependency>
-
-
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${org.springframework-version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>1.10.19</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 	<build>
 		<resources>

@@ -27,9 +27,12 @@ import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.Workflow;
 import org.neuro4j.workflow.common.WorkflowConverter;
 import org.neuro4j.workflow.common.XmlWorkflowConverter;
-import org.neuro4j.workflow.log.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public abstract class URLWorkflowLoader implements WorkflowLoader {
+	
+	private static final Logger logger = LoggerFactory.getLogger(URLWorkflowLoader.class);
 	
 	protected WorkflowConverter converter;
 	
@@ -59,13 +62,13 @@ public abstract class URLWorkflowLoader implements WorkflowLoader {
 			net = converter.convert(inputStream, name);
 		
 		} catch (IOException e) {
-			Logger.error(this, e);
+			logger.error("Error during loading " + resource, e);
 		} finally {
 			try {
 				if (null != inputStream)
 					inputStream.close();
 			} catch (Exception e) {
-				Logger.error(this, e);
+				logger.error(e.getMessage(), e);
 			}
 		}
 		return net;

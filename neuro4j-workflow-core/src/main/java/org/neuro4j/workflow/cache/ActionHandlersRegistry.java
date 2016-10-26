@@ -24,17 +24,34 @@ import java.util.concurrent.ConcurrentMap;
 import org.neuro4j.workflow.ActionBlock;
 import org.neuro4j.workflow.ActionHandler;
 
-public class ActionRegistry{
+/**
+ * Contains all handlers  for specific classes.
+ * 
+ * Ex. Developer can define handler for custom block SystemOutBlock and this handler will be called
+ * every time before method execute and after.
+ *
+ */
+public class ActionHandlersRegistry{
 	
-	final private ActionHandler defaultInstance = new ActionHandler(){
-	};
+	/**
+	 * Default handler with no implementation
+	 */
+	final private ActionHandler defaultInstance = new ActionHandler(){};
 
+	/**
+	 *  Cache of all handlers
+	 */
 	private final ConcurrentMap<Class<? extends ActionBlock>, ActionHandler> cache = new ConcurrentHashMap<Class<? extends ActionBlock>, ActionHandler>();
 	
-	public ActionRegistry(final Map<Class<? extends ActionBlock>, ActionHandler> map) {
+	public ActionHandlersRegistry(final Map<Class<? extends ActionBlock>, ActionHandler> map) {
        this.cache.putAll(map);
 	}
 	
+	/**
+	 * Returns handler for requested class if it's exist or  default handler overwise.
+	 * @param clazz class ? extends ActionBlock
+	 * @return handler for requested class
+	 */
 	public ActionHandler get(final Class<? extends ActionBlock> clazz){
 		return Optional.ofNullable(cache.get(clazz)).orElse(defaultInstance);
 	}

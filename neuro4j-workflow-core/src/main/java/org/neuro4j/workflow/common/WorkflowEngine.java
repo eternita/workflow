@@ -22,7 +22,7 @@ import java.util.Map;
 
 import org.neuro4j.workflow.ExecutionResult;
 import org.neuro4j.workflow.WorkflowRequest;
-import org.neuro4j.workflow.cache.ActionRegistry;
+import org.neuro4j.workflow.cache.ActionHandlersRegistry;
 import org.neuro4j.workflow.cache.ConcurrentMapWorkflowCache;
 import org.neuro4j.workflow.cache.EmptyWorkflowCache;
 import org.neuro4j.workflow.cache.WorkflowCache;
@@ -110,7 +110,7 @@ public class WorkflowEngine {
 		
 		private WorkflowCache workflowCache;
 		
-		private ActionRegistry registry;
+		private ActionHandlersRegistry registry;
 		
 		private final WorkflowConverter converter;
 
@@ -133,7 +133,7 @@ public class WorkflowEngine {
 			return this;
 		}
 		
-		public ConfigBuilder withActionRegistry(ActionRegistry registry) {
+		public ConfigBuilder withActionRegistry(ActionHandlersRegistry registry) {
 			this.registry = registry;
 			return this;
 		}
@@ -150,8 +150,8 @@ public class WorkflowEngine {
 			return workflowCache != null ? workflowCache : EmptyWorkflowCache.INSTANCE;
 		}
 		
-		public ActionRegistry getActionRegistry() {
-			return this.registry != null ? this.registry : new ActionRegistry(Collections.emptyMap());
+		public ActionHandlersRegistry getActionRegistry() {
+			return this.registry != null ? this.registry : new ActionHandlersRegistry(Collections.emptyMap());
 		}
 
 	}

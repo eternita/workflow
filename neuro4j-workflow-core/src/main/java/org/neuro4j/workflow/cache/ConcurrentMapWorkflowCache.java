@@ -30,7 +30,7 @@ import org.slf4j.LoggerFactory;
  */
 public class ConcurrentMapWorkflowCache implements WorkflowCache {
 
-	private final Logger logger = LoggerFactory.getLogger(getClass());
+	private static final Logger logger = LoggerFactory.getLogger(ConcurrentMapWorkflowCache.class);
 
 	private final ConcurrentMap<String, Workflow> cache;
 

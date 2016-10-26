@@ -20,7 +20,8 @@ import org.neuro4j.workflow.ActionBlock;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.loader.CustomBlockInitStrategy;
 import org.neuro4j.workflow.loader.DefaultCustomBlockInitStrategy;
-import org.neuro4j.workflow.log.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.stereotype.Component;
 
@@ -31,6 +32,9 @@ import org.springframework.stereotype.Component;
  */
 public class SpringContextInitStrategy implements CustomBlockInitStrategy {
 
+	private static final Logger Logger = LoggerFactory.getLogger(SpringContextInitStrategy.class);
+
+	
 	private BeanFactory beanFactory;
 
 	private final CustomBlockInitStrategy defaultStrategy;
@@ -50,11 +54,8 @@ public class SpringContextInitStrategy implements CustomBlockInitStrategy {
 	}
 
 
-
-	/**
-	 * 
-	 */
 	public ActionBlock loadCustomBlock(String className) throws FlowExecutionException {
+		ActionBlock customBlock = null;
 		try {
 			
 			Class<?> clazz=	getClass().getClassLoader().loadClass(className);
@@ -62,9 +63,10 @@ public class SpringContextInitStrategy implements CustomBlockInitStrategy {
 				if (ActionBlock.class.isAssignableFrom(clazz)){
 					Component component = clazz.getAnnotation(org.springframework.stereotype.Component.class);
 					if (component != null) {
-						ActionBlock customBlock = (ActionBlock) beanFactory.getBean(clazz);
-						return customBlock;
-					}					
+						customBlock = (ActionBlock) beanFactory.getBean(clazz);
+					} else {
+						customBlock = this.defaultStrategy.loadCustomBlock(className);
+					}
 				} else {
 					throw new FlowExecutionException("Class " + className + " does not implement org.neuro4j.workflow.ActionBlock");
 				}
@@ -72,14 +74,11 @@ public class SpringContextInitStrategy implements CustomBlockInitStrategy {
 			}
 
 		} catch (ClassNotFoundException e) {
-			Logger.error(this, e);
+			Logger.error(e.getMessage(), e);
 			throw new FlowExecutionException(e);
 		}
-
-		return this.defaultStrategy.loadCustomBlock(className);
+		return customBlock;
 
 	}
-	
-	
 
 }

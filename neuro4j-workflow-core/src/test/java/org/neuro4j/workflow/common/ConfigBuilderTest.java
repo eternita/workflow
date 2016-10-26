@@ -8,7 +8,7 @@ import java.util.HashMap;
 import static org.hamcrest.CoreMatchers.*;
 
 import org.junit.Test;
-import org.neuro4j.workflow.cache.ActionRegistry;
+import org.neuro4j.workflow.cache.ActionHandlersRegistry;
 import org.neuro4j.workflow.cache.ConcurrentMapWorkflowCache;
 import org.neuro4j.workflow.cache.EmptyWorkflowCache;
 import org.neuro4j.workflow.common.WorkflowEngine.ConfigBuilder;
@@ -29,7 +29,7 @@ public class ConfigBuilderTest {
 	        assertThat(builder.getLoader(), instanceOf(RemoteWorkflowLoader.class));
 	        assertNotNull(builder.getWorkflowCache());	
 	        assertThat(builder.getWorkflowCache(), instanceOf(EmptyWorkflowCache.class));
-	        assertThat(builder.getActionRegistry(), instanceOf(ActionRegistry.class));
+	        assertThat(builder.getActionRegistry(), instanceOf(ActionHandlersRegistry.class));
 	}
 	
 	@Test
@@ -42,7 +42,7 @@ public class ConfigBuilderTest {
 	        assertThat(builder.getLoader(), instanceOf(FileWorkflowLoader.class));
 	        assertNotNull(builder.getWorkflowCache());	
 	        assertThat(builder.getWorkflowCache(), instanceOf(EmptyWorkflowCache.class));
-	        assertThat(builder.getActionRegistry(), instanceOf(ActionRegistry.class));
+	        assertThat(builder.getActionRegistry(), instanceOf(ActionHandlersRegistry.class));
 	}
 	
 	@Test
@@ -54,7 +54,7 @@ public class ConfigBuilderTest {
 	        assertThat(builder.getLoader(), instanceOf(RemoteWorkflowLoader.class));
 	        assertNotNull(builder.getWorkflowCache());	
 	        assertThat(builder.getWorkflowCache(), instanceOf(ConcurrentMapWorkflowCache.class));
-	        assertThat(builder.getActionRegistry(), instanceOf(ActionRegistry.class));
+	        assertThat(builder.getActionRegistry(), instanceOf(ActionHandlersRegistry.class));
 	}
 	@Test
 	public void testConfigBuilderWithInitStrategy() throws FlowExecutionException{
@@ -65,19 +65,19 @@ public class ConfigBuilderTest {
 	        assertThat(builder.getLoader(), instanceOf(RemoteWorkflowLoader.class));
 	        assertNotNull(builder.getWorkflowCache());	
 	        assertThat(builder.getWorkflowCache(), instanceOf(EmptyWorkflowCache.class));
-	        assertThat(builder.getActionRegistry(), instanceOf(ActionRegistry.class));
+	        assertThat(builder.getActionRegistry(), instanceOf(ActionHandlersRegistry.class));
 	}
 	
 	@Test
 	public void testConfigBuilderWithActionRegistry() throws FlowExecutionException{
-	    	ConfigBuilder builder = new ConfigBuilder().withActionRegistry(new ActionRegistry(new HashMap<>()));
+	    	ConfigBuilder builder = new ConfigBuilder().withActionRegistry(new ActionHandlersRegistry(new HashMap<>()));
 	        assertNotNull(builder.getCustomInitStrategy());
 	        assertThat(builder.getCustomInitStrategy(), instanceOf(DefaultCustomBlockInitStrategy.class));
 	        assertNotNull(builder.getLoader());	
 	        assertThat(builder.getLoader(), instanceOf(RemoteWorkflowLoader.class));
 	        assertNotNull(builder.getWorkflowCache());	
 	        assertThat(builder.getWorkflowCache(), instanceOf(EmptyWorkflowCache.class));
-	        assertThat(builder.getActionRegistry(), instanceOf(ActionRegistry.class));
+	        assertThat(builder.getActionRegistry(), instanceOf(ActionHandlersRegistry.class));
 	}
 	
 }

@@ -203,24 +203,5 @@ public class CacheTest {
 		
 	}
 	
-	@Test
-	public void testInitMethodWithCache() throws FlowExecutionException {
-		               
-		 ActionBlock b1 = new ActionBlock() {
-			
-			
-			
-			@Override
-			public int execute(FlowContext context) throws FlowExecutionException {
-				// TODO Auto-generated method stub
-				return 0;
-			}
-			
-			@Override
-			public void init() throws FlowExecutionException {
-
-			}
-		};
-	}
 
 }

@@ -16,7 +16,8 @@
  */
 package org.neuro4j.workflow;
 
-import java.lang.reflect.InvocationTargetException;
+import static org.neuro4j.workflow.loader.f4j.SWFConstants.*;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -27,14 +28,16 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.beanutils.PropertyUtils;
-import org.neuro4j.workflow.loader.f4j.SWFConstants;
-import org.neuro4j.workflow.log.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Keeps all in/out variables during flow execution. 
  *
  */
 public class FlowContext {
+
+	private static final Logger logger = LoggerFactory.getLogger(FlowContext.class);
 
     /**
      * 
@@ -80,7 +83,7 @@ public class FlowContext {
         }
         key = key.trim();
 
-        if (key.startsWith(SWFConstants.QUOTES_SYMBOL) && key.endsWith(SWFConstants.QUOTES_SYMBOL) && key.length() > 1)
+        if (key.startsWith(QUOTES_SYMBOL) && key.endsWith(QUOTES_SYMBOL) && key.length() > 1)
         {
             return key.substring(1, key.length() - 1);
         }
@@ -95,12 +98,8 @@ public class FlowContext {
                 try {
                     obj = PropertyUtils.getProperty(obj, utilKey);
                     return obj;
-                } catch (IllegalAccessException e) {
-                    Logger.error(this, e.getMessage(), e);
-                } catch (InvocationTargetException e) {
-                    Logger.error(this, e.getMessage(), e);
-                } catch (NoSuchMethodException e) {
-                    Logger.error(this, e.getMessage(), e);
+                } catch (Exception e) {
+                	logger.error(e.getMessage(), e);
                 }
             } else {
                 return null;

@@ -27,7 +27,8 @@ import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.loader.f4j.SWFConstants;
-import org.neuro4j.workflow.log.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Base class for executable nodes
@@ -35,145 +36,146 @@ import org.neuro4j.workflow.log.Logger;
  */
 public class WorkflowNode {
 
-    final private Map<String, String> parameters = new HashMap<String, String>(4);
+	private static final Logger logger = LoggerFactory.getLogger(WorkflowNode.class);
 
-    
-    final Map<String, Transition> exits = new HashMap<String, Transition>(3);
+	final private Map<String, String> parameters = new HashMap<String, String>(4);
 
-    private final NodeInfo nodeInfo;
+	final Map<String, Transition> exits = new HashMap<String, Transition>(3);
 
-    public WorkflowNode(String name, String uuid) {
-    	nodeInfo = new NodeInfo(uuid, name);
-    }
-    
-    public Set<String> getParameterNames() {
-        return parameters.keySet();
-    }
+	private final NodeInfo nodeInfo;
 
-    public void addParameter(String key, String value) {
-        this.parameters.put(key, value);
-    }
+	public WorkflowNode(String name, String uuid) {
+		nodeInfo = new NodeInfo(uuid, name);
+	}
 
-    public String getParameter(String key) {
+	public Set<String> getParameterNames() {
+		return parameters.keySet();
+	}
 
-        return this.parameters.get(key);
-    }
+	public void addParameter(String key, String value) {
+		this.parameters.put(key, value);
+	}
 
-    public String getName() {
-        return nodeInfo.getName();
-    }
+	public String getParameter(String key) {
 
-    public String getUuid() {
-        return nodeInfo.getUuid();
-    }
-    
-    public NodeInfo getNodeInfo() {
+		return this.parameters.get(key);
+	}
+
+	public String getName() {
+		return nodeInfo.getName();
+	}
+
+	public String getUuid() {
+		return nodeInfo.getUuid();
+	}
+
+	public NodeInfo getNodeInfo() {
 		return nodeInfo;
 	}
 
-    public Transition getExitByName(String relationName) {
-        return exits.get(relationName);
-    }
+	public Transition getExitByName(String relationName) {
+		return exits.get(relationName);
+	}
 
+	public void registerExit(Transition con) {
+		con.setFromNode(this);
+		exits.put(con.getName(), con);
 
-    public void registerExit(Transition con) {
-        con.setFromNode(this);
-        exits.put(con.getName(), con);
+	}
 
-    }
+	public Collection<Transition> getExits() {
+		return exits.values();
+	}
 
-    public Collection<Transition> getExits() {
-        return exits.values();
-    }
+	/**
+	 * Validates if current node can be executed
+	 * 
+	 * @param ctx
+	 *            current context
+	 * @param processor
+	 *            current processor
+	 * @param ctx
+	 *            current context
+	 * @throws FlowExecutionException
+	 *             in case of error
+	 */
+	public void validate(final WorkflowProcessor processor, final FlowContext ctx) throws FlowExecutionException {
+		return;
+	}
 
-    /**
-     * Validates if current node can be executed
-     * @param ctx current context
-     * @param processor current processor
-     * @param ctx current context
-     * @throws FlowExecutionException in case of error
-     */
-    public void validate(final WorkflowProcessor processor, final FlowContext ctx) throws FlowExecutionException
-    {
-        return;
-    }
+	/**
+	 * Executes current node.
+	 * 
+	 * @param processor
+	 *            workflow processor
+	 * @param request
+	 *            current request
+	 * @return next transition
+	 * @throws FlowExecutionException
+	 *             in case of error
+	 */
+	protected Transition execute(final WorkflowProcessor processor, final WorkflowRequest request)
+			throws FlowExecutionException {
+		return null;
+	}
 
+	public void init() throws FlowInitializationException {
 
+	}
 
-    /**
-     * Executes current node.
-     * @param processor workflow processor
-     * @param request current request
-     * @return next transition
-     * @throws FlowExecutionException in case of error
-     */
-    protected Transition execute(final WorkflowProcessor processor, final WorkflowRequest request) throws FlowExecutionException
-    {
-        return null;
-    }
+	protected final void evaluateParameterValue(String source, String target, FlowContext ctx) {
+		Object obj = null;
 
-    
-    public void init() throws FlowInitializationException
-    {
+		// 1) if null
+		if (SWFConstants.NULL_VALUE.equalsIgnoreCase(source)) {
+			ctx.put(target, null);
+			return;
 
-    }
+			// 2) if create new class expression
+		} else if (source.startsWith(SWFConstants.NEW_CLASS_SYMBOL_START)
+				&& source.endsWith(SWFConstants.NEW_CLASS_SYMBOL_END)) {
 
-    protected final void evaluateParameterValue(String source, String target, FlowContext ctx)
-    {
-        Object obj = null;
+			source = source.replace(SWFConstants.QUOTES_SYMBOL, "").replace("(", "").replace(")", "");
 
-        // 1) if null
-        if (SWFConstants.NULL_VALUE.equalsIgnoreCase(source))
-        {
-            ctx.put(target, null);
-            return;
+			obj = createNewInstance(source);
 
-            // 2) if create new class expression
-        } else if (source.startsWith(SWFConstants.NEW_CLASS_SYMBOL_START) && source.endsWith(SWFConstants.NEW_CLASS_SYMBOL_END)) {
+			ctx.put(target, obj);
+			return;
+		}
 
-            source = source.replace(SWFConstants.QUOTES_SYMBOL, "").replace("(", "").replace(")", "");
+		String[] parts = source.split("\\+");
 
-            obj = createNewInstance(source);
+		// if concatenated string
+		if (parts.length > 1) {
+			String stringValue = "";
 
-            ctx.put(target, obj);
-            return;
-        }
+			for (String src : parts) {
+				stringValue += (String) ctx.get(src);
+			}
+			obj = stringValue;
 
-        String[] parts = source.split("\\+");
+		} else {
+			obj = ctx.get(source);
+		}
 
-        // if concatenated string
-        if (parts.length > 1)
-        {
-            String stringValue = "";
+		ctx.put(target, obj);
 
-            for (String src : parts)
-            {
-                stringValue += (String) ctx.get(src);
-            }
-            obj = stringValue;
+	}
 
-        } else {
-            obj = ctx.get(source);
-        }
+	private Object createNewInstance(String clazzName) {
+		Class<?> beanClass = null;
+		Object beanInstance = null;
+		try {
+			beanClass = getClass().getClassLoader().loadClass(clazzName);
+			beanInstance = ConstructorUtils.invokeConstructor(beanClass, null);
+		} catch (Exception e) {
+			logger.error("Error during creating class" + clazzName, e);
+		}
 
-        ctx.put(target, obj);
+		return beanInstance;
 
-    }
+	}
 
-    private  Object createNewInstance(String clazzName) {
-        Class<?> beanClass = null;
-        Object beanInstance = null;
-        try {
-            beanClass = getClass().getClassLoader().loadClass(clazzName);
-            beanInstance = ConstructorUtils.invokeConstructor(beanClass, null);
-        } catch (Exception e) {
-            Logger.error(WorkflowNode.class, e.getMessage(), e);
-        }
-
-        return beanInstance;
-
-    }
-    
 	static public class NodeInfo {
 		private final String uuid;
 		private final String name;

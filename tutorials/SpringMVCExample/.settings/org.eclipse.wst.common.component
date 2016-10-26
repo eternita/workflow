@@ -2,7 +2,7 @@
     <wb-module deploy-name="SpringMVCExample">
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/"/>
         <dependent-module archiveName="spring-webmvc-workflow-3.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/spring-webmvc-workflow/spring-webmvc-workflow">
             <dependency-type>uses</dependency-type>
         </dependent-module>

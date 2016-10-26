@@ -27,7 +27,9 @@ import java.util.function.Function;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.Workflow;
 import org.neuro4j.workflow.common.WorkflowConverter;
-import org.neuro4j.workflow.log.Logger;
+import org.neuro4j.workflow.utils.Validation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Allows to load workflow file from remote host.
@@ -35,6 +37,8 @@ import org.neuro4j.workflow.log.Logger;
  */
 public class RemoteWorkflowLoader extends URLWorkflowLoader {
 
+	private static final Logger logger = LoggerFactory.getLogger(RemoteWorkflowLoader.class);
+	
 	/**
 	 * If requested flow does not start with http:// or https:// delegates execution to next loader
 	 */
@@ -63,6 +67,7 @@ public class RemoteWorkflowLoader extends URLWorkflowLoader {
 
 	@Override
 	public Workflow load(final String location) throws FlowExecutionException {
+		Validation.requireNonNull(location, () -> new FlowExecutionException("Location can not be null"));
 		String flow = location;
 		if (location.startsWith("http://") || location.startsWith("https://")) {
 			try {
@@ -70,7 +75,7 @@ public class RemoteWorkflowLoader extends URLWorkflowLoader {
 				flow = url.getFile();
 				return content(url, location);
 			} catch (Exception e) {
-				Logger.error(this, e);
+				logger.error("Error during loading " + location, e);
 				flow = onErrorRewrite.apply(location);
 				
 			}

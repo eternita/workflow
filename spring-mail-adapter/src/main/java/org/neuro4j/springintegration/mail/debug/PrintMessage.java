@@ -25,12 +25,14 @@ import javax.mail.Multipart;
 import javax.mail.Part;
 import javax.mail.internet.MimeMessage;
 
+import org.neuro4j.springframework.context.SpringContextInitStrategy;
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.ParameterDefinition;
 import org.neuro4j.workflow.common.ParameterDefinitionList;
-import org.neuro4j.workflow.log.Logger;
 import org.neuro4j.workflow.node.CustomBlock;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.messaging.Message;
 
 /**
@@ -40,6 +42,9 @@ import org.springframework.messaging.Message;
 @ParameterDefinitionList(input = { @ParameterDefinition(name = IN_MESSAGE, isOptional = true, type = "org.springframework.messaging.Message") }, output = {})
 public class PrintMessage extends CustomBlock {
 
+	private static final Logger Logger = LoggerFactory.getLogger(SpringContextInitStrategy.class);
+
+	
 	static final String IN_MESSAGE = "message";
 
 	public int execute(FlowContext ctx) throws FlowExecutionException {
@@ -55,7 +60,7 @@ public class PrintMessage extends CustomBlock {
 		try {
 			writeMessageToSystemOut(mimeMessage);
 		} catch (Exception e) {
-			Logger.error(this, e);
+			Logger.error(e.getMessage(), e);
 			return ERROR;
 		}
 

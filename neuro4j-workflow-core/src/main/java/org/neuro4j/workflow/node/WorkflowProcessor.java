@@ -20,7 +20,7 @@ import org.neuro4j.workflow.ActionBlock;
 import org.neuro4j.workflow.ActionHandler;
 import org.neuro4j.workflow.ExecutionResult;
 import org.neuro4j.workflow.WorkflowRequest;
-import org.neuro4j.workflow.cache.ActionRegistry;
+import org.neuro4j.workflow.cache.ActionHandlersRegistry;
 import org.neuro4j.workflow.cache.WorkflowCache;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.FlowInitializationException;
@@ -28,14 +28,18 @@ import org.neuro4j.workflow.common.Workflow;
 import org.neuro4j.workflow.common.WorkflowEngine.ConfigBuilder;
 import org.neuro4j.workflow.debug.DebugService;
 import org.neuro4j.workflow.loader.WorkflowLoader;
-import org.neuro4j.workflow.log.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Executes workflow with given parameters
  */
 public class WorkflowProcessor {
 	
-	private final ActionRegistry registry;
+	private static final Logger logger = LoggerFactory.getLogger(WorkflowProcessor.class);
+	
+	
+	private final ActionHandlersRegistry registry;
 
 	private final WorkflowLoader loader;
 
@@ -70,12 +74,12 @@ public class WorkflowProcessor {
 			
 			FlowParameter flowParameter = FlowParameter.parse(flow);
 
-			Logger.debug(this, "Loading flow: {}", flowParameter);
+			logger.debug("Loading flow: {}", flowParameter);
 			long startLoading = System.currentTimeMillis();
 
 			Workflow workflow = loadWorkflow(flowParameter.getFlowName());
 
-			Logger.debug(this, "Loaded flow: {} in {} ms", flowParameter.getFlowName(), System.currentTimeMillis() - startLoading);
+			logger.debug("Loaded flow: {} in {} ms", flowParameter.getFlowName(), System.currentTimeMillis() - startLoading);
 			if (null == workflow)
 				throw new FlowExecutionException("Flow '" + flowParameter.getFlowName() + "' can't be loaded");
 
@@ -96,7 +100,7 @@ public class WorkflowProcessor {
 			executeWorkflow(startNode, request);
 			request.popPackage();
 		} catch (FlowExecutionException ex) {
-			Logger.error(this, ex.getMessage(), ex);
+			logger.error(ex.getMessage(), ex);
 			result.setExecutionExeption(ex);
 		}
 
@@ -105,7 +109,7 @@ public class WorkflowProcessor {
 		if (lastNode != null) {
 			result.setLastSuccessfulNodeName(lastNode.getName());
 		}
-		Logger.debug(this, "Flow execution time: {} ms.", System.currentTimeMillis() - start);
+		logger.debug("Flow execution time: {} ms.", System.currentTimeMillis() - start);
 		return result;
 	}
 
@@ -132,7 +136,7 @@ public class WorkflowProcessor {
 			request.setLastSuccessfulNode(lastNode);
 
 			if (step != null) {
-				Logger.debug(Workflow.class, "Next step: {} ({})", step.getName(), step.getUuid());
+				logger.debug("Next step: {} ({})", step.getName(), step.getUuid());
 			}
 
 		}
@@ -150,7 +154,7 @@ public class WorkflowProcessor {
 
 		long startTime = System.currentTimeMillis();
 
-		Logger.debug(this, "      Running: {} ({})", node.getName(), this.getClass().getCanonicalName());
+		logger.debug("      Running: {} ({})", node.getName(), this.getClass().getCanonicalName());
 
 		node.validate(this, request.getLogicContext());
 
@@ -158,7 +162,7 @@ public class WorkflowProcessor {
 
 		Transition transition = node.execute(this, request);
 
-		Logger.debug(this, "      Finished: {} in ({} ms.)", node.getName(), (System.currentTimeMillis() - startTime));
+		logger.debug("      Finished: {} in ({} ms.)", node.getName(), (System.currentTimeMillis() - startTime));
 		if (transition != null) {
 			return transition.getToNode();
 		}

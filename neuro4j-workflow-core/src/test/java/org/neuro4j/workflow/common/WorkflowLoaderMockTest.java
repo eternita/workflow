@@ -1,26 +1,26 @@
 package org.neuro4j.workflow.common;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.neuro4j.workflow.loader.ClasspathWorkflowLoader;
-import org.neuro4j.workflow.loader.FileWorkflowLoader;
-import org.neuro4j.workflow.loader.RemoteWorkflowLoader;
-import org.neuro4j.workflow.loader.WorkflowLoader;
-import org.neuro4j.workflow.node.FlowParameter;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import static org.junit.Assert.*;
-import static org.hamcrest.Matchers.*;
-import static org.mockito.Mockito.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLStreamHandler;
-import java.util.UUID;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.neuro4j.workflow.loader.ClasspathWorkflowLoader;
+import org.neuro4j.workflow.loader.RemoteWorkflowLoader;
+import org.neuro4j.workflow.loader.WorkflowLoader;
+import org.neuro4j.workflow.node.FlowParameter;
 
 public class WorkflowLoaderMockTest {
 

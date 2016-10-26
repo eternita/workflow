@@ -16,11 +16,13 @@
  */
 package org.neuro4j.workflow.loader;
 
+import static org.neuro4j.workflow.utils.Validation.requireNonNull;
+
 import org.apache.commons.beanutils.ConstructorUtils;
 import org.neuro4j.workflow.ActionBlock;
 import org.neuro4j.workflow.common.FlowExecutionException;
-import org.neuro4j.workflow.log.Logger;
-import static org.neuro4j.workflow.utils.Validation.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This class provides default implementation of CustomBlockInitStrategy.
@@ -28,6 +30,9 @@ import static org.neuro4j.workflow.utils.Validation.*;
  */
 public class DefaultCustomBlockInitStrategy implements CustomBlockInitStrategy {
 
+	private static final Logger logger = LoggerFactory.getLogger(DefaultCustomBlockInitStrategy.class);
+
+	
 	@Override
 	public ActionBlock loadCustomBlock(String className) throws FlowExecutionException {
 		Class<? extends ActionBlock> clazz = getCustomBlockClass(className);
@@ -40,7 +45,7 @@ public class DefaultCustomBlockInitStrategy implements CustomBlockInitStrategy {
 			}
 
 		} catch (Exception e) {
-			Logger.error(this, e);
+			logger.error("Error during loading custom block " + className, e);
 		}
 		throw new FlowExecutionException("CustomBlock: " + className + " can not be initialized.");
 	}
@@ -60,9 +65,9 @@ public class DefaultCustomBlockInitStrategy implements CustomBlockInitStrategy {
 			}
 
 		} catch (ClassNotFoundException e) {
-			Logger.error(this, e);
+			logger.error(className + " not found", e);
 		}
-		throw new FlowExecutionException("CustomBlock: " + className + " can not be initialized.");
+		throw new FlowExecutionException("CustomBlock: " + className + " can not be initialized.");		
 	}
 
 }

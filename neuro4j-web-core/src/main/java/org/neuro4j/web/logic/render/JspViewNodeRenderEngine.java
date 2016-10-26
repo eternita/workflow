@@ -16,8 +16,6 @@
  */
 package org.neuro4j.web.logic.render;
 
-import java.io.IOException;
-
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -26,7 +24,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.neuro4j.web.logic.WebFlowConstants;
 import org.neuro4j.workflow.FlowContext;
-import org.neuro4j.workflow.log.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * 
@@ -35,6 +34,9 @@ import org.neuro4j.workflow.log.Logger;
  */
 public class JspViewNodeRenderEngine implements ViewNodeRenderEngine {
 
+	private static final Logger Logger = LoggerFactory.getLogger(JspViewNodeRenderEngine.class);
+
+	
     @Override
     public void render(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext, FlowContext logicContext, String view) throws ViewNodeRenderExecutionException {
         
@@ -49,11 +51,8 @@ public class JspViewNodeRenderEngine implements ViewNodeRenderEngine {
         
         try {
             servletContext.getRequestDispatcher(view).forward(request, response);
-        } catch (ServletException e) {
-            Logger.error(this, e);
-            throw new ViewNodeRenderExecutionException(e);
-        } catch (IOException e) {
-            Logger.error(this, e);
+        } catch (Exception e) {
+            Logger.error(e.getMessage(), e);
             throw new ViewNodeRenderExecutionException(e);
         }
     }

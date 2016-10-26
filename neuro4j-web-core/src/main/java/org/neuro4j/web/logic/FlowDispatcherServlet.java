@@ -31,9 +31,11 @@ import org.neuro4j.web.workflow.core.WebRequest;
 import org.neuro4j.workflow.ExecutionResult;
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.common.WorkflowEngine;
-import org.neuro4j.workflow.log.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class FlowDispatcherServlet extends HttpServlet {
+	private static final Logger Logger = LoggerFactory.getLogger(FlowDispatcherServlet.class);
 
 	WorkflowEngine engine;
 	
@@ -70,7 +72,7 @@ public class FlowDispatcherServlet extends HttpServlet {
             if (null == locale)
                 locale = Locale.getDefault();
 
-            Logger.debug(this, "Using '{}' locale", locale);
+            Logger.debug("Using '{}' locale", locale);
 
             webRequest.setRequestLocale(locale);
         }
@@ -94,7 +96,7 @@ public class FlowDispatcherServlet extends HttpServlet {
 
             String renderType = (String) context.getRenderType();
 
-            Logger.debug(this, "Using '{}' web render", renderType);
+            Logger.debug("Using '{}' web render", renderType);
 
             if (null != renderType && renderType.trim().length() > 0)
             {
@@ -124,7 +126,7 @@ public class FlowDispatcherServlet extends HttpServlet {
      */
     private void processFlowExeption(HttpServletRequest request, HttpServletResponse response, Exception exeption) throws ServletException, IOException {
         request.setAttribute("exception", exeption);
-        Logger.error(this, exeption);
+        Logger.error(exeption.getMessage(), exeption);
         getServletContext().getRequestDispatcher(WebFlowConstants.ERROR_PAGE).forward(request, response);
     }
 

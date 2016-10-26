@@ -8,11 +8,13 @@ import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.ParameterDefinition;
 import org.neuro4j.workflow.common.ParameterDefinitionList;
-import org.neuro4j.workflow.log.Logger;
 import org.neuro4j.workflow.node.CustomBlock;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @ParameterDefinitionList(input = { @ParameterDefinition(name = IN_MESSAGE, isOptional = true, type = "javax.jms.Message") }, output = {})
 public class DoSomething extends CustomBlock {
+	private static final Logger Logger = LoggerFactory.getLogger(DoSomething.class);
 
 	static final String IN_MESSAGE = "message";
 
@@ -20,7 +22,7 @@ public class DoSomething extends CustomBlock {
 
 		Message message = (Message) ctx.get(IN_MESSAGE);
 
-		Logger.info(this, "Working with message {}", message);
+		Logger.info("Working with message {}", message);
 
 		return NEXT;
 	}

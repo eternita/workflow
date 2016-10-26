@@ -18,14 +18,15 @@ package org.neuro4j.jasper.input;
 
 import static org.neuro4j.jasper.input.LoadTemplate.IN_TEMPLATEPATH;
 import static org.neuro4j.jasper.input.LoadTemplate.OUT_JASPER_INPUTSTREAM;
+import static org.neuro4j.workflow.enums.ActionBlockCache.SINGLETON;
 
 import java.io.InputStream;
 
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.common.FlowExecutionException;
-import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.common.ParameterDefinition;
 import org.neuro4j.workflow.common.ParameterDefinitionList;
+import org.neuro4j.workflow.enums.CachedNode;
 import org.neuro4j.workflow.node.CustomBlock;
 
 /**
@@ -36,6 +37,7 @@ import org.neuro4j.workflow.node.CustomBlock;
         @ParameterDefinition(name = IN_TEMPLATEPATH, isOptional = false, type = "java.lang.String") },
         output = {
                 @ParameterDefinition(name = OUT_JASPER_INPUTSTREAM, isOptional = true, type = "java.io.InputStream") })
+@CachedNode(type=SINGLETON)
 public class LoadTemplate extends CustomBlock {
 
     static final String IN_TEMPLATEPATH = "templatePath";
@@ -47,9 +49,8 @@ public class LoadTemplate extends CustomBlock {
         // reports/report1.jasper
         String templatePath = (String) ctx.get(IN_TEMPLATEPATH);
 
-        InputStream inputStream = LoadTemplate.class.getClassLoader().getResourceAsStream(templatePath);
+        InputStream inputStream =getClass().getClassLoader().getResourceAsStream(templatePath);
 
-        // TODO: put your code here
 
         if (inputStream == null)
         {

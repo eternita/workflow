@@ -21,8 +21,9 @@ import java.util.Map;
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.ParameterDefinitionList;
-import org.neuro4j.workflow.log.Logger;
 import org.neuro4j.workflow.node.CustomBlock;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Print all parameters in FlowContext
@@ -31,12 +32,15 @@ import org.neuro4j.workflow.node.CustomBlock;
 @ParameterDefinitionList(input = {}, output = {})
 public class PrintFlowContext extends CustomBlock {
 
+	private static final Logger Logger = LoggerFactory.getLogger(PrintFlowContext.class);
+
+	
 	public int execute(FlowContext ctx) throws FlowExecutionException {
 
 		Map<String, Object> parameters = ctx.getParameters();
 
 		for (String key : parameters.keySet()) {
-			Logger.info(this, " \n Key: {}   value: {} ", new Object[] { key, parameters.get(key) });
+			Logger.info(" \n Key: {}   value: {} ", new Object[] { key, parameters.get(key) });
 		}
 
 		return NEXT;

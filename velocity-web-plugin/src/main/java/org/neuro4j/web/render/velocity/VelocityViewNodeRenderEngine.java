@@ -29,9 +29,11 @@ import org.apache.velocity.tools.view.VelocityViewServlet;
 import org.neuro4j.web.logic.render.ViewNodeRenderEngine;
 import org.neuro4j.web.logic.render.ViewNodeRenderExecutionException;
 import org.neuro4j.workflow.FlowContext;
-import org.neuro4j.workflow.log.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class VelocityViewNodeRenderEngine implements ViewNodeRenderEngine {
+	private static final Logger Logger = LoggerFactory.getLogger(VelocityViewNodeRenderEngine.class);
 
     private Class<?> servletClass = org.apache.velocity.tools.view.VelocityViewServlet.class;
     private VelocityViewServlet theServlet;
@@ -51,7 +53,7 @@ public class VelocityViewNodeRenderEngine implements ViewNodeRenderEngine {
                 loadRelativePath(config);
 
             } catch (Exception e) {
-                Logger.error(this,e);
+                Logger.error(e.getMessage(),e);
                 throw new ViewNodeRenderExecutionException(e.getMessage());
             }
         }

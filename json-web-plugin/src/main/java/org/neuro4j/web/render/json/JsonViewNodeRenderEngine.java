@@ -27,13 +27,15 @@ import javax.servlet.http.HttpServletResponse;
 import org.neuro4j.web.logic.render.ViewNodeRenderEngine;
 import org.neuro4j.web.logic.render.ViewNodeRenderExecutionException;
 import org.neuro4j.workflow.FlowContext;
-import org.neuro4j.workflow.log.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This class processes response in json format.
  *
  */
 public class JsonViewNodeRenderEngine implements ViewNodeRenderEngine {
+	private static final Logger Logger = LoggerFactory.getLogger(JsonViewNodeRenderEngine.class);
 
     public static final String JSON_MIME_TYPE = "application/json";
 
@@ -44,9 +46,6 @@ public class JsonViewNodeRenderEngine implements ViewNodeRenderEngine {
     }
 
     
-    /**
-     * 
-     */
     @Override
     public void render(HttpServletRequest request, HttpServletResponse response, ServletContext servletContext, FlowContext logicContext, String view) throws ViewNodeRenderExecutionException
     {
@@ -62,7 +61,7 @@ public class JsonViewNodeRenderEngine implements ViewNodeRenderEngine {
             writer.write(view);
             writer.flush();
         } catch (IOException e) {
-            Logger.error(this, e);
+            Logger.error(e.getMessage(), e);
             throw new ViewNodeRenderExecutionException(e);
         }
 

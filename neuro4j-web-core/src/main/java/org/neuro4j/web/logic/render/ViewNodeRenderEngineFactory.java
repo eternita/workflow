@@ -24,7 +24,8 @@ import java.util.Properties;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 
-import org.neuro4j.workflow.log.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Instantiate ViewNodeRenderEngine by render type.
@@ -32,6 +33,9 @@ import org.neuro4j.workflow.log.Logger;
  */
 public class ViewNodeRenderEngineFactory {
 
+	private static final Logger Logger = LoggerFactory.getLogger(JspViewNodeRenderEngine.class);
+
+	
     private static Hashtable<String, ViewNodeRenderEngine> renders = new Hashtable<String, ViewNodeRenderEngine>();
 
     public static ViewNodeRenderEngine getViewNodeRenderEngine(ServletConfig config, ServletContext servletContext, String renderType) throws ViewNodeRenderExecutionException
@@ -60,15 +64,9 @@ public class ViewNodeRenderEngineFactory {
                     renders.put(renderType, engine);
 
                 }
-            } catch (ClassNotFoundException e) {
-                Logger.error(ViewNodeRenderEngineFactory.class, e);
+            } catch (Exception e) {
+                Logger.error(e.getMessage(), e);
                 throw new ViewNodeRenderExecutionException("ViewNodeRenderEngine " + renderClass + " not found");
-            } catch (InstantiationException e) {
-                Logger.error(ViewNodeRenderEngineFactory.class, e);
-                throw new ViewNodeRenderExecutionException("ViewNodeRenderEngine: InstantiationException for: " + renderClass);
-            } catch (IllegalAccessException e) {
-                Logger.error(ViewNodeRenderEngineFactory.class, e);
-                throw new ViewNodeRenderExecutionException("ViewNodeRenderEngine: IllegalAccessException for: " + renderClass);
             }
             
         }
@@ -103,13 +101,13 @@ public class ViewNodeRenderEngineFactory {
             renderImpl = prop.getProperty("viewRender");
 
         } catch (IOException ex) {
-            Logger.error(ViewNodeRenderEngineFactory.class, ex);
+            Logger.error(ex.getMessage(), ex);
         } finally {
             if (input != null) {
                 try {
                     input.close();
                 } catch (IOException e) {
-                    Logger.error(ViewNodeRenderEngineFactory.class, e);
+                    Logger.error(e.getMessage(), e);
                 }
             }
         }

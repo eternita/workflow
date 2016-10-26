@@ -26,6 +26,17 @@ import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.neuro4j.workflow.FlowContext;
+import org.neuro4j.workflow.common.FlowExecutionException;
+import org.neuro4j.workflow.common.ParameterDefinition;
+import org.neuro4j.workflow.common.ParameterDefinitionList;
+import static org.neuro4j.workflow.enums.ActionBlockCache.*;
+import org.neuro4j.workflow.enums.CachedNode;
+import org.neuro4j.workflow.log.PrintFlowContext;
+import org.neuro4j.workflow.node.CustomBlock;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import net.sf.jasperreports.engine.JRAbstractExporter;
 import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JREmptyDataSource;
@@ -40,14 +51,6 @@ import net.sf.jasperreports.engine.export.ooxml.JRDocxExporter;
 import net.sf.jasperreports.engine.export.ooxml.JRPptxExporter;
 import net.sf.jasperreports.engine.util.JRLoader;
 
-import org.neuro4j.workflow.FlowContext;
-import org.neuro4j.workflow.common.FlowExecutionException;
-import org.neuro4j.workflow.common.FlowInitializationException;
-import org.neuro4j.workflow.common.ParameterDefinition;
-import org.neuro4j.workflow.common.ParameterDefinitionList;
-import org.neuro4j.workflow.log.Logger;
-import org.neuro4j.workflow.node.CustomBlock;
-
 @ParameterDefinitionList(input = {
         @ParameterDefinition(name = IN_JASPER_FORMAT, isOptional = true, type = "java.lang.String"),
         @ParameterDefinition(name = IN_JASPER_OUTPUT_STREAM, isOptional = false, type = "java.io.OutputStream"),
@@ -56,7 +59,11 @@ import org.neuro4j.workflow.node.CustomBlock;
 },
         output = {
         })
+@CachedNode(type=SINGLETON)
 public class GenerateReport extends CustomBlock {
+	
+	private static final Logger Logger = LoggerFactory.getLogger(PrintFlowContext.class);
+
 
     static final String IN_JASPER_OUTPUT_STREAM = "jasperOutputStream";
     static final String IN_JASPER_INTPUT_STREAM = "jasperInputStream";
@@ -106,7 +113,7 @@ public class GenerateReport extends CustomBlock {
             exporter.exportReport();
 
         } catch (Exception e) {
-            Logger.error(this, e.getMessage(), e);
+            Logger.error(e.getMessage(), e);
         }
 
         return NEXT;

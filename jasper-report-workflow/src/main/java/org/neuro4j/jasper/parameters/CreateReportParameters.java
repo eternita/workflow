@@ -18,21 +18,23 @@ package org.neuro4j.jasper.parameters;
 
 import static org.neuro4j.jasper.parameters.CreateReportParameters.IN_INPUTMAP;
 import static org.neuro4j.jasper.parameters.CreateReportParameters.OUT_PARAMETERS;
+import static org.neuro4j.workflow.enums.ActionBlockCache.SINGLETON;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.common.FlowExecutionException;
-import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.common.ParameterDefinition;
 import org.neuro4j.workflow.common.ParameterDefinitionList;
+import org.neuro4j.workflow.enums.CachedNode;
 import org.neuro4j.workflow.node.CustomBlock;
 
 @ParameterDefinitionList(input = {
         @ParameterDefinition(name = IN_INPUTMAP, isOptional = true, type = "java.util.Map") },
         output = {
                 @ParameterDefinition(name = OUT_PARAMETERS, isOptional = false, type = "java.util.Map") })
+@CachedNode(type=SINGLETON)
 public class CreateReportParameters extends CustomBlock {
 
     static final String IN_INPUTMAP = "inputMap";

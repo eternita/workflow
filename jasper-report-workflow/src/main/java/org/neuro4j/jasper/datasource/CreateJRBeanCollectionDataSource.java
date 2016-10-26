@@ -18,23 +18,25 @@ package org.neuro4j.jasper.datasource;
 
 import static org.neuro4j.jasper.datasource.CreateJRBeanCollectionDataSource.IN_COLLECTION;
 import static org.neuro4j.jasper.datasource.CreateJRBeanCollectionDataSource.OUT_JASPERDATASOURCE;
+import static org.neuro4j.workflow.enums.ActionBlockCache.SINGLETON;
 
 import java.util.Collection;
 import java.util.Collections;
 
-import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
-
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.common.FlowExecutionException;
-import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.common.ParameterDefinition;
 import org.neuro4j.workflow.common.ParameterDefinitionList;
+import org.neuro4j.workflow.enums.CachedNode;
 import org.neuro4j.workflow.node.CustomBlock;
+
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 @ParameterDefinitionList(input = {
         @ParameterDefinition(name = IN_COLLECTION, isOptional = true, type = "java.util.Collection") },
         output = {
                 @ParameterDefinition(name = OUT_JASPERDATASOURCE, isOptional = false, type = "net.sf.jasperreports.engine.data.JRBeanCollectionDataSource") })
+@CachedNode(type=SINGLETON)
 public class CreateJRBeanCollectionDataSource extends CustomBlock {
 
     static final String IN_COLLECTION = "collection";

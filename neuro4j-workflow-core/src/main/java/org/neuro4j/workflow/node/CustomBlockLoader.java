@@ -26,14 +26,18 @@ import org.neuro4j.workflow.enums.ActionBlockCache;
 import org.neuro4j.workflow.enums.CachedNode;
 import org.neuro4j.workflow.loader.CustomBlockInitStrategy;
 import org.neuro4j.workflow.loader.DefaultCustomBlockInitStrategy;
-import org.neuro4j.workflow.log.Logger;
 import org.neuro4j.workflow.utils.Validation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Loads and initializes custom (user's defined) blocks.
  * 
  */
 public class CustomBlockLoader {
+	
+	private static final Logger logger = LoggerFactory.getLogger(CustomBlockLoader.class);
+
 
 	private final ConcurrentHashMap<String, ActionBlock> cache;
 
@@ -64,11 +68,11 @@ public class CustomBlockLoader {
     
 	public ActionBlock lookupBlock(CustomNode entity) throws FlowExecutionException {
 
-		long start = System.currentTimeMillis();
-
 		Validation.requireNonNull(entity.getExecutableClass(), 
 				                  () -> new FlowExecutionException("ExecutableClass not defined for CustomNode " + entity.getName()));
-				
+
+		long start = System.currentTimeMillis();
+		
 		ActionBlockCache cacheType =  Optional.ofNullable(getCustomBlockClass(entity).getAnnotation(CachedNode.class))
 				                              .map(n -> n.type())
 				                              .orElseGet(() -> ActionBlockCache.NONE);		
@@ -101,7 +105,7 @@ public class CustomBlockLoader {
 		}
 
 
-		Logger.debug(this, "CustomBlock {} loaded and initialized in {} ms", entity.getExecutableClass(),
+		logger.debug("CustomBlock {} loaded and initialized in {} ms", entity.getExecutableClass(),
 				System.currentTimeMillis() - start);
 
 		return block;

@@ -16,40 +16,55 @@
  */
 package org.neuro4j.workflow.common;
 
-import java.util.Collection;
 import java.util.HashMap;
+import java.util.Optional;
 
 import org.neuro4j.workflow.enums.FlowVisibility;
 import org.neuro4j.workflow.node.StartNode;
 import org.neuro4j.workflow.node.WorkflowNode;
 
 /**
- *
+ * Representation of single workflow unit. Holds information about all nodes in current workflow
  */
 public class Workflow {
 
 
-    private final HashMap<String, StartNode> startNodes;
-    protected final HashMap<String, WorkflowNode> nodes;
+    /**
+     * Holds information about all Start nodes
+     */
+    private final HashMap<String, StartNode> startNodes = new HashMap<String, StartNode>();
+   
+    /**
+     *  Keeps all nodes
+     */
+    private final HashMap<String, WorkflowNode> nodes = new HashMap<String, WorkflowNode>(); 
 
-    FlowVisibility visibility = FlowVisibility.Public;
+    /**
+     * FlowVisibility: can be Public or Private
+     */
+    private FlowVisibility visibility = FlowVisibility.getDefault();
 
-    private String flowPackage;
+    /**
+     *  Flow's paclage (ex. org.mydomain)
+     */
+    private final String flowPackage;
 
-    private String flowName;
+    /**
+     *  Flow name (ex. org.mydomain.MyFlow)
+     */
+    private final String flowName;
 
     public Workflow(String flowName, String flowPackage) {
-        this();
+        super();
         this.flowName = flowName;
         this.flowPackage = flowPackage;
     }
 
-    private Workflow() {
 
-        startNodes = new HashMap<String, StartNode>();
-        nodes = new HashMap<String, WorkflowNode>();
-    }
-
+    /**
+     * Returns package.
+     * @return package name
+     */
     public String getPackage() {
         return flowPackage;
     }
@@ -59,9 +74,6 @@ public class Workflow {
 
     }
 
-    public Collection<StartNode> getStartNodes() {
-        return startNodes.values();
-    }
 
     public boolean isPublic() {
         return visibility == FlowVisibility.Public;
@@ -72,10 +84,6 @@ public class Workflow {
         return nodes.get(uuid);
     }
 
-    public Collection<WorkflowNode> getNodes() {
-        return nodes.values();
-    }
-
     public void registerNode(WorkflowNode entity) {
         nodes.put(entity.getUuid(), entity);
     }
@@ -84,18 +92,17 @@ public class Workflow {
         startNodes.put(entity.getName(), entity);
     }
 
-    public void setVisibility(FlowVisibility visibility) {
-        if (visibility == null)
-        {
-            visibility = FlowVisibility.Public;
-        }
-        this.visibility = visibility;
+    public void setVisibility(final FlowVisibility visibility) {
+        this.visibility = Optional.ofNullable(visibility).orElse(FlowVisibility.getDefault());
     }
 
+    /**
+     * Returns flow name
+     * @return flow name
+     */
     public String getFlowName() {
         return flowName;
     }
-
 
 
 }

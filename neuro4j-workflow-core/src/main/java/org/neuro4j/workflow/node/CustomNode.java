@@ -16,6 +16,8 @@
  */
 package org.neuro4j.workflow.node;
 
+import static org.neuro4j.workflow.loader.f4j.SWFConstants.NEXT_RELATION_NAME;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,8 +29,8 @@ import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.common.ParameterDefinition;
 import org.neuro4j.workflow.common.ParameterDefinitionList;
-import static org.neuro4j.workflow.loader.f4j.SWFConstants.*;
-import org.neuro4j.workflow.log.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Holds information about user's defined block.
@@ -36,7 +38,9 @@ import org.neuro4j.workflow.log.Logger;
  *
  */
 public class CustomNode extends WorkflowNode {
-
+	
+	private static final Logger logger = LoggerFactory.getLogger(CustomNode.class);
+	
     private static final String NEXT_EXIT_RELATION = NEXT_RELATION_NAME;
     private static final String ERROR_EXIT_RELATION = "ERROR";
 
@@ -115,7 +119,7 @@ public class CustomNode extends WorkflowNode {
         {
             String name = parameter.name();
 
-            Logger.debug(this, "Processing input parameter: name - {} , type - {}", name, parameter.type());
+            logger.debug("Processing input parameter: name - {} , type - {}", name, parameter.type());
 
             doInputMapping(ctx, name);
 
@@ -180,7 +184,7 @@ public class CustomNode extends WorkflowNode {
 
 		String mappedValue = getParameter(originalName);
 		if (mappedValue != null && !mappedValue.equalsIgnoreCase(originalName)) {
-			Logger.debug(this, "Mapping parameter: {} to  {}", mappedValue, originalName);
+			logger.debug("Mapping parameter: {} to  {}", mappedValue, originalName);
 
 			evaluateParameterValue(mappedValue, originalName, ctx);
 		}
@@ -247,7 +251,7 @@ public class CustomNode extends WorkflowNode {
 
             if (className.contains(" "))
             {
-                Logger.error(this, "Class's name {} contains whitespace - please check your parameter with name: {}.", className, parameterDefinition.name());
+            	logger.error("Class's name {} contains whitespace - please check your parameter with name: {}.", className, parameterDefinition.name());
             }
 
             throw new FlowExecutionException(e);
