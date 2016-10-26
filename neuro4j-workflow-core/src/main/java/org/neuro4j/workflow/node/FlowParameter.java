@@ -81,42 +81,6 @@ public class FlowParameter {
 		return startNode;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((flowName == null) ? 0 : flowName.hashCode());
-		result = prime * result + ((flowPackage == null) ? 0 : flowPackage.hashCode());
-		result = prime * result + ((startNode == null) ? 0 : startNode.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		FlowParameter other = (FlowParameter) obj;
-		if (flowName == null) {
-			if (other.flowName != null)
-				return false;
-		} else if (!flowName.equals(other.flowName))
-			return false;
-		if (flowPackage == null) {
-			if (other.flowPackage != null)
-				return false;
-		} else if (!flowPackage.equals(other.flowPackage))
-			return false;
-		if (startNode == null) {
-			if (other.startNode != null)
-				return false;
-		} else if (!startNode.equals(other.startNode))
-			return false;
-		return true;
-	}
 
 	@Override
 	public String toString() {

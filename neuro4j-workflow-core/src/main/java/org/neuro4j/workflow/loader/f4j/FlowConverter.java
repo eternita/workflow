@@ -45,6 +45,7 @@ import org.neuro4j.workflow.node.SwitchNode;
 import org.neuro4j.workflow.node.Transition;
 import org.neuro4j.workflow.node.ViewNode;
 import org.neuro4j.workflow.node.WorkflowNode;
+import org.neuro4j.workflow.utils.Validation;
 
 /**
  * Loads workflow from file.
@@ -81,13 +82,13 @@ public class FlowConverter {
 
 		Workflow network = new Workflow(flow, getFlowPackage(flow));
 
-		for (NodeXML e : net.getXmlNodes()) {
+		for (NodeXML e : net.nodes) {
 
 			createNode(network, e);
 
 		}
 
-		for (NodeXML entity : net.getXmlNodes()) {
+		for (NodeXML entity : net.nodes) {
 
 			WorkflowNode node = network.getById(entity.getUuid());
 			if (node != null) {
@@ -119,7 +120,7 @@ public class FlowConverter {
     private static WorkflowNode createNode(Workflow workflow, NodeXML e) throws FlowInitializationException {
         WorkflowNode node = null;
 
-        NodeType type = NodeType.valueOf(e.type());
+        NodeType type = NodeType.valueOf(e.type);
 
         switch (type) {
             case JOIN:
@@ -264,10 +265,8 @@ public class FlowConverter {
 
     private static WorkflowNode createCustomNode(Workflow workflow, NodeXML e) throws FlowInitializationException {
         String executableClass = e.getConfig("SWF_CUSTOM_CLASS");
-        if (executableClass == null)
-        {
-            throw new FlowInitializationException("Executable class not defined for node: " + e.getUuid() + " flow: " + workflow.getPackage() + workflow.getFlowName());
-        }
+        Validation.requireNonNull(executableClass, () -> new FlowInitializationException("Executable class not defined for node: " + e.getUuid() + " flow: " + workflow.getPackage() + workflow.getFlowName()));
+
         CustomNode node = new CustomNode(executableClass, e.getName(), e.getUuid());
         for (ParameterXML param : e.parameters) {
             if (param.input == null || param.input) {

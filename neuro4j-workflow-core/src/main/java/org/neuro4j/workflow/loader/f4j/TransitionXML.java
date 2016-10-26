@@ -19,7 +19,6 @@ package org.neuro4j.workflow.loader.f4j;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import org.neuro4j.workflow.common.Workflow;
 import org.neuro4j.workflow.node.Transition;
 import org.neuro4j.workflow.node.WorkflowNode;
 
@@ -34,69 +33,20 @@ public class TransitionXML {
 
 	@XmlAttribute
 	String toNode;
-	
 
 	String fromNode;
-
 
 	public TransitionXML() {
 		super();
 	}
 
-	public TransitionXML(String ruuid) {
-		super();
-		this.uuid = ruuid;
+
+	public Transition createTransition(WorkflowNode node) {
+		Transition transition = new Transition();
+		transition.setUuid(this.uuid);
+		transition.setFromNode(node);
+		transition.setName(this.name);
+		return transition;
 	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public void setToNode(String toNode) {
-		this.toNode = toNode;
-	}
-
-	public String uuid() {
-		return uuid;
-	}
-
-	public void setUuid(String uuid) {
-		this.uuid = uuid;
-	}
-
-
-	public String name() {
-		return name;
-	}
-
-	public String toNode() {
-		return toNode;
-	}
-	
-	
-
-	public String fromNode() {
-		return fromNode;
-	}
-
-	public void setFromNode(String fromNode) {
-		this.fromNode = fromNode;
-	}
-
-	public boolean isValid() {
-		if (fromNode != null && toNode != null) {
-			return true;
-		}
-		return false;
-	}
-
-    public Transition createTransition(WorkflowNode node) {
-        Transition transition = new Transition();
-        transition.setUuid(this.uuid);
-        transition.setFromNode(node);
-        transition.setName(this.name);
-        return transition;
-        
-    }
 
 }

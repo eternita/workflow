@@ -35,28 +35,4 @@ public class ParameterXML {
         super();
     }
 
-    public ParameterXML(String key, String value) {
-        super();
-        this.key = key;
-        this.value = value;
-
-    }
-    
-    public ParameterXML(String key, String value, Boolean isInput) {
-      this(key, value);
-      this.input = isInput;
-    }
-
-    public String getKey() {
-        return key;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
-
-    
-    
-
 }

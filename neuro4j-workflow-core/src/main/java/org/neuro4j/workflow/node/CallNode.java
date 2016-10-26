@@ -16,8 +16,6 @@
  */
 package org.neuro4j.workflow.node;
 
-import java.util.Optional;
-
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;

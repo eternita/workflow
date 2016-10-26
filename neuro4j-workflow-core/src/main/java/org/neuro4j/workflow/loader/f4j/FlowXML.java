@@ -17,7 +17,6 @@
 package org.neuro4j.workflow.loader.f4j;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAttribute;
@@ -40,16 +39,5 @@ public class FlowXML {
 
     }
 
-    public List<NodeXML> getEntities() {
-        return nodes;
-    }
-
-    public void setVisibility(String visibility) {
-        this.visibility = visibility;
-    }
-
-    public Collection<NodeXML> getXmlNodes() {
-        return nodes;
-    }
 
 }

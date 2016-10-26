@@ -44,6 +44,7 @@ public class JoinNodeTest {
 		assertEquals(endName, end1.getName());
 		assertEquals(endUuid, end1.getUuid());
 		
+		assertEquals("NodeInfo [uuid=" + uuid + ", name=" + name + "]", joinNode.getNodeInfo().toString());
 		try {
 			joinNode.validate(null, new FlowContext());
 			fail("Should be exception");

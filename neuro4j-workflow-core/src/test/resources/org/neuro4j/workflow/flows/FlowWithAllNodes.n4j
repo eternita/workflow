@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<flow visibility="Public">
+    <nodes>
+        <node uuid="Z2YKBws3nTIAAAFYvK7KkwGs" name="StartNode1" x="87" y="29" type="START">
+            <parameters/>
+            <config>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
+            </config>
+            <transitions>
+                <transition uuid="zwEKBws31qcAAAFYB__KkwGs" name="NEXT" toNode="79kKBws3rpcAAAFYjM7KkwGs">
+                    <points>-50, 36, -1, -100|-49, 101, 0, -35|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="79kKBws3rpcAAAFYjM7KkwGs" name="MapperNode1" x="82" y="165" type="MAP">
+            <parameters/>
+            <config/>
+            <transitions>
+                <transition uuid="DSEKBws30.MAAAFYtA3KkwGt" name="NEXT" toNode="tLQKBws3DuoAAAFY0ePKkwGs">
+                    <points>0, 35, -70, -119|-4, 119, -74, -35|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="tLQKBws3DuoAAAFY0ePKkwGs" name="DecisionNode1" x="79" y="315" type="DECISION">
+            <parameters/>
+            <config>
+                <parameter key="SYS_DECISION_KEY" value="var1"/>
+            </config>
+            <transitions>
+                <transition uuid="IKIKBws3KKgAAAFYK4bKkwGt" name="FALSE" toNode="ouUKBws3zTgAAAFY6GnKkwGt">
+                    <points>-41, 0, -232, -54|113, 0, -78, -54|113, 19, -78, -35|</points>
+                </transition>
+                <transition uuid="MysKBws3EaMAAAFY.tHKkwGt" name="NEXT" toNode="vVgKBws3TacAAAFY87LKkwGt">
+                    <points>-74, 35, -76, -89|-72, 89, -74, -35|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="ouUKBws3zTgAAAFY6GnKkwGt" name="SystemOutBlock" x="262" y="373" type="CUSTOM">
+            <parameters/>
+            <config>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.workflow.core.SystemOutBlock"/>
+            </config>
+            <transitions>
+                <transition uuid="nNwKBws3W4wAAAFYgbnKkwGy" name="NEXT" toNode="TawKBws3eKEAAAFY1J7KkwGy">
+                    <points>-78, 35, 189, -275|-252, 310, 15, 0|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="vVgKBws3TacAAAFY87LKkwGt" name="Switch" x="76" y="443" type="SWITCH">
+            <parameters/>
+            <config/>
+            <transitions>
+                <transition uuid="4vEKBws33OsAAAFYTyHKkwGy" toNode="LYsKBws3wl8AAAFYdMHKkwGu">
+                    <points>-74, 35, -81, -59|-71, 59, -78, -35|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="8roKBws30MwAAAFYzvLKkwGt" name="EndNode1" x="82" y="814" type="END">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node uuid="LYsKBws3wl8AAAFYdMHKkwGu" name="CallNode1" x="71" y="538" type="CALL">
+            <parameters/>
+            <config>
+                <parameter key="SYS_FLOW_NAME" value="org.neuro4j.workflow.flows.FlowWithAllNodes-StartNode2"/>
+            </config>
+            <transitions>
+                <transition uuid="5VcKBws3sHMAAAFYWsvKkwGy" name="EndNode2" toNode="TawKBws3eKEAAAFY1J7KkwGy">
+                    <points>-78, 35, -2, -110|-76, 130, 0, -15|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="BvwKBws39CEAAAFY9tTKkwGu" name="StartNode2" x="512" y="30" type="START">
+            <parameters/>
+            <config>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
+            </config>
+            <transitions>
+                <transition uuid="gbMKBws33f0AAAFYFKbKkwGw" name="NEXT" toNode="J0AKBws3KJcAAAFY7vHKkwGu">
+                    <points>-50, 36, -69, -135|-49, 136, -68, -35|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="J0AKBws3KJcAAAFY7vHKkwGu" name="LoopNode1" x="503" y="355" type="LOOP">
+            <parameters/>
+            <config>
+                <parameter key="SYS_ELEMENT_KEY" value="el1"/>
+                <parameter key="SYS_ITERATOR_KEY" value="list1"/>
+            </config>
+            <transitions>
+                <transition uuid="ZC0KBws3yxcAAAFYRNTKkwGw" name="NEXT" toNode="qGQKBws3_v0AAAFYtwLKkwGv">
+                    <points>-31, 0, -121, -258|39, 0, -51, -258|39, 12, -51, -246|40, 12, -50, -246|40, 214, -50, -44|</points>
+                </transition>
+                <transition uuid="ORoKBws38mwAAAFYnfTKkwGw" name="LOOP_EXIT" toNode="Mj0KBws39Y0AAAFYxoXKkwGw">
+                    <points>-68, 35, -81, -115|-65, 115, -78, -35|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="qGQKBws3_v0AAAFYtwLKkwGv" name="EndNode2" x="620" y="604" type="END">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node uuid="Mj0KBws39Y0AAAFYxoXKkwGw" name="SystemOutBlock" x="503" y="505" type="CUSTOM">
+            <parameters/>
+            <config>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.workflow.core.SystemOutBlock"/>
+            </config>
+            <transitions>
+                <transition uuid="6CAKBws3wpgAAAFYaVPKkwGx" name="NEXT" toNode="rU4KBws3.RwAAAFYly3KkwGx">
+                    <points>-78, 35, 141, -69|-219, 119, 0, 15|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="rU4KBws3.RwAAAFYly3KkwGx" name="JoinNode1" x="381" y="629" type="JOIN">
+            <parameters/>
+            <config/>
+            <transitions>
+                <transition uuid="uDYKBws3efYAAAFYWmbKkwGx" name="NEXT" toNode="J0AKBws3KJcAAAFY7vHKkwGu">
+                    <points>0, -15, -209, 239|107, -254, -102, 0|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="TawKBws3eKEAAAFY1J7KkwGy" name="JoinNode2" x="92" y="703" type="JOIN">
+            <parameters/>
+            <config/>
+            <transitions>
+                <transition uuid="Y.wKBws3HsAAAAFYkdvKkwGy" name="NEXT" toNode="8roKBws30MwAAAFYzvLKkwGt">
+                    <points>0, 15, -48, -125|-2, 96, -50, -44|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="note" name="X1oKBws3wQoAAAFYNY_KkwHL" x="256" y="50" type="NOTE">
+            <description>Some text</description>
+            <parameters/>
+            <config>
+                <parameter key="w" value="152"/>
+                <parameter key="h" value="63"/>
+            </config>
+            <transitions/>
+        </node>
+    </nodes>
+</flow>

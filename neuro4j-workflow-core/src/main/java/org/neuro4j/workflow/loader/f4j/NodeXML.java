@@ -36,12 +36,6 @@ public class NodeXML {
     String name;
 
     @XmlAttribute(required = true)
-    Integer x;
-
-    @XmlAttribute(required = true)
-    Integer y;
-
-    @XmlAttribute(required = true)
     String type;
 
     @XmlElement(name = "description", required = false)
@@ -63,22 +57,6 @@ public class NodeXML {
         super();
     }
 
-    public NodeXML(String uuid) {
-        super();
-        this.uuid = uuid;
-    }
-
-    public NodeXML(String uuid, String name) {
-        super();
-        this.uuid = uuid;
-        this.name = name;
-    }
-
-    public NodeXML(String uuid, String name, FlowXML workflow) {
-        this(uuid, name);
-        this.flow = workflow;
-    }
-
     public String getUuid() {
         return uuid;
     }
@@ -87,72 +65,24 @@ public class NodeXML {
         return name;
     }
 
-    public List<ParameterXML> getParameters() {
-        return parameters;
-    }
 
     public List<TransitionXML> getRelations() {
         return transitions;
     }
 
-    public void setX(Integer x) {
-        this.x = x;
-    }
-
-    public void setY(Integer y) {
-        this.y = y;
-    }
-
-    public void setConfig(List<ParameterXML> config) {
-        this.config = config;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public void registerExit(TransitionXML transition) {
-        transitions.add(transition);
-    }
-
-    public void addParameter(String key, String value, boolean isInput) {
-        parameters.add(new ParameterXML(key, value, isInput));
-
-    }
 
     public String getParameter(String key) {
         for (ParameterXML param : parameters) {
-            if (param.getKey().equals(key)) {
+            if (param.key.equals(key)) {
                 return param.value;
             }
         }
         return null;
     }
 
-    public void addConfig(String key, String value) {
-        config.add(new ParameterXML(key, value));
-
-    }
-
-    public Integer x() {
-        return x;
-    }
-
-    public Integer y() {
-        return y;
-    }
-
-    public String type() {
-        return type;
-    }
-
     public String getConfig(String key) {
         for (ParameterXML param : config) {
-            if (param.getKey().equals(key)) {
+            if (param.key.equals(key)) {
                 return param.value;
             }
         }
