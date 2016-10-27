@@ -33,7 +33,7 @@ public abstract class AbstractBuilder {
 	public void buildNewStatment(StringBuffer buffer) throws FlowInitializationException
 	{
 		buffer.append("  ").append(getImpClassName()).append(" ").append(names.get(this.node.getUuid())).append("  =  new ").append(getImpClassName()).append("(\"").append(getNodename());
-		buffer.append("\", \"").append(node.getUuid()).append("\", this); \n");
+		buffer.append("\", \"").append(node.getUuid()).append("\"); \n");
 
 		buidNodeSpecificCode(buffer);
 		

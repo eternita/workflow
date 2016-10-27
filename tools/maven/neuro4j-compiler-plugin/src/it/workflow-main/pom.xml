@@ -22,7 +22,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<org.neuro4j.version>2.0.1</org.neuro4j.version>
+		<org.neuro4j.version>3.0.1-SNAPSHOT</org.neuro4j.version>
 	</properties>
 	<repositories>
 		<repository>
@@ -51,7 +51,7 @@
 			<plugin>
 				<groupId>org.neuro4j.tools</groupId>
 				<artifactId>neuro4j-compiler-plugin</artifactId>
-				<version>1.0</version>
+				<version>3.0</version>
 				<executions>
 					<execution>
 						<id>generate</id>

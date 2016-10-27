@@ -7,7 +7,7 @@
 	<groupId>org.neuro4j.tools</groupId>
 
 	<artifactId>neuro4j-compiler-plugin</artifactId>
-	<version>1.0</version>
+	<version>3.0</version>
 	<packaging>maven-plugin</packaging>
 
 	<name>Neuro4j Gen Maven Plugin</name>
@@ -21,8 +21,8 @@
 	</repositories>
 	<properties>
 		<mavenVersion>2.2.1</mavenVersion>
-		<org.neuro4j.version>2.0.1</org.neuro4j.version>
-		<mojo.java.target>1.6</mojo.java.target>
+		<org.neuro4j.version>3.0.1-SNAPSHOT</org.neuro4j.version>
+		<mojo.java.target>1.8</mojo.java.target>
 	</properties>
 
 	<dependencies>
@@ -101,6 +101,11 @@
 			<artifactId>plexus-build-api</artifactId>
 			<version>0.0.7</version>
 		</dependency>
+<dependency>
+    <groupId>asm</groupId>
+    <artifactId>asm</artifactId>
+    <version>3.3.1</version>
+</dependency>		
 	</dependencies>
 
 	<build>
@@ -116,6 +121,7 @@
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.5.1</version>
+				<inherited>true</inherited>
 				<executions>
 					<execution>
 						<id>default-compile</id>
@@ -124,8 +130,8 @@
 							<goal>compile</goal>
 						</goals>
 						<configuration>
-							<source>1.6</source>
-							<target>1.6</target>
+							<source>1.8</source>
+							<target>1.8</target>
 						</configuration>
 					</execution>
 					<execution>
@@ -135,20 +141,20 @@
 							<goal>testCompile</goal>
 						</goals>
 						<configuration>
-							<source>1.6</source>
-							<target>1.6</target>
+							<source>1.8</source>
+							<target>1.8</target>
 						</configuration>
 					</execution>
 				</executions>
 				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
+					<source>1.8</source>
+					<target>1.8</target>
 				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-plugin-plugin</artifactId>
-				<version>3.2</version>
+				<version>3.3</version>
 				<executions>
 					<execution>
 						<id>default-descriptor</id>

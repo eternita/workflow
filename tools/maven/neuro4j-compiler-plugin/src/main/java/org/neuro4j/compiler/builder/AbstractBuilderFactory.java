@@ -27,7 +27,7 @@ public class AbstractBuilderFactory {
 	public static AbstractBuilder getBuilder(NodeXML node,
 			Map<String, String> names) throws FlowInitializationException {
 
-		NodeType type = NodeType.valueOf(node.type());
+		NodeType type = NodeType.valueOf(node.type);
 
 		switch (type) {
 		case JOIN:

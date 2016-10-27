@@ -32,7 +32,7 @@ public class FlowXML {
 
     @XmlElementWrapper(name = "nodes")
     @XmlElement(name = "node")
-    List<NodeXML> nodes = new ArrayList<NodeXML>();
+    public List<NodeXML> nodes = new ArrayList<NodeXML>();
 
     public FlowXML()
     {

@@ -27,31 +27,31 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "node")
 public class NodeXML {
 
-    FlowXML flow;
+    public FlowXML flow;
 
     @XmlAttribute(required = true)
-    String uuid;
+    public String uuid;
 
     @XmlAttribute(required = true)
-    String name;
+    public String name;
 
     @XmlAttribute(required = true)
-    String type;
+    public String type;
 
     @XmlElement(name = "description", required = false)
     public String description;
 
     @XmlElementWrapper(name = "parameters", required = false)
     @XmlElement(name = "parameter")
-    List<ParameterXML> parameters = new ArrayList<ParameterXML>();
+    public List<ParameterXML> parameters = new ArrayList<ParameterXML>();
 
     @XmlElementWrapper(name = "config", required = false)
     @XmlElement(name = "parameter")
-    List<ParameterXML> config = new ArrayList<ParameterXML>();
+    public List<ParameterXML> config = new ArrayList<ParameterXML>();
 
     @XmlElementWrapper(name = "transitions", required = false)
     @XmlElement(name = "transition")
-    List<TransitionXML> transitions = new ArrayList<TransitionXML>();
+    public List<TransitionXML> transitions = new ArrayList<TransitionXML>();
 
     public NodeXML() {
         super();

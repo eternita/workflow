@@ -18,6 +18,7 @@ package org.neuro4j.compiler.builder;
 
 import java.util.Map;
 
+import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.common.SWFParametersConstants;
 import org.neuro4j.workflow.loader.f4j.NodeXML;
 import org.neuro4j.workflow.node.SwitchNode;
@@ -28,15 +29,19 @@ public class SwitchBlockBuilder extends AbstractBuilder {
 		super(node, names);
 	}
 
-	protected void buidNodeSpecificCode(StringBuffer buffer) {
+	public void buildNewStatment(StringBuffer buffer) throws FlowInitializationException
+	{
 		String relationName = node
 				.getConfig(SWFParametersConstants.SWITCH_NODE_ACTION_NAME);
 		if (relationName == null) {
 			relationName = SWFParametersConstants.SWITCH_NODE_DEFAULT_PARAMETER_VALUE;
 		}
+		relationName = relationName.replaceAll("\"", "");
+		buffer.append("  ").append(getImpClassName()).append(" ").append(names.get(this.node.getUuid())).append("  =  new ").append(getImpClassName()).append("(\"").append(getNodename());
+		buffer.append("\", \"").append(node.getUuid()).append("\", \"").append(relationName).append("\"); \n");
 
-		addSetter(buffer, "setRelationName", relationName, true);
-
+		
+		
 	}
 
 	@Override

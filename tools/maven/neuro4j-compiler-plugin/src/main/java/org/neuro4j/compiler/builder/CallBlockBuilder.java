@@ -2,9 +2,10 @@ package org.neuro4j.compiler.builder;
 
 import java.util.Map;
 
-import org.neuro4j.workflow.common.CallNode;
+
 import org.neuro4j.workflow.common.SWFParametersConstants;
 import org.neuro4j.workflow.loader.f4j.NodeXML;
+import org.neuro4j.workflow.node.CallNode;
 
 public class CallBlockBuilder extends AbstractBuilder {
 

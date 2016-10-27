@@ -40,15 +40,15 @@ public class CustomBlockBuilder extends AbstractBuilder {
         }
 		
 		buffer.append("  ").append(getImpClassName()).append(" ").append(names.get(this.node.getUuid())).append("  =  new ").append(getImpClassName()).append("(\"").append(executableClass).append("\",").append("\"").append(node.getName());
-		buffer.append("\", \"").append(node.getUuid()).append("\", this); \n");
+		buffer.append("\", \"").append(node.getUuid()).append("\"); \n");
 
 		
-        for (ParameterXML param : node.getParameters()) {
+        for (ParameterXML param : node.parameters) {
             if (param.input == null || param.input) {
-                buffer.append("  ").append(names.get(this.node.getUuid())).append(".addParameter(\"").append(param.getKey()).append("\", \"").append(processInputParameter(param.getValue())).append("\"); \n");
+                buffer.append("  ").append(names.get(this.node.getUuid())).append(".addParameter(\"").append(param.key).append("\", \"").append(processInputParameter(param.value)).append("\"); \n");
             } else {
 
-                buffer.append("  ").append(names.get(this.node.getUuid())).append(".addOutParameter(\"").append(param.getKey()).append("\", \"").append(param.getValue()).append("\"); \n");
+                buffer.append("  ").append(names.get(this.node.getUuid())).append(".addOutParameter(\"").append(param.key).append("\", \"").append(param.value).append("\"); \n");
             }
         }    
 

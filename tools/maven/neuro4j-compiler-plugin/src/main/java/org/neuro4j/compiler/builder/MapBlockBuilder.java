@@ -34,10 +34,10 @@ public class MapBlockBuilder extends AbstractBuilder {
 	}
 
 	protected void buidNodeSpecificCode(StringBuffer buffer) {
-		for (ParameterXML param : node.getParameters()) {
+		for (ParameterXML param : node.parameters) {
 			buffer.append("  ").append(getVarName()).append(".addParameter(\"")
-					.append(param.getKey()).append("\", \"")
-					.append(processInputParameter(param.getValue()))
+					.append(param.key).append("\", \"")
+					.append(processInputParameter(param.value))
 					.append("\"); \n");
 		}
 

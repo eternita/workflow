@@ -23,10 +23,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class ParameterXML {
 
     @XmlAttribute
-    String key;
+    public String key;
 
     @XmlAttribute
-    String value;
+    public String value;
     
     @XmlAttribute(name="input", required=false)
     public Boolean input;

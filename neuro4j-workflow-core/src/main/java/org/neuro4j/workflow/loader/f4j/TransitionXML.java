@@ -26,15 +26,15 @@ import org.neuro4j.workflow.node.WorkflowNode;
 public class TransitionXML {
 
 	@XmlAttribute
-	String uuid;
+	public String uuid;
 
 	@XmlAttribute
-	String name;
+	public String name;
 
 	@XmlAttribute
-	String toNode;
+	public String toNode;
 
-	String fromNode;
+	public String fromNode;
 
 	public TransitionXML() {
 		super();

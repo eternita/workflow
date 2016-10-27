@@ -43,7 +43,7 @@ public class WorkflowBuilder {
 		StringBuffer str = new StringBuffer(256);
 
 		
-		Collection<NodeXML> nodes = workflow.getEntities();
+		Collection<NodeXML> nodes = workflow.nodes;
 		Map<String, String> names = new HashMap<String, String>(nodes.size());
 		int count = 0;
 		str.append(" \n");
@@ -65,7 +65,7 @@ public class WorkflowBuilder {
 			for(TransitionXML tr: transitions)
 			{
 				count++;
-				names.put(tr.uuid(), "tr" + count);
+				names.put(tr.uuid, "tr" + count);
 				buildTransition(node, tr, str, names);
 			}
 			if (names.get(node.getUuid()) != null)
@@ -82,15 +82,15 @@ public class WorkflowBuilder {
 	
 	public static void buildTransition(NodeXML sourceNode, TransitionXML tr, StringBuffer buffer, Map<String, String> names)
 	{
-		String targetNode = tr.toNode();
+		String targetNode = tr.toNode;
 		buffer.append(" \n");
-		buffer.append("  Transition ").append(names.get(tr.uuid())).append(" = new Transition(this); \n");
-		buffer.append("  ").append(names.get(tr.uuid())).append(".setUuid(\"").append(tr.uuid()).append("\");").append(" \n");
-		buffer.append("  ").append(names.get(tr.uuid())).append(".setName(\"").append(tr.name()).append("\");").append(" \n");
-		buffer.append("  ").append(names.get(tr.uuid())).append(".setFromNode(").append(names.get(sourceNode.getUuid())).append(");").append(" \n");
-		buffer.append("  ").append(names.get(tr.uuid())).append(".setToNode(").append(names.get(targetNode)).append(");").append(" \n");
+		buffer.append("  Transition ").append(names.get(tr.uuid)).append(" = new Transition(); \n");
+		buffer.append("  ").append(names.get(tr.uuid)).append(".setUuid(\"").append(tr.uuid).append("\");").append(" \n");
+		buffer.append("  ").append(names.get(tr.uuid)).append(".setName(\"").append(tr.name).append("\");").append(" \n");
+		buffer.append("  ").append(names.get(tr.uuid)).append(".setFromNode(").append(names.get(sourceNode.getUuid())).append(");").append(" \n");
+		buffer.append("  ").append(names.get(tr.uuid)).append(".setToNode(").append(names.get(targetNode)).append(");").append(" \n");
 		buffer.append(" \n");
-		buffer.append("  ").append(names.get(sourceNode.getUuid())).append(".registerExit(").append(names.get(tr.uuid())).append(");").append(" \n");
+		buffer.append("  ").append(names.get(sourceNode.getUuid())).append(".registerExit(").append(names.get(tr.uuid)).append(");").append(" \n");
 		buffer.append(" \n");
 		
 	}
