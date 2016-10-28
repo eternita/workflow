@@ -26,9 +26,17 @@
                 <transition uuid="SHIQV.89iVMAAAFJE1UMBXgL" name="NEXT" toNode="bbsQV.89Lh8AAAFJ5IoMBXff">
                     <points>0, 25, 0, -94|0, 85, 0, -34|</points>
                 </transition>
+                <transition uuid="0qDAqAIGQaUAAAFYgwJiXAbc" name="ERROR" toNode="YoDAqAIGbUIAAAFYleBiXAbb">
+                    <points>-43, 0, -170, -114|-43, 2, -170, -112|77, 2, -50, -112|77, 70, -50, -44|</points>
+                </transition>
             </transitions>
         </node>
-        <node uuid="note" name="0VnAqG8BZn0AAAFK9z9eSH1p" x="64" y="41" type="NOTE">
+        <node uuid="YoDAqAIGbUIAAAFYleBiXAbb" name="ERROR" x="498" y="258" type="END">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node uuid="note" name="aVjAqAIG1roAAAFYaURiXAbc" x="64" y="41" type="NOTE">
             <description>This is my first flow</description>
             <parameters/>
             <config>

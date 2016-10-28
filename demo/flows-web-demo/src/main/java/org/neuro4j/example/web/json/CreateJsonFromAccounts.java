@@ -1,18 +1,18 @@
 package org.neuro4j.example.web.json;
 
 
+import static org.neuro4j.example.web.json.CreateJsonFromAccounts.IN_ACCOUNTS;
+import static org.neuro4j.example.web.json.CreateJsonFromAccounts.OUT_JSONSTR;
+
 import java.util.List;
 
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.common.FlowExecutionException;
-import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.common.ParameterDefinition;
 import org.neuro4j.workflow.common.ParameterDefinitionList;
 import org.neuro4j.workflow.node.CustomBlock;
 
 import com.google.gson.Gson;
-
-import static org.neuro4j.example.web.json.CreateJsonFromAccounts.*;
 
 @ParameterDefinitionList(input={
                                 	@ParameterDefinition(name=IN_ACCOUNTS, isOptional=true, type= "java.util.List")},

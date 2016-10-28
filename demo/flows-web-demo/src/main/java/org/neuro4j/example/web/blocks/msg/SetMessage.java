@@ -8,7 +8,6 @@ import java.util.ResourceBundle;
 
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.common.FlowExecutionException;
-import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.common.ParameterDefinition;
 import org.neuro4j.workflow.common.ParameterDefinitionList;
 import org.neuro4j.workflow.node.CustomBlock;

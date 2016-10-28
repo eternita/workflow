@@ -25,7 +25,6 @@ import org.apache.commons.beanutils.ConstructorUtils;
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
-import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.loader.f4j.SWFConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -119,7 +118,7 @@ public class WorkflowNode {
 		return null;
 	}
 
-	public void init() throws FlowInitializationException {
+	public void init() throws FlowExecutionException {
 
 	}
 

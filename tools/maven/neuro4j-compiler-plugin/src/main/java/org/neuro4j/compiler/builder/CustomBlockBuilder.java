@@ -18,7 +18,7 @@ package org.neuro4j.compiler.builder;
 
 import java.util.Map;
 
-import org.neuro4j.workflow.common.FlowInitializationException;
+import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.SWFParametersConstants;
 import org.neuro4j.workflow.loader.f4j.NodeXML;
 import org.neuro4j.workflow.loader.f4j.ParameterXML;
@@ -31,12 +31,12 @@ public class CustomBlockBuilder extends AbstractBuilder {
 	}
 	
 	
-	public void buildNewStatment(StringBuffer buffer) throws FlowInitializationException
+	public void buildNewStatment(StringBuffer buffer) throws FlowExecutionException
 	{
         String executableClass = node.getConfig(SWFParametersConstants.LOGIC_NODE_CUSTOM_CLASS_NAME);
         if (executableClass == null)
         {
-            throw new FlowInitializationException("Executable class not defined for node: " + node.getUuid());
+            throw new FlowExecutionException("Executable class not defined for node: " + node.getUuid());
         }
 		
 		buffer.append("  ").append(getImpClassName()).append(" ").append(names.get(this.node.getUuid())).append("  =  new ").append(getImpClassName()).append("(\"").append(executableClass).append("\",").append("\"").append(node.getName());

@@ -16,6 +16,22 @@
  */
 package org.neuro4j.workflow.loader.f4j;
 
+import static org.neuro4j.workflow.common.SWFParametersConstants.CAll_NODE_DYNAMIC_FLOW_NAME;
+import static org.neuro4j.workflow.common.SWFParametersConstants.CAll_NODE_FLOW_NAME;
+import static org.neuro4j.workflow.common.SWFParametersConstants.DECISION_NODE_COMP_KEY;
+import static org.neuro4j.workflow.common.SWFParametersConstants.DECISION_NODE_COMP_TYPE;
+import static org.neuro4j.workflow.common.SWFParametersConstants.DECISION_NODE_DECISION_KEY;
+import static org.neuro4j.workflow.common.SWFParametersConstants.DECISION_NODE_OPERATOR;
+import static org.neuro4j.workflow.common.SWFParametersConstants.LOOP_NODE_ELEMENT;
+import static org.neuro4j.workflow.common.SWFParametersConstants.LOOP_NODE_ITERATOR;
+import static org.neuro4j.workflow.common.SWFParametersConstants.RENDER_IMP;
+import static org.neuro4j.workflow.common.SWFParametersConstants.START_NODE_TYPE;
+import static org.neuro4j.workflow.common.SWFParametersConstants.SWITCH_NODE_ACTION_NAME;
+import static org.neuro4j.workflow.common.SWFParametersConstants.SWITCH_NODE_DEFAULT_PARAMETER_VALUE;
+import static org.neuro4j.workflow.common.SWFParametersConstants.VIEW_NODE_RENDER_TYPE;
+import static org.neuro4j.workflow.common.SWFParametersConstants.VIEW_NODE_TEMPLATE_DYNAMIC_NAME;
+import static org.neuro4j.workflow.common.SWFParametersConstants.VIEW_NODE_TEMPLATE_NAME;
+
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
@@ -26,8 +42,6 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
 import org.neuro4j.workflow.common.FlowExecutionException;
-import org.neuro4j.workflow.common.FlowInitializationException;
-import static org.neuro4j.workflow.common.SWFParametersConstants.*;
 import org.neuro4j.workflow.common.Workflow;
 import org.neuro4j.workflow.enums.DecisionCompTypes;
 import org.neuro4j.workflow.enums.DecisionOperators;
@@ -54,7 +68,7 @@ import org.neuro4j.workflow.utils.Validation;
 public class FlowConverter {
     
 	public static Workflow xml2workflow(Reader xml, String flow)
-			throws ConvertationException, FlowInitializationException {
+			throws ConvertationException, FlowExecutionException {
 		if (null == xml)
 			return null;
 		try {
@@ -73,12 +87,12 @@ public class FlowConverter {
 	}
 
 	public static Workflow xml2workflow(InputStream xml, String flow)
-			throws ConvertationException, FlowInitializationException, UnsupportedEncodingException {
+			throws ConvertationException, FlowExecutionException, UnsupportedEncodingException {
 		 return xml2workflow(new InputStreamReader(xml, "UTF-8"), flow);
 	}
 
 	private static Workflow netXML2net(FlowXML net, String flow)
-			throws FlowInitializationException {
+			throws FlowExecutionException {
 
 		Workflow network = new Workflow(flow, getFlowPackage(flow));
 
@@ -117,7 +131,7 @@ public class FlowConverter {
     	return flowPackage;
     }
 
-    private static WorkflowNode createNode(Workflow workflow, NodeXML e) throws FlowInitializationException {
+    private static WorkflowNode createNode(Workflow workflow, NodeXML e) throws FlowExecutionException {
         WorkflowNode node = null;
 
         NodeType type = NodeType.valueOf(e.type);
@@ -159,7 +173,7 @@ public class FlowConverter {
 
             default:
 
-                throw new FlowInitializationException("Executable node is unknown");
+                throw new FlowExecutionException("Executable node is unknown");
         }
         if (node != null){
             workflow.registerNode(node);	
@@ -263,9 +277,9 @@ public class FlowConverter {
         return node;
     }
 
-    private static WorkflowNode createCustomNode(Workflow workflow, NodeXML e) throws FlowInitializationException {
+    private static WorkflowNode createCustomNode(Workflow workflow, NodeXML e) throws FlowExecutionException {
         String executableClass = e.getConfig("SWF_CUSTOM_CLASS");
-        Validation.requireNonNull(executableClass, () -> new FlowInitializationException("Executable class not defined for node: " + e.getUuid() + " flow: " + workflow.getPackage() + workflow.getFlowName()));
+        Validation.requireNonNull(executableClass, () -> new FlowExecutionException("Executable class not defined for node: " + e.getUuid() + " flow: " + workflow.getPackage() + workflow.getFlowName()));
 
         CustomNode node = new CustomNode(executableClass, e.getName(), e.getUuid());
         for (ParameterXML param : e.parameters) {

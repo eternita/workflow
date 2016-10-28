@@ -26,7 +26,6 @@ import org.neuro4j.workflow.ActionHandler;
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
-import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.common.ParameterDefinition;
 import org.neuro4j.workflow.common.ParameterDefinitionList;
 import org.slf4j.Logger;
@@ -66,7 +65,7 @@ public class CustomNode extends WorkflowNode {
         return outParameters.get(name);
     }
 
-    public final void init() throws FlowInitializationException
+    public final void init() throws FlowExecutionException
     {
         mainExit = getExitByName(NEXT_EXIT_RELATION);
         errorExit = getExitByName(ERROR_EXIT_RELATION);

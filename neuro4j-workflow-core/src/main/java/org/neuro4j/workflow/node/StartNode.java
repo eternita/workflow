@@ -18,7 +18,6 @@ package org.neuro4j.workflow.node;
 
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
-import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.enums.StartNodeTypes;
 
 public class StartNode extends WorkflowNode {
@@ -51,7 +50,7 @@ public class StartNode extends WorkflowNode {
     }
 
     @Override
-    public void init() throws FlowInitializationException {
+    public void init() throws FlowExecutionException {
         super.init();
         nextNode = getExitByName(NEXT);
     }

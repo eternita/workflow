@@ -23,7 +23,6 @@ import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.cache.ActionHandlersRegistry;
 import org.neuro4j.workflow.cache.WorkflowCache;
 import org.neuro4j.workflow.common.FlowExecutionException;
-import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.common.Workflow;
 import org.neuro4j.workflow.common.WorkflowEngine.ConfigBuilder;
 import org.neuro4j.workflow.debug.DebugService;
@@ -174,7 +173,7 @@ public class WorkflowProcessor {
 	 * Returns object implemented ActionBlock
 	 * @param node CustomNode with executable class
 	 * @return object implemented ActionBlock
-	 * @throws FlowInitializationException
+	 * @throws FlowExecutionException
 	 */
 	ActionBlock loadCustomBlock(CustomNode node) throws FlowExecutionException {
 		return customBlockLoader.lookupBlock(node);
@@ -184,7 +183,7 @@ public class WorkflowProcessor {
 	 * Returns class object implemented ActionBlock
 	 * @param node CustomNode with executable class
 	 * @return class object implemented ActionBlock
-	 * @throws FlowInitializationException
+	 * @throws FlowExecutionException
 	 */
 	Class<? extends ActionBlock> getCustomBlockClass(CustomNode node) throws FlowExecutionException {
 		return customBlockLoader.getCustomBlockClass(node);

@@ -46,7 +46,7 @@ import org.apache.maven.plugins.annotations.ResolutionScope;
 import org.apache.maven.project.MavenProject;
 import org.codehaus.plexus.util.FileUtils;
 import org.neuro4j.compiler.builder.WorkflowBuilder;
-import org.neuro4j.workflow.common.FlowInitializationException;
+import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.loader.f4j.ConvertationException;
 import org.neuro4j.workflow.loader.f4j.FlowXML;
 import org.sonatype.plexus.build.incremental.BuildContext;
@@ -153,7 +153,7 @@ public  abstract class AbstractN4j2JavaMojo extends AbstractMojo {
         }
 
 	protected final Set<FileHolder> getBindingFiles()
-			throws ConvertationException, FlowInitializationException {
+			throws ConvertationException, FlowExecutionException {
 
 		SourceScanner scanner = getSourceInclusionScanner(".n4j");
 		Set<FileHolder> staleSources = new HashSet<FileHolder>();
@@ -194,7 +194,7 @@ public  abstract class AbstractN4j2JavaMojo extends AbstractMojo {
 	}
 
 	private void generateJavaFile(FileHolder sourceFileHolder)
-			throws ConvertationException, FlowInitializationException {
+			throws ConvertationException, FlowExecutionException {
 
 		
 		File newjavaFile = null;
@@ -202,7 +202,7 @@ public  abstract class AbstractN4j2JavaMojo extends AbstractMojo {
 			newjavaFile = getNewFile(sourceFileHolder);
 		} catch (IOException e1) {
           getLog().error(e1);
-          throw new FlowInitializationException("Can not create output file");
+          throw new FlowExecutionException("Can not create output file");
 		}
 		
 
@@ -298,7 +298,7 @@ public  abstract class AbstractN4j2JavaMojo extends AbstractMojo {
 	}
 
 	private Map<String, String> parseParameters(FileHolder workflowFileHolder)
-			throws ConvertationException, FlowInitializationException,
+			throws ConvertationException, FlowExecutionException,
 			FileNotFoundException, JAXBException {
 		Map<String, String> parameters = new HashMap<String, String>();
 		long start = System.currentTimeMillis();

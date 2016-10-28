@@ -18,7 +18,7 @@ package org.neuro4j.compiler.builder;
 
 import java.util.Map;
 
-import org.neuro4j.workflow.common.FlowInitializationException;
+import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.SWFParametersConstants;
 import org.neuro4j.workflow.loader.f4j.NodeXML;
 import org.neuro4j.workflow.node.SwitchNode;
@@ -29,7 +29,7 @@ public class SwitchBlockBuilder extends AbstractBuilder {
 		super(node, names);
 	}
 
-	public void buildNewStatment(StringBuffer buffer) throws FlowInitializationException
+	public void buildNewStatment(StringBuffer buffer) throws FlowExecutionException
 	{
 		String relationName = node
 				.getConfig(SWFParametersConstants.SWITCH_NODE_ACTION_NAME);

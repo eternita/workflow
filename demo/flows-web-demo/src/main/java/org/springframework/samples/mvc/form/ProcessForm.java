@@ -1,13 +1,14 @@
 package org.springframework.samples.mvc.form;
 
 
+import static org.springframework.samples.mvc.form.ProcessForm.IN_FORMBEAN;
+import static org.springframework.samples.mvc.form.ProcessForm.OUT_MESSAGE;
+
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.common.FlowExecutionException;
-import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.common.ParameterDefinition;
 import org.neuro4j.workflow.common.ParameterDefinitionList;
 import org.neuro4j.workflow.node.CustomBlock;
-import static org.springframework.samples.mvc.form.ProcessForm.*;
 
 @ParameterDefinitionList(input={
                                 	@ParameterDefinition(name=IN_FORMBEAN, isOptional=true, type= "org.springframework.samples.mvc.form.FormBean")},

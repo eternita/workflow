@@ -19,7 +19,6 @@ package org.neuro4j.workflow.node;
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
-import org.neuro4j.workflow.common.FlowInitializationException;
 import static org.neuro4j.workflow.common.SWFParametersConstants.*;
 import org.neuro4j.workflow.loader.f4j.SWFConstants;
 
@@ -79,7 +78,7 @@ public class SwitchNode extends WorkflowNode {
      * @see org.neuro4j.workflow.node.LogicBlock#load(org.neuro4j.workflow.xml.WorkflowNode)
      */
     @Override
-    public final void init() throws FlowInitializationException {
+    public final void init() throws FlowExecutionException {
 
         defaultRelation = getExitByName(SWITCH_NODE_DEFAULT_ACTION_NAME_2);
         if (defaultRelation == null)

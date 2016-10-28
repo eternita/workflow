@@ -18,7 +18,7 @@ package org.neuro4j.compiler.builder;
 
 import java.util.Map;
 
-import org.neuro4j.workflow.common.FlowInitializationException;
+import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.loader.f4j.NodeXML;
 
 public abstract class AbstractBuilder {
@@ -30,7 +30,7 @@ public abstract class AbstractBuilder {
 		this.names = names;
 	}
 	
-	public void buildNewStatment(StringBuffer buffer) throws FlowInitializationException
+	public void buildNewStatment(StringBuffer buffer) throws FlowExecutionException
 	{
 		buffer.append("  ").append(getImpClassName()).append(" ").append(names.get(this.node.getUuid())).append("  =  new ").append(getImpClassName()).append("(\"").append(getNodename());
 		buffer.append("\", \"").append(node.getUuid()).append("\"); \n");

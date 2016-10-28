@@ -23,7 +23,6 @@ import java.util.Iterator;
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
-import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.loader.f4j.SWFConstants;
 
 public class LoopNode extends WorkflowNode {
@@ -104,7 +103,7 @@ public class LoopNode extends WorkflowNode {
     }
 
     @Override
-    public final void init() throws FlowInitializationException {
+    public final void init() throws FlowExecutionException {
 
         doExit = getExitByName(DO_EXIT_RELATION);
 

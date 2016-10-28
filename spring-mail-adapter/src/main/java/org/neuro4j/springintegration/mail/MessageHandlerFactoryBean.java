@@ -19,7 +19,7 @@ package org.neuro4j.springintegration.mail;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.neuro4j.workflow.common.FlowInitializationException;
+import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.WorkflowEngine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.integration.channel.DirectChannel;
@@ -48,12 +48,12 @@ public class MessageHandlerFactoryBean {
 	 * @param inputChannel
 	 * @param flow trigger path (eg. org.neuro4j.MyFlow-MyTriggerNode)
 	 * @return MessageHandler object.
-	 * @throws FlowInitializationException
+	 * @throws FlowExecutionException
 	 */
-	public MessageHandler initMessageHandler(DirectChannel inputChannel, final String flow) throws FlowInitializationException{
+	public MessageHandler initMessageHandler(DirectChannel inputChannel, final String flow) throws FlowExecutionException{
 		
 		if (inputChannel == null){
-			throw new FlowInitializationException("inputChannel is NULL");
+			throw new FlowExecutionException("inputChannel is NULL");
 		}
 
 		MessageHandler messageHandler = new MessageHandler() {

@@ -1,35 +1,18 @@
 package org.neuro4j.compiler.builder;
 
-/*
- * Copyright (c) 2013-2016, Neuro4j
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-import java.io.File;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.neuro4j.compiler.FileHolder;
-import org.neuro4j.workflow.common.FlowInitializationException;
+import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.loader.f4j.FlowXML;
 import org.neuro4j.workflow.loader.f4j.NodeXML;
 import org.neuro4j.workflow.loader.f4j.TransitionXML;
 
 public class WorkflowBuilder {
 
-	public static void buildParameters(FileHolder workflowFileHolder, Map<String, String> parameters,	FlowXML workflow) throws FlowInitializationException {
+	public static void buildParameters(FileHolder workflowFileHolder, Map<String, String> parameters,	FlowXML workflow) throws FlowExecutionException {
 
 		String initBlock = getInitBlockValue(workflow);
 
@@ -39,7 +22,7 @@ public class WorkflowBuilder {
 
 
 
-	private static String getInitBlockValue(FlowXML workflow) throws FlowInitializationException {
+	private static String getInitBlockValue(FlowXML workflow) throws FlowExecutionException {
 		StringBuffer str = new StringBuffer(256);
 
 		

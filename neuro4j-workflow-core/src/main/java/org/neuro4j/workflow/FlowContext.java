@@ -40,7 +40,7 @@ public class FlowContext {
 	private static final Logger logger = LoggerFactory.getLogger(FlowContext.class);
 
     /**
-     * 
+     *  Keeps all parameters
      */
     private Map<String, Object> parameters = new HashMap<String, Object>();
     /**
@@ -111,7 +111,7 @@ public class FlowContext {
 
     public Set<String> keySet()
     {
-        return parameters.keySet();
+        return Collections.unmodifiableSet(parameters.keySet());
     }
 
     public Object remove(String key)

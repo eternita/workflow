@@ -39,6 +39,18 @@ public class ConverterTest {
 		assertEquals(".n4j", converter.getFileExt());
 
 	}
+	
+	@Test(expected=UnsupportedOperationException.class)
+	public void testJsonConverter() throws FlowExecutionException {
+		WorkflowConverter converter = new JSONWorkflowConverter();  
+		converter.getFileExt();
+	}
+	
+	@Test(expected=UnsupportedOperationException.class)
+	public void testJsonConverterFileExtension() throws FlowExecutionException {
+		WorkflowConverter converter = new JSONWorkflowConverter();  
+		converter.convert(null, null);
+	}
 
 	@Test
 	public void testXmlConverter() throws Exception {

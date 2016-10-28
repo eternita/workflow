@@ -23,7 +23,6 @@ import java.util.Iterator;
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
-import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.enums.DecisionCompTypes;
 import org.neuro4j.workflow.enums.DecisionOperators;
 import org.neuro4j.workflow.loader.f4j.SWFConstants;
@@ -264,7 +263,7 @@ public class DecisionNode extends WorkflowNode {
      * 
      * @see org.neuro4j.workflow.node.LogicBlock#load(org.neuro4j.workflow.xml.WorkflowNode)
      */
-    public final void init() throws FlowInitializationException
+    public final void init() throws FlowExecutionException
     {
         trueExit = getExitByName(NEXT_EXIT_RELATION);
         falseExit = getExitByName(FALSE_EXIT_RELATION);

@@ -18,14 +18,14 @@ package org.neuro4j.compiler.builder;
 
 import java.util.Map;
 
-import org.neuro4j.workflow.common.FlowInitializationException;
+import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.loader.f4j.NodeType;
 import org.neuro4j.workflow.loader.f4j.NodeXML;
 
 public class AbstractBuilderFactory {
 
 	public static AbstractBuilder getBuilder(NodeXML node,
-			Map<String, String> names) throws FlowInitializationException {
+			Map<String, String> names) throws FlowExecutionException {
 
 		NodeType type = NodeType.valueOf(node.type);
 

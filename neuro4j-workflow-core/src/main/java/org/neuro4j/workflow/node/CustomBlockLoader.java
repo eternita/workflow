@@ -21,7 +21,6 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.neuro4j.workflow.ActionBlock;
 import org.neuro4j.workflow.common.FlowExecutionException;
-import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.enums.ActionBlockCache;
 import org.neuro4j.workflow.enums.CachedNode;
 import org.neuro4j.workflow.loader.CustomBlockInitStrategy;
@@ -63,7 +62,7 @@ public class CustomBlockLoader {
      * 
      * @param entity custom node
      * @return object implemented ActionBlock
-     * @throws FlowInitializationException in case of error
+     * @throws FlowExecutionException in case of error
      */
     
 	public ActionBlock lookupBlock(CustomNode entity) throws FlowExecutionException {

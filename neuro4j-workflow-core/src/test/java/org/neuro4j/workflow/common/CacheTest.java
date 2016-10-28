@@ -17,7 +17,6 @@ import org.hamcrest.core.IsInstanceOf;
 import org.junit.Before;
 import org.junit.Test;
 import org.neuro4j.workflow.ActionBlock;
-import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.UUIDMgr;
 import org.neuro4j.workflow.core.CustomBlockEmptyCache;
 import org.neuro4j.workflow.core.CustomBlockNodeCached;

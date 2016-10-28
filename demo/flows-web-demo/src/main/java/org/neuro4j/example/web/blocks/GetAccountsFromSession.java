@@ -6,13 +6,11 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-
 import org.neuro4j.example.web.mng.AccountMng;
 import org.neuro4j.example.web.mng.impl.AccountMngImpl;
 import org.neuro4j.web.workflow.core.WebFlowContext;
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.common.FlowExecutionException;
-import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.common.ParameterDefinition;
 import org.neuro4j.workflow.common.ParameterDefinitionList;
 import org.neuro4j.workflow.node.CustomBlock;

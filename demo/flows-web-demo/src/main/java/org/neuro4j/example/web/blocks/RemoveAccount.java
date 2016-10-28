@@ -1,7 +1,8 @@
 package org.neuro4j.example.web.blocks;
 
 
-import static org.neuro4j.example.web.blocks.RemoveAccount.*;
+import static org.neuro4j.example.web.blocks.RemoveAccount.IN_ACCOUNTS;
+import static org.neuro4j.example.web.blocks.RemoveAccount.IN_UUID;
 
 import java.util.Map;
 
@@ -9,7 +10,6 @@ import org.neuro4j.example.web.mng.AccountMng;
 import org.neuro4j.example.web.mng.impl.AccountMngImpl;
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.common.FlowExecutionException;
-import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.common.ParameterDefinition;
 import org.neuro4j.workflow.common.ParameterDefinitionList;
 import org.neuro4j.workflow.node.CustomBlock;

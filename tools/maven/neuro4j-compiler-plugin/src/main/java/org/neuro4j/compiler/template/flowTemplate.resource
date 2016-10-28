@@ -1,7 +1,7 @@
 {packageFullName}
 
 
-import org.neuro4j.workflow.common.FlowInitializationException;
+import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.Workflow;
 import org.neuro4j.workflow.node.*;
 import org.neuro4j.workflow.enums.*;
@@ -23,7 +23,7 @@ public class {fileName} extends Workflow {
     /**
 	 * @generated
 	 */
-    public {fileName}() throws FlowInitializationException {
+    public {fileName}() throws FlowExecutionException {
         this("{fileName}", "{flowPackage}");
         init();
     }
@@ -31,7 +31,7 @@ public class {fileName} extends Workflow {
     /**
 	 * @generated
 	 */
-	private void init() throws FlowInitializationException {
+	private void init() throws FlowExecutionException {
 	
 		{initBlock}
 		

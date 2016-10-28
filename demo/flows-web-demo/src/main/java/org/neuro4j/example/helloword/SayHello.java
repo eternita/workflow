@@ -1,14 +1,14 @@
 package org.neuro4j.example.helloword;
 
 
+import static org.neuro4j.example.helloword.SayHello.IN_NAME;
+import static org.neuro4j.example.helloword.SayHello.OUT_MESSAGE;
+
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.common.FlowExecutionException;
-import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.common.ParameterDefinition;
 import org.neuro4j.workflow.common.ParameterDefinitionList;
 import org.neuro4j.workflow.node.CustomBlock;
-
-import static org.neuro4j.example.helloword.SayHello.*;
 
 @ParameterDefinitionList(input={
                                 	@ParameterDefinition(name=IN_NAME, isOptional=true, type= "java.lang.String")},

@@ -27,8 +27,6 @@ import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.WorkflowEngine;
 import org.neuro4j.workflow.common.WorkflowEngine.ConfigBuilder;
-import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.context.annotation.Bean;

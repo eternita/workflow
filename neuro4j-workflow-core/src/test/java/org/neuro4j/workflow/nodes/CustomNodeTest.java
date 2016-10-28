@@ -2,6 +2,8 @@ package org.neuro4j.workflow.nodes;
 
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.fail;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 
 import java.util.UUID;
 
@@ -10,16 +12,12 @@ import org.junit.internal.matchers.IsCollectionContaining;
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
-import org.neuro4j.workflow.common.FlowInitializationException;
 import org.neuro4j.workflow.common.WorkflowEngine.ConfigBuilder;
 import org.neuro4j.workflow.loader.f4j.SWFConstants;
 import org.neuro4j.workflow.node.CustomNode;
 import org.neuro4j.workflow.node.EndNode;
 import org.neuro4j.workflow.node.Transition;
 import org.neuro4j.workflow.node.WorkflowProcessor;
-
-import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
 
 public class CustomNodeTest {
 	
@@ -148,7 +146,7 @@ public class CustomNodeTest {
 		
 		try {
 			customNode.init();
-		} catch (FlowInitializationException e1) {
+		} catch (FlowExecutionException e1) {
 			fail(e1.getMessage());
 		}
 

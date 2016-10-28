@@ -11,7 +11,7 @@ import javax.jms.MessageListener;
 import org.neuro4j.springframework.context.SpringContextInitStrategy;
 import org.neuro4j.springframework.jms.JMSMessageListener;
 import org.neuro4j.springframework.jms.JMSQueueSender;
-import org.neuro4j.workflow.common.FlowInitializationException;
+import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.WorkflowEngine;
 import org.neuro4j.workflow.common.WorkflowEngine.ConfigBuilder;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
@@ -31,7 +31,7 @@ public class Application {
 
     
     @Bean
-    JMSMessageListener receiver(ConfigurableApplicationContext context) throws FlowInitializationException {    	
+    JMSMessageListener receiver(ConfigurableApplicationContext context) throws FlowExecutionException {    	
         return new JMSMessageListener("org.neuro4j.springframework.jms.flows.MessageFlow-JMSMessageListener");
     }
     
