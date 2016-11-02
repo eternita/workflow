@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import org.junit.Test;
 import org.neuro4j.tests.base.BaseFlowTestCase;
@@ -225,5 +226,34 @@ public class DecisionNodeTestCase extends BaseFlowTestCase {
 
         assertEquals(lastValue, "EndNode10");
 
+    }
+    
+    @Test
+    public void testStringNotEqualsTrue() {
+
+        Map<String, Object> params = new HashMap<String, Object>();
+
+        params.put("var1", "123");
+        params.put("var2", "12");
+
+        String lastValue = (String) executeFlowAndReturnLastNode("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNotEqString", params);
+
+        assertEquals(lastValue, "EndNode11");
+
+    }
+    
+    @Test
+    public void testStringNotEqualsFalse() {
+
+    	String var1 = UUID.randomUUID().toString();
+    	
+        Map<String, Object> params = new HashMap<String, Object>();
+
+        params.put("var1", var1);
+        params.put("var2", var1);
+
+        String lastValue = (String) executeFlowAndReturnLastNode("org.neuro4j.flows.nodes.decisionnode.DecisionFlow-StartNotEqString", params);
+
+        assertEquals(lastValue, "EndNode12");
     }
 }

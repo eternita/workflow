@@ -19,6 +19,7 @@ package org.neuro4j.workflow.node;
 import java.util.Collection;
 import java.util.Enumeration;
 import java.util.Iterator;
+import java.util.Objects;
 
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.WorkflowRequest;
@@ -119,7 +120,7 @@ public class DecisionNode extends WorkflowNode {
 
                 Object compValue = getComparisonValue(fctx);
 
-                if (decisionValue != null && compValue != null && decisionValue instanceof String && compValue instanceof String && decisionValue.toString().equals(compValue.toString()))
+                if (Objects.equals(decisionValue, compValue))
                 {
                     request.setNextRelation(trueExit);
                 } else {
@@ -130,7 +131,7 @@ public class DecisionNode extends WorkflowNode {
                 decisionValue = fctx.get(decisionKey);
                 compValue = getComparisonValue(fctx);
 
-                if (decisionValue != null && compValue != null && !decisionValue.toString().equals(compValue.toString()))
+                if (Objects.equals(decisionValue, compValue))
                 {
                     request.setNextRelation(falseExit);
                 } else {
@@ -142,26 +143,26 @@ public class DecisionNode extends WorkflowNode {
                 compValue = getComparisonValue(fctx);
 
                 double numberValue = ((Number) decisionValue).doubleValue();
-                double numberCompareValue = new Double((String) compValue).doubleValue();
+                double numberCompareValue = new Double(compValue.toString()).doubleValue();
 
-                if (numberValue == numberCompareValue)
+                if (numberValue != numberCompareValue)
                 {
-                    request.setNextRelation(falseExit);
-                } else {
                     request.setNextRelation(trueExit);
+                } else {
+                    request.setNextRelation(falseExit);
                 }
                 break;
             case LESS:
                 decisionValue = fctx.get(decisionKey);
                 compValue = getComparisonValue(fctx);
 
-                if (compValue == null) {
+                if (compValue == null || decisionValue == null) {
                     request.setNextRelation(falseExit);
                     break;
                 }
 
-                numberValue = ((Number) decisionValue).doubleValue();
-                numberCompareValue = new Double((String) compValue).doubleValue();
+                 numberValue = ((Number) decisionValue).doubleValue();
+                 numberCompareValue = new Double(compValue.toString()).doubleValue();
 
                 if (numberValue < numberCompareValue)
                 {
@@ -173,12 +174,13 @@ public class DecisionNode extends WorkflowNode {
             case GREATER:
                 decisionValue = fctx.get(decisionKey);
                 compValue = getComparisonValue(fctx);
-                if (compValue == null) {
+                
+                if (compValue == null || decisionValue == null) {
                     request.setNextRelation(falseExit);
                     break;
                 }
                 numberValue = ((Number) decisionValue).doubleValue();
-                numberCompareValue = new Double((String) compValue).doubleValue();
+                numberCompareValue = new Double(compValue.toString()).doubleValue();
 
                 if (numberValue > numberCompareValue)
                 {
@@ -193,7 +195,7 @@ public class DecisionNode extends WorkflowNode {
                 compValue = getComparisonValue(fctx);
 
                 numberValue = ((Number) decisionValue).doubleValue();
-                numberCompareValue = new Double((String) compValue).doubleValue();
+                numberCompareValue = new Double(compValue.toString()).doubleValue();
 
                 if (numberValue == numberCompareValue)
                 {
@@ -270,16 +272,11 @@ public class DecisionNode extends WorkflowNode {
 
     }
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.neuro4j.workflow.node.LogicBlock#validate(org.neuro4j.workflow.FlowContext)
-     */
     @Override
     public void validate(final WorkflowProcessor processor, final FlowContext ctx) throws FlowExecutionException {
         if (operator == null) {
             throw new FlowExecutionException(
-                    "Decision node: Opearator not defined");
+                    "Decision node: Operator not defined");
         }
         if (compTypes == null) {
             throw new FlowExecutionException(

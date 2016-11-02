@@ -37,14 +37,9 @@ public class IncludeTagHandler extends TagSupport {
 
     private static final long serialVersionUID = 2507581424775535445L;
 
-    /**
-     * Flow name. example: Welcome-Start
-     */
     private String flow;
 
-    /**
-     * Flow parameters. example parame1=12&param2=34
-     */
+
     private String parameters;
 
     public String getFlow() {
@@ -132,10 +127,7 @@ public class IncludeTagHandler extends TagSupport {
 
     }
 
-    /**
-     * @param request
-     * @return
-     */
+
     public String getRequestURL(HttpServletRequest request)
     {
         // TODO: Should be updated.

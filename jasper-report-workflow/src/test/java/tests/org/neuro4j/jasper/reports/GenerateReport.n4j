@@ -1,86 +1,93 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <flow visibility="Public">
     <nodes>
-        <node type="START" y="10" x="411" name="Start" uuid="Ab0QV.0Ev1EAAAFHPLUCu4P8">
+        <node uuid="Ab0QV.0Ev1EAAAFHPLUCu4P8" name="Start" x="412" y="-12" type="START">
             <parameters/>
             <config>
-                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
             </config>
             <transitions>
-                <transition toNode="DjQQV.0EtIwAAAFHYxACu4P9" name="NEXT" uuid="8dIQV.0EKnQAAAFHcIoCu4QA">
+                <transition uuid="8dIQV.0EKnQAAAFHcIoCu4QA" name="NEXT" toNode="DjQQV.0EtIwAAAFHYxACu4P9">
                     <points>0, 32, -5, -75|5, 79, 0, -28|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="END" y="658" x="411" name="EndNode1" uuid="0rQQV.0EzfkAAAFHM78Cu4P8">
+        <node uuid="0rQQV.0EzfkAAAFHM78Cu4P8" name="EndNode1" x="412" y="805" type="END">
             <parameters/>
             <config/>
             <transitions/>
         </node>
-        <node type="CUSTOM" y="127" x="399" name="LoadTemplate" uuid="DjQQV.0EtIwAAAFHYxACu4P9">
+        <node uuid="DjQQV.0EtIwAAAFHYxACu4P9" name="LoadTemplate" x="403" y="87" type="CUSTOM">
             <parameters>
-                <parameter input="true" value="&quot;reports/report1.jasper&quot;" key="templatePath"/>
-                <parameter input="false" value="inputStream" key="jasperInputStream"/>
+                <parameter key="templatePath" value="&quot;reports/report1.jasper&quot;" input="true"/>
+                <parameter key="jasperInputStream" value="inputStream" input="false"/>
             </parameters>
             <config>
-                <parameter value="LoadTemplate" key="SWF_BLOCK_CLASS"/>
-                <parameter value="org.neuro4j.jasper.input.LoadTemplate" key="SWF_CUSTOM_CLASS"/>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.jasper.input.LoadTemplate"/>
             </config>
             <transitions>
-                <transition toNode="SwIQV.0EFc4AAAFH9zUCu4QA" name="NEXT" uuid="r30QV.0E6ZIAAAFHv2UCu4QB">
-                    <points>0, 29, -14, -59|14, 60, 0, -28|</points>
+                <transition uuid="NXrAqAIGk14AAAFYjoGyCAnT" name="NEXT" toNode="VlPAqAIG2ZYAAAFYAxqyCAnT">
+                    <points>-78, 35, -75, -65|-81, 65, -78, -35|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="CUSTOM" y="341" x="340" name="CreateJRBeanCollectionDataSource" uuid="8McQV.0E0IEAAAFHYegCu4P.">
+        <node uuid="8McQV.0E0IEAAAFHYegCu4P." name="CreateJRBeanCollectionDataSource" x="403" y="384" type="CUSTOM">
             <parameters/>
             <config>
-                <parameter value="CreateJRBeanCollectionDataSource" key="SWF_BLOCK_CLASS"/>
-                <parameter value="org.neuro4j.jasper.datasource.CreateJRBeanCollectionDataSource" key="SWF_CUSTOM_CLASS"/>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.jasper.datasource.CreateJRBeanCollectionDataSource"/>
             </config>
             <transitions>
-                <transition toNode="OysQV.0E3ZIAAAFH5esNAYQH" name="NEXT" uuid="6UkQV.0ES4cAAAFHpvwNAYQH">
+                <transition uuid="6UkQV.0ES4cAAAFHpvwNAYQH" name="NEXT" toNode="OysQV.0E3ZIAAAFH5esNAYQH">
                     <points>0, 29, 0, -78|0, 85, 0, -22|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="CUSTOM" y="215" x="370" name="CreateFileOutputStream" uuid="SwIQV.0EFc4AAAFH9zUCu4QA">
+        <node uuid="SwIQV.0EFc4AAAFH9zUCu4QA" name="CreateFileOutputStream" x="403" y="276" type="CUSTOM">
             <parameters>
-                <parameter input="true" value="&quot;true&quot;" key="createFile"/>
-                <parameter input="true" value="&quot;target/test1.pdf&quot;" key="filePath"/>
+                <parameter key="createFile" value="&quot;true&quot;" input="true"/>
+                <parameter key="filePath" value="&quot;target/test1.pdf&quot;" input="true"/>
             </parameters>
             <config>
-                <parameter value="CreateFileOutputStream" key="SWF_BLOCK_CLASS"/>
-                <parameter value="org.neuro4j.jasper.output.CreateFileOutputStream" key="SWF_CUSTOM_CLASS"/>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.jasper.output.CreateFileOutputStream"/>
             </config>
             <transitions>
-                <transition toNode="8McQV.0E0IEAAAFHYegCu4P." name="NEXT" uuid="y48QV.0E1WgAAAFHeFkCu4QB">
+                <transition uuid="y48QV.0E1WgAAAFHeFkCu4QB" name="NEXT" toNode="8McQV.0E0IEAAAFHYegCu4P.">
                     <points>0, 29, -9, -92|9, 93, 0, -28|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="CUSTOM" y="561" x="393" name="GenerateReport" uuid="YTQQV.0Ebm8AAAFH5IcNAYQH">
+        <node uuid="YTQQV.0Ebm8AAAFH5IcNAYQH" name="GenerateReport" x="403" y="660" type="CUSTOM">
             <parameters>
-                <parameter input="true" value="inputStream" key="jasperInputStream"/>
+                <parameter key="jasperInputStream" value="inputStream" input="true"/>
             </parameters>
             <config>
-                <parameter value="GenerateReport" key="SWF_BLOCK_CLASS"/>
-                <parameter value="org.neuro4j.jasper.report.GenerateReport" key="SWF_CUSTOM_CLASS"/>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.jasper.report.GenerateReport"/>
             </config>
             <transitions>
-                <transition toNode="0rQQV.0EzfkAAAFHM78Cu4P8" name="NEXT" uuid="wkEQV.0ExKgAAAFHBxgNAYQI">
+                <transition uuid="wkEQV.0ExKgAAAFHBxgNAYQI" name="NEXT" toNode="0rQQV.0EzfkAAAFHM78Cu4P8">
                     <points>0, 29, -3, -79|3, 74, 0, -34|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="MAP" y="454" x="411" name="MapperNode1" uuid="OysQV.0E3ZIAAAFH5esNAYQH">
+        <node uuid="OysQV.0E3ZIAAAFH5esNAYQH" name="MapperNode1" x="407" y="508" type="MAP">
             <parameters>
-                <parameter input="true" value="&quot;(java.util.HashMap)&quot;" key="jasperParameters"/>
+                <parameter key="jasperParameters" value="&quot;(java.util.HashMap)&quot;" input="true"/>
             </parameters>
             <config/>
             <transitions>
-                <transition toNode="YTQQV.0Ebm8AAAFH5IcNAYQH" name="NEXT" uuid="wIcQV.0Ei8wAAAFHfgwNAYQI">
+                <transition uuid="wIcQV.0Ei8wAAAFHfgwNAYQI" name="NEXT" toNode="YTQQV.0Ebm8AAAFH5IcNAYQH">
                     <points>0, 23, 3, -85|-3, 80, 0, -28|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="VlPAqAIG2ZYAAAFYAxqyCAnT" name="CreateReportParameters" x="403" y="187" type="CUSTOM">
+            <parameters/>
+            <config>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.jasper.parameters.CreateReportParameters"/>
+            </config>
+            <transitions>
+                <transition uuid="ivzAqAIGVKAAAAFYNo6yCAnT" name="NEXT" toNode="SwIQV.0EFc4AAAFH9zUCu4QA">
+                    <points>-78, 35, -77, -54|-79, 54, -78, -35|</points>
                 </transition>
             </transitions>
         </node>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<flow visibility="Public">
+    <nodes>
+        <node uuid="dB8KB288DioAAAFYuHkzUyMp" name="StartNode1" x="35" y="14" type="START">
+            <parameters/>
+            <config>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
+            </config>
+            <transitions>
+                <transition uuid="K0cKB288.1oAAAFYNaszUyMp" name="NEXT" toNode="u1sKB288aS4AAAFYRZkzUyMp">
+                    <points>-50, 36, 2, -117|-52, 118, 0, -35|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="sMgKB288E2kAAAFYh4gzUyMp" name="EndNode1" x="35" y="330" type="END">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node uuid="u1sKB288aS4AAAFYRZkzUyMp" name="MapperNode1" x="30" y="167" type="MAP">
+            <parameters>
+                <parameter key="message" value="&quot;Hello from remote host&quot;" input="true"/>
+            </parameters>
+            <config/>
+            <transitions>
+                <transition uuid="irEKB288OJMAAAFYh7UzUyMp" name="NEXT" toNode="sMgKB288E2kAAAFYh4gzUyMp">
+                    <points>0, 35, -51, -137|1, 128, -50, -44|</points>
+                </transition>
+            </transitions>
+        </node>
+    </nodes>
+</flow>

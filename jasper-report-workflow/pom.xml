@@ -1,57 +1,40 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>org.neuro4j</groupId>
-        <artifactId>workflow</artifactId>
-        <version>3.0.1-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
-    </parent>
-    <artifactId>jasper-report-workflow</artifactId>
+	<parent>
+		<groupId>org.neuro4j</groupId>
+		<artifactId>workflow</artifactId>
+		<version>3.0.1-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+	<artifactId>jasper-report-workflow</artifactId>
 
-    <dependencies>
+	<dependencies>
 
-        <dependency>
-            <groupId>org.neuro4j</groupId>
-            <artifactId>neuro4j-workflow-common</artifactId>
-            <version>${project.version}</version>
-        </dependency>
+		<dependency>
+			<groupId>org.neuro4j</groupId>
+			<artifactId>neuro4j-workflow-common</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.codehaus.groovy</groupId>
 			<artifactId>groovy-all</artifactId>
 			<version>2.0.1</version>
 		</dependency>
-        <dependency>
-        	<groupId>net.sf.jasperreports</groupId>
-                <artifactId>jasperreports</artifactId>
-                <version>5.1.0</version>
-        </dependency>
-    </dependencies>
-    	<build>
-<!--
-<plugins>
-<plugin>
-  <groupId>com.googlecode.addjars-maven-plugin</groupId>
-  <artifactId>addjars-maven-plugin</artifactId>
-  <version>1.0.2</version>
-  <executions>
-    <execution>
-        <goals>
-            <goal>add-jars</goal>
-        </goals>
-        <configuration>
-            <resources>
-                <resource>
-                    <directory>E:/dev/local/jasperreports-5.2.0-project/jasperreports-5.2.0/lib</directory>
-                </resource>
-            </resources>
-        </configuration>
-    </execution>
-  </executions>
-</plugin>
-</plugins>
-
- -->
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>5.1.0</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<!-- <plugins> <plugin> <groupId>com.googlecode.addjars-maven-plugin</groupId> 
+			<artifactId>addjars-maven-plugin</artifactId> <version>1.0.2</version> <executions> 
+			<execution> <goals> <goal>add-jars</goal> </goals> <configuration> <resources> 
+			<resource> <directory>E:/dev/local/jasperreports-5.2.0-project/jasperreports-5.2.0/lib</directory> 
+			</resource> </resources> </configuration> </execution> </executions> </plugin> 
+			</plugins> -->
 		<resources>
 			<resource>
 				<directory>src/main/java</directory>
@@ -65,19 +48,20 @@
 					<include>**/**</include>
 				</includes>
 			</resource>
-			<resource>
+		</resources>
+		<testResources>
+			<testResource>
 				<directory>src/test/java</directory>
 				<includes>
-					<include>**/*.n4j</include>
+					<include>**/**</include>
 				</includes>
-			</resource>
-			<resource>
+			</testResource>
+			<testResource>
 				<directory>src/test/resources</directory>
 				<includes>
 					<include>**/**</include>
 				</includes>
-			</resource>
-
-		</resources>
+			</testResource>
+			</testResources>	
 	</build>
 </project>

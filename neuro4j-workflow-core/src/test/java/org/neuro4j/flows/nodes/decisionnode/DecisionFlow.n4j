@@ -1,153 +1,196 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <flow visibility="Public">
     <nodes>
-        <node type="START" y="412" x="663" name="StartNodeHasElements" uuid="Y_qp_lq3jy0AAAE9pMhwBh0m">
+        <node uuid="Y_qp_lq3jy0AAAE9pMhwBh0m" name="StartNodeHasElements" x="717" y="434" type="START">
             <parameters/>
             <config>
-                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
             </config>
             <transitions>
-                <transition toNode="l86p_lq3GiUAAAE9WgFwBh0n" name="NEXT" uuid="RByp_lq3_2EAAAE9Vw9wBh0n"/>
+                <transition uuid="RByp_lq3_2EAAAE9Vw9wBh0n" name="NEXT" toNode="l86p_lq3GiUAAAE9WgFwBh0n"/>
             </transitions>
         </node>
-        <node type="END" y="677" x="714" name="EndNode9" uuid="wDqp_lq3oaAAAAE9adNwBh0m">
+        <node uuid="wDqp_lq3oaAAAAE9adNwBh0m" name="EndNode9" x="717" y="677" type="END">
             <parameters/>
             <config/>
             <transitions/>
         </node>
-        <node type="DECISION" y="170" x="940" name="DecisionNode3" uuid="s_.p_lq3wbIAAAE9yM5wBh0c">
+        <node uuid="s_.p_lq3wbIAAAE9yM5wBh0c" name="DecisionNode3" x="940" y="170" type="DECISION">
             <parameters/>
             <config>
-                <parameter value="UNDEFINED" key="SYS_OPERATOR"/>
-                <parameter value="var1" key="SYS_DECISION_KEY"/>
+                <parameter key="SYS_OPERATOR" value="UNDEFINED"/>
+                <parameter key="SYS_DECISION_KEY" value="var1"/>
             </config>
             <transitions>
-                <transition toNode="Dbap_lq3tUwAAAE9r61wBh0c" name="NEXT" uuid="alap_lq3kQcAAAE9xelwBh0c"/>
-                <transition toNode="DTqp_lq3uVkAAAE9DgxwBh0d" name="FALSE" uuid="F72p_lq3uOoAAAE95R1wBh0d"/>
+                <transition uuid="alap_lq3kQcAAAE9xelwBh0c" name="NEXT" toNode="Dbap_lq3tUwAAAE9r61wBh0c"/>
+                <transition uuid="F72p_lq3uOoAAAE95R1wBh0d" name="FALSE" toNode="DTqp_lq3uVkAAAE9DgxwBh0d"/>
             </transitions>
         </node>
-        <node type="START" y="34" x="207" name="StartNodeEqStr" uuid="qG.p_lq3qU8AAAE9A2BwBhvy">
+        <node uuid="qG.p_lq3qU8AAAE9A2BwBhvy" name="StartNodeEqStr" x="207" y="34" type="START">
             <parameters/>
             <config>
-                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
             </config>
             <transitions>
-                <transition toNode="yAep_lq39yoAAAE9aotwBhvy" name="NEXT" uuid="Q42p_lq374kAAAE91JxwBhvy"/>
+                <transition uuid="Q42p_lq374kAAAE91JxwBhvy" name="NEXT" toNode="yAep_lq39yoAAAE9aotwBhvy"/>
             </transitions>
         </node>
-        <node type="END" y="338" x="822" name="EndNode4" uuid="syKp_lq3n2IAAAE9ssJwBhx.">
+        <node uuid="syKp_lq3n2IAAAE9ssJwBhx." name="EndNode4" x="822" y="338" type="END">
             <parameters/>
             <config/>
             <transitions/>
         </node>
-        <node type="END" y="328" x="1087" name="EndNode6" uuid="DTqp_lq3uVkAAAE9DgxwBh0d">
+        <node uuid="DTqp_lq3uVkAAAE9DgxwBh0d" name="EndNode6" x="1087" y="328" type="END">
             <parameters/>
             <config/>
             <transitions/>
         </node>
-        <node type="DECISION" y="539" x="274" name="DecisionNode4" uuid="Xuep_lq3vXgAAAE9eXJwBh0g">
+        <node uuid="Xuep_lq3vXgAAAE9eXJwBh0g" name="DecisionNode4" x="274" y="539" type="DECISION">
             <parameters/>
             <config>
-                <parameter value="EMPTY_STR" key="SYS_OPERATOR"/>
-                <parameter value="var1" key="SYS_DECISION_KEY"/>
+                <parameter key="SYS_OPERATOR" value="EMPTY_STR"/>
+                <parameter key="SYS_DECISION_KEY" value="var1"/>
             </config>
             <transitions>
-                <transition toNode="0K2p_lq3OP8AAAE9IFVwBh0g" name="NEXT" uuid="JbCp_lq3Zm0AAAE9F5pwBh0g"/>
-                <transition toNode="C.ip_lq3X6EAAAE9VKRwBh0g" name="FALSE" uuid="0XWp_lq3vZYAAAE9Q61wBh0g"/>
+                <transition uuid="JbCp_lq3Zm0AAAE9F5pwBh0g" name="NEXT" toNode="0K2p_lq3OP8AAAE9IFVwBh0g"/>
+                <transition uuid="0XWp_lq3vZYAAAE9Q61wBh0g" name="FALSE" toNode="C.ip_lq3X6EAAAE9VKRwBh0g">
+                    <points>-41, 0, -184, -134|93, 0, -50, -134|93, 90, -50, -44|</points>
+                </transition>
             </transitions>
         </node>
-        <node type="DECISION" y="182" x="622" name="DecisionNode2" uuid="Ig6p_lq3ErYAAAE9oilwBhwY">
+        <node uuid="Ig6p_lq3ErYAAAE9oilwBhwY" name="DecisionNode2" x="622" y="182" type="DECISION">
             <parameters/>
             <config>
-                <parameter value="DEFINED" key="SYS_OPERATOR"/>
-                <parameter value="var1" key="SYS_DECISION_KEY"/>
+                <parameter key="SYS_OPERATOR" value="DEFINED"/>
+                <parameter key="SYS_DECISION_KEY" value="var1"/>
             </config>
             <transitions>
-                <transition toNode="qSSp_lq33UAAAAE96xdwBhwY" name="NEXT" uuid="81mp_lq3nWgAAAE9fkNwBhwY"/>
-                <transition toNode="syKp_lq3n2IAAAE9ssJwBhx." name="FALSE" uuid="6i.p_lq3jhcAAAE9Q8xwBhx."/>
+                <transition uuid="81mp_lq3nWgAAAE9fkNwBhwY" name="NEXT" toNode="qSSp_lq33UAAAAE96xdwBhwY"/>
+                <transition uuid="6i.p_lq3jhcAAAE9Q8xwBhx." name="FALSE" toNode="syKp_lq3n2IAAAE9ssJwBhx."/>
             </transitions>
         </node>
-        <node type="START" y="15" x="928" name="StartNodeUndefined" uuid="evep_lq31hoAAAE9TJZwBh0c">
+        <node uuid="evep_lq31hoAAAE9TJZwBh0c" name="StartNodeUndefined" x="928" y="15" type="START">
             <parameters/>
             <config>
-                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
             </config>
             <transitions>
-                <transition toNode="s_.p_lq3wbIAAAE9yM5wBh0c" name="NEXT" uuid="lbKp_lq3pCYAAAE919twBh0c"/>
+                <transition uuid="lbKp_lq3pCYAAAE919twBh0c" name="NEXT" toNode="s_.p_lq3wbIAAAE9yM5wBh0c"/>
             </transitions>
         </node>
-        <node type="END" y="340" x="969" name="EndNode5" uuid="Dbap_lq3tUwAAAE9r61wBh0c">
+        <node uuid="Dbap_lq3tUwAAAE9r61wBh0c" name="EndNode5" x="969" y="340" type="END">
             <parameters/>
             <config/>
             <transitions/>
         </node>
-        <node type="DECISION" y="198" x="203" name="DecisionNode1" uuid="yAep_lq39yoAAAE9aotwBhvy">
+        <node uuid="yAep_lq39yoAAAE9aotwBhvy" name="DecisionNode1" x="203" y="198" type="DECISION">
             <parameters/>
             <config>
-                <parameter value="EQ_STR" key="SYS_OPERATOR"/>
-                <parameter value="var1" key="SYS_COMP_KEY"/>
-                <parameter value="var2" key="SYS_DECISION_KEY"/>
+                <parameter key="SYS_OPERATOR" value="EQ_STR"/>
+                <parameter key="SYS_COMP_KEY" value="var1"/>
+                <parameter key="SYS_DECISION_KEY" value="var2"/>
             </config>
             <transitions>
-                <transition toNode="1NGp_lq3eXUAAAE9Nm1wBhvy" name="NEXT" uuid="J9up_lq35zUAAAE9TKdwBhvy"/>
-                <transition toNode="WSmp_lq3l68AAAE9wrpwBhvy" name="FALSE" uuid="Zsup_lq3pVIAAAE9LMZwBhvy"/>
+                <transition uuid="J9up_lq35zUAAAE9TKdwBhvy" name="NEXT" toNode="1NGp_lq3eXUAAAE9Nm1wBhvy"/>
+                <transition uuid="Zsup_lq3pVIAAAE9LMZwBhvy" name="FALSE" toNode="WSmp_lq3l68AAAE9wrpwBhvy">
+                    <points>-41, 0, -194, -146|103, 0, -50, -146|103, 102, -50, -44|</points>
+                </transition>
             </transitions>
         </node>
-        <node type="START" y="18" x="604" name="StartNodeDefined" uuid="gFSp_lq32UcAAAE9jgxwBhwY">
+        <node uuid="gFSp_lq32UcAAAE9jgxwBhwY" name="StartNodeDefined" x="604" y="18" type="START">
             <parameters/>
             <config>
-                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
             </config>
             <transitions>
-                <transition toNode="Ig6p_lq3ErYAAAE9oilwBhwY" name="NEXT" uuid="ejWp_lq3tfsAAAE9mDdwBhwY"/>
+                <transition uuid="ejWp_lq3tfsAAAE9mDdwBhwY" name="NEXT" toNode="Ig6p_lq3ErYAAAE9oilwBhwY"/>
             </transitions>
         </node>
-        <node type="END" y="327" x="638" name="EndNode3" uuid="qSSp_lq33UAAAAE96xdwBhwY">
+        <node uuid="qSSp_lq33UAAAAE96xdwBhwY" name="EndNode3" x="638" y="327" type="END">
             <parameters/>
             <config/>
             <transitions/>
         </node>
-        <node type="START" y="397" x="252" name="StartNodeEmptyString" uuid="bK6p_lq3enkAAAE9dEhwBh0g">
+        <node uuid="bK6p_lq3enkAAAE9dEhwBh0g" name="StartNodeEmptyString" x="282" y="417" type="START">
             <parameters/>
             <config>
-                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
             </config>
             <transitions>
-                <transition toNode="Xuep_lq3vXgAAAE9eXJwBh0g" name="NEXT" uuid="rq6p_lq3yucAAAE9wo9wBh0g"/>
+                <transition uuid="rq6p_lq3yucAAAE9wo9wBh0g" name="NEXT" toNode="Xuep_lq3vXgAAAE9eXJwBh0g"/>
             </transitions>
         </node>
-        <node type="END" y="674" x="875" name="EndNode10" uuid="7gqp_lq33nIAAAE9uuBwBh0m">
+        <node uuid="7gqp_lq33nIAAAE9uuBwBh0m" name="EndNode10" x="875" y="674" type="END">
             <parameters/>
             <config/>
             <transitions/>
         </node>
-        <node type="END" y="336" x="181" name="EndNode1" uuid="1NGp_lq3eXUAAAE9Nm1wBhvy">
+        <node uuid="1NGp_lq3eXUAAAE9Nm1wBhvy" name="EndNode1" x="211" y="336" type="END">
             <parameters/>
             <config/>
             <transitions/>
         </node>
-        <node type="END" y="335" x="388" name="EndNode2" uuid="WSmp_lq3l68AAAE9wrpwBhvy">
+        <node uuid="WSmp_lq3l68AAAE9wrpwBhvy" name="EndNode2" x="388" y="335" type="END">
             <parameters/>
             <config/>
             <transitions/>
         </node>
-        <node type="END" y="669" x="275" name="EndNode7" uuid="0K2p_lq3OP8AAAE9IFVwBh0g">
+        <node uuid="0K2p_lq3OP8AAAE9IFVwBh0g" name="EndNode7" x="282" y="669" type="END">
             <parameters/>
             <config/>
             <transitions/>
         </node>
-        <node type="DECISION" y="555" x="709" name="DecisionNode5" uuid="l86p_lq3GiUAAAE9WgFwBh0n">
+        <node uuid="l86p_lq3GiUAAAE9WgFwBh0n" name="DecisionNode5" x="709" y="555" type="DECISION">
             <parameters/>
             <config>
-                <parameter value="HAS_EL" key="SYS_OPERATOR"/>
-                <parameter value="var1" key="SYS_DECISION_KEY"/>
+                <parameter key="SYS_OPERATOR" value="HAS_EL"/>
+                <parameter key="SYS_DECISION_KEY" value="var1"/>
             </config>
             <transitions>
-                <transition toNode="wDqp_lq3oaAAAAE9adNwBh0m" name="NEXT" uuid="Lz.p_lq3DnUAAAE9KxlwBh0n"/>
-                <transition toNode="7gqp_lq33nIAAAE9uuBwBh0m" name="FALSE" uuid="q6ep_lq3b1kAAAE9qChwBh0p"/>
+                <transition uuid="Lz.p_lq3DnUAAAE9KxlwBh0n" name="NEXT" toNode="wDqp_lq3oaAAAAE9adNwBh0m"/>
+                <transition uuid="q6ep_lq3b1kAAAE9qChwBh0p" name="FALSE" toNode="7gqp_lq33nIAAAE9uuBwBh0m">
+                    <points>-41, 0, -175, -128|84, 0, -50, -128|84, 84, -50, -44|</points>
+                </transition>
             </transitions>
         </node>
-        <node type="END" y="664" x="449" name="EndNode8" uuid="C.ip_lq3X6EAAAE9VKRwBh0g">
+        <node uuid="C.ip_lq3X6EAAAE9VKRwBh0g" name="EndNode8" x="449" y="664" type="END">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node uuid="BYPAqAIGXVMAAAFYK1ZVNRPf" name="StartNotEqString" x="1112" y="435" type="START">
+            <parameters/>
+            <config>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
+            </config>
+            <transitions>
+                <transition uuid="6lTAqAIGRRIAAAFY9x5VNRPg" name="NEXT" toNode="1FzAqAIGNnkAAAFYsrBVNRPf">
+                    <points>-50, 36, -70, -65|-54, 66, -74, -35|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="1FzAqAIGNnkAAAFYsrBVNRPf" name="DecisionNode6" x="1104" y="536" type="DECISION">
+            <parameters/>
+            <config>
+                <parameter key="SYS_OPERATOR" value="NEQ_STR"/>
+                <parameter key="SYS_COMP_KEY" value="var2"/>
+                <parameter key="SYS_DECISION_KEY" value="var1"/>
+            </config>
+            <transitions>
+                <transition uuid="_TPAqAIGf6sAAAFYxjVVNRPg" name="NEXT" toNode="CwLAqAIGRQYAAAFYcdFVNRPf">
+                    <points>-74, 35, -49, -99|-75, 90, -50, -44|</points>
+                </transition>
+                <transition uuid="iJXAqAIGKRYAAAFY6j5VNRPg" name="FALSE" toNode="MnTAqAIGgvEAAAFYrwRVNRPg">
+                    <points>-41, 0, -147, -133|57, 0, -49, -133|57, 9, -49, -124|56, 9, -50, -124|56, 89, -50, -44|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="CwLAqAIGRQYAAAFYcdFVNRPf" name="EndNode11" x="1112" y="661" type="END">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node uuid="MnTAqAIGgvEAAAFYrwRVNRPg" name="EndNode12" x="1242" y="660" type="END">
             <parameters/>
             <config/>
             <transitions/>

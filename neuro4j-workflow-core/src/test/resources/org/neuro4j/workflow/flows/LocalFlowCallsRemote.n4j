@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<flow visibility="Public">
+    <nodes>
+        <node uuid="T9cKB288lcsAAAFYZ2MzUyNf" name="StartNode1" x="107" y="10" type="START">
+            <parameters/>
+            <config>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
+            </config>
+            <transitions>
+                <transition uuid="E4YKB288dsAAAAFY2r0zUyNf" name="NEXT" toNode=".6AKB288P0oAAAFYs6czUyNf">
+                    <points>-50, 36, 3, -71|-53, 72, 0, -35|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="vvYKB288jBIAAAFYaYAzUyNf" name="EndNode1" x="107" y="335" type="END">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node uuid="wWgKB288_awAAAFYDowzUyNf" name="CallNode1" x="98" y="233" type="CALL">
+            <parameters/>
+            <config>
+                <parameter key="SYS_DYNAMIC_FLOW_NAME" value="remoteFlow"/>
+            </config>
+            <transitions>
+                <transition uuid="t9wKB288BhMAAAFYftEzUyNf" name="NEXT" toNode="vvYKB288jBIAAAFYaYAzUyNf">
+                    <points>-78, 35, -54, -76|-74, 67, -50, -44|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid=".6AKB288P0oAAAFYs6czUyNf" name="MapperNode1" x="102" y="117" type="MAP">
+            <parameters>
+                <parameter key="remoteFlow" value="&quot;http://localhost:8080/app/org/neuro4j/workflow/flows/RemoteFlow.n4j-StartNode1&quot;" input="true"/>
+            </parameters>
+            <config/>
+            <transitions>
+                <transition uuid="UwEKB288W.IAAAFYbsczUyNf" name="NEXT" toNode="wWgKB288_awAAAFYDowzUyNf">
+                    <points>0, 35, -77, -81|-1, 81, -78, -35|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="note" name="fJkKB288fUAAAAFYzGQzUyNh" x="289" y="107" type="NOTE">
+            <description>remoteFlow=http://localhost:8080/app/org/neuro4j/workflow/flows/RemoteFlow.n4j-StartNode1</description>
+            <parameters/>
+            <config>
+                <parameter key="w" value="298"/>
+                <parameter key="h" value="80"/>
+            </config>
+            <transitions/>
+        </node>
+        <node uuid="note" name="ZGsKB288aTQAAAFYzWQzUyNh" x="331" y="257" type="NOTE">
+            <description>calls remote flow</description>
+            <parameters/>
+            <config>
+                <parameter key="w" value="246"/>
+                <parameter key="h" value="63"/>
+            </config>
+            <transitions/>
+        </node>
+    </nodes>
+</flow>
