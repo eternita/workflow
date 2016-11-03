@@ -31,7 +31,9 @@ import org.neuro4j.workflow.loader.CustomBlockInitStrategy;
 import org.neuro4j.workflow.loader.DefaultCustomBlockInitStrategy;
 import org.neuro4j.workflow.loader.RemoteWorkflowLoader;
 import org.neuro4j.workflow.loader.WorkflowLoader;
+import org.neuro4j.workflow.node.FlowParameter;
 import org.neuro4j.workflow.node.WorkflowProcessor;
+import org.neuro4j.workflow.utils.Validation;
 
 /**
  * <p>
@@ -113,6 +115,8 @@ public class WorkflowEngine {
 		private ActionHandlersRegistry registry;
 		
 		private final WorkflowConverter converter;
+		
+		private final Map<String, FlowParameter> aliases = new HashMap<>();
 
 		public ConfigBuilder() {
 			converter = new XmlWorkflowConverter();
@@ -138,6 +142,16 @@ public class WorkflowEngine {
 			return this;
 		}
 
+		public ConfigBuilder withAliases(final Map<String, String> aliases) throws FlowExecutionException {
+			Validation.requireNonNull(aliases, () -> new FlowExecutionException("Aliases can not be null"));
+			for (String key : aliases.keySet()) {
+				FlowParameter param = FlowParameter.parse(aliases.get(key));
+				this.aliases.put(key, param);
+			}
+
+			return this;
+		}
+		
 		public WorkflowLoader getLoader() {
 			return loader != null ? loader : new RemoteWorkflowLoader(converter, new ClasspathWorkflowLoader(converter));
 		}
@@ -153,7 +167,10 @@ public class WorkflowEngine {
 		public ActionHandlersRegistry getActionRegistry() {
 			return this.registry != null ? this.registry : new ActionHandlersRegistry(Collections.emptyMap());
 		}
-
+		
+		public Map<String, FlowParameter> getAliases() {
+			return this.aliases;
+		}
 	}
 
 }

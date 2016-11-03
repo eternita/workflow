@@ -3,7 +3,7 @@ package org.neuro4j.workflow.nodes;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.fail;
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 import java.util.Arrays;
 import java.util.Enumeration;
@@ -12,6 +12,7 @@ import java.util.UUID;
 import java.util.Vector;
 
 import org.apache.commons.collections.EnumerationUtils;
+import org.hamcrest.collection.IsArrayWithSize;
 import org.junit.Test;
 import org.junit.internal.matchers.IsCollectionContaining;
 import org.neuro4j.workflow.FlowContext;
@@ -129,7 +130,56 @@ public class DecisionNodeTest {
 
 		testDecisionNode(null, null, DecisionOperators.HAS_EL, DecisionCompTypes.context, "FALSE");
 	}
+	
+	// more
+	@Test
+	public void testDecisionNumberGREATERTrue(){
+		// diff classes
+		testDecisionNode(new Integer("7"), new Integer(6), DecisionOperators.GREATER, DecisionCompTypes.context, "NEXT");
+	}
+	
+	@Test
+	public void testDecisionNumberGREATERDiffClasses(){
+		// diff classes
+		testDecisionNode( new Double(7), new Integer(6), DecisionOperators.GREATER, DecisionCompTypes.context, "NEXT");
+	}
+	
+	@Test
+	public void testDecisionNumberGREATERFalse(){
+		testDecisionNode(new Integer(6), new Double(7.5), DecisionOperators.GREATER, DecisionCompTypes.context, "FALSE");
+	}
+	
+	@Test
+	public void testDecisionNumberGREATERConstant(){
+		// diff classes
+		testDecisionNode("7", new Integer(6), DecisionOperators.GREATER, DecisionCompTypes.constant, "NEXT");
+	}
+	
+	@Test
+	public void testDecisionOperators(){
 
+		assertTrue(DecisionOperators.DEFINED.isSingleOperand());
+		assertTrue(DecisionOperators.UNDEFINED.isSingleOperand());
+		assertTrue(DecisionOperators.EMPTY_STR.isSingleOperand());
+		assertTrue(DecisionOperators.HAS_EL.isSingleOperand());
+		
+		assertFalse(DecisionOperators.NEQ_STR.isSingleOperand());
+		assertFalse(DecisionOperators.EQ_STR.isSingleOperand());
+		assertFalse(DecisionOperators.EQ.isSingleOperand());
+		assertFalse(DecisionOperators.NEQ.isSingleOperand());
+		
+		assertThat(DecisionOperators.operators(), IsArrayWithSize.arrayWithSize(10));
+		
+		assertEquals(DecisionOperators.DEFINED, DecisionOperators.getByName("DEFINED"));
+		assertEquals(DecisionOperators.UNDEFINED, DecisionOperators.getByName("UNDEFINED"));
+		assertEquals(DecisionOperators.EMPTY_STR, DecisionOperators.getByName("EMPTY_STR"));
+		assertEquals(DecisionOperators.HAS_EL, DecisionOperators.getByName("HAS_EL"));
+		
+		assertEquals(DecisionOperators.NEQ_STR, DecisionOperators.getByName("NEQ_STR"));
+		assertEquals(DecisionOperators.EQ_STR, DecisionOperators.getByName("EQ_STR"));
+		assertEquals(DecisionOperators.EQ, DecisionOperators.getByName("EQ"));
+		assertEquals(DecisionOperators.NEQ, DecisionOperators.getByName("NEQ"));
+	}
 	@Test
 	public void testDecisionKeyValidation() {
 

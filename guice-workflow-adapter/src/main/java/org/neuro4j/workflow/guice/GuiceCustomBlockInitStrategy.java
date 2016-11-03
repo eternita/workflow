@@ -54,9 +54,6 @@ public class GuiceCustomBlockInitStrategy implements CustomBlockInitStrategy {
     }
 
     
-    /* (non-Javadoc)
-     * @see org.neuro4j.workflow.loader.CustomBlockInitStrategy#loadCustomBlock(java.lang.String)
-     */
     @SuppressWarnings("unchecked")
     public ActionBlock loadCustomBlock(String className) throws FlowExecutionException {
         try {

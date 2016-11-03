@@ -1,13 +1,14 @@
 package org.neuro4j.workflow.guice.flows;
 
-import static org.neuro4j.workflow.guice.flows.CustomBlockWithService.*;
+import static org.neuro4j.workflow.guice.flows.CustomBlockWithService.IN_NAME;
+import static org.neuro4j.workflow.guice.flows.CustomBlockWithService.OUT_MESSAGE;
 
+import org.neuro4j.workflow.ActionBlock;
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.ParameterDefinition;
 import org.neuro4j.workflow.common.ParameterDefinitionList;
 import org.neuro4j.workflow.guice.service.MessageService;
-import org.neuro4j.workflow.node.CustomBlock;
 
 import com.google.inject.Inject;
 
@@ -19,7 +20,7 @@ import com.google.inject.Inject;
 @ParameterDefinitionList(
 		                 input = { @ParameterDefinition(name = IN_NAME, isOptional = true, type = "java.lang.String") },
                          output = { @ParameterDefinition(name = OUT_MESSAGE, isOptional = true, type = "java.lang.String") })
-public class CustomBlockWithService extends CustomBlock {
+public class CustomBlockWithService implements ActionBlock {
 
 	static final String IN_NAME = "name";
 

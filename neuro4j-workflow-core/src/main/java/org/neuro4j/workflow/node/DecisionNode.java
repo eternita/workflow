@@ -142,7 +142,12 @@ public class DecisionNode extends WorkflowNode {
                 decisionValue = fctx.get(decisionKey);
                 compValue = getComparisonValue(fctx);
 
-                double numberValue = ((Number) decisionValue).doubleValue();
+                if (compValue == null || decisionValue == null) {
+                    request.setNextRelation(falseExit);
+                    break;
+                }
+                
+                double numberValue = new Double(decisionValue.toString()).doubleValue();
                 double numberCompareValue = new Double(compValue.toString()).doubleValue();
 
                 if (numberValue != numberCompareValue)
@@ -161,7 +166,7 @@ public class DecisionNode extends WorkflowNode {
                     break;
                 }
 
-                 numberValue = ((Number) decisionValue).doubleValue();
+                 numberValue = new Double(decisionValue.toString()).doubleValue();
                  numberCompareValue = new Double(compValue.toString()).doubleValue();
 
                 if (numberValue < numberCompareValue)
@@ -179,7 +184,7 @@ public class DecisionNode extends WorkflowNode {
                     request.setNextRelation(falseExit);
                     break;
                 }
-                numberValue = ((Number) decisionValue).doubleValue();
+                numberValue = new Double(decisionValue.toString()).doubleValue();
                 numberCompareValue = new Double(compValue.toString()).doubleValue();
 
                 if (numberValue > numberCompareValue)
@@ -193,8 +198,13 @@ public class DecisionNode extends WorkflowNode {
                 decisionValue = fctx.get(decisionKey);
 
                 compValue = getComparisonValue(fctx);
-
-                numberValue = ((Number) decisionValue).doubleValue();
+                
+                if (compValue == null || decisionValue == null) {
+                    request.setNextRelation(falseExit);
+                    break;
+                }
+                
+                numberValue = new Double(decisionValue.toString()).doubleValue();
                 numberCompareValue = new Double(compValue.toString()).doubleValue();
 
                 if (numberValue == numberCompareValue)

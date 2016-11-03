@@ -36,11 +36,7 @@ public class XmlWorkflowConverter implements WorkflowConverter{
 	@Override
 	public Workflow convert(Reader stream, String name) throws FlowExecutionException {
 		Validation.requireNonNull(stream, () -> new FlowExecutionException("InputStream can not be null"));
-		try {
-			return FlowConverter.xml2workflow(stream, name);
-		} catch (Exception e) {
-			throw new FlowExecutionException(e);
-		}
+		return FlowConverter.xml2workflow(stream, name);
 	}
 
 	@Override

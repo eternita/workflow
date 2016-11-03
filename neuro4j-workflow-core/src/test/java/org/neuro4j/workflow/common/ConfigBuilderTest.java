@@ -4,9 +4,11 @@ import static org.junit.Assert.*;
 
 import java.io.File;
 import java.util.HashMap;
+import java.util.Map;
 
 import static org.hamcrest.CoreMatchers.*;
 
+import org.hamcrest.collection.IsCollectionWithSize;
 import org.junit.Test;
 import org.neuro4j.workflow.cache.ActionHandlersRegistry;
 import org.neuro4j.workflow.cache.ConcurrentMapWorkflowCache;
@@ -78,6 +80,38 @@ public class ConfigBuilderTest {
 	        assertNotNull(builder.getWorkflowCache());	
 	        assertThat(builder.getWorkflowCache(), instanceOf(EmptyWorkflowCache.class));
 	        assertThat(builder.getActionRegistry(), instanceOf(ActionHandlersRegistry.class));
+	}
+	
+	@Test
+	public void testConfigBuilderWithAliases() throws FlowExecutionException{
+		    Map<String, String> map = new HashMap<>();
+		    map.put("productList", "org.neuro4j.workflow.flows.FlowForClasspathLoader");
+		    map.put("product", "org.neuro4j.workflow.flows.FlowForClasspathLoader");
+	    	ConfigBuilder builder = new ConfigBuilder().withAliases(map);
+	    	
+	        assertNotNull(builder.getCustomInitStrategy());
+	        assertThat(builder.getCustomInitStrategy(), instanceOf(DefaultCustomBlockInitStrategy.class));
+	        assertNotNull(builder.getLoader());	
+	        assertThat(builder.getLoader(), instanceOf(RemoteWorkflowLoader.class));
+	        assertNotNull(builder.getWorkflowCache());	
+	        assertThat(builder.getWorkflowCache(), instanceOf(EmptyWorkflowCache.class));
+	        assertThat(builder.getActionRegistry(), instanceOf(ActionHandlersRegistry.class));
+	        assertThat(builder.getAliases().keySet(), IsCollectionWithSize.hasSize(2));
+	}
+	
+	@Test
+	public void testConfigBuilderWithWrongAliases(){
+		    Map<String, String> map = new HashMap<>();
+		    map.put("productList", "org.neuro4j.workflow.flows.FlowForClasspathLoader-StartNode1");
+		    map.put("product", "org.neuro4j.workflow.flows.FlowForClasspathLoader-StartNode1");
+		    map.put("product1", null);
+	    	try {
+				ConfigBuilder builder = new ConfigBuilder().withAliases(map);
+				fail("Should be exception");
+			} catch (FlowExecutionException e) {
+               assertEquals("Request flow can not be null", e.getMessage());
+			}
+	    	
 	}
 	
 }

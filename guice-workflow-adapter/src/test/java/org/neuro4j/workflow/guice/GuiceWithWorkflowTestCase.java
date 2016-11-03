@@ -82,6 +82,11 @@ public class GuiceWithWorkflowTestCase {
         }
     }
     
+    @Test(expected=FlowExecutionException.class)
+    public void testWrongCustomBlock() throws FlowExecutionException {
+    	initStrategy.loadCustomBlock("someclass1.class");
+    }
+    
 	@Test
 	public void testConfigBuilderWithInitStrategy() throws FlowExecutionException{
 	    	ConfigBuilder builder = new ConfigBuilder().withCustomBlockInitStrategy(initStrategy);

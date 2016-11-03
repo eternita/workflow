@@ -146,19 +146,19 @@ public class FlowContext {
 
     @Override
     public String toString() {
-        // sort asc
+        if (parameters.isEmpty()) {
+            return "{}";
+        }
         List<String> ks = new ArrayList<String>(parameters.keySet());
         Collections.sort(ks);
         Iterator<String> localIterator = ks.iterator();
-        if (!(localIterator.hasNext())) {
-            return "{}";
-        }
+
         StringBuilder localStringBuilder = new StringBuilder();
         localStringBuilder.append('{');
         while (true) {
-            Object localObject1 = localIterator.next();
+            String localObject1 = localIterator.next();
             Object localObject2 = parameters.get(localObject1);
-            localStringBuilder.append((localObject1 == this) ? "(this Map)" : localObject1);
+            localStringBuilder.append(localObject1);
             localStringBuilder.append('=');
             localStringBuilder.append((localObject2 == this) ? "(this Map)" : localObject2);
             if (!(localIterator.hasNext())) {

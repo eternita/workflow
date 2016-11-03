@@ -86,6 +86,11 @@ public class ConverterTest {
 		assertThat(mapNode, IsInstanceOf.instanceOf(EndNode.class));
 	}
 	
+	@Test(expected = FlowExecutionException.class)
+	public void testConverWrongFormat() throws Exception {
+		convertWorkflow("file1");
+	}
+	
 	private Workflow convertWorkflow(String name) throws Exception {
 
 		Reader reader = getResourceReader(name);
@@ -101,4 +106,5 @@ public class ConverterTest {
 	protected String normalize(String path) {
 		return path.replaceAll("\\.", File.separator);
 	}
+	
 }

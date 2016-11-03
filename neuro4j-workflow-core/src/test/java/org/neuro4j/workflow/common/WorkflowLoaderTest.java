@@ -16,6 +16,8 @@ import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLStreamHandler;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 
@@ -104,6 +106,24 @@ public class WorkflowLoaderTest {
 		var1 = (String)result.getFlowContext().get("var1");
 		
 		assertEquals("fromExternalFolder", var1);
+	}
+	
+	@Test
+	public void testFlowWithAliase() throws FlowExecutionException {
+
+		Map<String, String> map = new HashMap<>();
+		map.put("myflow", "org.mydomain.FlowForFileWorkflowLoader-StartNode1");
+
+		ConfigBuilder builder = new ConfigBuilder().withAliases(map);
+
+		ClasspathWorkflowLoader classpathLoader = new ClasspathWorkflowLoader(converter);
+
+		WorkflowEngine engine = new WorkflowEngine(builder.withLoader(classpathLoader));
+		ExecutionResult result = engine.execute("myflow");
+		String var1 = (String) result.getFlowContext().get("var1");
+
+		assertEquals("fromClassPath", var1);
+
 	}
 	
 	

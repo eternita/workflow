@@ -16,6 +16,9 @@
  */
 package org.neuro4j.workflow.node;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.neuro4j.workflow.ActionBlock;
 import org.neuro4j.workflow.ActionHandler;
 import org.neuro4j.workflow.ExecutionResult;
@@ -37,7 +40,7 @@ public class WorkflowProcessor {
 	
 	private static final Logger logger = LoggerFactory.getLogger(WorkflowProcessor.class);
 	
-	
+
 	private final ActionHandlersRegistry registry;
 
 	private final WorkflowLoader loader;
@@ -45,6 +48,8 @@ public class WorkflowProcessor {
 	private final CustomBlockLoader customBlockLoader;
 	
 	private final WorkflowCache cache;
+	
+	private final Map<String, FlowParameter> aliases = new HashMap<>();
 
 	/**
 	 * Constructor
@@ -55,6 +60,7 @@ public class WorkflowProcessor {
 		this.customBlockLoader = new CustomBlockLoader(builder.getCustomInitStrategy());
 		this.cache = builder.getWorkflowCache();
 		this.registry = builder.getActionRegistry();
+		this.aliases.putAll(builder.getAliases());
 	}
 
 	/**
@@ -71,7 +77,7 @@ public class WorkflowProcessor {
 
 		try {
 			
-			FlowParameter flowParameter = FlowParameter.parse(flow);
+			FlowParameter flowParameter = resolveFlow(flow);
 
 			logger.debug("Loading flow: {}", flowParameter);
 			long startLoading = System.currentTimeMillis();
@@ -110,6 +116,16 @@ public class WorkflowProcessor {
 		}
 		logger.debug("Flow execution time: {} ms.", System.currentTimeMillis() - start);
 		return result;
+	}
+	
+	public FlowParameter resolveFlow(String name) throws FlowExecutionException {
+		FlowParameter param = aliases.get(name);
+		if (param != null) {
+			logger.debug("Alias  {} resolved to {}", name, param.toString());
+		} else {
+			param = FlowParameter.parse(name);
+		}
+		return param;
 	}
 
 
@@ -153,7 +169,7 @@ public class WorkflowProcessor {
 
 		long startTime = System.currentTimeMillis();
 
-		logger.debug("      Running: {} ({})", node.getName(), this.getClass().getCanonicalName());
+		logger.debug("      Running: node {} ({})", node.getName(), this.getClass().getCanonicalName());
 
 		node.validate(this, request.getLogicContext());
 
@@ -161,7 +177,7 @@ public class WorkflowProcessor {
 
 		Transition transition = node.execute(this, request);
 
-		logger.debug("      Finished: {} in ({} ms.)", node.getName(), (System.currentTimeMillis() - startTime));
+		logger.debug("      Finished: node {} in ({} ms.)", node.getName(), (System.currentTimeMillis() - startTime));
 		if (transition != null) {
 			return transition.getToNode();
 		}

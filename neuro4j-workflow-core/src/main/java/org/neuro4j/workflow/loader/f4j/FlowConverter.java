@@ -66,9 +66,8 @@ import org.neuro4j.workflow.utils.Validation;
  *
  */
 public class FlowConverter {
-    
-	public static Workflow xml2workflow(Reader xml, String flow)
-			throws ConvertationException, FlowExecutionException {
+
+	public static Workflow xml2workflow(Reader xml, String flow) throws FlowExecutionException {
 		if (null == xml)
 			return null;
 		try {
@@ -82,28 +81,24 @@ public class FlowConverter {
 			return netXML2net(flowxml, flow);
 
 		} catch (JAXBException e) {
-			throw new ConvertationException("Can't convert stream to workflow", e);
+			throw new FlowExecutionException("Can't convert stream to workflow", e);
 		}
 	}
 
 	public static Workflow xml2workflow(InputStream xml, String flow)
-			throws ConvertationException, FlowExecutionException, UnsupportedEncodingException {
-		 return xml2workflow(new InputStreamReader(xml, "UTF-8"), flow);
+			throws FlowExecutionException, UnsupportedEncodingException {
+		return xml2workflow(new InputStreamReader(xml, "UTF-8"), flow);
 	}
 
-	private static Workflow netXML2net(FlowXML net, String flow)
-			throws FlowExecutionException {
+	private static Workflow netXML2net(FlowXML net, String flow) throws FlowExecutionException {
 
 		Workflow network = new Workflow(flow, getFlowPackage(flow));
 
 		for (NodeXML e : net.nodes) {
-
 			createNode(network, e);
-
 		}
 
 		for (NodeXML entity : net.nodes) {
-
 			WorkflowNode node = network.getById(entity.getUuid());
 			if (node != null) {
 				for (TransitionXML transitionXml : entity.getRelations()) {
@@ -120,177 +115,178 @@ public class FlowConverter {
 		return network;
 	}
 
-    private static String getFlowPackage(final String flow) {
-    	String flowPackage = "default";
-    	try {
+	private static String getFlowPackage(final String flow) {
+		String flowPackage = "default";
+		try {
 			FlowParameter parameter = FlowParameter.parse(flow);
 			flowPackage = parameter.getFlowPackage();
 		} catch (FlowExecutionException e) {
 
 		}
-    	return flowPackage;
-    }
+		return flowPackage;
+	}
 
-    private static WorkflowNode createNode(Workflow workflow, NodeXML e) throws FlowExecutionException {
-        WorkflowNode node = null;
+	private static WorkflowNode createNode(Workflow workflow, NodeXML e) throws FlowExecutionException {
+		WorkflowNode node = null;
 
-        NodeType type = NodeType.valueOf(e.type);
+		NodeType type = NodeType.valueOf(e.type);
 
-        switch (type) {
-            case JOIN:
-                node = createJoinNode(workflow, e);
+		switch (type) {
+		case JOIN:
+			node = createJoinNode(workflow, e);
 
-            case START:
-                node = createStartNode(workflow, e);
-                workflow.registerStartNode((StartNode)node);
-                break;
-            case END:
-                node = createEndNode(workflow, e);
-                break;
-            case CALL:
-                node = createCallNode(workflow, e);
-                break;
-            case DECISION:
-                node = createDecisionNode(workflow, e);
-                break;
-            case LOOP:
-                node = createLoopNode(workflow, e);
-                break;
-            case CUSTOM:
-                node = createCustomNode(workflow, e);
-                break;
-            case MAP:
-                node = createKeyMapperNode(workflow, e);
-                break;
-            case SWITCH:
-                node = createSwitchNode(workflow, e);
-                break;
-            case VIEW:
-                node = createViewNode(workflow, e);
-                break;
-            case NOTE:
-                break;
+		case START:
+			node = createStartNode(workflow, e);
+			workflow.registerStartNode((StartNode) node);
+			break;
+		case END:
+			node = createEndNode(workflow, e);
+			break;
+		case CALL:
+			node = createCallNode(workflow, e);
+			break;
+		case DECISION:
+			node = createDecisionNode(workflow, e);
+			break;
+		case LOOP:
+			node = createLoopNode(workflow, e);
+			break;
+		case CUSTOM:
+			node = createCustomNode(workflow, e);
+			break;
+		case MAP:
+			node = createKeyMapperNode(workflow, e);
+			break;
+		case SWITCH:
+			node = createSwitchNode(workflow, e);
+			break;
+		case VIEW:
+			node = createViewNode(workflow, e);
+			break;
+		case NOTE:
+			break;
 
-            default:
+		default:
 
-                throw new FlowExecutionException("Executable node is unknown");
-        }
-        if (node != null){
-            workflow.registerNode(node);	
-        }
+			throw new FlowExecutionException("Executable node is unknown");
+		}
+		if (node != null) {
+			workflow.registerNode(node);
+		}
 
-        return node;
-    }
+		return node;
+	}
 
-    private static StartNode createStartNode(Workflow workflow, NodeXML e) {
-        StartNode startNode = new StartNode(e.getName(), e.getUuid());
+	private static StartNode createStartNode(Workflow workflow, NodeXML e) {
+		StartNode startNode = new StartNode(e.getName(), e.getUuid());
 
-        String nodeType = e.getConfig(START_NODE_TYPE);
+		String nodeType = e.getConfig(START_NODE_TYPE);
 
-        nodeType = (nodeType == null || nodeType.trim().equals("")) ? StartNodeTypes
-                .getDefaultType().name() : nodeType.toUpperCase();
-        startNode.setType(StartNodeTypes.valueOf(nodeType));
-        return startNode;
-    }
+		nodeType = (nodeType == null || nodeType.trim().equals("")) ? StartNodeTypes.getDefaultType().name()
+				: nodeType.toUpperCase();
+		startNode.setType(StartNodeTypes.valueOf(nodeType));
+		return startNode;
+	}
 
-    private static WorkflowNode createCallNode(Workflow workflow, NodeXML e) {
-        CallNode node = new CallNode(e.getName(), e.getUuid());
-        node.setCallFlow(e.getConfig(CAll_NODE_FLOW_NAME));
-        node.setDynamicFlownName(e.getConfig(CAll_NODE_DYNAMIC_FLOW_NAME));
-        return node;
-    }
+	private static WorkflowNode createCallNode(Workflow workflow, NodeXML e) {
+		CallNode node = new CallNode(e.getName(), e.getUuid());
+		node.setCallFlow(e.getConfig(CAll_NODE_FLOW_NAME));
+		node.setDynamicFlownName(e.getConfig(CAll_NODE_DYNAMIC_FLOW_NAME));
+		return node;
+	}
 
-    private static WorkflowNode createSwitchNode(Workflow workflow, NodeXML e) {
-        String relationName = e.getConfig(SWITCH_NODE_ACTION_NAME);
-        if (relationName == null) {
-            relationName = SWITCH_NODE_DEFAULT_PARAMETER_VALUE;
-        }
-        SwitchNode node = new SwitchNode(e.getName(), e.getUuid(), relationName);
+	private static WorkflowNode createSwitchNode(Workflow workflow, NodeXML e) {
+		String relationName = e.getConfig(SWITCH_NODE_ACTION_NAME);
+		if (relationName == null) {
+			relationName = SWITCH_NODE_DEFAULT_PARAMETER_VALUE;
+		}
+		SwitchNode node = new SwitchNode(e.getName(), e.getUuid(), relationName);
 
-        return node;
-    }
+		return node;
+	}
 
-    private static WorkflowNode createEndNode(Workflow workflow, NodeXML e) {
-        EndNode node = new EndNode(e.getName(), e.getUuid());
-        return node;
-    }
+	private static WorkflowNode createEndNode(Workflow workflow, NodeXML e) {
+		EndNode node = new EndNode(e.getName(), e.getUuid());
+		return node;
+	}
 
-    private static WorkflowNode createViewNode(Workflow workflow, NodeXML e) {
-        ViewNode node = new ViewNode(e.getName(), e.getUuid());
+	private static WorkflowNode createViewNode(Workflow workflow, NodeXML e) {
+		ViewNode node = new ViewNode(e.getName(), e.getUuid());
 
-        node.setStaticTemplateName(e.getConfig(VIEW_NODE_TEMPLATE_NAME));
-        node.setDynamicTemplateName(e.getParameter(VIEW_NODE_TEMPLATE_DYNAMIC_NAME));
-        node.setRenderImpl(e.getConfig(RENDER_IMP));
-        
+		node.setStaticTemplateName(e.getConfig(VIEW_NODE_TEMPLATE_NAME));
+		node.setDynamicTemplateName(e.getParameter(VIEW_NODE_TEMPLATE_DYNAMIC_NAME));
+		node.setRenderImpl(e.getConfig(RENDER_IMP));
 
-        String renderType = e.getConfig(VIEW_NODE_RENDER_TYPE);
-        if (renderType == null) {
-            renderType = "jsp";
-        }
+		String renderType = e.getConfig(VIEW_NODE_RENDER_TYPE);
+		if (renderType == null) {
+			renderType = "jsp";
+		}
 
-        node.setRenderType(renderType);
+		node.setRenderType(renderType);
 
-        return node;
-    }
+		return node;
+	}
 
-    private static WorkflowNode createDecisionNode(Workflow workflow, NodeXML e) {
-        DecisionNode node = new DecisionNode(e.getName(), e.getUuid());
-        String sOperator = e.getConfig(DECISION_NODE_OPERATOR);
+	private static WorkflowNode createDecisionNode(Workflow workflow, NodeXML e) {
+		DecisionNode node = new DecisionNode(e.getName(), e.getUuid());
+		String sOperator = e.getConfig(DECISION_NODE_OPERATOR);
 
-        if (sOperator != null) {
-            node.setOperator(DecisionOperators.valueOf(sOperator));
-        }
+		if (sOperator != null) {
+			node.setOperator(DecisionOperators.valueOf(sOperator));
+		}
 
-        String sCompType = e.getConfig(DECISION_NODE_COMP_TYPE);
+		String sCompType = e.getConfig(DECISION_NODE_COMP_TYPE);
 
-        if (sCompType != null) {
-            node.setCompTypes(DecisionCompTypes.valueOf(sCompType));
-        } else {
-            node.setCompTypes(DecisionCompTypes.context);
-        }
+		if (sCompType != null) {
+			node.setCompTypes(DecisionCompTypes.valueOf(sCompType));
+		} else {
+			node.setCompTypes(DecisionCompTypes.context);
+		}
 
-        node.setDecisionKey(e.getConfig(DECISION_NODE_DECISION_KEY));
+		node.setDecisionKey(e.getConfig(DECISION_NODE_DECISION_KEY));
 
-        node.setComparisonKey(e.getConfig(DECISION_NODE_COMP_KEY));
+		node.setComparisonKey(e.getConfig(DECISION_NODE_COMP_KEY));
 
-        return node;
-    }
+		return node;
+	}
 
-    private static WorkflowNode createLoopNode(Workflow workflow, NodeXML e) {
-        LoopNode node = new LoopNode(e.getName(), e.getUuid());
+	private static WorkflowNode createLoopNode(Workflow workflow, NodeXML e) {
+		LoopNode node = new LoopNode(e.getName(), e.getUuid());
 
-        node.setIteratorKey(e.getConfig(LOOP_NODE_ITERATOR));
-        node.setElementKey(e.getConfig(LOOP_NODE_ELEMENT));
-        return node;
-    }
+		node.setIteratorKey(e.getConfig(LOOP_NODE_ITERATOR));
+		node.setElementKey(e.getConfig(LOOP_NODE_ELEMENT));
+		return node;
+	}
 
-    private static WorkflowNode createJoinNode(Workflow workflow, NodeXML e) {
-        JoinNode node = new JoinNode(e.getName(), e.getUuid());
-        return node;
-    }
+	private static WorkflowNode createJoinNode(Workflow workflow, NodeXML e) {
+		JoinNode node = new JoinNode(e.getName(), e.getUuid());
+		return node;
+	}
 
-    private static WorkflowNode createKeyMapperNode(Workflow workflow, NodeXML e) {
-        KeyMapper node = new KeyMapper(e.getName(), e.getUuid());
-        for (ParameterXML key : e.parameters) {
-            node.addParameter(key.key, key.value);
-        }
-        return node;
-    }
+	private static WorkflowNode createKeyMapperNode(Workflow workflow, NodeXML e) {
+		KeyMapper node = new KeyMapper(e.getName(), e.getUuid());
+		for (ParameterXML key : e.parameters) {
+			node.addParameter(key.key, key.value);
+		}
+		return node;
+	}
 
-    private static WorkflowNode createCustomNode(Workflow workflow, NodeXML e) throws FlowExecutionException {
-        String executableClass = e.getConfig("SWF_CUSTOM_CLASS");
-        Validation.requireNonNull(executableClass, () -> new FlowExecutionException("Executable class not defined for node: " + e.getUuid() + " flow: " + workflow.getPackage() + workflow.getFlowName()));
+	private static WorkflowNode createCustomNode(Workflow workflow, NodeXML e) throws FlowExecutionException {
+		String executableClass = e.getConfig("SWF_CUSTOM_CLASS");
+		Validation.requireNonNull(executableClass,
+				() -> new FlowExecutionException("Executable class not defined for node: " + e.getUuid() + " flow: "
+						+ workflow.getPackage() + workflow.getFlowName()));
 
-        CustomNode node = new CustomNode(executableClass, e.getName(), e.getUuid());
-        for (ParameterXML param : e.parameters) {
-            if (param.input == null || param.input) {
-                node.addParameter(param.key, param.value);
-            } else {
-                node.addOutParameter(param.key, param.value);
-            }
-        }       
+		CustomNode node = new CustomNode(executableClass, e.getName(), e.getUuid());
+		for (ParameterXML param : e.parameters) {
+			if (param.input == null || param.input) {
+				node.addParameter(param.key, param.value);
+			} else {
+				node.addOutParameter(param.key, param.value);
+			}
+		}
 
-        return node;
-    }
+		return node;
+	}
 
 }
