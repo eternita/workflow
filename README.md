@@ -27,7 +27,7 @@ The advantages of Workflows are as follows:
 * Open source.
   
 
-First Flow
+## First Flow
 ----------
 
 This is HelloWorld example how to use Neuro4j Flows.
@@ -48,13 +48,96 @@ Following code execute flow:
 
 Online documentation how to create first application based on flow available at (http://neuro4j.org/articles/tutorial_hello_world)
 
+### Loading workflow
+Workflow are loaded using the ```WorkflowLoader``` class. neuro4j-core provides three implementations of a ```WorkflowLoader```:
+ * ClassPathWorkflowLoader
+ * FileWorkflowLoader
+ * RemoteWorkflowLoader
 
-How It Works?
-----------
+WorkflowLoader uses hierarchical delegation - if loader is not able to load workflow it delegates task to next loader
+```
+		WorkflowEngine engine = new WorkflowEngine(new ConfigBuilder()
+			                                          	.withLoader(new RemoteWorkflowLoader(converter, new ClasspathWorkflowLoader(converter))));
+```
+or
+```
+		File baseDir ...
+		FileWorkflowLoader loader = new FileWorkflowLoader(converter, new ClasspathWorkflowLoader(converter), baseDir);
+  		WorkflowEngine engine = new WorkflowEngine(new ConfigBuilder()
+			                                          	.withLoader(loader));
 
-![workflow-how-works](https://raw.githubusercontent.com/neuro4j/workflow/master/doc/images/diagram.png "How it works")
+```
+#### ClassPathWorkflowLoader
+Loads workflows from folders/jars in classpath
+
+#### FileWorkflowLoader
+Loads workflows from some external folder. Can be used to overwrite workflow from classpath
+
+#### RemoteWorkflowLoader
+Loads remote workflow over http/https. 
+
+### Workflow cache
+WorkflowProcessor keeps all loaded and converted workflows in cache. By default it uses ConcurrentMapWorkflowCache but during development
+WorkflowEngine can be configured to use EmptyWorkflowCache.
+```
+		WorkflowEngine engine = new WorkflowEngine(
+			             	                  new ConfigBuilder()
+                                   .withWorkflowCache(EmptyWorkflowCache.INSTANCE));
+    
+  engine.execute("org.neuro4j.workflow.tutorial.HelloFlow-Start", parameters);
+```
+
+### Aliases
+WorkflowEngine can be configured to use aliases for workflows.
+```
+		Map<String, String> map = new HashMap<>();
+		map.put("myflow", "org.mydomain.FlowForFileWorkflowLoader-StartNode1");
+
+		ConfigBuilder builder = new ConfigBuilder().withAliases(map);
+  
+		WorkflowEngine engine = new WorkflowEngine(builder);
+		ExecutionResult result = engine.execute("myflow");
+```
+Flow ```org.mydomain.FlowForFileWorkflowLoader-StartNode1``` will be loaded and processed.
 
 
+### ActionHandler
+Developers can define ActionHandler to execute code before/after CustomBlock
+```
+		ActionHandler handler = new ActionHandler() {
+
+			@Override
+			public void preExecute(NodeInfo nodeInfo, FlowContext context, ActionBlock actionBlock) {
+			}
+
+			@Override
+			public void postExecute(NodeInfo nodeInfo, FlowContext context, ActionBlock actionBlock) {
+			}
+		};
+
+		Map<Class<? extends ActionBlock>, ActionHandler> map = new HashMap<>();
+		
+		map.put(SystemOutBlock.class, handler);
+		
+		WorkflowEngine engine = new WorkflowEngine(new ConfigBuilder().withActionRegistry(new ActionHandlersRegistry(map)));
+		
+```
+
+```WorkflowProcessor``` will call handler before/after each call ```SystemOutBlock.execute(....)```
+
+### CustomBlock cache
+Developers can define cache strategy for each custom block using @CachedNode annotation
+ * SINGLETON
+ * NODE
+ * NONE
+
+#### SINGLETON 
+Just one instance of block will be created. ex. SystemOutBlock
+
+#### NONE
+WorkflowLoader will create new instance of block for each call.
+
+#### NODE
 
 Debuging flow
 ----------
