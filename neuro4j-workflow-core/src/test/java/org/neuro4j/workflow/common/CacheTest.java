@@ -3,11 +3,14 @@ package org.neuro4j.workflow.common;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
+import java.net.URLConnection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.hamcrest.collection.IsCollectionWithSize;
@@ -16,22 +19,31 @@ import org.hamcrest.core.Is;
 import org.hamcrest.core.IsInstanceOf;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.neuro4j.workflow.ActionBlock;
 import org.neuro4j.workflow.UUIDMgr;
+import org.neuro4j.workflow.cache.ConcurrentMapWorkflowCache;
+import org.neuro4j.workflow.cache.EmptyWorkflowCache;
 import org.neuro4j.workflow.core.CustomBlockEmptyCache;
 import org.neuro4j.workflow.core.CustomBlockNodeCached;
 import org.neuro4j.workflow.core.CustomBlockNoneCached;
 import org.neuro4j.workflow.core.SystemOutBlock;
 import org.neuro4j.workflow.loader.CustomBlockInitStrategy;
 import org.neuro4j.workflow.loader.DefaultCustomBlockInitStrategy;
+import org.neuro4j.workflow.loader.WorkflowLoader;
 import org.neuro4j.workflow.node.CustomBlockLoader;
 import org.neuro4j.workflow.node.CustomNode;
 
 public class CacheTest {
 
+	
+	@Mock
+	WorkflowLoader workflowLoader;
+
 	@Before
 	public void setUp() {
-
+		MockitoAnnotations.initMocks(this);
 	}
 
 	@Test
@@ -202,5 +214,44 @@ public class CacheTest {
 		
 	}
 	
+	@Test
+	public void testEmptyWorkflowCache() throws FlowExecutionException {
+		EmptyWorkflowCache cache =  EmptyWorkflowCache.INSTANCE;
+		
+		String flowname = "someflow";
+		
+		cache.get(workflowLoader, flowname);
+		verify(workflowLoader, times(1)).load(flowname);
+		
+		cache.clear(flowname);
+		verifyZeroInteractions(workflowLoader);
+		
+		cache.clearAll();
+		verifyZeroInteractions(workflowLoader);
+	}
+	
+	@Test
+	public void testConcurrentMapWorkflowCache() throws FlowExecutionException {
+		ConcurrentMap<String, Workflow> map = new ConcurrentHashMap<>();
+		ConcurrentMapWorkflowCache cache = new ConcurrentMapWorkflowCache(map);
+		
+		String flowname = "someflow";
+		
+		when(workflowLoader.load(flowname)).thenReturn(new Workflow("someName", "someId"));
+		
+		cache.get(workflowLoader, flowname);
+		assertEquals(1, map.size());
+		
+		verify(workflowLoader, times(1)).load(flowname);
+
+		
+		cache.clear(flowname);
+		assertEquals(0, map.size());
+		cache.get(workflowLoader, flowname);
+		assertEquals(1, map.size());
+		
+		cache.clearAll();
+		assertEquals(0, map.size());
+	}
 
 }

@@ -68,8 +68,7 @@ import org.neuro4j.workflow.utils.Validation;
 public class FlowConverter {
 
 	public static Workflow xml2workflow(Reader xml, String flow) throws FlowExecutionException {
-		if (null == xml)
-			return null;
+           Validation.requireNonNull(xml, () -> new FlowExecutionException("Reader can't be null"));
 		try {
 			JAXBContext ctx = JAXBContext.newInstance(FlowXML.class);
 

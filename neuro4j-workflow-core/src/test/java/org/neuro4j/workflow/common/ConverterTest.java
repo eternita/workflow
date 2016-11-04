@@ -70,6 +70,12 @@ public class ConverterTest {
 		assertThat(mapNode, IsInstanceOf.instanceOf(KeyMapper.class));
 	}
 
+	@Test(expected=FlowExecutionException.class)
+	public void exceptionOnEmptyReader() throws Exception {
+
+		 converter.convert(null, "dsf");
+	}
+	
 	@Test
 	public void testXmlConverterWithCustomNodes() throws Exception {
 

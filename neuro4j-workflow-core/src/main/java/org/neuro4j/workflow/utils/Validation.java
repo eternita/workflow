@@ -22,7 +22,7 @@ import java.util.function.Supplier;
  * Provides helper methods for validation
  *
  */
-public final class Validation {
+public final  class Validation {
     
     public static <X extends Throwable> void requireNonNull(Object value, Supplier<? extends X> exceptionSupplier) throws X {
         if (value == null) {

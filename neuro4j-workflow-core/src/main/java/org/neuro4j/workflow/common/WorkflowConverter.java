@@ -18,6 +18,10 @@ package org.neuro4j.workflow.common;
 
 import java.io.Reader;
 
+/**
+ * Converts xml/json/... representation of workflow into java object
+ *
+ */
 public interface WorkflowConverter {
 	
 	public final static String DEFAULT_EXT = ".n4j";

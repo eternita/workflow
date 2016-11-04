@@ -2,7 +2,6 @@ package org.neuro4j.workflow.tutorial;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 import org.neuro4j.workflow.ExecutionResult;
 import org.neuro4j.workflow.common.WorkflowEngine;
@@ -18,11 +17,14 @@ public class App
     public static void main( String[] args )
     {
     	
+    	// create engine with default configuration
     	WorkflowEngine engine = new WorkflowEngine(new ConfigBuilder());
     	
+    	// put input parameters
     	Map<String, Object> parameters = new HashMap<String, Object>();
     	parameters.put("name", "Workflow");
 
+    	//execute flow
     	ExecutionResult result =  engine.execute("org.neuro4j.workflow.tutorial.HelloFlow-Start", parameters);
     	
     	if (result.getException() == null)
@@ -33,12 +35,6 @@ public class App
     	} else {
     		result.print();
     	}
-    	
-    	// run 10 times
-    	for (int i=0; i < 10 ; i++) {
-        	parameters = new HashMap<String, Object>();
-        	parameters.put("name", UUID.randomUUID().toString());
-    		engine.execute("org.neuro4j.workflow.tutorial.HelloFlow-Start", parameters);
-    	}
+
     }
 }

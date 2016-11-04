@@ -1,7 +1,6 @@
 package org.neuro4j.workflow.common;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -106,6 +105,31 @@ public class WorkflowLoaderMockTest {
 		assertNotNull(actual);
 
 		verify(workflowLoader, times(1)).load(remoteUrl);
+	}
+	
+	@Test
+	public void testRemoteLoaderThrowsIOException() {
+
+		String flowName = "org.neuro4j.workflow.flows.FlowForClasspathLoader-Start1";
+
+		String remoteUrl = "http://example.com/" + flowName;
+
+		RemoteWorkflowLoader subject = new RemoteWorkflowLoader(converter, new ClasspathWorkflowLoader(converter),
+				c -> {}, s -> s) {
+			@Override
+			protected URL getResource(String location) throws IOException {
+				throw new IOException("SomeException");
+			}
+		};
+
+		try {
+			subject.load(remoteUrl);
+	        fail("Should be exception");
+		} catch (FlowExecutionException e) {
+           assertEquals("http://example.com/org.neuro4j.workflow.flows.FlowForClasspathLoader-Start1 not found.", e.getMessage());
+		}
+
+
 	}
 
 }

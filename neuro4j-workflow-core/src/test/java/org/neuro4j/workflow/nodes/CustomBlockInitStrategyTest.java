@@ -1,8 +1,7 @@
 package org.neuro4j.workflow.nodes;
 
 import static junit.framework.Assert.fail;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 import org.hamcrest.core.IsInstanceOf;
 import org.junit.Test;
@@ -60,6 +59,20 @@ public class CustomBlockInitStrategyTest {
 	public void testgetCustomBlockClassWithNull() throws FlowExecutionException {
 		DefaultCustomBlockInitStrategy strategy = new DefaultCustomBlockInitStrategy();
 		strategy.getCustomBlockClass(null);
+	}
+
+	@Test
+	public void testgetCustomBlockClassWithNotDefaultConstructor() {
+		DefaultCustomBlockInitStrategy strategy = new DefaultCustomBlockInitStrategy();
+		try {
+			strategy.loadCustomBlock("org.neuro4j.workflow.core.CustomBlockNoDefaultConstructor");
+			fail("Should be exception");
+		} catch (FlowExecutionException e) {
+			assertEquals(
+					"CustomBlock: org.neuro4j.workflow.core.CustomBlockNoDefaultConstructor can not be initialized.",
+					e.getMessage());
+
+		}
 	}
 	
 }

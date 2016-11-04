@@ -19,7 +19,6 @@ package org.neuro4j.workflow.node;
 import org.neuro4j.workflow.ActionBlock;
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.common.FlowExecutionException;
-import org.neuro4j.workflow.enums.ActionBlockCache;
 
 /**
  * 
@@ -37,9 +36,7 @@ public abstract class CustomBlock implements ActionBlock {
     }
     
     @Override
-	public int execute(FlowContext context) throws FlowExecutionException {
-		return 0;
-	}
+	public abstract int execute(FlowContext context) throws FlowExecutionException;
 
 	@Override
 	public void init() throws FlowExecutionException {

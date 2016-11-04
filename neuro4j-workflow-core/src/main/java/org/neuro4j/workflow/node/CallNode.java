@@ -20,7 +20,11 @@ import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.Workflow;
+import org.neuro4j.workflow.utils.Validation;
+
 import static org.neuro4j.workflow.utils.Validation.*;
+
+import java.util.Optional;
 
 /**
  * CallNode calls other workflow.
@@ -62,33 +66,25 @@ public class CallNode extends WorkflowNode {
 
         if (dynamicFlownName == null && callFlow == null)
         {
-            throw new FlowExecutionException("CallByFlowName node: Flow not defined.");
+            throw new FlowExecutionException("CallNode node: Flow not defined.");
         }
 
     }
 
     @Override
     public final Transition execute(final WorkflowProcessor processor, final WorkflowRequest request) throws FlowExecutionException {
-        FlowContext ctx = request.getLogicContext();
-        String flow = callFlow;
-        if (dynamicFlownName != null)
-        {
-            flow = (String) ctx.get(dynamicFlownName);
-        }
+        
+    	FlowContext ctx = request.getLogicContext();
+        
+    	// gets flowName
+        final String flow = Optional.ofNullable(dynamicFlownName).map(n -> (String) ctx.get(dynamicFlownName)).orElse(callFlow);
 
-        if (flow == null)
-        {
-            throw new FlowExecutionException("CallNode: Flow not defined.");
-        }
+        requireNonNull(flow, () ->  new FlowExecutionException("CallNode: Flow not defined."));
         
-        final FlowParameter flowParameter  = processor.resolveFlow(flow);
+        //resolves FlowParameter from name
+        final FlowParameter flowParameter  =  Optional.ofNullable(processor.resolveFlow(flow)).orElseThrow(() -> new FlowExecutionException("Flow " + flow + " has wrong format. Use my.domain.FlowName-StartNode or alias"));
         
-
-        if (flowParameter == null)
-        {
-            throw new FlowExecutionException("Flow " + flow + " has wrong format. Use my.domain.FlowName-StartNode or alias");
-        }
-        
+        // loads workflow by name or alias 
         Workflow calledWorkflow  = processor.loadWorkflow(flowParameter.getFlowName());
 
         requireNonNull(calledWorkflow, ()-> new FlowExecutionException(flowParameter.getFlowName() + " not found."));

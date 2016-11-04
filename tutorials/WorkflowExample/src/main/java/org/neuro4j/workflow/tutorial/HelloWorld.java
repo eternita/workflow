@@ -14,7 +14,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 
+ *  HelloWorld block receives name as input parameter and returns message as output parameters.
+ *  
  */
 @ParameterDefinitionList(input = { @ParameterDefinition(name = IN_NAME, isOptional = true, type = "java.lang.String") }, 
                          output = { @ParameterDefinition(name = OUT_MESSAGE, isOptional = true, type = "java.lang.String") })

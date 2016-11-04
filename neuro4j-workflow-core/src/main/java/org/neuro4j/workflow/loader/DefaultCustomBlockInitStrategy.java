@@ -25,7 +25,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * This class provides default implementation of CustomBlockInitStrategy.
+ * This class provides default implementation of CustomBlockInitStrategy and initializes ActionBlock by calling default constructor
  *
  */
 public class DefaultCustomBlockInitStrategy implements CustomBlockInitStrategy {

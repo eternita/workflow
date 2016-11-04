@@ -23,8 +23,8 @@
             </parameters>
             <config/>
             <transitions>
-                <transition uuid="Fu7AqAIG9isAAAFX1X38zNtF" name="NEXT" toNode="3ewKBws3XC4AAAFXYvzi4LDU">
-                    <points>0, 35, -53, -165|3, 156, -50, -44|</points>
+                <transition uuid="pyvAqAIDuS0AAAFYNJ9_9S2j" name="NEXT" toNode="mnjAqAIDADwAAAFYw45_9S2j">
+                    <points>0, 35, 0, -51|0, 71, 0, -15|</points>
                 </transition>
             </transitions>
         </node>
@@ -55,7 +55,16 @@
                 </transition>
             </transitions>
         </node>
-        <node uuid="note" name="z9vAqAIGbIMAAAFX3I_8zNtF" x="171" y="20" type="NOTE">
+        <node uuid="mnjAqAIDADwAAAFYw45_9S2j" name="JoinNode1" x="120" y="237" type="JOIN">
+            <parameters/>
+            <config/>
+            <transitions>
+                <transition uuid="revAqAIDK1oAAAFY8qd_9S2j" name="NEXT" toNode="3ewKBws3XC4AAAFXYvzi4LDU">
+                    <points>0, 15, -50, -99|0, 70, -50, -44|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="note" name="tbPAqAID1HIAAAFYZK5_9S2j" x="171" y="20" type="NOTE">
             <description>Used for Classpathloader</description>
             <parameters/>
             <config>
@@ -64,7 +73,7 @@
             </config>
             <transitions/>
         </node>
-        <node uuid="note" name="FQnAqAIGbIQAAAFX3I_8zNtF" x="533" y="160" type="NOTE">
+        <node uuid="note" name="jvzAqAID1HMAAAFYZK5_9S2j" x="533" y="160" type="NOTE">
             <description>map "Hi" + message to text</description>
             <parameters/>
             <config>

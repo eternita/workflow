@@ -43,7 +43,6 @@ public class TransitionXML {
 
 	public Transition createTransition(WorkflowNode node) {
 		Transition transition = new Transition();
-		transition.setUuid(this.uuid);
 		transition.setFromNode(node);
 		transition.setName(this.name);
 		return transition;

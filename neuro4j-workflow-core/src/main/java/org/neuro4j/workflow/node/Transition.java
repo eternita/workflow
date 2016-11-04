@@ -18,16 +18,11 @@ package org.neuro4j.workflow.node;
 
 public class Transition {
 
-    private String uuid;
     private String name;
     private WorkflowNode fromNode;
     private WorkflowNode toNode;
 
     public Transition() {
-    }
-
-    public WorkflowNode getFromNode() {
-        return fromNode;
     }
 
     public void setFromNode(WorkflowNode fromNode) {
@@ -50,13 +45,6 @@ public class Transition {
         return true;
     }
 
-    public String getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
-    }
 
     public String getName() {
         return name;

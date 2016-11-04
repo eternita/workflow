@@ -202,6 +202,7 @@ public class DecisionNodeTest {
 		transition.setToNode(end1);
 		
 		node.registerExit(transition);
+		assertTrue(transition.isValid());
 		
 		try {
 			node.init();

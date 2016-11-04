@@ -26,7 +26,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Cache implementation based on ConcurrentMap
+ * Cache implementation based on ConcurrentHashMap
  */
 public class ConcurrentMapWorkflowCache implements WorkflowCache {
 
@@ -34,7 +34,7 @@ public class ConcurrentMapWorkflowCache implements WorkflowCache {
 
 	private final ConcurrentMap<String, Workflow> cache;
 
-	protected ConcurrentMapWorkflowCache(final ConcurrentMap<String, Workflow> cache) {
+	public ConcurrentMapWorkflowCache(final ConcurrentMap<String, Workflow> cache) {
 		this.cache = cache;
 	}
 
