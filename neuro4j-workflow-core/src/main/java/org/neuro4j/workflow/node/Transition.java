@@ -54,5 +54,10 @@ public class Transition {
         this.name = name;
     }
 
+	@Override
+	public String toString() {
+		return "Transition [name=" + name + ", fromNode=" + fromNode + ", toNode=" + toNode + "]";
+	}
+
 
 }

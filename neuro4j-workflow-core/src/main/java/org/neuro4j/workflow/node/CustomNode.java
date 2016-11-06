@@ -136,7 +136,7 @@ public class CustomNode extends WorkflowNode {
 
         if (mainExit == null)
         {
-            throw new FlowExecutionException("CustomBlock " + executableClass + ": Connector not defined.");
+            throw new FlowExecutionException("CustomBlock " + getName() + ": Main connector not defined.");
         }
     }
 

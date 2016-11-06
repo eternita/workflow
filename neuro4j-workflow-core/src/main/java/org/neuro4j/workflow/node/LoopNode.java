@@ -41,16 +41,8 @@ public class LoopNode extends WorkflowNode {
         super(name, uuid);
     }
 
-    public String getIteratorKey() {
-        return iteratorKey;
-    }
-
     public void setIteratorKey(String iteratorKey) {
         this.iteratorKey = iteratorKey;
-    }
-
-    public String getElementKey() {
-        return elementKey;
     }
 
     public void setElementKey(String elementKey) {
@@ -62,7 +54,7 @@ public class LoopNode extends WorkflowNode {
             throws FlowExecutionException {
         Object object = null;
         FlowContext fctx = request.getLogicContext();
-        Iterator iteratorObject = request.getLoopIterator(this.iteratorKey);
+        Iterator<?> iteratorObject = request.getLoopIterator(this.iteratorKey);
         if (iteratorObject == null) {
             object = fctx.get(iteratorKey);
             if (object == null) {
@@ -71,9 +63,9 @@ public class LoopNode extends WorkflowNode {
             }
 
             if ((object instanceof Iterable)) {
-                iteratorObject = ((Iterable) object).iterator();
+                iteratorObject = ((Iterable<?>) object).iterator();
             } else if ((object instanceof Collection)) {
-                iteratorObject = ((Collection) object).iterator();
+                iteratorObject = ((Collection<?>) object).iterator();
             } else if (object.getClass().isArray()) {
                 iteratorObject = Arrays.asList((Object[]) object).iterator();
             } else {
@@ -116,7 +108,7 @@ public class LoopNode extends WorkflowNode {
     public final void validate(final WorkflowProcessor processor, final FlowContext ctx) throws FlowExecutionException {
         if (elementKey == null || iteratorKey == null || doExit == null || loopExit == null)
         {
-            throw new FlowExecutionException("LoopBlock: Wrong configuration");
+            throw new FlowExecutionException("LoopBlock uuid: " + getUuid() +": Wrong configuration:  elementKey: " + elementKey + "  iteratorKey: " + iteratorKey + "  doExit: " + doExit + "  loopExit: " + loopExit);
         }
 
     }
