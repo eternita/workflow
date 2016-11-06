@@ -255,5 +255,6 @@ public class CacheTest {
 		cache.clearAll();
 		assertEquals(0, map.size());
 	}
+	
 
 }
