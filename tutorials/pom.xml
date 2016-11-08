@@ -5,18 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.neuro4j</groupId>
     <artifactId>workflow-tutorials</artifactId>
-    <version>3.0.1-SNAPSHOT</version>
+    <version>3.0.1</version>
     <packaging>pom</packaging>
     <name>Workflow Tuturials</name>
     <url>http://neuro4j.org</url>
-
-    <repositories>
-        <repository>
-            <id>neuro4j-maven-milestone</id>
-            <name>Neuro4J Maven Repository</name>
-            <url>http://static.neuro4j.org/maven2</url>
-        </repository>
-    </repositories>  
 
     <modules>
         <module>WorkflowExample</module>

@@ -5,18 +5,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.neuro4j.examples</groupId>
 	<artifactId>wf-parent</artifactId>
-	<version>3.0.1-SNAPSHOT</version>
+	<version>3.0.1</version>
 	<packaging>pom</packaging>
 	<name>Workflow Demo applications</name>
 	<url>http://neuro4j.org</url>
 
-	<repositories>
-		<repository>
-			<id>neuro4j-maven-milestone</id>
-			<name>Neuro4J Maven Repository</name>
-			<url>http://static.neuro4j.org/maven2</url>
-		</repository>
-	</repositories>
 
 	<modules>
 		<module>flows-demo</module>
@@ -26,7 +19,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<org.neuro4j.version>3.0.1-SNAPSHOT</org.neuro4j.version>
+		<org.neuro4j.version>3.0.1</org.neuro4j.version>
 		<java-version>1.8</java-version>
 		<org.aspectj-version>1.8.1</org.aspectj-version>
 	</properties>

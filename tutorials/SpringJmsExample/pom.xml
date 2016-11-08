@@ -10,17 +10,12 @@
 		<org.springframework-version>4.1.6.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.8.1</org.aspectj-version>
 		<org.slf4j-version>1.6.1</org.slf4j-version>
-		<org.neuro4j-version>3.0.1-SNAPSHOT</org.neuro4j-version>
+		<org.neuro4j-version>3.0.1</org.neuro4j-version>
 	</properties>
 	<repositories>
 		<repository>
 			<id>spring-releases</id>
 			<url>http://repo.spring.io/libs-release</url>
-		</repository>
-		<repository>
-			<id>neuro4j-maven-milestone</id>
-			<name>Neuro4J Maven Repository</name>
-			<url>http://static.neuro4j.org/maven2</url>
 		</repository>
 	</repositories>
 	<pluginRepositories>
@@ -28,11 +23,6 @@
 			<id>spring-releases</id>
 			<url>http://repo.spring.io/libs-release</url>
 		</pluginRepository>
-		<pluginRepository>
-			<id>neuro4j-plugin-repo</id>
-			<name>Neuro4j Maven Plugin Repository</name>
-			<url>http://static.neuro4j.org/maven2</url>
-		</pluginRepository>		
 	</pluginRepositories>
 
 	<artifactId>SpringJmsExample</artifactId>

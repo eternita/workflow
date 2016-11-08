@@ -10,22 +10,8 @@
 		<org.springframework-version>4.1.6-RELEASE</org.springframework-version>
 		<org.aspectj-version>1.8.1</org.aspectj-version>
 		<logback.version>1.0.13</logback.version>
-		<org.neuro4j-version>3.0.1-SNAPSHOT</org.neuro4j-version>
+		<org.neuro4j-version>3.0.1</org.neuro4j-version>
 	</properties>
-	<repositories>
-		<repository>
-			<id>neuro4j-maven-milestone</id>
-			<name>Neuro4J Maven Repository</name>
-			<url>http://static.neuro4j.org/maven2</url>
-		</repository>
-	</repositories>
-	<pluginRepositories>
-		<pluginRepository>
-			<id>neuro4j-plugin-repo</id>
-			<name>Neuro4j Maven Plugin Repository</name>
-			<url>http://static.neuro4j.org/maven2</url>
-		</pluginRepository>
-	</pluginRepositories>
 
 	<artifactId>SpringEmailExample</artifactId>
 

@@ -21,7 +21,7 @@
 	</repositories>
 	<properties>
 		<mavenVersion>2.2.1</mavenVersion>
-		<org.neuro4j.version>3.0.1-SNAPSHOT</org.neuro4j.version>
+		<org.neuro4j.version>3.0.1</org.neuro4j.version>
 		<mojo.java.target>1.8</mojo.java.target>
 	</properties>
 
