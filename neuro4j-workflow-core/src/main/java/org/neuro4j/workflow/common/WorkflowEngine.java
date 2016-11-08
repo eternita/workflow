@@ -19,9 +19,13 @@ package org.neuro4j.workflow.common;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.FutureTask;
 
 import org.neuro4j.workflow.ExecutionResult;
 import org.neuro4j.workflow.WorkflowRequest;
+import org.neuro4j.workflow.async.ThreadPoolTaskExecutor.ThreadPoolTaskConfig;
 import org.neuro4j.workflow.cache.ActionHandlersRegistry;
 import org.neuro4j.workflow.cache.ConcurrentMapWorkflowCache;
 import org.neuro4j.workflow.cache.EmptyWorkflowCache;
@@ -90,6 +94,21 @@ public class WorkflowEngine {
 		}
 		return workflowProcessor.execute(flow, request);
 	}
+	
+	public FutureTask<ExecutionResult> executeAsync(String flow) throws FlowExecutionException {
+		return workflowProcessor.executeAsync(flow, new WorkflowRequest());
+	}
+	
+	public FutureTask<ExecutionResult> executeAsync(String flow, Map<String, Object> params)
+			throws FlowExecutionException {
+		WorkflowRequest request = new WorkflowRequest();
+
+		if (null != params && !params.isEmpty()) {
+			for (String key : params.keySet())
+				request.addParameter(key, params.get(key));
+		}
+		return workflowProcessor.executeAsync(flow, request);
+	}
 
 	/**
 	 * Executes flow with given request
@@ -117,6 +136,8 @@ public class WorkflowEngine {
 		private final WorkflowConverter converter;
 		
 		private final Map<String, FlowParameter> aliases = new HashMap<>();
+		
+		private ThreadPoolTaskConfig threadPoolTaskConfig;
 
 		public ConfigBuilder() {
 			converter = new XmlWorkflowConverter();
@@ -124,6 +145,11 @@ public class WorkflowEngine {
 
 		public ConfigBuilder withLoader(WorkflowLoader loader) {
 			this.loader = loader;
+			return this;
+		}
+		
+		public ConfigBuilder withThreadPoolTaskConfig(ThreadPoolTaskConfig threadPoolTaskConfig) {
+			this.threadPoolTaskConfig = threadPoolTaskConfig;
 			return this;
 		}
 
@@ -153,24 +179,34 @@ public class WorkflowEngine {
 		}
 		
 		public WorkflowLoader getLoader() {
-			return loader != null ? loader : new RemoteWorkflowLoader(converter, new ClasspathWorkflowLoader(converter));
+			loader = Optional.ofNullable(loader).orElse(new RemoteWorkflowLoader(converter, new ClasspathWorkflowLoader(converter)));
+			return loader;
 		}
 
 		public CustomBlockInitStrategy getCustomInitStrategy() {
-			return customInitStrategy != null ? customInitStrategy : new DefaultCustomBlockInitStrategy();
+			customInitStrategy =  Optional.ofNullable(customInitStrategy).orElse(new DefaultCustomBlockInitStrategy());
+			return customInitStrategy;
 		}
 		
 		public WorkflowCache getWorkflowCache() {
-			return workflowCache != null ? workflowCache : EmptyWorkflowCache.INSTANCE;
+			workflowCache = Optional.ofNullable(workflowCache).orElse(EmptyWorkflowCache.INSTANCE);
+			return workflowCache;
 		}
 		
 		public ActionHandlersRegistry getActionRegistry() {
-			return this.registry != null ? this.registry : new ActionHandlersRegistry(Collections.emptyMap());
+			this.registry = Optional.ofNullable(this.registry).orElse(new ActionHandlersRegistry(Collections.emptyMap()));
+			return this.registry;
 		}
 		
 		public Map<String, FlowParameter> getAliases() {
 			return this.aliases;
 		}
+		
+		public ThreadPoolTaskConfig getThreadPoolTaskConfig() {
+			threadPoolTaskConfig = Optional.ofNullable(threadPoolTaskConfig).orElse(new ThreadPoolTaskConfig());
+			return threadPoolTaskConfig;
+		}
 	}
 
 }
+

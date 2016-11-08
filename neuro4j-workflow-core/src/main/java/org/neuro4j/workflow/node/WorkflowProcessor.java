@@ -18,11 +18,18 @@ package org.neuro4j.workflow.node;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.FutureTask;
 
 import org.neuro4j.workflow.ActionBlock;
 import org.neuro4j.workflow.ActionHandler;
 import org.neuro4j.workflow.ExecutionResult;
 import org.neuro4j.workflow.WorkflowRequest;
+import org.neuro4j.workflow.async.CallableTask;
+import org.neuro4j.workflow.async.ThreadPoolTaskExecutor;
 import org.neuro4j.workflow.cache.ActionHandlersRegistry;
 import org.neuro4j.workflow.cache.WorkflowCache;
 import org.neuro4j.workflow.common.FlowExecutionException;
@@ -30,6 +37,7 @@ import org.neuro4j.workflow.common.Workflow;
 import org.neuro4j.workflow.common.WorkflowEngine.ConfigBuilder;
 import org.neuro4j.workflow.debug.DebugService;
 import org.neuro4j.workflow.loader.WorkflowLoader;
+import org.neuro4j.workflow.utils.Validation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -50,6 +58,8 @@ public class WorkflowProcessor {
 	private final WorkflowCache cache;
 	
 	private final Map<String, FlowParameter> aliases = new HashMap<>();
+	
+	private final ThreadPoolTaskExecutor threadPoolTaskExecutor;
 
 	/**
 	 * Constructor
@@ -61,6 +71,7 @@ public class WorkflowProcessor {
 		this.cache = builder.getWorkflowCache();
 		this.registry = builder.getActionRegistry();
 		this.aliases.putAll(builder.getAliases());
+		this.threadPoolTaskExecutor = new ThreadPoolTaskExecutor(builder.getThreadPoolTaskConfig());
 	}
 
 	/**
@@ -135,7 +146,7 @@ public class WorkflowProcessor {
 	 * @param request with parameters
 	 * @throws FlowExecutionException in case of error
 	 */
-	public final void executeWorkflow(WorkflowNode firstNode, WorkflowRequest request) throws FlowExecutionException {
+	 final void executeWorkflow(WorkflowNode firstNode, WorkflowRequest request) throws FlowExecutionException {
 
 		if (null == request)
 			throw new RuntimeException("WorkflowRequest must not be null");
@@ -158,6 +169,15 @@ public class WorkflowProcessor {
 
 	}
 
+	public FutureTask<ExecutionResult> executeAsync(final String flow, final WorkflowRequest request)
+			throws FlowExecutionException {
+        Validation.requireNonNull(flow, ()-> new FlowExecutionException("Flow can not be null"));
+        Validation.requireNonNull(request, ()-> new FlowExecutionException("WorkflowRequest can not be null"));
+        
+		Callable<ExecutionResult> callable = new CallableTask(this, flow, request);
+		return threadPoolTaskExecutor.submit(callable);
+
+	}
 
 	/**
 	 * Executes next node with given parameters
