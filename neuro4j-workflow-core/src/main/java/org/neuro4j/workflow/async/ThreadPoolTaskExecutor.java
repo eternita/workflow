@@ -70,7 +70,7 @@ public class ThreadPoolTaskExecutor {
 
 	public static class ThreadPoolTaskConfig {
 
-		private int corePoolSize = 1;
+		private int corePoolSize = 5;
 
 		private int maxPoolSize = Integer.MAX_VALUE;
 

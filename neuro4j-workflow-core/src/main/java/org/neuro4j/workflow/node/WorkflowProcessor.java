@@ -189,7 +189,7 @@ public class WorkflowProcessor {
 
 		long startTime = System.currentTimeMillis();
 
-		logger.debug("      Running: node {} ({})", node.getName(), this.getClass().getCanonicalName());
+		logger.debug("      Running: node {} ({})", node.getName(), node.getClass().getCanonicalName());
 
 		node.validate(this, request.getLogicContext());
 

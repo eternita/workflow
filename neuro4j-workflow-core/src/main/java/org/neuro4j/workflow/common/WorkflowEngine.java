@@ -189,7 +189,7 @@ public class WorkflowEngine {
 		}
 		
 		public WorkflowCache getWorkflowCache() {
-			workflowCache = Optional.ofNullable(workflowCache).orElse(EmptyWorkflowCache.INSTANCE);
+			workflowCache = Optional.ofNullable(workflowCache).orElse(new ConcurrentMapWorkflowCache());
 			return workflowCache;
 		}
 		

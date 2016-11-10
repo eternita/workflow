@@ -16,6 +16,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.cache.ActionHandlersRegistry;
+import org.neuro4j.workflow.cache.ConcurrentMapWorkflowCache;
 import org.neuro4j.workflow.cache.EmptyWorkflowCache;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.WorkflowEngine;
@@ -95,7 +96,7 @@ public class GuiceWithWorkflowTestCase {
 	        assertNotNull(builder.getLoader());	
 	        assertThat(builder.getLoader(), instanceOf(RemoteWorkflowLoader.class));
 	        assertNotNull(builder.getWorkflowCache());	
-	        assertThat(builder.getWorkflowCache(), instanceOf(EmptyWorkflowCache.class));
+	        assertThat(builder.getWorkflowCache(), instanceOf(ConcurrentMapWorkflowCache.class));
 	        assertThat(builder.getActionRegistry(), instanceOf(ActionHandlersRegistry.class));
 	}
 

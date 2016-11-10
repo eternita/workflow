@@ -18,6 +18,8 @@ package org.neuro4j.workflow.cache;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.concurrent.locks.ReentrantReadWriteLock.ReadLock;
+import java.util.function.Function;
 
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.Workflow;
@@ -32,14 +34,14 @@ public class ConcurrentMapWorkflowCache implements WorkflowCache {
 
 	private static final Logger logger = LoggerFactory.getLogger(ConcurrentMapWorkflowCache.class);
 
-	private final ConcurrentMap<String, Workflow> cache;
+	private final ConcurrentMap<String, WorkflowProxy> cache;
 
-	public ConcurrentMapWorkflowCache(final ConcurrentMap<String, Workflow> cache) {
+	public ConcurrentMapWorkflowCache(final ConcurrentMap<String, WorkflowProxy> cache) {
 		this.cache = cache;
 	}
 
 	public ConcurrentMapWorkflowCache() {
-		this(new ConcurrentHashMap<String, Workflow>());
+		this(new ConcurrentHashMap<String, WorkflowProxy>());
 	}
 
 	@Override
@@ -48,21 +50,50 @@ public class ConcurrentMapWorkflowCache implements WorkflowCache {
 	}
 
 	@Override
-	public Workflow get(WorkflowLoader loader, String location) throws FlowExecutionException {
-		Workflow entry = cache.get(location);
-		if (entry == null) {
-			logger.debug("Loading: {}", location);
-			entry = EmptyWorkflowCache.INSTANCE.get(loader, location);
-			cache.put(location, entry);
-		} else {
-			logger.debug("Found in cache: {}", location);
-		}
-		return entry;
+	public Workflow get(final WorkflowLoader loader, final String location) throws FlowExecutionException {
+		WorkflowProxy entry = cache.computeIfAbsent(location, new Function<String, WorkflowProxy>() {
+
+			@Override
+			public WorkflowProxy apply(String location) {
+				return new WorkflowProxy(location);
+			}
+		});
+		return entry.get(loader);
 	}
 
 	@Override
 	public void clear(String key) {
 		cache.remove(key);
 	}
+	
+	
+	public class WorkflowProxy{
+		
+		private Object lock = new Object();
+		private Workflow workflow;
+		private String location;
+		
+		public WorkflowProxy(String location){
+			this.location = location;
+		}
+		
+		public Workflow get(WorkflowLoader loader) throws FlowExecutionException{
+			if (workflow != null){
+				logger.debug("Found in cache: {}", location);
+				return workflow;
+			}
+			synchronized (lock) {
+				if (workflow != null){
+					logger.debug("Found in cache: {}", location);
+					return workflow;
+				}
+				logger.debug("Loading to cache: {}", location);
+				workflow = loader.load(location);
+			}
+			return workflow;
+		}
+		
+	}
 
+	
 }

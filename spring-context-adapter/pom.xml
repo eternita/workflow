@@ -4,14 +4,10 @@
 	<parent>
 		<groupId>org.neuro4j</groupId>
 		<artifactId>workflow</artifactId>
-		<version>3.0.1</version>
+		<version>3.1.1-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>spring-context-adapter</artifactId>
-	<properties>
-		<org.springframework-version>4.1.6.RELEASE</org.springframework-version>
-	</properties>
-
 	<dependencies>
 
 		<dependency>
@@ -22,7 +18,6 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>${org.springframework-version}</version>
 			<exclusions>
 				<exclusion>
 					<groupId>commons-logging</groupId>

@@ -9,8 +9,9 @@ import org.neuro4j.workflow.enums.CachedNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.neuro4j.workflow.ActionBlock;
-import static org.neuro4j.workflow.enums.ActionBlockCache.*;
+
 import static org.neuro4j.workflow.async.CustomBlockSleep.*;
+import static org.neuro4j.workflow.enums.ActionBlockCache.*;
 
 @ParameterDefinitionList(input={
                                 	@ParameterDefinition(name=IN_TIMETOSLEE, isOptional=true, type= "java.lang.Integer")},

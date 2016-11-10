@@ -31,7 +31,7 @@ public class ConfigBuilderTest {
 	        assertNotNull(builder.getLoader());	
 	        assertThat(builder.getLoader(), instanceOf(RemoteWorkflowLoader.class));
 	        assertNotNull(builder.getWorkflowCache());	
-	        assertThat(builder.getWorkflowCache(), instanceOf(EmptyWorkflowCache.class));
+	        assertThat(builder.getWorkflowCache(), instanceOf(ConcurrentMapWorkflowCache.class));
 	        assertThat(builder.getActionRegistry(), instanceOf(ActionHandlersRegistry.class));
 	}
 	
@@ -44,7 +44,7 @@ public class ConfigBuilderTest {
 	        assertNotNull(builder.getLoader());	
 	        assertThat(builder.getLoader(), instanceOf(FileWorkflowLoader.class));
 	        assertNotNull(builder.getWorkflowCache());	
-	        assertThat(builder.getWorkflowCache(), instanceOf(EmptyWorkflowCache.class));
+	        assertThat(builder.getWorkflowCache(), instanceOf(ConcurrentMapWorkflowCache.class));
 	        assertThat(builder.getActionRegistry(), instanceOf(ActionHandlersRegistry.class));
 	}
 	
@@ -67,7 +67,7 @@ public class ConfigBuilderTest {
 	        assertNotNull(builder.getLoader());	
 	        assertThat(builder.getLoader(), instanceOf(RemoteWorkflowLoader.class));
 	        assertNotNull(builder.getWorkflowCache());	
-	        assertThat(builder.getWorkflowCache(), instanceOf(EmptyWorkflowCache.class));
+	        assertThat(builder.getWorkflowCache(), instanceOf(ConcurrentMapWorkflowCache.class));
 	        assertThat(builder.getActionRegistry(), instanceOf(ActionHandlersRegistry.class));
 	}
 	
@@ -79,7 +79,7 @@ public class ConfigBuilderTest {
 	        assertNotNull(builder.getLoader());	
 	        assertThat(builder.getLoader(), instanceOf(RemoteWorkflowLoader.class));
 	        assertNotNull(builder.getWorkflowCache());	
-	        assertThat(builder.getWorkflowCache(), instanceOf(EmptyWorkflowCache.class));
+	        assertThat(builder.getWorkflowCache(), instanceOf(ConcurrentMapWorkflowCache.class));
 	        assertThat(builder.getActionRegistry(), instanceOf(ActionHandlersRegistry.class));
 	}
 	
@@ -95,7 +95,7 @@ public class ConfigBuilderTest {
 	        assertNotNull(builder.getLoader());	
 	        assertThat(builder.getLoader(), instanceOf(RemoteWorkflowLoader.class));
 	        assertNotNull(builder.getWorkflowCache());	
-	        assertThat(builder.getWorkflowCache(), instanceOf(EmptyWorkflowCache.class));
+	        assertThat(builder.getWorkflowCache(), instanceOf(ConcurrentMapWorkflowCache.class));
 	        assertThat(builder.getActionRegistry(), instanceOf(ActionHandlersRegistry.class));
 	        assertThat(builder.getAliases().keySet(), IsCollectionWithSize.hasSize(2));
 	        assertThat(builder.getThreadPoolTaskConfig(), instanceOf(ThreadPoolTaskConfig.class));

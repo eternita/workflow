@@ -8,22 +8,21 @@
 		<version>3.1.1-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
-	<artifactId>jasper-report-workflow</artifactId>
+	<name>Neuro4j Guava WorkflowCache</name>
+	<artifactId>guava-cacheloader</artifactId>
+	<properties>
+		<google.guava-version>3.0</google.guava-version>
+	</properties>
 
 	<dependencies>
-
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.neuro4j</groupId>
-			<artifactId>neuro4j-workflow-common</artifactId>
+			<artifactId>neuro4j-workflow-core</artifactId>
 			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.codehaus.groovy</groupId>
-			<artifactId>groovy-all</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>net.sf.jasperreports</groupId>
-			<artifactId>jasperreports</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -32,12 +31,6 @@
 		</dependency>
 	</dependencies>
 	<build>
-		<!-- <plugins> <plugin> <groupId>com.googlecode.addjars-maven-plugin</groupId> 
-			<artifactId>addjars-maven-plugin</artifactId> <version>1.0.2</version> <executions> 
-			<execution> <goals> <goal>add-jars</goal> </goals> <configuration> <resources> 
-			<resource> <directory>E:/dev/local/jasperreports-5.2.0-project/jasperreports-5.2.0/lib</directory> 
-			</resource> </resources> </configuration> </execution> </executions> </plugin> 
-			</plugins> -->
 		<resources>
 			<resource>
 				<directory>src/main/java</directory>
