@@ -1,34 +1,35 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>org.neuro4j</groupId>
-        <artifactId>workflow</artifactId>
-        <version>3.0.1</version>
-        <relativePath>../pom.xml</relativePath>
-    </parent>
-    <artifactId>guice-workflow-adapter</artifactId>
+	<parent>
+		<groupId>org.neuro4j</groupId>
+		<artifactId>workflow</artifactId>
+		<version>3.1.1-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+	<artifactId>guice-workflow-adapter</artifactId>
 	<properties>
 		<google.guice-version>3.0</google.guice-version>
 	</properties>
 
-    <dependencies>
-
-         <dependency>
-		<groupId>com.google.inject</groupId>
-		<artifactId>guice</artifactId>
-		<version>3.0</version>
-        </dependency>
-        <dependency>
-        	<groupId>org.neuro4j</groupId>
-        	<artifactId>neuro4j-workflow-core</artifactId>
-        	<version>${project.version}</version>
-        </dependency>     
-
-
-        
-    </dependencies>
-    	<build>
+	<dependencies>
+		<dependency>
+			<groupId>com.google.inject</groupId>
+			<artifactId>guice</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.neuro4j</groupId>
+			<artifactId>neuro4j-workflow-core</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	<build>
 		<resources>
 			<resource>
 				<directory>src/main/java</directory>
@@ -42,19 +43,20 @@
 					<include>**/**</include>
 				</includes>
 			</resource>
-			<resource>
+		</resources>
+		<testResources>
+			<testResource>
 				<directory>src/test/java</directory>
 				<includes>
-					<include>**/*.n4j</include>
+					<include>**/**</include>
 				</includes>
-			</resource>
-			<resource>
+			</testResource>
+			<testResource>
 				<directory>src/test/resources</directory>
 				<includes>
 					<include>**/**</include>
 				</includes>
-			</resource>
-
-		</resources>
+			</testResource>
+		</testResources>
 	</build>
 </project>

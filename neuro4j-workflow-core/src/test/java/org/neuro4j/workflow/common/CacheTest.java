@@ -24,6 +24,7 @@ import org.mockito.MockitoAnnotations;
 import org.neuro4j.workflow.ActionBlock;
 import org.neuro4j.workflow.UUIDMgr;
 import org.neuro4j.workflow.cache.ConcurrentMapWorkflowCache;
+import org.neuro4j.workflow.cache.ConcurrentMapWorkflowCache.WorkflowProxy;
 import org.neuro4j.workflow.cache.EmptyWorkflowCache;
 import org.neuro4j.workflow.common.WorkflowEngine.ConfigBuilder;
 import org.neuro4j.workflow.core.CustomBlockEmptyCache;
@@ -234,7 +235,7 @@ public class CacheTest {
 	
 	@Test
 	public void testConcurrentMapWorkflowCache() throws FlowExecutionException {
-		ConcurrentMap<String, Workflow> map = new ConcurrentHashMap<>();
+		ConcurrentMap<String, WorkflowProxy> map = new ConcurrentHashMap<>();
 		ConcurrentMapWorkflowCache cache = new ConcurrentMapWorkflowCache(map);
 		
 		String flowname = "someflow";

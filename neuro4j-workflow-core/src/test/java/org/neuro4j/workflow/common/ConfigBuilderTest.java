@@ -10,6 +10,7 @@ import static org.hamcrest.CoreMatchers.*;
 
 import org.hamcrest.collection.IsCollectionWithSize;
 import org.junit.Test;
+import org.neuro4j.workflow.async.ThreadPoolTaskExecutor.ThreadPoolTaskConfig;
 import org.neuro4j.workflow.cache.ActionHandlersRegistry;
 import org.neuro4j.workflow.cache.ConcurrentMapWorkflowCache;
 import org.neuro4j.workflow.cache.EmptyWorkflowCache;
@@ -30,7 +31,7 @@ public class ConfigBuilderTest {
 	        assertNotNull(builder.getLoader());	
 	        assertThat(builder.getLoader(), instanceOf(RemoteWorkflowLoader.class));
 	        assertNotNull(builder.getWorkflowCache());	
-	        assertThat(builder.getWorkflowCache(), instanceOf(EmptyWorkflowCache.class));
+	        assertThat(builder.getWorkflowCache(), instanceOf(ConcurrentMapWorkflowCache.class));
 	        assertThat(builder.getActionRegistry(), instanceOf(ActionHandlersRegistry.class));
 	}
 	
@@ -43,7 +44,7 @@ public class ConfigBuilderTest {
 	        assertNotNull(builder.getLoader());	
 	        assertThat(builder.getLoader(), instanceOf(FileWorkflowLoader.class));
 	        assertNotNull(builder.getWorkflowCache());	
-	        assertThat(builder.getWorkflowCache(), instanceOf(EmptyWorkflowCache.class));
+	        assertThat(builder.getWorkflowCache(), instanceOf(ConcurrentMapWorkflowCache.class));
 	        assertThat(builder.getActionRegistry(), instanceOf(ActionHandlersRegistry.class));
 	}
 	
@@ -66,7 +67,7 @@ public class ConfigBuilderTest {
 	        assertNotNull(builder.getLoader());	
 	        assertThat(builder.getLoader(), instanceOf(RemoteWorkflowLoader.class));
 	        assertNotNull(builder.getWorkflowCache());	
-	        assertThat(builder.getWorkflowCache(), instanceOf(EmptyWorkflowCache.class));
+	        assertThat(builder.getWorkflowCache(), instanceOf(ConcurrentMapWorkflowCache.class));
 	        assertThat(builder.getActionRegistry(), instanceOf(ActionHandlersRegistry.class));
 	}
 	
@@ -78,7 +79,7 @@ public class ConfigBuilderTest {
 	        assertNotNull(builder.getLoader());	
 	        assertThat(builder.getLoader(), instanceOf(RemoteWorkflowLoader.class));
 	        assertNotNull(builder.getWorkflowCache());	
-	        assertThat(builder.getWorkflowCache(), instanceOf(EmptyWorkflowCache.class));
+	        assertThat(builder.getWorkflowCache(), instanceOf(ConcurrentMapWorkflowCache.class));
 	        assertThat(builder.getActionRegistry(), instanceOf(ActionHandlersRegistry.class));
 	}
 	
@@ -94,9 +95,10 @@ public class ConfigBuilderTest {
 	        assertNotNull(builder.getLoader());	
 	        assertThat(builder.getLoader(), instanceOf(RemoteWorkflowLoader.class));
 	        assertNotNull(builder.getWorkflowCache());	
-	        assertThat(builder.getWorkflowCache(), instanceOf(EmptyWorkflowCache.class));
+	        assertThat(builder.getWorkflowCache(), instanceOf(ConcurrentMapWorkflowCache.class));
 	        assertThat(builder.getActionRegistry(), instanceOf(ActionHandlersRegistry.class));
 	        assertThat(builder.getAliases().keySet(), IsCollectionWithSize.hasSize(2));
+	        assertThat(builder.getThreadPoolTaskConfig(), instanceOf(ThreadPoolTaskConfig.class));
 	}
 	
 	@Test

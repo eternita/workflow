@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<flow visibility="Public">
+    <nodes>
+        <node uuid="B0AKBws37jAAAAFY9fngdET6" name="StartNode3" x="296" y="14" type="START">
+            <parameters/>
+            <config>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
+            </config>
+            <transitions>
+                <transition uuid="wG8KBws3588AAAFYxGfgdET8" name="NEXT" toNode="1u8KBws3uRUAAAFYxsngdET7">
+                    <points>-50, 36, 1, -58|-51, 59, 0, -35|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="B8gKBws3lT4AAAFYSgngdET7" name="EndNode3" x="296" y="309" type="END">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node uuid="ukUKBws3KlcAAAFYMxngdET7" name="CustomBlockSleep" x="287" y="198" type="CUSTOM">
+            <parameters/>
+            <config>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.workflow.async.CustomBlockSleep"/>
+            </config>
+            <transitions>
+                <transition uuid="Eg4KBws3FrkAAAFYco7gdET7" name="NEXT" toNode="B8gKBws3lT4AAAFYSgngdET7">
+                    <points>-78, 35, -47, -138|-81, 129, -50, -44|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="1u8KBws3uRUAAAFYxsngdET7" name="MapperNode3" x="291" y="108" type="MAP">
+            <parameters>
+                <parameter key="value1" value="&quot;Hi &quot; + name1" input="true"/>
+            </parameters>
+            <config/>
+            <transitions>
+                <transition uuid="s.QKBws3vaQAAAFY4FngdET8" name="NEXT" toNode="ukUKBws3KlcAAAFYMxngdET7">
+                    <points>0, 35, -77, -55|-1, 55, -78, -35|</points>
+                </transition>
+            </transitions>
+        </node>
+    </nodes>
+</flow>

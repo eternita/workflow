@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.neuro4j</groupId>
     <artifactId>workflow-tutorials</artifactId>
-    <version>3.0.1</version>
+    <version>3.1.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Workflow Tuturials</name>
     <url>http://neuro4j.org</url>

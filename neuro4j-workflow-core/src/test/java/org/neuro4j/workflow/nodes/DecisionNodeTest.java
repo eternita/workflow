@@ -3,7 +3,9 @@ package org.neuro4j.workflow.nodes;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.fail;
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
 import java.util.Enumeration;
@@ -11,7 +13,6 @@ import java.util.List;
 import java.util.UUID;
 import java.util.Vector;
 
-import org.apache.commons.collections.EnumerationUtils;
 import org.hamcrest.collection.IsArrayWithSize;
 import org.junit.Test;
 import org.junit.internal.matchers.IsCollectionContaining;
@@ -22,7 +23,6 @@ import org.neuro4j.workflow.common.WorkflowEngine.ConfigBuilder;
 import org.neuro4j.workflow.enums.DecisionCompTypes;
 import org.neuro4j.workflow.enums.DecisionOperators;
 import org.neuro4j.workflow.loader.f4j.SWFConstants;
-import org.neuro4j.workflow.node.CustomNode;
 import org.neuro4j.workflow.node.DecisionNode;
 import org.neuro4j.workflow.node.EndNode;
 import org.neuro4j.workflow.node.Transition;

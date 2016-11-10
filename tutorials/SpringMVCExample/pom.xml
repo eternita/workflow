@@ -3,14 +3,14 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.neuro4j.workflow.tutorial</groupId>
 	<artifactId>SpringMVCExample</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>3.1.1-SNAPSHOT</version>
 	<name>SpringMVCExample</name>
 	<packaging>war</packaging>
 	<properties>
 		<java-version>1.8</java-version>
 		<org.springframework-version>4.1.6.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.8.1</org.aspectj-version>
-		<org.neuro4j-version>3.0.1</org.neuro4j-version>
+		<org.neuro4j-version>${project.version}</org.neuro4j-version>
 	</properties>
 	<dependencies>
 		<dependency>

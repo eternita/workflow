@@ -20,8 +20,12 @@ import java.io.Reader;
 
 import org.neuro4j.workflow.loader.f4j.FlowConverter;
 import org.neuro4j.workflow.utils.Validation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class XmlWorkflowConverter implements WorkflowConverter{
+	
+	private static final Logger logger = LoggerFactory.getLogger(XmlWorkflowConverter.class);
 	
 	final String fileExt;
 	
@@ -36,6 +40,9 @@ public class XmlWorkflowConverter implements WorkflowConverter{
 	@Override
 	public Workflow convert(Reader stream, String name) throws FlowExecutionException {
 		Validation.requireNonNull(stream, () -> new FlowExecutionException("InputStream can not be null"));
+		
+		logger.debug("Converting workflow {} from xml to java object", name);
+		
 		return FlowConverter.xml2workflow(stream, name);
 	}
 
