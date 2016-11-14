@@ -4,7 +4,6 @@ import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
 import static junit.framework.Assert.assertNull;
 
-import java.io.Reader;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -12,18 +11,14 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.neuro4j.workflow.ExecutionResult;
 import org.neuro4j.workflow.common.FlowExecutionException;
-import org.neuro4j.workflow.common.Workflow;
-import org.neuro4j.workflow.common.WorkflowConverter;
 import org.neuro4j.workflow.common.WorkflowEngine;
 import org.neuro4j.workflow.common.WorkflowEngine.ConfigBuilder;
 import org.neuro4j.workflow.guava.GuavaWorkflowCache;
-import org.neuro4j.workflow.common.XmlWorkflowConverter;
 import org.neuro4j.workflow.loader.ClasspathWorkflowLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -86,30 +81,5 @@ public class Neuro4jWorkflowMultiThreadsTest {
 			assertEquals("Hi " + name, executionResult.getFlowContext().get("value1"));
 			assertEquals(name, executionResult.getFlowContext().get("name1"));
 		}
-	}
-	
-	public static class CounterXmlWorkflowConverter implements WorkflowConverter{
-		
-		XmlWorkflowConverter converter = new XmlWorkflowConverter();
-		
-		AtomicInteger counter = new AtomicInteger(0);
-	
-
-		@Override
-		public Workflow convert(Reader reader, String name) throws FlowExecutionException {
-			counter.incrementAndGet();
-			return converter.convert(reader, name);
-		}
-
-		@Override
-		public String getFileExt() {
-			return converter.getFileExt();
-		}
-
-		public AtomicInteger getCounter() {
-			return counter;
-		}
-		
-		
 	}
 }

@@ -17,7 +17,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 import org.junit.Before;
 import org.junit.Test;
 import org.neuro4j.workflow.ExecutionResult;
-import org.neuro4j.workflow.async.Neuro4jWorkflowMultiThreadsTest.CounterXmlWorkflowConverter;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.Workflow;
 import org.neuro4j.workflow.common.WorkflowConverter;
@@ -30,8 +29,8 @@ import org.neuro4j.workflow.loader.WorkflowLoader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class GuavaCahceTest {
-	private static final Logger logger = LoggerFactory.getLogger(GuavaCahceTest.class);
+public class GuavaCacheTest {
+	private static final Logger logger = LoggerFactory.getLogger(GuavaCacheTest.class);
 
 
 	@Before

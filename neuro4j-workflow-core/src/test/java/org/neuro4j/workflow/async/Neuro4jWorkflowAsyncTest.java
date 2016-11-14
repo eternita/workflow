@@ -11,13 +11,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.ThreadPoolExecutor.AbortPolicy;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.neuro4j.workflow.ExecutionResult;
+import org.neuro4j.workflow.async.ThreadPoolTaskExecutor.ThreadPoolTaskConfig;
 import org.neuro4j.workflow.cache.EmptyWorkflowCache;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.WorkflowConverter;
@@ -127,7 +130,22 @@ public class Neuro4jWorkflowAsyncTest {
 	
 	@Test
 	public void testRunFlowAsync2() throws FlowExecutionException {
-		WorkflowEngine engine = new WorkflowEngine();
+		
+		ThreadPoolTaskConfig config = new ThreadPoolTaskConfig().setAllowCoreThreadTimeOut(true)
+				.setCorePoolSize(4)
+				.setKeepAliveSeconds(5)
+				.setMaxPoolSize(10)
+				.setAllowCoreThreadTimeOut(true)
+				.setRejectedExecutionHandler(new AbortPolicy())
+				.setThreadFactory(Executors.defaultThreadFactory());
+		
+		assertEquals(4, config.getCorePoolSize());
+		assertEquals(5, config.getKeepAliveSeconds());
+		assertEquals(10, config.getMaxPoolSize());
+		assertEquals(true, config.isAllowCoreThreadTimeOut());
+		
+		WorkflowEngine engine = new WorkflowEngine(new ConfigBuilder().withThreadPoolTaskConfig(config));
+		
 		FutureTask<ExecutionResult> result = engine.executeAsync("org.neuro4j.workflow.flows.FlowForClasspathLoader-Start1");
 		logger.debug("Got FutureTask<ExecutionResult>");
 		assertNotNull(result);

@@ -83,6 +83,8 @@ public class WorkflowLoaderTest {
 		new FileWorkflowLoader(converter, classpathLoader, file);
         fail("Should be exception");
 	}
+	
+
 
 	@Test
 	public void testOverideFlowWithFileLoader() throws FlowExecutionException {

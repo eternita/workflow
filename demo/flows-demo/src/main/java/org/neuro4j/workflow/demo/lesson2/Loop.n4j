@@ -1,47 +1,46 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <flow visibility="Public">
     <nodes>
-        <node type="LOOP" y="311" x="214" name="LoopNode1" uuid="6d4QV.0Ef1MAAAE.EosEg4ob">
+        <node uuid="6d4QV.0Ef1MAAAE.EosEg4ob" name="LoopNode1" x="214" y="311" type="LOOP">
             <parameters/>
             <config>
-                <parameter value="var1" key="SYS_ELEMENT_KEY"/>
-                <parameter value="list1" key="SYS_ITERATOR_KEY"/>
+                <parameter key="SYS_ELEMENT_KEY" value="var1"/>
+                <parameter key="SYS_ITERATOR_KEY" value="list1"/>
             </config>
             <transitions>
-                <transition toNode="WSkQV.0EBaEAAAE.OdAEg4ob" name="LOOP_EXIT" uuid="1GgQV.0EUr4AAAFHKtHRKEFR">
+                <transition uuid="1GgQV.0EUr4AAAFHKtHRKEFR" name="LOOP_EXIT" toNode="WSkQV.0EBaEAAAE.OdAEg4ob">
                     <points>0, 35, -6, -169|6, 176, 0, -28|</points>
                 </transition>
-                <transition toNode="7LkQV.0EUFIAAAE.mV0Eg4ob" name="NEXT" uuid="0gQQV.0Ep7IAAAFHhsLRKEFR">
+                <transition uuid="0gQQV.0Ep7IAAAFHhsLRKEFR" name="NEXT" toNode="7LkQV.0EUFIAAAE.mV0Eg4ob">
                     <points>38, 0, -230, -80|268, 46, 0, -34|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="END" y="421" x="433" name="EndNode1" uuid="7LkQV.0EUFIAAAE.mV0Eg4ob">
+        <node uuid="7LkQV.0EUFIAAAE.mV0Eg4ob" name="EndNode1" x="433" y="421" type="END">
             <parameters/>
             <config/>
             <transitions/>
         </node>
-        <node type="START" y="98" x="204" name="Start" uuid="cEgQV.0Ew.gAAAE.KDIEg4ob">
+        <node uuid="cEgQV.0Ew.gAAAE.KDIEg4ob" name="Start" x="223" y="98" type="START">
             <parameters/>
             <config>
-                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
             </config>
             <transitions>
-                <transition toNode="6d4QV.0Ef1MAAAE.EosEg4ob" name="NEXT" uuid="1sYQV.0EP6IAAAFHBa_RKEFR">
+                <transition uuid="1sYQV.0EP6IAAAFHBa_RKEFR" name="NEXT" toNode="6d4QV.0Ef1MAAAE.EosEg4ob">
                     <points>0, 32, -7, -185|7, 182, 0, -35|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="CUSTOM" y="522" x="192" name="SystemOutBlock" uuid="WSkQV.0EBaEAAAE.OdAEg4ob">
+        <node uuid="WSkQV.0EBaEAAAE.OdAEg4ob" name="SystemOutBlock" x="214" y="521" type="CUSTOM">
             <parameters>
-                <parameter input="true" value="var1" key="varToPrint"/>
+                <parameter key="varToPrint" value="var1" input="true"/>
             </parameters>
             <config>
-                <parameter value="SystemOutBlock" key="SWF_BLOCK_CLASS"/>
-                <parameter value="org.neuro4j.workflow.core.SystemOutBlock" key="SWF_CUSTOM_CLASS"/>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.workflow.core.SystemOutBlock"/>
             </config>
             <transitions>
-                <transition toNode="6d4QV.0Ef1MAAAE.EosEg4ob" name="NEXT" uuid="jOsQV.0E9jEAAAFHVvHRKEFR">
+                <transition uuid="jOsQV.0E9jEAAAFHVvHRKEFR" name="NEXT" toNode="6d4QV.0Ef1MAAAE.EosEg4ob">
                     <points>0, 29, 0, 233|0, 71, 0, 275|-138, 71, -138, 275|-138, -204, -138, 0|-37, -204, -37, 0|</points>
                 </transition>
             </transitions>

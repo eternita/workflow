@@ -147,4 +147,20 @@ public class Neuro4jWorkflowTest {
 		assertNull(result.getException());
 		assertEquals("Hi" + randomStr, result.getFlowContext().get("text"));
 	}
+	
+	@Test
+	public void testPrintResultWithNotFoundException() throws FlowExecutionException {
+
+		WorkflowEngine engine = new WorkflowEngine(
+				new ConfigBuilder().withLoader(new ClasspathWorkflowLoader(converter)));
+		Map<String, Object> parameters = new HashMap<>();
+
+		WorkflowRequest request = new WorkflowRequest(parameters);
+		ExecutionResult result = engine.execute("org.neuro4j.workflow.flows.FlowForClasspathLoader-StartNode11",
+				request);
+		assertNotNull(result);
+		assertNotNull(result.getException());
+		result.print();
+
+	}
 }
