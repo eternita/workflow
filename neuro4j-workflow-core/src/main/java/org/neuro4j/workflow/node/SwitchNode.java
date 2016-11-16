@@ -20,12 +20,19 @@ import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import static org.neuro4j.workflow.common.SWFParametersConstants.*;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+
+import org.neuro4j.workflow.ExecutionResult;
 import org.neuro4j.workflow.loader.f4j.SWFConstants;
 
 public class SwitchNode extends WorkflowNode {
 
     private final String relationName;
     private Transition defaultRelation = null;
+    private boolean isFork = false;
 
     public SwitchNode(String name, String uuid, String relationName)
     {
@@ -38,38 +45,61 @@ public class SwitchNode extends WorkflowNode {
     }
 
 
-    @Override
+    public void setFork(boolean isFork) {
+		this.isFork = isFork;
+	}
+
+	@Override
     public final Transition execute(WorkflowProcessor processor, WorkflowRequest request)  throws FlowExecutionException {
         FlowContext ctx = request.getLogicContext();
-        Transition nextStepUUID = null;
-        String relation = relationName;
-
-        if (relationName != null && !relationName.startsWith(SWFConstants.QUOTES_SYMBOL))
-        {
-            relation = (String) ctx.get(relationName);
-        } else if (relationName != null) {
-            relation = relation.replace(SWFConstants.QUOTES_SYMBOL, "");
-        }
-
-        if (null == relation)
-            relation = "null";
-
-        nextStepUUID = getExitByName(relation);
-
-        if (nextStepUUID == null && defaultRelation != null)
-        {
-            nextStepUUID = defaultRelation;
-        }
-
-        if (nextStepUUID != null)
-        {
-            request.setNextRelation(nextStepUUID);
-
+        Transition nextTransition = null;
+        
+        if (isFork){
+        	List<CompletableFuture<ExecutionResult>> features = new ArrayList<>();
+        	for(Transition transition:  exits.values()){
+        		if (transition.getToNode() != null){
+        			WorkflowRequest internalRequest = new WorkflowRequest(ctx.getParameters());
+            		CompletableFuture<ExecutionResult> cf =  processor.supplyAsync(transition.getToNode(), internalRequest);
+            		features.add(cf);	
+        		}
+        	}
+        	
+        	request.addCompletableFuture(features);
+        	
+        	nextTransition = defaultRelation;
+        	
         } else {
-            throw new FlowExecutionException("Switch: NextStep is unknown.");
-        }
+        	   String relation = relationName;
 
-        return nextStepUUID;
+               if (relationName != null && !relationName.startsWith(SWFConstants.QUOTES_SYMBOL))
+               {
+                   relation = (String) ctx.get(relationName);
+               } else if (relationName != null) {
+                   relation = relation.replace(SWFConstants.QUOTES_SYMBOL, "");
+               }
+
+               if (null == relation)
+                   relation = "null";
+
+               nextTransition = getExitByName(relation);
+
+               if (nextTransition == null && defaultRelation != null)
+               {
+                   nextTransition = defaultRelation;
+               }
+
+               if (nextTransition != null)
+               {
+                   request.setNextRelation(nextTransition);
+
+               } else {
+                   throw new FlowExecutionException("Switch: NextStep is unknown.");
+               }
+
+        }
+        
+     
+        return nextTransition;
     }
 
     /*

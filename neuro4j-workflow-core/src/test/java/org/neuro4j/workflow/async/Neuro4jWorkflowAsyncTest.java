@@ -4,12 +4,14 @@ import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
 import static junit.framework.Assert.assertNull;
 import static junit.framework.Assert.fail;
+import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -20,6 +22,7 @@ import java.util.concurrent.ThreadPoolExecutor.AbortPolicy;
 import org.junit.Before;
 import org.junit.Test;
 import org.neuro4j.workflow.ExecutionResult;
+import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.async.ThreadPoolTaskExecutor.ThreadPoolTaskConfig;
 import org.neuro4j.workflow.cache.EmptyWorkflowCache;
 import org.neuro4j.workflow.common.FlowExecutionException;
@@ -33,7 +36,7 @@ import org.slf4j.LoggerFactory;
 
 public class Neuro4jWorkflowAsyncTest {
 	private static final Logger logger = LoggerFactory.getLogger(Neuro4jWorkflowAsyncTest.class);
-	
+
 	WorkflowConverter converter;
 
 	@Before
@@ -65,26 +68,27 @@ public class Neuro4jWorkflowAsyncTest {
 		}
 
 	}
-	
+
 	@Test
 	public void testRunMultyFlowAsync() throws FlowExecutionException {
 
-		WorkflowEngine engine = new WorkflowEngine(
-				new ConfigBuilder().withWorkflowCache(EmptyWorkflowCache.INSTANCE).withLoader(new ClasspathWorkflowLoader(converter)));
-		
+		WorkflowEngine engine = new WorkflowEngine(new ConfigBuilder().withWorkflowCache(EmptyWorkflowCache.INSTANCE)
+				.withLoader(new ClasspathWorkflowLoader(converter)));
+
 		List<FutureTask<ExecutionResult>> list = new ArrayList();
-		
-		for (int i = 0 ; i < 10 ; i++){
+
+		for (int i = 0; i < 10; i++) {
 			Map<String, Object> parameters = new HashMap<String, Object>();
 			parameters.put("name1", "" + i);
 			parameters.put("timeToSlee", ThreadLocalRandom.current().nextInt(10, 800 + 1));
-			FutureTask<ExecutionResult> result = engine.executeAsync("org.neuro4j.workflow.flows.FlowForClasspathLoader-StartNode3", parameters);
+			FutureTask<ExecutionResult> result = engine
+					.executeAsync("org.neuro4j.workflow.flows.FlowForClasspathLoader-StartNode3", parameters);
 			logger.debug("Got " + i + " FutureTask<ExecutionResult>");
 			list.add(result);
 			try {
 				Thread.sleep(50);
 			} catch (InterruptedException e) {
-                    logger.error(e.getMessage());
+				logger.error(e.getMessage());
 			}
 
 		}
@@ -101,7 +105,7 @@ public class Neuro4jWorkflowAsyncTest {
 						assertNotNull(executionResult);
 						assertNull(executionResult.getException());
 						assertEquals("Hi " + j, executionResult.getFlowContext().get("value1"));
-						assertEquals(""+j, executionResult.getFlowContext().get("name1"));
+						assertEquals("" + j, executionResult.getFlowContext().get("name1"));
 						assertEquals("EndNode3", executionResult.getLastSuccessfulNodeName());
 					} catch (Exception e) {
 						errors = true;
@@ -121,32 +125,25 @@ public class Neuro4jWorkflowAsyncTest {
 				;
 			}
 		}
-		
-	
 
 	}
 
-	
-	
 	@Test
 	public void testRunFlowAsync2() throws FlowExecutionException {
-		
-		ThreadPoolTaskConfig config = new ThreadPoolTaskConfig().setAllowCoreThreadTimeOut(true)
-				.setCorePoolSize(4)
-				.setKeepAliveSeconds(5)
-				.setMaxPoolSize(10)
-				.setAllowCoreThreadTimeOut(true)
-				.setRejectedExecutionHandler(new AbortPolicy())
-				.setThreadFactory(Executors.defaultThreadFactory());
-		
+
+		ThreadPoolTaskConfig config = new ThreadPoolTaskConfig().setAllowCoreThreadTimeOut(true).setCorePoolSize(4)
+				.setKeepAliveSeconds(5).setMaxPoolSize(10).setAllowCoreThreadTimeOut(true)
+				.setRejectedExecutionHandler(new AbortPolicy()).setThreadFactory(Executors.defaultThreadFactory());
+
 		assertEquals(4, config.getCorePoolSize());
 		assertEquals(5, config.getKeepAliveSeconds());
 		assertEquals(10, config.getMaxPoolSize());
 		assertEquals(true, config.isAllowCoreThreadTimeOut());
-		
+
 		WorkflowEngine engine = new WorkflowEngine(new ConfigBuilder().withThreadPoolTaskConfig(config));
-		
-		FutureTask<ExecutionResult> result = engine.executeAsync("org.neuro4j.workflow.flows.FlowForClasspathLoader-Start1");
+
+		FutureTask<ExecutionResult> result = engine
+				.executeAsync("org.neuro4j.workflow.flows.FlowForClasspathLoader-Start1");
 		logger.debug("Got FutureTask<ExecutionResult>");
 		assertNotNull(result);
 		try {
@@ -159,7 +156,49 @@ public class Neuro4jWorkflowAsyncTest {
 			fail(e.getMessage());
 		}
 	}
-	
-	
-	
+
+	@Test
+	public void testRunMultyFlowSupplyAsync() throws FlowExecutionException {
+
+		WorkflowEngine engine = new WorkflowEngine(
+				new ConfigBuilder().withLoader(new ClasspathWorkflowLoader(converter)));
+
+		List<CompletableFuture<ExecutionResult>> list = new ArrayList();
+
+		for (int i = 0; i < 10; i++) {
+			Map<String, Object> parameters = new HashMap<String, Object>();
+			parameters.put("name1", "" + i);
+			parameters.put("timeToSlee", ThreadLocalRandom.current().nextInt(10, 800 + 1));
+
+			CompletableFuture<ExecutionResult> result = engine.supplyAsync(
+					"org.neuro4j.workflow.flows.FlowForClasspathLoader-StartNode3", new WorkflowRequest(parameters));
+
+			logger.debug("Got " + i + " FutureTask<ExecutionResult>");
+			list.add(result);
+
+		}
+
+		CompletableFuture.allOf(list.toArray(new CompletableFuture<?>[0])).join();
+
+		int j = 0;
+		for (CompletableFuture<ExecutionResult> t1 : list) {
+			assertTrue(t1.isDone());
+
+			try {
+				ExecutionResult executionResult = t1.get();
+				assertNotNull(executionResult);
+				assertNull(executionResult.getException());
+				assertEquals("Hi " + j, executionResult.getFlowContext().get("value1"));
+				assertEquals("" + j, executionResult.getFlowContext().get("name1"));
+				assertEquals("EndNode3", executionResult.getLastSuccessfulNodeName());
+			} catch (Exception e) {
+				logger.error(e.getMessage(), e);
+				fail(e.getMessage());
+			}
+
+			j++;
+		}
+
+	}
+
 }

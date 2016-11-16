@@ -49,7 +49,7 @@ public class ThreadPoolTaskExecutor {
 		}
 	}
 
-	private ThreadPoolExecutor getThreadPoolExecutor() throws IllegalStateException {
+	public ThreadPoolExecutor getThreadPoolExecutor() throws IllegalStateException {
 		Validation.requireNonNull(this.threadPoolExecutor, () -> new IllegalStateException("ThreadPoolTaskExecutor not initialized"));
 		return this.threadPoolExecutor;
 	}

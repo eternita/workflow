@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<flow visibility="Public">
+    <nodes>
+        <node uuid="kNjAqAIECyYAAAFYfUfevmZ3" name="StartNode1" x="310" y="10" type="START">
+            <parameters/>
+            <config>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
+            </config>
+            <transitions>
+                <transition uuid="CFLAqAIEG8sAAAFYitHevmZ6" name="NEXT" toNode="0ynAqAIEuwIAAAFYKlrevmZ3">
+                    <points>-50, 36, 0, -65|-50, 86, 0, -15|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="0ynAqAIEuwIAAAFYKlrevmZ3" name="JoinNode1" x="320" y="131" type="JOIN">
+            <parameters/>
+            <config/>
+            <transitions>
+                <transition uuid="aoTAqAIEzHsAAAFYGd3evmZ6" name="NEXT" toNode="8LfAqAIE7QcAAAFYCnPevmZ3">
+                    <points>0, 15, -74, -75|0, 55, -74, -35|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="8LfAqAIE7QcAAAFYCnPevmZ3" name="Switch : path" x="302" y="201" type="SWITCH">
+            <parameters/>
+            <config>
+                <parameter key="SWF_PARAM_ACTION_NAME" value="path"/>
+                <parameter key="FORK" value="true"/>
+            </config>
+            <transitions>
+                <transition uuid="hVDAqAIEbz0AAAFYrsfevmZ3" name="default" toNode="dJLAqAIEmVMAAAFYm6DevmZ3">
+                    <points>-74, 35, 85, -79|-159, 99, 0, -15|</points>
+                </transition>
+                <transition uuid="huvAqAIEgTUAAAFYhenevmZ3" name="path1" toNode="rBzAqAIELiIAAAFYeqzevmZ3">
+                    <points>-74, 35, -15, -79|-59, 99, 0, -15|</points>
+                </transition>
+                <transition uuid="qkzAqAIEtcoAAAFYogzevmZ4" name="path2" toNode="WizAqAIEJKIAAAFY3LPevmZ3">
+                    <points>-74, 35, -115, -79|41, 99, 0, -15|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="dJLAqAIEmVMAAAFYm6DevmZ3" name="JoinNode2" x="150" y="337" type="JOIN">
+            <parameters/>
+            <config/>
+            <transitions>
+                <transition uuid="fjPAqAIEQooAAAFYiarevmZ4" name="NEXT" toNode="FfPAqAIE7UUAAAFYmjLevmZ4">
+                    <points>0, 15, -64, -82|-14, 62, -78, -35|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="rBzAqAIELiIAAAFYeqzevmZ3" name="JoinNode3" x="320" y="343" type="JOIN">
+            <parameters/>
+            <config/>
+            <transitions>
+                <transition uuid="e27AqAIEGoMAAAFYObbevmZ4" name="NEXT" toNode="NpDAqAIEYJAAAAFY7mXevmZ4">
+                    <points>0, 15, -67, -79|-11, 59, -78, -35|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="WizAqAIEJKIAAAFY3LPevmZ3" name="JoinNode4" x="537" y="333" type="JOIN">
+            <parameters/>
+            <config/>
+            <transitions>
+                <transition uuid="djvAqAIECA8AAAFY6sHevmZ4" name="NEXT" toNode="wpHAqAIEgE0AAAFYDIXevmZ4">
+                    <points>0, 15, -67, -84|-11, 64, -78, -35|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="FfPAqAIE7UUAAAFYmjLevmZ4" name="SleepRandom" x="131" y="414" type="CUSTOM">
+            <parameters/>
+            <config>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.workflow.async.SleepRandom"/>
+            </config>
+            <transitions>
+                <transition uuid="0MsKB288sewAAAFYn8A5VWpe" name="NEXT" toNode="NJIKB288ue0AAAFY7ko5VWpe">
+                    <points>-78, 35, -1, -62|-77, 62, 0, -35|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="NpDAqAIEYJAAAAFY7mXevmZ4" name="SleepRandom" x="304" y="412" type="CUSTOM">
+            <parameters/>
+            <config>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.workflow.async.SleepRandom"/>
+            </config>
+            <transitions>
+                <transition uuid="UqwKB2883uQAAAFYXZw5VWpe" name="NEXT" toNode="gMYKB288ZWAAAAFYel05VWpe">
+                    <points>-78, 35, -2, -63|-76, 63, 0, -35|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="wpHAqAIEgE0AAAFYDIXevmZ4" name="SleepRandom" x="518" y="412" type="CUSTOM">
+            <parameters/>
+            <config>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.workflow.async.SleepRandom"/>
+            </config>
+            <transitions>
+                <transition uuid="k_kKB288.u8AAAFYyoI5VWpe" name="NEXT" toNode="b1sKB2887NIAAAFYSXA5VWpe">
+                    <points>-78, 35, -6, -59|-72, 59, 0, -35|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="dQHAqAIESKYAAAFYIQ_evmZ5" name="JoinNode5" x="323" y="644" type="JOIN">
+            <parameters/>
+            <config/>
+            <transitions>
+                <transition uuid="0SwKB2882bQAAAFYqLQ5VWpf" name="NEXT" toNode="3vsKB288.rQAAAFY7So5VWpf">
+                    <points>0, 15, 5, -106|-5, 106, 0, -15|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="IqzAqAIEVpAAAAFYxVvevmZ5" name="EndNode1" x="313" y="833" type="END">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node uuid="NJIKB288ue0AAAFY7ko5VWpe" name="MapperNode1" x="135" y="511" type="MAP">
+            <parameters>
+                <parameter key="path" value="&quot;1&quot;" input="true"/>
+            </parameters>
+            <config/>
+            <transitions>
+                <transition uuid="WpgKB2881oUAAAFYTWY5VWpf" name="NEXT" toNode="3vsKB288.rQAAAFY7So5VWpf">
+                    <points>0, 35, -168, -199|153, 234, -15, 0|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="gMYKB288ZWAAAAFYel05VWpe" name="MapperNode2" x="308" y="506" type="MAP">
+            <parameters>
+                <parameter key="path" value="&quot;2&quot;" input="true"/>
+            </parameters>
+            <config/>
+            <transitions>
+                <transition uuid="83MKB288s8oAAAFYyuQ5VWpe" name="NEXT" toNode="dQHAqAIESKYAAAFYIQ_evmZ5">
+                    <points>0, 35, 0, -83|0, 103, 0, -15|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="b1sKB2887NIAAAFYSXA5VWpe" name="MapperNode3" x="522" y="506" type="MAP">
+            <parameters>
+                <parameter key="path" value="&quot;3&quot;" input="true"/>
+            </parameters>
+            <config/>
+            <transitions>
+                <transition uuid="7ZgKB2883scAAAFYJ9o5VWpe" name="NEXT" toNode="dQHAqAIESKYAAAFYIQ_evmZ5">
+                    <points>0, 35, 214, -83|-199, 118, 15, 0|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="3vsKB288.rQAAAFY7So5VWpf" name="JoinNode6" x="323" y="765" type="JOIN">
+            <parameters/>
+            <config>
+                <parameter key="FORK" value="true"/>
+            </config>
+            <transitions>
+                <transition uuid="WakKB2887jsAAAFYk9U5VWpf" name="NEXT" toNode="IqzAqAIEVpAAAAFYxVvevmZ5">
+                    <points>0, 15, -45, -82|-5, 53, -50, -44|</points>
+                </transition>
+            </transitions>
+        </node>
+    </nodes>
+</flow>

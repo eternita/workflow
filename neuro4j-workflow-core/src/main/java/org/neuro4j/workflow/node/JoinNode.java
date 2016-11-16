@@ -16,6 +16,8 @@
  */
 package org.neuro4j.workflow.node;
 
+import java.util.concurrent.CompletableFuture;
+
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
@@ -27,6 +29,8 @@ import org.neuro4j.workflow.loader.f4j.SWFConstants;
 public class JoinNode extends WorkflowNode {
 
     private Transition next = null;
+    
+    private boolean isJoinAfterFork = false;
 
 
     public JoinNode(String name, String uuid) {
@@ -36,6 +40,14 @@ public class JoinNode extends WorkflowNode {
     @Override
     public final Transition execute(final WorkflowProcessor processor, final WorkflowRequest request)
             throws FlowExecutionException {
+    	if (isJoinAfterFork){
+    		
+    		if (request.getCompletableFutures().isEmpty()){
+    			return null;
+    		}
+    		
+    		CompletableFuture.allOf(request.getCompletableFutures().toArray(new CompletableFuture<?>[0])).join();
+    	}
         request.setNextRelation(next);
         return next;
     }
@@ -54,5 +66,9 @@ public class JoinNode extends WorkflowNode {
         }
 
     }
+
+	public void setFork(boolean b) {
+		this.isJoinAfterFork = b;
+	}
 
 }

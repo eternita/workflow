@@ -16,6 +16,8 @@
  */
 package org.neuro4j.workflow.common;
 
+import static org.neuro4j.workflow.common.SWFParametersConstants.SWITCH_NODE_ACTION_NAME;
+
 import org.neuro4j.workflow.loader.f4j.SWFConstants;
 
 public class SWFParametersConstants {
@@ -124,7 +126,7 @@ public class SWFParametersConstants {
     public static final String SWITCH_NODE_DEFAULT_ACTION_NAME_2 = "default";
     public static final String SWITCH_NODE_DEFAULT_PARAMETER_VALUE = "relationName";
     public static final String SWITCH_NODE_DEFAULT_ACTION = "DEFAULT";
-
+    public static final String FORK = "FORK";
     // end of FollowByRelationNode section
 
     // LogicNode section

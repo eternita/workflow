@@ -99,6 +99,10 @@ public class WorkflowEngine {
 		return workflowProcessor.executeAsync(flow, new WorkflowRequest());
 	}
 	
+	public CompletableFuture<ExecutionResult> supplyAsync(final String flow, final WorkflowRequest request) throws FlowExecutionException {
+		return workflowProcessor.supplyAsync(flow, request);
+	}
+	
 	public FutureTask<ExecutionResult> executeAsync(String flow, Map<String, Object> params)
 			throws FlowExecutionException {
 		WorkflowRequest request = new WorkflowRequest();

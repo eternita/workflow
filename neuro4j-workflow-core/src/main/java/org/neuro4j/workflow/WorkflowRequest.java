@@ -16,11 +16,14 @@
  */
 package org.neuro4j.workflow;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Stack;
+import java.util.concurrent.CompletableFuture;
 
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.node.Transition;
@@ -32,7 +35,7 @@ public class WorkflowRequest {
     private Stack<String> packages = new Stack<String>();
     private Transition nextTransition = null;
     private WorkflowNode lastSuccessfulNode = null;
-
+    private final List<CompletableFuture<?>> completableFutures = new ArrayList<>();
     private FlowContext logicContext;
 
     public WorkflowRequest() {
@@ -109,5 +112,17 @@ public class WorkflowRequest {
     public void setRequestLocale(Locale locale) {
         this.logicContext.setLocale(locale);
     }
+
+	public List<CompletableFuture<?>> getCompletableFutures() {
+		return completableFutures;
+	}
+	
+	public void addCompletableFuture(List<CompletableFuture<ExecutionResult>> list) throws FlowExecutionException{
+		if(!completableFutures.isEmpty()){
+			throw new FlowExecutionException("completableFutures are not empty");
+		}
+		completableFutures.addAll(list);
+	}
+    
 
 }

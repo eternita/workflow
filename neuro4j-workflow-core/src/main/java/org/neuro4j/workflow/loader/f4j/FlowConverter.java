@@ -16,21 +16,8 @@
  */
 package org.neuro4j.workflow.loader.f4j;
 
-import static org.neuro4j.workflow.common.SWFParametersConstants.CAll_NODE_DYNAMIC_FLOW_NAME;
-import static org.neuro4j.workflow.common.SWFParametersConstants.CAll_NODE_FLOW_NAME;
-import static org.neuro4j.workflow.common.SWFParametersConstants.DECISION_NODE_COMP_KEY;
-import static org.neuro4j.workflow.common.SWFParametersConstants.DECISION_NODE_COMP_TYPE;
-import static org.neuro4j.workflow.common.SWFParametersConstants.DECISION_NODE_DECISION_KEY;
-import static org.neuro4j.workflow.common.SWFParametersConstants.DECISION_NODE_OPERATOR;
-import static org.neuro4j.workflow.common.SWFParametersConstants.LOOP_NODE_ELEMENT;
-import static org.neuro4j.workflow.common.SWFParametersConstants.LOOP_NODE_ITERATOR;
-import static org.neuro4j.workflow.common.SWFParametersConstants.RENDER_IMP;
-import static org.neuro4j.workflow.common.SWFParametersConstants.START_NODE_TYPE;
-import static org.neuro4j.workflow.common.SWFParametersConstants.SWITCH_NODE_ACTION_NAME;
-import static org.neuro4j.workflow.common.SWFParametersConstants.SWITCH_NODE_DEFAULT_PARAMETER_VALUE;
-import static org.neuro4j.workflow.common.SWFParametersConstants.VIEW_NODE_RENDER_TYPE;
-import static org.neuro4j.workflow.common.SWFParametersConstants.VIEW_NODE_TEMPLATE_DYNAMIC_NAME;
-import static org.neuro4j.workflow.common.SWFParametersConstants.VIEW_NODE_TEMPLATE_NAME;
+import static org.neuro4j.workflow.common.SWFParametersConstants.*;
+
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -199,8 +186,13 @@ public class FlowConverter {
 		if (relationName == null) {
 			relationName = SWITCH_NODE_DEFAULT_PARAMETER_VALUE;
 		}
+		String fork = e.getConfig(FORK);
+
 		SwitchNode node = new SwitchNode(e.getName(), e.getUuid(), relationName);
 
+		if (fork != null && "true".equals(fork)) {
+			node.setFork(true);
+		}
 		return node;
 	}
 
@@ -259,6 +251,11 @@ public class FlowConverter {
 
 	private static WorkflowNode createJoinNode(Workflow workflow, NodeXML e) {
 		JoinNode node = new JoinNode(e.getName(), e.getUuid());
+		String fork = e.getConfig(FORK);
+
+		if (fork != null && "true".equals(fork)) {
+			node.setFork(true);
+		}
 		return node;
 	}
 

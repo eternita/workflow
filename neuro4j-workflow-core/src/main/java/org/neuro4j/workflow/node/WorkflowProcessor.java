@@ -19,7 +19,9 @@ package org.neuro4j.workflow.node;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Callable;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.FutureTask;
+import java.util.function.Supplier;
 
 import org.neuro4j.workflow.ActionBlock;
 import org.neuro4j.workflow.ActionHandler;
@@ -200,6 +202,26 @@ public class WorkflowProcessor {
 		}
 
 		return null;
+	}
+	
+	public CompletableFuture<ExecutionResult> supplyAsync(String flow, WorkflowRequest request){
+		CompletableFuture<ExecutionResult> result = CompletableFuture.supplyAsync(() -> this.execute(flow, request), threadPoolTaskExecutor.getThreadPoolExecutor());
+		return result;
+	}
+	
+	CompletableFuture<ExecutionResult> supplyAsync(WorkflowNode node, WorkflowRequest request) {
+		ExecutionResult executionResult = new ExecutionResult(request.getLogicContext());
+		CompletableFuture<ExecutionResult> result = CompletableFuture.supplyAsync(() -> {
+			try {
+				this.executeWorkflow(node, request);
+			} catch (FlowExecutionException e) {
+				logger.error(e.getMessage());
+				executionResult.setExecutionExeption(e);
+			}
+			return executionResult;
+		}, threadPoolTaskExecutor.getThreadPoolExecutor());
+
+		return result;
 	}
 
 	/**
