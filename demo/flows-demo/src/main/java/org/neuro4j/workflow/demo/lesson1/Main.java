@@ -18,8 +18,8 @@ public class Main {
 		
 			Map<String, Object> params = new HashMap<String, Object>();
 			params.put("name", "John");
-			
-			ExecutionResult result = new WorkflowEngine().execute("org.neuro4j.workflow.demo.lesson1.Hello-Start", params);
+			WorkflowEngine engine = new WorkflowEngine();
+			ExecutionResult result =  engine.execute("org.neuro4j.workflow.demo.lesson1.Hello-Start", params);
 			
 			String greeting = (String) result.getFlowContext().get("message");
 			System.out.println(greeting);

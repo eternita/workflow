@@ -133,7 +133,7 @@ public class FlowConverter {
 		switch (type) {
 		case JOIN:
 			node = createJoinNode(workflow, e);
-
+			break;
 		case START:
 			node = createStartNode(workflow, e);
 			workflow.registerStartNode((StartNode) node);

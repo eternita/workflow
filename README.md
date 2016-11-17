@@ -49,6 +49,37 @@ Following code execute flow:
 
 Online documentation how to create first application based on flow available at (http://neuro4j.org/articles/tutorial_hello_world)
 
+### Sync vs Asyn
+Workflow can be executed synchronously:
+```
+			Map<String, Object> params = new HashMap<String, Object>();
+			
+            // add input parameters 
+			WorkflowEngine engine = new WorkflowEngine();
+    	    ExecutionResult result =  engine.execute("org.neuro4j.workflow.tutorial.HelloFlow-Start", parameters);
+    	
+    	   if (result.getException() == null)
+    	   { 
+    	   ....
+    	   }
+
+```
+or asynchronously:
+```
+			Map<String, Object> params = new HashMap<String, Object>();
+			
+            // add input parameters 
+			WorkflowEngine engine = new WorkflowEngine();
+ 			FutureTask<ExecutionResult> result = engine.executeAsync("org.neuro4j.workflow.tutorial.HelloFlow-Start", parameters);
+	        
+	        while (...) {
+              if (result.isDone()){
+    	          ExecutionResult executionResult = result.get();
+    	      }
+    	    }
+```
+
+
 ### Loading workflow
 Workflow are loaded using the ```WorkflowLoader``` class. neuro4j-core provides three implementations of a ```WorkflowLoader```:
  * ClassPathWorkflowLoader

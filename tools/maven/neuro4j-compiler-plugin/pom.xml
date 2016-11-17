@@ -21,7 +21,7 @@
 	</repositories>
 	<properties>
 		<mavenVersion>2.2.1</mavenVersion>
-		<org.neuro4j.version>3.0.1</org.neuro4j.version>
+		<org.neuro4j.version>3.1.1</org.neuro4j.version>
 		<mojo.java.target>1.8</mojo.java.target>
 	</properties>
 
@@ -94,7 +94,7 @@
 		<dependency>
 			<groupId>org.codehaus.plexus</groupId>
 			<artifactId>plexus-utils</artifactId>
-			<version>3.0.16</version>
+			<version>3.1.16</version>
 		</dependency>
 		<dependency>
 			<groupId>org.sonatype.plexus</groupId>
