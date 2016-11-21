@@ -17,16 +17,22 @@
 package org.neuro4j.workflow.node;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
+import org.neuro4j.workflow.ExecutionResult;
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.loader.f4j.SWFConstants;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * JoinBlock links different blocks. Block has many 'input' transitions and one 'output' transition.
  */
 public class JoinNode extends WorkflowNode {
+	
+	private static final Logger logger = LoggerFactory.getLogger(JoinNode.class);
 
     private Transition next = null;
     
@@ -47,6 +53,25 @@ public class JoinNode extends WorkflowNode {
     		}
     		
     		CompletableFuture.allOf(request.getCompletableFutures().toArray(new CompletableFuture<?>[0])).join();
+    		logger.debug("Fork: Finished {} completable futures... Merging output parameters...", request.getCompletableFutures().size());
+    		
+    		FlowContext context  = request.getLogicContext();
+    		
+    		for (CompletableFuture<?> f : request.getCompletableFutures()) {
+				try {
+					ExecutionResult result = (ExecutionResult)f.get();
+					result.getFlowContext().getParameters().forEach((k,v)->{
+						if(context.get(k) == null){
+							logger.debug("Fork: merging parameter: {}", k);
+							context.put(k, v);
+						}
+					});
+				} catch (Exception e) {
+                    logger.error("Error processing result from CompletableFuture", e);
+				}
+			}
+    		request.getCompletableFutures().clear();
+    		
     	}
         request.setNextRelation(next);
         return next;

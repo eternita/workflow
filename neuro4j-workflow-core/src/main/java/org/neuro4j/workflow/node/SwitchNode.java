@@ -50,57 +50,57 @@ public class SwitchNode extends WorkflowNode {
 	}
 
 	@Override
-    public final Transition execute(WorkflowProcessor processor, WorkflowRequest request)  throws FlowExecutionException {
-        FlowContext ctx = request.getLogicContext();
-        Transition nextTransition = null;
-        
-        if (isFork){
-        	List<CompletableFuture<ExecutionResult>> features = new ArrayList<>();
-        	for(Transition transition:  exits.values()){
-        		if (transition.getToNode() != null){
-        			WorkflowRequest internalRequest = new WorkflowRequest(ctx.getParameters());
-            		CompletableFuture<ExecutionResult> cf =  processor.supplyAsync(transition.getToNode(), internalRequest);
-            		features.add(cf);	
-        		}
-        	}
-        	
-        	request.addCompletableFuture(features);
-        	
-        	nextTransition = defaultRelation;
-        	
-        } else {
-        	   String relation = relationName;
+	public final Transition execute(WorkflowProcessor processor, WorkflowRequest request)
+			throws FlowExecutionException {
+		FlowContext ctx = request.getLogicContext();
+		Transition nextTransition = nextTransition(request, ctx);
 
-               if (relationName != null && !relationName.startsWith(SWFConstants.QUOTES_SYMBOL))
-               {
-                   relation = (String) ctx.get(relationName);
-               } else if (relationName != null) {
-                   relation = relation.replace(SWFConstants.QUOTES_SYMBOL, "");
-               }
+		if (isFork) {
+			List<CompletableFuture<ExecutionResult>> features = new ArrayList<>();
+			for (Transition transition : exits.values()) {
+				if (transition.getToNode() != null && !nextTransition.getName().equals(transition.getName())) {
+					CompletableFuture<ExecutionResult> cf = processor.supplyAsyncInternal(transition.getToNode(),
+							new WorkflowRequest(ctx.getParameters()));
+					features.add(cf);
+				}
+			}
 
-               if (null == relation)
-                   relation = "null";
+			request.addCompletableFuture(features);
 
-               nextTransition = getExitByName(relation);
+		}
 
-               if (nextTransition == null && defaultRelation != null)
-               {
-                   nextTransition = defaultRelation;
-               }
+		return nextTransition;
+	}
+	
+	private Transition nextTransition(WorkflowRequest request, FlowContext ctx) throws FlowExecutionException {
 
-               if (nextTransition != null)
-               {
-                   request.setNextRelation(nextTransition);
+		Transition nextTransition = null;
+		String relation = relationName;
 
-               } else {
-                   throw new FlowExecutionException("Switch: NextStep is unknown.");
-               }
+		if (relationName != null && !relationName.startsWith(SWFConstants.QUOTES_SYMBOL)) {
+			relation = (String) ctx.get(relationName);
+		} else if (relationName != null) {
+			relation = relation.replace(SWFConstants.QUOTES_SYMBOL, "");
+		}
 
-        }
-        
-     
-        return nextTransition;
-    }
+		if (null == relation)
+			relation = "null";
+
+		nextTransition = getExitByName(relation);
+
+		if (nextTransition == null && defaultRelation != null) {
+			nextTransition = defaultRelation;
+		}
+
+		if (nextTransition != null) {
+			request.setNextRelation(nextTransition);
+
+		} else {
+			throw new FlowExecutionException("Switch: NextStep is unknown.");
+		}
+
+		return nextTransition;
+	}
 
     /*
      * (non-Javadoc)

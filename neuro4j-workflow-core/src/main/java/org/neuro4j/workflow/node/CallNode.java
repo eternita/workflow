@@ -113,7 +113,7 @@ public class CallNode extends WorkflowNode {
             throw exeption;
         }
 
-        WorkflowNode endNode = request.getLastSuccessfulNode();
+        NodeInfo endNode = request.getLastSuccessfulNode();
 
         Transition nextNode = getExitByName(endNode.getName());
 

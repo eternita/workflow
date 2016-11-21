@@ -28,13 +28,18 @@ import java.util.concurrent.CompletableFuture;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.node.Transition;
 import org.neuro4j.workflow.node.WorkflowNode;
+import org.neuro4j.workflow.node.WorkflowNode.NodeInfo;
 
+/**
+ * Holds information about current request
+ *
+ */
 public class WorkflowRequest {
 
     private HashMap<String, Iterator> loopIterator = null;
     private Stack<String> packages = new Stack<String>();
     private Transition nextTransition = null;
-    private WorkflowNode lastSuccessfulNode = null;
+    private NodeInfo lastSuccessfulNode = null;
     private final List<CompletableFuture<?>> completableFutures = new ArrayList<>();
     private FlowContext logicContext;
 
@@ -88,11 +93,11 @@ public class WorkflowRequest {
         return packages.peek();
     }
 
-    public WorkflowNode getLastSuccessfulNode() {
+    public NodeInfo getLastSuccessfulNode() {
         return lastSuccessfulNode;
     }
 
-    public void setLastSuccessfulNode(WorkflowNode lastSuccessfulNode) {
+    public void setLastSuccessfulNode(NodeInfo lastSuccessfulNode) {
         this.lastSuccessfulNode = lastSuccessfulNode;
     }
 
@@ -119,7 +124,7 @@ public class WorkflowRequest {
 	
 	public void addCompletableFuture(List<CompletableFuture<ExecutionResult>> list) throws FlowExecutionException{
 		if(!completableFutures.isEmpty()){
-			throw new FlowExecutionException("completableFutures are not empty");
+			throw new FlowExecutionException("completableFutures list is not empty");
 		}
 		completableFutures.addAll(list);
 	}

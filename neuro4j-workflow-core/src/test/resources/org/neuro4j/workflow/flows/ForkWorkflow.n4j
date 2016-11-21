@@ -116,6 +116,7 @@
         <node uuid="NJIKB288ue0AAAFY7ko5VWpe" name="MapperNode1" x="135" y="511" type="MAP">
             <parameters>
                 <parameter key="path" value="&quot;1&quot;" input="true"/>
+                <parameter key="var1" value="&quot;1&quot;" input="true"/>
             </parameters>
             <config/>
             <transitions>
@@ -127,6 +128,7 @@
         <node uuid="gMYKB288ZWAAAAFYel05VWpe" name="MapperNode2" x="308" y="506" type="MAP">
             <parameters>
                 <parameter key="path" value="&quot;2&quot;" input="true"/>
+                <parameter key="var2" value="&quot;2&quot;" input="true"/>
             </parameters>
             <config/>
             <transitions>
@@ -138,6 +140,7 @@
         <node uuid="b1sKB2887NIAAAFYSXA5VWpe" name="MapperNode3" x="522" y="506" type="MAP">
             <parameters>
                 <parameter key="path" value="&quot;3&quot;" input="true"/>
+                <parameter key="var3" value="&quot;3&quot;" input="true"/>
             </parameters>
             <config/>
             <transitions>

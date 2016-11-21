@@ -21,7 +21,6 @@ import java.util.Map;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.FutureTask;
-import java.util.function.Supplier;
 
 import org.neuro4j.workflow.ActionBlock;
 import org.neuro4j.workflow.ActionHandler;
@@ -36,6 +35,7 @@ import org.neuro4j.workflow.common.Workflow;
 import org.neuro4j.workflow.common.WorkflowEngine.ConfigBuilder;
 import org.neuro4j.workflow.debug.DebugService;
 import org.neuro4j.workflow.loader.WorkflowLoader;
+import org.neuro4j.workflow.node.WorkflowNode.NodeInfo;
 import org.neuro4j.workflow.utils.Validation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -119,7 +119,7 @@ public class WorkflowProcessor {
 			result.setExecutionExeption(ex);
 		}
 
-		WorkflowNode lastNode = request.getLastSuccessfulNode();
+		NodeInfo lastNode = request.getLastSuccessfulNode();
 
 		if (lastNode != null) {
 			result.setLastSuccessfulNodeName(lastNode.getName());
@@ -158,7 +158,7 @@ public class WorkflowProcessor {
 
 			step = executeNode(step, request);
 
-			request.setLastSuccessfulNode(lastNode);
+			request.setLastSuccessfulNode(lastNode.getNodeInfo());
 
 			if (step != null) {
 				logger.debug("Next step: {} ({})", step.getName(), step.getUuid());
@@ -209,7 +209,7 @@ public class WorkflowProcessor {
 		return result;
 	}
 	
-	CompletableFuture<ExecutionResult> supplyAsync(WorkflowNode node, WorkflowRequest request) {
+	CompletableFuture<ExecutionResult> supplyAsyncInternal(WorkflowNode node, WorkflowRequest request) {
 		ExecutionResult executionResult = new ExecutionResult(request.getLogicContext());
 		CompletableFuture<ExecutionResult> result = CompletableFuture.supplyAsync(() -> {
 			try {
