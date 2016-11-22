@@ -18,11 +18,11 @@ package org.neuro4j.springframework.jms;
 
 import static org.neuro4j.springframework.jms.CloseApplicationContext.IN_APPCONTEXT;
 
+import org.neuro4j.workflow.ActionBlock;
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.ParameterDefinition;
 import org.neuro4j.workflow.common.ParameterDefinitionList;
-import org.neuro4j.workflow.node.CustomBlock;
 import org.springframework.context.ConfigurableApplicationContext;
 
 /**
@@ -30,7 +30,7 @@ import org.springframework.context.ConfigurableApplicationContext;
  *
  */
 @ParameterDefinitionList(input = { @ParameterDefinition(name = IN_APPCONTEXT, isOptional = true, type = "org.springframework.context.ConfigurableApplicationContext") }, output = {})
-public class CloseApplicationContext extends CustomBlock {
+public class CloseApplicationContext implements ActionBlock {
 
 	static final String IN_APPCONTEXT = "appContext";
 

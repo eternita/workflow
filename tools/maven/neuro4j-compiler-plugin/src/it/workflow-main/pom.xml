@@ -22,7 +22,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<org.neuro4j.version>3.1.1</org.neuro4j.version>
+		<org.neuro4j.version>3.2.1-SNAPSHOT</org.neuro4j.version>
 	</properties>
 	<repositories>
 		<repository>

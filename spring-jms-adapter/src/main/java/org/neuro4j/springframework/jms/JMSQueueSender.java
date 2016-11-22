@@ -22,11 +22,11 @@ import static org.neuro4j.springframework.jms.JMSQueueSender.IN_MESSAGE_DESTINAT
 
 import javax.jms.ConnectionFactory;
 
+import org.neuro4j.workflow.ActionBlock;
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.ParameterDefinition;
 import org.neuro4j.workflow.common.ParameterDefinitionList;
-import org.neuro4j.workflow.node.CustomBlock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
@@ -42,7 +42,7 @@ import org.springframework.stereotype.Component;
                          output={
                          	        })	
 @Component
-public class JMSQueueSender extends CustomBlock {
+public class JMSQueueSender implements ActionBlock {
    
 	
     private JmsTemplate jmsTemplate;

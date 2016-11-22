@@ -21,11 +21,11 @@ import static org.neuro4j.springintegration.mail.debug.PrintMessageHeader.IN_MES
 
 import java.util.Map;
 
+import org.neuro4j.workflow.ActionBlock;
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.ParameterDefinition;
 import org.neuro4j.workflow.common.ParameterDefinitionList;
-import org.neuro4j.workflow.node.CustomBlock;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageHeaders;
 
@@ -37,7 +37,7 @@ import org.springframework.messaging.MessageHeaders;
                                 	@ParameterDefinition(name=IN_MESSAGE, isOptional=true, type= "org.springframework.messaging.Message")},
                          output={
                          	        })	
-public class PrintMessageHeader extends CustomBlock {
+public class PrintMessageHeader implements ActionBlock {
     
     static final String IN_MESSAGE = "message";
       

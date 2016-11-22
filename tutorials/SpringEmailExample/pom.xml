@@ -10,7 +10,7 @@
 		<org.springframework-version>4.1.6-RELEASE</org.springframework-version>
 		<org.aspectj-version>1.8.1</org.aspectj-version>
 		<logback.version>1.0.13</logback.version>
-		<org.neuro4j-version>3.1.1</org.neuro4j-version>
+		<org.neuro4j-version>3.2.1-SNAPSHOT</org.neuro4j-version>
 	</properties>
 
 	<artifactId>SpringEmailExample</artifactId>

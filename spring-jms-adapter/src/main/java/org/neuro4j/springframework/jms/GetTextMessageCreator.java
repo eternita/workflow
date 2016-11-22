@@ -23,6 +23,7 @@ import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.Session;
 
+import org.neuro4j.workflow.ActionBlock;
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.ParameterDefinition;
@@ -37,7 +38,7 @@ import org.springframework.jms.core.MessageCreator;
 @ParameterDefinitionList(input = {
 		@ParameterDefinition(name = IN_MESSAGE, isOptional = true, type = "java.lang.String") }, output = {
 				@ParameterDefinition(name = OUT_MESSAGECREATOR, isOptional = true, type = "org.springframework.jms.core.MessageCreator") })
-public class GetTextMessageCreator extends CustomBlock {
+public class GetTextMessageCreator implements ActionBlock {
 
 	static final String IN_MESSAGE = "message";
 
