@@ -78,6 +78,15 @@ or asynchronously:
     	      }
     	    }
 ```
+###Sequential vs Parallel
+Code inside workflow can be executed in sequential or parallel way.
+By default all nodes in workflow will be processing sequentially but developers can specify parallel workflow.
+ * add SwitchNode to workflow
+ * change Fork property to "true"
+ * add a few subflows
+ * add JoinNode with property Fork=true (shows like JoinNode with blue cross) (processor waits here until all subflows finished)
+ Example:
+![workflow-example-parallel](https://raw.github.com/neuro4j/workflow/master/doc/images/Parallel.png "Parallel processing")
 
 
 ### Loading workflow
