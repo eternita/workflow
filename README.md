@@ -12,6 +12,10 @@ What are the advantages of Neuro4j Workflow framework?
 
 The advantages of Workflows are as follows:
 
+* Asynchronous vs synchronous execution
+
+* Sequential or Parallel processing inside workflow
+
 * Neuro4j Workflow has layered architecture.
  
 * It will be much easier to organize, read and support your code.
