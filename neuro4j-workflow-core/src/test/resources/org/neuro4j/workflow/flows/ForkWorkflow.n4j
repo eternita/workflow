@@ -77,7 +77,7 @@
                 </transition>
             </transitions>
         </node>
-        <node uuid="NpDAqAIEYJAAAAFY7mXevmZ4" name="SleepRandom" x="304" y="412" type="CUSTOM">
+        <node uuid="NpDAqAIEYJAAAAFY7mXevmZ4" name="SleepRandom" x="301" y="412" type="CUSTOM">
             <parameters/>
             <config>
                 <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.workflow.async.SleepRandom"/>
@@ -99,7 +99,7 @@
                 </transition>
             </transitions>
         </node>
-        <node uuid="dQHAqAIESKYAAAFYIQ_evmZ5" name="JoinNode5" x="323" y="644" type="JOIN">
+        <node uuid="dQHAqAIESKYAAAFYIQ_evmZ5" name="JoinNode5" x="320" y="644" type="JOIN">
             <parameters/>
             <config/>
             <transitions>
@@ -108,7 +108,7 @@
                 </transition>
             </transitions>
         </node>
-        <node uuid="IqzAqAIEVpAAAAFYxVvevmZ5" name="EndNode1" x="313" y="833" type="END">
+        <node uuid="IqzAqAIEVpAAAAFYxVvevmZ5" name="EndNode1" x="310" y="833" type="END">
             <parameters/>
             <config/>
             <transitions/>
@@ -125,7 +125,7 @@
                 </transition>
             </transitions>
         </node>
-        <node uuid="gMYKB288ZWAAAAFYel05VWpe" name="MapperNode2" x="308" y="506" type="MAP">
+        <node uuid="gMYKB288ZWAAAAFYel05VWpe" name="MapperNode2" x="305" y="506" type="MAP">
             <parameters>
                 <parameter key="path" value="&quot;2&quot;" input="true"/>
                 <parameter key="var2" value="&quot;2&quot;" input="true"/>
@@ -149,7 +149,7 @@
                 </transition>
             </transitions>
         </node>
-        <node uuid="3vsKB288.rQAAAFY7So5VWpf" name="JoinNode6" x="323" y="765" type="JOIN">
+        <node uuid="3vsKB288.rQAAAFY7So5VWpf" name="JoinNode6" x="320" y="765" type="JOIN">
             <parameters/>
             <config>
                 <parameter key="FORK" value="true"/>

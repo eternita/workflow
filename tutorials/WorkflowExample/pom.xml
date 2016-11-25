@@ -10,9 +10,8 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<org.neuro4j.version>3.2.1-SNAPSHOT</org.neuro4j.version>
+		<org.neuro4j.version>3.1.1</org.neuro4j.version>
 		<java.version>1.8</java.version>
-		<logback.version>1.0.13</logback.version>
 	</properties>
 
 	<dependencies>
@@ -20,11 +19,6 @@
 			<groupId>org.neuro4j</groupId>
 			<artifactId>neuro4j-workflow-common</artifactId>
 			<version>${org.neuro4j.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>ch.qos.logback</groupId>
-			<artifactId>logback-classic</artifactId>
-			<version>${logback.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -63,22 +57,6 @@
 			</testResource>
 		</testResources>
 		<plugins>
-		<!-- 
-			<plugin>
-				<groupId>org.neuro4j.tools</groupId>
-				<artifactId>neuro4j-compiler-plugin</artifactId>
-				<version>1.0</version>
-				<executions>
-					<execution>
-						<id>generate</id>
-						<goals>
-							<goal>generate</goal>
-							<goal>testGenerate</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			 -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>

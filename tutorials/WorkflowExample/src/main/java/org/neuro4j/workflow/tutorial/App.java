@@ -25,6 +25,7 @@ public class App
     	parameters.put("name", "Workflow");
 
     	//execute flow
+    	//run flow - engine.execute("<your.package.flowName>-<StartNodeName>", parameters);
     	ExecutionResult result =  engine.execute("org.neuro4j.workflow.tutorial.HelloFlow-Start", parameters);
     	
     	if (result.getException() == null)

@@ -9,9 +9,6 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>guice-workflow-adapter</artifactId>
-	<properties>
-		<google.guice-version>3.0</google.guice-version>
-	</properties>
 
 	<dependencies>
 		<dependency>
