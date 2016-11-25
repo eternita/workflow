@@ -47,12 +47,8 @@
 	</developers>
 	<modules>
 		<module>neuro4j-workflow-core</module>
-		<module>neuro4j-web-core</module>
 		<module>neuro4j-workflow-common</module>
-		<module>jasper-report-web-plugin</module>
 		<module>jasper-report-workflow</module>
-		<module>velocity-web-plugin</module>
-		<module>json-web-plugin</module>
 		<module>spring-context-adapter</module>
 		<module>spring-webmvc-workflow</module>
 		<module>spring-jms-adapter</module>

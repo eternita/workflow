@@ -16,11 +16,13 @@
  */
 package org.neuro4j.workflow.springmvc;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.neuro4j.springframework.context.SpringContextInitStrategy;
-import org.neuro4j.web.workflow.core.WebRequest;
 import org.neuro4j.workflow.ExecutionResult;
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.WorkflowRequest;
@@ -62,7 +64,11 @@ public class AbstractWorkflowController{
      */
     protected FlowContext processWorkflow(String flow, Model model, HttpServletRequest request, HttpServletResponse response) throws FlowExecutionException {
 
-        WorkflowRequest workflowRequest = new WebRequest(model.asMap(), request, response);
+    	Map<String, Object> parameters = new HashMap<>(model.asMap());
+    	parameters.put("request", request);
+    	parameters.put("response", response);
+    	
+        WorkflowRequest workflowRequest = new WorkflowRequest(parameters);
 
         FlowContext context = processWorkflow(flow, workflowRequest);
 

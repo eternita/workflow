@@ -1,55 +1,53 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <flow visibility="Public">
     <nodes>
-        <node type="CALL" y="353" x="206" name="CallNode1" uuid="xh4QV.0EW2QAAAE.XCgEg4pJ">
+        <node uuid="xh4QV.0EW2QAAAE.XCgEg4pJ" name="CallNode1" x="190" y="353" type="CALL">
             <parameters/>
             <config>
-                <parameter value="org.neuro4j.workflow.demo.lesson4.OtherFlow-StartNode1" key="SYS_FLOW_NAME"/>
+                <parameter key="SYS_FLOW_NAME" value="org.neuro4j.workflow.demo.lesson4.OtherFlow-StartNode1"/>
             </config>
             <transitions>
-                <transition toNode="HJkQV.0EBH0AAAE.7bUEg4pJ" name="EndNode1" uuid="oWsQV.0EhgUAAAFHVVBs00Eo"/>
+                <transition uuid="oWsQV.0EhgUAAAFHVVBs00Eo" name="EndNode1" toNode="HJkQV.0EBH0AAAE.7bUEg4pJ"/>
             </transitions>
         </node>
-        <node type="CUSTOM" y="258" x="211" name="SystemOutBlock" uuid="BmMQV.0EBqYAAAE.ZeYEg4pI">
+        <node uuid="BmMQV.0EBqYAAAE.ZeYEg4pI" name="SystemOutBlock" x="190" y="258" type="CUSTOM">
             <parameters>
-                <parameter input="true" value="&quot;Call.n4j - before call&quot;" key="varToPrint"/>
+                <parameter key="varToPrint" value="&quot;Call.n4j - before call&quot;" input="true"/>
             </parameters>
             <config>
-                <parameter value="SystemOutBlock" key="SWF_BLOCK_CLASS"/>
-                <parameter value="org.neuro4j.workflow.core.SystemOutBlock" key="SWF_CUSTOM_CLASS"/>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.workflow.core.SystemOutBlock"/>
             </config>
             <transitions>
-                <transition toNode="xh4QV.0EW2QAAAE.XCgEg4pJ" name="NEXT" uuid="WfcQV.0EhqoAAAFHAi9s00Eo">
+                <transition uuid="WfcQV.0EhqoAAAFHAi9s00Eo" name="NEXT" toNode="xh4QV.0EW2QAAAE.XCgEg4pJ">
                     <points>0, 29, 3, -71|-3, 67, 0, -33|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="START" y="108" x="199" name="Start" uuid="6QQQV.0EA2UAAAE.hLYEg4pI">
+        <node uuid="6QQQV.0EA2UAAAE.hLYEg4pI" name="Start" x="199" y="108" type="START">
             <parameters/>
             <config>
-                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
             </config>
             <transitions>
-                <transition toNode="BmMQV.0EBqYAAAE.ZeYEg4pI" name="NEXT" uuid="ZRcQV.0EspIAAAFHfBts00Eo">
+                <transition uuid="ZRcQV.0EspIAAAFHfBts00Eo" name="NEXT" toNode="BmMQV.0EBqYAAAE.ZeYEg4pI">
                     <points>0, 32, -11, -97|11, 101, 0, -28|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="CUSTOM" y="516" x="211" name="SystemOutBlock" uuid="HJkQV.0EBH0AAAE.7bUEg4pJ">
+        <node uuid="HJkQV.0EBH0AAAE.7bUEg4pJ" name="SystemOutBlock" x="190" y="516" type="CUSTOM">
             <parameters>
-                <parameter input="true" value="&quot;Call.n4j - after call&quot;" key="varToPrint"/>
+                <parameter key="varToPrint" value="&quot;Call.n4j - after call&quot;" input="true"/>
             </parameters>
             <config>
-                <parameter value="SystemOutBlock" key="SWF_BLOCK_CLASS"/>
-                <parameter value="org.neuro4j.workflow.core.SystemOutBlock" key="SWF_CUSTOM_CLASS"/>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.workflow.core.SystemOutBlock"/>
             </config>
             <transitions>
-                <transition toNode="cVgQV.0EZU0AAAE.jMsEg4pI" name="NEXT" uuid="6CIQV.0EgycAAAFH3d_RKEFP">
+                <transition uuid="6CIQV.0EgycAAAFH3d_RKEFP" name="NEXT" toNode="cVgQV.0EZU0AAAE.jMsEg4pI">
                     <points>0, 29, 13, -135|-13, 130, 0, -34|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="END" y="694" x="230" name="EndNode2" uuid="cVgQV.0EZU0AAAE.jMsEg4pI">
+        <node uuid="cVgQV.0EZU0AAAE.jMsEg4pI" name="EndNode2" x="199" y="694" type="END">
             <parameters/>
             <config/>
             <transitions/>

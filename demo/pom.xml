@@ -13,8 +13,6 @@
 
 	<modules>
 		<module>flows-demo</module>
-		<module>flows-web-demo</module>
-		<module>web-site-demo</module>
 	</modules>
 
 	<properties>

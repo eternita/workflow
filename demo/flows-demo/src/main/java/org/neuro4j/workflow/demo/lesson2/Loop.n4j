@@ -12,7 +12,7 @@
                     <points>0, 35, -6, -169|6, 176, 0, -28|</points>
                 </transition>
                 <transition uuid="0gQQV.0Ep7IAAAFHhsLRKEFR" name="NEXT" toNode="7LkQV.0EUFIAAAE.mV0Eg4ob">
-                    <points>38, 0, -230, -80|268, 46, 0, -34|</points>
+                    <points>-31, 0, -223, -119|142, 0, -50, -119|142, 75, -50, -44|</points>
                 </transition>
             </transitions>
         </node>

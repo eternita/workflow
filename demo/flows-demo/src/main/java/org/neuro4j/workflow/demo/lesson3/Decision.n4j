@@ -1,52 +1,51 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <flow visibility="Public">
     <nodes>
-        <node type="CUSTOM" y="378" x="256" name="SystemOutBlock" uuid="htoQV.0EbMMAAAE.uYAEg4o8">
+        <node uuid="htoQV.0EbMMAAAE.uYAEg4o8" name="SystemOutBlock" x="266" y="378" type="CUSTOM">
             <parameters>
-                <parameter input="true" value="&quot;Var is defined. Go to EndNode1&quot;" key="varToPrint"/>
+                <parameter key="varToPrint" value="&quot;Var is defined. Go to EndNode1&quot;" input="true"/>
             </parameters>
             <config>
-                <parameter value="SystemOutBlock" key="SWF_BLOCK_CLASS"/>
-                <parameter value="org.neuro4j.workflow.core.SystemOutBlock" key="SWF_CUSTOM_CLASS"/>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.workflow.core.SystemOutBlock"/>
             </config>
             <transitions>
-                <transition toNode="wssQV.0EZZkAAAE.X4oEg4o7" name="ERROR" uuid="i.UQV.0EvZ8AAAFHthPRKEFR">
-                    <points>59, 0, -174, -121|233, 87, 0, -34|</points>
+                <transition uuid="i.UQV.0EvZ8AAAFHthPRKEFR" name="ERROR" toNode="wssQV.0EZZkAAAE.X4oEg4o7">
+                    <points>-43, 0, -248, -124|-43, 1, -248, -123|155, 1, -50, -123|155, 80, -50, -44|</points>
                 </transition>
-                <transition toNode="bisQV.0E8OQAAAE.RwcEg4o7" name="NEXT" uuid="OOMQV.0EQLYAAAFHqgLRKEFR">
+                <transition uuid="OOMQV.0EQLYAAAFHqgLRKEFR" name="NEXT" toNode="bisQV.0E8OQAAAE.RwcEg4o7">
                     <points>0, 29, -25, -82|25, 77, 0, -34|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="END" y="493" x="508" name="EndNode2" uuid="wssQV.0EZZkAAAE.X4oEg4o7">
+        <node uuid="wssQV.0EZZkAAAE.X4oEg4o7" name="EndNode2" x="508" y="493" type="END">
             <parameters/>
             <config/>
             <transitions/>
         </node>
-        <node type="DECISION" y="245" x="285" name="DecisionNode1" uuid="ktgQV.0E_X4AAAE.z0wEg4o7">
+        <node uuid="ktgQV.0E_X4AAAE.z0wEg4o7" name="DecisionNode1" x="267" y="245" type="DECISION">
             <parameters/>
             <config>
-                <parameter value="DEFINED" key="SYS_OPERATOR"/>
-                <parameter value="var" key="SYS_DECISION_KEY"/>
+                <parameter key="SYS_OPERATOR" value="DEFINED"/>
+                <parameter key="SYS_DECISION_KEY" value="var"/>
             </config>
             <transitions>
-                <transition toNode="htoQV.0EbMMAAAE.uYAEg4o8" name="NEXT" uuid="Z5IQV.0E95MAAAFHrvXRKEFQ">
+                <transition uuid="Z5IQV.0E95MAAAFHrvXRKEFQ" name="NEXT" toNode="htoQV.0EbMMAAAE.uYAEg4o8">
                     <points>0, 35, 14, -93|-14, 100, 0, -28|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="START" y="102" x="275" name="Start" uuid="aLkQV.0E96QAAAE.b.AEg4o6">
+        <node uuid="aLkQV.0E96QAAAE.b.AEg4o6" name="Start" x="275" y="102" type="START">
             <parameters/>
             <config>
-                <parameter value="PUBLIC" key="SYS_START_NODE_TYPE"/>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
             </config>
             <transitions>
-                <transition toNode="ktgQV.0E_X4AAAE.z0wEg4o7" name="NEXT" uuid="sj8QV.0ECpgAAAFHXufRKEFQ">
+                <transition uuid="sj8QV.0ECpgAAAFHXufRKEFQ" name="NEXT" toNode="ktgQV.0E_X4AAAE.z0wEg4o7">
                     <points>0, 32, 8, -113|-8, 110, 0, -35|</points>
                 </transition>
             </transitions>
         </node>
-        <node type="END" y="503" x="215" name="EndNode1" uuid="bisQV.0E8OQAAAE.RwcEg4o7">
+        <node uuid="bisQV.0E8OQAAAE.RwcEg4o7" name="EndNode1" x="215" y="503" type="END">
             <parameters/>
             <config/>
             <transitions/>
