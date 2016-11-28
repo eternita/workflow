@@ -6,6 +6,20 @@ Neuro4j Workflow.
 ========
 Java workflow engine with Eclipse-based development environment.
 
+What is new
+## 3.3.1 - TBD
+* typesafe plugin to configure WorkflowEngine from file
+## 3.2.1 - 11/26/2016
+* Parallel execution inside workflow
+* Removed all web plugins
+## 3.1.1 - 11/16/2016
+* Asynchronous execution
+* WorkflowCache and LoaderCache based on GuavaCache
+## 3.0.1 - 11/07/2016
+* XMLFileWorkflowLoader, ClasspathWorkflowLoader, RemoteWorkflowLoader
+* Aliases (ex. /myflow -> org.neuro4j.workflow.MyFlow-Start)
+## 2.0.1 - 10/10/2016
+
 
 What are the advantages of Neuro4j Workflow framework?
 ----------------
