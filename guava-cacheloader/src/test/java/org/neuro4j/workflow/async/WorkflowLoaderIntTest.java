@@ -17,7 +17,7 @@ import org.neuro4j.workflow.common.XmlWorkflowConverter;
 import org.neuro4j.workflow.guava.GuavaCachedWorkflowLoader;
 import org.neuro4j.workflow.loader.RemoteWorkflowLoader;
 
-public class WorkflowLoaderIntTests {
+public class WorkflowLoaderIntTest {
 	WorkflowConverter converter;
 
 	private Server server;

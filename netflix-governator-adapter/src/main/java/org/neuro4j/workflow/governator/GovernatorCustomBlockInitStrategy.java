@@ -15,7 +15,7 @@
  *
  */
 
-package org.neuro4j.workflow.guice;
+package org.neuro4j.workflow.governator;
 
 
 import org.neuro4j.workflow.ActionBlock;
@@ -24,20 +24,18 @@ import org.neuro4j.workflow.loader.CustomBlockInitStrategy;
 import org.neuro4j.workflow.node.CustomBlock;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.google.inject.Guice;
 import com.google.inject.Injector;
-import com.google.inject.Module;
+import com.netflix.governator.lifecycle.LifecycleManager;
 
 
 
 /**
- * This class allows to use Google Guice library during initialization of all custom blocks.
+ * This class allows to use Netflix Governator library during initialization of all custom blocks.
  *
  */
-public class GuiceCustomBlockInitStrategy implements CustomBlockInitStrategy {
+public class GovernatorCustomBlockInitStrategy implements CustomBlockInitStrategy {
 
-	private static final Logger Logger = LoggerFactory.getLogger(GuiceCustomBlockInitStrategy.class);
+	private static final Logger Logger = LoggerFactory.getLogger(GovernatorCustomBlockInitStrategy.class);
 
     /**
      *  Guice's injector.
@@ -47,15 +45,15 @@ public class GuiceCustomBlockInitStrategy implements CustomBlockInitStrategy {
     /**
      * The constructor.
      * @param modules Guice's modules which will be used by injector.
+     * @throws Exception 
      */
-    public GuiceCustomBlockInitStrategy(Iterable<? extends Module> modules) {
-        this(Guice.createInjector(modules));
-    }
-    
-    public GuiceCustomBlockInitStrategy(final Injector injector) {
+    public GovernatorCustomBlockInitStrategy(Injector injector) throws Exception {
         super();
         this.injector = injector;
+        LifecycleManager manager = injector.getInstance(LifecycleManager.class);
+        manager.start();
     }
+
     
     @SuppressWarnings("unchecked")
     public ActionBlock loadCustomBlock(String className) throws FlowExecutionException {
@@ -68,7 +66,7 @@ public class GuiceCustomBlockInitStrategy implements CustomBlockInitStrategy {
                 return customBlock;
             }
 
-        } catch (ClassNotFoundException e) {
+        } catch (Exception e) {
             Logger.error(e.getMessage(), e);
             throw new FlowExecutionException(e);
         }

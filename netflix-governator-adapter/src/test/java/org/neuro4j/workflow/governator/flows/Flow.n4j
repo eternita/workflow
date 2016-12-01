@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<flow visibility="Public">
+    <nodes>
+        <node uuid="ATcQV.0EE04AAAFH1KLf2NE3" name="Start" x="510" y="10" type="START">
+            <parameters/>
+            <config>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
+            </config>
+            <transitions>
+                <transition uuid="0BEQV.0Eth0AAAFHZgDf2NE4" name="NEXT" toNode="HuQQV.0EUWUAAAFHtOXf2NE3">
+                    <points>0, 32, -1, -181|1, 185, 0, -28|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="dlUQV.0EoGUAAAFHba_f2NE3" name="END" x="510" y="435" type="END">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node uuid="HuQQV.0EUWUAAAFHtOXf2NE3" name="CustomBlockWithService" x="501" y="226" type="CUSTOM">
+            <parameters/>
+            <config>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.workflow.governator.flows.CustomBlockWithService"/>
+            </config>
+            <transitions>
+                <transition uuid="LtYQV.0EDJIAAAFHLQzf2NE4" name="NEXT" toNode="dlUQV.0EoGUAAAFHba_f2NE3">
+                    <points>0, 29, 1, -186|-1, 181, 0, -34|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="note" name="uKIKB288_VQAAAFYZyMeBru6" x="756" y="74" type="NOTE">
+            <description>This flow demonstrates how to use Google Guice for dependency injection in CustomBlock</description>
+            <parameters/>
+            <config>
+                <parameter key="w" value="506"/>
+                <parameter key="h" value="47"/>
+            </config>
+            <transitions/>
+        </node>
+    </nodes>
+</flow>
