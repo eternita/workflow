@@ -28,7 +28,6 @@ import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.async.ThreadPoolTaskExecutor.ThreadPoolTaskConfig;
 import org.neuro4j.workflow.cache.ActionHandlersRegistry;
 import org.neuro4j.workflow.cache.ConcurrentMapWorkflowCache;
-import org.neuro4j.workflow.cache.EmptyWorkflowCache;
 import org.neuro4j.workflow.cache.WorkflowCache;
 import org.neuro4j.workflow.loader.ClasspathWorkflowLoader;
 import org.neuro4j.workflow.loader.CustomBlockInitStrategy;
@@ -37,7 +36,6 @@ import org.neuro4j.workflow.loader.RemoteWorkflowLoader;
 import org.neuro4j.workflow.loader.WorkflowLoader;
 import org.neuro4j.workflow.node.FlowParameter;
 import org.neuro4j.workflow.node.WorkflowProcessor;
-import org.neuro4j.workflow.utils.Validation;
 
 /**
  * <p>
@@ -173,7 +171,9 @@ public class WorkflowEngine {
 		}
 
 		public ConfigBuilder withAliases(final Map<String, String> aliases) throws FlowExecutionException {
-			Validation.requireNonNull(aliases, () -> new FlowExecutionException("Aliases can not be null"));
+			if (aliases == null || aliases.isEmpty()){
+				return this;
+			}
 			for (String key : aliases.keySet()) {
 				FlowParameter param = FlowParameter.parse(aliases.get(key));
 				this.aliases.put(key, param);

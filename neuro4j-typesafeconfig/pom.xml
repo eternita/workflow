@@ -8,13 +8,13 @@
 		<version>3.3.1-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
-	<name>Neuro4j Guava WorkflowCache</name>
-	<artifactId>guava-cacheloader</artifactId>
+	<name>TypeSafeConfig for WorkflowProcessor</name>
+	<artifactId>neuro4j-typesafeconfig</artifactId>
 
 	<dependencies>
 		<dependency>
-			<groupId>com.google.guava</groupId>
-			<artifactId>guava</artifactId>
+			<groupId>com.typesafe</groupId>
+			<artifactId>config</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.neuro4j</groupId>
@@ -24,16 +24,6 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.mortbay.jetty</groupId>
-			<artifactId>jetty</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

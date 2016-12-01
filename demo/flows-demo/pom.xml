@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.neuro4j.examples</groupId>
 		<artifactId>wf-parent</artifactId>
-		<version>3.2.1</version>
+		<version>3.3.1-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>flows-demo</artifactId>

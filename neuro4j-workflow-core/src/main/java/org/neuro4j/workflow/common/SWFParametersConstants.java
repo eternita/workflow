@@ -16,8 +16,6 @@
  */
 package org.neuro4j.workflow.common;
 
-import static org.neuro4j.workflow.common.SWFParametersConstants.SWITCH_NODE_ACTION_NAME;
-
 import org.neuro4j.workflow.loader.f4j.SWFConstants;
 
 public class SWFParametersConstants {
