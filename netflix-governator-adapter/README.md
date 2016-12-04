@@ -13,3 +13,15 @@ Netflix Governator is a library of extensions and utilities that extend Google G
  * Lazy singleton support
  * Generic binding annotations
  
+ Example:
+ ```
+Injector injector = LifecycleInjector.builder().withModuleClass(AppInjector.class)
+                                     .usingBasePackages("org.neuro4j").build().createInjector();
+   
+GovernatorCustomBlockInitStrategy	initStrategy = new GovernatorCustomBlockInitStrategy(injector);
+ 
+WorkflowEngine engine = new WorkflowEngine(new ConfigBuilder().withCustomBlockInitStrategy(initStrategy));
+
+ExecutionResult result = engine.execute("org.neuro4j.workflow.governator.flows.Flow-Start");
+
+ ```
