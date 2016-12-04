@@ -9,6 +9,7 @@ Java workflow engine with Eclipse-based development environment.
 What is new
 ## 3.3.1 - TBD
 * typesafe plugin to configure WorkflowEngine from file
+* netflix-governator plugin
 
 ## 3.2.1 - 11/26/2016
 * Parallel execution inside workflow
