@@ -42,11 +42,7 @@ public class GovernatorCustomBlockInitStrategy implements CustomBlockInitStrateg
      */
     private final Injector injector;
     
-    /**
-     * The constructor.
-     * @param modules Guice's modules which will be used by injector.
-     * @throws Exception 
-     */
+
     public GovernatorCustomBlockInitStrategy(Injector injector) throws Exception {
         super();
         this.injector = injector;
