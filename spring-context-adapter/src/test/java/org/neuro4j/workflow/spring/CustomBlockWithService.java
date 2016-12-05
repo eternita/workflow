@@ -30,13 +30,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 
-
-
-
-/**
- * This custom block uses Google Guice library for dependency injection.
- *
- */
 @ParameterDefinitionList(input={},
 output={
 	        @ParameterDefinition(name=OUT_OUT1, isOptional=true, type= "java.lang.String")})	

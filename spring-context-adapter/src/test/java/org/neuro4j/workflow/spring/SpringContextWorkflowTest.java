@@ -14,6 +14,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.neuro4j.springframework.context.SpringContextInitStrategy;
+import org.neuro4j.workflow.ActionBlock;
 import org.neuro4j.workflow.ExecutionResult;
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.cache.ActionHandlersRegistry;
@@ -102,6 +103,14 @@ public class SpringContextWorkflowTest {
 		assertNotNull(builder.getWorkflowCache());
 		assertThat(builder.getWorkflowCache(), instanceOf(ConcurrentMapWorkflowCache.class));
 		assertThat(builder.getActionRegistry(), instanceOf(ActionHandlersRegistry.class));
+	}
+	
+	@Test
+	public void testLoadNoComponentCustomBlock() throws FlowExecutionException {
+		ActionBlock action = initStrategy.loadCustomBlock("org.neuro4j.workflow.spring.CustomBlockNoComponent");
+		FlowContext context = new FlowContext();
+		assertEquals(1, action.execute(context));
+		assertEquals("somevalue", context.get("somekey"));
 	}
 
 }
