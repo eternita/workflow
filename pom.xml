@@ -50,7 +50,6 @@
 		<module>neuro4j-workflow-common</module>
 		<module>jasper-report-workflow</module>
 		<module>spring-context-adapter</module>
-		<module>spring-webmvc-workflow</module>
 		<module>spring-jms-adapter</module>
 		<module>spring-mail-adapter</module>
 		<module>guice-workflow-adapter</module>
@@ -62,7 +61,8 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java-version>1.8</java-version>
-		<org.springframework-version>4.1.6.RELEASE</org.springframework-version>
+		<org.springframework-version>4.3.4.RELEASE</org.springframework-version>
+		<org.springboot-version>1.4.2.RELEASE</org.springboot-version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -106,6 +106,16 @@
 				<groupId>net.sf.jasperreports</groupId>
 				<artifactId>jasperreports</artifactId>
 				<version>5.1.0</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-test</artifactId>
+				<version>${org.springboot-version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter</artifactId>
+				<version>${org.springboot-version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>

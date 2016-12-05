@@ -23,6 +23,7 @@ import org.neuro4j.workflow.loader.DefaultCustomBlockInitStrategy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.stereotype.Component;
 
 /**
@@ -30,7 +31,9 @@ import org.springframework.stereotype.Component;
  *  Custom block should be marked as @Component (org.springframework.stereotype.Component)
  * If class does not have this annotation it will be loaded as simple class.
  */
-public class SpringContextInitStrategy implements CustomBlockInitStrategy {
+
+@Component
+public class SpringContextInitStrategy implements CustomBlockInitStrategy, BeanFactoryAware {
 
 	private static final Logger Logger = LoggerFactory.getLogger(SpringContextInitStrategy.class);
 

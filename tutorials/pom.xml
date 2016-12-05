@@ -14,7 +14,6 @@
         <module>WorkflowExample</module>
         <module>GuiceWorkflowExample</module>
         <module>SpringJmsExample</module>
-        <module>SpringMVCExample</module>
         <module>SpringTimerExample</module>
         <module>SpringEmailExample</module>
 
