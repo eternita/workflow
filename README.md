@@ -7,7 +7,9 @@ Neuro4j Workflow.
 Java workflow engine with Eclipse-based development environment.
 
 What is new
-## 3.3.1 - TBD
+## 3.4.1 - TBD
+
+## 3.3.1 - 12/05/2016
 * typesafe plugin to configure WorkflowEngine from file
 * netflix-governator plugin
 
