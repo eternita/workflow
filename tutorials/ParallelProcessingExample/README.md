@@ -1,5 +1,4 @@
 ## Parallel execution in workflow 
-----------
 
 Let's create simple SpringBoot application which will download documents from web in parallel way
  
