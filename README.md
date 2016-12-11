@@ -103,7 +103,7 @@ or asynchronously:
     	      }
     	    }
 ```
-###Sequential vs Parallel
+###Sequential vs Parallel ([example](https://github.com/neuro4j/workflow/tree/master/tutorials/ParallelProcessingExample))
 Code inside workflow can be executed in sequential or parallel way.
 By default all nodes in workflow will be processing sequentially but developers can specify parallel workflow.
  * add SwitchNode to workflow
