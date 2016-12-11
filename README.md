@@ -14,7 +14,7 @@ What is new
 * netflix-governator plugin
 
 ## 3.2.1 - 11/26/2016
-* Parallel execution inside workflow
+* [Parallel](https://github.com/neuro4j/workflow/tree/master/tutorials/ParallelProcessingExample) execution inside workflow
 * Removed all web plugins
 
 ## 3.1.1 - 11/16/2016
@@ -35,7 +35,7 @@ The advantages of Workflows are as follows:
 
 * Asynchronous vs synchronous execution
 
-* Sequential or Parallel processing inside workflow
+* Sequential or [Parallel](https://github.com/neuro4j/workflow/tree/master/tutorials/ParallelProcessingExample) processing inside workflow
 
 * Neuro4j Workflow has layered architecture.
  
