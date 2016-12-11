@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<flow visibility="Public">
+    <nodes>
+        <node uuid=".LnAqAIHuBkAAAFYNnElqOpL" name="Start" x="314" y="14" type="START">
+            <parameters/>
+            <config>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
+            </config>
+            <transitions>
+                <transition uuid="KTTAqAIHofMAAAFYLe5rvOpg" name="NEXT" toNode="nsnAqAIHPJwAAAFY5KZrvOpg">
+                    <points>-50, 36, -77, -104|-47, 105, -74, -35|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="s3LAqAIHFpMAAAFYj5IlqOpL" name="EndNode1" x="314" y="616" type="END">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node uuid="nsnAqAIHPJwAAAFY5KZrvOpg" name="Switch : null" x="306" y="152" type="SWITCH">
+            <parameters/>
+            <config>
+                <parameter key="FORK" value="true"/>
+            </config>
+            <transitions>
+                <transition uuid="fkDAqAIHscAAAAFYCEFrvOph" name="default" toNode="GfvAqAIHYv4AAAFY9EBrvOph">
+                    <points>-74, 35, 177, 221|-251, -186, 0, 0|</points>
+                </transition>
+                <transition uuid="h83AqAIHiogAAAFYdtRrvOph" name="path1" toNode="pHLAqAIHF7kAAAFYfr9rvOph">
+                    <points>-74, 35, -211, -107|-74, 68, -211, -74|59, 68, -78, -74|59, 107, -78, -35|</points>
+                </transition>
+                <transition uuid="E.PAqAIHRMcAAAFY4HtrvOr7" name="path2" toNode="FqvAqAIHW8oAAAFYy1drvOr7">
+                    <points>-74, 35, -437, -105|-74, 68, -437, -72|285, 68, -78, -72|285, 105, -78, -35|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="GfvAqAIHYv4AAAFY9EBrvOph" name="DownloadPage" x="47" y="290" type="CUSTOM">
+            <parameters>
+                <parameter key="url" value="url1" input="true"/>
+                <parameter key="document" value="content1" input="false"/>
+            </parameters>
+            <config>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.example.commons.DownloadPage"/>
+            </config>
+            <transitions>
+                <transition uuid="OXjAqAIHT04AAAFYPGtrvOpi" name="NEXT" toNode="0FbAqAIHpJoAAAFYWJlrvOph">
+                    <points>-78, 35, -137, -101|44, 136, -15, 0|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="0FbAqAIHpJoAAAFYWJlrvOph" name="JoinNode1" x="324" y="446" type="JOIN">
+            <parameters/>
+            <config>
+                <parameter key="FORK" value="true"/>
+            </config>
+            <transitions>
+                <transition uuid="pc7AqAIHY0IAAAFYXqBrvOpi" name="NEXT" toNode="s3LAqAIHFpMAAAFYj5IlqOpL">
+                    <points>0, 15, -52, -184|2, 155, -50, -44|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="pHLAqAIHF7kAAAFYfr9rvOph" name="DownloadPage" x="305" y="293" type="CUSTOM">
+            <parameters>
+                <parameter key="url" value="url2" input="true"/>
+                <parameter key="document" value="content2" input="false"/>
+            </parameters>
+            <config>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.example.commons.DownloadPage"/>
+            </config>
+            <transitions>
+                <transition uuid="EUXAqAIHECUAAAFYIBNrvOsN" name="NEXT" toNode="0FbAqAIHpJoAAAFYWJlrvOph">
+                    <points>-78, 35, 0, -98|-78, 118, 0, -15|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="FqvAqAIHW8oAAAFYy1drvOr7" name="DownloadPage" x="531" y="295" type="CUSTOM">
+            <parameters>
+                <parameter key="url" value="url3" input="true"/>
+                <parameter key="document" value="content3" input="false"/>
+            </parameters>
+            <config>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.example.commons.DownloadPage"/>
+            </config>
+            <transitions>
+                <transition uuid="UpjAqAIHy6kAAAFYNC5rvOsC" name="NEXT" toNode="0FbAqAIHpJoAAAFYWJlrvOph">
+                    <points>-78, 35, 347, -106|-410, 141, 15, 0|</points>
+                </transition>
+            </transitions>
+        </node>
+    </nodes>
+</flow>
