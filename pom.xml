@@ -56,6 +56,8 @@
 		<module>guava-cacheloader</module>
 		<module>neuro4j-typesafeconfig</module>
 		<module>netflix-governator-adapter</module>
+		<module>netflix-hystrix-adapter</module>
+		
 	</modules>
 
 	<properties>
@@ -146,6 +148,11 @@
 				<version>2.0</version>
 				<scope>provided</scope>
 			</dependency>
+			        <dependency>
+            <groupId>com.netflix.hystrix</groupId>
+            <artifactId>hystrix-core</artifactId>
+            <version>1.5.2</version>
+        </dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-test</artifactId>
