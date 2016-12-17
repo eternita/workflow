@@ -66,7 +66,7 @@ public class WelcomeController {
 
 Workflow after `Fork` node will run sub-flows in 3 different threads and will wait at Join node. After Join node it will continue execution in 1 "main" thread.
 
-![parallel-example-higlevel](https://raw.github.com/neuro4j/workflow/master/doc/images/DownloadPages.png "DownloadPages workflow")
+![parallel-example-higlevel](https://raw.github.com/neuro4j/workflow/master/doc/images/Parallel.png "DownloadPages workflow")
 
 ### CustomBlock DownloadPage
 
