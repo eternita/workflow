@@ -8,6 +8,9 @@ Java workflow engine with Eclipse-based development environment.
 
 What is new
 ## 3.4.1 - TBD
+* netflix-hystrix-adapter
+
+[Hystrix](https://github.com/Netflix/Hystrix) is a latency and fault tolerance library designed to isolate points of access to remote systems, services and 3rd party libraries, stop cascading failure and enable resilience in complex distributed systems where failure is inevitable.
 
 ## 3.3.1 - 12/05/2016
 * typesafe plugin to configure WorkflowEngine from file
