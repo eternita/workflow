@@ -17,7 +17,7 @@
             <config/>
             <transitions/>
         </node>
-        <node uuid="nsnAqAIHPJwAAAFY5KZrvOpg" name="Switch : null" x="306" y="152" type="SWITCH">
+        <node uuid="nsnAqAIHPJwAAAFY5KZrvOpg" name="Fork" x="305" y="152" type="SWITCH">
             <parameters/>
             <config>
                 <parameter key="FORK" value="true"/>
@@ -86,6 +86,24 @@
                     <points>-78, 35, 347, -106|-410, 141, 15, 0|</points>
                 </transition>
             </transitions>
+        </node>
+        <node uuid="note" name="llHAqGMBOYYAAAFZ8ms3nwpm" x="366" y="109" type="NOTE">
+            <description>Runs subtasks in 3 threads</description>
+            <parameters/>
+            <config>
+                <parameter key="w" value="166"/>
+                <parameter key="h" value="46"/>
+            </config>
+            <transitions/>
+        </node>
+        <node uuid="note" name="kkHAqGMBOYcAAAFZ8ms3nwpm" x="362" y="488" type="NOTE">
+            <description>wait until all threads finish their work</description>
+            <parameters/>
+            <config>
+                <parameter key="w" value="233"/>
+                <parameter key="h" value="78"/>
+            </config>
+            <transitions/>
         </node>
     </nodes>
 </flow>
