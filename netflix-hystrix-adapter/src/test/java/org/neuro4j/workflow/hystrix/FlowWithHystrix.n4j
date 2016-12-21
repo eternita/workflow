@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<flow visibility="Public">
+    <nodes>
+        <node uuid="m1zAqGMB38UAAAFZH.diORWM" name="StartNode1" x="201" y="34" type="START">
+            <parameters/>
+            <config>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
+            </config>
+            <transitions>
+                <transition uuid="E7jAqGMB3LYAAAFZ.BliORWN" name="NEXT" toNode="JL7AqGMBZQgAAAFZXgJiORWN">
+                    <points>-50, 36, -78, -134|-50, 135, -78, -35|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="SF_AqGMBLGcAAAFZCvRiORWM" name="EndNode1" x="201" y="358" type="END">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node uuid="JL7AqGMBZQgAAAFZXgJiORWN" name="SomeHystrixCommand" x="192" y="204" type="CUSTOM">
+            <parameters>
+                <parameter key="param1" value="name" input="true"/>
+                <parameter key="param" value="message" input="false"/>
+            </parameters>
+            <config>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.workflow.hystrix.SomeHystrixCommand"/>
+            </config>
+            <transitions>
+                <transition uuid="bl7AqGMBrh0AAAFZsSRiORWN" name="NEXT" toNode="SF_AqGMBLGcAAAFZCvRiORWM">
+                    <points>-78, 35, -58, -128|-70, 119, -50, -44|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="2sEKB288OmgAAAFZ4ZSvXR4_" name="StartNode2" x="456" y="35" type="START">
+            <parameters/>
+            <config>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
+            </config>
+            <transitions>
+                <transition uuid="GtMKB288dT8AAAFZfb2vXR4_" name="NEXT" toNode="mp4KB288f_YAAAFZh62vXR4_">
+                    <points>-50, 36, -87, -118|-41, 119, -78, -35|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="mp4KB288f_YAAAFZh62vXR4_" name="SleepHystrixCommand" x="447" y="189" type="CUSTOM">
+            <parameters>
+                <parameter key="param1" value="sleepMs" input="true"/>
+            </parameters>
+            <config>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.workflow.hystrix.SleepHystrixCommand"/>
+            </config>
+            <transitions>
+                <transition uuid="H4EKB28850sAAAFZnkyvXR5A" name="NEXT" toNode="nKEKB288eMcAAAFZBzqvXR5A">
+                    <points>-78, 35, -63, -142|-65, 133, -50, -44|</points>
+                </transition>
+                <transition uuid="VeYKB288jh0AAAFZm_KvXR5A" name="ERROR" toNode="TkkKB288Bu8AAAFZS6SvXR5A">
+                    <points>-43, 0, -179, -171|86, 0, -50, -171|86, 127, -50, -44|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="nKEKB288eMcAAAFZBzqvXR5A" name="EndNode2" x="456" y="357" type="END">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node uuid="TkkKB288Bu8AAAFZS6SvXR5A" name="EndNode3" x="620" y="351" type="END">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+    </nodes>
+</flow>

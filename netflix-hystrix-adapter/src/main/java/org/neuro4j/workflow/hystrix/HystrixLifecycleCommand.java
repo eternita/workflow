@@ -7,10 +7,14 @@ import java.util.Collections;
 import java.util.List;
 
 import org.neuro4j.workflow.FlowContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 public abstract class HystrixLifecycleCommand extends HystrixCommand<Integer> {
 
+	private static Logger logger = LoggerFactory.getLogger(HystrixLifecycleCommand.class);
+	
     private final List<HystrixLifecycleListener> lifecycleListeners;
 
     private FlowContext ctx;
@@ -65,13 +69,15 @@ public abstract class HystrixLifecycleCommand extends HystrixCommand<Integer> {
 
     @Override
     protected Integer run() throws Exception {
-    	Integer result;
+    	logger.debug("Starting command {}", this.getClass().getSimpleName());
+    	int result;
         notifyListenerOfCommandStart();
         try {
             result = executeInternal(this.ctx);
         } finally {
             notifyListenerOfCommandComplete();
         }
+        logger.debug("Finished command {}", this.getClass().getSimpleName());
         return result;
     }
 
