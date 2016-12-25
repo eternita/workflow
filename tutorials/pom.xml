@@ -17,6 +17,8 @@
         <module>SpringTimerExample</module>
         <module>SpringEmailExample</module>
         <module>ParallelProcessingExample</module>
+        <module>HystrixExample</module>
+        
     </modules>
 
     <properties>

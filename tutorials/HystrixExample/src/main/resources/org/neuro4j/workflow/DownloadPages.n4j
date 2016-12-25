@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<flow visibility="Public">
+    <nodes>
+        <node uuid=".LnAqAIHuBkAAAFYNnElqOpL" name="Start" x="182" y="17" type="START">
+            <parameters/>
+            <config>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
+            </config>
+            <transitions>
+                <transition uuid="KTTAqAIHofMAAAFYLe5rvOpg" name="NEXT" toNode="nsnAqAIHPJwAAAFY5KZrvOpg">
+                    <points>-50, 36, -77, -104|-47, 105, -74, -35|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="s3LAqAIHFpMAAAFYj5IlqOpL" name="EndNode1" x="182" y="744" type="END">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node uuid="nsnAqAIHPJwAAAFY5KZrvOpg" name="Fork" x="173" y="181" type="SWITCH">
+            <parameters/>
+            <config>
+                <parameter key="FORK" value="true"/>
+            </config>
+            <transitions>
+                <transition uuid="wS_AqGMB4wMAAAFZtaGqJDfk" name="default" toNode="IRbAqGMBH5kAAAFZcICqJDfk">
+                    <points>-73, 35, 83, -171|-73, 67, 83, -139|-234, 67, -78, -139|-234, 171, -78, -35|</points>
+                </transition>
+                <transition uuid="3CrAqGMBDZcAAAFZ6gaqJDfl" toNode="diPAqGMB14wAAAFZduCqJDfk">
+                    <points>-73, 35, -70, -172|-81, 172, -78, -35|</points>
+                </transition>
+                <transition uuid="ElHAqGMBIOIAAAFZmxaqJDfl" toNode="nwfAqGMBTaoAAAFZtveqJDfk">
+                    <points>-73, 35, -232, -277|-73, 67, -232, -245|81, 67, -78, -245|81, 277, -78, -35|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="0FbAqAIHpJoAAAFYWJlrvOph" name="JoinNode1" x="192" y="590" type="JOIN">
+            <parameters/>
+            <config>
+                <parameter key="FORK" value="true"/>
+            </config>
+            <transitions>
+                <transition uuid="pc7AqAIHY0IAAAFYXqBrvOpi" name="NEXT" toNode="s3LAqAIHFpMAAAFYj5IlqOpL">
+                    <points>0, 15, -52, -184|2, 155, -50, -44|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="9fsKBx.oPWAAAAFZIqSpsiyx" name="LoopNode1" x="535" y="280" type="LOOP">
+            <parameters/>
+            <config>
+                <parameter key="SYS_ELEMENT_KEY" value="url4"/>
+                <parameter key="SYS_ITERATOR_KEY" value="urls"/>
+            </config>
+            <transitions>
+                <transition uuid="8WwKBx.oFxIAAAFZq22psiyy" name="LOOP_EXIT" toNode="Je8KBx.oarMAAAFZ1t2psiyx">
+                    <points>-68, 35, -77, -69|-69, 69, -78, -35|</points>
+                </transition>
+                <transition uuid="Z43AqGMBA4oAAAFZ.pCqJDfj" name="NEXT" toNode="SJDAqGMBYqcAAAFZwmyqJDfj">
+                    <points>-31, 0, -14, -450|78, 0, 95, -450|78, 315, 95, -135|-67, 315, -50, -135|-67, 406, -50, -44|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="Je8KBx.oarMAAAFZ1t2psiyx" name="DownloadPage" x="535" y="384" type="CUSTOM">
+            <parameters>
+                <parameter key="url" value="url4" input="true"/>
+                <parameter key="document" value="content3" input="false"/>
+            </parameters>
+            <config>
+                <parameter key="SWF_CUSTOM_CLASS" value="org.neuro4j.example.commons.DownloadPage"/>
+            </config>
+            <transitions>
+                <transition uuid="mIgKBx.ooa8AAAFZlZ6psiyy" name="NEXT" toNode="UWIKBx.oCrwAAAFZ2dOpsiyy">
+                    <points>-78, 35, 569, 454|-647, -419, 0, 0|</points>
+                </transition>
+                <transition uuid="HQ4KBx.osiUAAAFZpf6psiyz" name="ERROR" toNode="UWIKBx.oCrwAAAFZ2dOpsiyy">
+                    <points>-43, 0, 35, -96|-1, 0, 77, -96|-1, 96, 77, 0|-63, 96, 15, 0|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="UWIKBx.oCrwAAAFZ2dOpsiyy" name="JoinNode2" x="554" y="500" type="JOIN">
+            <parameters/>
+            <config/>
+            <transitions>
+                <transition uuid="cq0KBx.oX20AAAFZJxmpsiyz" name="NEXT" toNode="9fsKBx.oPWAAAAFZIqSpsiyx">
+                    <points>0, 15, -67, 250|0, 38, -67, 273|-114, 38, -181, 273|-114, -235, -181, 0|-35, -235, -102, 0|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="zADAqGMB0B0AAAFZPFiqJDfj" name="Download" x="544" y="16" type="START">
+            <parameters/>
+            <config>
+                <parameter key="SYS_START_NODE_TYPE" value="PUBLIC"/>
+            </config>
+            <transitions>
+                <transition uuid="G.jAqGMBsgkAAAFZKK6qJDfj" name="NEXT" toNode="9fsKBx.oPWAAAAFZIqSpsiyx">
+                    <points>-50, 36, -63, -228|-55, 229, -68, -35|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="SJDAqGMBYqcAAAFZwmyqJDfj" name="EndNode2" x="545" y="721" type="END">
+            <parameters/>
+            <config/>
+            <transitions/>
+        </node>
+        <node uuid="IRbAqGMBH5kAAAFZcICqJDfk" name="CallNode1" x="12" y="411" type="CALL">
+            <parameters/>
+            <config>
+                <parameter key="SYS_FLOW_NAME" value="org.neuro4j.workflow.DownloadPages-Download"/>
+            </config>
+            <transitions>
+                <transition uuid="zcDAqGMBOwgAAAFZc36qJDfl" name="NEXT" toNode="0FbAqAIHpJoAAAFYWJlrvOph">
+                    <points>-78, 35, -161, -124|68, 159, -15, 0|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="diPAqGMB14wAAAFZduCqJDfk" name="CallNode2" x="173" y="443" type="CALL">
+            <parameters/>
+            <config>
+                <parameter key="SYS_FLOW_NAME" value="org.neuro4j.workflow.DownloadPages-Download"/>
+            </config>
+            <transitions>
+                <transition uuid="GvDAqGMBQgAAAAFZsUuqJDfl" name="NEXT" toNode="0FbAqAIHpJoAAAFYWJlrvOph">
+                    <points>-78, 35, -19, -111|-59, 131, 0, -15|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="nwfAqGMBTaoAAAFZtveqJDfk" name="CallNode3" x="327" y="517" type="CALL">
+            <parameters/>
+            <config>
+                <parameter key="SYS_FLOW_NAME" value="org.neuro4j.workflow.DownloadPages-Download"/>
+            </config>
+            <transitions>
+                <transition uuid="tC7AqGMBKtYAAAFZgG6qJDfl" name="NEXT" toNode="0FbAqAIHpJoAAAFYWJlrvOph">
+                    <points>-78, 35, 154, -119|-217, 154, 15, 0|</points>
+                </transition>
+            </transitions>
+        </node>
+        <node uuid="note" name="fXXAqGMBzBMAAAFZWEqqJDfz" x="267" y="225" type="NOTE">
+            <description>Runs subtasks in 3 threads</description>
+            <parameters/>
+            <config>
+                <parameter key="w" value="166"/>
+                <parameter key="h" value="46"/>
+            </config>
+            <transitions/>
+        </node>
+        <node uuid="note" name="FUnAqGMBzBQAAAFZWEqqJDfz" x="269" y="670" type="NOTE">
+            <description>wait until all threads finish their work</description>
+            <parameters/>
+            <config>
+                <parameter key="w" value="233"/>
+                <parameter key="h" value="78"/>
+            </config>
+            <transitions/>
+        </node>
+    </nodes>
+</flow>
