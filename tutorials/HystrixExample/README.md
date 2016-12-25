@@ -1,6 +1,6 @@
 ## Netflix Hystrix in workflow 
 
-Let's create simple SpringBoot application which will download documents but each operation will be a HystrixCommand
+Let's create simple SpringBoot application to download documents but each operation will be a HystrixCommand
  
 ### SpringBoot configuration
 
@@ -24,6 +24,19 @@ public class AppConfig {
 
 }
 
+```
+SampleApplication with @EnableHystrixDashboard annotation
+```
+@SpringBootApplication
+@ComponentScan({"org.neuro4j"})
+@EnableHystrixDashboard
+public class SampleApplication  {
+
+	public static void main(String[] args) {
+		   SpringApplication.run(SampleApplication.class, args);
+	}
+
+}
 ```
 
 ### WelcomeController
@@ -185,7 +198,7 @@ public class JsoupDownloadService implements DownloadService{
 
 ```
 
-HystrixServletDefinitions.java defines HystrixDashboard
+HystrixServletDefinitions.java defines path to hystrix.stream and registers HystrixMetricsStreamServlet
 ```
 @Configuration
 public class HystrixServletDefinitions {
