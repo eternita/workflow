@@ -77,7 +77,7 @@ public abstract class URLWorkflowLoader implements WorkflowLoader {
 	protected abstract URL getResource(String location) throws IOException;
 	
 	protected String normalize(String path){
-		return path.replaceAll("\\.", File.separator);
+		return path.replace(".", File.separator);
 	}
 	
 	protected Reader getReader(URL resource) throws IOException {
