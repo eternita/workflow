@@ -110,7 +110,7 @@ public class ConverterTest {
 	}
 
 	protected String normalize(String path) {
-		return path.replaceAll("\\.", File.separator);
+		return path.replace(".", File.separator);
 	}
 	
 }

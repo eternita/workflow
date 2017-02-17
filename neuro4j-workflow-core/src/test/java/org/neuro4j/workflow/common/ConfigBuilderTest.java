@@ -38,7 +38,7 @@ public class ConfigBuilderTest {
 	@Test
 	public void testConfigBuilderWithLoader() throws FlowExecutionException{
 		    WorkflowConverter converter = new XmlWorkflowConverter();
-	    	ConfigBuilder builder = new ConfigBuilder().withLoader(new FileWorkflowLoader(converter, new ClasspathWorkflowLoader(converter), new  File("/tmp")));
+	    	ConfigBuilder builder = new ConfigBuilder().withLoader(new FileWorkflowLoader(converter, new ClasspathWorkflowLoader(converter), new  File(System.getProperty("java.io.tmpdir"))));
 	        assertNotNull(builder.getCustomInitStrategy());
 	        assertThat(builder.getCustomInitStrategy(), instanceOf(DefaultCustomBlockInitStrategy.class));
 	        assertNotNull(builder.getLoader());	
