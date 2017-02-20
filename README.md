@@ -7,7 +7,9 @@ Neuro4j Workflow.
 Java workflow engine with Eclipse-based development environment.
 
 What is new
-## 3.4.1 - TBD
+## 3.5.1-TBD
+
+## 3.4.1 - 02/19/2017
 * netflix-hystrix-adapter and [example] (https://github.com/neuro4j/workflow/tree/master/tutorials/HystrixExample)
 
 [Hystrix](https://github.com/Netflix/Hystrix) is a latency and fault tolerance library designed to isolate points of access to remote systems, services and 3rd party libraries, stop cascading failure and enable resilience in complex distributed systems where failure is inevitable.
