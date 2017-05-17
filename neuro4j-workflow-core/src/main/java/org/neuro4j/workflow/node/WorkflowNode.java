@@ -146,12 +146,12 @@ public class WorkflowNode {
 
 		// if concatenated string
 		if (parts.length > 1) {
-			String stringValue = "";
+			StringBuilder stringValue = new StringBuilder();
 
 			for (String src : parts) {
-				stringValue += (String) ctx.get(src);
+				stringValue.append(ctx.get(src));
 			}
-			obj = stringValue;
+			obj = stringValue.toString();
 
 		} else {
 			obj = ctx.get(source);
