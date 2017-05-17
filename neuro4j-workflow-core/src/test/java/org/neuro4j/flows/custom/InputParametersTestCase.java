@@ -16,19 +16,21 @@
 
 package org.neuro4j.flows.custom;
 
+import static org.hamcrest.Matchers.startsWith;
+import static org.junit.Assert.*;
+
 import java.util.HashMap;
 import java.util.Map;
 
 import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.neuro4j.tests.base.BaseFlowTestCase;
 import org.neuro4j.workflow.ExecutionResult;
 import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.common.FlowExecutionException;
-import org.neuro4j.workflow.common.WorkflowEngine;
-import org.neuro4j.workflow.common.WorkflowEngine.ConfigBuilder;
+import org.junit.Assert.*;
+
+import static org.hamcrest.Matchers.*;
 
 public class InputParametersTestCase extends BaseFlowTestCase {
 
@@ -44,7 +46,7 @@ public class InputParametersTestCase extends BaseFlowTestCase {
         Map<String, Object> params = new HashMap<String, Object>();
 
         ExecutionResult result = executeFlowAndReturnResult("org.neuro4j.flows.custom.FlowWithParameters-StartNode1", params);
-        Assert.assertTrue(result.getException() instanceof FlowExecutionException);
+        assertTrue(result.getException() instanceof FlowExecutionException);
 
     }
 
@@ -62,7 +64,7 @@ public class InputParametersTestCase extends BaseFlowTestCase {
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("mandatoryParameter", "123");
         ExecutionResult result = executeFlowAndReturnResult("org.neuro4j.flows.custom.FlowWithParameters-StartNode1", params);
-        Assert.assertTrue(result.getException() instanceof FlowExecutionException);
+        assertTrue(result.getException() instanceof FlowExecutionException);
     }
 
     @Test
@@ -71,7 +73,7 @@ public class InputParametersTestCase extends BaseFlowTestCase {
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("mandatoryParameter", new Integer(123));
         ExecutionResult result = executeFlowAndReturnResult("org.neuro4j.flows.custom.FlowWithParameters-StartNode2", params);
-        Assert.assertTrue(result.getException() instanceof FlowExecutionException);
+        assertTrue(result.getException() instanceof FlowExecutionException);
 
     }
 
@@ -95,7 +97,7 @@ public class InputParametersTestCase extends BaseFlowTestCase {
 
         String string2 = (String) FlowContext.get("string2");
 
-        Assert.assertEquals("value1 value2", string2);
+        assertEquals("value1 value2", string2);
 
     }
 
@@ -114,7 +116,46 @@ public class InputParametersTestCase extends BaseFlowTestCase {
 
         String string2 = (String) FlowContext.get("string2");
 
-        Assert.assertEquals("value1 name1", string2);
+        assertEquals("value1 name1", string2);
+
+    }
+    
+    /**
+     * test concatenation "Hello" + obj1
+     */
+    @Test
+    public void testConcatenationStringAndIntegerInputparameter() {
+
+        Map<String, Object> params = new HashMap<String, Object>();
+        Integer  int1 = new Integer(3);
+      
+        params.put("obj1", int1);
+
+        FlowContext FlowContext = executeFlowWithoutErrors("org.neuro4j.flows.custom.FlowWithParameters-StartNode7", params);
+
+        String string2 = (String) FlowContext.get("string2");
+
+        assertEquals("Hello 3", string2);
+
+    }
+    
+    /**
+     * test2 concatenation "Hello" + obj1
+     */
+    @Test
+    public void testConcatenationStringAndBeanInputparameter() {
+
+        Map<String, Object> params = new HashMap<String, Object>();
+        TestBean bean = new TestBean();
+        bean.setStringVar("4");
+        
+        params.put("obj1", bean);
+
+        FlowContext FlowContext = executeFlowWithoutErrors("org.neuro4j.flows.custom.FlowWithParameters-StartNode7", params);
+
+        String string2 = (String) FlowContext.get("string2");
+
+        assertThat(string2, startsWith("Hello org.neuro4j.flows.custom.TestBean@"));
 
     }
 }
