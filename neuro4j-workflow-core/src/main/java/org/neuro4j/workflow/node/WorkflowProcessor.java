@@ -18,6 +18,7 @@ package org.neuro4j.workflow.node;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.FutureTask;
@@ -46,7 +47,6 @@ import org.slf4j.LoggerFactory;
 public class WorkflowProcessor {
 	
 	private static final Logger logger = LoggerFactory.getLogger(WorkflowProcessor.class);
-	
 
 	private final ActionHandlersRegistry registry;
 
@@ -81,29 +81,62 @@ public class WorkflowProcessor {
 	 */
 	public ExecutionResult execute(final String flow, final WorkflowRequest request) {
 
-		long start = System.currentTimeMillis();
-
-		ExecutionResult result = new ExecutionResult(request.getLogicContext());
-
+		ExecutionResult result = null;
+		
 		try {
 			
 			FlowParameter flowParameter = resolveFlow(flow);
 
 			logger.debug("Loading flow: {}", flowParameter);
+			
 			long startLoading = System.currentTimeMillis();
 
 			Workflow workflow = loadWorkflow(flowParameter.getFlowName());
-
-			logger.debug("Loaded flow: {} in {} ms", flowParameter.getFlowName(), System.currentTimeMillis() - startLoading);
+			
 			if (null == workflow)
 				throw new FlowExecutionException("Flow '" + flowParameter.getFlowName() + "' can't be loaded");
 
-			StartNode startNode = workflow.getStartNode(flowParameter.getStartNode());
+			logger.debug("Loaded flow: {} in {} ms", flowParameter.getFlowName(), System.currentTimeMillis() - startLoading);
+
+			result = execute(workflow, flowParameter.getStartNode(), request);
+
+		} catch (FlowExecutionException ex) {
+			logger.error(ex.getMessage(), ex);
+			result = new ExecutionResult(request.getLogicContext());
+			result.setExecutionExeption(ex);
+		}
+
+		return result;
+	}
+
+	/**
+	 * Executes workflow object with given parameters.
+	 * 
+	 * @param workflow
+	 * @param startNodeName
+	 * @param request
+	 * @return ExecutionResult
+	 */
+	public ExecutionResult execute(final Workflow workflow, final String startNodeName, final WorkflowRequest request) {
+		
+		long start = System.currentTimeMillis();
+		
+		ExecutionResult result = new ExecutionResult(request.getLogicContext());
+
+		try {
+
+			Objects.requireNonNull(workflow, "Flow can't be null");
+			Objects.requireNonNull(request, "Request can't be null");
+			Objects.requireNonNull(startNodeName, "StartNodeName can't be null");
+			
+			StartNode startNode = workflow.getStartNode(startNodeName);
+
 			if (null == startNode)
-				throw new FlowExecutionException("StartNode '" + flowParameter.getStartNode() + "' not found in flow " + flowParameter.getFlowName());
+				throw new FlowExecutionException(
+						"StartNode '" + startNodeName + "' not found in flow " + workflow.getFlowName());
 
 			if (!workflow.isPublic()) {
-				throw new FlowExecutionException("Flow '" + flowParameter.getFlowName() + "' is not public");
+				throw new FlowExecutionException("Flow '" + workflow.getFlowName() + "' is not public");
 			}
 
 			if (!startNode.isPublic()) {
@@ -113,6 +146,7 @@ public class WorkflowProcessor {
 			request.pushPackage(workflow.getPackage());
 
 			executeWorkflow(startNode, request);
+			
 			request.popPackage();
 		} catch (FlowExecutionException ex) {
 			logger.error(ex.getMessage(), ex);
@@ -124,6 +158,7 @@ public class WorkflowProcessor {
 		if (lastNode != null) {
 			result.setLastSuccessfulNodeName(lastNode.getName());
 		}
+		
 		logger.debug("Flow execution time: {} ms.", System.currentTimeMillis() - start);
 		return result;
 	}

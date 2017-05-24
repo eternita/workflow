@@ -20,7 +20,6 @@ import org.neuro4j.workflow.FlowContext;
 import org.neuro4j.workflow.WorkflowRequest;
 import org.neuro4j.workflow.common.FlowExecutionException;
 import org.neuro4j.workflow.common.Workflow;
-import org.neuro4j.workflow.utils.Validation;
 
 import static org.neuro4j.workflow.utils.Validation.*;
 

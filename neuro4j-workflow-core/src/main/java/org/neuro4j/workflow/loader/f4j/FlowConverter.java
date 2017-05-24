@@ -76,20 +76,20 @@ public class FlowConverter {
 		return xml2workflow(new InputStreamReader(xml, "UTF-8"), flow);
 	}
 
-	private static Workflow netXML2net(FlowXML net, String flow) throws FlowExecutionException {
+	static Workflow netXML2net(FlowXML net, String flow) throws FlowExecutionException {
 
-		Workflow network = new Workflow(flow, getFlowPackage(flow));
+		Workflow workflow = new Workflow(flow, getFlowPackage(flow));
 
 		for (NodeXML e : net.nodes) {
-			createNode(network, e);
+			createNode(workflow, e);
 		}
 
 		for (NodeXML entity : net.nodes) {
-			WorkflowNode node = network.getById(entity.getUuid());
+			WorkflowNode node = workflow.getById(entity.getUuid());
 			if (node != null) {
 				for (TransitionXML transitionXml : entity.getRelations()) {
 					Transition transition = transitionXml.createTransition(node);
-					transition.setToNode(network.getById(transitionXml.toNode));
+					transition.setToNode(workflow.getById(transitionXml.toNode));
 					node.registerExit(transition);
 				}
 
@@ -98,7 +98,7 @@ public class FlowConverter {
 
 		}
 
-		return network;
+		return workflow;
 	}
 
 	private static String getFlowPackage(final String flow) {
