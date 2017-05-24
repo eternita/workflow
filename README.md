@@ -8,7 +8,8 @@ Java workflow engine with Eclipse-based development environment.
 
 What is new
 ## 3.5.1-TBD
-
+* Dynamic flow creation
+* AmazonS3 WorkflowLoader
 ## 3.4.1 - 02/19/2017
 * netflix-hystrix-adapter and [example] (https://github.com/eternita/workflow/tree/master/tutorials/HystrixExample)
 
@@ -78,6 +79,10 @@ Following code execute flow:
 
 
 Online documentation how to create first application based on flow available at (http://neuro4j.org/articles/tutorial_hello_world)
+
+### How it works
+
+![workflow-diagram](https://raw.github.com/eternita/workflow/master/doc/images/diagram.png "Workflow")
 
 ### Sync vs Asyn
 Workflow can be executed synchronously:
@@ -216,6 +221,8 @@ Debuging flow
 Neuro4j Studio provides  plugin which allows to debug flow in visual editor.
 
 ![workflow-example-higlevel](https://raw.github.com/eternita/workflow/master/doc/images/debug.png "Debuging workflow")
+
+
 
 More information about debug plugin avaliable at http://neuro4j.org/docs/wf/flowdebugtool
 
