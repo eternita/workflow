@@ -33,6 +33,9 @@ What is new
 
 ## 2.0.1 - 10/10/2016
 
+### How it works
+
+![workflow-diagram](https://raw.github.com/eternita/workflow/master/doc/images/diagram.png "Workflow")
 
 What are the advantages of Neuro4j Workflow framework?
 ----------------
@@ -79,10 +82,6 @@ Following code execute flow:
 
 
 Online documentation how to create first application based on flow available at (http://neuro4j.org/articles/tutorial_hello_world)
-
-### How it works
-
-![workflow-diagram](https://raw.github.com/eternita/workflow/master/doc/images/diagram.png "Workflow")
 
 ### Sync vs Asyn
 Workflow can be executed synchronously:
