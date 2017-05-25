@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "node")
 public class NodeXML {
 
-    public FlowXML flow;
+    //public FlowXML flow;
 
     @XmlAttribute(required = true)
     public String uuid;

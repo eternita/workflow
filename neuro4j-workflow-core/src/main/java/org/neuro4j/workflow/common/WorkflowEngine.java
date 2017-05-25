@@ -93,6 +93,14 @@ public class WorkflowEngine {
 		return workflowProcessor.execute(flow, request);
 	}
 	
+	public ExecutionResult execute(final Workflow workflow, final String startNodeName, final WorkflowRequest request) {
+		return workflowProcessor.execute(workflow, startNodeName, request);
+	}
+	
+	public ExecutionResult execute(final Workflow workflow, final String startNodeName, final Map<String, Object> params) {
+		return workflowProcessor.execute(workflow, startNodeName, new WorkflowRequest(params));
+	}
+	
 	public FutureTask<ExecutionResult> executeAsync(String flow) throws FlowExecutionException {
 		return workflowProcessor.executeAsync(flow, new WorkflowRequest());
 	}
