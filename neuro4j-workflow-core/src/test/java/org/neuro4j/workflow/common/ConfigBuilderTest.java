@@ -3,6 +3,7 @@ package org.neuro4j.workflow.common;
 import static org.junit.Assert.*;
 
 import java.io.File;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,7 +14,6 @@ import org.junit.Test;
 import org.neuro4j.workflow.async.ThreadPoolTaskExecutor.ThreadPoolTaskConfig;
 import org.neuro4j.workflow.cache.ActionHandlersRegistry;
 import org.neuro4j.workflow.cache.ConcurrentMapWorkflowCache;
-import org.neuro4j.workflow.cache.EmptyWorkflowCache;
 import org.neuro4j.workflow.common.WorkflowEngine.ConfigBuilder;
 import org.neuro4j.workflow.loader.ClasspathWorkflowLoader;
 import org.neuro4j.workflow.loader.DefaultCustomBlockInitStrategy;
@@ -98,6 +98,22 @@ public class ConfigBuilderTest {
 	        assertThat(builder.getWorkflowCache(), instanceOf(ConcurrentMapWorkflowCache.class));
 	        assertThat(builder.getActionRegistry(), instanceOf(ActionHandlersRegistry.class));
 	        assertThat(builder.getAliases().keySet(), IsCollectionWithSize.hasSize(2));
+	        assertThat(builder.getThreadPoolTaskConfig(), instanceOf(ThreadPoolTaskConfig.class));
+	}
+	
+	@Test
+	public void testConfigBuilderWithEmpty() throws FlowExecutionException{
+
+	    	ConfigBuilder builder = new ConfigBuilder().withAliases(Collections.emptyMap());
+	    	
+	        assertNotNull(builder.getCustomInitStrategy());
+	        assertThat(builder.getCustomInitStrategy(), instanceOf(DefaultCustomBlockInitStrategy.class));
+	        assertNotNull(builder.getLoader());	
+	        assertThat(builder.getLoader(), instanceOf(RemoteWorkflowLoader.class));
+	        assertNotNull(builder.getWorkflowCache());	
+	        assertThat(builder.getWorkflowCache(), instanceOf(ConcurrentMapWorkflowCache.class));
+	        assertThat(builder.getActionRegistry(), instanceOf(ActionHandlersRegistry.class));
+	        assertThat(builder.getAliases().keySet(), IsCollectionWithSize.hasSize(0));
 	        assertThat(builder.getThreadPoolTaskConfig(), instanceOf(ThreadPoolTaskConfig.class));
 	}
 	

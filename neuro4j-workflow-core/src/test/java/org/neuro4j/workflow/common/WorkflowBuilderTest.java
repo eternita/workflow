@@ -56,7 +56,7 @@ public class WorkflowBuilderTest {
 		assertNotNull(startNode2.getUuid());
 		
 		
-		WorkflowEngine engine = new WorkflowEngine(new ConfigBuilder().withLoader(new ClasspathWorkflowLoader(converter)));
+		WorkflowEngine engine = new WorkflowEngine(new ConfigBuilder());
 		ExecutionResult result = engine.execute(workflow, startNodeName, new WorkflowRequest());	
 		assertNotNull(result);
 		assertNull(result.getException());
@@ -79,7 +79,7 @@ public class WorkflowBuilderTest {
 		Workflow workflow =  builder.build();
 		
 		
-		WorkflowEngine engine = new WorkflowEngine(new ConfigBuilder().withLoader(new ClasspathWorkflowLoader(converter)));
+		WorkflowEngine engine = new WorkflowEngine(new ConfigBuilder());
 		ExecutionResult result = engine.execute(workflow, "StartNode1", new WorkflowRequest());	
 		assertNotNull(result);
 		assertNull(result.getException());
@@ -114,6 +114,34 @@ public class WorkflowBuilderTest {
 		ExecutionResult result = engine.execute(workflow, "StartNode2", request);	
 		assertNotNull(result);
 		assertNull(result.getException());
+	}
+	
+	@Test
+	public void testException1() throws FlowExecutionException{
+
+		Workflow workflow = new WorkflowBuilder("org.neuro4j.TestWorkflow1", "StartNode2")
+				                .build(); 
+
+		WorkflowEngine engine = new WorkflowEngine(new ConfigBuilder());
+		
+		
+		ExecutionResult result = engine.execute(workflow, "StartNode1", new WorkflowRequest());	
+		assertNotNull(result);
+		assertNotNull(result.getException());
+	}
+	
+	@Test
+	public void testException2() throws FlowExecutionException{
+
+		Workflow workflow = new WorkflowBuilder("org.neuro4j.TestWorkflow1", "StartNode2")
+				                .build(); 
+
+		WorkflowEngine engine = new WorkflowEngine(new ConfigBuilder());
+		
+		
+		ExecutionResult result = engine.execute(workflow, "StartNode1", (WorkflowRequest)null);	
+		assertNotNull(result);
+		assertNotNull(result.getException());
 	}
 	
 }

@@ -19,6 +19,7 @@ package org.neuro4j.workflow.node;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.FutureTask;
@@ -117,17 +118,19 @@ public class WorkflowProcessor {
 	 * @param request
 	 * @return ExecutionResult
 	 */
-	public ExecutionResult execute(final Workflow workflow, final String startNodeName, final WorkflowRequest request) {
+	public ExecutionResult execute(final Workflow workflow, final String startNodeName, WorkflowRequest request) {
 		
 		long start = System.currentTimeMillis();
+		
+		request = Optional.ofNullable(request).orElse(new WorkflowRequest());
 		
 		ExecutionResult result = new ExecutionResult(request.getLogicContext());
 
 		try {
 
-			Objects.requireNonNull(workflow, "Flow can't be null");
-			Objects.requireNonNull(request, "Request can't be null");
-			Objects.requireNonNull(startNodeName, "StartNodeName can't be null");
+			Validation.requireNonNull(workflow, () -> new FlowExecutionException("Flow can't be null"));
+			
+			Validation.requireNonNull(startNodeName, () -> new FlowExecutionException("StartNodeName can't be null"));
 			
 			StartNode startNode = workflow.getStartNode(startNodeName);
 

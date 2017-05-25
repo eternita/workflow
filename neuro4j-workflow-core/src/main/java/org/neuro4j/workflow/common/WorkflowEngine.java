@@ -97,7 +97,7 @@ public class WorkflowEngine {
 		return workflowProcessor.execute(workflow, startNodeName, request);
 	}
 	
-	public ExecutionResult execute(final Workflow workflow, final String startNodeName, Map<String, Object> params) {
+	public ExecutionResult execute(final Workflow workflow, final String startNodeName, final Map<String, Object> params) {
 		return workflowProcessor.execute(workflow, startNodeName, new WorkflowRequest(params));
 	}
 	

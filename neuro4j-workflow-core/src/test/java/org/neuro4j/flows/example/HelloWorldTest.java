@@ -2,6 +2,7 @@ package org.neuro4j.flows.example;
 
 import static junit.framework.Assert.assertNotNull;
 import static junit.framework.Assert.assertNull;
+import static org.junit.Assert.*;
 import static org.neuro4j.workflow.loader.f4j.WorkflowBuilder.createEndNode;
 
 import org.junit.Before;
@@ -97,7 +98,33 @@ public class HelloWorldTest {
 		ExecutionResult result = engine.execute("org.neuro4j.flows.HelloWorld-StartNode2", request);	
 		assertNotNull(result);
 		assertNull(result.getException());
-		System.out.println(result.getFlowContext().get("text"));
+		assertEquals("Hello World! Mister1",result.getFlowContext().get("text"));
 	}
+	
+	/**
+	 * Create StartNode1 -> CustomNode(o.n.f.e.HelloWorld) -> EndNode
+	 *
+	 *                          
+	 * @throws FlowExecutionException
+	 */
+	@Test
+	public void testCreateHalloWorldWorkflowShort() throws FlowExecutionException{
+
+		Workflow workflow = new WorkflowBuilder("org.neuro4j.flows.HelloWorld", "StartNode1")
+				                .addCustomNode("org.neuro4j.flows.example.HelloWorld")
+				                      .withOnError(createEndNode()).done()
+				                .addEndNode()      
+				                .build();
+
+		
+		WorkflowEngine engine = new WorkflowEngine(new ConfigBuilder());
+		
+		WorkflowRequest request = new WorkflowRequest();
+		request.addParameter("name", "Mister");
+		
+		ExecutionResult result = engine.execute(workflow, "StartNode1", request);
+		assertEquals("Hello World! Mister", result.getFlowContext().get("message"));
+	}
+
 	
 }
