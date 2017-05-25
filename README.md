@@ -80,6 +80,7 @@ Following code execute flow:
 Online documentation how to create first application based on flow available at (http://neuro4j.org/articles/tutorial_hello_world)
 ### Creating HelloWorld workflow with java
 ```
+                // StartNode1 -> CustomNode(o.n.f.e.HelloWorld) -> EndNode
 		Workflow workflow = new WorkflowBuilder("org.neuro4j.flows.HelloWorld", "StartNode1")
 				                .addCustomNode("org.neuro4j.flows.example.HelloWorld")
 				                      .withOnError(createEndNode()).done()
